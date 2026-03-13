@@ -1,0 +1,116 @@
+{
+  "hero": {
+    "heading": "Where visionary investment meets iconic living",
+    "subtitle": "Global Real Estate. Tailored Strategies. Lasting Value.",
+    "image": "/images/homepage/hero.webp",
+    "searchBar": {
+      "placeholders": {
+        "location": "Location",
+        "propertyType": "Property Type",
+        "price": "Price"
+      },
+      "buttonText": "SEARCH"
+    }
+  },
+  "featuredProjects": {
+    "label": "Featured Projects",
+    "heading": "Premier developments designed for lifestyle and investment.",
+    "cta": { "label": "View All Properties", "href": "/projects" }
+  },
+  "neighbourhoods": {
+    "label": "Neighbourhood",
+    "heading": "Discover luxury real estate in Dubai's top neighbourhoods"
+  },
+  "partners": {
+    "heading": "Our Trusted Partners",
+    "logos": [
+      { "name": "Emaar", "image": "/images/partners/emaar.svg" },
+      { "name": "Meraas", "image": "/images/partners/meraas.svg" },
+      { "name": "Omniyat", "image": "/images/partners/omniyat.svg" },
+      { "name": "Sobha", "image": "/images/partners/sobha.svg" },
+      { "name": "Ellington", "image": "/images/partners/ellington.svg" },
+      { "name": "Binghatti", "image": "/images/partners/binghatti.png" }
+    ]
+  },
+  "advantage": {
+    "label": "BLACKOAK ADVANTAGE",
+    "heading": "Private advisory, concierge, and strategic investments.",
+    "cards": [
+      {
+        "title": "BlackOak Private Office",
+        "description": "Bespoke real estate advisory for discerning clients.",
+        "image": "/images/homepage/private_office.webp"
+      },
+      {
+        "title": "BlackOak Concierge",
+        "description": "End-to-end property support with a personal touch.",
+        "image": "/images/homepage/concierge.webp"
+      },
+      {
+        "title": "BlackOak Investments",
+        "description": "Strategic property investments driven by market expertise.",
+        "image": "/images/homepage/investments.webp"
+      }
+    ]
+  },
+  "starzplay": {
+    "heading": "Inside the high-stakes world of luxury real estate.",
+    "logo": "/images/homepage/starzplay-logo.png",
+    "posters": [
+      "/images/homepage/starzplay-poster-1.webp",
+      "/images/homepage/starzplay-poster-2.webp"
+    ],
+    "productionLogos": [
+      { "name": "NBC Universal", "image": "/images/starzplay-logos/logo-1.png", "width": 110, "height": 34 },
+      { "name": "Image Nation", "image": "/images/starzplay-logos/logo-2.png", "width": 120, "height": 17 },
+      { "name": "Page Industries", "image": "/images/starzplay-logos/logo-3.png", "width": 98, "height": 56 },
+      { "name": "Damac", "image": "/images/starzplay-logos/logo-4.png", "width": 127, "height": 49 },
+      { "name": "Production 5", "image": "/images/starzplay-logos/logo-5.png", "width": 79, "height": 28 },
+      { "name": "Production 6", "image": "/images/starzplay-logos/logo-6.png", "width": 60, "height": 66 },
+      { "name": "Production 7", "image": "/images/starzplay-logos/logo-7.png", "width": 104, "height": 79 }
+    ]
+  },
+  "mediaLogos": [
+    { "name": "Media 1", "image": "/images/media/media-1.png" },
+    { "name": "Media 2", "image": "/images/media/media-2.png" },
+    { "name": "Media 3", "image": "/images/media/media-3.png" },
+    { "name": "Media 4", "image": "/images/media/media-4.png" },
+    { "name": "Media 5", "image": "/images/media/media-5.png" },
+    { "name": "Media 6", "image": "/images/media/media-6.png" },
+    { "name": "Media 7", "image": "/images/media/media-7.png" },
+    { "name": "Media 8", "image": "/images/media/media-8.png" }
+  ],
+  "whyInvest": {
+    "heading": "Why invest in BlackOak",
+    "description": "BlackOak delivers strategic real estate opportunities backed by market expertise, transparency, and long-term value creation. We help investors make confident decisions in Dubai's dynamic property market.",
+    "cards": [
+      {
+        "icon": "/images/icons/expertise.svg",
+        "title": "Market Expertise",
+        "description": "Deep local knowledge combined with global perspective to identify prime investment opportunities in Dubai's dynamic property market."
+      },
+      {
+        "icon": "/images/icons/finance.svg",
+        "title": "Curated Investment Opportunities",
+        "description": "Access handpicked properties and projects that align with your financial objectives and lifestyle aspirations."
+      },
+      {
+        "icon": "/images/icons/verified.svg",
+        "title": "Trusted Advisory Approach",
+        "description": "From acquisition to exit strategy, our advisors guide you with transparency, integrity, and a commitment to results."
+      }
+    ]
+  },
+  "about": {
+    "label": "ABOUT BLACKOAK",
+    "heading": "Trusted partner in the dynamic UAE real estate market!",
+    "description": "Our team comprises highly knowledgeable professionals with extensive experience, dedicated to providing unparalleled service to our valued clients.",
+    "cta": { "label": "Read More", "href": "/about" },
+    "image": "/images/homepage/about.webp"
+  },
+  "news": {
+    "label": "IN THE MEDIA",
+    "heading": "Coverage, insights, and official updates from BlackOak Real Estate.",
+    "cta": { "label": "More News", "href": "/insights/news" }
+  }
+}

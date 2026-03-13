@@ -1,0 +1,310 @@
+[
+  {
+    "id": "1",
+    "name": "Imran Sheikh",
+    "title": "Partner",
+    "image": "/images/team/imran-sheikh.png",
+    "category": "partner"
+  },
+  {
+    "id": "2",
+    "name": "Riad Gohar",
+    "title": "Partner",
+    "image": "/images/team/riad-gohar.png",
+    "category": "partner"
+  },
+  {
+    "id": "3",
+    "name": "Mahmoud Sahmoud",
+    "title": "Executive Partner",
+    "image": "/images/team/mahmoud-sahmoud.png",
+    "category": "real-estate"
+  },
+  {
+    "id": "4",
+    "name": "Olimpia Siwik",
+    "title": "Associate Partner",
+    "image": "/images/team/olimpia-siwik.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "5",
+    "name": "Omar Shuker",
+    "title": "Associate Partner",
+    "image": "/images/team/omar-shuker.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "6",
+    "name": "Ana Ambrosio",
+    "title": "Associate Partner",
+    "image": "/images/team/ana-ambrosio.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "7",
+    "name": "Ahmed Lababidi",
+    "title": "Associate Partner",
+    "image": "/images/team/ahmed-lababidi.png",
+    "category": "real-estate"
+  },
+  {
+    "id": "8",
+    "name": "Dayan Candamil",
+    "title": "Associate Partner",
+    "image": "/images/team/dayan-candamil.png",
+    "category": "real-estate"
+  },
+  {
+    "id": "9",
+    "name": "Dana Lewis",
+    "title": "Associate Partner",
+    "image": "/images/team/dana-lewis.png",
+    "category": "real-estate"
+  },
+  {
+    "id": "10",
+    "name": "Flora Dautheuil",
+    "title": "Associate Partner",
+    "image": "/images/team/flora-dautheuil.png",
+    "category": "real-estate"
+  },
+  {
+    "id": "11",
+    "name": "Jahongir Usmonov",
+    "title": "Associate Partner",
+    "image": "/images/team/jahongir-usmonov.png",
+    "category": "real-estate"
+  },
+  {
+    "id": "12",
+    "name": "Fenella Rose",
+    "title": "Associate Director",
+    "image": "/images/team/fenella-rose.png",
+    "category": "real-estate"
+  },
+  {
+    "id": "13",
+    "name": "Ridwan Hassan",
+    "title": "Associate Director",
+    "image": "/images/team/ridwan-hassan.png",
+    "category": "real-estate"
+  },
+  {
+    "id": "14",
+    "name": "Kareem Hafez",
+    "title": "Associate Director",
+    "image": "/images/team/kareem-hafez.png",
+    "category": "real-estate"
+  },
+  {
+    "id": "15",
+    "name": "Mustafa Khatib",
+    "title": "Associate Director",
+    "image": "/images/team/mustafa-khatib.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "16",
+    "name": "Tarek Barbary",
+    "title": "Associate Director",
+    "image": "/images/team/tarek-barbary.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "17",
+    "name": "Bakhodur Usmanov",
+    "title": "Associate Director",
+    "image": "/images/team/bakhodur-usmanov.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "18",
+    "name": "Julian Cleave",
+    "title": "Associate Director",
+    "image": "/images/team/julian-cleave.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "19",
+    "name": "Shady Fayed",
+    "title": "Associate Director",
+    "image": "/images/team/shady-fayed.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "20",
+    "name": "Daniel Jevaux",
+    "title": "Associate Director",
+    "image": "/images/team/daniel-jevaux.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "21",
+    "name": "Philippa Blunden",
+    "title": "Senior Property Consultant",
+    "image": "/images/team/philippa-blunden.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "22",
+    "name": "Laleh Changizi",
+    "title": "Senior Property Consultant",
+    "image": "/images/team/laleh-changizi.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "23",
+    "name": "Nader Baky",
+    "title": "Senior Property Consultant",
+    "image": "/images/team/nader-baky.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "24",
+    "name": "Carol Ozon",
+    "title": "Senior Property Consultant",
+    "image": "/images/team/carol-ozon.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "25",
+    "name": "Ossama Elrashidy",
+    "title": "Senior Property Consultant",
+    "image": "/images/team/ossama-elrashidy.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "26",
+    "name": "Anastasiia Samkova",
+    "title": "Senior Property Consultant",
+    "image": "/images/team/anastasiia-samkova.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "27",
+    "name": "Tatiana Panfilova",
+    "title": "Senior Property Consultant",
+    "image": "/images/team/tatiana-panfilova.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "28",
+    "name": "Habib Yazbeck",
+    "title": "Senior Property Consultant",
+    "image": "/images/team/habib-yazbeck.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "29",
+    "name": "Liliane Hikmat Maher",
+    "title": "Senior Property Consultant",
+    "image": "/images/team/liliane-hikmat-maher.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "30",
+    "name": "Sarah Khaleej",
+    "title": "Senior Property Consultant",
+    "image": "/images/team/sarah-khaleej.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "31",
+    "name": "Waleed Elharti",
+    "title": "Property Consultant",
+    "image": "/images/team/waleed-elharti.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "32",
+    "name": "Iwona Piotrowska",
+    "title": "Property Consultant",
+    "image": "/images/team/iwona-piotrowska.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "33",
+    "name": "Ahmed Elharti",
+    "title": "Property Consultant",
+    "image": "/images/team/ahmed-elharti.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "34",
+    "name": "Indira Tulegenova",
+    "title": "Property Consultant",
+    "image": "/images/team/indira-tulegenova.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "35",
+    "name": "Gurpreet Jandu",
+    "title": "Property Consultant",
+    "image": "/images/team/gurpreet-jandu.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "36",
+    "name": "Audrey Raynaud",
+    "title": "Property Consultant",
+    "image": "/images/team/audrey-raynaud.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "37",
+    "name": "Mark Andrew",
+    "title": "Marketing Director",
+    "image": "/images/team/mark-andrew.png",
+    "category": "creative-ops"
+  },
+  {
+    "id": "38",
+    "name": "Terraine Tuico",
+    "title": "Creative Head",
+    "image": "/images/team/terraine-tuico.png",
+    "category": "creative-ops"
+  },
+  {
+    "id": "39",
+    "name": "Bianca Rae Santos",
+    "title": "Operations | AML Officer",
+    "image": "/images/team/bianca-rae-santos.png",
+    "category": "creative-ops"
+  },
+  {
+    "id": "40",
+    "name": "Nidhesh Pillai",
+    "title": "IT Director",
+    "image": "/images/team/nidhesh-pillai.png",
+    "category": "creative-ops"
+  },
+  {
+    "id": "41",
+    "name": "Nithin Loyd Dsouza",
+    "title": "Accounts Head",
+    "image": "/images/team/nithin-loyd-dsouza.png",
+    "category": "creative-ops"
+  },
+  {
+    "id": "42",
+    "name": "Marikris Aguirre",
+    "title": "Property Coordinator",
+    "image": "/images/team/marikris-aguirre.png",
+    "category": "creative-ops"
+  },
+  {
+    "id": "43",
+    "name": "Davlat Olimjonov",
+    "title": "Video Editor",
+    "image": "/images/team/davlat-olimjonov.png",
+    "category": "creative-ops"
+  },
+  {
+    "id": "44",
+    "name": "Inda Singh",
+    "title": "360 Virtual Tour Specialist",
+    "image": "/images/team/inda-singh.png",
+    "category": "creative-ops"
+  }
+]

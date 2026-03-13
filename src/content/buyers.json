@@ -1,0 +1,28 @@
+{
+  "hero": {
+    "title": "Built on Trust.\nDriven by Passion.",
+    "subtitle": "Property Buyers Guide",
+    "image": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1400&q=80"
+  },
+  "intro": {
+    "label": "PROPERTY BUYERS GUIDE",
+    "title": "Start your Dubai property journey with confidence.",
+    "description": "Our Property Buyers Guide offers a comprehensive overview of the entire acquisition journey \u2014 from selecting the right development and understanding market trends to navigating legal procedures and finalizing ownership. Whether you are a first-time buyer or a seasoned investor, this guide is designed to provide clarity, transparency, and strategic insight at every stage."
+  },
+  "guides": [
+    { "title": "Why Invest or Buy", "icon": "TrendingUp", "description": "Discover why Dubai is one of the world's most attractive property markets." },
+    { "title": "Obtaining a Visa", "icon": "FileCheck", "description": "Learn about visa options available to property investors and homeowners." },
+    { "title": "Managing Your Property", "icon": "Building", "description": "Understand property management options and services available." },
+    { "title": "Mortgaging Your Property", "icon": "Landmark", "description": "Explore financing options for your Dubai property purchase." }
+  ],
+  "whyInvest": {
+    "label": "MARKET OVERVIEW",
+    "title": "Why You Should Invest or Buy Property in Dubai",
+    "content": "Over the past few years, Dubai's real estate market has greatly matured, aligning itself with the established cities. Of course, Dubai is still considered a 'new' city and most real estate projects aren't even 10 years old. However, this is a great benefit for buyers as buildings are designed and constructed with newer design concepts, advanced engineering techniques and generally, better construction."
+  },
+  "investConfidence": {
+    "label": "INVEST WITH CONFIDENCE",
+    "title": "Invest with Assured Confidence",
+    "content": "With any real estate investment, risk must be carefully evaluated and strategically managed. In Dubai, however, the risk profile remains comparatively minimal \u2014 supported by transparent regulatory frameworks, strong institutional fundamentals, and consistent global investor interest."
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "hero": {
+    "title": "Built on Trust.\nDriven by Passion.",
+    "subtitle": "Investors",
+    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=80"
+  },
+  "intro": {
+    "label": "EXCLUSIVE ACCESS",
+    "title": "Exclusive access to Dubai's most exceptional real estate opportunities.",
+    "description": "Dubai's world-class infrastructure, tax-advantaged environment, and consistently strong rental yields make it one of the most compelling property investment destinations globally. Whether you're a first-time investor or seasoned portfolio builder, BlackOak provides the expertise, insights and market access to help you build wealth through premium real estate."
+  },
+  "sections": [
+    {
+      "label": "CAPITAL MEETS OPPORTUNITY",
+      "title": "Where Capital Meets Opportunity",
+      "items": [
+        {
+          "title": "Syndicated Real Estate Investments in Dubai",
+          "description": "Collective from strategy: a curated approach that opens doors to outstanding property investments that might otherwise remain inaccessible. Our model enables qualified investors to participate in premium developments with reduced individual capital requirements.",
+          "image": "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&q=80"
+        },
+        {
+          "title": "Tailored Strategies and Advisory",
+          "description": "Every investor's goals are unique. BlackOak's team builds customized investment strategies aligned with your risk appetite, return expectations, and timeline.",
+          "image": "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
+        },
+        {
+          "title": "Institutional Expertise, Boutique Precision",
+          "description": "We blend the analytics and due diligence of institutional investors with the personalized service of a boutique firm.",
+          "image": "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80"
+        },
+        {
+          "title": "Collaborative Syndication Approach",
+          "description": "Our syndication model brings together a select group of investors to co-invest in high-value properties.",
+          "image": "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80"
+        }
+      ]
+    }
+  ],
+  "faq": [
+    {
+      "question": "Why should I invest in Dubai real estate?",
+      "answer": "Dubai offers tax-free rental income, strong capital appreciation, world-class infrastructure, and a stable regulatory environment. The city consistently ranks among the top global destinations for property investment."
+    },
+    {
+      "question": "What types of properties offer the best returns?",
+      "answer": "Off-plan properties in premium locations typically offer the strongest returns. However, the best investment depends on your goals \u2014 whether capital appreciation, rental yield, or a combination of both."
+    },
+    {
+      "question": "Is off-plan investment a good strategy?",
+      "answer": "Off-plan investments can offer significant advantages including lower entry prices, flexible payment plans, and potential for capital appreciation before completion."
+    },
+    {
+      "question": "Can international investors and buy property in Dubai?",
+      "answer": "Yes, Dubai offers freehold property ownership to international investors in designated areas, which include most premium developments and communities."
+    }
+  ]
+}

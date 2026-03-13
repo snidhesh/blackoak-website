@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-white text-dark font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight;
+  }
+}
+
+@layer components {
+  .section-label {
+    @apply flex items-center gap-3 text-[13px] font-medium tracking-[1.56px] uppercase text-[#5F6368] leading-[17px];
+  }
+
+  .section-label::before,
+  .section-label::after {
+    content: "";
+    @apply h-px w-8 bg-gray-300;
+  }
+
+  .container-wide {
+    @apply mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8 xl:px-16;
+  }
+
+  .container-narrow {
+    @apply mx-auto max-w-4xl px-4 sm:px-6;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Swiper overrides */
+.swiper-pagination-bullet-active {
+  @apply !bg-gold;
+}
+
+/* Hide honeypot field */
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+  overflow: hidden;
+}

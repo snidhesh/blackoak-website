@@ -1,0 +1,327 @@
+[
+  {
+    "id": "1",
+    "slug": "emirates-hills",
+    "name": "Emirates Hills",
+    "heroImage": "/images/neighbourhoods/palm-jumeirah.webp",
+    "tagline": "Dubai's Most Exclusive Gated Community",
+    "description": "Emirates Hills is Dubai's most prestigious residential address, often referred to as the 'Beverly Hills of Dubai.' This ultra-exclusive gated community features sprawling mansions set along the Montgomerie Golf Course, offering unparalleled privacy and luxury.\n\nHome to some of the wealthiest residents in the UAE, Emirates Hills showcases architectural masterpieces on generous plots ranging from 10,000 to over 40,000 square feet. The community is renowned for its lush landscaping, tranquil lakes, and world-class security.\n\nWith its prime location near Sheikh Zayed Road and Dubai Marina, residents enjoy easy access to the city's finest dining, shopping, and entertainment while retreating to an oasis of calm and exclusivity.",
+    "properties": ["emirates-hills-mansion"],
+    "attractions": [
+      { "name": "Montgomerie Golf Club", "description": "A championship golf course designed by Colin Montgomerie, offering an 18-hole layout with stunning views and premium facilities.", "image": "/images/attractions/golf.webp" },
+      { "name": "Emirates Hills Park", "description": "Beautifully landscaped community parks with jogging tracks, cycling paths, and serene lake views.", "image": "/images/attractions/park.webp" },
+      { "name": "Dubai Marina Mall", "description": "Minutes away, this lifestyle destination offers over 140 retail outlets, dining options, and entertainment.", "image": "/images/attractions/mall.webp" },
+      { "name": "Address Montgomerie", "description": "A luxury hotel within the community offering fine dining, spa services, and exclusive event spaces.", "image": "/images/attractions/hotel.webp" }
+    ],
+    "whyInvest": [
+      { "title": "Ultra-Prime Location", "description": "One of Dubai's most exclusive postcodes with consistently high property values and strong demand from UHNW individuals." },
+      { "title": "Unmatched Privacy", "description": "A fully gated community with 24/7 security, private plots, and a serene residential environment." },
+      { "title": "Capital Appreciation", "description": "Properties in Emirates Hills have shown consistent long-term value appreciation, making it a solid investment." },
+      { "title": "Limited Supply", "description": "With a fixed number of plots and no new land releases, scarcity drives sustained demand and premium pricing." }
+    ],
+    "seo": {
+      "title": "Emirates Hills - Dubai's Most Exclusive Luxury Community | BlackOak Real Estate",
+      "description": "Discover Emirates Hills, Dubai's most prestigious gated community. Explore ultra-luxury mansions with golf course views and world-class amenities through BlackOak Real Estate."
+    }
+  },
+  {
+    "id": "2",
+    "slug": "palm-jumeirah",
+    "name": "Palm Jumeirah",
+    "heroImage": "/images/neighbourhoods/palm-jumeirah.webp",
+    "tagline": "The World's Most Iconic Island Destination",
+    "description": "Palm Jumeirah is the world's largest man-made island and one of the most recognizable landmarks in global real estate. Shaped like a palm tree, this engineering marvel offers an extraordinary collection of luxury villas, apartments, and penthouses along its fronds, crescent, and trunk.\n\nThe island is home to some of Dubai's most prestigious addresses, including Atlantis The Royal, One Palm, and the FIVE Palm Jumeirah. Residents enjoy private beaches, crystal-clear waters, and panoramic views of the Arabian Gulf and Dubai's stunning skyline.\n\nWith its world-class dining, leisure facilities, and direct access to waterfront living, Palm Jumeirah represents the pinnacle of luxury island living and remains one of the most sought-after investment destinations in the Middle East.",
+    "properties": ["flora-isle-dubai-island", "one-palm-jumeirah", "palm-royal-residences"],
+    "attractions": [
+      { "name": "Atlantis The Royal", "description": "The ultra-luxury resort featuring celebrity chef restaurants, a rooftop infinity pool, and immersive entertainment experiences.", "image": "/images/attractions/hotel.webp" },
+      { "name": "The Pointe", "description": "A waterfront dining and entertainment destination at the tip of Palm Jumeirah with views of Atlantis.", "image": "/images/attractions/dining.webp" },
+      { "name": "Nakheel Mall", "description": "A premium shopping destination on the trunk of the Palm featuring luxury retail, dining, and a rooftop infinity pool.", "image": "/images/attractions/mall.webp" },
+      { "name": "Palm West Beach", "description": "A vibrant beachfront promenade with restaurants, cafes, and leisure activities along the western shoreline.", "image": "/images/attractions/beach.webp" },
+      { "name": "The View at The Palm", "description": "An observation deck on the 52nd floor offering panoramic views of the Palm and Dubai skyline.", "image": "/images/attractions/skyline.webp" }
+    ],
+    "whyInvest": [
+      { "title": "Global Icon", "description": "Palm Jumeirah is one of the world's most recognizable addresses, attracting international buyers and commanding premium prices." },
+      { "title": "Strong Rental Yields", "description": "Consistently high rental demand from tourists and residents delivers attractive returns for property investors." },
+      { "title": "Waterfront Premium", "description": "Direct beach access and sea views command significant premiums over inland properties." },
+      { "title": "Diverse Property Mix", "description": "From studio apartments to ultra-luxury penthouses and beachfront villas, the Palm offers options at every luxury price point." }
+    ],
+    "seo": {
+      "title": "Palm Jumeirah - Iconic Luxury Island Living in Dubai | BlackOak Real Estate",
+      "description": "Explore Palm Jumeirah's luxury villas, apartments, and penthouses. The world's most iconic island destination. Browse exclusive listings with BlackOak Real Estate."
+    }
+  },
+  {
+    "id": "3",
+    "slug": "dubai-hills-estate",
+    "name": "Dubai Hills Estate",
+    "heroImage": "/images/neighbourhoods/dubai-hills-estate.webp",
+    "tagline": "A Master-Planned Community in the Heart of Dubai",
+    "description": "Dubai Hills Estate is one of Dubai's most ambitious master-planned communities, developed by the joint venture of Emaar Properties and Meraas. Spanning over 11 million square meters, the development offers a perfect blend of modern urban living and natural green spaces.\n\nThe community features a championship 18-hole golf course, extensive parks, a dedicated retail hub at Dubai Hills Mall, and a wide variety of residential options from contemporary apartments to sprawling mansions. Its central location along Al Khail Road provides excellent connectivity to all major business districts.\n\nWith its emphasis on wellness, community living, and world-class infrastructure, Dubai Hills Estate has become one of the most popular residential destinations for families and investors seeking a balanced lifestyle within the city.",
+    "properties": ["the-oasis-by-emaar", "dubai-hills-park-point"],
+    "attractions": [
+      { "name": "Dubai Hills Golf Club", "description": "An 18-hole championship golf course with a stunning clubhouse, offering premium golfing experiences amidst scenic landscapes.", "image": "/images/attractions/golf.webp" },
+      { "name": "Dubai Hills Mall", "description": "A major retail destination featuring over 600 stores, entertainment zones, and dining options for the entire family.", "image": "/images/attractions/mall.webp" },
+      { "name": "Dubai Hills Park", "description": "A sprawling green park with jogging tracks, cycling paths, outdoor fitness areas, and children's play zones.", "image": "/images/attractions/park.webp" },
+      { "name": "King's College Hospital", "description": "A world-class healthcare facility providing comprehensive medical services to the community.", "image": "/images/attractions/villa.webp" }
+    ],
+    "whyInvest": [
+      { "title": "Central Location", "description": "Strategically positioned with direct access to Sheikh Mohammed Bin Zayed Road and Al Khail Road, connecting all of Dubai." },
+      { "title": "Master-Planned Community", "description": "Comprehensive infrastructure including schools, hospitals, retail, and leisure ensures sustained long-term demand." },
+      { "title": "Green Living", "description": "Over 1.4 million sq. ft. of parkland and a championship golf course create a premium lifestyle environment." },
+      { "title": "Strong Appreciation", "description": "Property values have shown robust growth since launch, driven by high demand and limited inventory of premium units." }
+    ],
+    "seo": {
+      "title": "Dubai Hills Estate - Premium Community Living | BlackOak Real Estate",
+      "description": "Explore Dubai Hills Estate, a master-planned community with golf course living, parks, and premium residences. Find your ideal property with BlackOak Real Estate."
+    }
+  },
+  {
+    "id": "4",
+    "slug": "al-barari",
+    "name": "Al Barari",
+    "heroImage": "/images/neighbourhoods/al-barari.webp",
+    "tagline": "Dubai's Green Heart of Luxury Living",
+    "description": "Al Barari is Dubai's most exclusive green community, offering a unique fusion of luxury living and natural beauty. The development features over 60% green open space, including botanical gardens, natural streams, and themed landscapes that create a truly unique living environment.\n\nThe community consists of bespoke villas designed with floor-to-ceiling windows, private gardens, and premium finishes that seamlessly blend indoor and outdoor living. Each villa is nestled within lush tropical and Mediterranean-themed gardens, creating a sense of living within a private botanical paradise.\n\nAl Barari also features The Farm, a community hub with restaurants, a spa, and organic gardens, reinforcing its commitment to wellness and sustainable living. It remains one of the most sought-after addresses for those seeking tranquility without compromising on luxury.",
+    "properties": ["al-barari-villa"],
+    "attractions": [
+      { "name": "The Farm", "description": "An organic restaurant and wellness centre set amidst the community's botanical gardens, offering farm-to-table dining.", "image": "/images/attractions/dining.webp" },
+      { "name": "Heart & Soul Spa", "description": "A luxury spa within Al Barari offering holistic treatments and wellness programs in a serene natural setting.", "image": "/images/attractions/gym.webp" },
+      { "name": "Botanical Gardens", "description": "Over 1,500 species of plants across themed gardens including tropical, Mediterranean, and desert landscapes.", "image": "/images/attractions/park.webp" }
+    ],
+    "whyInvest": [
+      { "title": "Unique Proposition", "description": "No other development in Dubai offers this level of green space and botanical living, creating a truly unique value proposition." },
+      { "title": "Premium Positioning", "description": "Properties command premium prices due to the unmatched lifestyle offering and limited inventory." },
+      { "title": "Wellness Focus", "description": "Growing global demand for wellness-oriented living makes Al Barari increasingly attractive to discerning buyers." },
+      { "title": "Exclusivity", "description": "With limited villas and no comparable alternatives, Al Barari properties are highly coveted and retain strong value." }
+    ],
+    "seo": {
+      "title": "Al Barari - Dubai's Premier Green Luxury Community | BlackOak Real Estate",
+      "description": "Discover Al Barari, Dubai's most exclusive green community. Luxury villas amidst botanical gardens and natural streams. Explore with BlackOak Real Estate."
+    }
+  },
+  {
+    "id": "5",
+    "slug": "downtown-dubai",
+    "name": "Downtown Dubai",
+    "heroImage": "/images/neighbourhoods/downtown-dubai.webp",
+    "tagline": "The Centre of Now",
+    "description": "Downtown Dubai is the vibrant heart of the city, home to the iconic Burj Khalifa, The Dubai Mall, and the mesmerizing Dubai Fountain. This master-planned community by Emaar Properties represents the pinnacle of urban living with its stunning collection of high-rise residences, luxury hotels, and world-class entertainment.\n\nThe boulevard stretching through Downtown is lined with premium restaurants, boutique shops, and cultural venues including the Dubai Opera. Residents enjoy an unparalleled urban lifestyle with everything from fine dining to high-end retail at their doorstep.\n\nAs one of the most visited destinations in the world, Downtown Dubai offers exceptional investment potential with strong rental demand from both long-term residents and the short-term holiday home market.",
+    "properties": ["address-sky-view", "downtown-opera-grand"],
+    "attractions": [
+      { "name": "Burj Khalifa", "description": "The world's tallest building at 828 meters, offering observation decks with breathtaking panoramic views of Dubai.", "image": "/images/attractions/skyline.webp" },
+      { "name": "The Dubai Mall", "description": "One of the world's largest shopping centers with over 1,200 stores, an aquarium, ice rink, and entertainment zones.", "image": "/images/attractions/mall.webp" },
+      { "name": "Dubai Fountain", "description": "The world's largest choreographed fountain system, performing daily shows set to music and light.", "image": "/images/attractions/pool.webp" },
+      { "name": "Dubai Opera", "description": "A 2,000-seat multi-format performing arts centre hosting world-class opera, ballet, concerts, and exhibitions.", "image": "/images/attractions/hotel.webp" },
+      { "name": "Souk Al Bahar", "description": "A traditional Arabian marketplace offering specialty shops, waterfront restaurants, and views of the Burj Khalifa.", "image": "/images/attractions/dining.webp" }
+    ],
+    "whyInvest": [
+      { "title": "Prime Central Location", "description": "The most central and connected neighbourhood in Dubai, walking distance to major attractions and business hubs." },
+      { "title": "Exceptional Rental Demand", "description": "Strong demand from both long-term tenants and short-term holiday visitors ensures attractive rental yields." },
+      { "title": "Iconic Address", "description": "Living next to the Burj Khalifa and Dubai Mall provides an address that is recognized worldwide." },
+      { "title": "Capital Growth", "description": "Premium Downtown properties have demonstrated strong capital appreciation and continue to attract global investors." }
+    ],
+    "seo": {
+      "title": "Downtown Dubai - The Centre of Now | BlackOak Real Estate",
+      "description": "Explore Downtown Dubai luxury residences near Burj Khalifa and Dubai Mall. Premium apartments and penthouses available through BlackOak Real Estate."
+    }
+  },
+  {
+    "id": "6",
+    "slug": "difc",
+    "name": "DIFC",
+    "heroImage": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&q=80",
+    "tagline": "Where Finance Meets Luxury Living",
+    "description": "The Dubai International Financial Centre (DIFC) is the leading financial hub in the Middle East, Africa, and South Asia region. Beyond its role as a global financial centre, DIFC has evolved into one of Dubai's most sophisticated living, dining, and cultural destinations.\n\nThe district features a curated collection of luxury residences, world-class restaurants, contemporary art galleries, and premium retail. Gate Avenue, the pedestrian-friendly boulevard, has become a social hub for Dubai's most discerning residents and professionals.\n\nDIFC's independent legal and regulatory framework, combined with its strategic position between East and West, makes it a unique proposition for investors and residents who value connectivity, culture, and cosmopolitan living.",
+    "properties": ["difc-living-tower"],
+    "attractions": [
+      { "name": "Gate Avenue", "description": "A vibrant lifestyle destination featuring premium dining, retail, and wellness concepts in a contemporary setting.", "image": "/images/attractions/mall.webp" },
+      { "name": "ICD Brookfield Place", "description": "A landmark mixed-use development offering premium office space, retail, and dining options.", "image": "/images/attractions/skyline.webp" },
+      { "name": "DIFC Art Nights", "description": "Regular cultural events showcasing contemporary art from regional and international artists across galleries and public spaces.", "image": "/images/attractions/dining.webp" },
+      { "name": "La Petite Maison", "description": "One of Dubai's most acclaimed restaurants, offering French-Mediterranean cuisine in an elegant DIFC setting.", "image": "/images/attractions/dining.webp" }
+    ],
+    "whyInvest": [
+      { "title": "Financial Hub", "description": "Home to over 3,700 registered companies and 26,000 professionals, creating consistent demand for premium residences." },
+      { "title": "Cultural Destination", "description": "Art galleries, restaurants, and cultural events make DIFC a desirable lifestyle destination beyond business hours." },
+      { "title": "Strategic Location", "description": "Central position with excellent connectivity to all major areas of Dubai via Sheikh Zayed Road and Dubai Metro." },
+      { "title": "Regulated Environment", "description": "DIFC's independent legal framework provides additional investor confidence and protection." }
+    ],
+    "seo": {
+      "title": "DIFC - Dubai's Premier Financial & Lifestyle District | BlackOak Real Estate",
+      "description": "Discover luxury living in DIFC, Dubai's leading financial centre. Premium residences amidst world-class dining and culture. Explore with BlackOak Real Estate."
+    }
+  },
+  {
+    "id": "7",
+    "slug": "jumeirah-golf-estates",
+    "name": "Jumeirah Golf Estates",
+    "heroImage": "/images/neighbourhoods/jumeirah-golf-estates.webp",
+    "tagline": "Championship Golf Course Living",
+    "description": "Jumeirah Golf Estates is one of Dubai's premier residential golf communities, featuring two championship courses -- the Earth Course and the Fire Course. The community offers a serene, resort-style lifestyle with meticulously designed villas and townhouses overlooking lush fairways.\n\nHome to the DP World Tour Championship, the Earth Course is internationally recognized and draws golf enthusiasts from around the world. The community's clubhouse offers premium dining, fitness facilities, and social spaces that form the heart of community life.\n\nWith its peaceful setting along Sheikh Mohammed Bin Zayed Road, Jumeirah Golf Estates provides an ideal balance of luxury living, sporting lifestyle, and convenient access to Dubai's key destinations.",
+    "properties": ["jumeirah-golf-estates-villa"],
+    "attractions": [
+      { "name": "Earth Course", "description": "Home to the DP World Tour Championship, this Greg Norman-designed course is one of the region's most prestigious golfing venues.", "image": "/images/attractions/golf.webp" },
+      { "name": "Fire Course", "description": "A challenging championship golf course designed to complement the Earth Course, offering a distinctive golfing experience.", "image": "/images/attractions/golf.webp" },
+      { "name": "Clubhouse & Spa", "description": "A world-class clubhouse with fine dining, spa facilities, swimming pools, and fitness centre.", "image": "/images/attractions/gym.webp" }
+    ],
+    "whyInvest": [
+      { "title": "Golf Course Premium", "description": "Properties on championship golf courses consistently command higher values and attract premium buyers globally." },
+      { "title": "Family Friendly", "description": "A self-contained community with schools, retail, and recreational facilities ideal for family living." },
+      { "title": "Growing Community", "description": "Ongoing development and new phases continue to enhance amenities and attract new residents." },
+      { "title": "Accessibility", "description": "Direct access to Sheikh Mohammed Bin Zayed Road provides excellent connectivity to Dubai and Abu Dhabi." }
+    ],
+    "seo": {
+      "title": "Jumeirah Golf Estates - Premium Golf Course Living | BlackOak Real Estate",
+      "description": "Explore Jumeirah Golf Estates, Dubai's premier golf community. Luxury villas on championship courses. Find your property with BlackOak Real Estate."
+    }
+  },
+  {
+    "id": "8",
+    "slug": "jumeirah-islands",
+    "name": "Jumeirah Islands",
+    "heroImage": "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=1200&q=80",
+    "tagline": "Island Villa Living in the Heart of New Dubai",
+    "description": "Jumeirah Islands is a prestigious residential community comprising 46 clusters of man-made islands set within landscaped lakes and waterways. Each island features a collection of luxury villas with private gardens, offering a tranquil island-living experience within the city.\n\nThe community provides an exclusive lifestyle with lush greenery, water features, and walking paths connecting the islands. Residents enjoy a sense of privacy and seclusion while being just minutes from Dubai Marina, JLT, and other major commercial districts.\n\nWith its unique island concept and family-friendly environment, Jumeirah Islands has established itself as one of Dubai's most desirable villa communities for those seeking spacious living in a serene waterfront setting.",
+    "properties": ["bulgari-resort-residences"],
+    "attractions": [
+      { "name": "Jumeirah Islands Clubhouse", "description": "A community hub offering swimming pools, tennis courts, a gymnasium, and social spaces for residents.", "image": "/images/attractions/pool.webp" },
+      { "name": "Lake Views & Walks", "description": "Scenic walking and cycling paths along landscaped lakes and waterways connecting the community's islands.", "image": "/images/attractions/park.webp" },
+      { "name": "Dubai Marina Access", "description": "Minutes from Dubai Marina's dining, shopping, and beach lifestyle offerings.", "image": "/images/attractions/waterfront.webp" }
+    ],
+    "whyInvest": [
+      { "title": "Unique Island Living", "description": "The distinctive island concept within a city setting creates a unique and desirable residential proposition." },
+      { "title": "Spacious Villas", "description": "Generous plot sizes and villa layouts offer the space and privacy that families and luxury buyers demand." },
+      { "title": "Mature Community", "description": "A well-established community with proven demand, established amenities, and a strong sense of community." },
+      { "title": "Strategic Location", "description": "Excellent connectivity to Dubai Marina, JLT, Mall of the Emirates, and major road networks." }
+    ],
+    "seo": {
+      "title": "Jumeirah Islands - Luxury Island Villa Community | BlackOak Real Estate",
+      "description": "Discover Jumeirah Islands, a prestigious island villa community in Dubai. Waterfront luxury living with BlackOak Real Estate."
+    }
+  },
+  {
+    "id": "9",
+    "slug": "dubai-marina",
+    "name": "Dubai Marina",
+    "heroImage": "/images/neighbourhoods/dubai-marina.webp",
+    "tagline": "Vibrant Waterfront Urban Living",
+    "description": "Dubai Marina is one of the world's largest and most vibrant man-made marina communities, featuring a stunning 3-kilometer waterfront promenade lined with luxury towers, premium dining, and entertainment venues. The Marina Walk has become one of Dubai's most popular lifestyle destinations.\n\nThe community offers a dynamic urban lifestyle with a diverse range of residential options from studio apartments to luxury penthouses, many offering spectacular views of the marina, Arabian Gulf, and Palm Jumeirah. JBR Beach and The Walk provide immediate access to beachfront living.\n\nWith the Dubai Metro, Dubai Tram, and major road networks providing excellent connectivity, Dubai Marina attracts a cosmopolitan mix of residents, making it one of the strongest rental markets in the city.",
+    "properties": ["marina-gate-tower", "marina-waterfront-tower"],
+    "attractions": [
+      { "name": "Marina Walk", "description": "A 7-kilometer pedestrian promenade along the marina waterfront, lined with restaurants, cafes, and boutique shops.", "image": "/images/attractions/waterfront.webp" },
+      { "name": "JBR Beach & The Walk", "description": "One of Dubai's most popular public beaches with a vibrant retail and dining promenade.", "image": "/images/attractions/beach.webp" },
+      { "name": "Dubai Marina Mall", "description": "A lifestyle mall with over 140 retail outlets, a cinema, and diverse dining options.", "image": "/images/attractions/mall.webp" },
+      { "name": "Ain Dubai", "description": "The world's largest observation wheel on nearby Bluewaters Island, offering panoramic views of the coastline.", "image": "/images/attractions/skyline.webp" },
+      { "name": "Pier 7", "description": "A unique dining tower with seven floors of themed restaurants overlooking the marina.", "image": "/images/attractions/dining.webp" }
+    ],
+    "whyInvest": [
+      { "title": "Highest Rental Demand", "description": "Dubai Marina consistently ranks among Dubai's top areas for rental yields, driven by strong tenant demand." },
+      { "title": "Tourism Appeal", "description": "Proximity to the beach, dining, and entertainment makes it highly attractive for short-term holiday rentals." },
+      { "title": "Transport Hub", "description": "Excellent connectivity via Dubai Metro, Tram, and major highways ensures convenience for residents and visitors." },
+      { "title": "Lifestyle Destination", "description": "The vibrant waterfront lifestyle and diverse amenities make Dubai Marina one of the city's most desirable addresses." }
+    ],
+    "seo": {
+      "title": "Dubai Marina - Vibrant Waterfront Living | BlackOak Real Estate",
+      "description": "Explore Dubai Marina luxury apartments and penthouses with stunning waterfront views. Find your ideal property with BlackOak Real Estate."
+    }
+  },
+  {
+    "id": "10",
+    "slug": "mohammed-bin-rashid-city",
+    "name": "Mohammed Bin Rashid City",
+    "heroImage": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1200&q=80",
+    "tagline": "A City Within a City",
+    "description": "Mohammed Bin Rashid City (MBR City) is one of Dubai's most ambitious mega-developments, spanning over 54 million square feet. Developed by Meydan Group, this visionary project includes District One, District 7, and Meydan South, creating a comprehensive urban ecosystem.\n\nDistrict One, the flagship community, features the world's largest man-made Crystal Lagoon, private beaches, and luxury villas set within beautifully landscaped grounds. The community offers an extraordinary lifestyle with equestrian facilities, cycling tracks, and vast green spaces.\n\nMBR City's strategic location between Downtown Dubai and Business Bay ensures excellent connectivity, while its scale and vision continue to attract investors seeking properties in what is set to become one of Dubai's most significant residential districts.",
+    "properties": ["mbr-city-hartland"],
+    "attractions": [
+      { "name": "Crystal Lagoon", "description": "The world's largest man-made lagoon, offering a private beach experience and water activities within the community.", "image": "/images/attractions/pool.webp" },
+      { "name": "Meydan Racecourse", "description": "A world-renowned horse racing venue hosting the prestigious Dubai World Cup.", "image": "/images/attractions/golf.webp" },
+      { "name": "District One Parks", "description": "Expansive green spaces with cycling tracks, jogging paths, and outdoor fitness facilities.", "image": "/images/attractions/park.webp" },
+      { "name": "Meydan One Mall", "description": "A mega retail destination planned to include an indoor ski slope, dancing fountains, and premium retail.", "image": "/images/attractions/mall.webp" }
+    ],
+    "whyInvest": [
+      { "title": "Mega Development", "description": "The sheer scale of MBR City ensures long-term infrastructure investment and sustained property value growth." },
+      { "title": "Premium Amenities", "description": "Crystal Lagoon, equestrian facilities, and expansive parks create a lifestyle offering unmatched by most communities." },
+      { "title": "Growing Demand", "description": "New phase launches consistently sell out, demonstrating strong market confidence in the development." },
+      { "title": "Central Location", "description": "Positioned between Downtown Dubai and Business Bay with direct highway connectivity." }
+    ],
+    "seo": {
+      "title": "Mohammed Bin Rashid City - A Visionary Community | BlackOak Real Estate",
+      "description": "Discover MBR City, Dubai's mega-development with Crystal Lagoons and luxury villas. Explore premium properties with BlackOak Real Estate."
+    }
+  },
+  {
+    "id": "11",
+    "slug": "city-walk",
+    "name": "City Walk",
+    "heroImage": "/images/neighbourhoods/city-walk.webp",
+    "tagline": "Urban Luxury Meets Contemporary Design",
+    "description": "City Walk is Meraas' flagship mixed-use development that has redefined urban living in Dubai. This contemporary district seamlessly blends residential, retail, dining, and entertainment within a beautifully designed open-air environment inspired by the world's most vibrant urban neighborhoods.\n\nThe residential component offers sleek, modern apartments with access to an extensive array of lifestyle amenities including high-end boutiques, art galleries, gourmet restaurants, and entertainment venues. The architecture showcases clean lines and contemporary design throughout.\n\nCity Walk's location in the heart of Jumeirah provides easy access to Dubai's key business districts while maintaining a distinct neighborhood character that appeals to those seeking a sophisticated urban lifestyle.",
+    "properties": ["city-walk-residences"],
+    "attractions": [
+      { "name": "Hub Zero", "description": "An immersive gaming and entertainment centre featuring virtual reality experiences and interactive attractions.", "image": "/images/attractions/skyline.webp" },
+      { "name": "Green Planet", "description": "An indoor tropical forest ecosystem showcasing over 3,000 plants and animals across four levels.", "image": "/images/attractions/park.webp" },
+      { "name": "Coca-Cola Arena", "description": "The region's first multipurpose indoor arena, hosting major concerts, sports events, and entertainment shows.", "image": "/images/attractions/hotel.webp" },
+      { "name": "Al Wasl Fashion District", "description": "A curated collection of high-end fashion boutiques and designer stores within the City Walk precinct.", "image": "/images/attractions/mall.webp" }
+    ],
+    "whyInvest": [
+      { "title": "Premium Urban Living", "description": "City Walk offers a unique urban lifestyle concept that attracts young professionals and families seeking contemporary living." },
+      { "title": "Meraas Quality", "description": "Developed by Meraas, known for creating Dubai's most distinctive lifestyle destinations with exceptional build quality." },
+      { "title": "Entertainment Hub", "description": "Direct access to entertainment, dining, and retail creates a self-contained lifestyle that drives rental demand." },
+      { "title": "Central Jumeirah Location", "description": "Located in the heart of Jumeirah with excellent connectivity to all major areas of Dubai." }
+    ],
+    "seo": {
+      "title": "City Walk - Contemporary Urban Living in Dubai | BlackOak Real Estate",
+      "description": "Explore City Walk, Meraas' flagship urban development in Dubai. Modern apartments with premium lifestyle amenities. Find your home with BlackOak Real Estate."
+    }
+  },
+  {
+    "id": "12",
+    "slug": "business-bay",
+    "name": "Business Bay",
+    "heroImage": "/images/neighbourhoods/business-bay.webp",
+    "tagline": "Dubai's Dynamic Commercial & Residential Hub",
+    "description": "Business Bay is Dubai's central business district and one of the city's most dynamic mixed-use communities. Stretching along the Dubai Water Canal, this vibrant district has evolved from a purely commercial zone into a thriving residential and lifestyle destination.\n\nThe area features an impressive skyline of contemporary towers offering everything from affordable studios to luxury penthouses. The Dubai Water Canal promenade has added a new dimension of waterfront dining and leisure, transforming Business Bay into a 24-hour community.\n\nIts strategic location adjacent to Downtown Dubai and DIFC, combined with excellent metro connectivity and diverse property options, makes Business Bay one of the most popular areas for both investors and end-users seeking value in a central location.",
+    "properties": ["business-bay-executive-tower"],
+    "attractions": [
+      { "name": "Dubai Water Canal", "description": "A 3.2-kilometer waterway with waterfront promenades, dining, and leisure activities including canal cruises.", "image": "/images/attractions/waterfront.webp" },
+      { "name": "Bay Avenue", "description": "A lifestyle retail destination offering shops, restaurants, and a supermarket for community residents.", "image": "/images/attractions/mall.webp" },
+      { "name": "Marasi Business Bay", "description": "A waterfront destination featuring floating restaurants, marina berths, and a vibrant promenade.", "image": "/images/attractions/waterfront.webp" },
+      { "name": "Downtown Dubai Proximity", "description": "Walking distance to the Burj Khalifa, Dubai Mall, and Dubai Opera.", "image": "/images/attractions/skyline.webp" }
+    ],
+    "whyInvest": [
+      { "title": "Value Proposition", "description": "Properties in Business Bay offer competitive pricing compared to neighboring Downtown Dubai while sharing many of the same advantages." },
+      { "title": "Strong Rental Market", "description": "High demand from young professionals and business travelers ensures consistent rental occupancy and yields." },
+      { "title": "Metro Connectivity", "description": "Multiple metro stations provide convenient access to the entire Dubai Metro network." },
+      { "title": "Canal Waterfront", "description": "The Dubai Water Canal has significantly enhanced the area's lifestyle appeal and property values." }
+    ],
+    "seo": {
+      "title": "Business Bay - Dynamic Central Living in Dubai | BlackOak Real Estate",
+      "description": "Discover Business Bay, Dubai's vibrant commercial and residential hub. Modern apartments with canal views. Explore with BlackOak Real Estate."
+    }
+  },
+  {
+    "id": "13",
+    "slug": "bluewaters-island",
+    "name": "Bluewaters Island",
+    "heroImage": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=1200&q=80",
+    "tagline": "An Island of Extraordinary Experiences",
+    "description": "Bluewaters Island is a premium lifestyle destination developed by Meraas, located off the coast of JBR. The island is home to Ain Dubai, the world's tallest observation wheel, and offers a carefully curated selection of luxury residences, retail, and dining experiences.\n\nThe residential offerings include contemporary apartments with stunning views of the Arabian Gulf, Dubai Marina skyline, and Ain Dubai. The island's design emphasizes open spaces, pedestrian-friendly streetscapes, and a seamless connection between indoor and outdoor living.\n\nConnected to the mainland via a dedicated bridge and accessible by foot from JBR, Bluewaters Island offers an exclusive island lifestyle while remaining conveniently connected to Dubai's major attractions and business districts.",
+    "properties": ["bluewaters-island-penthouse"],
+    "attractions": [
+      { "name": "Ain Dubai", "description": "The world's largest and tallest observation wheel, standing at 250 meters with panoramic views of the Dubai coastline.", "image": "/images/attractions/skyline.webp" },
+      { "name": "Cove Beach", "description": "A premium beach club offering a sophisticated beachfront experience with dining, entertainment, and water activities.", "image": "/images/attractions/resort.webp" },
+      { "name": "The Wharf", "description": "A waterfront dining and retail destination offering a curated collection of restaurants and boutique shops.", "image": "/images/attractions/waterfront.webp" },
+      { "name": "Caesar's Palace Dubai", "description": "A luxury resort and entertainment complex bringing the iconic Las Vegas brand to the Dubai waterfront.", "image": "/images/attractions/hotel.webp" }
+    ],
+    "whyInvest": [
+      { "title": "Iconic Landmark", "description": "Home to Ain Dubai, the island is a globally recognized destination that drives strong demand for residences." },
+      { "title": "Island Exclusivity", "description": "Limited residential inventory on the island ensures exclusivity and supports premium pricing." },
+      { "title": "Meraas Development", "description": "Meraas' track record of delivering exceptional lifestyle destinations ensures quality and long-term value." },
+      { "title": "Tourism Magnet", "description": "Ain Dubai and the island's attractions create consistent tourist interest, ideal for holiday home investments." }
+    ],
+    "seo": {
+      "title": "Bluewaters Island - Exclusive Island Living in Dubai | BlackOak Real Estate",
+      "description": "Explore Bluewaters Island, home to Ain Dubai. Luxury residences with stunning sea views. Discover exclusive properties with BlackOak Real Estate."
+    }
+  }
+]

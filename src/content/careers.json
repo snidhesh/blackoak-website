@@ -1,0 +1,71 @@
+[
+  {
+    "id": "1",
+    "slug": "real-estate-investment-consultant",
+    "title": "Real Estate Investment Consultant",
+    "location": "United Arab Emirates",
+    "department": "Real Estate Development",
+    "type": "Full-time & Part-time",
+    "postedDate": "2026-02-18",
+    "remuneration": "AED 12,000 + commission, annual OTE AED 250K",
+    "benefits": "Training, career growth",
+    "locationDetail": "Dubai & Ras Al-Khaimah, UAE",
+    "numberOfPositions": 8,
+    "description": "The role and responsibilities of the Real Estate Investment Consultant will be to connect with direct clients, investors, and property brokerage firms throughout Dubai and globally. You should have a good knowledge of sales and have excellent presentation and communication skills. Moreover, you should be a well-organized individual with good attention to detail, who is highly motivated, and customer orientated.",
+    "responsibilities": [
+      "Proven Real Estate Experience",
+      "Strong Market Knowledge",
+      "Financial & Analytical Skills",
+      "Exceptional Communication & Negotiation Skills",
+      "Self-Driven & Performance-Oriented",
+      "Client Advisory & Relationship Management Skills",
+      "Regulatory Awareness & Professional Integrity"
+    ]
+  },
+  {
+    "id": "2",
+    "slug": "property-sales-consultant",
+    "title": "Property Sales Consultant",
+    "location": "United Arab Emirates",
+    "department": "Real Estate Development",
+    "type": "Full-time & Part-time",
+    "postedDate": "2026-02-15",
+    "remuneration": "AED 10,000 + commission",
+    "benefits": "Training, career growth, visa sponsorship",
+    "locationDetail": "Dubai, UAE",
+    "numberOfPositions": 5,
+    "description": "Join our dynamic sales team as a Property Sales Consultant. You will be responsible for managing client relationships, conducting property viewings, and closing deals on premium Dubai properties.",
+    "responsibilities": [
+      "Proven Real Estate Experience",
+      "Strong Market Knowledge",
+      "Financial & Analytical Skills",
+      "Exceptional Communication & Negotiation Skills",
+      "Self-Driven & Performance-Oriented",
+      "Client Advisory & Relationship Management Skills",
+      "Regulatory Awareness & Professional Integrity"
+    ]
+  },
+  {
+    "id": "3",
+    "slug": "property-consultant",
+    "title": "Property Consultant",
+    "location": "United Arab Emirates",
+    "department": "Real Estate/Partnerships",
+    "type": "Full-time",
+    "postedDate": "2026-01-20",
+    "remuneration": "AED 8,000 - AED 15,000",
+    "benefits": "Training, career growth",
+    "locationDetail": "Dubai, UAE",
+    "numberOfPositions": 3,
+    "description": "We are seeking experienced Property Consultants to join our growing team. You will advise clients on property investments, manage listings, and build lasting client relationships.",
+    "responsibilities": [
+      "Proven Real Estate Experience",
+      "Strong Market Knowledge",
+      "Financial & Analytical Skills",
+      "Exceptional Communication & Negotiation Skills",
+      "Self-Driven & Performance-Oriented",
+      "Client Advisory & Relationship Management Skills",
+      "Regulatory Awareness & Professional Integrity"
+    ]
+  }
+]

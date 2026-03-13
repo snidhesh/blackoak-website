@@ -1,0 +1,22 @@
+{
+  "title": "Disclaimer",
+  "lastUpdated": "2026-01-01",
+  "sections": [
+    {
+      "title": "Disclaimer",
+      "content": "The information provided on this website is for general informational purposes only. While BlackOak Real Estate strives to keep the information up to date and correct, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information, products, services, or related graphics contained on the website."
+    },
+    {
+      "title": "Property Disclaimers",
+      "content": "All property prices, specifications, layouts, and images displayed on this website are approximate and subject to change without notice. Floor plans are not to scale and are for illustrative purposes only. Rendered images may not represent the final product. Buyers are advised to verify all details directly with the developer or through BlackOak Real Estate representatives."
+    },
+    {
+      "title": "Investment Disclaimer",
+      "content": "Any references to investment returns, rental yields, or capital appreciation are based on historical data and market analysis. Past performance is not indicative of future results. Real estate investments carry inherent risks, and potential investors should seek independent financial advice before making investment decisions."
+    },
+    {
+      "title": "External Links",
+      "content": "This website may contain links to external websites that are not under the control of BlackOak Real Estate. We have no control over the nature, content, and availability of those sites. The inclusion of any links does not necessarily imply a recommendation or endorse the views expressed within them."
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "logo": "/images/logo-white.svg",
+  "tagline": "A global luxury real estate firm delivering expert guidance, exclusive opportunities, and tailored investment services.",
+  "columns": [
+    {
+      "title": "THE COMPANY",
+      "links": [
+        { "label": "Projects", "href": "/projects" },
+        { "label": "Why BlackOak", "href": "/about/why-blackoak" },
+        { "label": "Our Team", "href": "/about/our-team" },
+        { "label": "Careers", "href": "/career" },
+        { "label": "Contact", "href": "/contact" }
+      ]
+    },
+    {
+      "title": "NEIGHBOURHOODS",
+      "links": [
+        { "label": "Emirates Hills", "href": "/neighbourhoods/emirates-hills" },
+        { "label": "Palm Jumeirah", "href": "/neighbourhoods/palm-jumeirah" },
+        { "label": "Dubai Hills Estate", "href": "/neighbourhoods/dubai-hills-estate" },
+        { "label": "Al Barari", "href": "/neighbourhoods/al-barari" },
+        { "label": "Downtown Dubai", "href": "/neighbourhoods/downtown-dubai" },
+        { "label": "Dubai International Financial Centre (DIFC)", "href": "/neighbourhoods/difc" },
+        { "label": "Jumeirah Golf Estates", "href": "/neighbourhoods/jumeirah-golf-estates" },
+        { "label": "Jumeirah Islands", "href": "/neighbourhoods/jumeirah-islands" },
+        { "label": "Dubai Marina", "href": "/neighbourhoods/dubai-marina" },
+        { "label": "Mohammed Bin Rashid City", "href": "/neighbourhoods/mohammed-bin-rashid-city" },
+        { "label": "City Walk", "href": "/neighbourhoods/city-walk" },
+        { "label": "Business Bay", "href": "/neighbourhoods/business-bay" },
+        { "label": "Bluewaters Island", "href": "/neighbourhoods/bluewaters-island" }
+      ]
+    },
+    {
+      "title": "INSIGHTS & OPPORTUNITIES",
+      "links": [
+        { "label": "Investors", "href": "/insights/investors" },
+        { "label": "Buyers", "href": "/insights/buyers" },
+        { "label": "News & Press", "href": "/insights/news" }
+      ]
+    }
+  ],
+  "address": {
+    "dubai": {
+      "label": "Dubai",
+      "lines": ["Marina Plaza, Office 1406, Dubai Marina", "Dubai, UAE"]
+    },
+    "london": {
+      "label": "London",
+      "lines": ["71-75 Shelton Street, London, WC2H 9JQ,", "United Kingdom"]
+    }
+  },
+  "contact": {
+    "email": "info@blackoak-re.com",
+    "phone": "+971 4 398 9055"
+  },
+  "social": [
+    { "platform": "facebook", "url": "https://facebook.com/blackoakre", "icon": "Facebook" },
+    { "platform": "twitter", "url": "https://x.com/blackoakre", "icon": "Twitter" },
+    { "platform": "linkedin", "url": "https://linkedin.com/company/blackoakre", "icon": "Linkedin" },
+    { "platform": "whatsapp", "url": "https://wa.me/97143989055", "icon": "MessageCircle" },
+    { "platform": "instagram", "url": "https://instagram.com/blackoakre", "icon": "Instagram" },
+    { "platform": "youtube", "url": "https://youtube.com/blackoakre", "icon": "Youtube" }
+  ],
+  "awards": [
+    { "name": "Luxury Lifestyle Winner 2024", "image": "/images/awards/luxury-lifestyle-2024.png" },
+    { "name": "Million Dollar Listing", "image": "/images/awards/million-dollar-listing.png" }
+  ],
+  "bottomBar": {
+    "copyright": "\u00a9 2026 by BlackOak Real Estate. All rights reserved.",
+    "links": [
+      { "label": "Privacy Policy", "href": "/privacy-policy" },
+      { "label": "Terms of Service", "href": "/terms-of-service" },
+      { "label": "Disclaimer", "href": "/disclaimer" }
+    ]
+  }
+}
