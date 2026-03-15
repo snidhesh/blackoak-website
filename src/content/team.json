@@ -182,13 +182,6 @@
     "category": "real-estate"
   },
   {
-    "id": "27",
-    "name": "Tatiana Panfilova",
-    "title": "Senior Property Consultant",
-    "image": "/images/team/tatiana-panfilova.jpg",
-    "category": "real-estate"
-  },
-  {
     "id": "28",
     "name": "Habib Yazbeck",
     "title": "Senior Property Consultant",
@@ -245,17 +238,10 @@
     "category": "real-estate"
   },
   {
-    "id": "36",
-    "name": "Audrey Raynaud",
-    "title": "Property Consultant",
-    "image": "/images/team/audrey-raynaud.jpg",
-    "category": "real-estate"
-  },
-  {
     "id": "37",
     "name": "Mark Andrew",
     "title": "Marketing Director",
-    "image": "/images/team/mark-andrew.png",
+    "image": "/images/team/mark-andrew.jpg",
     "category": "creative-ops"
   },
   {
@@ -298,13 +284,6 @@
     "name": "Davlat Olimjonov",
     "title": "Video Editor",
     "image": "/images/team/davlat-olimjonov.png",
-    "category": "creative-ops"
-  },
-  {
-    "id": "44",
-    "name": "Inda Singh",
-    "title": "360 Virtual Tour Specialist",
-    "image": "/images/team/inda-singh.png",
     "category": "creative-ops"
   }
 ]

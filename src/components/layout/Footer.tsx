@@ -32,7 +32,7 @@ const footerColumns = [
     ],
   },
   {
-    title: 'INSIGHTS & OPPORTUNITIES',
+    title: 'INSIGHTS & INTELLIGENCE',
     links: [
       { label: 'Investors', href: '/insights/investors' },
       { label: 'Buyers', href: '/insights/buyers' },

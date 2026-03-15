@@ -44,7 +44,7 @@
       {
         "title": "BlackOak Concierge",
         "description": "Concierge services tailored to your needs.",
-        "image": "/images/homepage/concierge.webp"
+        "image": "/images/homepage/concierge.jpg"
       },
       {
         "title": "BlackOak Investments",
@@ -54,7 +54,9 @@
     ]
   },
   "starzplay": {
-    "heading": "Inside the high-stakes world of luxury real estate",
+    "label": "STARZPLAY ORIGINAL",
+    "heading": "Million Dollar Listing",
+    "subheading": "Inside the high-stakes world of luxury real estate",
     "logo": "/images/homepage/starzplay-logo.png",
     "posters": [
       "/images/homepage/starzplay-poster-1.webp",

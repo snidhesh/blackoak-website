@@ -276,10 +276,22 @@ export default function HomePage() {
           />
         </div>
 
-        <div className="container-wide relative z-10 pt-16 pb-20">
+        <div className="container-wide relative z-10 py-20">
+          <AnimateOnScroll>
+            <SectionLabel light>{homepage.starzplay.label}</SectionLabel>
+            <SectionHeading
+              title={homepage.starzplay.heading}
+              light
+              className="mt-4"
+            />
+            <p className="text-center font-light text-[16px] leading-[28px] text-white/80 max-w-3xl mx-auto mt-3 mb-12">
+              {homepage.starzplay.subheading}
+            </p>
+          </AnimateOnScroll>
+
           {/* Logo + ORIGINAL */}
           <AnimateOnScroll>
-            <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="flex items-center justify-center gap-4 mb-10">
               <Image
                 src={homepage.starzplay.logo}
                 alt="STARZPLAY"
@@ -291,13 +303,6 @@ export default function HomePage() {
                 Original
               </span>
             </div>
-          </AnimateOnScroll>
-
-          {/* Tagline */}
-          <AnimateOnScroll>
-            <p className="text-center font-light text-[14px] md:text-[16px] leading-[48px] max-w-3xl mx-auto mb-10">
-              {homepage.starzplay.heading}
-            </p>
           </AnimateOnScroll>
 
           {/* Two poster images */}

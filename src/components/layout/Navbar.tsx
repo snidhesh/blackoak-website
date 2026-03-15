@@ -42,7 +42,7 @@ const navigation: NavItem[] = [
     ],
   },
   {
-    label: 'Insights & Opportunities',
+    label: 'Insights & Intelligence',
     dropdown: [
       { label: 'Investors', href: '/insights/investors' },
       { label: 'Buyers', href: '/insights/buyers' },
