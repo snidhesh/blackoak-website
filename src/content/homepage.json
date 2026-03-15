@@ -1,7 +1,7 @@
 {
   "hero": {
     "heading": "Where visionary investment meets iconic living",
-    "subtitle": "Global Real Estate. Tailored Strategies. Lasting Value.",
+    "subtitle": "Global Real Estate. Tailored Strategies. Lasting Value",
     "image": "/images/homepage/hero.webp",
     "searchBar": {
       "placeholders": {
@@ -14,12 +14,12 @@
   },
   "featuredProjects": {
     "label": "Featured Projects",
-    "heading": "Premier developments designed for lifestyle and investment.",
+    "heading": "Premier developments designed for lifestyle and investment",
     "cta": { "label": "View All Properties", "href": "/projects" }
   },
   "neighbourhoods": {
     "label": "Neighbourhood",
-    "heading": "Discover luxury real estate in Dubai's top neighbourhoods"
+    "heading": "Discover luxury real estate in Dubai's top neighbourhood"
   },
   "partners": {
     "heading": "Our Trusted Partners",
@@ -34,27 +34,27 @@
   },
   "advantage": {
     "label": "BLACKOAK ADVANTAGE",
-    "heading": "Private advisory, concierge, and strategic investments.",
+    "heading": "Private advisory, concierge, and strategic investments",
     "cards": [
       {
         "title": "BlackOak Private Office",
-        "description": "Bespoke real estate advisory for discerning clients.",
+        "description": "Exclusive property services for private clients.",
         "image": "/images/homepage/private_office.webp"
       },
       {
         "title": "BlackOak Concierge",
-        "description": "End-to-end property support with a personal touch.",
+        "description": "Concierge services tailored to your needs.",
         "image": "/images/homepage/concierge.webp"
       },
       {
         "title": "BlackOak Investments",
-        "description": "Strategic property investments driven by market expertise.",
+        "description": "Exclusive investment opportunities, curated for you.",
         "image": "/images/homepage/investments.webp"
       }
     ]
   },
   "starzplay": {
-    "heading": "Inside the high-stakes world of luxury real estate.",
+    "heading": "Inside the high-stakes world of luxury real estate",
     "logo": "/images/homepage/starzplay-logo.png",
     "posters": [
       "/images/homepage/starzplay-poster-1.webp",
@@ -81,8 +81,8 @@
     { "name": "Media 8", "image": "/images/media/media-8.png" }
   ],
   "whyInvest": {
-    "heading": "Why invest in BlackOak",
-    "description": "BlackOak delivers strategic real estate opportunities backed by market expertise, transparency, and long-term value creation. We help investors make confident decisions in Dubai's dynamic property market.",
+    "heading": "Why BlackOak",
+    "description": "BlackOak delivers strategic real estate opportunities backed by market expertise, transparency, and long-term value creation. We help investors make confident decisions in UAE's dynamic property market.",
     "cards": [
       {
         "icon": "/images/icons/expertise.svg",
@@ -105,12 +105,12 @@
     "label": "ABOUT BLACKOAK",
     "heading": "Trusted partner in the dynamic UAE real estate market!",
     "description": "Our team comprises highly knowledgeable professionals with extensive experience, dedicated to providing unparalleled service to our valued clients.",
-    "cta": { "label": "Read More", "href": "/about" },
+    "cta": { "label": "Read More", "href": "/about/why-blackoak" },
     "image": "/images/homepage/about.webp"
   },
   "news": {
     "label": "IN THE MEDIA",
-    "heading": "Coverage, insights, and official updates from BlackOak Real Estate.",
+    "heading": "Coverage, insights, and official updates from BlackOak Real Estate",
     "cta": { "label": "More News", "href": "/insights/news" }
   }
 }

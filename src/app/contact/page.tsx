@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { MapPin, Phone, Mail, ExternalLink } from 'lucide-react';
-import HeroSection from '@/components/sections/HeroSection';
 import SectionLabel from '@/components/ui/SectionLabel';
 import SectionHeading from '@/components/ui/SectionHeading';
 import ContactForm from '@/components/sections/ContactForm';
@@ -14,67 +12,102 @@ export const metadata: Metadata = {
 
 const offices = [
   {
-    city: 'DUBAI',
-    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80',
+    city: 'Dubai',
+    image: '/images/contact/dubai-map.png',
     address: 'Office 1406, Marina Plaza, Dubai Marina, Dubai, United Arab Emirates',
-    phone: '+971 04 398 9055',
+    phone: '+971 (0) 4 398 9055',
+    phoneHref: 'tel:+97143989055',
     email: 'info@blackoak-re.com',
+    mapLink: 'https://maps.google.com/?q=Marina+Plaza+Dubai+Marina',
   },
   {
-    city: 'LONDON',
-    image: 'https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80',
-    address: '71-75 Shelton Street, London WC2H 9JQ, United Kingdom',
-    phone: '+44 (0) 203 905 5901',
-    email: 'uk@blackoak-re.com',
+    city: 'London',
+    image: '/images/contact/london-map.png',
+    address: '71-75 Shelton Street London WC2H 9JQ United Kingdom',
+    phone: '+44 (0) 203 905 5501',
+    phoneHref: 'tel:+442039055501',
+    email: 'info@blackoak-re.com',
+    mapLink: 'https://maps.google.com/?q=71-75+Shelton+Street+London+WC2H+9JQ',
   },
 ];
 
 export default function ContactPage() {
   return (
     <>
-      <HeroSection
-        title="Let us help you find your extraordinary."
-        label="CONTACT US"
-        image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1400&q=80"
-        height="medium"
-      />
+      {/* Header Label + Heading */}
+      <section className="pt-[156px] pb-8">
+        <div className="container-narrow text-center">
+          <SectionLabel>Contact Us</SectionLabel>
+          <h1 className="mt-5 text-[50px] font-light leading-[1.2] text-black">
+            Let us help you find your
+            <br />
+            extraordinary.
+          </h1>
+        </div>
+      </section>
 
-      {/* Offices */}
+      {/* Hero Banner */}
+      <section className="relative w-full h-[450px] overflow-hidden">
+        <Image
+          src="/images/contact/hero.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-x-0 top-0 h-[224px] bg-gradient-to-b from-black/50 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-[480px] bg-gradient-to-t from-[rgba(7,35,75,0.9)] to-transparent" />
+      </section>
+
+      {/* Locations */}
       <section className="py-20">
-        <div className="container-wide">
+        <div className="container-narrow text-center mb-12">
           <AnimateOnScroll>
-            <SectionLabel>LOCATIONS</SectionLabel>
+            <SectionLabel>Locations</SectionLabel>
             <SectionHeading
               title="Visit us and experience personalized service firsthand."
-              className="mt-4 mb-12"
+              className="mt-5 max-w-[538px] mx-auto"
             />
           </AnimateOnScroll>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="container-wide">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
             {offices.map((office, i) => (
               <AnimateOnScroll key={office.city} delay={i * 0.15}>
-                <div className="border border-gray-200 overflow-hidden">
-                  <div className="relative h-48 bg-gray-200">
-                    <Image src={office.image} alt={`${office.city} office`} fill className="object-cover" />
+                <div className="border-t border-b border-[#ccc] h-auto md:h-[308px] flex flex-col md:flex-row">
+                  {/* Map Image */}
+                  <div className="relative w-full md:w-[320px] h-[200px] md:h-full shrink-0 overflow-hidden m-5 md:my-[29px] md:mx-5">
+                    <Image
+                      src={office.image}
+                      alt={`${office.city} office location`}
+                      fill
+                      className="object-cover"
+                      sizes="320px"
+                    />
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold mb-4">{office.city}</h3>
-                    <div className="space-y-3 text-sm text-gray-600">
-                      <p className="flex items-start gap-2">
-                        <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0" />
-                        {office.address}
-                      </p>
-                      <p className="flex items-center gap-2">
-                        <Phone className="w-4 h-4 flex-shrink-0" />
-                        <a href={`tel:${office.phone.replace(/\s/g, '')}`} className="hover:text-black">{office.phone}</a>
-                      </p>
-                      <p className="flex items-center gap-2">
-                        <Mail className="w-4 h-4 flex-shrink-0" />
-                        <a href={`mailto:${office.email}`} className="hover:text-black">{office.email}</a>
-                      </p>
+
+                  {/* Details */}
+                  <div className="flex flex-col gap-6 px-5 pb-5 md:p-0 md:pt-[49px]">
+                    <h3 className="text-[18px] font-normal uppercase text-black">
+                      {office.city}
+                    </h3>
+                    <div className="flex flex-col gap-[10px] text-[16px] font-light leading-[28px] text-[#5f6368]">
+                      <p className="max-w-[279px]">{office.address}</p>
+                      <a href={office.phoneHref} className="hover:text-black transition-colors">
+                        {office.phone}
+                      </a>
+                      <a href={`mailto:${office.email}`} className="hover:text-black transition-colors">
+                        {office.email}
+                      </a>
                     </div>
-                    <a href="#" className="inline-flex items-center gap-1 mt-4 text-sm font-medium text-black hover:text-gray-600">
-                      VIEW LOCATION <ExternalLink className="w-3.5 h-3.5" />
+                    <a
+                      href={office.mapLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[12px] font-medium uppercase text-black underline tracking-wider"
+                    >
+                      View Location
                     </a>
                   </div>
                 </div>
@@ -85,16 +118,20 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#f0f3f8]">
         <div className="container-narrow">
           <AnimateOnScroll>
-            <SectionLabel>LET&apos;S CONNECT</SectionLabel>
-            <SectionHeading
-              title="Connect with our specialists in luxury real estate."
-              className="mt-4 mb-10"
-            />
+            <div className="text-center mb-10">
+              <SectionLabel>Let&apos;s Connect</SectionLabel>
+              <SectionHeading
+                title="Connect with our specialists in luxury real estate."
+                className="mt-5 max-w-[434px] mx-auto"
+              />
+            </div>
           </AnimateOnScroll>
-          <ContactForm />
+          <div className="max-w-[864px] mx-auto">
+            <ContactForm />
+          </div>
         </div>
       </section>
     </>

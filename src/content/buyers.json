@@ -1,28 +1,127 @@
 {
   "hero": {
     "title": "Built on Trust.\nDriven by Passion.",
-    "subtitle": "Property Buyers Guide",
-    "image": "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1400&q=80"
+    "image": "/images/buyers/hero.jpg"
   },
   "intro": {
-    "label": "PROPERTY BUYERS GUIDE",
+    "label": "property buyers guide",
     "title": "Start your Dubai property journey with confidence.",
-    "description": "Our Property Buyers Guide offers a comprehensive overview of the entire acquisition journey \u2014 from selecting the right development and understanding market trends to navigating legal procedures and finalizing ownership. Whether you are a first-time buyer or a seasoned investor, this guide is designed to provide clarity, transparency, and strategic insight at every stage."
+    "description": "Our Property Buyers Guide offers a comprehensive overview of the entire acquisition journey \u2014 from selecting the right development and understanding market trends to navigating legal procedures and finalising ownership. Whether you are a first-time buyer or a seasoned investor, this guide is designed to provide clarity, transparency, and strategic insight at every stage. With the right knowledge and expert support, investing in Dubai real estate becomes a seamless and rewarding experience."
   },
   "guides": [
-    { "title": "Why Invest or Buy", "icon": "TrendingUp", "description": "Discover why Dubai is one of the world's most attractive property markets." },
-    { "title": "Obtaining a Visa", "icon": "FileCheck", "description": "Learn about visa options available to property investors and homeowners." },
-    { "title": "Managing Your Property", "icon": "Building", "description": "Understand property management options and services available." },
-    { "title": "Mortgaging Your Property", "icon": "Landmark", "description": "Explore financing options for your Dubai property purchase." }
+    { "title": "Why Invest Or Buy", "id": "why-invest" },
+    { "title": "Obtaining a Visa", "id": "obtaining-visa" },
+    { "title": "Managing Your Property", "id": "managing-property" },
+    { "title": "Mortgaging Your Property", "id": "mortgaging-property" },
+    { "title": "International Property Buyers", "id": "international-buyers" },
+    { "title": "Costs of Buying a Property", "id": "costs-buying" }
   ],
   "whyInvest": {
-    "label": "MARKET OVERVIEW",
     "title": "Why You Should Invest or Buy Property in Dubai",
-    "content": "Over the past few years, Dubai's real estate market has greatly matured, aligning itself with the established cities. Of course, Dubai is still considered a 'new' city and most real estate projects aren't even 10 years old. However, this is a great benefit for buyers as buildings are designed and constructed with newer design concepts, advanced engineering techniques and generally, better construction."
+    "content": "Over the past few years, Dubai\u2019s real estate market has greatly matured aligning itself with other established cities. Of course, Dubai is still considered a \u201cnew\u201d city and most real estate projects aren\u2019t even 10 years old! However, this is a great benefit for buyers as buildings are designed and constructed with newer design concepts, advanced engineering techniques and generally, better construction.",
+    "image": "/images/buyers/tab-why-invest.jpg"
   },
-  "investConfidence": {
-    "label": "INVEST WITH CONFIDENCE",
+  "minimalRisk": {
+    "label": "Minimal Risk",
     "title": "Invest with Assured Confidence",
-    "content": "With any real estate investment, risk must be carefully evaluated and strategically managed. In Dubai, however, the risk profile remains comparatively minimal \u2014 supported by transparent regulatory frameworks, strong institutional fundamentals, and consistent global investor interest."
+    "intro": "With any real estate investment or purchase, risk must be examined. When it comes to Dubai, risk is minimal. Here\u2019s why:",
+    "sub": "Great quality assets (in an equally great market which typically, anywhere else should be yielding far lower).",
+    "bullets": [
+      "Today, investors can generate property yields of anything between 6-12%.",
+      "When considering capital appreciation, property yields could produce even higher total investor returns."
+    ],
+    "closing": "There\u2019s more too. Dubai is one of the most \u201cconnected\u201d cities, easy to get to by airplane and it\u2019s a superb international business hub that will always see a high level of demand when it comes to property. Additionally, the Dubai government continues to heavily invest in the country, from all perspectives; business, social and entertainment. While there is a large supply of residential projects in Dubai, the stock constantly transacts and it\u2019s no surprise that more and more people consider Dubai as their home."
+  },
+  "visa": {
+    "label": "Obtaining a Visa",
+    "title": "Visa options for property investors",
+    "intro": "You can get a visa if you buy a property in Dubai. There are a few types of visas that are ideal for property investors:",
+    "types": [
+      {
+        "name": "Six-Month Renewable Residency Visa",
+        "bullets": [
+          "This residential only visa is issued by the relevant immigration authority.",
+          "It is renewable.",
+          "The cost is approximately AED 2,500.",
+          "Property must be at the completion stage and freehold only.",
+          "Note, this visa is not suited for working in Dubai."
+        ]
+      },
+      {
+        "name": "5-Year Visa \u2014 The Golden Visa",
+        "bullets": [
+          "You must invest no less than AED 5 million in property in the UAE (gross).",
+          "Any amount that you invest cannot be on a loan basis.",
+          "The property must be retained for at least three years."
+        ]
+      },
+      {
+        "name": "2-Year Renewable Property Investor Visa",
+        "bullets": [
+          "This visa permits you to become a UAE resident only if you\u2019ve made a property investment.",
+          "You must invest less than AED 1 million in property in the UAE (gross).",
+          "If jointly owned, the value must exceed AED 1 million.",
+          "It costs approximately AED 14,000."
+        ]
+      },
+      {
+        "name": "3-Year Investor Visa",
+        "bullets": [
+          "You must invest no less than AED 1 million in property in the UAE (gross).",
+          "With this visa you are considered eligible to become a UAE resident.",
+          "Visa costs approximately AED 14,000.",
+          "You may not stay outside of Dubai for more than 6 months."
+        ]
+      }
+    ]
+  },
+  "managingProperty": {
+    "label": "Property Management",
+    "title": "Managing Your Property in Dubai While You Are Outside of the Country",
+    "intro": "Black Oak does not just deal in property sales, we also manage properties for our many clients when they are outside Dubai. There are various different options to choose from, as follows:",
+    "options": [
+      "The property is empty so our property management team will check it periodically to ensure security and that there are no maintenance issues. Before your return to Dubai, our team will also check and prepare your property ready for your arrival.",
+      "Our property management team can manage everything for you, including leasing your property out to maintaining it on your behalf. This is our full property management service.",
+      "Short-term let management, which increases your investment return. However, as with any letting, appliances, decor and furniture will also need maintenance."
+    ]
+  },
+  "mortgage": {
+    "label": "Mortgage Guide",
+    "title": "Mortgaging Your Property",
+    "paragraphs": [
+      "It\u2019s important to note that most international buyers purchasing properties in Dubai use cash transactions but mortgages are still used to secure a property. Generally, they are not difficult to obtain, UAE nationals, expats and non-residents may apply for a mortgage in Dubai as long as they have valid ID and proof of income. Pre-approvals are fast too, within 4 days and another week for a final mortgage offer. Keep an eye on mortgage rates. They change regularly. Most major UAE banks offer mortgages. You will be asked to put at least a 20% down-payment on the property in question.",
+      "As for eligibility you must have a stable income, good credit rating and minimum salary income of AED 7,000 for UAE Nationals and AED 10,000 for expats. Mortgage repayments must be repaid monthly and must not exceed 50% of your monthly income. Finally, you must be over 21 years old to apply for a mortgage."
+    ]
+  },
+  "internationalBuyers": {
+    "label": "International Buyers",
+    "title": "International Property Buyers \u2014 Your Step-by-Step Guide",
+    "intro": "At Black Oak, we want to help you find your perfect Dubai investment property. Contact us to discuss your requirements.",
+    "steps": [
+      "Locate your ideal property that matches your own requirements with help from our knowledgeable, experienced property team.",
+      "Be aware of the Free-Zone Areas. As a non-UAE or GCC citizen you are limited to these areas. Rest assured, all of our listed properties are in the free-zone and specifically for international buyers.",
+      "Always negotiate and outline terms with seller \u2014 Black Oak can assist with this directly, with the developers.",
+      "Sign an MOU (Memorandum of Understanding) / Form F (available on DLD website).",
+      "Once both you, the buyer and the seller form an agreement, you must both sign it at the registration trustee.",
+      "Obtain an NOC (No Objection Certificate) from the developer to transfer ownership.",
+      "Finally, there will be a meeting at the DLD (Dubai Land Department) to effect transfer with developer."
+    ]
+  },
+  "costs": {
+    "label": "Buying Costs",
+    "title": "The Administrative Costs of Buying a Completed Property in Dubai",
+    "intro": "We\u2019ve put together a brief explanation of the administrative costs associated with purchasing property in Dubai.",
+    "items": [
+      "4% of the property value goes to the DLD (Dubai Land Department) as a fee payment.",
+      "Additionally, there is an AED 4,200 fee for administrative purposes paid to the DLD.",
+      "There is an AED 520 fee for issuing the Title Deeds.",
+      "The Real Estate Agent will receive 2% of the purchase price for commission.",
+      "There are NOC charges (No Objection Certificate) that range from AED 500 to AED 5,000 and this very much depends on the developer.",
+      "Your mortgage registration fees (if you have a mortgage) will be calculated at a rate of 0.25% of the registered loan amount plus AED 290 (an admin fee). This is paid to the DLD (Dubai Land Department). Note, if you purchase your property with a full cash payment, the DLD Mortgage Registration Fee will not apply.",
+      "Annual Service Charge must be paid in advance to the developers \u2014 as the buyer, you should account for this amount.",
+      "There is also a Property Registration Fee, if the property is below AED 500,000 it is AED 2,000 +VAT. Above AED 500,000, the fee is AED 4,000 + VAT.",
+      "Factor in the valuation fees of AED 2,500 to AED 3,500.",
+      "Finally, there is the cost of the Oqood Certificate (which registers the property in the buyer\u2019s name) which costs AED 5,250."
+    ]
   }
 }

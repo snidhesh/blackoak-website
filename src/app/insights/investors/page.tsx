@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import HeroSection from '@/components/sections/HeroSection';
 import SectionLabel from '@/components/ui/SectionLabel';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Accordion from '@/components/ui/Accordion';
@@ -14,70 +13,110 @@ export const metadata: Metadata = {
 const sections = [
   {
     title: 'Syndicated Real Estate Investments in Dubai',
-    description: 'Collective from strategy: a curated approach that opens doors to outstanding property investments that might otherwise remain inaccessible. Our model enables qualified investors to participate in premium developments with reduced individual capital requirements.',
-    image: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&q=80',
-    imagePosition: 'right' as const,
+    description:
+      'At BlackOak Real Estate, investors benefit from access to carefully structured syndicated investment opportunities across Dubai\u2019s dynamic property market. These offerings enable both qualified and retail investors to participate in institutional-quality transactions that include residential, commercial, and mixed-use assets. Each opportunity emphasizes project-driven returns supported by tangible real estate fundamentals.',
+    image: '/images/investors/syndicated.png',
+    imagePosition: 'left' as const,
   },
   {
     title: 'Tailored Strategies and Advisory',
-    description: 'Every investor\'s goals are unique. BlackOak\'s team builds customized investment strategies aligned with your risk appetite, return expectations, and timeline. Whether you\'re focused on capital appreciation, rental yield, or portfolio diversification, we create a roadmap tailored to your ambitions.',
-    image: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80',
-    imagePosition: 'left' as const,
-  },
-  {
-    title: 'Institutional Expertise, Boutique Precision',
-    description: 'We blend the analytics and due diligence of institutional investors with the personalized service of a boutique firm. Every recommendation is backed by thorough market analysis, financial modeling, and on-the-ground intelligence.',
-    image: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80',
+    description:
+      'With a consultative team, BlackOak guides investors in identifying and accessing products designed to meet their goals, whether they seek income stability, capital growth, or a blend of exposures.\n\nAdditionally, BlackOak is introducing a suite of real estate-backed investment options and co-investment syndicates, designed to deliver secure and transparent participation in Dubai\u2019s most compelling property opportunities.',
+    image: '/images/investors/tailored.jpg',
     imagePosition: 'right' as const,
   },
   {
-    title: 'Collaborative Syndication Approach',
-    description: 'Our syndication model brings together a select group of investors to co-invest in high-value properties. This reduces individual capital requirements while maximizing access to premium developments.',
-    image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80',
+    title: 'Institutional Expertise, Boutique Precision',
+    description:
+      'Our leadership team combines extensive institutional experience in acquisitions, development management, capital structuring, and investment strategy. This expertise allows us to identify and structure investments that fit changing market cycles and individual investor objectives, always with disciplined risk management.\n\nBlackOak\u2019s strong understanding of Dubai\u2019s real estate landscape, from land acquisition through to project feasibility and exit strategy, bridges the gap between private capital and institutional grade real estate assets.',
+    image: '/images/investors/institutional.png',
     imagePosition: 'left' as const,
+  },
+  {
+    title: 'Collaborative Syndication Approach',
+    description:
+      'Our syndicated investment platform unites investors in exclusive real estate ventures. This approach opens access to projects and strategies typically reserved for larger institutional players, supported by professional governance, transparency, and robust reporting standards.\n\nEach transaction is evaluated independently, focusing on solid asset fundamentals, sensible capital structures, clear exit visibility, and strong alignment among sponsors, developers, and investors. Conservative, risk-adjusted return targets remain central to every investment.',
+    image: '/images/investors/tailored.jpg',
+    imagePosition: 'right' as const,
   },
 ];
 
 const faq = [
   {
     question: 'Why should I invest in Dubai real estate?',
-    answer: 'Dubai offers tax-free rental income, strong capital appreciation, world-class infrastructure, and a stable regulatory environment. The city consistently ranks among the top global destinations for property investment.',
+    answer:
+      'Dubai offers tax-free rental income, strong capital appreciation, world-class infrastructure, and a stable regulatory environment. The city consistently ranks among the top global destinations for property investment.',
   },
   {
     question: 'What types of properties offer the best returns?',
-    answer: 'Off-plan properties in premium locations typically offer the strongest returns. However, the best investment depends on your goals — whether capital appreciation, rental yield, or a combination of both.',
+    answer:
+      'Returns vary depending on location, developer reputation, and market timing. Prime waterfront developments, branded residences, and high-demand off-plan projects often deliver strong capital appreciation, while completed properties in established communities can generate stable rental yields. A strategic, data-driven approach ensures optimal portfolio performance.',
   },
   {
     question: 'Is off-plan investment a good strategy?',
-    answer: 'Off-plan investments can offer significant advantages including lower entry prices, flexible payment plans, and potential for capital appreciation before completion.',
+    answer:
+      'Off-plan investments can offer significant advantages including lower entry prices, flexible payment plans, and potential for capital appreciation before completion.',
   },
   {
-    question: 'Can international investors buy property in Dubai?',
-    answer: 'Yes, Dubai offers freehold property ownership to international investors in designated areas, which include most premium developments and communities.',
+    question: 'Can international investors purchase property in Dubai?',
+    answer:
+      'Yes, Dubai offers freehold property ownership to international investors in designated areas, which include most premium developments and communities.',
   },
 ];
 
 export default function InvestorsPage() {
   return (
     <>
-      <HeroSection
-        title="Built on Trust.\nDriven by Passion."
-        label="INVESTORS"
-        image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=80"
-        height="large"
-      />
+      {/* Hero */}
+      <section className="relative flex items-center justify-center min-h-[70vh] overflow-hidden">
+        <Image
+          src="/images/investors/hero.jpg"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-x-0 top-0 h-[224px] bg-gradient-to-b from-black/50 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-[480px] bg-gradient-to-t from-black/90 to-transparent" />
+        <div className="relative z-10 text-center text-white px-4">
+          <h1 className="text-4xl md:text-[50px] font-light leading-tight">
+            Built on Trust.<br />Driven by Passion.
+          </h1>
+        </div>
+      </section>
 
+      {/* Why BlackOak? */}
       <section className="py-20">
         <div className="container-narrow text-center">
           <AnimateOnScroll>
-            <SectionLabel>EXCLUSIVE ACCESS</SectionLabel>
+            <SectionLabel>Why BlackOak?</SectionLabel>
             <SectionHeading
               title="Exclusive access to Dubai's most exceptional real estate opportunities."
-              className="mt-4 mb-6"
+              className="mt-5"
             />
-            <p className="text-gray-600">
-              Dubai&apos;s world-class infrastructure, tax-advantaged environment, and consistently strong rental yields make it one of the most compelling property investment destinations globally.
-            </p>
+          </AnimateOnScroll>
+          <AnimateOnScroll delay={0.2}>
+            <div className="mt-8 text-[16px] leading-[28px] tracking-[0.16px] text-[#5f6368] max-w-[1216px] mx-auto space-y-6">
+              <p>
+                Investors choose BlackOak for institutional-grade due diligence, disciplined asset management, transparent structures, and clear investor reporting. Our platform gives access to premium developments and off-market transactions. Alignment is ensured through direct co-investment by BlackOak principals.
+              </p>
+              <p>
+                BlackOak blends institutional rigor with boutique agility, giving investors the confidence to participate in Dubai&apos;s evolving real estate market through professionally managed, asset-backed investment platforms.
+              </p>
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </section>
+
+      {/* Invest with Blackoak */}
+      <section className="py-16">
+        <div className="container-narrow text-center">
+          <AnimateOnScroll>
+            <SectionLabel>Invest with Blackoak</SectionLabel>
+            <SectionHeading
+              title="Where Capital Meets Opportunity"
+              className="mt-5"
+            />
           </AnimateOnScroll>
         </div>
       </section>
@@ -86,16 +125,22 @@ export default function InvestorsPage() {
       {sections.map((section) => (
         <section key={section.title} className="py-16">
           <div className="container-wide">
-            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${section.imagePosition === 'left' ? '' : 'lg:flex-row-reverse'}`}>
-              <AnimateOnScroll className={section.imagePosition === 'right' ? 'lg:order-2' : ''}>
-                <div className="relative aspect-[4/3] bg-gray-200 overflow-hidden">
+            <div className={`flex flex-col ${section.imagePosition === 'left' ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12`}>
+              <AnimateOnScroll>
+                <div className="relative w-full lg:w-[600px] aspect-[4/3] overflow-hidden">
                   <Image src={section.image} alt={section.title} fill className="object-cover" />
                 </div>
               </AnimateOnScroll>
-              <AnimateOnScroll delay={0.2} className={section.imagePosition === 'right' ? 'lg:order-1' : ''}>
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-semibold mb-4">{section.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{section.description}</p>
+              <AnimateOnScroll delay={0.2}>
+                <div className="lg:w-[571px]">
+                  <h3 className="text-[26px] font-normal leading-[32px] text-black">
+                    {section.title}
+                  </h3>
+                  <div className="mt-8 text-[16px] leading-[28px] tracking-[0.16px] text-[#5f6368] space-y-6">
+                    {section.description.split('\n\n').map((paragraph, i) => (
+                      <p key={i}>{paragraph}</p>
+                    ))}
+                  </div>
                 </div>
               </AnimateOnScroll>
             </div>
@@ -104,15 +149,18 @@ export default function InvestorsPage() {
       ))}
 
       {/* FAQ */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#f0f3f8]">
         <div className="container-narrow">
           <AnimateOnScroll>
+            <SectionLabel>FAQs</SectionLabel>
             <SectionHeading
-              title="Everything you need to know about investing with clarity."
-              className="mb-10"
+              title="Everything you need to know about investing with clarity"
+              className="mt-5 max-w-[546px] mx-auto mb-12"
             />
           </AnimateOnScroll>
-          <Accordion items={faq} />
+          <div className="max-w-[1272px] mx-auto">
+            <Accordion items={faq} />
+          </div>
         </div>
       </section>
     </>

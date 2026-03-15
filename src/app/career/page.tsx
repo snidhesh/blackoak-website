@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { MapPin, Briefcase, Clock, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
+import { MapPin } from 'lucide-react';
 import { getCareers } from '@/lib/content';
-import HeroSection from '@/components/sections/HeroSection';
 import SectionLabel from '@/components/ui/SectionLabel';
 import SectionHeading from '@/components/ui/SectionHeading';
-import Button from '@/components/ui/Button';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 
 export const metadata: Metadata = {
@@ -13,57 +12,179 @@ export const metadata: Metadata = {
   description: 'Join BlackOak Real Estate. Explore career opportunities in luxury real estate.',
 };
 
+const whyJoinCards = [
+  {
+    label: 'BlackOak',
+    title: 'Career',
+    image: '/images/career/card-career.png',
+    description: 'Our company is dedicated to providing an environment where you can grow, learn, and thrive in your career, making each day at work a step towards success.',
+  },
+  {
+    label: 'BlackOak',
+    title: 'Wealth',
+    image: '/images/career/card-wealth.png',
+    description: 'Your path to wealth begins with us, as we provide rewarding career opportunities and investments in your financial wellness.',
+  },
+  {
+    label: 'BlackOak',
+    title: 'Lifestyle',
+    image: '/images/career/card-lifestyle.png',
+    description: 'Joining our team means you\u2019ll have the support and flexibility to create a lifestyle that aligns with your values, ensuring both personal and professional fulfilment.',
+  },
+];
+
+const galleryImages = [
+  '/images/career/gallery-1.png',
+  '/images/career/gallery-2.png',
+  '/images/career/gallery-3.png',
+  '/images/career/gallery-4.png',
+  '/images/career/gallery-5.png',
+  '/images/career/gallery-6.png',
+  '/images/career/gallery-7.png',
+  '/images/career/gallery-8.png',
+  '/images/career/gallery-9.png',
+  '/images/career/gallery-5.png',
+];
+
+function formatPostedDate(dateStr: string) {
+  const d = new Date(dateStr);
+  const day = String(d.getDate()).padStart(2, '0');
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const year = d.getFullYear();
+  return `${day}-${month}-${year}`;
+}
+
 export default function CareerPage() {
   const careers = getCareers();
 
   return (
     <>
-      <HeroSection
-        title="Join a Legacy of Elevated Living"
-        label="CAREER"
-        image="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1400&q=80"
-        height="medium"
-      />
+      {/* Header Label + Heading */}
+      <section className="pt-[156px] pb-8">
+        <div className="container-narrow text-center">
+          <SectionLabel>Career</SectionLabel>
+          <SectionHeading
+            title="Join a Legacy of Elevated Living"
+            className="mt-5"
+          />
+        </div>
+      </section>
 
-      <section className="py-20">
-        <div className="container-narrow">
+      {/* Hero Banner */}
+      <section className="relative w-full h-[450px] overflow-hidden">
+        <Image
+          src="/images/career/hero.png"
+          alt=""
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-x-0 top-0 h-[224px] bg-gradient-to-b from-black/50 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-[480px] bg-gradient-to-t from-[rgba(7,35,75,0.9)] to-transparent" />
+      </section>
+
+      {/* Intro Text */}
+      <section className="py-16">
+        <div className="container-wide">
           <AnimateOnScroll>
-            <p className="text-gray-600 leading-relaxed text-center">
-              BlackOak Real Estate stands as a premier international luxury property brokerage, specializing in the world&apos;s most coveted destinations. Our commitment to excellence sets new standards for a lifestyle of luxury and innovation in Dubai. The depth of expertise within our team has set the benchmark for the luxury real estate market.
-            </p>
+            <div className="text-[16px] font-normal leading-[28px] tracking-[0.16px] text-[#5f6368] text-center max-w-[1382px] mx-auto space-y-6">
+              <p>
+                BlackOak Real Estate stands as a premier international property company specializing in facilitating connections between global and local buyers with exclusive properties in Dubai. Our team of experienced agents are known for their expertise, knowledge, diligence and unwavering commitment to enhance the customer journey.
+              </p>
+              <p>
+                Together, we have successfully executed real estate transactions worth billions of dollars, forging robust partnerships with renowned developers across the UAE and throughout the Middle East region. Our extensive network enables us to give our clients a unique, tailor made service that aligns specifically to their personable requirements.
+              </p>
+              <p>
+                As part of our manpower commitment, we don&apos;t just provide jobs, we guarantee careers, and it&apos;s for this reason, that we are now looking to expand our sales team. With this in mind, our mission is to recruit experienced real estate agents who wish to be part of the BlackOak journey.
+              </p>
+            </div>
+          </AnimateOnScroll>
+        </div>
+      </section>
+
+      {/* Explore Openings */}
+      <section className="pb-6">
+        <div className="container-narrow text-center">
+          <AnimateOnScroll>
+            <SectionLabel>Explore Openings</SectionLabel>
+            <SectionHeading
+              title="Find the right job for you"
+              className="mt-5"
+            />
           </AnimateOnScroll>
         </div>
       </section>
 
       {/* Job Listings */}
-      <section className="py-16 bg-gray-50">
+      <section className="pb-20">
+        <div className="max-w-[1080px] mx-auto px-6">
+          {careers.map((job, i) => (
+            <AnimateOnScroll key={job.slug} delay={i * 0.1}>
+              <div className="border-t border-b border-[#ccc] py-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="flex flex-col gap-3">
+                  <h3 className="text-[20px] font-semibold leading-[20px] text-black">
+                    {job.title}
+                  </h3>
+                  <div className="flex flex-wrap items-center gap-[10px] text-[14px] font-normal text-[#5f6368]">
+                    <span className="flex items-center gap-[5px]">
+                      <MapPin className="w-[14px] h-[14px]" />
+                      {job.location}
+                    </span>
+                    <span className="text-[#ccc]">|</span>
+                    <span>{job.department}</span>
+                    <span className="text-[#ccc]">|</span>
+                    <span>Posted on : {formatPostedDate(job.postedDate)}</span>
+                  </div>
+                </div>
+                <Link
+                  href={`/career/${job.slug}`}
+                  className="bg-black border-2 border-black text-white text-[12px] font-medium uppercase tracking-wider h-[48px] w-[160px] flex items-center justify-center hover:bg-gray-900 transition-colors shrink-0"
+                >
+                  View Details
+                </Link>
+              </div>
+            </AnimateOnScroll>
+          ))}
+        </div>
+      </section>
+
+      {/* Why Join Our Team - Dark Section */}
+      <section className="py-20 bg-black">
         <div className="container-wide">
           <AnimateOnScroll>
-            <SectionHeading title="Find the right job for you" className="mb-10" />
+            <div className="text-center mb-12">
+              <SectionLabel light>Why join our team</SectionLabel>
+              <SectionHeading
+                title="Join a Standard Few Can Reach"
+                light
+                className="mt-5"
+              />
+            </div>
           </AnimateOnScroll>
 
-          <div className="space-y-4">
-            {careers.map((job, i) => (
-              <AnimateOnScroll key={job.slug} delay={i * 0.1}>
-                <div className="bg-white border border-gray-200 p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                  <div>
-                    <h3 className="text-lg font-semibold">{job.title}</h3>
-                    <div className="flex flex-wrap items-center gap-4 mt-2 text-sm text-gray-500">
-                      <span className="flex items-center gap-1">
-                        <MapPin className="w-3.5 h-3.5" /> {job.location}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Briefcase className="w-3.5 h-3.5" /> {job.department}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Clock className="w-3.5 h-3.5" /> {job.type}
-                      </span>
-                      <span>Remuneration: {job.remuneration}</span>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-[10px]">
+            {whyJoinCards.map((card, i) => (
+              <AnimateOnScroll key={card.title} delay={i * 0.15}>
+                <div className="flex flex-col gap-5">
+                  <div className="relative w-full aspect-square overflow-hidden">
+                    <Image
+                      src={card.image}
+                      alt={card.title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute bottom-6 left-[22px]">
+                      <p className="text-[20px] font-light leading-[48px] text-white">
+                        &nbsp;{card.label}
+                      </p>
+                      <p className="text-[50px] font-light leading-[48px] text-white">
+                        {card.title}
+                      </p>
                     </div>
                   </div>
-                  <Button href={`/career/${job.slug}`} size="sm">
-                    APPLY NOW <ArrowRight className="w-3.5 h-3.5 ml-1" />
-                  </Button>
+                  <p className="text-[16px] font-normal leading-[1.5] tracking-[0.16px] text-[#e2e2e2] max-w-[439px]">
+                    {card.description}
+                  </p>
                 </div>
               </AnimateOnScroll>
             ))}
@@ -71,69 +192,48 @@ export default function CareerPage() {
         </div>
       </section>
 
-      {/* Lifestyle Cards - Dark section */}
-      <section className="py-20 bg-dark-900 text-white">
-        <div className="container-wide">
-          <AnimateOnScroll>
-            <SectionLabel light>WHY JOIN OUR TEAM</SectionLabel>
-            <SectionHeading
-              title="Join a Standard Few Can Reach"
-              light
-              className="mt-4 mb-12"
-            />
-          </AnimateOnScroll>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { title: 'Career', desc: 'Our company is dedicated to providing an environment that fosters growth, development and excellence every day.', image: 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80' },
-              { title: 'Wealth', desc: 'Our plans to reward legacy with us are the premier opportunity to build extraordinary wealth from your portfolio.', image: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&q=80' },
-              { title: 'Lifestyle', desc: 'Working at our team means you have the support and flexibility to design the life you want — personal and professional fulfilment.', image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80' },
-            ].map((card, i) => (
-              <AnimateOnScroll key={card.title} delay={i * 0.15}>
-                <div className="relative aspect-[4/3] overflow-hidden group">
-                  <Image src={card.image} alt={card.title} fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-xl font-semibold mb-2">{card.title}</h3>
-                    <p className="text-sm text-gray-300">{card.desc}</p>
-                  </div>
-                </div>
-              </AnimateOnScroll>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Photo Grid */}
+      {/* Life at BlackOak - Photo Gallery */}
       <section className="py-20">
-        <div className="container-wide">
+        <div className="container-narrow text-center mb-12">
           <AnimateOnScroll>
+            <SectionLabel>Life at BlackOak</SectionLabel>
             <SectionHeading
               title="A glimpse into the people, partnerships, and premium developments"
-              className="mb-12"
+              className="mt-5 max-w-[604px] mx-auto"
             />
           </AnimateOnScroll>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {[
-              'https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&q=80',
-              'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=600&q=80',
-              'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80',
-              'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80',
-              'https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=600&q=80',
-              'https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=600&q=80',
-              'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80',
-              'https://images.unsplash.com/photo-1546412414-e1885259563a?w=600&q=80',
-            ].map((url, i) => (
-              <div key={i} className="relative aspect-square bg-gray-200 overflow-hidden">
-                <Image
-                  src={url}
-                  alt={`Team photo ${i + 1}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 50vw, 25vw"
-                />
-              </div>
-            ))}
+        </div>
+
+        <div className="overflow-hidden">
+          <div className="flex flex-col gap-[10px]">
+            {/* Row 1 */}
+            <div className="flex gap-[10px] justify-center">
+              {galleryImages.slice(0, 5).map((img, i) => (
+                <div key={i} className="relative w-[396px] h-[360px] shrink-0 overflow-hidden rounded-sm">
+                  <Image
+                    src={img}
+                    alt={`Life at BlackOak ${i + 1}`}
+                    fill
+                    className="object-cover"
+                    sizes="396px"
+                  />
+                </div>
+              ))}
+            </div>
+            {/* Row 2 */}
+            <div className="flex gap-[10px] justify-center">
+              {galleryImages.slice(5, 10).map((img, i) => (
+                <div key={i} className="relative w-[396px] h-[360px] shrink-0 overflow-hidden rounded-sm">
+                  <Image
+                    src={img}
+                    alt={`Life at BlackOak ${i + 6}`}
+                    fill
+                    className="object-cover"
+                    sizes="396px"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

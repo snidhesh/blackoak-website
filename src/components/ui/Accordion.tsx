@@ -18,15 +18,15 @@ export default function Accordion({ items, className }: AccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className={cn('divide-y divide-gray-200', className)}>
+    <div className={cn('border-t border-[#ccc]', className)}>
       {items.map((item, index) => (
-        <div key={index}>
+        <div key={index} className="border-b border-[#ccc]">
           <button
-            className="flex items-center justify-between w-full py-5 text-left"
+            className="flex items-center justify-between w-full py-4 pr-4 text-left"
             onClick={() => setOpenIndex(openIndex === index ? null : index)}
             aria-expanded={openIndex === index}
           >
-            <span className="text-base font-medium pr-4">{item.question}</span>
+            <span className="text-[22px] font-normal leading-[40px] text-black pr-4">{item.question}</span>
             <ChevronDown
               className={cn(
                 'w-5 h-5 flex-shrink-0 transition-transform',
@@ -37,10 +37,10 @@ export default function Accordion({ items, className }: AccordionProps) {
           <div
             className={cn(
               'overflow-hidden transition-all duration-300',
-              openIndex === index ? 'max-h-96 pb-5' : 'max-h-0'
+              openIndex === index ? 'max-h-96 pb-6' : 'max-h-0'
             )}
           >
-            <p className="text-gray-600 text-sm leading-relaxed">{item.answer}</p>
+            <p className="text-[16px] leading-[28px] tracking-[0.16px] text-[#5f6368]">{item.answer}</p>
           </div>
         </div>
       ))}

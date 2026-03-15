@@ -455,9 +455,9 @@ export default function HomePage() {
       {/* Media Logos */}
       <section className="py-12 bg-white">
         <div className="container-wide">
-          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-14">
+          <div className="flex flex-nowrap justify-center items-center gap-10 md:gap-14 overflow-x-auto">
             {homepage.mediaLogos.map((logo) => (
-              <div key={logo.name} className="relative h-6 w-[100px] md:w-[120px] flex items-center justify-center">
+              <div key={logo.name} className="relative h-6 w-[100px] md:w-[120px] shrink-0 flex items-center justify-center">
                 <Image
                   src={logo.image}
                   alt={logo.name}

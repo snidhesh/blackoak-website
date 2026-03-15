@@ -104,30 +104,32 @@ export default function WhyBlackOakPage() {
             </div>
           </AnimateOnScroll>
 
-          <div className="mt-12 flex gap-8 overflow-x-auto pb-4 scrollbar-hide">
+          <div className="mt-12 space-y-16">
             {featureCards.map((card, i) => (
-              <AnimateOnScroll key={card.title} delay={i * 0.15}>
-                <div className="flex shrink-0 w-[1156px] max-w-[calc(100vw-130px)]">
-                  <div className="bg-[#f0f3f8] flex flex-col justify-between px-10 py-16 w-[400px] shrink-0">
-                    <div>
-                      <h3 className="text-[28px] md:text-[32px] font-normal leading-[48px] text-black">
-                        {card.title}
-                      </h3>
-                      <p className="mt-8 text-gray-500 text-base leading-7 tracking-wide">
-                        {card.description}
-                      </p>
+              <div key={card.title} className={`flex flex-col ${i % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'} items-center gap-12`}>
+                <AnimateOnScroll>
+                  <div className="lg:w-[496px]">
+                    <h3 className="text-[28px] md:text-[32px] font-normal leading-[48px] text-black">
+                      {card.title}
+                    </h3>
+                    <p className="mt-6 text-gray-500 text-base leading-7 tracking-wide">
+                      {card.description}
+                    </p>
+                  </div>
+                </AnimateOnScroll>
+                <AnimateOnScroll delay={0.2}>
+                  <div className="relative w-full lg:w-[600px] aspect-[4/3]">
+                    <div className="relative w-full h-full rounded-[20px] overflow-hidden">
+                      <Image
+                        src={card.image}
+                        alt={card.title}
+                        fill
+                        className="object-cover"
+                      />
                     </div>
                   </div>
-                  <div className="relative w-[756px] h-[480px] overflow-hidden shrink-0">
-                    <Image
-                      src={card.image}
-                      alt={card.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-              </AnimateOnScroll>
+                </AnimateOnScroll>
+              </div>
             ))}
           </div>
         </div>
