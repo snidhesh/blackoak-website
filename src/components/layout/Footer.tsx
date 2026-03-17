@@ -56,7 +56,7 @@ export default function Footer() {
       <div className="container-wide py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Logo & Tagline */}
-          <div className="lg:col-span-1">
+          <div className="lg:col-span-1 flex flex-col">
             <Link href="/">
               <Image
                 src="/images/logo-white.png"
@@ -65,11 +65,11 @@ export default function Footer() {
                 height={40}
               />
             </Link>
-            <p className="mt-4 text-sm text-gray-400 leading-relaxed">
+            <p className="mt-4 text-sm text-gray-400 leading-relaxed italic">
               A global luxury real estate firm delivering expert guidance, exclusive opportunities, and tailored investment services.
             </p>
             {/* Awards */}
-            <div className="mt-6 flex items-center gap-4">
+            <div className="mt-[48px] flex items-center gap-4">
               <Image
                 src="/images/awards/luxury-lifestyle-2024.png"
                 alt="Luxury Lifestyle Winner 2024"

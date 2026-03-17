@@ -191,7 +191,7 @@ export default function HomePage() {
                     <ArrowUpRight className="w-5 h-5 text-white" />
                   </div>
                   <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="text-white font-raleway font-normal text-[20px] leading-[40px]">{n.name}</h3>
+                    <h3 className="text-white/80 font-light text-[16px] leading-[40px]">{n.name}</h3>
                   </div>
                 </Link>
               </AnimateOnScroll>
@@ -205,17 +205,22 @@ export default function HomePage() {
                 {homepage.partners.heading}
               </h2>
             </AnimateOnScroll>
-            <div className="flex flex-wrap justify-center items-center gap-10 md:gap-16">
-              {homepage.partners.logos.map((partner) => (
-                <div key={partner.name} className="relative h-8 w-[100px] md:w-[120px] flex items-center justify-center">
-                  <Image
-                    src={partner.image}
-                    alt={partner.name}
-                    fill
-                    className="object-contain brightness-0 invert"
-                  />
-                </div>
-              ))}
+            <div className="relative overflow-hidden">
+              {/* Fade edges */}
+              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-black to-transparent z-10" />
+              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black to-transparent z-10" />
+              <div className="flex animate-marquee">
+                {[...homepage.partners.logos, ...homepage.partners.logos].map((partner, i) => (
+                  <div key={`${partner.name}-${i}`} className="h-[115px] w-[115px] flex-shrink-0 mx-8 flex items-center justify-center">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={partner.image}
+                      alt={partner.name}
+                      className="h-full w-full object-contain brightness-0 invert"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

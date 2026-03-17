@@ -285,5 +285,12 @@
     "title": "Video Editor",
     "image": "/images/team/davlat-olimjonov.png",
     "category": "creative-ops"
+  },
+  {
+    "id": "44",
+    "name": "John Paulo Ebreo",
+    "title": "Videographer",
+    "image": "/images/team/john-paulo-ebreo.jpg",
+    "category": "creative-ops"
   }
 ]

@@ -102,52 +102,6 @@ export default function CareerPage() {
         </div>
       </section>
 
-      {/* Explore Openings */}
-      <section className="pb-6">
-        <div className="container-narrow text-center">
-          <AnimateOnScroll>
-            <SectionLabel>Explore Openings</SectionLabel>
-            <SectionHeading
-              title="Find the right job for you"
-              className="mt-5"
-            />
-          </AnimateOnScroll>
-        </div>
-      </section>
-
-      {/* Job Listings */}
-      <section className="pb-20">
-        <div className="max-w-[1080px] mx-auto px-6">
-          {careers.map((job, i) => (
-            <AnimateOnScroll key={job.slug} delay={i * 0.1}>
-              <div className="border-t border-b border-[#ccc] py-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div className="flex flex-col gap-3">
-                  <h3 className="text-[20px] font-semibold leading-[20px] text-black">
-                    {job.title}
-                  </h3>
-                  <div className="flex flex-wrap items-center gap-[10px] text-[14px] font-normal text-[#5f6368]">
-                    <span className="flex items-center gap-[5px]">
-                      <MapPin className="w-[14px] h-[14px]" />
-                      {job.location}
-                    </span>
-                    <span className="text-[#ccc]">|</span>
-                    <span>{job.department}</span>
-                    <span className="text-[#ccc]">|</span>
-                    <span>Posted on : {formatPostedDate(job.postedDate)}</span>
-                  </div>
-                </div>
-                <Link
-                  href={`/career/${job.slug}`}
-                  className="bg-black border-2 border-black text-white text-[12px] font-medium uppercase tracking-wider h-[48px] w-[160px] flex items-center justify-center hover:bg-gray-900 transition-colors shrink-0"
-                >
-                  View Details
-                </Link>
-              </div>
-            </AnimateOnScroll>
-          ))}
-        </div>
-      </section>
-
       {/* Why Join Our Team - Dark Section */}
       <section className="py-20 bg-black">
         <div className="container-wide">
@@ -189,6 +143,52 @@ export default function CareerPage() {
               </AnimateOnScroll>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Explore Openings */}
+      <section className="pb-6 pt-20">
+        <div className="container-narrow text-center">
+          <AnimateOnScroll>
+            <SectionLabel>Explore Openings</SectionLabel>
+            <SectionHeading
+              title="Find the right job for you"
+              className="mt-5"
+            />
+          </AnimateOnScroll>
+        </div>
+      </section>
+
+      {/* Job Listings */}
+      <section className="pb-20">
+        <div className="max-w-[1080px] mx-auto px-6">
+          {careers.map((job, i) => (
+            <AnimateOnScroll key={job.slug} delay={i * 0.1}>
+              <div className="border-t border-b border-[#ccc] py-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="flex flex-col gap-3">
+                  <h3 className="text-[20px] font-semibold leading-[20px] text-black">
+                    {job.title}
+                  </h3>
+                  <div className="flex flex-wrap items-center gap-[10px] text-[14px] font-normal text-[#5f6368]">
+                    <span className="flex items-center gap-[5px]">
+                      <MapPin className="w-[14px] h-[14px]" />
+                      {job.location}
+                    </span>
+                    <span className="text-[#ccc]">|</span>
+                    <span>{job.department}</span>
+                    <span className="text-[#ccc]">|</span>
+                    <span>Posted on : {formatPostedDate(job.postedDate)}</span>
+                  </div>
+                </div>
+                <Link
+                  href={`/career/${job.slug}`}
+                  className="bg-black border-2 border-black text-white text-[12px] font-medium uppercase tracking-wider h-[48px] w-[160px] flex items-center justify-center hover:bg-gray-900 transition-colors shrink-0"
+                >
+                  View Details
+                </Link>
+              </div>
+            </AnimateOnScroll>
+          ))}
         </div>
       </section>
 

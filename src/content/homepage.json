@@ -27,9 +27,22 @@
       { "name": "Emaar", "image": "/images/partners/emaar.svg" },
       { "name": "Meraas", "image": "/images/partners/meraas.svg" },
       { "name": "Omniyat", "image": "/images/partners/omniyat.svg" },
-      { "name": "Sobha", "image": "/images/partners/sobha.svg" },
+      { "name": "H&H", "image": "/images/partners/hh.svg" },
       { "name": "Ellington", "image": "/images/partners/ellington.svg" },
-      { "name": "Binghatti", "image": "/images/partners/binghatti.png" }
+      { "name": "Aldar", "image": "/images/partners/aldar.svg" },
+      { "name": "Dubai Holding", "image": "/images/partners/dubai-holding.svg" },
+      { "name": "Modon", "image": "/images/partners/modon.svg" },
+      { "name": "Sobha", "image": "/images/partners/sobha.svg" },
+      { "name": "Bloom", "image": "/images/partners/bloom.svg" },
+      { "name": "Nakheel", "image": "/images/partners/nakheel.svg" },
+      { "name": "Damac", "image": "/images/partners/damac.svg" },
+      { "name": "Binghatti", "image": "/images/partners/binghatti.svg" },
+      { "name": "Ohana", "image": "/images/partners/ohana.svg" },
+      { "name": "ORA", "image": "/images/partners/ora.svg" },
+      { "name": "WASL", "image": "/images/partners/wasl.svg" },
+      { "name": "R-Evolution", "image": "/images/partners/r-evolution.svg" },
+      { "name": "Deyaar", "image": "/images/partners/deyaar.svg" },
+      { "name": "Majid Al Futtaim", "image": "/images/partners/majid-al-futtaim.svg" }
     ]
   },
   "advantage": {
@@ -44,7 +57,7 @@
       {
         "title": "BlackOak Concierge",
         "description": "Concierge services tailored to your needs.",
-        "image": "/images/homepage/concierge.jpg"
+        "image": "/images/homepage/concierge.webp"
       },
       {
         "title": "BlackOak Investments",

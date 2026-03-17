@@ -71,12 +71,13 @@ export default function Navbar() {
   }, [pathname]);
 
   // Pages with white/light backgrounds need a solid black navbar
-  const needsSolidNav = pathname === '/projects' || pathname.startsWith('/insights/news') || pathname === '/career' || pathname === '/contact';
+  const p = pathname.replace(/\/$/, '') || '/';
+  const needsSolidNav = p === '/projects' || p.startsWith('/insights/news') || p === '/career' || p === '/contact';
 
   const isActive = (item: NavItem): boolean => {
-    if (item.href && pathname === item.href) return true;
+    if (item.href && p === item.href) return true;
     if (item.dropdown) {
-      return item.dropdown.some(sub => sub.href && pathname.startsWith(sub.href));
+      return item.dropdown.some(sub => sub.href && p.startsWith(sub.href));
     }
     return false;
   };
@@ -155,7 +156,7 @@ export default function Navbar() {
                         href={sub.href!}
                         className={cn(
                           'block px-4 py-2 text-sm transition-colors',
-                          pathname === sub.href
+                          p === sub.href
                             ? 'text-black font-medium bg-gray-50'
                             : 'text-gray-600 hover:text-black hover:bg-gray-50'
                         )}
