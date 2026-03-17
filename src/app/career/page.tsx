@@ -64,7 +64,7 @@ export default function CareerPage() {
         <div className="container-narrow text-center">
           <SectionLabel>Career</SectionLabel>
           <SectionHeading
-            title="Join a Legacy of Elevated Living"
+            title="A glimpse into our people, partners, and life at BlackOak."
             className="mt-5"
           />
         </div>

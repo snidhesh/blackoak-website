@@ -3,7 +3,8 @@
     "label": "About Us",
     "dropdown": [
       { "label": "Why BlackOak", "href": "/about/why-blackoak" },
-      { "label": "Our Team", "href": "/about/our-team" }
+      { "label": "Our Team", "href": "/about/our-team" },
+      { "label": "Career", "href": "/career" }
     ]
   },
   {
@@ -35,10 +36,6 @@
       { "label": "Buyers", "href": "/insights/buyers" },
       { "label": "News & Press", "href": "/insights/news" }
     ]
-  },
-  {
-    "label": "Career",
-    "href": "/career"
   },
   {
     "label": "Contact",
