@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { ArrowRight, ArrowUpRight, MapPin, Home, ChevronDown, BedDouble, Maximize2 } from 'lucide-react';
 import { getFeaturedProjects, getNeighbourhoods, getNews } from '@/lib/content';
 import { formatDate, formatPriceNumber } from '@/lib/formatters';
@@ -9,6 +10,12 @@ import DirhamIcon from '@/components/ui/DirhamIcon';
 import Button from '@/components/ui/Button';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 import homepage from '@/content/homepage.json';
+import splash from '@/content/splash.json';
+
+const SplashScreen = dynamic(
+  () => import('@/components/shared/SplashScreen'),
+  { ssr: false }
+);
 
 export default function HomePage() {
   const featuredProjects = getFeaturedProjects().slice(0, 8);
@@ -24,6 +31,8 @@ export default function HomePage() {
 
   return (
     <>
+      {splash.enabled && <SplashScreen {...splash} />}
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center">
         <video

@@ -58,6 +58,15 @@
   @apply !bg-gold;
 }
 
+/* Splash gate — dark bg, locked scroll, entire app shell hidden */
+html[data-splash="pending"] {
+  background: #181a20;
+  overflow: hidden;
+}
+html[data-splash="pending"] #app-shell {
+  visibility: hidden;
+}
+
 /* Hide honeypot field */
 .hp-field {
   position: absolute;
