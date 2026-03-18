@@ -7,8 +7,10 @@ import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 import ListPropertyForm from '@/components/sections/ListPropertyForm';
 
 export const metadata: Metadata = {
-  title: 'List Your Property',
-  description: 'Sell or rent out your property in Dubai with BlackOak Real Estate. Get expert guidance, global exposure, and premium service.',
+  title: 'Sell Your Property in Dubai',
+  description:
+    'List your property with BlackOak Real Estate. Global buyer network, professional marketing & dedicated agent support to sell or rent your Dubai property fast.',
+  alternates: { canonical: 'https://blackoak-re.com/list-your-property' },
 };
 
 const benefits = [

@@ -18,26 +18,67 @@ const raleway = Raleway({
   variable: '--font-raleway',
 });
 
+const BASE_URL = 'https://blackoak-re.com';
+
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE_URL),
   title: {
-    default: 'BlackOak Real Estate | Luxury Properties in Dubai',
+    default: 'BlackOak Real Estate | Luxury Properties & Investment in Dubai',
     template: '%s | BlackOak Real Estate',
   },
   description:
-    'A global luxury real estate firm delivering expert guidance, exclusive opportunities, and tailored investment services in Dubai.',
+    'Dubai luxury real estate specialists. Buy villas, apartments & penthouses in Palm Jumeirah, Emirates Hills, Downtown Dubai & more. Expert investment advisory & concierge services.',
   keywords: [
     'Dubai real estate',
-    'luxury properties',
-    'Dubai investment',
-    'Palm Jumeirah',
-    'Emirates Hills',
-    'property investment',
-    'BlackOak',
+    'luxury properties Dubai',
+    'buy property in Dubai',
+    'Dubai property investment',
+    'luxury villas Dubai',
+    'apartments for sale Dubai',
+    'Palm Jumeirah villas',
+    'Emirates Hills mansions',
+    'Dubai Hills Estate',
+    'Downtown Dubai apartments',
+    'off-plan property Dubai',
+    'Dubai real estate agent',
+    'luxury penthouses Dubai Marina',
+    'property investment UAE',
+    'BlackOak Real Estate',
+    'Dubai Golden Visa property',
+    'branded residences Dubai',
+    'waterfront property Dubai',
   ],
   openGraph: {
     type: 'website',
-    locale: 'en_US',
+    locale: 'en_AE',
+    url: BASE_URL,
     siteName: 'BlackOak Real Estate',
+    images: [
+      {
+        url: '/images/og-default.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'BlackOak Real Estate - Luxury Properties in Dubai',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@blackoakrealestate',
+  },
+  alternates: {
+    canonical: BASE_URL,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 
@@ -53,6 +94,46 @@ export default function RootLayout({
       {...(splash.enabled ? { 'data-splash-enabled': '' } : {})}
     >
       <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'RealEstateAgent',
+              name: 'BlackOak Real Estate',
+              url: BASE_URL,
+              logo: `${BASE_URL}/images/logo-white.png`,
+              description:
+                'A global luxury real estate firm delivering expert guidance, exclusive opportunities, and tailored investment services in Dubai.',
+              telephone: '+971 4 398 9055',
+              email: 'info@blackoak-re.com',
+              address: [
+                {
+                  '@type': 'PostalAddress',
+                  streetAddress: 'Office 1406, Marina Plaza, Dubai Marina',
+                  addressLocality: 'Dubai',
+                  addressCountry: 'AE',
+                },
+                {
+                  '@type': 'PostalAddress',
+                  streetAddress: '71-75 Shelton Street',
+                  addressLocality: 'London',
+                  postalCode: 'WC2H 9JQ',
+                  addressCountry: 'GB',
+                },
+              ],
+              areaServed: {
+                '@type': 'City',
+                name: 'Dubai',
+              },
+              priceRange: '$$$$',
+              sameAs: [
+                'https://www.instagram.com/blackoakrealestate',
+                'https://www.linkedin.com/company/blackoakrealestate',
+              ],
+            }),
+          }}
+        />
         <script dangerouslySetInnerHTML={{ __html: `
           (function(){
             var d=document.documentElement;

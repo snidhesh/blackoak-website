@@ -5,8 +5,10 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Buyers Guide',
-  description: 'Start your Dubai property journey with confidence. A comprehensive buyers guide.',
+  title: 'Dubai Property Buyers Guide',
+  description:
+    'How to buy property in Dubai as a foreigner. Complete guide covering Golden Visa, freehold areas, mortgages, and the buying process. Expert advice from BlackOak.',
+  alternates: { canonical: 'https://blackoak-re.com/insights/buyers' },
 };
 
 const guides = [

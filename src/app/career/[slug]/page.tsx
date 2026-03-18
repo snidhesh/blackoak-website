@@ -21,9 +21,14 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: Props): Metadata {
   const job = getCareerBySlug(params.slug);
   if (!job) return { title: 'Not Found' };
+  const title = `${job.title} - Careers at BlackOak Real Estate`;
+  const description = `Join BlackOak as ${job.title} in ${job.location}. ${job.type}. ${job.description.slice(0, 120)}`;
   return {
-    title: `${job.title} - Career`,
-    description: job.description.slice(0, 160),
+    title,
+    description,
+    alternates: {
+      canonical: `https://blackoak-re.com/career/${params.slug}`,
+    },
   };
 }
 
@@ -31,8 +36,34 @@ export default function CareerDetailPage({ params }: Props) {
   const job = getCareerBySlug(params.slug);
   if (!job) notFound();
 
+  const jobJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'JobPosting',
+    title: job.title,
+    description: job.description,
+    datePosted: job.postedDate,
+    employmentType: job.type.includes('Full-time') ? 'FULL_TIME' : 'PART_TIME',
+    hiringOrganization: {
+      '@type': 'Organization',
+      name: 'BlackOak Real Estate',
+      sameAs: 'https://blackoak-re.com',
+    },
+    jobLocation: {
+      '@type': 'Place',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Dubai',
+        addressCountry: 'AE',
+      },
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jobJsonLd) }}
+      />
       <section className="pt-24 pb-10">
         <div className="container-wide">
           <Link href="/career" className="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-black mb-6">

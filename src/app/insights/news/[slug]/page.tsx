@@ -22,6 +22,18 @@ export function generateMetadata({ params }: Props): Metadata {
   return {
     title: article.title,
     description: article.excerpt,
+    openGraph: {
+      title: article.title,
+      description: article.excerpt,
+      type: 'article',
+      url: `https://blackoak-re.com/insights/news/${params.slug}`,
+      publishedTime: article.publishedDate,
+      authors: [article.author],
+      images: [{ url: article.image, alt: article.title }],
+    },
+    alternates: {
+      canonical: `https://blackoak-re.com/insights/news/${params.slug}`,
+    },
   };
 }
 
@@ -44,8 +56,31 @@ export default function NewsDetailPage({ params }: Props) {
   const firstHalf = contentParagraphs.slice(0, midpoint).join('</p>') + '</p>';
   const secondHalf = contentParagraphs.slice(midpoint).join('</p>') + '</p>';
 
+  const articleJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: article.title,
+    description: article.excerpt,
+    image: article.image,
+    datePublished: article.publishedDate,
+    author: {
+      '@type': 'Organization',
+      name: article.author,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'BlackOak Real Estate',
+      logo: { '@type': 'ImageObject', url: 'https://blackoak-re.com/images/logo-white.png' },
+    },
+    mainEntityOfPage: `https://blackoak-re.com/insights/news/${params.slug}`,
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
       {/* Header area */}
       <section className="pt-[152px] pb-0">
         <div className="max-w-[1094px] mx-auto px-6">

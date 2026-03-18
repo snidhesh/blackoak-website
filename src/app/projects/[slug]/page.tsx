@@ -22,9 +22,21 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: Props): Metadata {
   const project = getProjectBySlug(params.slug);
   if (!project) return { title: 'Project Not Found' };
+  const title = `${project.name} | ${project.propertyType} in ${project.location.address}`;
+  const description = `${project.name} — ${project.propertyType} in ${project.location.address}. ${project.bedrooms} bedrooms, ${project.area.toLocaleString('en-US')} ${project.areaUnit}. ${project.description.slice(0, 120)}`;
   return {
-    title: project.name,
-    description: project.description.slice(0, 160),
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      url: `https://blackoak-re.com/projects/${params.slug}`,
+      images: [{ url: project.mainImage, alt: project.name }],
+    },
+    alternates: {
+      canonical: `https://blackoak-re.com/projects/${params.slug}`,
+    },
   };
 }
 
@@ -41,8 +53,28 @@ export default function ProjectDetailPage({ params }: Props) {
   const project = getProjectBySlug(params.slug);
   if (!project) notFound();
 
+  const listingJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'RealEstateListing',
+    name: project.name,
+    description: project.description,
+    url: `https://blackoak-re.com/projects/${params.slug}`,
+    image: project.mainImage,
+    datePosted: new Date().toISOString().split('T')[0],
+    offers: {
+      '@type': 'Offer',
+      price: project.price,
+      priceCurrency: 'AED',
+      availability: 'https://schema.org/InStock',
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(listingJsonLd) }}
+      />
       {/* Hero */}
       <section className="relative h-[800px] flex items-end overflow-hidden">
         <Image

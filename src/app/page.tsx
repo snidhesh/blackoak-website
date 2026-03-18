@@ -29,9 +29,25 @@ export default function HomePage() {
     .filter(Boolean) as typeof allNeighbourhoods;
   const news = getNews().slice(0, 3);
 
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'BlackOak Real Estate',
+    url: 'https://blackoak-re.com',
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://blackoak-re.com/projects?q={search_term_string}',
+      'query-input': 'required name=search_term_string',
+    },
+  };
+
   return (
     <>
       {splash.enabled && <SplashScreen {...splash} />}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center">

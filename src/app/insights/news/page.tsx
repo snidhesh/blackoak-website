@@ -8,8 +8,10 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 
 export const metadata: Metadata = {
-  title: 'News & Press',
-  description: 'Curated perspectives on the UAE\'s most dynamic real estate landscape.',
+  title: 'Dubai Real Estate News & Market Insights',
+  description:
+    'Latest Dubai real estate news, market reports & investment insights from BlackOak. Stay informed on property trends, regulations & opportunities in the UAE.',
+  alternates: { canonical: 'https://blackoak-re.com/insights/news' },
 };
 
 export default function NewsPage() {

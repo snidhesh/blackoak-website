@@ -6,8 +6,10 @@ import Accordion from '@/components/ui/Accordion';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Investors',
-  description: 'Exclusive access to Dubai\'s most exceptional real estate investment opportunities.',
+  title: 'Dubai Property Investment Opportunities',
+  description:
+    'Exclusive access to institutional-grade real estate investments in Dubai. Syndicated deals, high ROI opportunities & expert advisory for HNW investors.',
+  alternates: { canonical: 'https://blackoak-re.com/insights/investors' },
 };
 
 const sections = [

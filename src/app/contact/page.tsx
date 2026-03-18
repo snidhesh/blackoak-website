@@ -7,7 +7,9 @@ import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Get in touch with BlackOak Real Estate. Visit our offices in Dubai and London.',
+  description:
+    'Contact BlackOak Real Estate for luxury property enquiries in Dubai. Offices in Dubai Marina & London. Schedule a private consultation today.',
+  alternates: { canonical: 'https://blackoak-re.com/contact' },
 };
 
 const offices = [

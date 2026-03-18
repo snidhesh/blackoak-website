@@ -8,8 +8,10 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Career',
-  description: 'Join BlackOak Real Estate. Explore career opportunities in luxury real estate.',
+  title: 'Careers in Dubai Real Estate',
+  description:
+    'Join BlackOak Real Estate. Open positions for real estate consultants, investment advisors & property specialists in Dubai. Competitive commission & growth.',
+  alternates: { canonical: 'https://blackoak-re.com/career' },
 };
 
 const whyJoinCards = [

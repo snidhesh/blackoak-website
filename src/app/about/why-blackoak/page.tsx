@@ -7,8 +7,10 @@ import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 import CountUp from '@/components/ui/CountUp';
 
 export const metadata: Metadata = {
-  title: 'Why BlackOak',
-  description: 'Discover why BlackOak Real Estate is your trusted partner in Dubai luxury real estate.',
+  title: 'Why BlackOak - About Our Luxury Real Estate Firm',
+  description:
+    'BlackOak Real Estate combines private advisory, concierge services & strategic investments across Dubai. Trusted by HNW clients for luxury property expertise.',
+  alternates: { canonical: 'https://blackoak-re.com/about/why-blackoak' },
 };
 
 const featureCards = [

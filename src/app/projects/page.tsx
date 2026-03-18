@@ -4,8 +4,10 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import ProjectsClient from './ProjectsClient';
 
 export const metadata: Metadata = {
-  title: 'Projects',
-  description: 'Explore luxury real estate projects across Dubai\'s most prestigious neighbourhoods.',
+  title: 'Luxury Properties for Sale in Dubai',
+  description:
+    'Explore luxury villas, apartments & penthouses for sale across Palm Jumeirah, Emirates Hills, Downtown Dubai & more. Off-plan and ready properties curated by BlackOak.',
+  alternates: { canonical: 'https://blackoak-re.com/projects' },
 };
 
 export default function ProjectsPage() {

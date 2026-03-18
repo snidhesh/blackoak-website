@@ -6,8 +6,10 @@ import TeamGrid from '@/components/sections/TeamGrid';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Our Team',
-  description: 'Meet the BlackOak Real Estate team — our real estate experts and creative professionals.',
+  title: 'Our Team - Dubai Real Estate Experts',
+  description:
+    'Meet the BlackOak Real Estate team. Experienced real estate consultants, investment advisors & property specialists serving Dubai and global clients.',
+  alternates: { canonical: 'https://blackoak-re.com/about/our-team' },
 };
 
 export default function OurTeamPage() {
