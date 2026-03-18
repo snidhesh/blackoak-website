@@ -95,7 +95,7 @@ export default function MobileMenu({ isOpen, onClose, navigation }: MobileMenuPr
           {/* Mobile actions */}
           <div className="pt-6 mt-6 border-t border-gray-200 space-y-3 px-4">
             <Link
-              href="/contact"
+              href="/list-your-property"
               onClick={onClose}
               className="flex items-center justify-center w-full px-4 py-3 bg-black text-white rounded-lg text-sm font-medium hover:bg-gray-900 transition-colors"
             >

@@ -9,6 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        black: '#181a20', // Test: was #000000 — revert by removing this line
         gold: {
           DEFAULT: "#C6A55C",
           light: "#D4BA7A",

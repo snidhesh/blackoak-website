@@ -330,13 +330,12 @@ export default function HomePage() {
           {/* Production logos */}
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 mt-14">
             {homepage.starzplay.productionLogos.map((logo: { name: string; image: string; width: number; height: number }) => (
-              <div key={logo.name} className="relative h-[30px] md:h-[40px] w-auto flex items-center">
+              <div key={logo.name} className="relative w-[90px] h-[50px] md:w-[110px] md:h-[65px] flex items-center justify-center">
                 <Image
                   src={logo.image}
                   alt={logo.name}
-                  width={logo.width}
-                  height={logo.height}
-                  className="h-full w-auto object-contain"
+                  fill
+                  className="object-contain"
                 />
               </div>
             ))}
@@ -465,9 +464,9 @@ export default function HomePage() {
       {/* Media Logos */}
       <section className="py-12 bg-white">
         <div className="container-wide">
-          <div className="flex flex-nowrap justify-center items-center gap-10 md:gap-14 overflow-x-auto">
+          <div className="flex justify-center items-center gap-6 sm:gap-10 md:gap-14 overflow-hidden">
             {homepage.mediaLogos.map((logo) => (
-              <div key={logo.name} className="relative h-6 w-[100px] md:w-[120px] shrink-0 flex items-center justify-center">
+              <div key={logo.name} className="relative h-6 w-[80px] sm:w-[100px] md:w-[120px] shrink-0 flex items-center justify-center">
                 <Image
                   src={logo.image}
                   alt={logo.name}

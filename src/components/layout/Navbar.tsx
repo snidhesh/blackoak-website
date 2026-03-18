@@ -72,7 +72,7 @@ export default function Navbar() {
 
   // Pages with white/light backgrounds need a solid black navbar
   const p = pathname.replace(/\/$/, '') || '/';
-  const needsSolidNav = p === '/projects' || p.startsWith('/insights/news') || p === '/career' || p === '/contact';
+  const needsSolidNav = p === '/projects' || p.startsWith('/insights/news') || p === '/career' || p === '/contact' || p === '/list-your-property';
 
   const isActive = (item: NavItem): boolean => {
     if (item.href && p === item.href) return true;
@@ -173,7 +173,7 @@ export default function Navbar() {
           {/* Right Actions */}
           <div className="hidden lg:flex items-center gap-3">
             <Link
-              href="/contact"
+              href="/list-your-property"
               className={cn(
                 'flex items-center gap-1.5 px-3 py-1.5 text-sm rounded-full border transition-colors',
                 scrolled

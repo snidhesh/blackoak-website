@@ -33,9 +33,23 @@ export const careerApplicationSchema = z.object({
   _honeypot: z.string().max(0, 'Bot detected'),
 });
 
+export const listPropertySchema = z.object({
+  firstName: z.string().min(2, 'First name must be at least 2 characters'),
+  lastName: z.string().min(2, 'Last name must be at least 2 characters'),
+  phone: z.string().regex(phoneRegex, 'Please enter a valid phone number'),
+  email: z.string().email('Please enter a valid email address'),
+  propertyType: z.enum(['Apartment', 'Villa', 'Townhouse', 'Penthouse', 'Land', 'Commercial'], 'Please select a property type'),
+  bedrooms: z.string().min(1, 'Please select number of bedrooms'),
+  listingType: z.enum(['Sell', 'Rent'], 'Please select a listing type'),
+  location: z.string().min(2, 'Please enter the property location'),
+  message: z.string().min(10, 'Message must be at least 10 characters'),
+  _honeypot: z.string().max(0, 'Bot detected'),
+});
+
 export type ContactFormData = z.infer<typeof contactSchema>;
 export type ProjectEnquiryFormData = z.infer<typeof projectEnquirySchema>;
 export type CareerApplicationFormData = z.infer<typeof careerApplicationSchema>;
+export type ListPropertyFormData = z.infer<typeof listPropertySchema>;
 
 // CV file validation (used separately as File isn't in zod natively)
 export const MAX_CV_SIZE = 4 * 1024 * 1024; // 4MB
