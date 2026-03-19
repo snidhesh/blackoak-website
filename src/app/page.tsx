@@ -17,8 +17,10 @@ const SplashScreen = dynamic(
   { ssr: false }
 );
 
-export default function HomePage() {
-  const featuredProjects = getFeaturedProjects().slice(0, 8);
+export const revalidate = 300;
+
+export default async function HomePage() {
+  const featuredProjects = await getFeaturedProjects();
   const homepageNeighbourhoodSlugs = [
     'palm-jumeirah', 'dubai-hills-estate', 'al-barari', 'downtown-dubai',
     'jumeirah-golf-estates', 'dubai-marina', 'city-walk', 'business-bay',

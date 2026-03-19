@@ -17,6 +17,7 @@ interface PropertyCardProps {
   bathrooms: number;
   area: number;
   areaUnit: string;
+  offering?: string;
 }
 
 export default function PropertyCard({
@@ -29,6 +30,7 @@ export default function PropertyCard({
   bedrooms,
   area,
   areaUnit,
+  offering,
 }: PropertyCardProps) {
   const locationLabel = neighbourhood
     .split('-')
@@ -48,11 +50,18 @@ export default function PropertyCard({
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
           <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent" />
-          {propertyType && (
-            <span className="absolute top-3 left-3 bg-white text-gray-500 text-[11px] font-medium tracking-wide uppercase px-2.5 py-1 rounded-sm">
-              {propertyType}
-            </span>
-          )}
+          <div className="absolute top-3 left-3 flex items-center gap-1.5">
+            {propertyType && (
+              <span className="bg-white text-gray-500 text-[11px] font-medium tracking-wide uppercase px-2.5 py-1 rounded-sm">
+                {propertyType}
+              </span>
+            )}
+            {offering && (
+              <span className="bg-black text-white text-[11px] font-medium tracking-wide uppercase px-2.5 py-1 rounded-sm">
+                {offering === 'sale' ? 'For Sale' : offering === 'rent' ? 'For Rent' : offering}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Price + Name */}

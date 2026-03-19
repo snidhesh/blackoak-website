@@ -3,8 +3,8 @@ import { getProjects, getNeighbourhoods, getCareers, getNews } from '@/lib/conte
 
 const BASE_URL = 'https://blackoak-re.com';
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const projects = getProjects();
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const projects = await getProjects();
   const neighbourhoods = getNeighbourhoods();
   const careers = getCareers();
   const news = getNews();

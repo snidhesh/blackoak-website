@@ -1,6 +1,7 @@
 export type { NavigationItem } from './navigation';
 export type { FooterColumn, FooterData } from './footer';
-export type { Project } from './project';
+export type { Project, ProjectAgent } from './project';
+export type { CrmListing, CrmAgent, CrmListResponse } from './crm';
 export type { Neighbourhood } from './neighbourhood';
 export type { TeamMember } from './team';
 export type { CareerJob } from './career';

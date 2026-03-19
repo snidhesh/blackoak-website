@@ -13,6 +13,7 @@ interface Project {
   bathrooms: number;
   area: number;
   areaUnit: string;
+  offering?: string;
 }
 
 interface PropertyGridProps {

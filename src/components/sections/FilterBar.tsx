@@ -6,20 +6,23 @@ import Select from '@/components/ui/Select';
 interface FilterBarProps {
   neighbourhoods: string[];
   propertyTypes: string[];
+  offerings: string[];
   onFilterChange: (filters: {
     neighbourhood: string;
     propertyType: string;
     bedrooms: string;
     priceRange: string;
+    offering: string;
   }) => void;
 }
 
-export default function FilterBar({ neighbourhoods, propertyTypes, onFilterChange }: FilterBarProps) {
+export default function FilterBar({ neighbourhoods, propertyTypes, offerings, onFilterChange }: FilterBarProps) {
   const [filters, setFilters] = useState({
     neighbourhood: '',
     propertyType: '',
     bedrooms: '',
     priceRange: '',
+    offering: '',
   });
 
   const handleChange = (key: string, value: string) => {
@@ -32,13 +35,29 @@ export default function FilterBar({ neighbourhoods, propertyTypes, onFilterChang
   };
 
   const handleReset = () => {
-    const empty = { neighbourhood: '', propertyType: '', bedrooms: '', priceRange: '' };
+    const empty = { neighbourhood: '', propertyType: '', bedrooms: '', priceRange: '', offering: '' };
     setFilters(empty);
     onFilterChange(empty);
   };
 
   return (
     <div className="bg-gray-100 border border-gray-200 p-4 flex flex-col md:flex-row items-center gap-4">
+      {offerings.length > 0 && (
+        <>
+          <div className="flex-1 w-full">
+            <Select
+              placeholder="Buy / Rent"
+              options={offerings.map(o => ({
+                value: o,
+                label: o === 'sale' ? 'Buy' : o === 'rent' ? 'Rent' : o.charAt(0).toUpperCase() + o.slice(1),
+              }))}
+              value={filters.offering}
+              onChange={(e) => handleChange('offering', e.target.value)}
+            />
+          </div>
+          <div className="hidden md:block w-px h-6 bg-gray-200" />
+        </>
+      )}
       <div className="flex-1 w-full">
         <Select
           placeholder="Location"

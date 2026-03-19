@@ -10,6 +10,7 @@ interface ProjectsClientProps {
   projects: Project[];
   neighbourhoodSlugs: string[];
   propertyTypes: string[];
+  offerings: string[];
 }
 
 const ITEMS_PER_PAGE = 9;
@@ -18,18 +19,21 @@ export default function ProjectsClient({
   projects,
   neighbourhoodSlugs,
   propertyTypes,
+  offerings,
 }: ProjectsClientProps) {
   const [filters, setFilters] = useState({
     neighbourhood: '',
     propertyType: '',
     bedrooms: '',
     priceRange: '',
+    offering: '',
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [sort, setSort] = useState('most-recent');
 
   const filteredProjects = useMemo(() => {
     let result = projects.filter((p) => {
+      if (filters.offering && p.offering !== filters.offering) return false;
       if (filters.neighbourhood && p.neighbourhood !== filters.neighbourhood) return false;
       if (filters.propertyType && p.propertyType !== filters.propertyType) return false;
       if (filters.bedrooms) {
@@ -72,6 +76,7 @@ export default function ProjectsClient({
       <FilterBar
         neighbourhoods={neighbourhoodSlugs}
         propertyTypes={propertyTypes}
+        offerings={offerings}
         onFilterChange={handleFilterChange}
       />
 

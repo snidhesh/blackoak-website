@@ -3,18 +3,21 @@ import { getProjects } from '@/lib/content';
 import SectionLabel from '@/components/ui/SectionLabel';
 import ProjectsClient from './ProjectsClient';
 
+export const revalidate = 300;
+
 export const metadata: Metadata = {
-  title: 'Luxury Properties for Sale in Dubai',
+  title: 'Luxury Properties for Sale & Rent in Dubai',
   description:
-    'Explore luxury villas, apartments & penthouses for sale across Palm Jumeirah, Emirates Hills, Downtown Dubai & more. Off-plan and ready properties curated by BlackOak.',
+    'Explore luxury villas, apartments & penthouses for sale and rent across Palm Jumeirah, Emirates Hills, Downtown Dubai & more. Off-plan and ready properties curated by BlackOak.',
   alternates: { canonical: 'https://blackoak-re.com/projects' },
 };
 
-export default function ProjectsPage() {
-  const projects = getProjects();
+export default async function ProjectsPage() {
+  const projects = await getProjects();
 
   const neighbourhoodSlugs = [...new Set(projects.map((p) => p.neighbourhood))];
   const propertyTypes = [...new Set(projects.map((p) => p.propertyType))];
+  const offerings = [...new Set(projects.map((p) => p.offering).filter(Boolean))] as string[];
 
   return (
     <>
@@ -37,6 +40,7 @@ export default function ProjectsPage() {
             projects={projects}
             neighbourhoodSlugs={neighbourhoodSlugs}
             propertyTypes={propertyTypes}
+            offerings={offerings}
           />
         </div>
       </section>

@@ -34,11 +34,13 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-export default function NeighbourhoodPage({ params }: Props) {
+export const revalidate = 300;
+
+export default async function NeighbourhoodPage({ params }: Props) {
   const neighbourhood = getNeighbourhoodBySlug(params.slug);
   if (!neighbourhood) notFound();
 
-  const projects = getProjectsByNeighbourhood(params.slug);
+  const projects = await getProjectsByNeighbourhood(params.slug);
 
   return (
     <>

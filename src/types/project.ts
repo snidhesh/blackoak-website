@@ -1,3 +1,14 @@
+export interface ProjectAgent {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  whatsapp: string;
+  profileImage: string;
+  position: string;
+  brn: string;
+}
+
 export interface Project {
   id: string;
   slug: string;
@@ -19,4 +30,15 @@ export interface Project {
   location: { lat: number; lng: number; address: string };
   featured: boolean;
   status: 'available' | 'sold' | 'coming-soon';
+  // CRM fields
+  crmId?: string;
+  offering?: string;
+  reference?: string;
+  furnishingType?: string;
+  parkingSlots?: number;
+  projectName?: string;
+  locationBuilding?: string;
+  locationCommunity?: string;
+  availableFrom?: string;
+  agent?: ProjectAgent | null;
 }

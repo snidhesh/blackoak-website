@@ -1,29 +1,36 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { MapPin, Bed, Maximize, Check } from 'lucide-react';
+import { MapPin, Bed, Maximize, Check, ExternalLink } from 'lucide-react';
 import { getProjects, getProjectBySlug } from '@/lib/content';
 import { formatPriceNumber } from '@/lib/formatters';
 import DirhamIcon from '@/components/ui/DirhamIcon';
 import SectionLabel from '@/components/ui/SectionLabel';
 import ContactForm from '@/components/sections/ContactForm';
+import AgentCard from '@/components/sections/AgentCard';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 import StickyNav from '@/components/ui/StickyNav';
+
+export const dynamicParams = true;
+export const revalidate = 300;
 
 interface Props {
   params: { slug: string };
 }
 
-export function generateStaticParams() {
-  const projects = getProjects();
+export async function generateStaticParams() {
+  const projects = await getProjects();
   return projects.map((p) => ({ slug: p.slug }));
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const project = getProjectBySlug(params.slug);
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const project = await getProjectBySlug(params.slug);
   if (!project) return { title: 'Project Not Found' };
-  const title = `${project.name} | ${project.propertyType} in ${project.location.address}`;
-  const description = `${project.name} — ${project.propertyType} in ${project.location.address}. ${project.bedrooms} bedrooms, ${project.area.toLocaleString('en-US')} ${project.areaUnit}. ${project.description.slice(0, 120)}`;
+
+  const offeringLabel = project.offering === 'sale' ? 'for Sale' : project.offering === 'rent' ? 'for Rent' : '';
+  const title = `${project.name} | ${project.propertyType} ${offeringLabel} in ${project.location.address}`.trim();
+  const description = `${project.name} — ${project.propertyType} ${offeringLabel} in ${project.location.address}. ${project.bedrooms} bedrooms, ${project.area.toLocaleString('en-US')} ${project.areaUnit}. ${project.description.slice(0, 120)}`;
+
   return {
     title,
     description,
@@ -40,18 +47,21 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-const stickyNavSections = [
-  { id: 'details', label: 'Details' },
-  { id: 'gallery', label: 'Gallery' },
-  { id: 'floor-plans', label: 'Floor Plans' },
-  { id: 'amenities', label: 'Amenities' },
-  { id: 'location', label: 'Location' },
-  { id: 'enquiry', label: 'Enquiry' },
-];
-
-export default function ProjectDetailPage({ params }: Props) {
-  const project = getProjectBySlug(params.slug);
+export default async function ProjectDetailPage({ params }: Props) {
+  const project = await getProjectBySlug(params.slug);
   if (!project) notFound();
+
+  const hasCoordinates = project.location.lat !== 0 && project.location.lng !== 0;
+  const hasFloorPlans = project.floorPlans.length > 0;
+
+  const stickyNavSections = [
+    { id: 'details', label: 'Details' },
+    { id: 'gallery', label: 'Gallery' },
+    ...(hasFloorPlans ? [{ id: 'floor-plans', label: 'Floor Plans' }] : []),
+    { id: 'amenities', label: 'Amenities' },
+    { id: 'location', label: 'Location' },
+    { id: 'enquiry', label: 'Enquiry' },
+  ];
 
   const listingJsonLd = {
     '@context': 'https://schema.org',
@@ -159,6 +169,30 @@ export default function ProjectDetailPage({ params }: Props) {
             <p className="text-[#5f6368] text-base leading-[28px] tracking-[0.16px] whitespace-pre-line">
               {project.description}
             </p>
+
+            {/* Additional details from CRM */}
+            {(project.reference || project.furnishingType || (project.parkingSlots && project.parkingSlots > 0)) && (
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8 pt-8 border-t border-gray-200">
+                {project.reference && (
+                  <div>
+                    <p className="text-sm font-medium text-black">Reference</p>
+                    <p className="text-sm text-[#5f6368] mt-1">{project.reference}</p>
+                  </div>
+                )}
+                {project.furnishingType && (
+                  <div>
+                    <p className="text-sm font-medium text-black">Furnishing</p>
+                    <p className="text-sm text-[#5f6368] mt-1">{project.furnishingType}</p>
+                  </div>
+                )}
+                {project.parkingSlots !== undefined && project.parkingSlots > 0 && (
+                  <div>
+                    <p className="text-sm font-medium text-black">Parking</p>
+                    <p className="text-sm text-[#5f6368] mt-1">{project.parkingSlots} slot{project.parkingSlots !== 1 ? 's' : ''}</p>
+                  </div>
+                )}
+              </div>
+            )}
           </AnimateOnScroll>
         </div>
       </section>
@@ -202,47 +236,47 @@ export default function ProjectDetailPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Floor Plans */}
-      <section id="floor-plans" className="py-16">
-        <div className="container-wide">
-          <AnimateOnScroll>
-            <div className="text-center mb-10">
-              <SectionLabel>Floor Plans</SectionLabel>
-              <h2 className="text-[32px] font-light mt-5">
-                Layouts Designed Around Your Life
-              </h2>
-            </div>
-          </AnimateOnScroll>
-          <div className="flex flex-col lg:flex-row items-start gap-12">
-            {/* Room breakdown */}
-            <div className="flex-1 space-y-5">
-              <div>
-                <p className="text-base font-medium text-black leading-[26px]">
-                  Bedrooms &amp; Private Suites :
-                </p>
-                <p className="text-[#5f6368] text-base tracking-[0.16px] leading-[28px]">
-                  {project.bedrooms} Bedrooms | {project.bathrooms} Bathrooms
-                </p>
+      {/* Floor Plans — conditional */}
+      {hasFloorPlans && (
+        <section id="floor-plans" className="py-16">
+          <div className="container-wide">
+            <AnimateOnScroll>
+              <div className="text-center mb-10">
+                <SectionLabel>Floor Plans</SectionLabel>
+                <h2 className="text-[32px] font-light mt-5">
+                  Layouts Designed Around Your Life
+                </h2>
               </div>
-              <div>
-                <p className="text-base font-medium text-black leading-[26px]">
-                  Total Area :
-                </p>
-                <p className="text-[#5f6368] text-base tracking-[0.16px] leading-[28px]">
-                  {project.area.toLocaleString()} {project.areaUnit}
-                </p>
+            </AnimateOnScroll>
+            <div className="flex flex-col lg:flex-row items-start gap-12">
+              {/* Room breakdown */}
+              <div className="flex-1 space-y-5">
+                <div>
+                  <p className="text-base font-medium text-black leading-[26px]">
+                    Bedrooms &amp; Private Suites :
+                  </p>
+                  <p className="text-[#5f6368] text-base tracking-[0.16px] leading-[28px]">
+                    {project.bedrooms} Bedrooms | {project.bathrooms} Bathrooms
+                  </p>
+                </div>
+                <div>
+                  <p className="text-base font-medium text-black leading-[26px]">
+                    Total Area :
+                  </p>
+                  <p className="text-[#5f6368] text-base tracking-[0.16px] leading-[28px]">
+                    {project.area.toLocaleString()} {project.areaUnit}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-base font-medium text-black leading-[26px]">
+                    Developer :
+                  </p>
+                  <p className="text-[#5f6368] text-base tracking-[0.16px] leading-[28px]">
+                    {project.developer}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="text-base font-medium text-black leading-[26px]">
-                  Developer :
-                </p>
-                <p className="text-[#5f6368] text-base tracking-[0.16px] leading-[28px]">
-                  {project.developer}
-                </p>
-              </div>
-            </div>
-            {/* Floor plan image */}
-            {project.floorPlans.length > 0 && (
+              {/* Floor plan image */}
               <div className="flex-1 relative aspect-[656/358] w-full bg-gray-100 overflow-hidden">
                 <Image
                   src={project.floorPlans[0].image}
@@ -252,10 +286,10 @@ export default function ProjectDetailPage({ params }: Props) {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
-            )}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Amenities - Black Background */}
       {project.amenities.length > 0 && (
@@ -294,15 +328,30 @@ export default function ProjectDetailPage({ params }: Props) {
               </h2>
             </div>
           </AnimateOnScroll>
-          <div className="relative aspect-[1382/505] bg-gray-800 overflow-hidden rounded">
-            <iframe
-              src={`https://www.google.com/maps?q=${project.location.lat},${project.location.lng}&z=15&output=embed`}
-              className="absolute inset-0 w-full h-full border-0"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title={`${project.name} location`}
-            />
-          </div>
+          {hasCoordinates ? (
+            <div className="relative aspect-[1382/505] bg-gray-800 overflow-hidden rounded">
+              <iframe
+                src={`https://www.google.com/maps?q=${project.location.lat},${project.location.lng}&z=15&output=embed`}
+                className="absolute inset-0 w-full h-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title={`${project.name} location`}
+              />
+            </div>
+          ) : (
+            <div className="bg-gray-900 rounded p-8 text-center">
+              <MapPin className="w-8 h-8 text-white/60 mx-auto mb-4" />
+              <p className="text-white text-lg mb-2">{project.location.address}</p>
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(project.location.address)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-white/70 hover:text-white text-sm transition-colors mt-2"
+              >
+                View on Google Maps <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          )}
         </div>
       </section>
 
@@ -319,6 +368,14 @@ export default function ProjectDetailPage({ params }: Props) {
               </h2>
             </div>
           </AnimateOnScroll>
+
+          {/* Agent Card */}
+          {project.agent && (
+            <div className="mb-8">
+              <AgentCard agent={project.agent} />
+            </div>
+          )}
+
           <ContactForm
             endpoint="/api/project-enquiry"
             projectSlug={project.slug}
