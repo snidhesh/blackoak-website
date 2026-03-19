@@ -5,7 +5,8 @@ import Button from '@/components/ui/Button';
 
 export const metadata: Metadata = {
   title: 'Thank You',
-  description: 'Your request has been successfully submitted.',
+  description: 'Your request has been successfully submitted. Our team will review your enquiry and get back to you shortly.',
+  robots: { index: false, follow: false },
 };
 
 export default function ThankYouPage() {

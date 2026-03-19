@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   description:
     'Contact BlackOak Real Estate for luxury property enquiries in Dubai. Offices in Dubai Marina & London. Schedule a private consultation today.',
   alternates: { canonical: 'https://blackoak-re.com/contact' },
+  openGraph: {
+    title: 'Contact Us | BlackOak Real Estate',
+    description:
+      'Contact BlackOak Real Estate for luxury property enquiries in Dubai. Offices in Dubai Marina & London.',
+    type: 'website',
+    url: 'https://blackoak-re.com/contact',
+    images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'Contact BlackOak Real Estate' }],
+  },
 };
 
 const offices = [
@@ -33,9 +41,42 @@ const offices = [
   },
 ];
 
+const contactJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  name: 'Contact BlackOak Real Estate',
+  description: 'Contact BlackOak Real Estate for luxury property enquiries in Dubai.',
+  url: 'https://blackoak-re.com/contact',
+  mainEntity: {
+    '@type': 'RealEstateAgent',
+    name: 'BlackOak Real Estate',
+    telephone: '+971 4 398 9055',
+    email: 'info@blackoak-re.com',
+    address: [
+      {
+        '@type': 'PostalAddress',
+        streetAddress: 'Office 1406, Marina Plaza, Dubai Marina',
+        addressLocality: 'Dubai',
+        addressCountry: 'AE',
+      },
+      {
+        '@type': 'PostalAddress',
+        streetAddress: '71-75 Shelton Street',
+        addressLocality: 'London',
+        postalCode: 'WC2H 9JQ',
+        addressCountry: 'GB',
+      },
+    ],
+  },
+};
+
 export default function ContactPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+      />
       {/* Header Label + Heading */}
       <section className="pt-[156px] pb-8">
         <div className="container-narrow text-center">
@@ -52,7 +93,7 @@ export default function ContactPage() {
       <section className="relative w-full h-[450px] overflow-hidden">
         <Image
           src="/images/contact/hero.jpg"
-          alt=""
+          alt="Dubai skyline at sunset with luxury waterfront properties"
           fill
           className="object-cover"
           priority

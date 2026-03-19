@@ -63,20 +63,63 @@ export default async function ProjectDetailPage({ params }: Props) {
     { id: 'enquiry', label: 'Enquiry' },
   ];
 
+  const allImages = [project.mainImage, ...project.gallery];
+
   const listingJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'RealEstateListing',
     name: project.name,
     description: project.description,
     url: `https://blackoak-re.com/projects/${params.slug}`,
-    image: project.mainImage,
-    datePosted: new Date().toISOString().split('T')[0],
+    image: allImages,
+    datePosted: project.availableFrom || new Date().toISOString().split('T')[0],
     offers: {
       '@type': 'Offer',
       price: project.price,
       priceCurrency: 'AED',
       availability: 'https://schema.org/InStock',
     },
+    ...(project.propertyType && { '@additionalType': project.propertyType }),
+    numberOfRooms: project.bedrooms,
+    numberOfBathroomsTotal: project.bathrooms,
+    floorSize: {
+      '@type': 'QuantitativeValue',
+      value: project.area,
+      unitText: project.areaUnit,
+    },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: project.location.address,
+      addressLocality: 'Dubai',
+      addressCountry: 'AE',
+    },
+    ...(hasCoordinates && {
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: project.location.lat,
+        longitude: project.location.lng,
+      },
+    }),
+    ...(project.amenities.length > 0 && { amenityFeature: project.amenities.map((a) => ({ '@type': 'LocationFeatureSpecification', name: a })) }),
+    ...(project.agent && {
+      broker: {
+        '@type': 'RealEstateAgent',
+        name: project.agent.name,
+        email: project.agent.email,
+        telephone: project.agent.phone,
+        ...(project.agent.profileImage && { image: project.agent.profileImage }),
+      },
+    }),
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://blackoak-re.com' },
+      { '@type': 'ListItem', position: 2, name: 'Projects', item: 'https://blackoak-re.com/projects' },
+      { '@type': 'ListItem', position: 3, name: project.name, item: `https://blackoak-re.com/projects/${params.slug}` },
+    ],
   };
 
   return (
@@ -84,6 +127,10 @@ export default async function ProjectDetailPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(listingJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {/* Hero */}
       <section className="relative h-[800px] flex items-end overflow-hidden">

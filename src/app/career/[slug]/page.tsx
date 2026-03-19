@@ -29,6 +29,12 @@ export function generateMetadata({ params }: Props): Metadata {
     alternates: {
       canonical: `https://blackoak-re.com/career/${params.slug}`,
     },
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      url: `https://blackoak-re.com/career/${params.slug}`,
+    },
   };
 }
 
@@ -58,11 +64,25 @@ export default function CareerDetailPage({ params }: Props) {
     },
   };
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://blackoak-re.com' },
+      { '@type': 'ListItem', position: 2, name: 'Careers', item: 'https://blackoak-re.com/career' },
+      { '@type': 'ListItem', position: 3, name: job.title, item: `https://blackoak-re.com/career/${params.slug}` },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jobJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       <section className="pt-24 pb-10">
         <div className="container-wide">

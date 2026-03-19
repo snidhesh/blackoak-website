@@ -42,8 +42,40 @@ export default async function NeighbourhoodPage({ params }: Props) {
 
   const projects = await getProjectsByNeighbourhood(params.slug);
 
+  const placeJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Place',
+    name: neighbourhood.name,
+    description: neighbourhood.seo.description,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: neighbourhood.name,
+      addressRegion: 'Dubai',
+      addressCountry: 'AE',
+    },
+    image: neighbourhood.heroImage,
+  };
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://blackoak-re.com' },
+      { '@type': 'ListItem', position: 2, name: 'Neighbourhoods', item: 'https://blackoak-re.com' },
+      { '@type': 'ListItem', position: 3, name: neighbourhood.name, item: `https://blackoak-re.com/neighbourhoods/${params.slug}` },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(placeJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Hero */}
       <section className="relative h-[800px] flex items-center justify-center overflow-hidden">
         <Image

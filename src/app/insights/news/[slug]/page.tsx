@@ -75,11 +75,25 @@ export default function NewsDetailPage({ params }: Props) {
     mainEntityOfPage: `https://blackoak-re.com/insights/news/${params.slug}`,
   };
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://blackoak-re.com' },
+      { '@type': 'ListItem', position: 2, name: 'News', item: 'https://blackoak-re.com/insights/news' },
+      { '@type': 'ListItem', position: 3, name: article.title, item: `https://blackoak-re.com/insights/news/${params.slug}` },
+    ],
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {/* Header area */}
       <section className="pt-[152px] pb-0">

@@ -10,6 +10,14 @@ export const metadata: Metadata = {
   description:
     'Exclusive access to institutional-grade real estate investments in Dubai. Syndicated deals, high ROI opportunities & expert advisory for HNW investors.',
   alternates: { canonical: 'https://blackoak-re.com/insights/investors' },
+  openGraph: {
+    title: 'Dubai Property Investment Opportunities | BlackOak',
+    description:
+      'Exclusive access to institutional-grade real estate investments in Dubai. Syndicated deals, high ROI opportunities & expert advisory.',
+    type: 'website',
+    url: 'https://blackoak-re.com/insights/investors',
+    images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'Dubai Property Investment with BlackOak' }],
+  },
 };
 
 const sections = [
@@ -66,14 +74,31 @@ const faq = [
   },
 ];
 
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+
 export default function InvestorsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero */}
       <section className="relative flex items-center justify-center min-h-[70vh] overflow-hidden">
         <Image
           src="/images/investors/hero.jpg"
-          alt=""
+          alt="Dubai real estate investment opportunities with premium skyline view"
           fill
           className="object-cover"
           priority

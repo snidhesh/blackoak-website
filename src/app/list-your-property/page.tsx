@@ -11,6 +11,14 @@ export const metadata: Metadata = {
   description:
     'List your property with BlackOak Real Estate. Global buyer network, professional marketing & dedicated agent support to sell or rent your Dubai property fast.',
   alternates: { canonical: 'https://blackoak-re.com/list-your-property' },
+  openGraph: {
+    title: 'Sell Your Property in Dubai | BlackOak Real Estate',
+    description:
+      'List your property with BlackOak Real Estate. Global buyer network, professional marketing & dedicated agent support.',
+    type: 'website',
+    url: 'https://blackoak-re.com/list-your-property',
+    images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'List Your Property with BlackOak' }],
+  },
 };
 
 const benefits = [

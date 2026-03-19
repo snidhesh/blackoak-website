@@ -12,6 +12,14 @@ export const metadata: Metadata = {
   description:
     'Join BlackOak Real Estate. Open positions for real estate consultants, investment advisors & property specialists in Dubai. Competitive commission & growth.',
   alternates: { canonical: 'https://blackoak-re.com/career' },
+  openGraph: {
+    title: 'Careers in Dubai Real Estate | BlackOak',
+    description:
+      'Join BlackOak Real Estate. Open positions for real estate consultants, investment advisors & property specialists in Dubai.',
+    type: 'website',
+    url: 'https://blackoak-re.com/career',
+    images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'Careers at BlackOak Real Estate' }],
+  },
 };
 
 const whyJoinCards = [
@@ -76,7 +84,7 @@ export default function CareerPage() {
       <section className="relative w-full h-[450px] overflow-hidden">
         <Image
           src="/images/career/hero.png"
-          alt=""
+          alt="BlackOak Real Estate team in Dubai"
           fill
           className="object-cover"
           priority

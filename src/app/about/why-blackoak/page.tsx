@@ -11,6 +11,14 @@ export const metadata: Metadata = {
   description:
     'BlackOak Real Estate combines private advisory, concierge services & strategic investments across Dubai. Trusted by HNW clients for luxury property expertise.',
   alternates: { canonical: 'https://blackoak-re.com/about/why-blackoak' },
+  openGraph: {
+    title: 'Why BlackOak - About Our Luxury Real Estate Firm',
+    description:
+      'BlackOak Real Estate combines private advisory, concierge services & strategic investments across Dubai. Trusted by HNW clients for luxury property expertise.',
+    type: 'website',
+    url: 'https://blackoak-re.com/about/why-blackoak',
+    images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'About BlackOak Real Estate' }],
+  },
 };
 
 const featureCards = [
@@ -47,7 +55,7 @@ export default function WhyBlackOakPage() {
       <section className="relative flex items-center justify-center min-h-[70vh]">
         <Image
           src="/images/about/hero.png"
-          alt=""
+          alt="BlackOak Real Estate Dubai office and luxury property"
           fill
           className="object-cover"
           priority
@@ -95,13 +103,10 @@ export default function WhyBlackOakPage() {
       <section className="py-20">
         <div className="container-wide">
           <AnimateOnScroll>
-            <SectionLabel>A Legacy of Excellence</SectionLabel>
+            <SectionLabel>What Sets Us Apart</SectionLabel>
             <div className="text-center mt-5">
               <h2 className="text-[28px] md:text-[32px] font-normal leading-[48px] text-black">
-                BlackOak Real Estate
-              </h2>
-              <h2 className="text-[28px] md:text-[32px] font-normal leading-[48px] text-black">
-                UAE&apos;s Premier Property Authority
+                Our Commitment to Excellence
               </h2>
             </div>
           </AnimateOnScroll>

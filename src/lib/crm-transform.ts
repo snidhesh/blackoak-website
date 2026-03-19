@@ -5,6 +5,7 @@ import { slugify } from '@/lib/utils';
 const CRM_API_BASE_URL = process.env.CRM_API_BASE_URL ?? '';
 
 const COMMUNITY_TO_SLUG: Record<string, string> = {
+  // Neighbourhood pages
   'emirates hills': 'emirates-hills',
   'palm jumeirah': 'palm-jumeirah',
   'dubai hills estate': 'dubai-hills-estate',
@@ -18,6 +19,42 @@ const COMMUNITY_TO_SLUG: Record<string, string> = {
   'city walk': 'city-walk',
   'business bay': 'business-bay',
   'bluewaters island': 'bluewaters-island',
+  'bluewaters': 'bluewaters-island',
+  // CRM communities without dedicated neighbourhood pages
+  'al furjan': 'al-furjan',
+  'al satwa': 'al-satwa',
+  'al wasl': 'al-wasl',
+  'arabian ranches': 'arabian-ranches',
+  'city of arabia': 'city-of-arabia',
+  'creek beach': 'creek-beach',
+  'damac hills': 'damac-hills',
+  'district 11': 'district-11',
+  'dubai creek harbour (the lagoons)': 'dubai-creek-harbour',
+  'dubai harbour': 'dubai-harbour',
+  'dubai investment park (dip)': 'dubai-investment-park',
+  'dubai land': 'dubai-land',
+  'dubai science park': 'dubai-science-park',
+  'dubai south (dubai world central)': 'dubai-south',
+  'dubai sports city': 'dubai-sports-city',
+  'dubai waterfront': 'dubai-waterfront',
+  'emaar beachfront': 'emaar-beachfront',
+  'ghaf woods': 'ghaf-woods',
+  'greens': 'greens',
+  'jumeirah': 'jumeirah',
+  'jumeirah 2': 'jumeirah-2',
+  'jumeirah beach residence': 'jumeirah-beach-residence',
+  'jumeirah lake towers': 'jumeirah-lake-towers',
+  'jumeirah village circle': 'jumeirah-village-circle',
+  'meydan one': 'meydan-one',
+  'mina al arab': 'mina-al-arab',
+  'motor city': 'motor-city',
+  'nad al sheba': 'nad-al-sheba',
+  'remraam': 'remraam',
+  'sobha hartland': 'sobha-hartland',
+  'the lakes': 'the-lakes',
+  'tilal city': 'tilal-city',
+  'wasl gate': 'wasl-gate',
+  'zabeel 2': 'zabeel-2',
 };
 
 export function resolveImageUrl(url: string | undefined | null): string {

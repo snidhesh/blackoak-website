@@ -3,7 +3,16 @@ import disclaimerData from '@/content/disclaimer.json';
 
 export const metadata: Metadata = {
   title: 'Disclaimer',
-  description: 'BlackOak Real Estate disclaimer.',
+  description:
+    'Important disclaimers regarding BlackOak Real Estate property listings, market information, and advisory services in Dubai.',
+  alternates: { canonical: 'https://blackoak-re.com/disclaimer' },
+  openGraph: {
+    title: 'Disclaimer | BlackOak Real Estate',
+    description:
+      'Important disclaimers regarding BlackOak Real Estate property listings, market information, and advisory services.',
+    type: 'website',
+    url: 'https://blackoak-re.com/disclaimer',
+  },
 };
 
 export default function DisclaimerPage() {

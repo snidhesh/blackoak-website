@@ -3,7 +3,16 @@ import termsData from '@/content/terms-of-service.json';
 
 export const metadata: Metadata = {
   title: 'Terms of Service',
-  description: 'BlackOak Real Estate terms of service.',
+  description:
+    'Terms and conditions governing your use of BlackOak Real Estate services and website. Read our policies on property transactions, liability, and user obligations.',
+  alternates: { canonical: 'https://blackoak-re.com/terms-of-service' },
+  openGraph: {
+    title: 'Terms of Service | BlackOak Real Estate',
+    description:
+      'Terms and conditions governing your use of BlackOak Real Estate services and website.',
+    type: 'website',
+    url: 'https://blackoak-re.com/terms-of-service',
+  },
 };
 
 export default function TermsOfServicePage() {
