@@ -73,10 +73,11 @@ export default function CareerPage() {
       <section className="pt-[156px] pb-8">
         <div className="container-narrow text-center">
           <SectionLabel>Career</SectionLabel>
-          <SectionHeading
-            title="A glimpse into our people, partners, and life at BlackOak."
-            className="mt-5"
-          />
+          <div className="mt-5 text-center">
+            <h1 className="text-[28px] md:text-[32px] font-normal leading-[48px] text-black">
+              A glimpse into our people, partners, and life at BlackOak.
+            </h1>
+          </div>
         </div>
       </section>
 

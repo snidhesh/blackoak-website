@@ -21,9 +21,11 @@ export default function TermsOfServicePage() {
       <div className="container-narrow">
         {termsData.sections.map((section, i) => (
           <div key={i} className={i > 0 ? 'mt-10' : ''}>
-            <h1 className={i === 0 ? 'text-4xl font-semibold mb-6' : 'text-2xl font-semibold mb-4'}>
-              {section.title}
-            </h1>
+            {i === 0 ? (
+              <h1 className="text-4xl font-semibold mb-6">{section.title}</h1>
+            ) : (
+              <h2 className="text-2xl font-semibold mb-4">{section.title}</h2>
+            )}
             <div className="text-gray-600 leading-relaxed whitespace-pre-line">
               {section.content}
             </div>

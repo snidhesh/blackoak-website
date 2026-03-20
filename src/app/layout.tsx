@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     siteName: 'BlackOak Real Estate',
     images: [
       {
-        url: '/images/og-default.jpg',
+        url: `${BASE_URL}/images/og-default.jpg`,
         width: 1200,
         height: 630,
         alt: 'BlackOak Real Estate - Luxury Properties in Dubai',

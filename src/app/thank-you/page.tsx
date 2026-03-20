@@ -6,6 +6,13 @@ import Button from '@/components/ui/Button';
 export const metadata: Metadata = {
   title: 'Thank You',
   description: 'Your request has been successfully submitted. Our team will review your enquiry and get back to you shortly.',
+  alternates: { canonical: 'https://blackoak-re.com/thank-you/' },
+  openGraph: {
+    title: 'Thank You | BlackOak Real Estate',
+    description: 'Your request has been successfully submitted. Our team will get back to you shortly.',
+    type: 'website',
+    url: 'https://blackoak-re.com/thank-you/',
+  },
   robots: { index: false, follow: false },
 };
 
