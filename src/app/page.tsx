@@ -131,23 +131,23 @@ export default async function HomePage() {
             />
           </AnimateOnScroll>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 md:gap-4">
             {homepage.featuredDevelopers.projects.map((project: { developer: string; name: string; logo: string | null; image: string; href: string }, i: number) => (
               <AnimateOnScroll key={project.developer} delay={i * 0.06}>
-                <div className="group relative overflow-hidden aspect-[3/4]">
+                <div className="group relative overflow-hidden aspect-square md:aspect-[3/4]">
                   {/* Background image */}
                   <Image
                     src={project.image}
                     alt={`${project.developer} – ${project.name}`}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 50vw, 25vw"
                   />
 
                   {/* Default state: dark overlay + developer logo centered */}
                   <div className="absolute inset-0 bg-black/50 transition-opacity duration-500 group-hover:opacity-0" />
-                  <div className="absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-2">
-                    <div className="relative w-[200px] h-[75px]">
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-3 md:p-6 transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-2">
+                    <div className="relative w-[100px] h-[40px] md:w-[200px] md:h-[75px]">
                       <Image
                         src={project.logo!}
                         alt={project.developer}
@@ -159,12 +159,12 @@ export default async function HomePage() {
 
                   {/* Hover state: gradient overlay + project name */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                    <div className="w-10 h-px bg-white/60 mb-3" />
-                    <p className="text-white text-[18px] font-medium leading-[26px] tracking-wide">
+                  <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                    <div className="w-6 md:w-10 h-px bg-white/60 mb-2 md:mb-3" />
+                    <p className="text-white text-[12px] md:text-[18px] font-medium leading-[16px] md:leading-[26px] tracking-wide line-clamp-2">
                       {project.name}
                     </p>
-                    <p className="text-white/60 text-[12px] font-light tracking-[1.5px] uppercase mt-1">
+                    <p className="text-white/60 text-[10px] md:text-[12px] font-light tracking-[1.5px] uppercase mt-1">
                       by {project.developer}
                     </p>
                   </div>
