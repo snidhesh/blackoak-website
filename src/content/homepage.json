@@ -12,9 +12,71 @@
       "buttonText": "SEARCH"
     }
   },
-  "featuredProjects": {
+  "featuredDevelopers": {
     "label": "Featured Projects",
-    "heading": "Premier developments designed for lifestyle and investment",
+    "heading": "Premier developments by the region's most prestigious developers",
+    "projects": [
+      {
+        "developer": "Ohana",
+        "name": "Manchester City Residence, Abu Dhabi",
+        "logo": "/images/partners/ohana.svg",
+        "image": "/images/featured-projects/ohana.webp",
+        "href": "/projects"
+      },
+      {
+        "developer": "Aman Residences",
+        "name": "Dubai Water Canal",
+        "logo": "/images/partners/aman.svg",
+        "image": "/images/featured-projects/aman.jpg",
+        "href": "/projects"
+      },
+      {
+        "developer": "Ellington",
+        "name": "The Meriva",
+        "logo": "/images/partners/ellington.svg",
+        "image": "/images/featured-projects/ellington.webp",
+        "href": "/projects"
+      },
+      {
+        "developer": "Ora",
+        "name": "Byn by Ora",
+        "logo": "/images/partners/ora.svg",
+        "image": "/images/featured-projects/ora.webp",
+        "href": "/projects"
+      },
+      {
+        "developer": "H&H",
+        "name": "Janu",
+        "logo": "/images/partners/hh.svg",
+        "image": "/images/featured-projects/hh.png",
+        "href": "/projects"
+      },
+      {
+        "developer": "Aldar",
+        "name": "The Wilds Residences",
+        "logo": "/images/partners/aldar.svg",
+        "image": "/images/featured-projects/aldar.webp",
+        "href": "/projects"
+      },
+      {
+        "developer": "Omoria",
+        "name": "Private Residences, Dubai Islands",
+        "logo": "/images/partners/omoria.svg",
+        "image": "/images/featured-projects/omoria.webp",
+        "href": "/projects"
+      },
+      {
+        "developer": "Meraas",
+        "name": "Nad Al Sheba Gardens",
+        "logo": "/images/partners/meraas.svg",
+        "image": "/images/featured-projects/meraas.webp",
+        "href": "/projects"
+      }
+    ]
+  },
+  "featuredProjects": {
+    "label": "Featured Properties",
+    "heading": "Exclusive listings curated for discerning buyers and investors",
     "cta": { "label": "View All Properties", "href": "/projects" }
   },
   "neighbourhoods": {

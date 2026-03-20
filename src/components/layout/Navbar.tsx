@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { ChevronDown, Globe, Menu, X } from 'lucide-react';
+import { ChevronDown, Globe, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import MobileMenu from './MobileMenu';
 
@@ -212,15 +212,11 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="lg:hidden p-2"
-            onClick={() => setMobileOpen(!mobileOpen)}
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            className={cn('lg:hidden p-2', mobileOpen && 'invisible')}
+            onClick={() => setMobileOpen(true)}
+            aria-label="Open menu"
           >
-            {mobileOpen ? (
-              <X className={cn('w-6 h-6', scrolled ? 'text-black' : 'text-white')} />
-            ) : (
-              <Menu className={cn('w-6 h-6', scrolled ? 'text-black' : 'text-white')} />
-            )}
+            <Menu className={cn('w-6 h-6', scrolled ? 'text-black' : 'text-white')} />
           </button>
         </nav>
       </header>

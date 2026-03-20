@@ -72,8 +72,8 @@ export default async function HomePage() {
             {homepage.hero.subtitle}
           </p>
 
-          {/* Search Bar */}
-          <div className="mt-10 max-w-3xl mx-auto">
+          {/* Search Bar — desktop */}
+          <div className="mt-10 max-w-3xl mx-auto hidden md:block">
             <Link
               href="/projects"
               className="flex items-center bg-white rounded overflow-hidden shadow-lg text-left h-[60px]"
@@ -108,10 +108,74 @@ export default async function HomePage() {
               </div>
             </Link>
           </div>
+          {/* Search Button — mobile */}
+          <div className="mt-10 md:hidden flex justify-center">
+            <Link
+              href="/projects"
+              className="inline-block border border-white text-white text-[13px] font-medium tracking-wider uppercase px-8 py-3"
+            >
+              Start {homepage.hero.searchBar.buttonText}
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Featured Projects */}
+      {/* Featured Projects (Developer Boxes) */}
+      <section className="py-20">
+        <div className="container-wide">
+          <AnimateOnScroll>
+            <SectionLabel>{homepage.featuredDevelopers.label}</SectionLabel>
+            <SectionHeading
+              title={homepage.featuredDevelopers.heading}
+              className="mt-4 mb-12"
+            />
+          </AnimateOnScroll>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {homepage.featuredDevelopers.projects.map((project: { developer: string; name: string; logo: string | null; image: string; href: string }, i: number) => (
+              <AnimateOnScroll key={project.developer} delay={i * 0.06}>
+                <div className="group relative overflow-hidden aspect-[3/4]">
+                  {/* Background image */}
+                  <Image
+                    src={project.image}
+                    alt={`${project.developer} – ${project.name}`}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+
+                  {/* Default state: dark overlay + developer logo centered */}
+                  <div className="absolute inset-0 bg-black/50 transition-opacity duration-500 group-hover:opacity-0" />
+                  <div className="absolute inset-0 flex flex-col items-center justify-center p-6 transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-2">
+                    <div className="relative w-[200px] h-[75px]">
+                      <Image
+                        src={project.logo!}
+                        alt={project.developer}
+                        fill
+                        className="object-contain brightness-0 invert"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Hover state: gradient overlay + project name */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
+                    <div className="w-10 h-px bg-white/60 mb-3" />
+                    <p className="text-white text-[18px] font-medium leading-[26px] tracking-wide">
+                      {project.name}
+                    </p>
+                    <p className="text-white/60 text-[12px] font-light tracking-[1.5px] uppercase mt-1">
+                      by {project.developer}
+                    </p>
+                  </div>
+                </div>
+              </AnimateOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Properties */}
       <section className="py-20">
         <div className="container-wide">
           <AnimateOnScroll>
@@ -122,7 +186,8 @@ export default async function HomePage() {
             />
           </AnimateOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {/* Desktop grid */}
+          <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {featuredProjects.map((project, i) => (
               <AnimateOnScroll
                 key={project.slug}
@@ -144,7 +209,6 @@ export default async function HomePage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent transition-opacity duration-300" />
                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                    {/* Arrow icon top-right */}
                     <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <ArrowUpRight className="w-6 h-6 text-white" />
                     </div>
@@ -159,7 +223,6 @@ export default async function HomePage() {
                       </p>
                       <p className="text-white/80 font-light text-[16px] leading-[40px]">{project.name}</p>
 
-                      {/* Hover details row */}
                       <div className="flex items-center gap-4 text-white/80 text-[12px] font-normal max-h-0 overflow-hidden opacity-0 group-hover:max-h-[40px] group-hover:opacity-100 transition-all duration-300 mt-1">
                         <span className="flex items-center gap-1">
                           <MapPin className="w-3 h-3" />
@@ -181,6 +244,65 @@ export default async function HomePage() {
             ))}
           </div>
 
+          {/* Mobile horizontal scroll */}
+          <div className="md:hidden relative">
+            <div className="absolute left-0 top-[156px] w-[10px] h-[67px] bg-black rounded-r z-10" />
+            <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pl-5 pr-5">
+              {featuredProjects.map((project) => (
+                <Link
+                  key={project.slug}
+                  href={`/projects/${project.slug}`}
+                  className="group flex-shrink-0 w-[85vw] snap-start"
+                >
+                  <div className="relative h-[276px] overflow-hidden">
+                    <Image
+                      src={project.mainImage}
+                      alt={project.name}
+                      fill
+                      className="object-cover"
+                      sizes="85vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-5">
+                      <span className="inline-block bg-black/60 text-white text-[10px] font-medium tracking-[0.2px] uppercase leading-[15px] px-3 py-1 rounded-sm mb-3">
+                        {project.propertyType}
+                      </span>
+                      <p className="text-white font-semibold text-[24px] leading-[28px] flex items-center gap-2">
+                        <DirhamIcon size={16} className="invert" />
+                        {formatPriceNumber(project.price)}
+                      </p>
+                    </div>
+                    <div className="absolute bottom-4 right-4">
+                      <ArrowUpRight className="w-6 h-6 text-white" />
+                    </div>
+                  </div>
+                  <div className="pt-4">
+                    <h3 className="font-semibold text-[18px] leading-[24px] text-gray-900 line-clamp-2">
+                      {project.name}
+                    </h3>
+                    <div className="mt-2 space-y-1 text-[13px] text-[#5F6368]">
+                      <p className="flex items-center gap-1">
+                        <MapPin className="w-3.5 h-3.5" />
+                        {project.location.address}
+                      </p>
+                      <div className="flex items-center gap-3">
+                        <span className="flex items-center gap-1">
+                          <BedDouble className="w-3.5 h-3.5" />
+                          {project.bedrooms} Bedrooms
+                        </span>
+                        <span className="text-[#5F6368]">•</span>
+                        <span className="flex items-center gap-1">
+                          <Maximize2 className="w-3.5 h-3.5" />
+                          {project.area.toLocaleString('en-US')} {project.areaUnit}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
           <div className="text-center mt-10">
             <Button href={homepage.featuredProjects.cta.href} variant="outline">
               {homepage.featuredProjects.cta.label} <ArrowRight className="w-4 h-4 ml-2" />
@@ -199,7 +321,8 @@ export default async function HomePage() {
             </h2>
           </AnimateOnScroll>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          {/* Desktop grid */}
+          <div className="hidden md:grid md:grid-cols-4 gap-2">
             {neighbourhoods.map((n, i) => (
               <AnimateOnScroll key={n.slug} delay={i * 0.08}>
                 <Link
@@ -211,7 +334,7 @@ export default async function HomePage() {
                     alt={n.name}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 768px) 50vw, 25vw"
+                    sizes="25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -223,6 +346,33 @@ export default async function HomePage() {
                 </Link>
               </AnimateOnScroll>
             ))}
+          </div>
+
+          {/* Mobile horizontal scroll */}
+          <div className="md:hidden relative">
+            <div className="absolute left-0 top-[97px] w-[10px] h-[58px] bg-white rounded-r z-10" />
+            <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pl-5 pr-5">
+              {neighbourhoods.map((n) => (
+                <Link
+                  key={n.slug}
+                  href={`/neighbourhoods/${n.slug}`}
+                  className="group relative flex-shrink-0 w-[85vw] aspect-[3/2] overflow-hidden snap-start"
+                >
+                  <Image
+                    src={n.heroImage}
+                    alt={n.name}
+                    fill
+                    className="object-cover"
+                    sizes="85vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-5 flex items-end justify-between">
+                    <h3 className="text-white font-light text-[20px] leading-[28px]">{n.name}</h3>
+                    <ArrowUpRight className="w-5 h-5 text-white shrink-0" />
+                  </div>
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Trusted Partners */}
@@ -451,7 +601,8 @@ export default async function HomePage() {
             />
           </AnimateOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Desktop grid */}
+          <div className="hidden md:grid md:grid-cols-3 gap-6">
             {news.map((article, i) => (
               <AnimateOnScroll key={article.slug} delay={(i + 1) * 0.1}>
                 <Link href="/insights/news" className="group block">
@@ -461,7 +612,7 @@ export default async function HomePage() {
                       alt={article.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 33vw"
+                      sizes="33vw"
                     />
                   </div>
                   <div className="mt-4 space-y-2">
@@ -480,6 +631,41 @@ export default async function HomePage() {
             ))}
           </div>
 
+          {/* Mobile horizontal scroll */}
+          <div className="md:hidden relative">
+            <div className="absolute left-0 top-[120px] w-[10px] h-[58px] bg-black rounded-r z-10" />
+            <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pl-5 pr-5">
+              {news.map((article) => (
+                <Link
+                  key={article.slug}
+                  href="/insights/news"
+                  className="group flex-shrink-0 w-[85vw] snap-start"
+                >
+                  <div className="relative aspect-[454/314] bg-gray-200 overflow-hidden">
+                    <Image
+                      src={article.image}
+                      alt={article.title}
+                      fill
+                      className="object-cover"
+                      sizes="85vw"
+                    />
+                  </div>
+                  <div className="mt-4 space-y-2">
+                    <p className="text-[12px] font-medium leading-[30px] text-[#5F6368]">
+                      {formatDate(article.publishedDate)}
+                    </p>
+                    <h3 className="font-semibold text-[18px] leading-[26px] text-gray-900 line-clamp-2">
+                      {article.title}
+                    </h3>
+                    <p className="font-medium text-[14px] leading-[20px] text-[#5F6368] line-clamp-2">
+                      {article.excerpt}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
           <div className="text-center mt-10">
             <Button href={homepage.news.cta.href} variant="outline">
               {homepage.news.cta.label} <ArrowRight className="w-4 h-4 ml-2" />
@@ -491,7 +677,7 @@ export default async function HomePage() {
       {/* Media Logos */}
       <section className="py-12 bg-white">
         <div className="container-wide">
-          <div className="flex justify-center items-center gap-6 sm:gap-10 md:gap-14 overflow-hidden">
+          <div className="flex justify-center items-center gap-6 sm:gap-10 md:gap-14 overflow-x-auto scrollbar-hide">
             {homepage.mediaLogos.map((logo) => (
               <div key={logo.name} className="relative h-6 w-[80px] sm:w-[100px] md:w-[120px] shrink-0 flex items-center justify-center">
                 <Image
