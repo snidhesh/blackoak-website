@@ -2,16 +2,16 @@ import type { Metadata } from 'next';
 import privacyData from '@/content/privacy-policy.json';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy',
+  title: 'Privacy Policy - Your Data Rights',
   description:
     'Learn how BlackOak Real Estate collects, uses, and protects your personal data. Our commitment to privacy and transparency in Dubai luxury real estate services.',
-  alternates: { canonical: 'https://blackoak-re.com/privacy-policy' },
+  alternates: { canonical: 'https://blackoak-re.com/privacy-policy/' },
   openGraph: {
     title: 'Privacy Policy | BlackOak Real Estate',
     description:
       'Learn how BlackOak Real Estate collects, uses, and protects your personal data.',
     type: 'website',
-    url: 'https://blackoak-re.com/privacy-policy',
+    url: 'https://blackoak-re.com/privacy-policy/',
   },
 };
 

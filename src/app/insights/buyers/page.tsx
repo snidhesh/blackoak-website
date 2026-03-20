@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   title: 'Dubai Property Buyers Guide',
   description:
     'How to buy property in Dubai as a foreigner. Complete guide covering Golden Visa, freehold areas, mortgages, and the buying process. Expert advice from BlackOak.',
-  alternates: { canonical: 'https://blackoak-re.com/insights/buyers' },
+  alternates: { canonical: 'https://blackoak-re.com/insights/buyers/' },
   openGraph: {
     title: 'Dubai Property Buyers Guide | BlackOak Real Estate',
     description:
       'How to buy property in Dubai as a foreigner. Complete guide covering Golden Visa, freehold areas, mortgages, and the buying process.',
     type: 'website',
-    url: 'https://blackoak-re.com/insights/buyers',
+    url: 'https://blackoak-re.com/insights/buyers/',
     images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'Dubai Property Buyers Guide' }],
   },
 };

@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: 'Our Team - Dubai Real Estate Experts',
   description:
     'Meet the BlackOak Real Estate team. Experienced real estate consultants, investment advisors & property specialists serving Dubai and global clients.',
-  alternates: { canonical: 'https://blackoak-re.com/about/our-team' },
+  alternates: { canonical: 'https://blackoak-re.com/about/our-team/' },
   openGraph: {
     title: 'Our Team - Dubai Real Estate Experts',
     description:
       'Meet the BlackOak Real Estate team. Experienced real estate consultants, investment advisors & property specialists serving Dubai and global clients.',
     type: 'website',
-    url: 'https://blackoak-re.com/about/our-team',
+    url: 'https://blackoak-re.com/about/our-team/',
     images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'BlackOak Real Estate Team' }],
   },
 };

@@ -2,16 +2,16 @@ import type { Metadata } from 'next';
 import termsData from '@/content/terms-of-service.json';
 
 export const metadata: Metadata = {
-  title: 'Terms of Service',
+  title: 'Terms of Service - User Agreement',
   description:
     'Terms and conditions governing your use of BlackOak Real Estate services and website. Read our policies on property transactions, liability, and user obligations.',
-  alternates: { canonical: 'https://blackoak-re.com/terms-of-service' },
+  alternates: { canonical: 'https://blackoak-re.com/terms-of-service/' },
   openGraph: {
     title: 'Terms of Service | BlackOak Real Estate',
     description:
       'Terms and conditions governing your use of BlackOak Real Estate services and website.',
     type: 'website',
-    url: 'https://blackoak-re.com/terms-of-service',
+    url: 'https://blackoak-re.com/terms-of-service/',
   },
 };
 

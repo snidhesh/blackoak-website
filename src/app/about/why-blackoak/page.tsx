@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   title: 'Why BlackOak - About Our Luxury Real Estate Firm',
   description:
     'BlackOak Real Estate combines private advisory, concierge services & strategic investments across Dubai. Trusted by HNW clients for luxury property expertise.',
-  alternates: { canonical: 'https://blackoak-re.com/about/why-blackoak' },
+  alternates: { canonical: 'https://blackoak-re.com/about/why-blackoak/' },
   openGraph: {
     title: 'Why BlackOak - About Our Luxury Real Estate Firm',
     description:
       'BlackOak Real Estate combines private advisory, concierge services & strategic investments across Dubai. Trusted by HNW clients for luxury property expertise.',
     type: 'website',
-    url: 'https://blackoak-re.com/about/why-blackoak',
+    url: 'https://blackoak-re.com/about/why-blackoak/',
     images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'About BlackOak Real Estate' }],
   },
 };

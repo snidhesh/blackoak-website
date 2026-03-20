@@ -6,16 +6,16 @@ import ContactForm from '@/components/sections/ContactForm';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
+  title: 'Contact Us - Dubai & London Offices',
   description:
     'Contact BlackOak Real Estate for luxury property enquiries in Dubai. Offices in Dubai Marina & London. Schedule a private consultation today.',
-  alternates: { canonical: 'https://blackoak-re.com/contact' },
+  alternates: { canonical: 'https://blackoak-re.com/contact/' },
   openGraph: {
     title: 'Contact Us | BlackOak Real Estate',
     description:
       'Contact BlackOak Real Estate for luxury property enquiries in Dubai. Offices in Dubai Marina & London.',
     type: 'website',
-    url: 'https://blackoak-re.com/contact',
+    url: 'https://blackoak-re.com/contact/',
     images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'Contact BlackOak Real Estate' }],
   },
 };
@@ -46,7 +46,7 @@ const contactJsonLd = {
   '@type': 'ContactPage',
   name: 'Contact BlackOak Real Estate',
   description: 'Contact BlackOak Real Estate for luxury property enquiries in Dubai.',
-  url: 'https://blackoak-re.com/contact',
+  url: 'https://blackoak-re.com/contact/',
   mainEntity: {
     '@type': 'RealEstateAgent',
     name: 'BlackOak Real Estate',

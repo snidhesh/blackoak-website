@@ -38,11 +38,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       type: 'website',
-      url: `https://blackoak-re.com/projects/${params.slug}`,
+      url: `https://blackoak-re.com/projects/${params.slug}/`,
       images: [{ url: project.mainImage, alt: project.name }],
     },
     alternates: {
-      canonical: `https://blackoak-re.com/projects/${params.slug}`,
+      canonical: `https://blackoak-re.com/projects/${params.slug}/`,
     },
   };
 }
@@ -70,7 +70,7 @@ export default async function ProjectDetailPage({ params }: Props) {
     '@type': 'RealEstateListing',
     name: project.name,
     description: project.description,
-    url: `https://blackoak-re.com/projects/${params.slug}`,
+    url: `https://blackoak-re.com/projects/${params.slug}/`,
     image: allImages,
     datePosted: project.availableFrom || new Date().toISOString().split('T')[0],
     offers: {

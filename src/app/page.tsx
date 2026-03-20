@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import dynamic from 'next/dynamic';
@@ -18,6 +19,21 @@ const SplashScreen = dynamic(
 );
 
 export const revalidate = 300;
+
+export const metadata: Metadata = {
+  title: 'Luxury Properties & Investment in Dubai',
+  description:
+    'Discover Dubai\'s finest luxury properties with BlackOak Real Estate. Browse premium villas, apartments & penthouses across Palm Jumeirah, Emirates Hills, Downtown Dubai and more.',
+  alternates: { canonical: 'https://blackoak-re.com/' },
+  openGraph: {
+    title: 'BlackOak Real Estate | Luxury Properties & Investment in Dubai',
+    description:
+      'Discover Dubai\'s finest luxury properties. Browse premium villas, apartments & penthouses across Dubai\'s most prestigious neighbourhoods.',
+    type: 'website',
+    url: 'https://blackoak-re.com/',
+    images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'BlackOak Real Estate - Luxury Properties in Dubai' }],
+  },
+};
 
 export default async function HomePage() {
   const featuredProjects = await getFeaturedProjects();

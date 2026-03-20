@@ -10,13 +10,13 @@ export const metadata: Metadata = {
   title: 'Sell Your Property in Dubai',
   description:
     'List your property with BlackOak Real Estate. Global buyer network, professional marketing & dedicated agent support to sell or rent your Dubai property fast.',
-  alternates: { canonical: 'https://blackoak-re.com/list-your-property' },
+  alternates: { canonical: 'https://blackoak-re.com/list-your-property/' },
   openGraph: {
     title: 'Sell Your Property in Dubai | BlackOak Real Estate',
     description:
       'List your property with BlackOak Real Estate. Global buyer network, professional marketing & dedicated agent support.',
     type: 'website',
-    url: 'https://blackoak-re.com/list-your-property',
+    url: 'https://blackoak-re.com/list-your-property/',
     images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'List Your Property with BlackOak' }],
   },
 };
@@ -67,11 +67,14 @@ export default function ListYourPropertyPage() {
       <section className="pt-[156px] pb-8">
         <div className="container-narrow text-center">
           <SectionLabel>List Your Property</SectionLabel>
-          <SectionHeading
-            title="Sell or Rent Your Property with Confidence"
-            subtitle="Partner with Dubai's premier luxury real estate firm for unmatched exposure and expert guidance."
-            className="mt-5"
-          />
+          <div className="mt-5 text-center">
+            <h1 className="text-[28px] md:text-[32px] font-normal leading-[48px] text-black">
+              Sell or Rent Your Property with Confidence
+            </h1>
+            <p className="mt-4 text-lg max-w-2xl mx-auto text-gray-600">
+              Partner with Dubai&apos;s premier luxury real estate firm for unmatched exposure and expert guidance.
+            </p>
+          </div>
         </div>
       </section>
 

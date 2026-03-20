@@ -26,13 +26,13 @@ export function generateMetadata({ params }: Props): Metadata {
       title: article.title,
       description: article.excerpt,
       type: 'article',
-      url: `https://blackoak-re.com/insights/news/${params.slug}`,
+      url: `https://blackoak-re.com/insights/news/${params.slug}/`,
       publishedTime: article.publishedDate,
       authors: [article.author],
       images: [{ url: article.image, alt: article.title }],
     },
     alternates: {
-      canonical: `https://blackoak-re.com/insights/news/${params.slug}`,
+      canonical: `https://blackoak-re.com/insights/news/${params.slug}/`,
     },
   };
 }

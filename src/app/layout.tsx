@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_AE',
-    url: BASE_URL,
+    url: BASE_URL + '/',
     siteName: 'BlackOak Real Estate',
     images: [
       {
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     site: '@blackoakrealestate',
   },
   alternates: {
-    canonical: BASE_URL,
+    canonical: BASE_URL + '/',
   },
   robots: {
     index: true,
@@ -146,9 +146,12 @@ export default function RootLayout({
             }
           })();
         `}} />
+        <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded">
+          Skip to main content
+        </a>
         <div id="app-shell">
           <Navbar />
-          <main className="min-h-screen">{children}</main>
+          <main id="main-content" className="min-h-screen">{children}</main>
           <Footer />
           {/* <WhatsAppButton /> */}
         </div>

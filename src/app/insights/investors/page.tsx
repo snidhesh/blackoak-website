@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: 'Dubai Property Investment Opportunities',
   description:
     'Exclusive access to institutional-grade real estate investments in Dubai. Syndicated deals, high ROI opportunities & expert advisory for HNW investors.',
-  alternates: { canonical: 'https://blackoak-re.com/insights/investors' },
+  alternates: { canonical: 'https://blackoak-re.com/insights/investors/' },
   openGraph: {
     title: 'Dubai Property Investment Opportunities | BlackOak',
     description:
       'Exclusive access to institutional-grade real estate investments in Dubai. Syndicated deals, high ROI opportunities & expert advisory.',
     type: 'website',
-    url: 'https://blackoak-re.com/insights/investors',
+    url: 'https://blackoak-re.com/insights/investors/',
     images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'Dubai Property Investment with BlackOak' }],
   },
 };

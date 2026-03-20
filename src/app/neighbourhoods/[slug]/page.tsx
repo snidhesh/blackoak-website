@@ -25,11 +25,11 @@ export function generateMetadata({ params }: Props): Metadata {
       title: neighbourhood.seo.title,
       description: neighbourhood.seo.description,
       type: 'website',
-      url: `https://blackoak-re.com/neighbourhoods/${params.slug}`,
+      url: `https://blackoak-re.com/neighbourhoods/${params.slug}/`,
       images: [{ url: neighbourhood.heroImage, alt: `${neighbourhood.name} - Dubai` }],
     },
     alternates: {
-      canonical: `https://blackoak-re.com/neighbourhoods/${params.slug}`,
+      canonical: `https://blackoak-re.com/neighbourhoods/${params.slug}/`,
     },
   };
 }

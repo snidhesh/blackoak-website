@@ -27,13 +27,13 @@ export function generateMetadata({ params }: Props): Metadata {
     title,
     description,
     alternates: {
-      canonical: `https://blackoak-re.com/career/${params.slug}`,
+      canonical: `https://blackoak-re.com/career/${params.slug}/`,
     },
     openGraph: {
       title,
       description,
       type: 'website',
-      url: `https://blackoak-re.com/career/${params.slug}`,
+      url: `https://blackoak-re.com/career/${params.slug}/`,
     },
   };
 }

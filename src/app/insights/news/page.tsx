@@ -11,13 +11,13 @@ export const metadata: Metadata = {
   title: 'Dubai Real Estate News & Market Insights',
   description:
     'Latest Dubai real estate news, market reports & investment insights from BlackOak. Stay informed on property trends, regulations & opportunities in the UAE.',
-  alternates: { canonical: 'https://blackoak-re.com/insights/news' },
+  alternates: { canonical: 'https://blackoak-re.com/insights/news/' },
   openGraph: {
     title: 'Dubai Real Estate News & Market Insights | BlackOak',
     description:
       'Latest Dubai real estate news, market reports & investment insights from BlackOak. Stay informed on property trends & opportunities.',
     type: 'website',
-    url: 'https://blackoak-re.com/insights/news',
+    url: 'https://blackoak-re.com/insights/news/',
     images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'Dubai Real Estate News' }],
   },
 };

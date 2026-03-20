@@ -9,13 +9,13 @@ export const metadata: Metadata = {
   title: 'Luxury Properties for Sale & Rent in Dubai',
   description:
     'Explore luxury villas, apartments & penthouses for sale and rent across Palm Jumeirah, Emirates Hills, Downtown Dubai & more. Off-plan and ready properties curated by BlackOak.',
-  alternates: { canonical: 'https://blackoak-re.com/projects' },
+  alternates: { canonical: 'https://blackoak-re.com/projects/' },
   openGraph: {
     title: 'Luxury Properties for Sale & Rent in Dubai',
     description:
       'Explore luxury villas, apartments & penthouses for sale and rent across Palm Jumeirah, Emirates Hills, Downtown Dubai & more.',
     type: 'website',
-    url: 'https://blackoak-re.com/projects',
+    url: 'https://blackoak-re.com/projects/',
     images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'BlackOak Luxury Properties in Dubai' }],
   },
 };
