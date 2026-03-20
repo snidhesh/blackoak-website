@@ -133,7 +133,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {/* Hero */}
-      <section className="relative h-[800px] flex items-end overflow-hidden">
+      <section className="relative h-[520px] md:h-[700px] lg:h-[800px] flex items-end overflow-hidden">
         <Image
           src={project.mainImage}
           alt={project.name}
@@ -144,53 +144,53 @@ export default async function ProjectDetailPage({ params }: Props) {
         {/* Top gradient for navbar */}
         <div className="absolute inset-x-0 top-0 h-[188px] bg-gradient-to-b from-black/50 to-transparent" />
         {/* Bottom gradient */}
-        <div className="absolute inset-x-0 bottom-0 h-[400px] bg-gradient-to-t from-black to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-black via-black/40 to-transparent" />
 
-        <div className="relative z-10 container-wide pb-12 w-full">
-          <div className="flex items-end justify-between">
+        <div className="relative z-10 container-wide pb-8 md:pb-12 w-full">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             {/* Left side: Name, Location, Specs */}
-            <div>
-              <h1 className="text-[50px] font-light leading-tight text-white">
+            <div className="min-w-0">
+              <h1 className="text-[24px] md:text-[36px] lg:text-[42px] font-light leading-[1.2] text-white">
                 {project.name}
               </h1>
-              <div className="flex items-center gap-1.5 mt-3 text-white">
-                <MapPin className="w-4 h-4" />
-                <span className="text-base">{project.location.address}</span>
+              <div className="flex items-center gap-1.5 mt-2 md:mt-3 text-white/90">
+                <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0" />
+                <span className="text-[13px] md:text-base">{project.location.address}</span>
               </div>
-              <div className="flex items-center gap-2.5 mt-3 text-white text-base font-medium">
+              <div className="flex items-center gap-2.5 mt-2 md:mt-3 text-white/90 text-[13px] md:text-base font-medium">
                 <span className="flex items-center gap-1.5">
-                  <Bed className="w-5 h-5" />
-                  {project.bedrooms} Bedrooms
+                  <Bed className="w-4 h-4 md:w-5 md:h-5" />
+                  {project.bedrooms} Bed
                 </span>
                 <span className="w-1 h-1 rounded-full bg-white/60" />
                 <span className="flex items-center gap-1.5">
-                  <Maximize className="w-[18px] h-[18px]" />
+                  <Maximize className="w-4 h-4 md:w-[18px] md:h-[18px]" />
                   {project.area.toLocaleString()} {project.areaUnit}
                 </span>
               </div>
             </div>
 
             {/* Right side: Price + CTAs */}
-            <div className="text-right">
-              <p className="text-[13px] text-white/80 uppercase tracking-wider">
+            <div className="md:text-right shrink-0">
+              <p className="text-[11px] md:text-[13px] text-white/70 uppercase tracking-wider">
                 Price Starting From
               </p>
-              <div className="flex items-center justify-end gap-2 mt-2">
-                <DirhamIcon size={20} className="invert shrink-0" />
-                <span className="text-[28px] font-semibold text-white">
+              <div className="flex items-center md:justify-end gap-2 mt-1">
+                <DirhamIcon size={18} className="invert shrink-0" />
+                <span className="text-[22px] md:text-[28px] font-semibold text-white">
                   {formatPriceNumber(project.price)}
                 </span>
               </div>
-              <div className="flex items-center gap-5 mt-4">
+              <div className="flex items-center gap-3 mt-4">
                 <a
                   href="#enquiry"
-                  className="flex items-center justify-center w-[200px] h-[48px] bg-black border-2 border-black text-white text-xs font-medium uppercase tracking-wider hover:bg-gray-900 transition-colors"
+                  className="flex items-center justify-center flex-1 md:flex-none md:w-[180px] h-[44px] md:h-[48px] bg-black border-2 border-black text-white text-[11px] md:text-xs font-medium uppercase tracking-wider hover:bg-gray-900 transition-colors"
                 >
                   Register Interest
                 </a>
                 <a
                   href="#enquiry"
-                  className="flex items-center justify-center w-[200px] h-[48px] bg-white border-2 border-black text-black text-xs font-medium uppercase tracking-wider hover:bg-gray-100 transition-colors"
+                  className="flex items-center justify-center flex-1 md:flex-none md:w-[180px] h-[44px] md:h-[48px] bg-white border-2 border-black text-black text-[11px] md:text-xs font-medium uppercase tracking-wider hover:bg-gray-100 transition-colors"
                 >
                   Request Callback
                 </a>
@@ -350,7 +350,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 </h2>
               </div>
             </AnimateOnScroll>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-40 gap-y-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 lg:gap-x-24 gap-y-3">
               {project.amenities.map((amenity) => (
                 <div key={amenity} className="flex items-center gap-2">
                   <Check className="w-5 h-5 text-white/70 shrink-0" />

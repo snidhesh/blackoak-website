@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import type { Project } from '@/types/project';
-import FilterBar from '@/components/sections/FilterBar';
+import FilterBar, { type FilterState } from '@/components/sections/FilterBar';
 import PropertyGrid from '@/components/sections/PropertyGrid';
 import Pagination from '@/components/ui/Pagination';
 
@@ -21,8 +21,8 @@ export default function ProjectsClient({
   propertyTypes,
   offerings,
 }: ProjectsClientProps) {
-  const [filters, setFilters] = useState({
-    neighbourhood: '',
+  const [filters, setFilters] = useState<FilterState>({
+    neighbourhoods: [],
     propertyType: '',
     bedrooms: '',
     priceRange: '',
@@ -34,7 +34,7 @@ export default function ProjectsClient({
   const filteredProjects = useMemo(() => {
     let result = projects.filter((p) => {
       if (filters.offering && p.offering !== filters.offering) return false;
-      if (filters.neighbourhood && p.neighbourhood !== filters.neighbourhood) return false;
+      if (filters.neighbourhoods.length > 0 && !filters.neighbourhoods.includes(p.neighbourhood)) return false;
       if (filters.propertyType && p.propertyType !== filters.propertyType) return false;
       if (filters.bedrooms) {
         const beds = parseInt(filters.bedrooms);
@@ -66,40 +66,30 @@ export default function ProjectsClient({
     currentPage * ITEMS_PER_PAGE
   );
 
-  const handleFilterChange = (newFilters: typeof filters) => {
+  const handleFilterChange = (newFilters: FilterState) => {
     setFilters(newFilters);
     setCurrentPage(1);
   };
 
   return (
     <>
-      <FilterBar
-        neighbourhoods={neighbourhoodSlugs}
-        propertyTypes={propertyTypes}
-        offerings={offerings}
-        onFilterChange={handleFilterChange}
-      />
-
-      {/* Count + Sort row */}
-      <div className="flex items-center justify-between mt-6 mb-6">
-        <p className="text-sm text-gray-500">
-          {filteredProjects.length} listing{filteredProjects.length !== 1 ? 's' : ''}
-        </p>
-        <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-500">Sort:</span>
-          <select
-            value={sort}
-            onChange={(e) => setSort(e.target.value)}
-            className="text-sm font-medium bg-white border border-gray-200 px-3 py-2 pr-8 appearance-none cursor-pointer"
-          >
-            <option value="most-recent">Most Recent</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
-          </select>
-        </div>
+      {/* Sticky filter bar */}
+      <div className="sticky top-16 lg:top-20 z-30 bg-white -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-4 border-b border-gray-100 shadow-[0_2px_8px_rgba(0,0,0,0.04)] overflow-x-hidden">
+        <FilterBar
+          neighbourhoods={neighbourhoodSlugs}
+          propertyTypes={propertyTypes}
+          offerings={offerings}
+          onFilterChange={handleFilterChange}
+          onSortChange={setSort}
+          sort={sort}
+          resultCount={filteredProjects.length}
+        />
       </div>
 
-      <PropertyGrid projects={paginatedProjects} />
+      {/* Property grid */}
+      <div className="mt-8">
+        <PropertyGrid projects={paginatedProjects} />
+      </div>
 
       <Pagination
         currentPage={currentPage}

@@ -72,7 +72,7 @@ export default function Navbar() {
 
   // Pages with white/light backgrounds need a solid black navbar
   const p = pathname.replace(/\/$/, '') || '/';
-  const needsSolidNav = p === '/projects' || p.startsWith('/insights/news') || p === '/career' || p === '/contact' || p === '/list-your-property';
+  const needsSolidNav = p === '/projects' || p.startsWith('/insights/news') || p === '/career' || p === '/contact' || p === '/list-your-property' || p === '/privacy-policy' || p === '/disclaimer' || p === '/terms-of-service';
 
   const isActive = (item: NavItem): boolean => {
     if (item.href && p === item.href) return true;

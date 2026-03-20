@@ -78,7 +78,7 @@ export default function ListYourPropertyPage() {
       {/* Hero Banner */}
       <section className="relative w-full h-[450px] overflow-hidden">
         <Image
-          src="/images/neighbourhoods/downtown-dubai.jpg"
+          src="/images/neighbourhoods/downtown-dubai.png"
           alt="Luxury Dubai property"
           fill
           className="object-cover"

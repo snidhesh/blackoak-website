@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, X, Globe } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -111,21 +112,32 @@ export default function MobileMenu({ isOpen, onClose, navigation }: MobileMenuPr
   return (
     <div
       className={cn(
-        'fixed inset-0 z-[60] bg-black lg:hidden transition-opacity duration-300',
+        'fixed inset-0 z-[60] bg-black lg:hidden transition-opacity duration-300 flex flex-col',
         visible ? 'opacity-100' : 'opacity-0'
       )}
     >
-      {/* Close button */}
-      <button
-        onClick={onClose}
-        className="absolute top-[18px] right-5 p-2"
-        aria-label="Close menu"
-      >
-        <X className="w-6 h-6 text-white" />
-      </button>
+      {/* Top bar: Logo + Close */}
+      <div className="flex items-center justify-between px-5 h-16">
+        <Link href="/" onClick={onClose} className="flex-shrink-0">
+          <Image
+            src="/images/logo-white.png"
+            alt="BlackOak Real Estate"
+            width={130}
+            height={32}
+            priority
+          />
+        </Link>
+        <button
+          onClick={onClose}
+          className="p-2"
+          aria-label="Close menu"
+        >
+          <X className="w-6 h-6 text-white" />
+        </button>
+      </div>
 
       {/* Scrollable content */}
-      <div className="h-full overflow-y-auto pt-24 pb-10 px-7">
+      <div className="flex-1 overflow-y-auto pb-10 px-7">
         <nav className="space-y-0">
           {/* Primary navigation */}
           {navigation.map((item) => (

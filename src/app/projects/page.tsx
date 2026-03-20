@@ -42,7 +42,7 @@ export default async function ProjectsPage() {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="pb-16">
         <div className="container-wide">
           <ProjectsClient
             projects={projects}
