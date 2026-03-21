@@ -18,7 +18,7 @@
     "projects": [
       {
         "developer": "Ohana",
-        "name": "Manchester City Residence, Abu Dhabi",
+        "name": "Manchester City Yas Residences",
         "logo": "/images/partners/ohana.svg",
         "image": "/images/featured-projects/ohana.webp",
         "href": "/projects"
@@ -148,14 +148,14 @@
     ]
   },
   "mediaLogos": [
-    { "name": "Media 1", "image": "/images/media/media-1.png" },
-    { "name": "Media 2", "image": "/images/media/media-2.png" },
-    { "name": "Media 3", "image": "/images/media/media-3.png" },
-    { "name": "Media 4", "image": "/images/media/media-4.png" },
-    { "name": "Media 5", "image": "/images/media/media-5.png" },
-    { "name": "Media 6", "image": "/images/media/media-6.png" },
-    { "name": "Media 7", "image": "/images/media/media-7.png" },
-    { "name": "Media 8", "image": "/images/media/media-8.png" }
+    { "name": "Reuters", "image": "/images/media/reuters.svg" },
+    { "name": "Arabian Business", "image": "/images/media/media-2.png" },
+    { "name": "Property Time", "image": "/images/media/media-3.png" },
+    { "name": "Gulf News", "image": "/images/media/media-4.png" },
+    { "name": "Khaleej Times", "image": "/images/media/media-5.png" },
+    { "name": "Zawya", "image": "/images/media/media-6.png" },
+    { "name": "Variety", "image": "/images/media/media-1.png" },
+    { "name": "Arab News", "image": "/images/media/media-8.png" }
   ],
   "whyInvest": {
     "heading": "Why BlackOak",

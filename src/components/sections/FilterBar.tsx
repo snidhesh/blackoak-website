@@ -86,17 +86,28 @@ export default function FilterBar({
       {/* Filter row */}
       <div className="flex flex-col md:flex-row items-stretch">
         <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 border border-gray-200 min-w-0">
-          {/* Buy / Rent */}
+          {/* Buy / Rent toggle buttons */}
           {offerings.length > 0 && (
-            <FilterSelect
-              placeholder="Buy / Rent"
-              value={filters.offering}
-              onChange={(v) => updateFilter('offering', v)}
-              options={offerings.map(o => ({
-                value: o,
-                label: o === 'sale' ? 'Buy' : o === 'rent' ? 'Rent' : o.charAt(0).toUpperCase() + o.slice(1),
-              }))}
-            />
+            <div className="flex items-center border-r border-b md:border-b-0 border-gray-200">
+              {offerings.map(o => {
+                const label = o === 'sale' ? 'Buy' : o === 'rent' ? 'Rent' : o.charAt(0).toUpperCase() + o.slice(1);
+                const isActive = filters.offering === o;
+                return (
+                  <button
+                    key={o}
+                    onClick={() => updateFilter('offering', isActive ? '' : o)}
+                    className={cn(
+                      'flex-1 px-4 py-3.5 text-[13px] transition-colors cursor-pointer',
+                      isActive
+                        ? 'bg-black text-white'
+                        : 'bg-white text-black hover:bg-gray-50'
+                    )}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+            </div>
           )}
 
           {/* Location — multi-select autocomplete */}

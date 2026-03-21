@@ -693,7 +693,7 @@ export default async function HomePage() {
       {/* Media Logos */}
       <section className="py-12 bg-white">
         <div className="container-wide">
-          <div className="flex justify-center items-center gap-6 sm:gap-10 md:gap-14 overflow-x-auto scrollbar-hide">
+          <div className="flex justify-center items-center gap-4 sm:gap-6 md:gap-8 overflow-x-auto scrollbar-hide">
             {homepage.mediaLogos.map((logo) => (
               <div key={logo.name} className="relative h-6 w-[80px] sm:w-[100px] md:w-[120px] shrink-0 flex items-center justify-center">
                 <Image
