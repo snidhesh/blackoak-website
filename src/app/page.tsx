@@ -74,6 +74,7 @@ export default async function HomePage() {
           muted
           loop
           playsInline
+          preload="metadata"
           poster={homepage.hero.image}
           className="absolute inset-0 w-full h-full object-cover"
         >

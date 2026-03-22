@@ -41,21 +41,21 @@
         "developer": "Ora",
         "name": "Byn by Ora",
         "logo": "/images/partners/ora.svg",
-        "image": "/images/featured-projects/ora.webp",
+        "image": "/images/featured-projects/ora.jpg",
         "href": "/projects"
       },
       {
         "developer": "H&H",
         "name": "Janu",
         "logo": "/images/partners/hh.svg",
-        "image": "/images/featured-projects/hh.png",
+        "image": "/images/featured-projects/hh.jpg",
         "href": "/projects"
       },
       {
         "developer": "Aldar",
         "name": "The Wilds Residences",
         "logo": "/images/partners/aldar.svg",
-        "image": "/images/featured-projects/aldar.webp",
+        "image": "/images/featured-projects/aldar.jpg",
         "href": "/projects"
       },
       {
@@ -182,7 +182,7 @@
     "label": "ABOUT BLACKOAK",
     "heading": "Trusted partner in the dynamic UAE real estate market!",
     "description": "Our team comprises highly knowledgeable professionals with extensive experience, dedicated to providing unparalleled service to our valued clients.",
-    "cta": { "label": "Read More", "href": "/about/why-blackoak" },
+    "cta": { "label": "Discover Why BlackOak", "href": "/about/why-blackoak" },
     "image": "/images/homepage/about.webp"
   },
   "news": {
