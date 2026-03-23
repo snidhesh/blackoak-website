@@ -74,7 +74,7 @@ export default async function HomePage() {
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           poster={homepage.hero.image}
           className="absolute inset-0 w-full h-full object-cover"
         >
@@ -82,8 +82,9 @@ export default async function HomePage() {
         </video>
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
-          <h1 className="text-[36px] md:text-[50px] font-light leading-[1.1]">
-            {homepage.hero.heading}
+          <h1 className="text-[36px] md:text-[50px] font-light leading-[1.2]">
+            Where visionary investment<br />
+            meets iconic living
           </h1>
           <p className="mt-4 text-[16px] font-normal text-white">
             {homepage.hero.subtitle}
@@ -395,7 +396,7 @@ export default async function HomePage() {
           {/* Trusted Partners */}
           <div className="mt-20">
             <AnimateOnScroll>
-              <h2 className="text-center text-[28px] md:text-[32px] font-light leading-[48px] text-white mb-10">
+              <h2 className="text-center text-[28px] md:text-[32px] font-light leading-[48px] text-white mb-6">
                 {homepage.partners.heading}
               </h2>
             </AnimateOnScroll>
@@ -403,17 +404,31 @@ export default async function HomePage() {
               {/* Fade edges */}
               <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-black to-transparent z-10" />
               <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black to-transparent z-10" />
-              <div className="flex animate-marquee">
-                {[...homepage.partners.logos, ...homepage.partners.logos].map((partner, i) => (
-                  <div key={`${partner.name}-${i}`} className="h-[115px] w-[115px] flex-shrink-0 mx-8 flex items-center justify-center">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={partner.image}
-                      alt={partner.name}
-                      className="h-full w-full object-contain brightness-0 invert"
-                    />
-                  </div>
-                ))}
+              <div className="flex animate-marquee will-change-transform">
+                <div className="flex shrink-0">
+                  {homepage.partners.logos.map((partner: { name: string; image: string }) => (
+                    <div key={partner.name} className="h-[85px] w-[115px] flex-shrink-0 mx-6 flex items-center justify-center">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={partner.image}
+                        alt={partner.name}
+                        className="h-full w-full object-contain brightness-0 invert"
+                      />
+                    </div>
+                  ))}
+                </div>
+                <div className="flex shrink-0" aria-hidden="true">
+                  {homepage.partners.logos.map((partner: { name: string; image: string }) => (
+                    <div key={partner.name} className="h-[85px] w-[115px] flex-shrink-0 mx-6 flex items-center justify-center">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={partner.image}
+                        alt={partner.name}
+                        className="h-full w-full object-contain brightness-0 invert"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
