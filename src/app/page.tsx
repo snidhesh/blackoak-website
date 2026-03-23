@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const featuredProjects = await getFeaturedProjects();
+  const featuredProjects = (await getFeaturedProjects()).slice(0, 5);
   const homepageNeighbourhoodSlugs = [
     'palm-jumeirah', 'dubai-hills-estate', 'al-barari', 'downtown-dubai',
     'jumeirah-golf-estates', 'dubai-marina', 'city-walk', 'business-bay',
@@ -243,15 +243,15 @@ export default async function HomePage() {
                       <div className="flex items-center gap-4 text-white/80 text-[12px] font-normal max-h-0 overflow-hidden opacity-0 group-hover:max-h-[40px] group-hover:opacity-100 transition-all duration-300 mt-1">
                         <span className="flex items-center gap-1">
                           <MapPin className="w-3 h-3" />
-                          {project.location.address}
+                          {project.neighbourhood.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')}
                         </span>
                         <span className="flex items-center gap-1">
                           <BedDouble className="w-3 h-3" />
-                          {project.bedrooms} Bedrooms
+                          {project.bedrooms}
                         </span>
                         <span className="flex items-center gap-1">
                           <Maximize2 className="w-3 h-3" />
-                          {project.area.toLocaleString('en-US')} {project.areaUnit}
+                          {project.area.toLocaleString('en-US')}
                         </span>
                       </div>
                     </div>

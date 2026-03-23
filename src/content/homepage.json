@@ -39,7 +39,7 @@
       },
       {
         "developer": "Ora",
-        "name": "Byn by Ora",
+        "name": "Bayn",
         "logo": "/images/partners/ora.svg",
         "image": "/images/featured-projects/ora.jpg",
         "href": "/projects"
@@ -60,7 +60,7 @@
       },
       {
         "developer": "Omoria",
-        "name": "Private Residences, Dubai Islands",
+        "name": "Omoria Private Residences",
         "logo": "/images/partners/omoria.svg",
         "image": "/images/featured-projects/omoria.webp",
         "href": "/projects"
@@ -80,7 +80,7 @@
     "cta": { "label": "View All Properties", "href": "/projects" }
   },
   "neighbourhoods": {
-    "label": "Neighbourhood",
+    "label": "Neighbourhoods",
     "heading": "Discover luxury real estate in Dubai's top neighbourhood"
   },
   "partners": {
