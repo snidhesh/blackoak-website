@@ -23,7 +23,7 @@ const navigation: NavItem[] = [
       { label: 'Career', href: '/career' },
     ],
   },
-  { label: 'Projects', href: '/projects' },
+  { label: 'Properties', href: '/projects' },
   {
     label: 'Neighbourhoods',
     dropdown: [

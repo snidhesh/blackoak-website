@@ -35,7 +35,7 @@ export default async function ProjectsPage() {
       {/* Hero - white bg */}
       <section className="bg-white pt-12 pb-16">
         <div className="container-wide text-center">
-          <SectionLabel>Discover Projects</SectionLabel>
+          <SectionLabel>Discover Properties</SectionLabel>
           <h1 className="text-4xl md:text-[50px] font-light leading-tight text-black mt-5">
             Live Beyond Ordinary,<br />Designed for the Extraordinary
           </h1>

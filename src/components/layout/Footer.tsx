@@ -6,7 +6,7 @@ const footerColumns = [
   {
     title: 'THE COMPANY',
     links: [
-      { label: 'Projects', href: '/projects' },
+      { label: 'Properties', href: '/projects' },
       { label: 'Why BlackOak', href: '/about/why-blackoak' },
       { label: 'Our Team', href: '/about/our-team' },
       { label: 'Careers', href: '/career' },
