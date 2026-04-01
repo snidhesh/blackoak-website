@@ -1,6 +1,4 @@
-import Button from '@/components/ui/Button';
-
-export default function NotFound() {
+export default function RootNotFound() {
   return (
     <section className="min-h-[70vh] flex items-center justify-center">
       <div className="text-center px-4">
@@ -9,9 +7,12 @@ export default function NotFound() {
         <p className="text-gray-600 mb-8 max-w-md mx-auto">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
-        <Button href="/" variant="outline">
+        <a
+          href="/"
+          className="inline-block px-6 py-3 border border-black text-black text-sm font-medium tracking-wider uppercase hover:bg-black hover:text-white transition-colors"
+        >
           RETURN TO HOMEPAGE
-        </Button>
+        </a>
       </div>
     </section>
   );

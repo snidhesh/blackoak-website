@@ -1,0 +1,127 @@
+{
+  "hero": {
+    "title": "Bâti sur la Confiance.\nPorté par la Passion.",
+    "image": "/images/buyers/hero.jpg"
+  },
+  "intro": {
+    "label": "guide de l'acquéreur immobilier",
+    "title": "Commencez votre parcours immobilier à Dubaï en toute confiance.",
+    "description": "Notre Guide de l'Acquéreur Immobilier offre un aperçu complet de l'ensemble du parcours d'acquisition \u2014 de la sélection du bon programme immobilier à la compréhension des tendances du marché, en passant par les procédures juridiques et la finalisation de la propriété. Que vous soyez un primo-accédant ou un investisseur aguerri, ce guide est conçu pour vous apporter clarté, transparence et vision stratégique à chaque étape. Avec les bonnes connaissances et un accompagnement d'experts, investir dans l'immobilier à Dubaï devient une expérience fluide et gratifiante."
+  },
+  "guides": [
+    { "title": "Pourquoi Investir ou Acheter", "id": "why-invest" },
+    { "title": "Obtenir un Visa", "id": "obtaining-visa" },
+    { "title": "Gérer Votre Bien", "id": "managing-property" },
+    { "title": "Financer Votre Bien par Hypothèque", "id": "mortgaging-property" },
+    { "title": "Acquéreurs Internationaux", "id": "international-buyers" },
+    { "title": "Frais d'Acquisition d'un Bien", "id": "costs-buying" }
+  ],
+  "whyInvest": {
+    "title": "Pourquoi investir ou acheter un bien immobilier à Dubaï",
+    "content": "Au cours des dernières années, le marché immobilier de Dubaï a considérablement gagné en maturité, s'alignant sur d'autres villes établies. Bien entendu, Dubaï est encore considérée comme une ville « nouvelle » et la plupart des projets immobiliers n'ont même pas 10 ans ! Cependant, c'est un avantage considérable pour les acquéreurs, car les bâtiments sont conçus et construits avec des concepts de design modernes, des techniques d'ingénierie avancées et, de manière générale, une meilleure qualité de construction.",
+    "image": "/images/buyers/tab-why-invest.jpg"
+  },
+  "minimalRisk": {
+    "label": "Risque Minimal",
+    "title": "Investissez en Toute Confiance",
+    "intro": "Tout investissement ou achat immobilier implique d'examiner les risques. En ce qui concerne Dubaï, le risque est minimal. Voici pourquoi :",
+    "sub": "Des actifs de grande qualité (dans un marché tout aussi attractif qui, partout ailleurs, devrait typiquement offrir des rendements bien inférieurs).",
+    "bullets": [
+      "Aujourd'hui, les investisseurs peuvent générer des rendements immobiliers compris entre 6 et 12 %.",
+      "En tenant compte de l'appréciation du capital, les rendements immobiliers peuvent produire des retours totaux encore plus élevés pour l'investisseur."
+    ],
+    "closing": "Ce n'est pas tout. Dubaï est l'une des villes les plus « connectées », facilement accessible par avion, et c'est un hub international d'affaires exceptionnel qui connaîtra toujours une forte demande en matière d'immobilier. De plus, le gouvernement de Dubaï continue d'investir massivement dans le pays, sous tous les angles : affaires, social et divertissement. Bien qu'il y ait une offre importante de projets résidentiels à Dubaï, le parc immobilier est en transaction constante et il n'est pas surprenant que de plus en plus de personnes considèrent Dubaï comme leur lieu de résidence."
+  },
+  "visa": {
+    "label": "Obtenir un Visa",
+    "title": "Options de visa pour les investisseurs immobiliers",
+    "intro": "Vous pouvez obtenir un visa si vous achetez un bien immobilier à Dubaï. Plusieurs types de visas sont adaptés aux investisseurs immobiliers :",
+    "types": [
+      {
+        "name": "Visa de résidence renouvelable de six mois",
+        "bullets": [
+          "Ce visa à usage résidentiel uniquement est délivré par l'autorité d'immigration compétente.",
+          "Il est renouvelable.",
+          "Le coût est d'environ 2 500 AED.",
+          "Le bien doit être achevé et en pleine propriété uniquement.",
+          "Veuillez noter que ce visa ne permet pas de travailler à Dubaï."
+        ]
+      },
+      {
+        "name": "Visa de 5 ans \u2014 Le Golden Visa",
+        "bullets": [
+          "Vous devez investir au minimum 5 millions AED dans l'immobilier aux EAU (montant brut).",
+          "Le montant investi ne peut pas provenir d'un emprunt.",
+          "Le bien doit être conservé pendant au moins trois ans."
+        ]
+      },
+      {
+        "name": "Visa d'investisseur immobilier renouvelable de 2 ans",
+        "bullets": [
+          "Ce visa vous permet de devenir résident des EAU uniquement si vous avez réalisé un investissement immobilier.",
+          "Vous devez investir moins de 1 million AED dans l'immobilier aux EAU (montant brut).",
+          "En cas de copropriété, la valeur doit dépasser 1 million AED.",
+          "Le coût est d'environ 14 000 AED."
+        ]
+      },
+      {
+        "name": "Visa d'investisseur de 3 ans",
+        "bullets": [
+          "Vous devez investir au minimum 1 million AED dans l'immobilier aux EAU (montant brut).",
+          "Avec ce visa, vous êtes considéré comme éligible pour devenir résident des EAU.",
+          "Le coût du visa est d'environ 14 000 AED.",
+          "Vous ne pouvez pas séjourner en dehors de Dubaï pendant plus de 6 mois."
+        ]
+      }
+    ]
+  },
+  "managingProperty": {
+    "label": "Gestion Immobilière",
+    "title": "Gérer votre bien à Dubaï depuis l'étranger",
+    "intro": "Black Oak ne se limite pas à la vente de biens immobiliers, nous gérons également les propriétés de nos nombreux clients lorsqu'ils sont en dehors de Dubaï. Plusieurs options s'offrent à vous :",
+    "options": [
+      "Le bien est inoccupé : notre équipe de gestion immobilière le vérifiera périodiquement pour garantir la sécurité et l'absence de problèmes de maintenance. Avant votre retour à Dubaï, notre équipe inspectera et préparera également votre bien pour votre arrivée.",
+      "Notre équipe de gestion immobilière peut tout gérer pour vous, de la mise en location de votre bien à son entretien en votre nom. Il s'agit de notre service de gestion immobilière complet.",
+      "Gestion de location courte durée, qui augmente le rendement de votre investissement. Cependant, comme pour toute location, les appareils, la décoration et le mobilier nécessiteront également un entretien."
+    ]
+  },
+  "mortgage": {
+    "label": "Guide Hypothécaire",
+    "title": "Financer votre bien par hypothèque",
+    "paragraphs": [
+      "Il est important de noter que la plupart des acquéreurs internationaux achetant des biens à Dubaï procèdent par transactions en espèces, mais les hypothèques sont toujours utilisées pour sécuriser un bien. En général, elles ne sont pas difficiles à obtenir ; les ressortissants des EAU, les expatriés et les non-résidents peuvent demander une hypothèque à Dubaï à condition de disposer d'une pièce d'identité valide et d'une preuve de revenus. Les pré-approbations sont rapides, en 4 jours, avec une offre hypothécaire définitive sous une semaine supplémentaire. Surveillez les taux hypothécaires, car ils changent régulièrement. La plupart des grandes banques des EAU proposent des hypothèques. Un apport minimum de 20 % sur le bien concerné vous sera demandé.",
+      "Concernant l'éligibilité, vous devez avoir des revenus stables, une bonne cote de crédit et un salaire minimum de 7 000 AED pour les ressortissants des EAU et de 10 000 AED pour les expatriés. Les mensualités hypothécaires ne doivent pas dépasser 50 % de vos revenus mensuels. Enfin, vous devez avoir plus de 21 ans pour demander une hypothèque."
+    ]
+  },
+  "internationalBuyers": {
+    "label": "Acquéreurs Internationaux",
+    "title": "Acquéreurs Internationaux \u2014 Votre guide étape par étape",
+    "intro": "Chez Black Oak, nous souhaitons vous aider à trouver votre investissement immobilier idéal à Dubaï. Contactez-nous pour discuter de vos exigences.",
+    "steps": [
+      "Identifiez votre bien idéal correspondant à vos propres critères avec l'aide de notre équipe immobilière compétente et expérimentée.",
+      "Informez-vous sur les zones franches. En tant que citoyen non émirati ou non membre du CCG, vous êtes limité à ces zones. Soyez assuré que tous nos biens répertoriés se trouvent en zone franche et sont spécifiquement destinés aux acquéreurs internationaux.",
+      "Négociez et définissez toujours les conditions avec le vendeur \u2014 Black Oak peut vous assister directement dans cette démarche, avec les promoteurs.",
+      "Signez un MOU (Memorandum of Understanding) / Formulaire F (disponible sur le site du DLD).",
+      "Une fois que vous, l'acquéreur, et le vendeur êtes parvenus à un accord, vous devez tous deux le signer auprès du trustee d'enregistrement.",
+      "Obtenez un NOC (No Objection Certificate) du promoteur pour le transfert de propriété.",
+      "Enfin, une réunion aura lieu au DLD (Dubai Land Department) pour effectuer le transfert avec le promoteur."
+    ]
+  },
+  "costs": {
+    "label": "Frais d'Acquisition",
+    "title": "Les frais administratifs liés à l'achat d'un bien achevé à Dubaï",
+    "intro": "Nous avons rassemblé une brève explication des frais administratifs associés à l'achat d'un bien immobilier à Dubaï.",
+    "items": [
+      "4 % de la valeur du bien sont versés au DLD (Dubai Land Department) à titre de frais.",
+      "De plus, des frais de 4 200 AED à des fins administratives sont payés au DLD.",
+      "Des frais de 520 AED sont facturés pour l'émission des titres de propriété.",
+      "L'agent immobilier percevra 2 % du prix d'achat à titre de commission.",
+      "Des frais de NOC (No Objection Certificate) allant de 500 AED à 5 000 AED s'appliquent, en fonction du promoteur.",
+      "Vos frais d'enregistrement hypothécaire (si vous avez une hypothèque) seront calculés au taux de 0,25 % du montant du prêt enregistré plus 290 AED (frais administratifs). Ces frais sont versés au DLD (Dubai Land Department). Veuillez noter que si vous achetez votre bien en paiement intégral en espèces, les frais d'enregistrement hypothécaire du DLD ne s'appliqueront pas.",
+      "Les charges de copropriété annuelles doivent être payées à l'avance aux promoteurs \u2014 en tant qu'acquéreur, vous devez provisionner ce montant.",
+      "Il y a également des frais d'enregistrement de propriété : si le bien est en dessous de 500 000 AED, les frais sont de 2 000 AED + TVA. Au-dessus de 500 000 AED, les frais sont de 4 000 AED + TVA.",
+      "Prévoyez des frais d'évaluation de 2 500 à 3 500 AED.",
+      "Enfin, il y a le coût du certificat Oqood (qui enregistre le bien au nom de l'acquéreur) d'un montant de 5 250 AED."
+    ]
+  }
+}

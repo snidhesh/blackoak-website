@@ -6,16 +6,62 @@ import type { NewsItem } from '@/types/news';
 import type { TeamMember } from '@/types/team';
 import type { NavigationItem } from '@/types/navigation';
 import type { FooterData } from '@/types/footer';
+import type { Locale } from '@/i18n/config';
 
-import navigationData from '@/content/navigation.json';
-import footerData from '@/content/footer.json';
-import neighbourhoodsData from '@/content/neighbourhoods.json';
-import teamData from '@/content/team.json';
-import careersData from '@/content/careers.json';
-import newsData from '@/content/news.json';
+// Locale-specific static imports
+import navigationEn from '@/content/en/navigation.json';
+import navigationFr from '@/content/fr/navigation.json';
+import footerEn from '@/content/en/footer.json';
+import footerFr from '@/content/fr/footer.json';
+import neighbourhoodsEn from '@/content/en/neighbourhoods.json';
+import neighbourhoodsFr from '@/content/fr/neighbourhoods.json';
+import teamEn from '@/content/en/team.json';
+import teamFr from '@/content/fr/team.json';
+import careersEn from '@/content/en/careers.json';
+import careersFr from '@/content/fr/careers.json';
+import newsEn from '@/content/en/news.json';
+import newsFr from '@/content/fr/news.json';
+import homepageEn from '@/content/en/homepage.json';
+import homepageFr from '@/content/fr/homepage.json';
+import splashEn from '@/content/en/splash.json';
+import splashFr from '@/content/fr/splash.json';
+import investorsEn from '@/content/en/investors.json';
+import investorsFr from '@/content/fr/investors.json';
+import buyersEn from '@/content/en/buyers.json';
+import buyersFr from '@/content/fr/buyers.json';
+import contactEn from '@/content/en/contact.json';
+import contactFr from '@/content/fr/contact.json';
+import privacyPolicyEn from '@/content/en/privacy-policy.json';
+import privacyPolicyFr from '@/content/fr/privacy-policy.json';
+import termsOfServiceEn from '@/content/en/terms-of-service.json';
+import termsOfServiceFr from '@/content/fr/terms-of-service.json';
+import disclaimerEn from '@/content/en/disclaimer.json';
+import disclaimerFr from '@/content/fr/disclaimer.json';
 
 import { fetchAllListings } from '@/lib/crm';
 import { transformListing, deduplicateSlugs } from '@/lib/crm-transform';
+
+// Locale content maps
+const contentMap = {
+  navigation: { en: navigationEn, fr: navigationFr },
+  footer: { en: footerEn, fr: footerFr },
+  neighbourhoods: { en: neighbourhoodsEn, fr: neighbourhoodsFr },
+  team: { en: teamEn, fr: teamFr },
+  careers: { en: careersEn, fr: careersFr },
+  news: { en: newsEn, fr: newsFr },
+  homepage: { en: homepageEn, fr: homepageFr },
+  splash: { en: splashEn, fr: splashFr },
+  investors: { en: investorsEn, fr: investorsFr },
+  buyers: { en: buyersEn, fr: buyersFr },
+  contact: { en: contactEn, fr: contactFr },
+  privacyPolicy: { en: privacyPolicyEn, fr: privacyPolicyFr },
+  termsOfService: { en: termsOfServiceEn, fr: termsOfServiceFr },
+  disclaimer: { en: disclaimerEn, fr: disclaimerFr },
+} as const;
+
+function getContent<K extends keyof typeof contentMap>(key: K, locale: Locale = 'en'): (typeof contentMap)[K]['en'] {
+  return contentMap[key][locale] ?? contentMap[key].en;
+}
 
 // Slug validation
 const SLUG_REGEX = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -33,10 +79,10 @@ function validateSlugs<T extends { slug: string }>(items: T[], type: string): vo
   }
 }
 
-// Run integrity checks on static data
-validateSlugs(neighbourhoodsData as Neighbourhood[], 'neighbourhoods');
-validateSlugs(careersData as CareerJob[], 'careers');
-validateSlugs(newsData as NewsItem[], 'news');
+// Run integrity checks on English data (slugs are identical across locales)
+validateSlugs(neighbourhoodsEn as Neighbourhood[], 'neighbourhoods');
+validateSlugs(careersEn as CareerJob[], 'careers');
+validateSlugs(newsEn as NewsItem[], 'news');
 
 // --- CRM-backed project functions (async) ---
 
@@ -47,7 +93,7 @@ async function _getProjects(): Promise<Project[]> {
 
     // Post-transform neighbourhood validation
     const validNeighbourhoodSlugs = new Set(
-      (neighbourhoodsData as Neighbourhood[]).map((n) => n.slug)
+      (neighbourhoodsEn as Neighbourhood[]).map((n) => n.slug)
     );
     for (const project of projects) {
       if (project.neighbourhood && !validNeighbourhoodSlugs.has(project.neighbourhood)) {
@@ -82,40 +128,74 @@ export async function getProjectsByNeighbourhood(neighbourhoodSlug: string): Pro
   return projects.filter((p) => p.neighbourhood === neighbourhoodSlug);
 }
 
-// --- Static data functions (sync, unchanged) ---
+// --- Static data functions (locale-aware) ---
 
-export function getNavigation(): NavigationItem[] {
-  return navigationData as NavigationItem[];
+export function getNavigation(locale: Locale = 'en'): NavigationItem[] {
+  return getContent('navigation', locale) as NavigationItem[];
 }
 
-export function getFooter(): FooterData {
-  return footerData as unknown as FooterData;
+export function getFooter(locale: Locale = 'en'): FooterData {
+  return getContent('footer', locale) as unknown as FooterData;
 }
 
-export function getNeighbourhoods(): Neighbourhood[] {
-  return neighbourhoodsData as Neighbourhood[];
+export function getNeighbourhoods(locale: Locale = 'en'): Neighbourhood[] {
+  return getContent('neighbourhoods', locale) as Neighbourhood[];
 }
 
-export function getNeighbourhoodBySlug(slug: string): Neighbourhood | undefined {
-  return (neighbourhoodsData as Neighbourhood[]).find((n) => n.slug === slug);
+export function getNeighbourhoodBySlug(slug: string, locale: Locale = 'en'): Neighbourhood | undefined {
+  return (getContent('neighbourhoods', locale) as Neighbourhood[]).find((n) => n.slug === slug);
 }
 
-export function getTeam(): TeamMember[] {
-  return teamData as TeamMember[];
+export function getTeam(locale: Locale = 'en'): TeamMember[] {
+  return getContent('team', locale) as TeamMember[];
 }
 
-export function getCareers(): CareerJob[] {
-  return careersData as CareerJob[];
+export function getCareers(locale: Locale = 'en'): CareerJob[] {
+  return getContent('careers', locale) as CareerJob[];
 }
 
-export function getCareerBySlug(slug: string): CareerJob | undefined {
-  return (careersData as CareerJob[]).find((c) => c.slug === slug);
+export function getCareerBySlug(slug: string, locale: Locale = 'en'): CareerJob | undefined {
+  return (getContent('careers', locale) as CareerJob[]).find((c) => c.slug === slug);
 }
 
-export function getNews(): NewsItem[] {
-  return newsData as NewsItem[];
+export function getNews(locale: Locale = 'en'): NewsItem[] {
+  return getContent('news', locale) as NewsItem[];
 }
 
-export function getNewsBySlug(slug: string): NewsItem | undefined {
-  return (newsData as NewsItem[]).find((n) => n.slug === slug);
+export function getNewsBySlug(slug: string, locale: Locale = 'en'): NewsItem | undefined {
+  return (getContent('news', locale) as NewsItem[]).find((n) => n.slug === slug);
+}
+
+// --- New content getters ---
+
+export function getHomepage(locale: Locale = 'en') {
+  return getContent('homepage', locale);
+}
+
+export function getSplash(locale: Locale = 'en') {
+  return getContent('splash', locale);
+}
+
+export function getInvestors(locale: Locale = 'en') {
+  return getContent('investors', locale);
+}
+
+export function getBuyers(locale: Locale = 'en') {
+  return getContent('buyers', locale);
+}
+
+export function getContact(locale: Locale = 'en') {
+  return getContent('contact', locale);
+}
+
+export function getPrivacyPolicy(locale: Locale = 'en') {
+  return getContent('privacyPolicy', locale);
+}
+
+export function getTermsOfService(locale: Locale = 'en') {
+  return getContent('termsOfService', locale);
+}
+
+export function getDisclaimer(locale: Locale = 'en') {
+  return getContent('disclaimer', locale);
 }

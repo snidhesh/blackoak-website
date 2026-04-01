@@ -13,7 +13,9 @@ export interface CrmListing {
   id: string;
   reference: string;
   titleEn: string;
+  titleFr?: string;
   descriptionEn: string;
+  descriptionFr?: string;
   type: string;
   offering: string;
   price: number;

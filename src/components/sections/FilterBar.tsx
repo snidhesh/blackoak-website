@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import { useTranslations } from 'next-intl';
 import { ChevronDown, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import LocationFilter from '@/components/ui/LocationFilter';
@@ -36,6 +37,8 @@ export default function FilterBar({
   sort,
   resultCount,
 }: FilterBarProps) {
+  const t = useTranslations('common');
+
   const [filters, setFilters] = useState<FilterState>({
     neighbourhoods: [],
     propertyType: '',
@@ -90,7 +93,7 @@ export default function FilterBar({
           {offerings.length > 0 && (
             <div className="flex items-center border-r border-b md:border-b-0 border-gray-200">
               {offerings.map(o => {
-                const label = o === 'sale' ? 'Buy' : o === 'rent' ? 'Rent' : o.charAt(0).toUpperCase() + o.slice(1);
+                const label = o === 'sale' ? t('filter.buy') : o === 'rent' ? t('filter.rent') : o.charAt(0).toUpperCase() + o.slice(1);
                 const isActive = filters.offering === o;
                 return (
                   <button
@@ -118,41 +121,41 @@ export default function FilterBar({
             }))}
             selected={filters.neighbourhoods}
             onChange={updateNeighbourhoods}
-            placeholder="Search location..."
+            placeholder={t('filter.searchLocation')}
           />
 
           {/* Property Type */}
           <FilterSelect
-            placeholder="Property Type"
+            placeholder={t('filter.propertyType')}
             value={filters.propertyType}
             onChange={(v) => updateFilter('propertyType', v)}
-            options={propertyTypes.map(t => ({ value: t, label: t }))}
+            options={propertyTypes.map(pt => ({ value: pt, label: pt }))}
           />
 
           {/* Bedrooms */}
           <FilterSelect
-            placeholder="Bedrooms"
+            placeholder={t('filter.bedrooms')}
             value={filters.bedrooms}
             onChange={(v) => updateFilter('bedrooms', v)}
             options={[
-              { value: '1', label: '1 Bedroom' },
-              { value: '2', label: '2 Bedrooms' },
-              { value: '3', label: '3 Bedrooms' },
-              { value: '4', label: '4+ Bedrooms' },
+              { value: '1', label: t('filter.oneBedroom') },
+              { value: '2', label: t('filter.twoBedrooms') },
+              { value: '3', label: t('filter.threeBedrooms') },
+              { value: '4', label: t('filter.fourPlusBedrooms') },
             ]}
           />
 
           {/* Price Range */}
           <FilterSelect
-            placeholder="Price Range"
+            placeholder={t('filter.priceRange')}
             value={filters.priceRange}
             onChange={(v) => updateFilter('priceRange', v)}
             options={[
-              { value: '0-2000000', label: 'Under AED 2M' },
-              { value: '2000000-5000000', label: 'AED 2M – 5M' },
-              { value: '5000000-10000000', label: 'AED 5M – 10M' },
-              { value: '10000000-20000000', label: 'AED 10M – 20M' },
-              { value: '20000000-999999999', label: 'AED 20M+' },
+              { value: '0-2000000', label: t('filter.underAed2m') },
+              { value: '2000000-5000000', label: t('filter.aed2mTo5m') },
+              { value: '5000000-10000000', label: t('filter.aed5mTo10m') },
+              { value: '10000000-20000000', label: t('filter.aed10mTo20m') },
+              { value: '20000000-999999999', label: t('filter.aed20mPlus') },
             ]}
           />
         </div>
@@ -162,8 +165,10 @@ export default function FilterBar({
       <div className="flex items-center justify-between pt-4">
         <div className="flex items-center gap-3">
           <p className="text-[13px] text-[#5F6368]">
-            <span className="font-semibold text-black">{resultCount}</span>{' '}
-            {resultCount === 1 ? 'property' : 'properties'} found
+            {t.rich('propertiesFound', {
+              count: resultCount,
+              bold: (chunks) => <span className="font-semibold text-black">{chunks}</span>,
+            })}
           </p>
           {hasActiveFilters && (
             <button
@@ -171,12 +176,12 @@ export default function FilterBar({
               className="flex items-center gap-1 text-[12px] text-[#5F6368] hover:text-black transition-colors"
             >
               <X className="w-3 h-3" />
-              Clear filters
+              {t('filter.clearFilters')}
             </button>
           )}
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-[12px] text-[#5F6368] uppercase tracking-wider">Sort by</span>
+          <span className="text-[12px] text-[#5F6368] uppercase tracking-wider">{t('sort.label')}</span>
           <select
             value={sort}
             onChange={(e) => onSortChange(e.target.value)}

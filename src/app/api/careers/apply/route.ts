@@ -2,6 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 import { careerApplicationSchema, MAX_CV_SIZE, ALLOWED_CV_TYPES, ALLOWED_CV_EXTENSIONS } from '@/lib/schemas';
 import { forwardMultipartToWebhook } from '@/lib/webhook';
 import { checkRateLimit, getClientIP } from '@/lib/rate-limit';
+import { FIELD_ERROR_CODES, FORM_ERROR_CODES } from '@/lib/error-codes';
+
+const FIELD_CODE_MAP: Record<string, string> = {
+  firstName: FIELD_ERROR_CODES.firstNameMin,
+  lastName: FIELD_ERROR_CODES.lastNameMin,
+  phone: FIELD_ERROR_CODES.phoneInvalid,
+  email: FIELD_ERROR_CODES.emailInvalid,
+  message: FIELD_ERROR_CODES.messageMin,
+};
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,7 +18,7 @@ export async function POST(request: NextRequest) {
     const rateLimitResult = await checkRateLimit(ip, 'careers-apply');
     if (!rateLimitResult.success) {
       return NextResponse.json(
-        { success: false, errors: [{ field: '_form', message: 'Too many requests. Please try again later.' }] },
+        { success: false, errors: [{ field: '_form', code: FORM_ERROR_CODES.rateLimited }] },
         { status: 429 }
       );
     }
@@ -39,7 +48,7 @@ export async function POST(request: NextRequest) {
     if (!result.success) {
       const errors = result.error.issues.map((issue) => ({
         field: issue.path.join('.'),
-        message: issue.message,
+        code: FIELD_CODE_MAP[issue.path[0] as string] ?? FIELD_ERROR_CODES.firstNameMin,
       }));
       return NextResponse.json({ success: false, errors }, { status: 400 });
     }
@@ -49,7 +58,7 @@ export async function POST(request: NextRequest) {
     if (cvFile && cvFile.size > 0) {
       if (cvFile.size > MAX_CV_SIZE) {
         return NextResponse.json(
-          { success: false, errors: [{ field: 'cvFile', message: 'File size must be less than 4MB' }] },
+          { success: false, errors: [{ field: 'cvFile', code: FIELD_ERROR_CODES.fileTooLarge }] },
           { status: 400 }
         );
       }
@@ -60,7 +69,7 @@ export async function POST(request: NextRequest) {
 
       if (!isValidType && !isValidExt) {
         return NextResponse.json(
-          { success: false, errors: [{ field: 'cvFile', message: 'Only PDF, DOC, and DOCX files are allowed' }] },
+          { success: false, errors: [{ field: 'cvFile', code: FIELD_ERROR_CODES.fileTypeInvalid }] },
           { status: 400 }
         );
       }
@@ -77,7 +86,7 @@ export async function POST(request: NextRequest) {
     if (!webhookResult.success) {
       console.error('[api/careers/apply] Webhook failed:', webhookResult.error);
       return NextResponse.json(
-        { success: false, errors: [{ field: '_form', message: 'Failed to submit. Please try again.' }] },
+        { success: false, errors: [{ field: '_form', code: FORM_ERROR_CODES.submitFailed }] },
         { status: 502 }
       );
     }
@@ -86,7 +95,7 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error('[api/careers/apply] Error:', error);
     return NextResponse.json(
-      { success: false, errors: [{ field: '_form', message: 'An unexpected error occurred.' }] },
+      { success: false, errors: [{ field: '_form', code: FORM_ERROR_CODES.unexpectedError }] },
       { status: 500 }
     );
   }

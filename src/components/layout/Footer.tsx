@@ -1,56 +1,61 @@
-import Link from 'next/link';
+'use client';
+
+import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { Mail, Phone, Facebook, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
 
-const footerColumns = [
-  {
-    title: 'THE COMPANY',
-    links: [
-      { label: 'Properties', href: '/projects' },
-      { label: 'Why BlackOak', href: '/about/why-blackoak' },
-      { label: 'Our Team', href: '/about/our-team' },
-      { label: 'Careers', href: '/career' },
-      { label: 'Contact', href: '/contact' },
-    ],
-  },
-  {
-    title: 'NEIGHBOURHOODS',
-    links: [
-      { label: 'Emirates Hills', href: '/neighbourhoods/emirates-hills' },
-      { label: 'Palm Jumeirah', href: '/neighbourhoods/palm-jumeirah' },
-      { label: 'Dubai Hills Estate', href: '/neighbourhoods/dubai-hills-estate' },
-      { label: 'Al Barari', href: '/neighbourhoods/al-barari' },
-      { label: 'Downtown Dubai', href: '/neighbourhoods/downtown-dubai' },
-      { label: 'Dubai International Financial Centre (DIFC)', href: '/neighbourhoods/difc' },
-      { label: 'Jumeirah Golf Estates', href: '/neighbourhoods/jumeirah-golf-estates' },
-      { label: 'Jumeirah Islands', href: '/neighbourhoods/jumeirah-islands' },
-      { label: 'Dubai Marina', href: '/neighbourhoods/dubai-marina' },
-      { label: 'Mohammed Bin Rashid City', href: '/neighbourhoods/mohammed-bin-rashid-city' },
-      { label: 'City Walk', href: '/neighbourhoods/city-walk' },
-      { label: 'Business Bay', href: '/neighbourhoods/business-bay' },
-      { label: 'Bluewaters Island', href: '/neighbourhoods/bluewaters-island' },
-    ],
-  },
-  {
-    title: 'INSIGHTS & INTELLIGENCE',
-    links: [
-      { label: 'Investors', href: '/insights/investors' },
-      { label: 'Buyers', href: '/insights/buyers' },
-      { label: 'News & Press', href: '/insights/news' },
-    ],
-  },
-];
-
 const socialLinks = [
-  { icon: Facebook, href: 'https://facebook.com/blackoakre', label: 'Facebook' },
-  { icon: Twitter, href: 'https://x.com/blackoakre', label: 'Twitter' },
-  { icon: Linkedin, href: 'https://linkedin.com/company/blackoakre', label: 'LinkedIn' },
-  // { icon: MessageCircle, href: 'https://wa.me/97143989055', label: 'WhatsApp' },
-  { icon: Instagram, href: 'https://instagram.com/blackoakre', label: 'Instagram' },
-  { icon: Youtube, href: 'https://youtube.com/blackoakre', label: 'YouTube' },
+  { icon: Facebook, href: 'https://facebook.com/blackoakre', key: 'facebook' as const },
+  { icon: Twitter, href: 'https://x.com/blackoakre', key: 'twitter' as const },
+  { icon: Linkedin, href: 'https://linkedin.com/company/blackoakre', key: 'linkedin' as const },
+  // { icon: MessageCircle, href: 'https://wa.me/97143989055', key: 'whatsapp' as const },
+  { icon: Instagram, href: 'https://instagram.com/blackoakre', key: 'instagram' as const },
+  { icon: Youtube, href: 'https://youtube.com/blackoakre', key: 'youtube' as const },
 ];
 
 export default function Footer() {
+  const t = useTranslations('footer');
+
+  const footerColumns = [
+    {
+      title: t('columns.theCompany'),
+      links: [
+        { label: t('companyLinks.properties'), href: '/projects' },
+        { label: t('companyLinks.whyBlackoak'), href: '/about/why-blackoak' },
+        { label: t('companyLinks.ourTeam'), href: '/about/our-team' },
+        { label: t('companyLinks.careers'), href: '/career' },
+        { label: t('companyLinks.contact'), href: '/contact' },
+      ],
+    },
+    {
+      title: t('columns.neighbourhoods'),
+      links: [
+        { label: t('neighbourhoodLinks.emiratesHills'), href: '/neighbourhoods/emirates-hills' },
+        { label: t('neighbourhoodLinks.palmJumeirah'), href: '/neighbourhoods/palm-jumeirah' },
+        { label: t('neighbourhoodLinks.dubaiHillsEstate'), href: '/neighbourhoods/dubai-hills-estate' },
+        { label: t('neighbourhoodLinks.alBarari'), href: '/neighbourhoods/al-barari' },
+        { label: t('neighbourhoodLinks.downtownDubai'), href: '/neighbourhoods/downtown-dubai' },
+        { label: t('neighbourhoodLinks.difc'), href: '/neighbourhoods/difc' },
+        { label: t('neighbourhoodLinks.jumeirahGolfEstates'), href: '/neighbourhoods/jumeirah-golf-estates' },
+        { label: t('neighbourhoodLinks.jumeirahIslands'), href: '/neighbourhoods/jumeirah-islands' },
+        { label: t('neighbourhoodLinks.dubaiMarina'), href: '/neighbourhoods/dubai-marina' },
+        { label: t('neighbourhoodLinks.mohammedBinRashidCity'), href: '/neighbourhoods/mohammed-bin-rashid-city' },
+        { label: t('neighbourhoodLinks.cityWalk'), href: '/neighbourhoods/city-walk' },
+        { label: t('neighbourhoodLinks.businessBay'), href: '/neighbourhoods/business-bay' },
+        { label: t('neighbourhoodLinks.bluewaterIsland'), href: '/neighbourhoods/bluewaters-island' },
+      ],
+    },
+    {
+      title: t('columns.insightsAndIntelligence'),
+      links: [
+        { label: t('insightsLinks.investors'), href: '/insights/investors' },
+        { label: t('insightsLinks.buyers'), href: '/insights/buyers' },
+        { label: t('insightsLinks.newsAndPress'), href: '/insights/news' },
+      ],
+    },
+  ];
+
   return (
     <footer className="bg-dark-900 text-white">
       <div className="container-wide py-16">
@@ -66,20 +71,20 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-4 text-sm text-gray-400 leading-relaxed italic">
-              A global luxury real estate firm delivering expert guidance, exclusive opportunities, and tailored investment services.
+              {t('tagline')}
             </p>
             {/* Awards */}
             <div className="mt-[48px] flex items-center gap-4">
               <Image
                 src="/images/awards/luxury-lifestyle-2024.png"
-                alt="Luxury Lifestyle Winner 2024"
+                alt={t('awardsAlt.luxuryLifestyle')}
                 width={85}
                 height={125}
                 className="object-contain"
               />
               <Image
                 src="/images/awards/million-dollar-listing.png"
-                alt="Million Dollar Listing"
+                alt={t('awardsAlt.millionDollarListing')}
                 width={178}
                 height={118}
                 className="object-contain"
@@ -108,21 +113,21 @@ export default function Footer() {
 
           {/* Address & Contact */}
           <div>
-            <h3 className="text-sm font-semibold tracking-wider mb-4">ADDRESS</h3>
+            <h3 className="text-sm font-semibold tracking-wider mb-4">{t('address')}</h3>
             <div className="space-y-4">
               <div>
-                <p className="text-sm font-medium">Dubai</p>
-                <p className="text-sm text-gray-400">Marina Plaza, Office 1406, Dubai Marina</p>
-                <p className="text-sm text-gray-400">Dubai, UAE</p>
+                <p className="text-sm font-medium">{t('offices.dubai.city')}</p>
+                <p className="text-sm text-gray-400">{t('offices.dubai.line1')}</p>
+                <p className="text-sm text-gray-400">{t('offices.dubai.line2')}</p>
               </div>
               <div>
-                <p className="text-sm font-medium">London</p>
-                <p className="text-sm text-gray-400">71-75 Shelton Street, London, WC2H 9JQ,</p>
-                <p className="text-sm text-gray-400">United Kingdom</p>
+                <p className="text-sm font-medium">{t('offices.london.city')}</p>
+                <p className="text-sm text-gray-400">{t('offices.london.line1')}</p>
+                <p className="text-sm text-gray-400">{t('offices.london.line2')}</p>
               </div>
             </div>
 
-            <h3 className="text-sm font-semibold tracking-wider mt-6 mb-3">CONTACT</h3>
+            <h3 className="text-sm font-semibold tracking-wider mt-6 mb-3">{t('contactTitle')}</h3>
             <div className="space-y-2">
               <a href="mailto:info@blackoak-re.com" className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors">
                 <Mail className="w-4 h-4" />
@@ -134,15 +139,15 @@ export default function Footer() {
               </a>
             </div>
 
-            <h3 className="text-sm font-semibold tracking-wider mt-6 mb-3">FOLLOW US</h3>
+            <h3 className="text-sm font-semibold tracking-wider mt-6 mb-3">{t('followUsTitle')}</h3>
             <div className="flex items-center gap-3">
               {socialLinks.map((social) => (
                 <a
-                  key={social.label}
+                  key={social.key}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={social.label}
+                  aria-label={t(`socialLabels.${social.key}`)}
                   className="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-gray-600 transition-colors"
                 >
                   <social.icon className="w-4 h-4" />
@@ -157,17 +162,17 @@ export default function Footer() {
       <div className="border-t border-gray-800">
         <div className="container-wide py-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-gray-500">
-            &copy; 2026 by BlackOak Real Estate. All rights reserved.
+            {t('copyright', { year: new Date().getFullYear() })}
           </p>
           <div className="flex items-center gap-6">
             <Link href="/privacy-policy" className="text-xs text-gray-500 hover:text-white transition-colors">
-              Privacy Policy
+              {t('privacyPolicy')}
             </Link>
             <Link href="/terms-of-service" className="text-xs text-gray-500 hover:text-white transition-colors">
-              Terms of Service
+              {t('termsOfService')}
             </Link>
             <Link href="/disclaimer" className="text-xs text-gray-500 hover:text-white transition-colors">
-              Disclaimer
+              {t('disclaimer')}
             </Link>
           </div>
         </div>

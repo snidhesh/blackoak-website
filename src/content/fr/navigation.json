@@ -1,0 +1,44 @@
+[
+  {
+    "label": "A Propos",
+    "dropdown": [
+      { "label": "Pourquoi BlackOak", "href": "/about/why-blackoak" },
+      { "label": "Notre Equipe", "href": "/about/our-team" },
+      { "label": "Carrieres", "href": "/career" }
+    ]
+  },
+  {
+    "label": "Proprietes",
+    "href": "/projects"
+  },
+  {
+    "label": "Quartiers",
+    "dropdown": [
+      { "label": "Emirates Hills", "href": "/neighbourhoods/emirates-hills" },
+      { "label": "Palm Jumeirah", "href": "/neighbourhoods/palm-jumeirah" },
+      { "label": "Dubai Hills Estate", "href": "/neighbourhoods/dubai-hills-estate" },
+      { "label": "Al Barari", "href": "/neighbourhoods/al-barari" },
+      { "label": "Downtown Dubai", "href": "/neighbourhoods/downtown-dubai" },
+      { "label": "DIFC", "href": "/neighbourhoods/difc" },
+      { "label": "Jumeirah Golf Estates", "href": "/neighbourhoods/jumeirah-golf-estates" },
+      { "label": "Jumeirah Islands", "href": "/neighbourhoods/jumeirah-islands" },
+      { "label": "Dubai Marina", "href": "/neighbourhoods/dubai-marina" },
+      { "label": "Mohammed Bin Rashid City", "href": "/neighbourhoods/mohammed-bin-rashid-city" },
+      { "label": "City Walk", "href": "/neighbourhoods/city-walk" },
+      { "label": "Business Bay", "href": "/neighbourhoods/business-bay" },
+      { "label": "Bluewaters Island", "href": "/neighbourhoods/bluewaters-island" }
+    ]
+  },
+  {
+    "label": "Analyses & Intelligence",
+    "dropdown": [
+      { "label": "Investisseurs", "href": "/insights/investors" },
+      { "label": "Acquereurs", "href": "/insights/buyers" },
+      { "label": "Actualites & Presse", "href": "/insights/news" }
+    ]
+  },
+  {
+    "label": "Contact",
+    "href": "/contact"
+  }
+]

@@ -1,7 +1,11 @@
+'use client';
+
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
+import { useLocale, useTranslations } from 'next-intl';
 import { MapPin, Bed, Maximize, Mail, Phone, MessageCircle } from 'lucide-react';
-import { formatPriceNumber } from '@/lib/formatters';
+import { formatPriceNumber, formatArea } from '@/lib/formatters';
+import type { Locale } from '@/i18n/config';
 import DirhamIcon from '@/components/ui/DirhamIcon';
 
 interface PropertyCardProps {
@@ -32,6 +36,9 @@ export default function PropertyCard({
   areaUnit,
   offering,
 }: PropertyCardProps) {
+  const t = useTranslations('common');
+  const locale = useLocale() as Locale;
+
   const locationLabel = neighbourhood
     .split('-')
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
@@ -58,7 +65,7 @@ export default function PropertyCard({
             )}
             {offering && (
               <span className="bg-black text-white text-[11px] font-medium tracking-wide uppercase px-2.5 py-1 rounded-sm">
-                {offering === 'sale' ? 'For Sale' : offering === 'rent' ? 'For Rent' : offering}
+                {offering === 'sale' ? t('forSale') : offering === 'rent' ? t('forRent') : offering}
               </span>
             )}
           </div>
@@ -68,7 +75,7 @@ export default function PropertyCard({
         <div className="mt-4">
           <p className="text-lg font-semibold flex items-center gap-1.5">
             <DirhamIcon size={14} className="shrink-0" />
-            {formatPriceNumber(price)}
+            {formatPriceNumber(price, locale)}
           </p>
           <h3 className="text-sm text-gray-900 mt-1 leading-relaxed">{name}</h3>
         </div>
@@ -82,10 +89,10 @@ export default function PropertyCard({
         {/* Specs */}
         <div className="flex items-center gap-4 mt-1 text-xs text-gray-500">
           <span className="flex items-center gap-1">
-            <Bed className="w-3.5 h-3.5" /> {bedrooms} Bedrooms
+            <Bed className="w-3.5 h-3.5" /> {bedrooms} {t('bedrooms')}
           </span>
           <span className="flex items-center gap-1">
-            <Maximize className="w-3.5 h-3.5" /> {area.toLocaleString()} {areaUnit}
+            <Maximize className="w-3.5 h-3.5" /> {formatArea(area, locale)} {areaUnit}
           </span>
         </div>
       </Link>
@@ -96,16 +103,16 @@ export default function PropertyCard({
           href={`mailto:info@blackoak-re.com?subject=Enquiry: ${name}`}
           className="flex items-center gap-1.5 px-4 py-2.5 bg-gray-100 text-xs text-gray-600 hover:bg-gray-200 hover:text-black transition-colors"
         >
-          <Mail className="w-3.5 h-3.5" /> Email
+          <Mail className="w-3.5 h-3.5" /> {t('email')}
         </a>
         <a
           href="tel:+97143989055"
           className="flex items-center gap-1.5 px-4 py-2.5 bg-gray-100 text-xs text-gray-600 hover:bg-gray-200 hover:text-black transition-colors"
         >
-          <Phone className="w-3.5 h-3.5" /> Call
+          <Phone className="w-3.5 h-3.5" /> {t('call')}
         </a>
         <a
-          href={`https://wa.me/97143989055?text=Hi, I'm interested in ${name}`}
+          href={`https://wa.me/97143989055?text=${encodeURIComponent(t('whatsappInterestMessage', { propertyName: name }))}`}
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 px-4 py-2.5 bg-gray-100 text-xs text-gray-600 hover:bg-gray-200 hover:text-black transition-colors"

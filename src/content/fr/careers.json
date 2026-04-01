@@ -1,0 +1,71 @@
+[
+  {
+    "id": "1",
+    "slug": "real-estate-investment-consultant",
+    "title": "Consultant en Investissement Immobilier",
+    "location": "United Arab Emirates",
+    "department": "Promotion Immobilière",
+    "type": "Temps plein et temps partiel",
+    "postedDate": "2026-02-28",
+    "remuneration": "AED 12 000 + commission, OTE annuel AED 250K",
+    "benefits": "Formation, évolution de carrière",
+    "locationDetail": "Dubai & Ras Al-Khaimah, UAE",
+    "numberOfPositions": 8,
+    "description": "Le rôle et les responsabilités du Consultant en Investissement Immobilier consistent à établir des relations avec des clients directs, des investisseurs et des sociétés de courtage immobilier à Dubaï et à l'international. Vous devez posséder une bonne connaissance de la vente et d'excellentes compétences en présentation et en communication. De plus, vous devez être une personne bien organisée, attentive aux détails, très motivée et orientée vers le client.",
+    "responsibilities": [
+      "Expérience avérée en immobilier",
+      "Solide connaissance du marché",
+      "Compétences financières et analytiques",
+      "Excellentes compétences en communication et en négociation",
+      "Autonomie et orientation vers les résultats",
+      "Compétences en conseil client et en gestion des relations",
+      "Connaissance réglementaire et intégrité professionnelle"
+    ]
+  },
+  {
+    "id": "2",
+    "slug": "property-sales-consultant",
+    "title": "Consultant en Vente Immobilière",
+    "location": "United Arab Emirates",
+    "department": "Courtage Immobilier",
+    "type": "Temps plein et temps partiel",
+    "postedDate": "2026-02-24",
+    "remuneration": "AED 10 000 + commission",
+    "benefits": "Formation, évolution de carrière, parrainage de visa",
+    "locationDetail": "Dubai, UAE",
+    "numberOfPositions": 5,
+    "description": "Rejoignez notre équipe commerciale dynamique en tant que Consultant en Vente Immobilière. Vous serez responsable de la gestion des relations clients, de la conduite de visites de propriétés et de la conclusion de transactions sur des biens immobiliers de prestige à Dubaï.",
+    "responsibilities": [
+      "Expérience avérée en immobilier",
+      "Solide connaissance du marché",
+      "Compétences financières et analytiques",
+      "Excellentes compétences en communication et en négociation",
+      "Autonomie et orientation vers les résultats",
+      "Compétences en conseil client et en gestion des relations",
+      "Connaissance réglementaire et intégrité professionnelle"
+    ]
+  },
+  {
+    "id": "3",
+    "slug": "property-consultant",
+    "title": "Consultant Immobilier",
+    "location": "United Arab Emirates",
+    "department": "Promotion Immobilière",
+    "type": "Temps plein",
+    "postedDate": "2026-02-24",
+    "remuneration": "AED 8 000 - AED 15 000",
+    "benefits": "Formation, évolution de carrière",
+    "locationDetail": "Dubai, UAE",
+    "numberOfPositions": 3,
+    "description": "Nous recherchons des Consultants Immobiliers expérimentés pour rejoindre notre équipe en pleine croissance. Vous conseillerez les clients sur les investissements immobiliers, gérerez les biens en portefeuille et développerez des relations durables avec la clientèle.",
+    "responsibilities": [
+      "Expérience avérée en immobilier",
+      "Solide connaissance du marché",
+      "Compétences financières et analytiques",
+      "Excellentes compétences en communication et en négociation",
+      "Autonomie et orientation vers les résultats",
+      "Compétences en conseil client et en gestion des relations",
+      "Connaissance réglementaire et intégrité professionnelle"
+    ]
+  }
+]

@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { Upload, X, FileText } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 
 interface FileUploadProps {
@@ -13,6 +14,7 @@ interface FileUploadProps {
 }
 
 export default function FileUpload({ label, error, accept = '.pdf,.doc,.docx', maxSize = 4 * 1024 * 1024, onChange }: FileUploadProps) {
+  const t = useTranslations('forms');
   const [file, setFile] = useState<File | null>(null);
   const [dragActive, setDragActive] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -65,8 +67,8 @@ export default function FileUpload({ label, error, accept = '.pdf,.doc,.docx', m
         ) : (
           <div className="space-y-2">
             <Upload className="w-8 h-8 mx-auto text-gray-400" />
-            <p className="text-sm text-gray-600">Upload your CV (PDF/DOC)</p>
-            <p className="text-xs text-gray-400">Max file size: {Math.round(maxSize / 1024 / 1024)}MB</p>
+            <p className="text-sm text-gray-600">{t('uploadDragDrop')}</p>
+            <p className="text-xs text-gray-400">{t('maxFileSize', { size: Math.round(maxSize / 1024 / 1024) })}</p>
           </div>
         )}
       </div>

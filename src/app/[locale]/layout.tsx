@@ -1,0 +1,181 @@
+import type { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+import { routing } from '@/i18n/routing';
+
+import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import { getSplash } from '@/lib/content';
+import type { Locale } from '@/i18n/config';
+
+const BASE_URL = 'https://blackoak-re.com';
+
+export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
+  const locale = params.locale;
+  const ogLocale = locale === 'fr' ? 'fr_FR' : 'en_AE';
+
+  return {
+    metadataBase: new URL(BASE_URL),
+    title: {
+      default: 'BlackOak Real Estate | Luxury Properties & Investment in Dubai',
+      template: '%s | BlackOak Real Estate',
+    },
+    description:
+      'Dubai luxury real estate specialists. Buy villas, apartments & penthouses in Palm Jumeirah, Emirates Hills, Downtown Dubai & more. Expert investment advisory & concierge services.',
+    keywords: [
+      'Dubai real estate',
+      'luxury properties Dubai',
+      'buy property in Dubai',
+      'Dubai property investment',
+      'luxury villas Dubai',
+      'apartments for sale Dubai',
+      'Palm Jumeirah villas',
+      'Emirates Hills mansions',
+      'Dubai Hills Estate',
+      'Downtown Dubai apartments',
+      'off-plan property Dubai',
+      'Dubai real estate agent',
+      'luxury penthouses Dubai Marina',
+      'property investment UAE',
+      'BlackOak Real Estate',
+      'Dubai Golden Visa property',
+      'branded residences Dubai',
+      'waterfront property Dubai',
+    ],
+    openGraph: {
+      type: 'website',
+      locale: ogLocale,
+      url: BASE_URL + '/',
+      siteName: 'BlackOak Real Estate',
+      images: [
+        {
+          url: `${BASE_URL}/images/og-default.jpg`,
+          width: 1200,
+          height: 630,
+          alt: 'BlackOak Real Estate - Luxury Properties in Dubai',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      site: '@blackoakrealestate',
+    },
+    alternates: {
+      canonical: locale === 'fr' ? `${BASE_URL}/fr/` : `${BASE_URL}/`,
+      languages: {
+        en: `${BASE_URL}/`,
+        fr: `${BASE_URL}/fr/`,
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+  };
+}
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
+export default async function LocaleLayout({
+  children,
+  params,
+}: {
+  children: React.ReactNode;
+  params: { locale: string };
+}) {
+  const { locale } = params;
+
+  // Validate locale
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+
+  const messages = await getMessages();
+  const splash = getSplash(locale as Locale);
+
+  return (
+    <NextIntlClientProvider messages={messages}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'RealEstateAgent',
+            name: 'BlackOak Real Estate',
+            url: BASE_URL,
+            logo: `${BASE_URL}/images/logo-white.png`,
+            description:
+              'A global luxury real estate firm delivering expert guidance, exclusive opportunities, and tailored investment services in Dubai.',
+            inLanguage: locale === 'fr' ? 'fr' : 'en',
+            telephone: '+971 4 398 9055',
+            email: 'info@blackoak-re.com',
+            address: [
+              {
+                '@type': 'PostalAddress',
+                streetAddress: 'Office 1406, Marina Plaza, Dubai Marina',
+                addressLocality: 'Dubai',
+                addressCountry: 'AE',
+              },
+              {
+                '@type': 'PostalAddress',
+                streetAddress: '71-75 Shelton Street',
+                addressLocality: 'London',
+                postalCode: 'WC2H 9JQ',
+                addressCountry: 'GB',
+              },
+            ],
+            areaServed: {
+              '@type': 'City',
+              name: 'Dubai',
+            },
+            priceRange: '$$$$',
+            sameAs: [
+              'https://www.instagram.com/blackoakrealestate',
+              'https://www.linkedin.com/company/blackoakrealestate',
+            ],
+          }),
+        }}
+      />
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+          (function(){
+            var d=document.documentElement;
+            if(d.hasAttribute('data-splash-enabled')
+              && /^\\/(fr\\/)?$/.test(location.pathname)
+              && !/blackoak-splash=/.test(document.cookie)){
+              d.dataset.splash='pending';
+              document.cookie='blackoak-splash=seen;path=/';
+              window.__splashTimer=setTimeout(function(){ delete d.dataset.splash; }, ${splash.autoPlayDuration + 3000});
+            }
+          })();
+        `,
+        }}
+      />
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded"
+      >
+        Skip to main content
+      </a>
+      <div id="app-shell">
+        <Navbar />
+        <main id="main-content" className="min-h-screen">
+          {children}
+        </main>
+        <Footer />
+      </div>
+    </NextIntlClientProvider>
+  );
+}

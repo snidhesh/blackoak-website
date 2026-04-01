@@ -1,0 +1,193 @@
+{
+  "hero": {
+    "heading": "Quand l'investissement visionnaire rencontre l'art de vivre d'exception",
+    "subtitle": "Immobilier mondial. Strategies sur mesure. Valeur durable",
+    "image": "/images/homepage/hero.webp",
+    "searchBar": {
+      "placeholders": {
+        "location": "Emplacement",
+        "propertyType": "Type de bien",
+        "price": "Prix"
+      },
+      "buttonText": "RECHERCHER"
+    }
+  },
+  "featuredDevelopers": {
+    "label": "Projets en vedette",
+    "heading": "Des developpements d'exception par les promoteurs les plus prestigieux de la region",
+    "projects": [
+      {
+        "developer": "Ohana",
+        "name": "Manchester City Yas Residences",
+        "logo": "/images/partners/ohana.svg",
+        "image": "/images/featured-projects/ohana.webp",
+        "href": "/projects"
+      },
+      {
+        "developer": "Aman Residences",
+        "name": "Dubai Water Canal",
+        "logo": "/images/partners/aman.svg",
+        "image": "/images/featured-projects/aman.jpg",
+        "href": "/projects"
+      },
+      {
+        "developer": "Ellington",
+        "name": "The Meriva",
+        "logo": "/images/partners/ellington.svg",
+        "image": "/images/featured-projects/ellington.webp",
+        "href": "/projects"
+      },
+      {
+        "developer": "Ora",
+        "name": "Bayn",
+        "logo": "/images/partners/ora.svg",
+        "image": "/images/featured-projects/ora.jpg",
+        "href": "/projects"
+      },
+      {
+        "developer": "H&H",
+        "name": "Janu",
+        "logo": "/images/partners/hh.svg",
+        "image": "/images/featured-projects/hh.jpg",
+        "href": "/projects"
+      },
+      {
+        "developer": "Aldar",
+        "name": "The Wilds Residences",
+        "logo": "/images/partners/aldar.svg",
+        "image": "/images/featured-projects/aldar.jpg",
+        "href": "/projects"
+      },
+      {
+        "developer": "Omoria",
+        "name": "Omoria Private Residences",
+        "logo": "/images/partners/omoria.svg",
+        "image": "/images/featured-projects/omoria.webp",
+        "href": "/projects"
+      },
+      {
+        "developer": "Meraas",
+        "name": "Nad Al Sheba Gardens",
+        "logo": "/images/partners/meraas.svg",
+        "image": "/images/featured-projects/meraas.webp",
+        "href": "/projects"
+      }
+    ]
+  },
+  "featuredProjects": {
+    "label": "Biens en vedette",
+    "heading": "Des annonces exclusives selectionnees pour les acquereurs et investisseurs les plus exigeants",
+    "cta": { "label": "Voir toutes les proprietes", "href": "/projects" }
+  },
+  "neighbourhoods": {
+    "label": "Quartiers",
+    "heading": "Decouvrez l'immobilier de prestige dans les quartiers les plus prises de Dubai"
+  },
+  "partners": {
+    "heading": "Nos partenaires de confiance",
+    "logos": [
+      { "name": "Emaar", "image": "/images/partners/emaar.svg" },
+      { "name": "Meraas", "image": "/images/partners/meraas.svg" },
+      { "name": "Omniyat", "image": "/images/partners/omniyat.svg" },
+      { "name": "H&H", "image": "/images/partners/hh.svg" },
+      { "name": "Ellington", "image": "/images/partners/ellington.svg" },
+      { "name": "Aldar", "image": "/images/partners/aldar.svg" },
+      { "name": "Dubai Holding", "image": "/images/partners/dubai-holding.svg" },
+      { "name": "Modon", "image": "/images/partners/modon.svg" },
+      { "name": "Sobha", "image": "/images/partners/sobha.svg" },
+      { "name": "Bloom", "image": "/images/partners/bloom.svg" },
+      { "name": "Nakheel", "image": "/images/partners/nakheel.svg" },
+      { "name": "Damac", "image": "/images/partners/damac.svg" },
+      { "name": "Binghatti", "image": "/images/partners/binghatti.svg" },
+      { "name": "Ohana", "image": "/images/partners/ohana.svg" },
+      { "name": "ORA", "image": "/images/partners/ora.svg" },
+      { "name": "WASL", "image": "/images/partners/wasl.svg" },
+      { "name": "R-Evolution", "image": "/images/partners/r-evolution.svg" },
+      { "name": "Deyaar", "image": "/images/partners/deyaar.svg" },
+      { "name": "Majid Al Futtaim", "image": "/images/partners/majid-al-futtaim.svg" }
+    ]
+  },
+  "advantage": {
+    "label": "L'AVANTAGE BLACKOAK",
+    "heading": "Conseil prive, conciergerie et investissements strategiques",
+    "cards": [
+      {
+        "title": "BlackOak Bureau Prive",
+        "description": "Des services immobiliers exclusifs pour une clientele privee.",
+        "image": "/images/homepage/private_office.webp"
+      },
+      {
+        "title": "BlackOak Conciergerie",
+        "description": "Des services de conciergerie adaptes a vos besoins.",
+        "image": "/images/homepage/concierge.webp"
+      },
+      {
+        "title": "BlackOak Investissements",
+        "description": "Des opportunites d'investissement exclusives, selectionnees pour vous.",
+        "image": "/images/homepage/investments.webp"
+      }
+    ]
+  },
+  "starzplay": {
+    "label": "STARZPLAY ORIGINAL",
+    "heading": "Million Dollar Listing",
+    "subheading": "Au coeur du monde de l'immobilier de prestige",
+    "logo": "/images/homepage/starzplay-logo.png",
+    "posters": [
+      "/images/homepage/starzplay-poster-1.webp",
+      "/images/homepage/starzplay-poster-2.webp"
+    ],
+    "productionLogos": [
+      { "name": "NBC Universal", "image": "/images/starzplay-logos/logo-1.png", "width": 110, "height": 34 },
+      { "name": "Image Nation", "image": "/images/starzplay-logos/logo-2.png", "width": 120, "height": 17 },
+      { "name": "Page Industries", "image": "/images/starzplay-logos/logo-3.png", "width": 98, "height": 56 },
+      { "name": "Damac", "image": "/images/starzplay-logos/logo-4.png", "width": 127, "height": 49 },
+      { "name": "Production 5", "image": "/images/starzplay-logos/logo-5.png", "width": 79, "height": 28 },
+      { "name": "Production 6", "image": "/images/starzplay-logos/logo-6.png", "width": 60, "height": 66 },
+      { "name": "Production 7", "image": "/images/starzplay-logos/logo-7.png", "width": 104, "height": 79 }
+    ]
+  },
+  "mediaLogos": [
+    { "name": "Reuters", "image": "/images/media/reuters.svg" },
+    { "name": "Arabian Business", "image": "/images/media/media-2.png" },
+    { "name": "Property Time", "image": "/images/media/media-3.png" },
+    { "name": "Gulf News", "image": "/images/media/media-4.png" },
+    { "name": "Khaleej Times", "image": "/images/media/media-5.png" },
+    { "name": "Zawya", "image": "/images/media/media-6.png" },
+    { "name": "Variety", "image": "/images/media/media-1.png" },
+    { "name": "Arab News", "image": "/images/media/media-8.png" }
+  ],
+  "whyInvest": {
+    "heading": "Pourquoi BlackOak",
+    "description": "BlackOak propose des opportunites immobilieres strategiques soutenues par une expertise du marche, la transparence et la creation de valeur a long terme. Nous aidons les investisseurs a prendre des decisions eclairees sur le marche immobilier dynamique des EAU.",
+    "cards": [
+      {
+        "icon": "/images/icons/expertise.svg",
+        "title": "Expertise du marche",
+        "description": "Une connaissance approfondie du marche local combinee a une perspective mondiale pour identifier les meilleures opportunites d'investissement sur le marche immobilier dynamique de Dubai."
+      },
+      {
+        "icon": "/images/icons/finance.svg",
+        "title": "Opportunites d'investissement selectionnees",
+        "description": "Acces a des biens et projets soigneusement selectionnes, en adequation avec vos objectifs financiers et vos aspirations de style de vie."
+      },
+      {
+        "icon": "/images/icons/verified.svg",
+        "title": "Approche consultative de confiance",
+        "description": "De l'acquisition a la strategie de sortie, nos conseillers vous accompagnent avec transparence, integrite et un engagement envers les resultats."
+      }
+    ]
+  },
+  "about": {
+    "label": "A PROPOS DE BLACKOAK",
+    "heading": "Votre partenaire de confiance sur le marche immobilier dynamique des EAU !",
+    "description": "Notre equipe est composee de professionnels hautement qualifies disposant d'une vaste experience, devoues a offrir un service inegale a nos precieux clients.",
+    "cta": { "label": "Decouvrez pourquoi BlackOak", "href": "/about/why-blackoak" },
+    "image": "/images/homepage/about.webp"
+  },
+  "news": {
+    "label": "DANS LES MEDIAS",
+    "heading": "Couverture mediatique, analyses et actualites officielles de BlackOak Real Estate",
+    "cta": { "label": "Plus d'actualites", "href": "/insights/news" }
+  }
+}

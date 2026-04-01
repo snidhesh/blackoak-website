@@ -1,0 +1,63 @@
+{
+  "hero": {
+    "title": "Fonde sur la confiance.\nGuide par la passion.",
+    "image": "/images/investors/hero.jpg"
+  },
+  "intro": {
+    "label": "Pourquoi BlackOak ?",
+    "title": "Un acces exclusif aux opportunites immobilieres les plus exceptionnelles de Dubai.",
+    "description": "Les investisseurs choisissent BlackOak pour sa diligence raisonnable de niveau institutionnel, sa gestion d'actifs rigoureuse, ses structures transparentes et ses rapports clairs destines aux investisseurs. Notre plateforme donne acces a des developpements premium et a des transactions hors marche. L'alignement des interets est assure par le co-investissement direct des dirigeants de BlackOak.\n\nBlackOak allie la rigueur institutionnelle a l'agilite d'un cabinet specialise, offrant aux investisseurs la confiance necessaire pour participer au marche immobilier en pleine evolution de Dubai a travers des plateformes d'investissement gerees professionnellement et adossees a des actifs reels."
+  },
+  "capitalSection": {
+    "label": "Investir avec BlackOak",
+    "title": "La ou le capital rencontre l'opportunite"
+  },
+  "sections": [
+    {
+      "title": "Investissements immobiliers syndiques a Dubai",
+      "description": "Chez BlackOak Real Estate, les investisseurs beneficient d'un acces a des opportunites d'investissement syndiquees soigneusement structurees sur le marche immobilier dynamique de Dubai. Ces offres permettent aux investisseurs qualifies comme aux investisseurs particuliers de participer a des transactions de qualite institutionnelle comprenant des actifs residentiels, commerciaux et mixtes. Chaque opportunite met l'accent sur des rendements lies aux projets, soutenus par des fondamentaux immobiliers tangibles.",
+      "image": "/images/investors/syndicated.png",
+      "imagePosition": "left"
+    },
+    {
+      "title": "Strategies et conseil sur mesure",
+      "description": "Avec une equipe consultative, BlackOak accompagne les investisseurs dans l'identification et l'acces a des produits concus pour atteindre leurs objectifs, qu'ils recherchent la stabilite des revenus, la croissance du capital ou une combinaison d'expositions.\n\nDe plus, BlackOak introduit une gamme d'options d'investissement adossees a l'immobilier et de syndicats de co-investissement, concus pour offrir une participation securisee et transparente aux opportunites immobilieres les plus attractives de Dubai.",
+      "image": "/images/investors/tailored.jpg",
+      "imagePosition": "right"
+    },
+    {
+      "title": "Expertise institutionnelle, precision sur mesure",
+      "description": "Notre equipe de direction combine une vaste experience institutionnelle en acquisitions, gestion de developpement, structuration de capital et strategie d'investissement. Cette expertise nous permet d'identifier et de structurer des investissements adaptes aux cycles du marche et aux objectifs individuels des investisseurs, toujours avec une gestion rigoureuse des risques.\n\nLa connaissance approfondie de BlackOak du paysage immobilier de Dubai, de l'acquisition fonciere a la faisabilite des projets et la strategie de sortie, comble le fosse entre le capital prive et les actifs immobiliers de qualite institutionnelle.",
+      "image": "/images/investors/institutional.png",
+      "imagePosition": "left"
+    },
+    {
+      "title": "Approche de syndication collaborative",
+      "description": "Notre plateforme d'investissement syndiquee reunit les investisseurs dans des operations immobilieres exclusives. Cette approche ouvre l'acces a des projets et strategies habituellement reserves aux grands acteurs institutionnels, avec une gouvernance professionnelle, de la transparence et des normes de reporting rigoureuses.\n\nChaque transaction est evaluee independamment, en se concentrant sur des fondamentaux d'actifs solides, des structures de capital raisonnees, une visibilite claire sur la sortie et un fort alignement entre sponsors, promoteurs et investisseurs. Des objectifs de rendement prudents et ajustes au risque restent au coeur de chaque investissement.",
+      "image": "/images/investors/tailored.jpg",
+      "imagePosition": "right"
+    }
+  ],
+  "faq": {
+    "label": "FAQ",
+    "title": "Tout ce que vous devez savoir pour investir en toute clarte",
+    "items": [
+      {
+        "question": "Pourquoi investir dans l'immobilier a Dubai ?",
+        "answer": "Dubai offre des revenus locatifs exoneres d'impots, une forte appreciation du capital, des infrastructures de classe mondiale et un environnement reglementaire stable. La ville se classe regulierement parmi les premieres destinations mondiales pour l'investissement immobilier."
+      },
+      {
+        "question": "Quels types de biens offrent les meilleurs rendements ?",
+        "answer": "Les rendements varient en fonction de l'emplacement, de la reputation du promoteur et du moment du marche. Les developpements premium en bord de mer, les residences de marque et les projets sur plan a forte demande offrent souvent une forte appreciation du capital, tandis que les biens acheves dans des communautes etablies peuvent generer des rendements locatifs stables. Une approche strategique basee sur les donnees assure une performance optimale du portefeuille."
+      },
+      {
+        "question": "L'investissement sur plan est-il une bonne strategie ?",
+        "answer": "Les investissements sur plan peuvent offrir des avantages significatifs, notamment des prix d'entree plus bas, des plans de paiement flexibles et un potentiel d'appreciation du capital avant l'achevement."
+      },
+      {
+        "question": "Les investisseurs internationaux peuvent-ils acheter des biens a Dubai ?",
+        "answer": "Oui, Dubai offre la pleine propriete fonciere aux investisseurs internationaux dans des zones designees, qui incluent la plupart des developpements et communautes premium."
+      }
+    ]
+  }
+}

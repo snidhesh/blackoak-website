@@ -1,10 +1,12 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
-import { contactSchema, type ContactFormData } from '@/lib/schemas';
+import { useRouter, Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
+import { createContactSchema, type ContactFormData } from '@/lib/schemas';
+import { FORM_ERROR_CODES } from '@/lib/error-codes';
 import Input from '@/components/ui/Input';
 import Textarea from '@/components/ui/Textarea';
 
@@ -19,18 +21,29 @@ export default function ContactForm({
   endpoint = '/api/contact',
   projectSlug,
   projectName,
-  submitLabel = 'SUBMIT ENQUIRY',
+  submitLabel,
 }: ContactFormProps) {
+  const t = useTranslations('forms');
+  const tv = useTranslations('validation');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
+  const schema = useMemo(() => createContactSchema({
+    firstNameMin: tv('firstNameMin'),
+    lastNameMin: tv('lastNameMin'),
+    phoneInvalid: tv('phoneInvalid'),
+    emailInvalid: tv('emailInvalid'),
+    messageMin: tv('messageMin'),
+  }), [tv]);
+
   const {
     register,
     handleSubmit,
+    setError: setFieldError,
     formState: { errors },
   } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
+    resolver: zodResolver(schema),
     defaultValues: { _honeypot: '' },
   });
 
@@ -43,9 +56,9 @@ export default function ContactForm({
       if (projectSlug) body.projectSlug = projectSlug;
       if (projectName) body.projectName = projectName;
 
-      // Try to submit to the API endpoint (works in server mode)
+      let response: Response | undefined;
       try {
-        await fetch(endpoint, {
+        response = await fetch(endpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body),
@@ -54,9 +67,29 @@ export default function ContactForm({
         // Static export — API routes unavailable; continue to thank-you
       }
 
+      if (response && !response.ok) {
+        const result = await response.json().catch(() => null);
+        if (result?.errors) {
+          const validFields = new Set(['firstName', 'lastName', 'phone', 'email', 'message']);
+          for (const err of result.errors) {
+            if (err.field === '_form') {
+              const code = Object.values(FORM_ERROR_CODES).includes(err.code)
+                ? err.code
+                : FORM_ERROR_CODES.unexpectedError;
+              setError(t(code));
+            } else if (validFields.has(err.field)) {
+              setFieldError(err.field as keyof ContactFormData, { message: tv(err.code) });
+            }
+          }
+        } else {
+          setError(t('errorGeneric'));
+        }
+        return;
+      }
+
       router.push('/thank-you');
     } catch {
-      setError('Something went wrong. Please try again.');
+      setError(t('errorGeneric'));
     } finally {
       setSubmitting(false);
     }
@@ -66,55 +99,55 @@ export default function ContactForm({
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <Input
-          label="First name"
-          placeholder="Enter"
+          label={t('firstName')}
+          placeholder={t('placeholder')}
           required
           {...register('firstName')}
-          error={errors.firstName?.message}
+          error={errors.firstName ? tv('firstNameMin') : undefined}
         />
         <Input
-          label="Last name"
-          placeholder="Enter"
+          label={t('lastName')}
+          placeholder={t('placeholder')}
           required
           {...register('lastName')}
-          error={errors.lastName?.message}
+          error={errors.lastName ? tv('lastNameMin') : undefined}
         />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
-            Phone <span className="text-red-500">*</span>
+            {t('phone')} <span className="text-red-500">*</span>
           </label>
           <div className="flex">
             <div className="flex items-center gap-1.5 px-3 bg-[#f5f5f5] border border-[#d1d5db] border-r-0 shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/contact/uae-flag.svg" alt="UAE" className="w-5 h-5" />
-              <span className="text-[13.7px] text-[#374151]">+971</span>
+              <img src="/images/contact/uae-flag.svg" alt={t('phoneCountryFlag')} className="w-5 h-5" />
+              <span className="text-[13.7px] text-[#374151]">{t('phoneCountryCode')}</span>
             </div>
             <div className="flex-1">
               <Input
-                placeholder="Enter"
+                placeholder={t('placeholder')}
                 {...register('phone')}
-                error={errors.phone?.message}
+                error={errors.phone ? tv('phoneInvalid') : undefined}
               />
             </div>
           </div>
         </div>
         <Input
-          label="Email"
+          label={t('email')}
           type="email"
-          placeholder="Enter"
+          placeholder={t('placeholder')}
           required
           {...register('email')}
-          error={errors.email?.message}
+          error={errors.email ? tv('emailInvalid') : undefined}
         />
       </div>
       <Textarea
-        label="Message"
-        placeholder="Enter"
+        label={t('message')}
+        placeholder={t('placeholder')}
         required
         {...register('message')}
-        error={errors.message?.message}
+        error={errors.message ? tv('messageMin') : undefined}
       />
 
       {/* Honeypot */}
@@ -127,9 +160,10 @@ export default function ContactForm({
       )}
 
       <p className="text-[12px] leading-[16px] text-[#525252]">
-        By submitting this form, you acknowledge that you accept the BlackOak Real Estate&apos;s{' '}
-        <a href="/privacy-policy" className="underline text-[#0a0a0a]">Privacy Policy</a> and{' '}
-        <a href="/terms-of-service" className="underline text-[#0a0a0a]">Terms of Use</a>.
+        {t.rich('consentText', {
+          privacyPolicy: (chunks) => <Link href="/privacy-policy" className="underline text-[#0a0a0a]">{chunks}</Link>,
+          termsOfUse: (chunks) => <Link href="/terms-of-service" className="underline text-[#0a0a0a]">{chunks}</Link>,
+        })}
       </p>
 
       <button
@@ -137,7 +171,7 @@ export default function ContactForm({
         disabled={submitting}
         className="bg-black border-2 border-[#030303] text-white text-[12px] font-medium uppercase tracking-wider h-[48px] w-[200px] flex items-center justify-center hover:bg-gray-900 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {submitting ? 'SUBMITTING...' : submitLabel}
+        {submitting ? t('submitting') : (submitLabel || t('submitEnquiry'))}
       </button>
     </form>
   );
