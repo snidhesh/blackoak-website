@@ -10,6 +10,6 @@ export const config = {
     // Match all pathnames except api, _next, _vercel, and static files
     '/((?!api|_next|_vercel|.*\\..*).*)',
     // Match locale-prefixed paths
-    '/(fr|en)/:path*',
+    '/(fr|en|ar)/:path*',
   ],
 };

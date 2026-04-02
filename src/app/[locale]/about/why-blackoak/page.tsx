@@ -8,20 +8,30 @@ import Button from '@/components/ui/Button';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 import CountUp from '@/components/ui/CountUp';
 
-export const metadata: Metadata = {
-  title: 'Why BlackOak - About Our Luxury Real Estate Firm',
-  description:
-    'BlackOak Real Estate combines private advisory, concierge services & strategic investments across Dubai. Trusted by HNW clients for luxury property expertise.',
-  alternates: { canonical: 'https://blackoak-re.com/about/why-blackoak/' },
-  openGraph: {
-    title: 'Why BlackOak - About Our Luxury Real Estate Firm',
-    description:
-      'BlackOak Real Estate combines private advisory, concierge services & strategic investments across Dubai. Trusted by HNW clients for luxury property expertise.',
-    type: 'website',
-    url: 'https://blackoak-re.com/about/why-blackoak/',
-    images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'About BlackOak Real Estate' }],
-  },
-};
+interface Props {
+  params: { locale: string };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'metadata.whyBlackoak' });
+  return {
+    title: t('title'),
+    description: t('description'),
+    keywords: ['about BlackOak Real Estate', 'luxury real estate firm Dubai', 'Dubai property advisory', 'private real estate office Dubai', 'HNWI real estate Dubai', 'luxury property concierge'],
+    alternates: {
+      canonical: locale === 'en' ? 'https://blackoak-re.com/about/why-blackoak/' : `https://blackoak-re.com/${locale}/about/why-blackoak/`,
+      languages: { en: 'https://blackoak-re.com/about/why-blackoak/', fr: 'https://blackoak-re.com/fr/about/why-blackoak/', ar: 'https://blackoak-re.com/ar/about/why-blackoak/' },
+    },
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      type: 'website',
+      url: 'https://blackoak-re.com/about/why-blackoak/',
+      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+    },
+  };
+}
 
 const featureCardImages = [
   '/images/about/high-quality-projects.png',
@@ -56,8 +66,51 @@ export default async function WhyBlackOakPage({ params }: { params: { locale: st
     { end: Number(t('stats.success.end')), suffix: t('stats.success.suffix'), label: t('stats.success.label'), sublabel: t('stats.success.sublabel') },
     { end: Number(t('stats.awards.end')), suffix: t('stats.awards.suffix'), label: t('stats.awards.label'), sublabel: t('stats.awards.sublabel') },
   ];
+  const aboutJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'Why BlackOak Real Estate',
+    description: 'BlackOak Real Estate combines private advisory, concierge services & strategic investments across Dubai.',
+    url: 'https://blackoak-re.com/about/why-blackoak/',
+    mainEntity: {
+      '@type': 'RealEstateAgent',
+      name: 'BlackOak Real Estate',
+      url: 'https://blackoak-re.com',
+      logo: 'https://blackoak-re.com/images/logo-white.png',
+      foundingDate: '2019',
+      areaServed: { '@type': 'City', name: 'Dubai' },
+      address: [
+        {
+          '@type': 'PostalAddress',
+          streetAddress: 'Office 1406, Marina Plaza, Dubai Marina',
+          addressLocality: 'Dubai',
+          addressCountry: 'AE',
+        },
+        {
+          '@type': 'PostalAddress',
+          streetAddress: '71-75 Shelton Street',
+          addressLocality: 'London',
+          postalCode: 'WC2H 9JQ',
+          addressCountry: 'GB',
+        },
+      ],
+      knowsAbout: [
+        'Luxury Real Estate',
+        'Property Investment',
+        'Dubai Villas',
+        'Branded Residences',
+        'Off-Plan Properties',
+        'Golden Visa Property',
+      ],
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }}
+      />
       {/* Hero */}
       <section className="relative flex items-center justify-center min-h-[70vh]">
         <Image

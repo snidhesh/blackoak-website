@@ -1,21 +1,30 @@
 import type { Metadata } from 'next';
 import { CheckCircle } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
+import type { Locale } from '@/i18n/config';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
 
-export const metadata: Metadata = {
-  title: 'Thank You',
-  description: 'Your request has been successfully submitted. Our team will review your enquiry and get back to you shortly.',
-  alternates: { canonical: 'https://blackoak-re.com/thank-you/' },
-  openGraph: {
-    title: 'Thank You | BlackOak Real Estate',
-    description: 'Your request has been successfully submitted. Our team will get back to you shortly.',
-    type: 'website',
-    url: 'https://blackoak-re.com/thank-you/',
-  },
-  robots: { index: false, follow: false },
-};
+interface Props {
+  params: { locale: string };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'metadata.thankYou' });
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: { canonical: 'https://blackoak-re.com/thank-you/' },
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      type: 'website',
+      url: 'https://blackoak-re.com/thank-you/',
+    },
+    robots: { index: false, follow: false },
+  };
+}
 
 export default async function ThankYouPage() {
   const t = await getTranslations('pages.thankYou');

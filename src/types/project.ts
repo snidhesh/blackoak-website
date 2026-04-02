@@ -13,6 +13,8 @@ export interface Project {
   id: string;
   slug: string;
   name: string;
+  nameFr?: string;
+  nameAr?: string;
   developer: string;
   neighbourhood: string;
   price: number;
@@ -25,6 +27,8 @@ export interface Project {
   mainImage: string;
   gallery: string[];
   description: string;
+  descriptionFr?: string;
+  descriptionAr?: string;
   floorPlans: { name: string; image: string }[];
   amenities: string[];
   location: { lat: number; lng: number; address: string };

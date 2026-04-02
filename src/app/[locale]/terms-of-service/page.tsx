@@ -1,20 +1,31 @@
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import { getTermsOfService } from '@/lib/content';
 import type { Locale } from '@/i18n/config';
 
-export const metadata: Metadata = {
-  title: 'Terms of Service - User Agreement',
-  description:
-    'Terms and conditions governing your use of BlackOak Real Estate services and website. Read our policies on property transactions, liability, and user obligations.',
-  alternates: { canonical: 'https://blackoak-re.com/terms-of-service/' },
-  openGraph: {
-    title: 'Terms of Service | BlackOak Real Estate',
-    description:
-      'Terms and conditions governing your use of BlackOak Real Estate services and website.',
-    type: 'website',
-    url: 'https://blackoak-re.com/terms-of-service/',
-  },
-};
+interface Props {
+  params: { locale: string };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'metadata.termsOfService' });
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: locale === 'en' ? 'https://blackoak-re.com/terms-of-service/' : `https://blackoak-re.com/${locale}/terms-of-service/`,
+      languages: { en: 'https://blackoak-re.com/terms-of-service/', fr: 'https://blackoak-re.com/fr/terms-of-service/', ar: 'https://blackoak-re.com/ar/terms-of-service/' },
+    },
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      type: 'website',
+      url: 'https://blackoak-re.com/terms-of-service/',
+      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+    },
+  };
+}
 
 export default function TermsOfServicePage({ params }: { params: { locale: string } }) {
   const termsData = getTermsOfService(params.locale as Locale);

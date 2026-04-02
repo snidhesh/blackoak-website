@@ -67,6 +67,15 @@ html[data-splash="pending"] #app-shell {
   visibility: hidden;
 }
 
+/* RTL overrides */
+[dir="rtl"] .animate-marquee {
+  animation-direction: reverse;
+}
+
+[dir="rtl"] .icon-directional {
+  transform: scaleX(-1);
+}
+
 /* Hide honeypot field */
 .hp-field {
   position: absolute;

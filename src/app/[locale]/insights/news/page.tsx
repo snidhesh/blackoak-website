@@ -14,20 +14,26 @@ interface Props {
   params: { locale: string };
 }
 
-export const metadata: Metadata = {
-  title: 'Dubai Real Estate News & Market Insights',
-  description:
-    'Latest Dubai real estate news, market reports & investment insights from BlackOak. Stay informed on property trends, regulations & opportunities in the UAE.',
-  alternates: { canonical: 'https://blackoak-re.com/insights/news/' },
-  openGraph: {
-    title: 'Dubai Real Estate News & Market Insights | BlackOak',
-    description:
-      'Latest Dubai real estate news, market reports & investment insights from BlackOak. Stay informed on property trends & opportunities.',
-    type: 'website',
-    url: 'https://blackoak-re.com/insights/news/',
-    images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'Dubai Real Estate News' }],
-  },
-};
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'metadata.news' });
+  return {
+    title: t('title'),
+    description: t('description'),
+    keywords: ['Dubai real estate news', 'Dubai property market updates', 'Dubai real estate trends', 'luxury property market Dubai', 'Dubai property reports', 'UAE real estate insights'],
+    alternates: {
+      canonical: locale === 'en' ? 'https://blackoak-re.com/insights/news/' : `https://blackoak-re.com/${locale}/insights/news/`,
+      languages: { en: 'https://blackoak-re.com/insights/news/', fr: 'https://blackoak-re.com/fr/insights/news/', ar: 'https://blackoak-re.com/ar/insights/news/' },
+    },
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      type: 'website',
+      url: 'https://blackoak-re.com/insights/news/',
+      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+    },
+  };
+}
 
 export default async function NewsPage({ params }: Props) {
   const locale = params.locale as Locale;
@@ -36,8 +42,33 @@ export default async function NewsPage({ params }: Props) {
   const featured = news[0];
   const gridArticles = news.slice(1);
 
+  const newsJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    name: 'Dubai Real Estate News & Market Insights',
+    description: 'Latest Dubai real estate news, market reports & investment insights from BlackOak Real Estate.',
+    url: 'https://blackoak-re.com/insights/news/',
+    publisher: {
+      '@type': 'Organization',
+      name: 'BlackOak Real Estate',
+      logo: { '@type': 'ImageObject', url: 'https://blackoak-re.com/images/logo-white.png' },
+    },
+    blogPost: news.map((article) => ({
+      '@type': 'BlogPosting',
+      headline: article.title,
+      description: article.excerpt,
+      datePublished: article.publishedDate,
+      image: article.image ? `https://blackoak-re.com${article.image}` : undefined,
+      url: `https://blackoak-re.com/insights/news/${article.slug}/`,
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(newsJsonLd) }}
+      />
       {/* Featured Article */}
       <section className="pt-[156px] pb-16">
         <div className="container-wide">

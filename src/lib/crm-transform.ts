@@ -1,5 +1,6 @@
 import type { CrmListing } from '@/types/crm';
 import type { Project } from '@/types/project';
+import type { Locale } from '@/i18n/config';
 import { slugify } from '@/lib/utils';
 
 const CRM_API_BASE_URL = process.env.CRM_API_BASE_URL ?? '';
@@ -100,6 +101,8 @@ export function transformListing(listing: CrmListing): Project {
     crmId: listing.id,
     slug: generateListingSlug(listing),
     name: listing.titleEn || listing.reference || 'Untitled',
+    nameFr: listing.titleFr || undefined,
+    nameAr: listing.titleAr || undefined,
     developer: listing.developer || '',
     neighbourhood: mapCommunityToNeighbourhood(listing.locationCommunity),
     price: listing.price ?? 0,
@@ -112,6 +115,8 @@ export function transformListing(listing: CrmListing): Project {
     mainImage: resolveImageUrl(images[0]),
     gallery: images.slice(1).map(resolveImageUrl),
     description: listing.descriptionEn || '',
+    descriptionFr: listing.descriptionFr || undefined,
+    descriptionAr: listing.descriptionAr || undefined,
     floorPlans: [],
     amenities: (listing.amenities ?? []).map(capitalize),
     location: {
@@ -142,6 +147,18 @@ export function transformListing(listing: CrmListing): Project {
         }
       : null,
   };
+}
+
+export function getProjectName(project: Project, locale: Locale): string {
+  if (locale === 'ar' && project.nameAr) return project.nameAr;
+  if (locale === 'fr' && project.nameFr) return project.nameFr;
+  return project.name;
+}
+
+export function getProjectDescription(project: Project, locale: Locale): string {
+  if (locale === 'ar' && project.descriptionAr) return project.descriptionAr;
+  if (locale === 'fr' && project.descriptionFr) return project.descriptionFr;
+  return project.description;
 }
 
 export function deduplicateSlugs(projects: Project[]): Project[] {

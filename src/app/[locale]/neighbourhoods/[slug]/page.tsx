@@ -18,11 +18,13 @@ export function generateStaticParams() {
 }
 
 export function generateMetadata({ params }: Props): Metadata {
-  const neighbourhood = getNeighbourhoodBySlug(params.slug, params.locale as Locale);
+  const locale = params.locale;
+  const neighbourhood = getNeighbourhoodBySlug(params.slug, locale as Locale);
   if (!neighbourhood) return { title: 'Not Found' };
   return {
     title: neighbourhood.seo.title,
     description: neighbourhood.seo.description,
+    keywords: [`${neighbourhood.name} property`, `${neighbourhood.name} villas`, `${neighbourhood.name} apartments`, `buy property ${neighbourhood.name}`, `${neighbourhood.name} real estate`, `invest ${neighbourhood.name} Dubai`, `luxury homes ${neighbourhood.name}`],
     openGraph: {
       title: neighbourhood.seo.title,
       description: neighbourhood.seo.description,
@@ -31,7 +33,12 @@ export function generateMetadata({ params }: Props): Metadata {
       images: [{ url: neighbourhood.heroImage, alt: `${neighbourhood.name} - Dubai` }],
     },
     alternates: {
-      canonical: `https://blackoak-re.com/neighbourhoods/${params.slug}/`,
+      canonical: locale === 'en' ? `https://blackoak-re.com/neighbourhoods/${params.slug}/` : `https://blackoak-re.com/${locale}/neighbourhoods/${params.slug}/`,
+      languages: {
+        en: `https://blackoak-re.com/neighbourhoods/${params.slug}/`,
+        fr: `https://blackoak-re.com/fr/neighbourhoods/${params.slug}/`,
+        ar: `https://blackoak-re.com/ar/neighbourhoods/${params.slug}/`,
+      },
     },
   };
 }
@@ -51,13 +58,20 @@ export default async function NeighbourhoodPage({ params }: Props) {
     '@type': 'Place',
     name: neighbourhood.name,
     description: neighbourhood.seo.description,
+    url: `https://blackoak-re.com/neighbourhoods/${params.slug}/`,
     address: {
       '@type': 'PostalAddress',
       addressLocality: neighbourhood.name,
       addressRegion: 'Dubai',
       addressCountry: 'AE',
     },
-    image: neighbourhood.heroImage,
+    containedInPlace: {
+      '@type': 'City',
+      name: 'Dubai',
+      containedInPlace: { '@type': 'Country', name: 'United Arab Emirates' },
+    },
+    image: neighbourhood.heroImage.startsWith('http') ? neighbourhood.heroImage : `https://blackoak-re.com${neighbourhood.heroImage}`,
+    hasMap: `https://maps.google.com/?q=${encodeURIComponent(neighbourhood.name + ', Dubai, UAE')}`,
   };
 
   const breadcrumbJsonLd = {

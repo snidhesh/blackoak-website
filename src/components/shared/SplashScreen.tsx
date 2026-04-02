@@ -11,6 +11,7 @@ interface SplashScreenProps {
   subtext: string;
   backgroundImage: string | null;
   autoPlayDuration: number;
+  skipLabel?: string;
 }
 
 export default function SplashScreen({
@@ -19,6 +20,7 @@ export default function SplashScreen({
   subtext,
   backgroundImage,
   autoPlayDuration,
+  skipLabel = 'Skip Intro',
 }: SplashScreenProps) {
   const [visible, setVisible] = useState(false);
 
@@ -105,7 +107,7 @@ export default function SplashScreen({
             onClick={dismiss}
             className="absolute bottom-10 text-white/50 hover:text-white text-[11px] tracking-[2px] uppercase transition-colors cursor-pointer"
           >
-            Skip Intro
+            {skipLabel}
           </motion.button>
         </motion.div>
       )}

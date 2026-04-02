@@ -1,6 +1,6 @@
 import type { Locale } from '@/i18n/config';
 
-const LOCALE_MAP: Record<Locale, string> = { en: 'en-US', fr: 'fr-FR' };
+const LOCALE_MAP: Record<Locale, string> = { en: 'en-US', fr: 'fr-FR', ar: 'ar-AE-u-nu-arab' };
 
 export function formatPrice(price: number, currency: string = 'AED', locale: Locale = 'en'): string {
   return `${currency} ${price.toLocaleString(LOCALE_MAP[locale])}`;

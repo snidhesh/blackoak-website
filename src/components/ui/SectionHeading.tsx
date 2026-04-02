@@ -10,7 +10,7 @@ interface SectionHeadingProps {
 
 export default function SectionHeading({ title, subtitle, className, light, align = 'center' }: SectionHeadingProps) {
   return (
-    <div className={cn(align === 'center' ? 'text-center' : 'text-left', className)}>
+    <div className={cn(align === 'center' ? 'text-center' : 'text-start', className)}>
       <h2 className={cn(
         'text-[28px] md:text-[32px] font-normal leading-[48px]',
         light ? 'text-white' : 'text-black'

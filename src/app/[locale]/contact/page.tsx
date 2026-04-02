@@ -11,20 +11,26 @@ interface Props {
   params: { locale: string };
 }
 
-export const metadata: Metadata = {
-  title: 'Contact Us - Dubai & London Offices',
-  description:
-    'Contact BlackOak Real Estate for luxury property enquiries in Dubai. Offices in Dubai Marina & London. Schedule a private consultation today.',
-  alternates: { canonical: 'https://blackoak-re.com/contact/' },
-  openGraph: {
-    title: 'Contact Us | BlackOak Real Estate',
-    description:
-      'Contact BlackOak Real Estate for luxury property enquiries in Dubai. Offices in Dubai Marina & London.',
-    type: 'website',
-    url: 'https://blackoak-re.com/contact/',
-    images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'Contact BlackOak Real Estate' }],
-  },
-};
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'metadata.contact' });
+  return {
+    title: t('title'),
+    description: t('description'),
+    keywords: ['contact BlackOak Real Estate', 'Dubai real estate agent contact', 'luxury property enquiry Dubai', 'Dubai Marina real estate office', 'London Dubai property agent'],
+    alternates: {
+      canonical: locale === 'en' ? 'https://blackoak-re.com/contact/' : `https://blackoak-re.com/${locale}/contact/`,
+      languages: { en: 'https://blackoak-re.com/contact/', fr: 'https://blackoak-re.com/fr/contact/', ar: 'https://blackoak-re.com/ar/contact/' },
+    },
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      type: 'website',
+      url: 'https://blackoak-re.com/contact/',
+      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+    },
+  };
+}
 
 const offices = [
   {

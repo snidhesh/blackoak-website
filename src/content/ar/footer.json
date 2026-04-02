@@ -1,0 +1,184 @@
+{
+  "logo": "/images/logo-white.svg",
+  "tagline": "شركة عقارات فاخرة عالمية تقدم إرشادات متخصصة وفرصاً حصرية وخدمات استثمارية مصممة خصيصاً.",
+  "columns": [
+    {
+      "title": "الشركة",
+      "links": [
+        {
+          "label": "العقارات",
+          "href": "/projects"
+        },
+        {
+          "label": "لماذا BlackOak",
+          "href": "/about/why-blackoak"
+        },
+        {
+          "label": "فريقنا",
+          "href": "/about/our-team"
+        },
+        {
+          "label": "الوظائف",
+          "href": "/career"
+        },
+        {
+          "label": "اتصل بنا",
+          "href": "/contact"
+        }
+      ]
+    },
+    {
+      "title": "الأحياء",
+      "links": [
+        {
+          "label": "تلال الإمارات",
+          "href": "/neighbourhoods/emirates-hills"
+        },
+        {
+          "label": "نخلة جميرا",
+          "href": "/neighbourhoods/palm-jumeirah"
+        },
+        {
+          "label": "دبي هيلز إستيت",
+          "href": "/neighbourhoods/dubai-hills-estate"
+        },
+        {
+          "label": "البراري",
+          "href": "/neighbourhoods/al-barari"
+        },
+        {
+          "label": "وسط مدينة دبي",
+          "href": "/neighbourhoods/downtown-dubai"
+        },
+        {
+          "label": "مركز دبي المالي العالمي (DIFC)",
+          "href": "/neighbourhoods/difc"
+        },
+        {
+          "label": "جميرا غولف إستيتس",
+          "href": "/neighbourhoods/jumeirah-golf-estates"
+        },
+        {
+          "label": "جزر جميرا",
+          "href": "/neighbourhoods/jumeirah-islands"
+        },
+        {
+          "label": "دبي مارينا",
+          "href": "/neighbourhoods/dubai-marina"
+        },
+        {
+          "label": "مدينة محمد بن راشد",
+          "href": "/neighbourhoods/mohammed-bin-rashid-city"
+        },
+        {
+          "label": "سيتي ووك",
+          "href": "/neighbourhoods/city-walk"
+        },
+        {
+          "label": "الخليج التجاري",
+          "href": "/neighbourhoods/business-bay"
+        },
+        {
+          "label": "جزيرة بلوواترز",
+          "href": "/neighbourhoods/bluewaters-island"
+        }
+      ]
+    },
+    {
+      "title": "الرؤى والتحليلات",
+      "links": [
+        {
+          "label": "المستثمرون",
+          "href": "/insights/investors"
+        },
+        {
+          "label": "المشترون",
+          "href": "/insights/buyers"
+        },
+        {
+          "label": "الأخبار والصحافة",
+          "href": "/insights/news"
+        }
+      ]
+    }
+  ],
+  "address": {
+    "dubai": {
+      "label": "دبي",
+      "lines": [
+        "مارينا بلازا، مكتب ١٤٠٦، دبي مارينا",
+        "دبي، الإمارات العربية المتحدة"
+      ]
+    },
+    "london": {
+      "label": "لندن",
+      "lines": [
+        "٧١-٧٥ Shelton Street, London, WC٢H ٩JQ,",
+        "المملكة المتحدة"
+      ]
+    }
+  },
+  "contact": {
+    "email": "info@blackoak-re.com",
+    "phone": "+971 4 398 9055"
+  },
+  "social": [
+    {
+      "platform": "facebook",
+      "url": "https://facebook.com/blackoakre",
+      "icon": "Facebook"
+    },
+    {
+      "platform": "twitter",
+      "url": "https://x.com/blackoakre",
+      "icon": "Twitter"
+    },
+    {
+      "platform": "linkedin",
+      "url": "https://linkedin.com/company/blackoakre",
+      "icon": "Linkedin"
+    },
+    {
+      "platform": "whatsapp",
+      "url": "https://wa.me/97143989055",
+      "icon": "MessageCircle"
+    },
+    {
+      "platform": "instagram",
+      "url": "https://instagram.com/blackoakre",
+      "icon": "Instagram"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://youtube.com/blackoakre",
+      "icon": "Youtube"
+    }
+  ],
+  "awards": [
+    {
+      "name": "Luxury Lifestyle Winner ٢٠٢٤",
+      "image": "/images/awards/luxury-lifestyle-2024.png"
+    },
+    {
+      "name": "Million Dollar Listing",
+      "image": "/images/awards/million-dollar-listing.png"
+    }
+  ],
+  "bottomBar": {
+    "copyright": "© ٢٠٢٦ BlackOak Real Estate. جميع الحقوق محفوظة.",
+    "links": [
+      {
+        "label": "سياسة الخصوصية",
+        "href": "/privacy-policy"
+      },
+      {
+        "label": "شروط الخدمة",
+        "href": "/terms-of-service"
+      },
+      {
+        "label": "إخلاء المسؤولية",
+        "href": "/disclaimer"
+      }
+    ]
+  }
+}

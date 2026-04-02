@@ -1,12 +1,15 @@
 import Image from 'next/image';
 import { Phone, Mail, MessageCircle } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 import type { ProjectAgent } from '@/types/project';
 
 interface AgentCardProps {
   agent: ProjectAgent;
 }
 
-export default function AgentCard({ agent }: AgentCardProps) {
+export default async function AgentCard({ agent }: AgentCardProps) {
+  const t = await getTranslations('common');
+
   return (
     <div className="bg-white border border-gray-200 p-6 flex flex-col sm:flex-row items-center gap-6">
       {/* Profile Image */}
@@ -21,7 +24,7 @@ export default function AgentCard({ agent }: AgentCardProps) {
       </div>
 
       {/* Info */}
-      <div className="flex-1 text-center sm:text-left">
+      <div className="flex-1 text-center sm:text-start">
         <h3 className="text-lg font-semibold text-black">{agent.name}</h3>
         {agent.position && (
           <p className="text-sm text-gray-500 mt-0.5">{agent.position}</p>
@@ -38,7 +41,7 @@ export default function AgentCard({ agent }: AgentCardProps) {
             href={`tel:${agent.phone}`}
             className="flex items-center gap-1.5 px-4 py-2.5 bg-gray-100 text-xs text-gray-600 hover:bg-gray-200 hover:text-black transition-colors"
           >
-            <Phone className="w-3.5 h-3.5" /> Call
+            <Phone className="w-3.5 h-3.5" /> {t('call')}
           </a>
         )}
         {agent.email && (
@@ -46,7 +49,7 @@ export default function AgentCard({ agent }: AgentCardProps) {
             href={`mailto:${agent.email}`}
             className="flex items-center gap-1.5 px-4 py-2.5 bg-gray-100 text-xs text-gray-600 hover:bg-gray-200 hover:text-black transition-colors"
           >
-            <Mail className="w-3.5 h-3.5" /> Email
+            <Mail className="w-3.5 h-3.5" /> {t('email')}
           </a>
         )}
         {agent.whatsapp && (
@@ -56,7 +59,7 @@ export default function AgentCard({ agent }: AgentCardProps) {
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-4 py-2.5 bg-gray-100 text-xs text-gray-600 hover:bg-gray-200 hover:text-black transition-colors"
           >
-            <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
+            <MessageCircle className="w-3.5 h-3.5" /> {t('whatsapp')}
           </a>
         )}
       </div>

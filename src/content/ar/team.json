@@ -1,0 +1,310 @@
+[
+  {
+    "id": "1",
+    "name": "Imran Sheikh",
+    "title": "شريك",
+    "image": "/images/team/imran-sheikh.jpg",
+    "category": "partner"
+  },
+  {
+    "id": "2",
+    "name": "Riad Gohar",
+    "title": "شريك",
+    "image": "/images/team/riad-gohar.jpg",
+    "category": "partner"
+  },
+  {
+    "id": "3",
+    "name": "Mahmoud Sahmoud",
+    "title": "شريك تنفيذي",
+    "image": "/images/team/mahmoud-sahmoud.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "4",
+    "name": "Olimpia Siwik",
+    "title": "شريك مساعد",
+    "image": "/images/team/olimpia-siwik.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "5",
+    "name": "Omar Shuker",
+    "title": "شريك مساعد",
+    "image": "/images/team/omar-shuker.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "6",
+    "name": "Ana Ambrosio",
+    "title": "شريك مساعد",
+    "image": "/images/team/ana-ambrosio.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "7",
+    "name": "Ahmed Lababidi",
+    "title": "شريك مساعد",
+    "image": "/images/team/ahmed-lababidi.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "8",
+    "name": "Dayan Candamil",
+    "title": "شريك مساعد",
+    "image": "/images/team/dayan-candamil.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "9",
+    "name": "Dana Lewis",
+    "title": "شريك مساعد",
+    "image": "/images/team/dana-lewis.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "10",
+    "name": "Flora Dautheuil",
+    "title": "شريك مساعد",
+    "image": "/images/team/flora-dautheuil.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "11",
+    "name": "Jahongir Usmonov",
+    "title": "شريك مساعد",
+    "image": "/images/team/jahongir-usmonov.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "12",
+    "name": "Fenella Rose",
+    "title": "مدير مساعد",
+    "image": "/images/team/fenella-rose.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "13",
+    "name": "Ridwan Hassan",
+    "title": "مدير مساعد",
+    "image": "/images/team/ridwan-hassan.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "14",
+    "name": "Kareem Hafez",
+    "title": "مدير مساعد",
+    "image": "/images/team/kareem-hafez.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "15",
+    "name": "Mustafa Khatib",
+    "title": "مدير مساعد",
+    "image": "/images/team/mustafa-khatib.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "16",
+    "name": "Tarek Barbary",
+    "title": "مدير مساعد",
+    "image": "/images/team/tarek-barbary.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "17",
+    "name": "Bakhodur Usmanov",
+    "title": "مدير مساعد",
+    "image": "/images/team/bakhodur-usmanov.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "18",
+    "name": "Julian Cleave",
+    "title": "مدير مساعد",
+    "image": "/images/team/julian-cleave.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "45",
+    "name": "Sharif Nagib",
+    "title": "مدير مساعد",
+    "image": "/images/team/sharif-nagib.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "21",
+    "name": "Philippa Blunden",
+    "title": "مستشار عقاري أول",
+    "image": "/images/team/philippa-blunden.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "22",
+    "name": "Laleh Changizi",
+    "title": "مستشار عقاري أول",
+    "image": "/images/team/laleh-changizi.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "23",
+    "name": "Nader Baky",
+    "title": "مستشار عقاري أول",
+    "image": "/images/team/nader-baky.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "24",
+    "name": "Carol Ozon",
+    "title": "مستشار عقاري أول",
+    "image": "/images/team/carol-ozon.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "25",
+    "name": "Ossama Elrashidy",
+    "title": "مستشار عقاري أول",
+    "image": "/images/team/ossama-elrashidy.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "26",
+    "name": "Anastasiia Samkova",
+    "title": "مستشار عقاري أول",
+    "image": "/images/team/anastasiia-samkova.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "28",
+    "name": "Habib Yazbeck",
+    "title": "مستشار عقاري أول",
+    "image": "/images/team/habib-yazbeck.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "29",
+    "name": "Liliane Hikmat Maher",
+    "title": "مستشار عقاري أول",
+    "image": "/images/team/liliane-hikmat-maher.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "30",
+    "name": "Sarah Khaleej",
+    "title": "مستشار عقاري أول",
+    "image": "/images/team/sarah-khaleej.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "46",
+    "name": "Merihan Magdy",
+    "title": "مستشار عقاري أول",
+    "image": "/images/team/merihan-magdy.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "32",
+    "name": "Iwona Piotrowska",
+    "title": "مستشار عقاري أول",
+    "image": "/images/team/iwona-piotrowska.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "31",
+    "name": "Waleed Elharti",
+    "title": "مستشار عقاري",
+    "image": "/images/team/waleed-elharti.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "34",
+    "name": "Indira Tulegenova",
+    "title": "مستشار عقاري",
+    "image": "/images/team/indira-tulegenova.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "33",
+    "name": "Ahmed Elharti",
+    "title": "مستشار عقاري",
+    "image": "/images/team/ahmed-elharti.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "48",
+    "name": "Shahinya Khamidova",
+    "title": "مستشار عقاري",
+    "image": "/images/team/shahinya-khamidova.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "35",
+    "name": "Gurpreet Jandu",
+    "title": "مستشار عقاري",
+    "image": "/images/team/gurpreet-jandu.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "47",
+    "name": "Aimerey Beisembay",
+    "title": "مستشار عقاري",
+    "image": "/images/team/aimerey-beisembay.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "37",
+    "name": "Mark Andrew",
+    "title": "مدير التسويق",
+    "image": "/images/team/mark-andrew.jpg",
+    "category": "creative-ops"
+  },
+  {
+    "id": "38",
+    "name": "Terraine Tuico",
+    "title": "رئيس القسم الإبداعي",
+    "image": "/images/team/terraine-tuico.jpg",
+    "category": "creative-ops"
+  },
+  {
+    "id": "39",
+    "name": "Bianca Rae Santos",
+    "title": "العمليات | مسؤول مكافحة غسيل الأموال",
+    "image": "/images/team/bianca-rae-santos.jpg",
+    "category": "creative-ops"
+  },
+  {
+    "id": "40",
+    "name": "Nidhesh Pillai",
+    "title": "مدير تقنية المعلومات",
+    "image": "/images/team/nidhesh-pillai.jpg",
+    "category": "creative-ops"
+  },
+  {
+    "id": "41",
+    "name": "Nithin Loyd Dsouza",
+    "title": "رئيس الحسابات",
+    "image": "/images/team/nithin-loyd-dsouza.jpg",
+    "category": "creative-ops"
+  },
+  {
+    "id": "42",
+    "name": "Marikris Aguirre",
+    "title": "منسق عقاري",
+    "image": "/images/team/marikris-aguirre.jpg",
+    "category": "creative-ops"
+  },
+  {
+    "id": "43",
+    "name": "Davlat Olimjonov",
+    "title": "محرر فيديو",
+    "image": "/images/team/davlat-olimjonov.jpg",
+    "category": "creative-ops"
+  },
+  {
+    "id": "44",
+    "name": "John Paulo Ebreo",
+    "title": "مصور فيديو",
+    "image": "/images/team/john-paulo-ebreo.jpg",
+    "category": "creative-ops"
+  }
+]

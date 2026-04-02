@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useRef } from 'react';
 import type { Project } from '@/types/project';
 import FilterBar, { type FilterState } from '@/components/sections/FilterBar';
 import PropertyGrid from '@/components/sections/PropertyGrid';
@@ -21,6 +21,8 @@ export default function ProjectsClient({
   propertyTypes,
   offerings,
 }: ProjectsClientProps) {
+  const appliedRef = useRef(false);
+
   const [filters, setFilters] = useState<FilterState>({
     neighbourhoods: [],
     propertyType: '',
@@ -30,6 +32,17 @@ export default function ProjectsClient({
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [sort, setSort] = useState('most-recent');
+
+  // Read ?location= from URL after hydration (useSearchParams unreliable on SSG)
+  useEffect(() => {
+    if (appliedRef.current) return;
+    const params = new URLSearchParams(window.location.search);
+    const location = params.get('location');
+    if (location && neighbourhoodSlugs.includes(location)) {
+      appliedRef.current = true;
+      setFilters(prev => ({ ...prev, neighbourhoods: [location] }));
+    }
+  }, [neighbourhoodSlugs]);
 
   const filteredProjects = useMemo(() => {
     let result = projects.filter((p) => {
@@ -79,6 +92,7 @@ export default function ProjectsClient({
           neighbourhoods={neighbourhoodSlugs}
           propertyTypes={propertyTypes}
           offerings={offerings}
+          filters={filters}
           onFilterChange={handleFilterChange}
           onSortChange={setSort}
           sort={sort}

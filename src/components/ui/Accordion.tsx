@@ -22,11 +22,11 @@ export default function Accordion({ items, className }: AccordionProps) {
       {items.map((item, index) => (
         <div key={index} className="border-b border-[#ccc]">
           <button
-            className="flex items-center justify-between w-full py-4 pr-4 text-left"
+            className="flex items-center justify-between w-full py-4 pe-4 text-start"
             onClick={() => setOpenIndex(openIndex === index ? null : index)}
             aria-expanded={openIndex === index}
           >
-            <span className="text-[22px] font-normal leading-[40px] text-black pr-4">{item.question}</span>
+            <span className="text-[22px] font-normal leading-[40px] text-black pe-4">{item.question}</span>
             <ChevronDown
               className={cn(
                 'w-5 h-5 flex-shrink-0 transition-transform',

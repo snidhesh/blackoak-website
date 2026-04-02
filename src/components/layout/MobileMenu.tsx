@@ -7,6 +7,7 @@ import { useTranslations } from 'next-intl';
 import { ChevronDown, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
+import CurrencySwitcher from '@/components/ui/CurrencySwitcher';
 
 interface NavItem {
   label: string;
@@ -176,7 +177,7 @@ export default function MobileMenu({ isOpen, onClose, navigation }: MobileMenuPr
                     )}
                   >
                     {item.dropdown && (
-                      <div className="pl-4 pb-2 space-y-0 border-l border-[#232323]">
+                      <div className="ps-4 pb-2 space-y-0 border-s border-[#232323]">
                         {item.dropdown.map((sub) => (
                           <Link
                             key={sub.href}
@@ -218,6 +219,14 @@ export default function MobileMenu({ isOpen, onClose, navigation }: MobileMenuPr
               {t('language')}
             </p>
             <LanguageSwitcher variant="mobile" />
+          </div>
+
+          {/* Currency */}
+          <div className="border-b border-[#232323] py-5 mt-2">
+            <p className="text-[11px] font-medium text-[#5F6368] uppercase tracking-[1.1px] mb-2">
+              {t('currency')}
+            </p>
+            <CurrencySwitcher variant="mobile" />
           </div>
 
           {/* WhatsApp */}

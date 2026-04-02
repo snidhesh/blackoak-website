@@ -4,9 +4,9 @@ import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { MapPin, Bed, Maximize, Mail, Phone, MessageCircle } from 'lucide-react';
-import { formatPriceNumber, formatArea } from '@/lib/formatters';
+import { formatArea } from '@/lib/formatters';
 import type { Locale } from '@/i18n/config';
-import DirhamIcon from '@/components/ui/DirhamIcon';
+import FormattedPrice from '@/components/ui/FormattedPrice';
 
 interface PropertyCardProps {
   slug: string;
@@ -57,7 +57,7 @@ export default function PropertyCard({
             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
           <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent" />
-          <div className="absolute top-3 left-3 flex items-center gap-1.5">
+          <div className="absolute top-3 start-3 flex items-center gap-1.5">
             {propertyType && (
               <span className="bg-white text-gray-500 text-[11px] font-medium tracking-wide uppercase px-2.5 py-1 rounded-sm">
                 {propertyType}
@@ -74,8 +74,7 @@ export default function PropertyCard({
         {/* Price + Name */}
         <div className="mt-4">
           <p className="text-lg font-semibold flex items-center gap-1.5">
-            <DirhamIcon size={14} className="shrink-0" />
-            {formatPriceNumber(price, locale)}
+            <FormattedPrice price={price} />
           </p>
           <h3 className="text-sm text-gray-900 mt-1 leading-relaxed">{name}</h3>
         </div>
@@ -117,7 +116,7 @@ export default function PropertyCard({
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 px-4 py-2.5 bg-gray-100 text-xs text-gray-600 hover:bg-gray-200 hover:text-black transition-colors"
         >
-          <MessageCircle className="w-3.5 h-3.5" /> WhatsApp
+          <MessageCircle className="w-3.5 h-3.5" /> {t('whatsapp')}
         </a>
       </div>
     </div>

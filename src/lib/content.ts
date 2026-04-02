@@ -37,26 +37,40 @@ import termsOfServiceEn from '@/content/en/terms-of-service.json';
 import termsOfServiceFr from '@/content/fr/terms-of-service.json';
 import disclaimerEn from '@/content/en/disclaimer.json';
 import disclaimerFr from '@/content/fr/disclaimer.json';
+import navigationAr from '@/content/ar/navigation.json';
+import footerAr from '@/content/ar/footer.json';
+import neighbourhoodsAr from '@/content/ar/neighbourhoods.json';
+import teamAr from '@/content/ar/team.json';
+import careersAr from '@/content/ar/careers.json';
+import newsAr from '@/content/ar/news.json';
+import homepageAr from '@/content/ar/homepage.json';
+import splashAr from '@/content/ar/splash.json';
+import investorsAr from '@/content/ar/investors.json';
+import buyersAr from '@/content/ar/buyers.json';
+import contactAr from '@/content/ar/contact.json';
+import privacyPolicyAr from '@/content/ar/privacy-policy.json';
+import termsOfServiceAr from '@/content/ar/terms-of-service.json';
+import disclaimerAr from '@/content/ar/disclaimer.json';
 
 import { fetchAllListings } from '@/lib/crm';
 import { transformListing, deduplicateSlugs } from '@/lib/crm-transform';
 
 // Locale content maps
 const contentMap = {
-  navigation: { en: navigationEn, fr: navigationFr },
-  footer: { en: footerEn, fr: footerFr },
-  neighbourhoods: { en: neighbourhoodsEn, fr: neighbourhoodsFr },
-  team: { en: teamEn, fr: teamFr },
-  careers: { en: careersEn, fr: careersFr },
-  news: { en: newsEn, fr: newsFr },
-  homepage: { en: homepageEn, fr: homepageFr },
-  splash: { en: splashEn, fr: splashFr },
-  investors: { en: investorsEn, fr: investorsFr },
-  buyers: { en: buyersEn, fr: buyersFr },
-  contact: { en: contactEn, fr: contactFr },
-  privacyPolicy: { en: privacyPolicyEn, fr: privacyPolicyFr },
-  termsOfService: { en: termsOfServiceEn, fr: termsOfServiceFr },
-  disclaimer: { en: disclaimerEn, fr: disclaimerFr },
+  navigation: { en: navigationEn, fr: navigationFr, ar: navigationAr },
+  footer: { en: footerEn, fr: footerFr, ar: footerAr },
+  neighbourhoods: { en: neighbourhoodsEn, fr: neighbourhoodsFr, ar: neighbourhoodsAr },
+  team: { en: teamEn, fr: teamFr, ar: teamAr },
+  careers: { en: careersEn, fr: careersFr, ar: careersAr },
+  news: { en: newsEn, fr: newsFr, ar: newsAr },
+  homepage: { en: homepageEn, fr: homepageFr, ar: homepageAr },
+  splash: { en: splashEn, fr: splashFr, ar: splashAr },
+  investors: { en: investorsEn, fr: investorsFr, ar: investorsAr },
+  buyers: { en: buyersEn, fr: buyersFr, ar: buyersAr },
+  contact: { en: contactEn, fr: contactFr, ar: contactAr },
+  privacyPolicy: { en: privacyPolicyEn, fr: privacyPolicyFr, ar: privacyPolicyAr },
+  termsOfService: { en: termsOfServiceEn, fr: termsOfServiceFr, ar: termsOfServiceAr },
+  disclaimer: { en: disclaimerEn, fr: disclaimerFr, ar: disclaimerAr },
 } as const;
 
 function getContent<K extends keyof typeof contentMap>(key: K, locale: Locale = 'en'): (typeof contentMap)[K]['en'] {

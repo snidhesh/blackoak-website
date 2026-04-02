@@ -7,20 +7,30 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import TeamGrid from '@/components/sections/TeamGrid';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 
-export const metadata: Metadata = {
-  title: 'Our Team - Dubai Real Estate Experts',
-  description:
-    'Meet the BlackOak Real Estate team. Experienced real estate consultants, investment advisors & property specialists serving Dubai and global clients.',
-  alternates: { canonical: 'https://blackoak-re.com/about/our-team/' },
-  openGraph: {
-    title: 'Our Team - Dubai Real Estate Experts',
-    description:
-      'Meet the BlackOak Real Estate team. Experienced real estate consultants, investment advisors & property specialists serving Dubai and global clients.',
-    type: 'website',
-    url: 'https://blackoak-re.com/about/our-team/',
-    images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'BlackOak Real Estate Team' }],
-  },
-};
+interface Props {
+  params: { locale: string };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'metadata.ourTeam' });
+  return {
+    title: t('title'),
+    description: t('description'),
+    keywords: ['Dubai real estate team', 'luxury property consultants Dubai', 'real estate advisors Dubai', 'property specialists UAE', 'BlackOak team'],
+    alternates: {
+      canonical: locale === 'en' ? 'https://blackoak-re.com/about/our-team/' : `https://blackoak-re.com/${locale}/about/our-team/`,
+      languages: { en: 'https://blackoak-re.com/about/our-team/', fr: 'https://blackoak-re.com/fr/about/our-team/', ar: 'https://blackoak-re.com/ar/about/our-team/' },
+    },
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      type: 'website',
+      url: 'https://blackoak-re.com/about/our-team/',
+      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+    },
+  };
+}
 
 export default async function OurTeamPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as Locale;
@@ -30,8 +40,27 @@ export default async function OurTeamPage({ params }: { params: { locale: string
   const realEstateTeam = team.filter((m) => m.category === 'real-estate');
   const creativeTeam = team.filter((m) => m.category === 'creative-ops');
 
+  const teamJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'BlackOak Real Estate',
+    url: 'https://blackoak-re.com',
+    logo: 'https://blackoak-re.com/images/logo-white.png',
+    employee: team.map((member) => ({
+      '@type': 'Person',
+      name: member.name,
+      jobTitle: member.title,
+      image: member.image ? `https://blackoak-re.com${member.image}` : undefined,
+      worksFor: { '@type': 'Organization', name: 'BlackOak Real Estate' },
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(teamJsonLd) }}
+      />
       {/* Hero / Intro */}
       <section className="pt-32 pb-10 bg-black">
         <div className="container-wide text-center">

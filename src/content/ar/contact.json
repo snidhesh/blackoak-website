@@ -1,0 +1,29 @@
+{
+  "hero": {
+    "title": "دعنا نساعدك في العثور على ما هو استثنائي.",
+    "image": "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1400&q=80"
+  },
+  "offices": [
+    {
+      "city": "دبي",
+      "image": "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+      "address": "مكتب ١٤٠٦، مارينا بلازا، دبي مارينا، دبي، الإمارات العربية المتحدة",
+      "phone": "+971 04 398 9055",
+      "email": "info@blackoak-re.com",
+      "mapUrl": "https://maps.google.com/?q=Dubai+Marina+Plaza"
+    },
+    {
+      "city": "لندن",
+      "image": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&q=80",
+      "address": "٧١-٧٥ Shelton Street, London WC٢H ٩JQ, United Kingdom",
+      "phone": "+44 (0) 203 905 5901",
+      "email": "uk@blackoak-re.com",
+      "mapUrl": "https://maps.google.com/?q=71+Shelton+Street+London"
+    }
+  ],
+  "form": {
+    "label": "لنتواصل",
+    "title": "تواصل مع متخصصينا في العقارات الفاخرة.",
+    "disclaimer": "بإرسال النموذج، فإنك تقر بقبولك لسياسة الخصوصية وشروط الاستخدام الخاصة بـ BlackOak Real Estate."
+  }
+}

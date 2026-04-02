@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/thank-you/', '/fr/thank-you/'],
+        disallow: ['/api/', '/thank-you/', '/fr/thank-you/', '/ar/thank-you/'],
       },
       {
         userAgent: ['Amazonbot', 'Bytespider', 'CCBot', 'GPTBot', 'Google-Extended', 'meta-externalagent'],

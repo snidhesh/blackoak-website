@@ -79,9 +79,26 @@
     },
     "notFound": {
       "title": "Page non trouvée"
+    },
+    "privacyPolicy": {
+      "title": "Politique de confidentialité - Vos droits sur les données",
+      "description": "Découvrez comment BlackOak Real Estate collecte, utilise et protège vos données personnelles. Notre engagement envers la confidentialité et la transparence dans les services immobiliers de luxe à Dubai.",
+      "ogTitle": "Politique de confidentialité | BlackOak Real Estate",
+      "ogDescription": "Découvrez comment BlackOak Real Estate collecte, utilise et protège vos données personnelles."
+    },
+    "termsOfService": {
+      "title": "Conditions d''utilisation - Accord utilisateur",
+      "description": "Conditions générales régissant votre utilisation des services et du site web de BlackOak Real Estate. Consultez nos politiques sur les transactions immobilières, la responsabilité et les obligations des utilisateurs.",
+      "ogTitle": "Conditions d''utilisation | BlackOak Real Estate",
+      "ogDescription": "Conditions générales régissant votre utilisation des services et du site web de BlackOak Real Estate."
+    },
+    "disclaimer": {
+      "title": "Avertissement - Mentions importantes",
+      "description": "Avertissements importants concernant les annonces immobilières, les informations de marché et les services de conseil de BlackOak Real Estate à Dubai.",
+      "ogTitle": "Avertissement | BlackOak Real Estate",
+      "ogDescription": "Avertissements importants concernant les annonces immobilières, les informations de marché et les services de conseil."
     }
   },
-
   "common": {
     "blackoakRealEstate": "BlackOak Real Estate",
     "logoAlt": "BlackOak Real Estate",
@@ -92,7 +109,7 @@
     "sqFt": "Sq.Ft.",
     "forSale": "À Vendre",
     "forRent": "À Louer",
-    "loading": "Chargement\u2026",
+    "loading": "Chargement…",
     "skipToMainContent": "Aller au contenu principal",
     "viewOnGoogleMaps": "Voir sur Google Maps",
     "priceStartingFrom": "Prix à partir de",
@@ -110,12 +127,12 @@
     "applyNow": "POSTULER MAINTENANT",
     "by": "par {name}",
     "dubai": "Dubai",
-    "postedOn": "Publié le\u00a0: {date}",
+    "postedOn": "Publié le : {date}",
     "email": "E-mail",
     "call": "Appeler",
     "whatsapp": "WhatsApp",
     "whatsappInterestMessage": "Bonjour, je suis intéressé(e) par {propertyName}",
-    "enquirySubject": "Demande\u00a0: {propertyName}",
+    "enquirySubject": "Demande : {propertyName}",
     "registerInterest": "Manifester son intérêt",
     "requestCallback": "Demander un rappel",
     "tags": "Mots-clés",
@@ -123,15 +140,15 @@
     "copy": "Copier",
     "original": "Original",
     "skipIntro": "Passer l''introduction",
-    "brn": "BRN\u00a0: {brn}",
+    "brn": "BRN : {brn}",
     "property": "propriété",
     "properties": "propriétés",
     "propertiesFound": "<bold>{count}</bold> {count, plural, one {propriété trouvée} other {propriétés trouvées}}",
     "sort": {
       "label": "Trier par",
       "mostRecent": "Plus récent",
-      "priceLow": "Prix\u00a0: croissant",
-      "priceHigh": "Prix\u00a0: décroissant"
+      "priceLow": "Prix : croissant",
+      "priceHigh": "Prix : décroissant"
     },
     "filter": {
       "buy": "Acheter",
@@ -145,15 +162,23 @@
       "twoBedrooms": "2 Chambres",
       "threeBedrooms": "3 Chambres",
       "fourPlusBedrooms": "4+ Chambres",
+      "priceUnder": "Moins de {amount}",
+      "priceAbove": "{amount}+",
+      "priceRangeLabel": "{min} – {max}",
       "underAed2m": "Moins de AED 2M",
-      "aed2mTo5m": "AED 2M \u2013 5M",
-      "aed5mTo10m": "AED 5M \u2013 10M",
-      "aed10mTo20m": "AED 10M \u2013 20M",
+      "aed2mTo5m": "AED 2M – 5M",
+      "aed5mTo10m": "AED 5M – 10M",
+      "aed10mTo20m": "AED 10M – 20M",
       "aed20mPlus": "AED 20M+",
-      "select": "Sélectionner"
-    }
+      "select": "Sélectionner",
+      "removeLocation": "Supprimer {location}",
+      "clearAllLocations": "Effacer tous les emplacements",
+      "noLocationsFound": "Aucun emplacement trouvé",
+      "searchButton": "Rechercher"
+    },
+    "noPropertiesFound": "Aucune propriété ne correspond à vos critères.",
+    "whatsappContactAria": "Contactez-nous sur WhatsApp"
   },
-
   "nav": {
     "aboutUs": "À propos",
     "whyBlackoak": "Pourquoi BlackOak",
@@ -172,6 +197,7 @@
     "closeMenu": "Fermer le menu",
     "followUs": "Suivez-nous",
     "language": "Langue",
+    "currency": "Devise",
     "english": "English",
     "languageCode": "FR",
     "neighbourhoodNames": {
@@ -195,7 +221,6 @@
       "contact": "Contact"
     }
   },
-
   "footer": {
     "tagline": "Un cabinet immobilier de luxe international offrant des conseils d''experts, des opportunités exclusives et des services d''investissement sur mesure.",
     "columns": {
@@ -245,7 +270,7 @@
     },
     "contactTitle": "CONTACT",
     "followUsTitle": "SUIVEZ-NOUS",
-    "copyright": "\u00a9 {year} par BlackOak Real Estate. Tous droits réservés.",
+    "copyright": "© {year} par BlackOak Real Estate. Tous droits réservés.",
     "privacyPolicy": "Politique de confidentialité",
     "termsOfService": "Conditions d''utilisation",
     "disclaimer": "Avertissement",
@@ -262,7 +287,6 @@
       "millionDollarListing": "Million Dollar Listing"
     }
   },
-
   "forms": {
     "firstName": "Prénom",
     "lastName": "Nom",
@@ -272,7 +296,7 @@
     "additionalDetails": "Informations complémentaires",
     "placeholder": "Saisir",
     "placeholderLocation": "ex. Dubai Marina",
-    "placeholderAdditionalDetails": "Décrivez votre bien \u2014 superficie, caractéristiques, prix demandé, etc.",
+    "placeholderAdditionalDetails": "Décrivez votre bien — superficie, caractéristiques, prix demandé, etc.",
     "listingType": "Type d''annonce",
     "propertyType": "Type de bien",
     "bedroomsLabel": "Chambres",
@@ -310,11 +334,10 @@
     "errorSubmitFailed": "Échec de l''envoi. Veuillez réessayer.",
     "uploadCv": "Téléchargez votre CV (PDF/DOC)",
     "uploadDragDrop": "Téléchargez votre CV (PDF/DOC)",
-    "maxFileSize": "Taille maximale\u00a0: {size} Mo",
+    "maxFileSize": "Taille maximale : {size} Mo",
     "phoneCountryCode": "+971",
     "phoneCountryFlag": "EAU"
   },
-
   "validation": {
     "firstNameMin": "Le prénom doit comporter au moins 2 caractères",
     "lastNameMin": "Le nom doit comporter au moins 2 caractères",
@@ -329,7 +352,6 @@
     "fileTooLarge": "La taille du fichier ne doit pas dépasser 4 Mo",
     "fileTypeInvalid": "Seuls les fichiers PDF, DOC et DOCX sont acceptés"
   },
-
   "pages": {
     "home": {
       "hero": {
@@ -383,7 +405,7 @@
       "starzplay": {
         "label": "STARZPLAY ORIGINAL",
         "heading": "Million Dollar Listing",
-        "subheading": "Au c\u0153ur du monde de l''immobilier de luxe à hauts enjeux",
+        "subheading": "Au cœur du monde de l''immobilier de luxe à hauts enjeux",
         "season1Alt": "Million Dollar Listing Saison 1",
         "season2Alt": "Million Dollar Listing Saison 2"
       },
@@ -407,7 +429,7 @@
       },
       "about": {
         "label": "À PROPOS DE BLACKOAK",
-        "heading": "Partenaire de confiance sur le marché immobilier dynamique des EAU\u00a0!",
+        "heading": "Partenaire de confiance sur le marché immobilier dynamique des EAU !",
         "description": "Notre équipe est composée de professionnels hautement qualifiés possédant une vaste expérience, dédiés à offrir un service inégalé à nos clients privilégiés.",
         "cta": "Découvrir pourquoi BlackOak"
       },
@@ -417,12 +439,10 @@
         "cta": "Plus d''actualités"
       }
     },
-
     "projects": {
       "sectionLabel": "Découvrir les propriétés",
       "heading": "Vivez au-delà de l''ordinaire,\nConçu pour l''extraordinaire"
     },
-
     "projectDetail": {
       "stickyNav": {
         "details": "Détails",
@@ -449,10 +469,10 @@
       "floorPlans": {
         "label": "Plans",
         "heading": "Des agencements conçus autour de votre vie",
-        "bedroomsAndSuites": "Chambres et suites privées\u00a0:",
+        "bedroomsAndSuites": "Chambres et suites privées :",
         "bedroomsBathrooms": "{bedrooms} Chambres | {bathrooms} Salles de bain",
-        "totalArea": "Surface totale\u00a0:",
-        "developer": "Promoteur\u00a0:"
+        "totalArea": "Surface totale :",
+        "developer": "Promoteur :"
       },
       "amenities": {
         "label": "Équipements",
@@ -464,18 +484,20 @@
       },
       "enquiry": {
         "label": "Demande",
-        "heading": "Votre résidence de rêve vous attend \u2014 Connectons-nous",
+        "heading": "Votre résidence de rêve vous attend — Connectons-nous",
         "submitLabel": "Envoyer la demande"
+      },
+      "breadcrumbs": {
+        "home": "Accueil",
+        "projects": "Projets"
       }
     },
-
     "neighbourhoods": {
       "aboutLabel": "À propos de {name}",
       "propertiesIn": "Propriétés à {name}",
       "attractionsOf": "Attractions de {name}",
-      "whyInvestIn": "Pourquoi investir dans l''immobilier de luxe à {name}\u00a0?"
+      "whyInvestIn": "Pourquoi investir dans l''immobilier de luxe à {name} ?"
     },
-
     "contact": {
       "headerLabel": "Contactez-nous",
       "heading": "Laissez-nous vous aider à trouver\nvotre extraordinaire.",
@@ -499,7 +521,6 @@
       "formLabel": "Connectons-nous",
       "formHeading": "Échangez avec nos spécialistes en immobilier de luxe."
     },
-
     "listProperty": {
       "headerLabel": "Mettez votre bien en vente",
       "heading": "Vendez ou louez votre bien en toute confiance",
@@ -513,7 +534,7 @@
         "premiumExposure": "Visibilité premium sur les principaux portails locaux et internationaux",
         "dedicatedAgent": "Agent dédié avec une stratégie marketing personnalisée",
         "billionsExecuted": "Des milliards de dollars en transactions réalisées avec succès",
-        "zeroUpfrontFees": "Aucun frais initial \u2014 service axé sur les résultats"
+        "zeroUpfrontFees": "Aucun frais initial — service axé sur les résultats"
       },
       "formTitle": "Mettez votre bien en vente dès aujourd''hui",
       "formSubtitle": "Remplissez les informations ci-dessous et l''un de nos spécialistes immobiliers vous contactera sous 24 heures.",
@@ -542,13 +563,24 @@
         }
       },
       "stats": {
-        "transactions": { "value": "AED 2Md+", "label": "En transactions" },
-        "projects": { "value": "18+", "label": "Projets premium" },
-        "neighbourhoods": { "value": "13", "label": "Quartiers" },
-        "support": { "value": "24/7", "label": "Assistance client" }
+        "transactions": {
+          "value": "AED 2Md+",
+          "label": "En transactions"
+        },
+        "projects": {
+          "value": "18+",
+          "label": "Projets premium"
+        },
+        "neighbourhoods": {
+          "value": "13",
+          "label": "Quartiers"
+        },
+        "support": {
+          "value": "24/7",
+          "label": "Assistance client"
+        }
       }
     },
-
     "career": {
       "headerLabel": "Carrières",
       "heading": "Un aperçu de nos collaborateurs, partenaires et de la vie chez BlackOak.",
@@ -581,10 +613,9 @@
       "lifeAtBlackoakLabel": "La vie chez BlackOak",
       "lifeAtBlackoakHeading": "Un aperçu des personnes, des partenariats et des développements premium",
       "lifeAtBlackoakImageAlt": "La vie chez BlackOak {index}",
-
       "detail": {
         "backToPage": "RETOUR À LA PAGE",
-        "postedOn": "Publié le\u00a0: {date}",
+        "postedOn": "Publié le : {date}",
         "applyNow": "POSTULER MAINTENANT",
         "remuneration": "Rémunération",
         "benefits": "Avantages",
@@ -592,10 +623,9 @@
         "numberOfPositions": "Nombre de postes",
         "keyResponsibilities": "Responsabilités clés",
         "applyLabel": "POSTULER MAINTENANT",
-        "applyHeading": "Prêt(e) à propulser votre carrière au niveau supérieur\u00a0?"
+        "applyHeading": "Prêt(e) à propulser votre carrière au niveau supérieur ?"
       }
     },
-
     "about": {
       "whyBlackoak": {
         "heroHeading": "Bâti sur la confiance.\nAnimé par la passion.",
@@ -603,9 +633,9 @@
         "legacyLabel": "Un héritage d''excellence",
         "legacyHeading1": "BlackOak Real Estate",
         "legacyHeading2": "L''autorité immobilière de référence aux EAU",
-        "legacyP1": "Chez BlackOak Real Estate, nous opérons au sommet du marché immobilier le plus dynamique des EAU \u2014 fondés sur un principe inébranlable\u00a0: chaque client mérite une expérience aussi exceptionnelle que les propriétés que nous représentons.",
-        "legacyP2": "Notre équipe de professionnels chevronnés apporte des décennies d''expertise collective, soutenue par plus de 5 milliards de dollars en transactions réalisées avec succès. Grâce à des partenariats exclusifs avec les promoteurs les plus prestigieux des EAU, nous offrons un accès privilégié aux meilleures opportunités du marché \u2014 dont beaucoup restent hors de portée des agences traditionnelles.",
-        "legacyP3": "Au c\u0153ur de notre approche se trouvent une veille rigoureuse du marché et une expertise régionale approfondie. Nous anticipons les évolutions, identifions les opportunités et vous guidons avec clarté et confiance à chaque étape \u2014 garantissant que chaque décision que vous prenez est éclairée, stratégique et alignée avec votre vision. Chez BlackOak, nous comprenons que l''acquisition immobilière à ce niveau est bien plus qu''une transaction. C''est une décision déterminante \u2014 qui mérite la plus grande discrétion, une expertise pointue et une approche véritablement sur mesure.",
+        "legacyP1": "Chez BlackOak Real Estate, nous opérons au sommet du marché immobilier le plus dynamique des EAU — fondés sur un principe inébranlable : chaque client mérite une expérience aussi exceptionnelle que les propriétés que nous représentons.",
+        "legacyP2": "Notre équipe de professionnels chevronnés apporte des décennies d''expertise collective, soutenue par plus de 5 milliards de dollars en transactions réalisées avec succès. Grâce à des partenariats exclusifs avec les promoteurs les plus prestigieux des EAU, nous offrons un accès privilégié aux meilleures opportunités du marché — dont beaucoup restent hors de portée des agences traditionnelles.",
+        "legacyP3": "Au cœur de notre approche se trouvent une veille rigoureuse du marché et une expertise régionale approfondie. Nous anticipons les évolutions, identifions les opportunités et vous guidons avec clarté et confiance à chaque étape — garantissant que chaque décision que vous prenez est éclairée, stratégique et alignée avec votre vision. Chez BlackOak, nous comprenons que l''acquisition immobilière à ce niveau est bien plus qu''une transaction. C''est une décision déterminante — qui mérite la plus grande discrétion, une expertise pointue et une approche véritablement sur mesure.",
         "setsApartLabel": "Ce qui nous distingue",
         "setsApartHeading": "Notre engagement envers l''excellence",
         "featureCards": {
@@ -625,35 +655,49 @@
         "statsHeading": "Économisez davantage avec nos meilleures offres",
         "statsDescription": "Lorem ipsum dolor sit amet consectetur. Mattis viverra felis aenean gravida odio laoreet quis mattis. Blandit tellus venenatis eros et",
         "stats": {
-          "years": { "end": "12", "suffix": "+", "label": "Années", "sublabel": "d''expérience" },
-          "success": { "end": "15", "suffix": "k+", "label": "Réussites", "sublabel": "Parcours" },
-          "awards": { "end": "9", "suffix": "+", "label": "Prix", "sublabel": "Remportés" }
+          "years": {
+            "end": "12",
+            "suffix": "+",
+            "label": "Années",
+            "sublabel": "d''expérience"
+          },
+          "success": {
+            "end": "15",
+            "suffix": "k+",
+            "label": "Réussites",
+            "sublabel": "Parcours"
+          },
+          "awards": {
+            "end": "9",
+            "suffix": "+",
+            "label": "Prix",
+            "sublabel": "Remportés"
+          }
         },
         "whyChooseUsLabel": "Pourquoi nous choisir",
         "whyChooseUsHeading": "Un héritage d''excellence dans la sélection de l''extraordinaire",
         "techEnhanced": {
           "title": "Technologiquement avancé",
-          "description": "Chez BlackOak, nous allions harmonieusement technologie de pointe et expertise inégalée du marché pour offrir une expérience aussi sophistiquée que fluide. Notre plateforme marketing propriétaire basée sur l''IA garantit à votre bien une visibilité sans égale \u2014 connectant les bonnes opportunités avec la bonne clientèle, avec une précision et une rapidité remarquables. En adoptant l''avant-garde de l''innovation technologique, nous ne nous contentons pas de suivre le rythme de l''avenir de l''immobilier \u2014 nous le définissons.",
+          "description": "Chez BlackOak, nous allions harmonieusement technologie de pointe et expertise inégalée du marché pour offrir une expérience aussi sophistiquée que fluide. Notre plateforme marketing propriétaire basée sur l''IA garantit à votre bien une visibilité sans égale — connectant les bonnes opportunités avec la bonne clientèle, avec une précision et une rapidité remarquables. En adoptant l''avant-garde de l''innovation technologique, nous ne nous contentons pas de suivre le rythme de l''avenir de l''immobilier — nous le définissons.",
           "imageAlt": "Immobilier technologiquement avancé"
         },
         "experiencedTeam": {
           "title": "Équipe expérimentée",
-          "description": "Chez BlackOak, notre expertise transcende le conventionnel \u2014 au service d''une clientèle exclusive qui s''étend des investisseurs privés distingués aux acteurs institutionnels les plus éminents au monde. Notre équipe chevronnée apporte une profondeur d''expérience rare dans la gestion de mandats complexes et à haute valeur, avec la précision et la discrétion qu''exigent les clients les plus sophistiqués. De la recherche d''actifs emblématiques à l''identification d''opportunités de développement exceptionnelles, nous agissons en tant que partenaire de confiance pour les institutions qui recherchent non seulement un prestataire de services \u2014 mais un allié stratégique du plus haut calibre.",
+          "description": "Chez BlackOak, notre expertise transcende le conventionnel — au service d''une clientèle exclusive qui s''étend des investisseurs privés distingués aux acteurs institutionnels les plus éminents au monde. Notre équipe chevronnée apporte une profondeur d''expérience rare dans la gestion de mandats complexes et à haute valeur, avec la précision et la discrétion qu''exigent les clients les plus sophistiqués. De la recherche d''actifs emblématiques à l''identification d''opportunités de développement exceptionnelles, nous agissons en tant que partenaire de confiance pour les institutions qui recherchent non seulement un prestataire de services — mais un allié stratégique du plus haut calibre.",
           "cta": "Rencontrer notre équipe",
           "imageAlt": "Équipe expérimentée BlackOak"
         },
         "investorNetwork": {
           "title": "Vaste réseau d''investisseurs",
-          "description": "Chez BlackOak, nous avons développé un réseau étendu et hautement exclusif d''investisseurs internationaux distingués \u2014 une communauté fondée sur la confiance, la discrétion et la recherche commune d''opportunités exceptionnelles. Ce réseau privilégié nous donne un accès inégalé à des actifs hors marché et des perspectives d''investissement rares, tout en offrant à nos projets la portée et la visibilité mondiales que seule une agence véritablement connectée peut proposer. Que ce soit pour rechercher ou placer des capitaux, nos relations avec les investisseurs ne sont pas simplement transactionnelles \u2014 ce sont des partenariats durables qui créent constamment de la valeur au plus haut niveau du marché.",
+          "description": "Chez BlackOak, nous avons développé un réseau étendu et hautement exclusif d''investisseurs internationaux distingués — une communauté fondée sur la confiance, la discrétion et la recherche commune d''opportunités exceptionnelles. Ce réseau privilégié nous donne un accès inégalé à des actifs hors marché et des perspectives d''investissement rares, tout en offrant à nos projets la portée et la visibilité mondiales que seule une agence véritablement connectée peut proposer. Que ce soit pour rechercher ou placer des capitaux, nos relations avec les investisseurs ne sont pas simplement transactionnelles — ce sont des partenariats durables qui créent constamment de la valeur au plus haut niveau du marché.",
           "imageAlt": "Vaste réseau d''investisseurs"
         }
       },
-
       "ourTeam": {
         "label": "NOTRE ÉQUIPE",
         "heading": "Nos experts immobiliers",
         "descriptionP1": "Couvrant les marchés clés et les communautés les plus prisées, l''équipe BlackOak réunit des conseillers immobiliers expérimentés dédiés à fournir des solutions immobilières exceptionnelles. Nos spécialistes offrent leur expertise en ventes résidentielles et commerciales de luxe, location, investissements, opportunités sur plan et services immobiliers sur mesure. Parcourez notre équipe pour entrer en contact avec l''expert adapté à vos besoins immobiliers.",
-        "descriptionP2Prefix": "Vous recherchez un accompagnement immobilier professionnel\u00a0? Appelez-nous au",
+        "descriptionP2Prefix": "Vous recherchez un accompagnement immobilier professionnel ? Appelez-nous au",
         "descriptionP2Phone": "+971 4 398 9055",
         "descriptionP2Middle": "pour échanger avec notre équipe, ou",
         "descriptionP2ContactLink": "contactez-nous",
@@ -661,12 +705,11 @@
         "creativeAndOpsTeam": "Équipe créative et opérations"
       }
     },
-
     "insights": {
       "investors": {
         "heroHeading": "Bâti sur la confiance.\nAnimé par la passion.",
         "heroAlt": "Opportunités d''investissement immobilier à Dubai avec vue premium sur la skyline",
-        "whyBlackoakLabel": "Pourquoi BlackOak\u00a0?",
+        "whyBlackoakLabel": "Pourquoi BlackOak ?",
         "whyBlackoakHeading": "Accès exclusif aux opportunités immobilières les plus exceptionnelles de Dubai.",
         "whyBlackoakP1": "Les investisseurs choisissent BlackOak pour sa due diligence de qualité institutionnelle, sa gestion d''actifs disciplinée, ses structures transparentes et ses rapports clairs aux investisseurs. Notre plateforme donne accès à des développements premium et des transactions hors marché. L''alignement est assuré par le co-investissement direct des dirigeants de BlackOak.",
         "whyBlackoakP2": "BlackOak allie rigueur institutionnelle et agilité de boutique, offrant aux investisseurs la confiance nécessaire pour participer au marché immobilier en pleine évolution de Dubai à travers des plateformes d''investissement gérées professionnellement et adossées à des actifs réels.",
@@ -687,37 +730,36 @@
           },
           "collaborative": {
             "title": "Approche collaborative de syndication",
-            "description": "Notre plateforme d''investissement syndiqué réunit les investisseurs dans des projets immobiliers exclusifs. Cette approche ouvre l''accès à des projets et stratégies généralement réservés aux grands acteurs institutionnels, avec une gouvernance professionnelle, de la transparence et des normes de reporting rigoureuses.\n\nChaque transaction est évaluée indépendamment, en se concentrant sur des fondamentaux d''actifs solides, des structures de capital judicieuses, une visibilité claire sur les sorties et un fort alignement entre sponsors, promoteurs et investisseurs. Des objectifs de rendement conservateurs, ajustés au risque, restent au c\u0153ur de chaque investissement."
+            "description": "Notre plateforme d''investissement syndiqué réunit les investisseurs dans des projets immobiliers exclusifs. Cette approche ouvre l''accès à des projets et stratégies généralement réservés aux grands acteurs institutionnels, avec une gouvernance professionnelle, de la transparence et des normes de reporting rigoureuses.\n\nChaque transaction est évaluée indépendamment, en se concentrant sur des fondamentaux d''actifs solides, des structures de capital judicieuses, une visibilité claire sur les sorties et un fort alignement entre sponsors, promoteurs et investisseurs. Des objectifs de rendement conservateurs, ajustés au risque, restent au cœur de chaque investissement."
           }
         },
         "faqLabel": "FAQ",
         "faqHeading": "Tout ce que vous devez savoir pour investir en toute clarté",
         "faq": {
           "q1": {
-            "question": "Pourquoi investir dans l''immobilier à Dubai\u00a0?",
+            "question": "Pourquoi investir dans l''immobilier à Dubai ?",
             "answer": "Dubai offre des revenus locatifs exonérés d''impôts, une forte appréciation du capital, des infrastructures de classe mondiale et un environnement réglementaire stable. La ville se classe régulièrement parmi les premières destinations mondiales pour l''investissement immobilier."
           },
           "q2": {
-            "question": "Quels types de propriétés offrent les meilleurs rendements\u00a0?",
+            "question": "Quels types de propriétés offrent les meilleurs rendements ?",
             "answer": "Les rendements varient en fonction de l''emplacement, de la réputation du promoteur et du timing du marché. Les développements premium en bord de mer, les résidences de marque et les projets sur plan à forte demande offrent souvent une forte appréciation du capital, tandis que les propriétés achevées dans des communautés établies peuvent générer des rendements locatifs stables. Une approche stratégique fondée sur les données garantit une performance optimale du portefeuille."
           },
           "q3": {
-            "question": "L''investissement sur plan est-il une bonne stratégie\u00a0?",
+            "question": "L''investissement sur plan est-il une bonne stratégie ?",
             "answer": "Les investissements sur plan peuvent offrir des avantages significatifs, notamment des prix d''entrée plus bas, des plans de paiement flexibles et un potentiel d''appréciation du capital avant l''achèvement."
           },
           "q4": {
-            "question": "Les investisseurs internationaux peuvent-ils acheter un bien à Dubai\u00a0?",
+            "question": "Les investisseurs internationaux peuvent-ils acheter un bien à Dubai ?",
             "answer": "Oui, Dubai offre la pleine propriété aux investisseurs internationaux dans des zones désignées, qui comprennent la plupart des développements et communautés premium."
           }
         }
       },
-
       "buyers": {
         "heroHeading": "Bâti sur la confiance.\nAnimé par la passion.",
         "heroAlt": "Propriété de luxe à Dubai avec vue panoramique sur la ville",
         "introLabel": "guide de l''acheteur immobilier",
         "introHeading": "Commencez votre parcours immobilier à Dubai en toute confiance.",
-        "introDescription": "Notre guide de l''acheteur immobilier offre un aperçu complet de l''ensemble du parcours d''acquisition \u2014 de la sélection du bon développement à la compréhension des tendances du marché, en passant par les procédures juridiques et la finalisation de la propriété. Que vous soyez un primo-accédant ou un investisseur chevronné, ce guide est conçu pour apporter clarté, transparence et vision stratégique à chaque étape. Avec les bonnes connaissances et un accompagnement expert, investir dans l''immobilier à Dubai devient une expérience fluide et enrichissante.",
+        "introDescription": "Notre guide de l''acheteur immobilier offre un aperçu complet de l''ensemble du parcours d''acquisition — de la sélection du bon développement à la compréhension des tendances du marché, en passant par les procédures juridiques et la finalisation de la propriété. Que vous soyez un primo-accédant ou un investisseur chevronné, ce guide est conçu pour apporter clarté, transparence et vision stratégique à chaque étape. Avec les bonnes connaissances et un accompagnement expert, investir dans l''immobilier à Dubai devient une expérience fluide et enrichissante.",
         "guideNav": {
           "whyInvest": "Pourquoi investir ou acheter",
           "obtainingVisa": "Obtenir un visa",
@@ -727,7 +769,7 @@
           "costsBuying": "Coûts d''acquisition d''un bien"
         },
         "whyInvestHeading": "Pourquoi investir ou acheter un bien à Dubai",
-        "whyInvestDescription": "Au cours des dernières années, le marché immobilier de Dubai a considérablement mûri, s''alignant sur d''autres villes établies. Bien sûr, Dubai est encore considérée comme une ville « nouvelle » et la plupart des projets immobiliers n''ont même pas 10 ans\u00a0! Cependant, c''est un avantage considérable pour les acheteurs, car les bâtiments sont conçus et construits avec des concepts de design plus récents, des techniques d''ingénierie avancées et, de manière générale, une meilleure construction.",
+        "whyInvestDescription": "Au cours des dernières années, le marché immobilier de Dubai a considérablement mûri, s''alignant sur d''autres villes établies. Bien sûr, Dubai est encore considérée comme une ville « nouvelle » et la plupart des projets immobiliers n''ont même pas 10 ans ! Cependant, c''est un avantage considérable pour les acheteurs, car les bâtiments sont conçus et construits avec des concepts de design plus récents, des techniques d''ingénierie avancées et, de manière générale, une meilleure construction.",
         "minimalRiskLabel": "Risque minimal",
         "minimalRiskHeading": "Investissez avec une confiance assurée",
         "obtainingVisaLabel": "Obtenir un visa",
@@ -737,11 +779,10 @@
         "mortgageGuideLabel": "Guide hypothécaire",
         "mortgageGuideHeading": "Hypothéquer votre bien",
         "internationalBuyersLabel": "Acheteurs internationaux",
-        "internationalBuyersHeading": "Acheteurs internationaux \u2014 Votre guide étape par étape",
+        "internationalBuyersHeading": "Acheteurs internationaux — Votre guide étape par étape",
         "buyingCostsLabel": "Coûts d''acquisition",
         "buyingCostsHeading": "Les frais administratifs d''achat d''un bien achevé à Dubai"
       },
-
       "news": {
         "readMore": "En savoir plus",
         "latestNewsLabel": "Dernières actualités",
@@ -750,21 +791,18 @@
         "relatedNewsHeading": "Actualités sélectionnées du monde de l''immobilier de luxe."
       }
     },
-
     "notFound": {
       "code": "404",
       "heading": "Page non trouvée",
       "description": "La page que vous recherchez n''existe pas ou a été déplacée.",
       "cta": "RETOUR À L''ACCUEIL"
     },
-
     "error": {
       "heading": "Une erreur est survenue",
       "description": "Nous nous excusons pour la gêne occasionnée. Veuillez réessayer ou retourner à la page d''accueil.",
       "tryAgain": "Réessayer",
       "homepage": "Accueil"
     },
-
     "thankYou": {
       "label": "MERCI",
       "heading": "Votre demande a été soumise avec succès.",

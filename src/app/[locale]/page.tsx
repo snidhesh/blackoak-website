@@ -2,12 +2,14 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import dynamic from 'next/dynamic';
-import { ArrowRight, ArrowUpRight, MapPin, Home, ChevronDown, BedDouble, Maximize2 } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, MapPin, BedDouble, Maximize2 } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 import { getFeaturedProjects, getNeighbourhoods, getNews } from '@/lib/content';
-import { formatDate, formatPriceNumber } from '@/lib/formatters';
+import { formatDate } from '@/lib/formatters';
 import SectionLabel from '@/components/ui/SectionLabel';
 import SectionHeading from '@/components/ui/SectionHeading';
-import DirhamIcon from '@/components/ui/DirhamIcon';
+import FormattedPrice from '@/components/ui/FormattedPrice';
+import HomeSearchBar from '@/components/ui/HomeSearchBar';
 import Button from '@/components/ui/Button';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 import { getHomepage, getSplash } from '@/lib/content';
@@ -20,23 +22,30 @@ const SplashScreen = dynamic(
 
 export const revalidate = 300;
 
-export const metadata: Metadata = {
-  title: 'Luxury Properties & Investment in Dubai',
-  description:
-    'Discover Dubai\'s finest luxury properties with BlackOak Real Estate. Browse premium villas, apartments & penthouses across Palm Jumeirah, Emirates Hills, Downtown Dubai and more.',
-  alternates: { canonical: 'https://blackoak-re.com/' },
-  openGraph: {
-    title: 'BlackOak Real Estate | Luxury Properties & Investment in Dubai',
-    description:
-      'Discover Dubai\'s finest luxury properties. Browse premium villas, apartments & penthouses across Dubai\'s most prestigious neighbourhoods.',
-    type: 'website',
-    url: 'https://blackoak-re.com/',
-    images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'BlackOak Real Estate - Luxury Properties in Dubai' }],
-  },
-};
+export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'metadata.home' });
+  return {
+    title: t('title'),
+    description: t('description'),
+    keywords: ['Dubai luxury real estate', 'luxury properties Dubai', 'buy villa Dubai', 'apartments for sale Dubai', 'Palm Jumeirah property', 'Emirates Hills mansions', 'Dubai property investment', 'off-plan Dubai', 'BlackOak Real Estate', 'luxury penthouses Dubai Marina'],
+    alternates: {
+      canonical: locale === 'en' ? 'https://blackoak-re.com/' : `https://blackoak-re.com/${locale}/`,
+      languages: { en: 'https://blackoak-re.com/', fr: 'https://blackoak-re.com/fr/', ar: 'https://blackoak-re.com/ar/' },
+    },
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      type: 'website',
+      url: 'https://blackoak-re.com/',
+      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogImageAlt') }],
+    },
+  };
+}
 
 export default async function HomePage({ params }: { params: { locale: string } }) {
   const locale = params.locale as Locale;
+  const tCommon = await getTranslations({ locale, namespace: 'common' });
   const homepage = getHomepage(locale);
   const splash = getSplash(locale);
   const featuredProjects = (await getFeaturedProjects()).slice(0, 5);
@@ -86,57 +95,17 @@ export default async function HomePage({ params }: { params: { locale: string } 
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">
           <h1 className="text-[36px] md:text-[50px] font-light leading-[1.2]">
-            Where visionary investment<br />
-            meets iconic living
+            {homepage.hero.heading}
           </h1>
           <p className="mt-4 text-[16px] font-normal text-white">
             {homepage.hero.subtitle}
           </p>
 
-          {/* Search Bar — desktop */}
-          <div className="mt-10 max-w-3xl mx-auto hidden md:block">
-            <Link
-              href="/projects"
-              className="flex items-center bg-white rounded overflow-hidden shadow-lg text-left h-[60px]"
-            >
-              <div className="flex-1 grid grid-cols-3 divide-x divide-gray-200 h-full">
-                <div className="px-5 flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-[#5F6368] shrink-0" />
-                  <span className="text-[13px] font-medium text-[#5F6368]">
-                    {homepage.hero.searchBar.placeholders.location}
-                  </span>
-                  <ChevronDown className="w-3 h-3 text-[#5F6368] ml-auto shrink-0" />
-                </div>
-                <div className="px-5 flex items-center gap-2">
-                  <Home className="w-4 h-4 text-[#5F6368] shrink-0" />
-                  <span className="text-[13px] font-medium text-[#5F6368]">
-                    {homepage.hero.searchBar.placeholders.propertyType}
-                  </span>
-                  <ChevronDown className="w-3 h-3 text-[#5F6368] ml-auto shrink-0" />
-                </div>
-                <div className="px-5 flex items-center gap-2">
-                  <DirhamIcon size={14} className="shrink-0 opacity-60" />
-                  <span className="text-[13px] font-medium text-[#5F6368]">
-                    {homepage.hero.searchBar.placeholders.price}
-                  </span>
-                  <ChevronDown className="w-3 h-3 text-[#5F6368] ml-auto shrink-0" />
-                </div>
-              </div>
-              <div className="bg-black px-5 flex items-center justify-center self-stretch">
-                <span className="text-white text-[12px] font-medium tracking-wider uppercase">
-                  {homepage.hero.searchBar.buttonText}
-                </span>
-              </div>
-            </Link>
-          </div>
-          {/* Search Button — mobile */}
-          <div className="mt-10 md:hidden flex justify-center">
-            <Link
-              href="/projects"
-              className="inline-block border border-white text-white text-[13px] font-medium tracking-wider uppercase px-8 py-3"
-            >
-              Start {homepage.hero.searchBar.buttonText}
-            </Link>
+          {/* Search Bar */}
+          <div className="mt-10">
+            <HomeSearchBar
+              neighbourhoods={allNeighbourhoods.map(n => ({ value: n.slug, label: n.name }))}
+            />
           </div>
         </div>
       </section>
@@ -186,7 +155,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
                       {project.name}
                     </p>
                     <p className="text-white/60 text-[10px] md:text-[12px] font-light tracking-[1.5px] uppercase mt-1">
-                      by {project.developer}
+                      {tCommon('by', { name: project.developer })}
                     </p>
                   </div>
                 </div>
@@ -239,8 +208,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
                         {project.propertyType}
                       </span>
                       <p className="text-white font-semibold text-[28px] leading-[20px] flex items-center gap-2">
-                        <DirhamIcon size={18} className="invert" />
-                        {formatPriceNumber(project.price)}
+                        <FormattedPrice price={project.price} size="lg" light />
                       </p>
                       <p className="text-white/80 font-light text-[16px] leading-[40px]">{project.name}</p>
 
@@ -268,7 +236,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
           {/* Mobile horizontal scroll */}
           <div className="md:hidden relative">
             <div className="absolute left-0 top-[156px] w-[10px] h-[67px] bg-black rounded-r z-10" />
-            <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pl-5 pr-5">
+            <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide ps-5 pe-5">
               {featuredProjects.map((project) => (
                 <Link
                   key={project.slug}
@@ -289,8 +257,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
                         {project.propertyType}
                       </span>
                       <p className="text-white font-semibold text-[24px] leading-[28px] flex items-center gap-2">
-                        <DirhamIcon size={16} className="invert" />
-                        {formatPriceNumber(project.price)}
+                        <FormattedPrice price={project.price} size="md" light />
                       </p>
                     </div>
                     <div className="absolute bottom-4 right-4">
@@ -309,7 +276,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
                       <div className="flex items-center gap-3">
                         <span className="flex items-center gap-1">
                           <BedDouble className="w-3.5 h-3.5" />
-                          {project.bedrooms} Bedrooms
+                          {project.bedrooms} {tCommon('bedrooms')}
                         </span>
                         <span className="text-[#5F6368]">•</span>
                         <span className="flex items-center gap-1">
@@ -326,7 +293,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
           <div className="text-center mt-10">
             <Button href={homepage.featuredProjects.cta.href} variant="outline">
-              {homepage.featuredProjects.cta.label} <ArrowRight className="w-4 h-4 ml-2" />
+              {homepage.featuredProjects.cta.label} <ArrowRight className="w-4 h-4 ms-2 icon-directional" />
             </Button>
           </div>
         </div>
@@ -372,7 +339,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
           {/* Mobile horizontal scroll */}
           <div className="md:hidden relative">
             <div className="absolute left-0 top-[97px] w-[10px] h-[58px] bg-white rounded-r z-10" />
-            <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pl-5 pr-5">
+            <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide ps-5 pe-5">
               {neighbourhoods.map((n) => (
                 <Link
                   key={n.slug}
@@ -517,7 +484,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
                 className="h-[40px] md:h-[50px] w-auto object-contain"
               />
               <span className="font-light text-[32px] md:text-[42px] leading-[48px] uppercase text-[#FCF4D5]">
-                Original
+                {tCommon('original')}
               </span>
             </div>
           </AnimateOnScroll>
@@ -616,7 +583,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
                 </p>
                 <div>
                   <Button href={homepage.about.cta.href} variant="outline-light">
-                    {homepage.about.cta.label} <ArrowRight className="w-4 h-4 ml-2" />
+                    {homepage.about.cta.label} <ArrowRight className="w-4 h-4 ms-2 icon-directional" />
                   </Button>
                 </div>
               </div>
@@ -669,7 +636,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
           {/* Mobile horizontal scroll */}
           <div className="md:hidden relative">
             <div className="absolute left-0 top-[120px] w-[10px] h-[58px] bg-black rounded-r z-10" />
-            <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide pl-5 pr-5">
+            <div className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-hide ps-5 pe-5">
               {news.map((article) => (
                 <Link
                   key={article.slug}
@@ -703,7 +670,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
 
           <div className="text-center mt-10">
             <Button href={homepage.news.cta.href} variant="outline">
-              {homepage.news.cta.label} <ArrowRight className="w-4 h-4 ml-2" />
+              {homepage.news.cta.label} <ArrowRight className="w-4 h-4 ms-2 icon-directional" />
             </Button>
           </div>
         </div>

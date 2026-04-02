@@ -13,20 +13,26 @@ interface Props {
   params: { locale: string };
 }
 
-export const metadata: Metadata = {
-  title: 'Careers in Dubai Real Estate',
-  description:
-    'Join BlackOak Real Estate. Open positions for real estate consultants, investment advisors & property specialists in Dubai. Competitive commission & growth.',
-  alternates: { canonical: 'https://blackoak-re.com/career/' },
-  openGraph: {
-    title: 'Careers in Dubai Real Estate | BlackOak',
-    description:
-      'Join BlackOak Real Estate. Open positions for real estate consultants, investment advisors & property specialists in Dubai.',
-    type: 'website',
-    url: 'https://blackoak-re.com/career/',
-    images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'Careers at BlackOak Real Estate' }],
-  },
-};
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'metadata.career' });
+  return {
+    title: t('title'),
+    description: t('description'),
+    keywords: ['Dubai real estate jobs', 'real estate career Dubai', 'property consultant jobs Dubai', 'luxury real estate careers', 'BlackOak careers', 'real estate agent jobs UAE'],
+    alternates: {
+      canonical: locale === 'en' ? 'https://blackoak-re.com/career/' : `https://blackoak-re.com/${locale}/career/`,
+      languages: { en: 'https://blackoak-re.com/career/', fr: 'https://blackoak-re.com/fr/career/', ar: 'https://blackoak-re.com/ar/career/' },
+    },
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      type: 'website',
+      url: 'https://blackoak-re.com/career/',
+      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+    },
+  };
+}
 
 const whyJoinCardKeys = ['career', 'wealth', 'lifestyle'] as const;
 
@@ -60,6 +66,7 @@ function formatPostedDate(dateStr: string) {
 export default async function CareerPage({ params }: Props) {
   const locale = params.locale as Locale;
   const t = await getTranslations('pages.career');
+  const tCommon = await getTranslations('common');
   const careers = getCareers(locale);
 
   const whyJoinCards = whyJoinCardKeys.map((key) => ({
@@ -70,8 +77,39 @@ export default async function CareerPage({ params }: Props) {
     description: t(`whyJoinCards.${key}.description`),
   }));
 
+  const careerJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Careers at BlackOak Real Estate',
+    description: 'Join BlackOak Real Estate. Open positions for real estate consultants, investment advisors & property specialists in Dubai.',
+    url: 'https://blackoak-re.com/career/',
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: careers.length,
+      itemListElement: careers.map((job, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        item: {
+          '@type': 'JobPosting',
+          title: job.title,
+          datePosted: job.postedDate,
+          jobLocation: {
+            '@type': 'Place',
+            address: { '@type': 'PostalAddress', addressLocality: job.location, addressCountry: 'AE' },
+          },
+          hiringOrganization: { '@type': 'Organization', name: 'BlackOak Real Estate', sameAs: 'https://blackoak-re.com' },
+          url: `https://blackoak-re.com/career/${job.slug}/`,
+        },
+      })),
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(careerJsonLd) }}
+      />
       {/* Header Label + Heading */}
       <section className="pt-[156px] pb-8">
         <div className="container-narrow text-center">
@@ -185,7 +223,7 @@ export default async function CareerPage({ params }: Props) {
                     <span className="text-[#ccc]">|</span>
                     <span>{job.department}</span>
                     <span className="text-[#ccc]">|</span>
-                    <span>Posted on : {formatPostedDate(job.postedDate)}</span>
+                    <span>{tCommon('postedOn', { date: formatPostedDate(job.postedDate) })}</span>
                   </div>
                 </div>
                 <Link

@@ -79,9 +79,26 @@
     },
     "notFound": {
       "title": "Not Found"
+    },
+    "privacyPolicy": {
+      "title": "Privacy Policy - Your Data Rights",
+      "description": "Learn how BlackOak Real Estate collects, uses, and protects your personal data. Our commitment to privacy and transparency in Dubai luxury real estate services.",
+      "ogTitle": "Privacy Policy | BlackOak Real Estate",
+      "ogDescription": "Learn how BlackOak Real Estate collects, uses, and protects your personal data."
+    },
+    "termsOfService": {
+      "title": "Terms of Service - User Agreement",
+      "description": "Terms and conditions governing your use of BlackOak Real Estate services and website. Read our policies on property transactions, liability, and user obligations.",
+      "ogTitle": "Terms of Service | BlackOak Real Estate",
+      "ogDescription": "Terms and conditions governing your use of BlackOak Real Estate services and website."
+    },
+    "disclaimer": {
+      "title": "Disclaimer - Important Notices",
+      "description": "Important disclaimers regarding BlackOak Real Estate property listings, market information, and advisory services in Dubai.",
+      "ogTitle": "Disclaimer | BlackOak Real Estate",
+      "ogDescription": "Important disclaimers regarding BlackOak Real Estate property listings, market information, and advisory services."
     }
   },
-
   "common": {
     "blackoakRealEstate": "BlackOak Real Estate",
     "logoAlt": "BlackOak Real Estate",
@@ -92,7 +109,7 @@
     "sqFt": "Sq.Ft.",
     "forSale": "For Sale",
     "forRent": "For Rent",
-    "loading": "Loading\u2026",
+    "loading": "Loading…",
     "skipToMainContent": "Skip to main content",
     "viewOnGoogleMaps": "View on Google Maps",
     "priceStartingFrom": "Price Starting From",
@@ -145,15 +162,23 @@
       "twoBedrooms": "2 Bedrooms",
       "threeBedrooms": "3 Bedrooms",
       "fourPlusBedrooms": "4+ Bedrooms",
+      "priceUnder": "Under {amount}",
+      "priceAbove": "{amount}+",
+      "priceRangeLabel": "{min} – {max}",
       "underAed2m": "Under AED 2M",
-      "aed2mTo5m": "AED 2M \u2013 5M",
-      "aed5mTo10m": "AED 5M \u2013 10M",
-      "aed10mTo20m": "AED 10M \u2013 20M",
+      "aed2mTo5m": "AED 2M – 5M",
+      "aed5mTo10m": "AED 5M – 10M",
+      "aed10mTo20m": "AED 10M – 20M",
       "aed20mPlus": "AED 20M+",
-      "select": "Select"
-    }
+      "select": "Select",
+      "removeLocation": "Remove {location}",
+      "clearAllLocations": "Clear all locations",
+      "noLocationsFound": "No locations found",
+      "searchButton": "Search"
+    },
+    "noPropertiesFound": "No properties found matching your criteria.",
+    "whatsappContactAria": "Contact us on WhatsApp"
   },
-
   "nav": {
     "aboutUs": "About Us",
     "whyBlackoak": "Why BlackOak",
@@ -172,6 +197,7 @@
     "closeMenu": "Close menu",
     "followUs": "Follow us",
     "language": "Language",
+    "currency": "Currency",
     "english": "English",
     "languageCode": "EN",
     "neighbourhoodNames": {
@@ -195,7 +221,6 @@
       "contact": "Contact"
     }
   },
-
   "footer": {
     "tagline": "A global luxury real estate firm delivering expert guidance, exclusive opportunities, and tailored investment services.",
     "columns": {
@@ -245,7 +270,7 @@
     },
     "contactTitle": "CONTACT",
     "followUsTitle": "FOLLOW US",
-    "copyright": "\u00a9 {year} by BlackOak Real Estate. All rights reserved.",
+    "copyright": "© {year} by BlackOak Real Estate. All rights reserved.",
     "privacyPolicy": "Privacy Policy",
     "termsOfService": "Terms of Service",
     "disclaimer": "Disclaimer",
@@ -262,7 +287,6 @@
       "millionDollarListing": "Million Dollar Listing"
     }
   },
-
   "forms": {
     "firstName": "First name",
     "lastName": "Last name",
@@ -272,7 +296,7 @@
     "additionalDetails": "Additional details",
     "placeholder": "Enter",
     "placeholderLocation": "e.g. Dubai Marina",
-    "placeholderAdditionalDetails": "Tell us about your property \u2014 size, features, asking price, etc.",
+    "placeholderAdditionalDetails": "Tell us about your property — size, features, asking price, etc.",
     "listingType": "Listing type",
     "propertyType": "Property type",
     "bedroomsLabel": "Bedrooms",
@@ -314,7 +338,6 @@
     "phoneCountryCode": "+971",
     "phoneCountryFlag": "UAE"
   },
-
   "validation": {
     "firstNameMin": "First name must be at least 2 characters",
     "lastNameMin": "Last name must be at least 2 characters",
@@ -329,7 +352,6 @@
     "fileTooLarge": "File size must be less than 4MB",
     "fileTypeInvalid": "Only PDF, DOC, and DOCX files are allowed"
   },
-
   "pages": {
     "home": {
       "hero": {
@@ -417,12 +439,10 @@
         "cta": "More News"
       }
     },
-
     "projects": {
       "sectionLabel": "Discover Properties",
       "heading": "Live Beyond Ordinary,\nDesigned for the Extraordinary"
     },
-
     "projectDetail": {
       "stickyNav": {
         "details": "Details",
@@ -464,18 +484,20 @@
       },
       "enquiry": {
         "label": "Enquiry",
-        "heading": "Your Dream Residence Awaits \u2014 Let''s Connect",
+        "heading": "Your Dream Residence Awaits — Let''s Connect",
         "submitLabel": "Submit Enquiry"
+      },
+      "breadcrumbs": {
+        "home": "Home",
+        "projects": "Projects"
       }
     },
-
     "neighbourhoods": {
       "aboutLabel": "About {name}",
       "propertiesIn": "Properties in {name}",
       "attractionsOf": "Attractions of {name}",
       "whyInvestIn": "Why Invest in Luxury Property in {name}?"
     },
-
     "contact": {
       "headerLabel": "Contact Us",
       "heading": "Let us help you find your\nextraordinary.",
@@ -499,7 +521,6 @@
       "formLabel": "Let''s Connect",
       "formHeading": "Connect with our specialists in luxury real estate."
     },
-
     "listProperty": {
       "headerLabel": "List Your Property",
       "heading": "Sell or Rent Your Property with Confidence",
@@ -513,7 +534,7 @@
         "premiumExposure": "Premium listing exposure on leading local and global portals",
         "dedicatedAgent": "Dedicated agent with personalised marketing strategy",
         "billionsExecuted": "Billions of dollars in successfully executed transactions",
-        "zeroUpfrontFees": "Zero upfront fees \u2014 results-driven service"
+        "zeroUpfrontFees": "Zero upfront fees — results-driven service"
       },
       "formTitle": "List Your Property Today",
       "formSubtitle": "Fill in the details below and one of our property specialists will contact you within 24 hours.",
@@ -542,13 +563,24 @@
         }
       },
       "stats": {
-        "transactions": { "value": "AED 2B+", "label": "In Transactions" },
-        "projects": { "value": "18+", "label": "Premium Projects" },
-        "neighbourhoods": { "value": "13", "label": "Neighbourhoods" },
-        "support": { "value": "24/7", "label": "Client Support" }
+        "transactions": {
+          "value": "AED 2B+",
+          "label": "In Transactions"
+        },
+        "projects": {
+          "value": "18+",
+          "label": "Premium Projects"
+        },
+        "neighbourhoods": {
+          "value": "13",
+          "label": "Neighbourhoods"
+        },
+        "support": {
+          "value": "24/7",
+          "label": "Client Support"
+        }
       }
     },
-
     "career": {
       "headerLabel": "Career",
       "heading": "A glimpse into our people, partners, and life at BlackOak.",
@@ -581,7 +613,6 @@
       "lifeAtBlackoakLabel": "Life at BlackOak",
       "lifeAtBlackoakHeading": "A glimpse into the people, partnerships, and premium developments",
       "lifeAtBlackoakImageAlt": "Life at BlackOak {index}",
-
       "detail": {
         "backToPage": "BACK TO PAGE",
         "postedOn": "Posted on: {date}",
@@ -595,7 +626,6 @@
         "applyHeading": "Ready to Elevate Your Career to the Next Level?"
       }
     },
-
     "about": {
       "whyBlackoak": {
         "heroHeading": "Built on Trust.\nDriven by Passion.",
@@ -603,9 +633,9 @@
         "legacyLabel": "A Legacy of Excellence",
         "legacyHeading1": "BlackOak Real Estate",
         "legacyHeading2": "UAE''s Premier Property Authority",
-        "legacyP1": "At BlackOak Real Estate, we operate at the pinnacle of the UAE''s most dynamic property market \u2014 built on one unwavering principle: that every client deserves an experience as exceptional as the properties we represent.",
-        "legacyP2": "Our team of seasoned professionals brings decades of collective expertise, backed by over $5 billion in successfully executed transactions. Through exclusive partnerships with the UAE''s most prestigious developers, we offer privileged access to the market''s finest opportunities \u2014 many of which remain beyond the reach of conventional agencies.",
-        "legacyP3": "At the core of our approach lies rigorous market intelligence and deep regional expertise. We anticipate shifts, identify opportunities, and guide you with clarity and confidence at every step \u2014 ensuring every decision you make is informed, strategic, and aligned with your vision. At BlackOak, we understand that property acquisition at this level is more than a transaction. It is a defining decision \u2014 and one that deserves the utmost discretion, expertise, and a truly bespoke approach.",
+        "legacyP1": "At BlackOak Real Estate, we operate at the pinnacle of the UAE''s most dynamic property market — built on one unwavering principle: that every client deserves an experience as exceptional as the properties we represent.",
+        "legacyP2": "Our team of seasoned professionals brings decades of collective expertise, backed by over $5 billion in successfully executed transactions. Through exclusive partnerships with the UAE''s most prestigious developers, we offer privileged access to the market''s finest opportunities — many of which remain beyond the reach of conventional agencies.",
+        "legacyP3": "At the core of our approach lies rigorous market intelligence and deep regional expertise. We anticipate shifts, identify opportunities, and guide you with clarity and confidence at every step — ensuring every decision you make is informed, strategic, and aligned with your vision. At BlackOak, we understand that property acquisition at this level is more than a transaction. It is a defining decision — and one that deserves the utmost discretion, expertise, and a truly bespoke approach.",
         "setsApartLabel": "What Sets Us Apart",
         "setsApartHeading": "Our Commitment to Excellence",
         "featureCards": {
@@ -625,30 +655,44 @@
         "statsHeading": "Save more with our best details",
         "statsDescription": "Lorem ipsum dolor sit amet consectetur. Mattis viverra felis aenean gravida odio laoreet quis mattis. Blandit tellus venenatis eros et",
         "stats": {
-          "years": { "end": "12", "suffix": "+", "label": "Years", "sublabel": "experience" },
-          "success": { "end": "15", "suffix": "k+", "label": "Success", "sublabel": "Journey" },
-          "awards": { "end": "9", "suffix": "+", "label": "Award", "sublabel": "Winnings" }
+          "years": {
+            "end": "12",
+            "suffix": "+",
+            "label": "Years",
+            "sublabel": "experience"
+          },
+          "success": {
+            "end": "15",
+            "suffix": "k+",
+            "label": "Success",
+            "sublabel": "Journey"
+          },
+          "awards": {
+            "end": "9",
+            "suffix": "+",
+            "label": "Award",
+            "sublabel": "Winnings"
+          }
         },
         "whyChooseUsLabel": "Why Choose Us",
         "whyChooseUsHeading": "A legacy of excellence in curating extraordinary",
         "techEnhanced": {
           "title": "Technologically Enhanced",
-          "description": "At BlackOak, we seamlessly blend cutting-edge technology with unparalleled market expertise to deliver an experience that is as sophisticated as it is effortless. Our proprietary AI-driven marketing platform ensures your property receives unrivaled visibility \u2014 connecting the right opportunities with the right clientele, with remarkable precision and speed. By embracing the very forefront of technological innovation, we don''t simply keep pace with the future of real estate \u2014 we define it.",
+          "description": "At BlackOak, we seamlessly blend cutting-edge technology with unparalleled market expertise to deliver an experience that is as sophisticated as it is effortless. Our proprietary AI-driven marketing platform ensures your property receives unrivaled visibility — connecting the right opportunities with the right clientele, with remarkable precision and speed. By embracing the very forefront of technological innovation, we don''t simply keep pace with the future of real estate — we define it.",
           "imageAlt": "Technologically enhanced real estate"
         },
         "experiencedTeam": {
           "title": "Experienced Team",
-          "description": "At BlackOak, our expertise transcends the conventional \u2014 serving an exclusive clientele that spans both distinguished private investors and the world''s most prominent institutional players. Our seasoned team brings a rare depth of experience in navigating complex, high-value mandates with the precision and discretion that sophisticated clients demand. From sourcing landmark assets to identifying exceptional development opportunities, we act as a trusted partner to institutions who require not just a service provider \u2014 but a strategic ally of the highest caliber.",
+          "description": "At BlackOak, our expertise transcends the conventional — serving an exclusive clientele that spans both distinguished private investors and the world''s most prominent institutional players. Our seasoned team brings a rare depth of experience in navigating complex, high-value mandates with the precision and discretion that sophisticated clients demand. From sourcing landmark assets to identifying exceptional development opportunities, we act as a trusted partner to institutions who require not just a service provider — but a strategic ally of the highest caliber.",
           "cta": "Meet Our Team",
           "imageAlt": "BlackOak experienced team"
         },
         "investorNetwork": {
           "title": "Large Investor Network",
-          "description": "At BlackOak, we have cultivated an expansive and highly exclusive network of distinguished international investors \u2014 a community built on trust, discretion, and a shared pursuit of exceptional opportunity. This privileged network affords us unparalleled access to off-market assets and rare investment prospects, while simultaneously providing our projects with the global reach and visibility that only a truly connected agency can offer. Whether sourcing or placing capital, our investor relationships are not merely transactional \u2014 they are enduring partnerships that consistently unlock value at the highest level of the market.",
+          "description": "At BlackOak, we have cultivated an expansive and highly exclusive network of distinguished international investors — a community built on trust, discretion, and a shared pursuit of exceptional opportunity. This privileged network affords us unparalleled access to off-market assets and rare investment prospects, while simultaneously providing our projects with the global reach and visibility that only a truly connected agency can offer. Whether sourcing or placing capital, our investor relationships are not merely transactional — they are enduring partnerships that consistently unlock value at the highest level of the market.",
           "imageAlt": "Large investor network"
         }
       },
-
       "ourTeam": {
         "label": "OUR TEAM",
         "heading": "Our Real Estate Experts",
@@ -661,7 +705,6 @@
         "creativeAndOpsTeam": "Creative & Operations Team"
       }
     },
-
     "insights": {
       "investors": {
         "heroHeading": "Built on Trust.\nDriven by Passion.",
@@ -675,15 +718,15 @@
         "sections": {
           "syndicated": {
             "title": "Syndicated Real Estate Investments in Dubai",
-            "description": "At BlackOak Real Estate, investors benefit from access to carefully structured syndicated investment opportunities across Dubai\u2019s dynamic property market. These offerings enable both qualified and retail investors to participate in institutional-quality transactions that include residential, commercial, and mixed-use assets. Each opportunity emphasizes project-driven returns supported by tangible real estate fundamentals."
+            "description": "At BlackOak Real Estate, investors benefit from access to carefully structured syndicated investment opportunities across Dubai’s dynamic property market. These offerings enable both qualified and retail investors to participate in institutional-quality transactions that include residential, commercial, and mixed-use assets. Each opportunity emphasizes project-driven returns supported by tangible real estate fundamentals."
           },
           "tailored": {
             "title": "Tailored Strategies and Advisory",
-            "description": "With a consultative team, BlackOak guides investors in identifying and accessing products designed to meet their goals, whether they seek income stability, capital growth, or a blend of exposures.\n\nAdditionally, BlackOak is introducing a suite of real estate-backed investment options and co-investment syndicates, designed to deliver secure and transparent participation in Dubai\u2019s most compelling property opportunities."
+            "description": "With a consultative team, BlackOak guides investors in identifying and accessing products designed to meet their goals, whether they seek income stability, capital growth, or a blend of exposures.\n\nAdditionally, BlackOak is introducing a suite of real estate-backed investment options and co-investment syndicates, designed to deliver secure and transparent participation in Dubai’s most compelling property opportunities."
           },
           "institutional": {
             "title": "Institutional Expertise, Boutique Precision",
-            "description": "Our leadership team combines extensive institutional experience in acquisitions, development management, capital structuring, and investment strategy. This expertise allows us to identify and structure investments that fit changing market cycles and individual investor objectives, always with disciplined risk management.\n\nBlackOak\u2019s strong understanding of Dubai\u2019s real estate landscape, from land acquisition through to project feasibility and exit strategy, bridges the gap between private capital and institutional grade real estate assets."
+            "description": "Our leadership team combines extensive institutional experience in acquisitions, development management, capital structuring, and investment strategy. This expertise allows us to identify and structure investments that fit changing market cycles and individual investor objectives, always with disciplined risk management.\n\nBlackOak’s strong understanding of Dubai’s real estate landscape, from land acquisition through to project feasibility and exit strategy, bridges the gap between private capital and institutional grade real estate assets."
           },
           "collaborative": {
             "title": "Collaborative Syndication Approach",
@@ -711,13 +754,12 @@
           }
         }
       },
-
       "buyers": {
         "heroHeading": "Built on Trust.\nDriven by Passion.",
         "heroAlt": "Luxury Dubai property with panoramic city views",
         "introLabel": "property buyers guide",
         "introHeading": "Start your Dubai property journey with confidence.",
-        "introDescription": "Our Property Buyers Guide offers a comprehensive overview of the entire acquisition journey \u2014 from selecting the right development and understanding market trends to navigating legal procedures and finalising ownership. Whether you are a first-time buyer or a seasoned investor, this guide is designed to provide clarity, transparency, and strategic insight at every stage. With the right knowledge and expert support, investing in Dubai real estate becomes a seamless and rewarding experience.",
+        "introDescription": "Our Property Buyers Guide offers a comprehensive overview of the entire acquisition journey — from selecting the right development and understanding market trends to navigating legal procedures and finalising ownership. Whether you are a first-time buyer or a seasoned investor, this guide is designed to provide clarity, transparency, and strategic insight at every stage. With the right knowledge and expert support, investing in Dubai real estate becomes a seamless and rewarding experience.",
         "guideNav": {
           "whyInvest": "Why Invest Or Buy",
           "obtainingVisa": "Obtaining a Visa",
@@ -737,11 +779,10 @@
         "mortgageGuideLabel": "Mortgage Guide",
         "mortgageGuideHeading": "Mortgaging Your Property",
         "internationalBuyersLabel": "International Buyers",
-        "internationalBuyersHeading": "International Property Buyers \u2014 Your Step-by-Step Guide",
+        "internationalBuyersHeading": "International Property Buyers — Your Step-by-Step Guide",
         "buyingCostsLabel": "Buying Costs",
         "buyingCostsHeading": "The Administrative Costs of Buying a Completed Property in Dubai"
       },
-
       "news": {
         "readMore": "Read  More",
         "latestNewsLabel": "Latest News",
@@ -750,21 +791,18 @@
         "relatedNewsHeading": "Curated updates from the world of luxury real estate."
       }
     },
-
     "notFound": {
       "code": "404",
       "heading": "Page Not Found",
       "description": "The page you''re looking for doesn''t exist or has been moved.",
       "cta": "RETURN TO HOMEPAGE"
     },
-
     "error": {
       "heading": "Something went wrong",
       "description": "We apologise for the inconvenience. Please try again or return to the homepage.",
       "tryAgain": "Try Again",
       "homepage": "Homepage"
     },
-
     "thankYou": {
       "label": "THANK YOU",
       "heading": "Your request has been successfully submitted.",

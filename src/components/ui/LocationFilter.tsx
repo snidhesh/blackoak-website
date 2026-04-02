@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback, useId } from 'react';
 import { X, MapPin } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 import { cn } from '@/lib/utils';
 
 interface LocationOption {
@@ -20,8 +21,9 @@ export default function LocationFilter({
   options,
   selected,
   onChange,
-  placeholder = 'Search location...',
+  placeholder,
 }: LocationFilterProps) {
+  const t = useTranslations('common');
   const [query, setQuery] = useState('');
   const [isOpen, setIsOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(-1);
@@ -41,6 +43,7 @@ export default function LocationFilter({
   const selectedLabels = selected
     .map((v) => options.find((o) => o.value === v))
     .filter(Boolean) as LocationOption[];
+  const inputPlaceholder = placeholder ?? t('filter.searchLocation');
 
   // Close on outside click
   useEffect(() => {
@@ -107,7 +110,7 @@ export default function LocationFilter({
   };
 
   return (
-    <div ref={containerRef} className="relative border-r border-b md:border-b-0 border-gray-200 min-w-0">
+    <div ref={containerRef} className="relative border-e border-b md:border-b-0 border-gray-200 min-w-0">
       {/* Input area */}
       <div
         className="flex items-center flex-wrap gap-1.5 px-3 py-2 min-h-[46px] cursor-text bg-white overflow-hidden"
@@ -134,7 +137,7 @@ export default function LocationFilter({
                 removeValue(opt.value);
               }}
               className="hover:text-red-500 transition-colors shrink-0"
-              aria-label={`Remove ${opt.label}`}
+              aria-label={t('filter.removeLocation', { location: opt.label })}
             >
               <X className="w-3 h-3" />
             </button>
@@ -153,7 +156,7 @@ export default function LocationFilter({
           }}
           onFocus={() => setIsOpen(true)}
           onKeyDown={handleKeyDown}
-          placeholder={selected.length === 0 ? placeholder : ''}
+          placeholder={selected.length === 0 ? inputPlaceholder : ''}
           className="flex-1 min-w-[60px] w-0 text-[13px] outline-none bg-transparent placeholder:text-[#5F6368]"
           role="combobox"
           aria-expanded={isOpen}
@@ -174,7 +177,7 @@ export default function LocationFilter({
               setQuery('');
             }}
             className="p-0.5 hover:bg-gray-100 rounded shrink-0"
-            aria-label="Clear all locations"
+            aria-label={t('filter.clearAllLocations')}
           >
             <X className="w-3 h-3 text-[#5F6368]" />
           </button>
@@ -187,11 +190,11 @@ export default function LocationFilter({
           ref={listRef}
           id={listboxId}
           role="listbox"
-          className="absolute left-0 top-full z-50 bg-white border border-gray-200 shadow-lg max-h-[240px] overflow-y-auto w-[min(100vw_-_2rem,_320px)] md:w-full md:right-0"
+          className="absolute start-0 top-full z-50 bg-white border border-gray-200 shadow-lg max-h-[240px] overflow-y-auto w-[min(100vw_-_2rem,_320px)] md:w-full md:end-0"
         >
           {filtered.length === 0 ? (
             <li className="px-4 py-3 text-[13px] text-[#5F6368]">
-              No locations found
+              {t('filter.noLocationsFound')}
             </li>
           ) : (
             filtered.map((opt, i) => (

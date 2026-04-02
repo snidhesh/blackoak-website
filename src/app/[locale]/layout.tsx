@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, getTranslations } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
+import { CurrencyProvider } from '@/context/CurrencyContext';
 import { getSplash } from '@/lib/content';
 import type { Locale } from '@/i18n/config';
 
@@ -13,7 +14,7 @@ const BASE_URL = 'https://blackoak-re.com';
 
 export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
   const locale = params.locale;
-  const ogLocale = locale === 'fr' ? 'fr_FR' : 'en_AE';
+  const ogLocale = locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE';
 
   return {
     metadataBase: new URL(BASE_URL),
@@ -66,6 +67,7 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
       languages: {
         en: `${BASE_URL}/`,
         fr: `${BASE_URL}/fr/`,
+        ar: `${BASE_URL}/ar/`,
       },
     },
     robots: {
@@ -102,6 +104,7 @@ export default async function LocaleLayout({
   }
 
   const messages = await getMessages();
+  const tCommon = await getTranslations({ locale, namespace: 'common' });
   const splash = getSplash(locale as Locale);
 
   return (
@@ -117,7 +120,7 @@ export default async function LocaleLayout({
             logo: `${BASE_URL}/images/logo-white.png`,
             description:
               'A global luxury real estate firm delivering expert guidance, exclusive opportunities, and tailored investment services in Dubai.',
-            inLanguage: locale === 'fr' ? 'fr' : 'en',
+            inLanguage: locale,
             telephone: '+971 4 398 9055',
             email: 'info@blackoak-re.com',
             address: [
@@ -153,7 +156,7 @@ export default async function LocaleLayout({
           (function(){
             var d=document.documentElement;
             if(d.hasAttribute('data-splash-enabled')
-              && /^\\/(fr\\/)?$/.test(location.pathname)
+              && /^\\/((?:fr|ar)\\/)?$/.test(location.pathname)
               && !/blackoak-splash=/.test(document.cookie)){
               d.dataset.splash='pending';
               document.cookie='blackoak-splash=seen;path=/';
@@ -167,15 +170,17 @@ export default async function LocaleLayout({
         href="#main-content"
         className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded"
       >
-        Skip to main content
+        {tCommon('skipToMainContent')}
       </a>
-      <div id="app-shell">
-        <Navbar />
-        <main id="main-content" className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
-      </div>
+      <CurrencyProvider>
+        <div id="app-shell">
+          <Navbar />
+          <main id="main-content" className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+        </div>
+      </CurrencyProvider>
     </NextIntlClientProvider>
   );
 }

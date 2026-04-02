@@ -1,10 +1,14 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
+import { useLocale } from 'next-intl';
 import { ChevronDown, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import LocationFilter from '@/components/ui/LocationFilter';
+import { useCurrency } from '@/context/CurrencyContext';
+import { formatCompactPrice } from '@/lib/currency';
+import type { Locale } from '@/i18n/config';
 
 export interface FilterState {
   neighbourhoods: string[];
@@ -18,6 +22,7 @@ interface FilterBarProps {
   neighbourhoods: string[];
   propertyTypes: string[];
   offerings: string[];
+  filters: FilterState;
   onFilterChange: (filters: FilterState) => void;
   onSortChange: (sort: string) => void;
   sort: string;
@@ -32,35 +37,50 @@ export default function FilterBar({
   neighbourhoods,
   propertyTypes,
   offerings,
+  filters,
   onFilterChange,
   onSortChange,
   sort,
   resultCount,
 }: FilterBarProps) {
   const t = useTranslations('common');
+  const locale = useLocale() as Locale;
+  const { currency } = useCurrency();
 
-  const [filters, setFilters] = useState<FilterState>({
-    neighbourhoods: [],
-    propertyType: '',
-    bedrooms: '',
-    priceRange: '',
-    offering: '',
-  });
+  const priceRangeOptions = useMemo(() => {
+    const ranges = [
+      { value: '0-2000000', min: 0, max: 2_000_000 },
+      { value: '2000000-5000000', min: 2_000_000, max: 5_000_000 },
+      { value: '5000000-10000000', min: 5_000_000, max: 10_000_000 },
+      { value: '10000000-20000000', min: 10_000_000, max: 20_000_000 },
+      { value: '20000000-999999999', min: 20_000_000, max: Infinity },
+    ];
+    return ranges.map((r) => {
+      let label: string;
+      if (r.min === 0) {
+        label = t('filter.priceUnder', { amount: formatCompactPrice(r.max, currency, locale) });
+      } else if (r.max === Infinity) {
+        label = t('filter.priceAbove', { amount: formatCompactPrice(r.min, currency, locale) });
+      } else {
+        label = t('filter.priceRangeLabel', {
+          min: formatCompactPrice(r.min, currency, locale),
+          max: formatCompactPrice(r.max, currency, locale),
+        });
+      }
+      return { value: r.value, label };
+    });
+  }, [currency, locale, t]);
 
   const updateFilter = useCallback(
     (key: string, value: string) => {
-      const newFilters = { ...filters, [key]: value };
-      setFilters(newFilters);
-      onFilterChange(newFilters);
+      onFilterChange({ ...filters, [key]: value });
     },
     [filters, onFilterChange]
   );
 
   const updateNeighbourhoods = useCallback(
     (values: string[]) => {
-      const newFilters = { ...filters, neighbourhoods: values };
-      setFilters(newFilters);
-      onFilterChange(newFilters);
+      onFilterChange({ ...filters, neighbourhoods: values });
     },
     [filters, onFilterChange]
   );
@@ -73,15 +93,13 @@ export default function FilterBar({
     filters.offering;
 
   const handleReset = () => {
-    const empty: FilterState = {
+    onFilterChange({
       neighbourhoods: [],
       propertyType: '',
       bedrooms: '',
       priceRange: '',
       offering: '',
-    };
-    setFilters(empty);
-    onFilterChange(empty);
+    });
   };
 
   return (
@@ -91,7 +109,7 @@ export default function FilterBar({
         <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 border border-gray-200 min-w-0">
           {/* Buy / Rent toggle buttons */}
           {offerings.length > 0 && (
-            <div className="flex items-center border-r border-b md:border-b-0 border-gray-200">
+            <div className="flex items-center border-e border-b md:border-b-0 border-gray-200">
               {offerings.map(o => {
                 const label = o === 'sale' ? t('filter.buy') : o === 'rent' ? t('filter.rent') : o.charAt(0).toUpperCase() + o.slice(1);
                 const isActive = filters.offering === o;
@@ -150,13 +168,7 @@ export default function FilterBar({
             placeholder={t('filter.priceRange')}
             value={filters.priceRange}
             onChange={(v) => updateFilter('priceRange', v)}
-            options={[
-              { value: '0-2000000', label: t('filter.underAed2m') },
-              { value: '2000000-5000000', label: t('filter.aed2mTo5m') },
-              { value: '5000000-10000000', label: t('filter.aed5mTo10m') },
-              { value: '10000000-20000000', label: t('filter.aed10mTo20m') },
-              { value: '20000000-999999999', label: t('filter.aed20mPlus') },
-            ]}
+            options={priceRangeOptions}
           />
         </div>
       </div>
@@ -185,12 +197,17 @@ export default function FilterBar({
           <select
             value={sort}
             onChange={(e) => onSortChange(e.target.value)}
-            className="text-[13px] font-medium bg-transparent border-none outline-none cursor-pointer appearance-none pr-4"
-            style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'12\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%235F6368\' stroke-width=\'2\'%3E%3Cpath d=\'M6 9l6 6 6-6\'/%3E%3C/svg%3E")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right center' }}
+            className="text-[13px] font-medium bg-transparent border-none outline-none cursor-pointer appearance-none pe-4"
+            style={{
+              backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'12\' height=\'12\' viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'%235F6368\' stroke-width=\'2\'%3E%3Cpath d=\'M6 9l6 6 6-6\'/%3E%3C/svg%3E")',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: locale === 'ar' ? 'left center' : 'right center',
+            }}
+            dir="ltr"
           >
-            <option value="most-recent">Most Recent</option>
-            <option value="price-low">Price: Low to High</option>
-            <option value="price-high">Price: High to Low</option>
+            <option value="most-recent">{t('sort.mostRecent')}</option>
+            <option value="price-low">{t('sort.priceLow')}</option>
+            <option value="price-high">{t('sort.priceHigh')}</option>
           </select>
         </div>
       </div>
@@ -211,11 +228,11 @@ function FilterSelect({
   options: { value: string; label: string }[];
 }) {
   return (
-    <div className="relative border-r border-b md:border-b-0 border-gray-200 last:border-r-0">
+    <div className="relative border-e border-b md:border-b-0 border-gray-200 last:border-e-0">
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full h-full px-4 py-3.5 text-[13px] bg-white appearance-none cursor-pointer outline-none pr-8 text-black"
+        className="w-full h-full px-4 py-3.5 text-[13px] bg-white appearance-none cursor-pointer outline-none pe-8 text-black"
       >
         <option value="">{placeholder}</option>
         {options.map((opt) => (
@@ -224,7 +241,7 @@ function FilterSelect({
           </option>
         ))}
       </select>
-      <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none flex items-center gap-1.5">
+      <div className="absolute end-3 top-1/2 -translate-y-1/2 pointer-events-none flex items-center gap-1.5">
         {value && (
           <button
             className="pointer-events-auto p-0.5 hover:bg-gray-100 rounded"

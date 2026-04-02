@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n/config';
+import { getBuyers } from '@/lib/content';
 import SectionLabel from '@/components/ui/SectionLabel';
 import SectionHeading from '@/components/ui/SectionHeading';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
@@ -10,46 +11,73 @@ interface Props {
   params: { locale: string };
 }
 
-export const metadata: Metadata = {
-  title: 'Dubai Property Buyers Guide',
-  description:
-    'How to buy property in Dubai as a foreigner. Complete guide covering Golden Visa, freehold areas, mortgages, and the buying process. Expert advice from BlackOak.',
-  alternates: { canonical: 'https://blackoak-re.com/insights/buyers/' },
-  openGraph: {
-    title: 'Dubai Property Buyers Guide | BlackOak Real Estate',
-    description:
-      'How to buy property in Dubai as a foreigner. Complete guide covering Golden Visa, freehold areas, mortgages, and the buying process.',
-    type: 'website',
-    url: 'https://blackoak-re.com/insights/buyers/',
-    images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'Dubai Property Buyers Guide' }],
-  },
-};
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'metadata.buyers' });
 
-const guideNavKeys = [
-  { key: 'whyInvest', id: 'why-invest' },
-  { key: 'obtainingVisa', id: 'obtaining-visa' },
-  { key: 'managingProperty', id: 'managing-property' },
-  { key: 'mortgagingProperty', id: 'mortgaging-property' },
-  { key: 'internationalBuyers', id: 'international-buyers' },
-  { key: 'costsBuying', id: 'costs-buying' },
-] as const;
+  const localePath = locale === 'en' ? '/insights/buyers/' : `/${locale}/insights/buyers/`;
+  const enUrl = 'https://blackoak-re.com/insights/buyers/';
+  const frUrl = 'https://blackoak-re.com/fr/insights/buyers/';
+  const arUrl = 'https://blackoak-re.com/ar/insights/buyers/';
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    keywords: ['buy property Dubai foreigner', 'Dubai property buying guide', 'Golden Visa Dubai property', 'freehold areas Dubai', 'mortgage Dubai property', 'how to buy villa Dubai', 'Dubai property costs', 'international buyers Dubai real estate'],
+    alternates: {
+      canonical: `https://blackoak-re.com${localePath}`,
+      languages: {
+        en: enUrl,
+        fr: frUrl,
+        ar: arUrl,
+      },
+    },
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      type: 'website',
+      url: `https://blackoak-re.com${localePath}`,
+      locale: locale === 'ar' ? 'ar_AE' : locale === 'fr' ? 'fr_FR' : 'en_AE',
+      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('title') }],
+    },
+  };
+}
 
 export default async function BuyersPage({ params }: Props) {
   const locale = params.locale as Locale;
-  const t = await getTranslations({ locale, namespace: 'pages.insights.buyers' });
+  const buyers = getBuyers(locale);
+  const guides = buyers.guides;
 
-  const guides = guideNavKeys.map((g) => ({
-    title: t(`guideNav.${g.key}`),
-    id: g.id,
-  }));
+  const buyersJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How to Buy Property in Dubai',
+    description: 'Complete guide to buying property in Dubai as a foreigner — covering Golden Visa, freehold areas, mortgages, and the buying process.',
+    url: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/buyers/`,
+    step: guides.map((guide, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: guide.title,
+      url: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/buyers/#${guide.id}`,
+    })),
+    author: {
+      '@type': 'Organization',
+      name: 'BlackOak Real Estate',
+      url: 'https://blackoak-re.com',
+    },
+  };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(buyersJsonLd) }}
+      />
       {/* Hero */}
       <section className="relative flex items-center justify-center min-h-[70vh] overflow-hidden">
         <Image
-          src="/images/buyers/hero.jpg"
-          alt={t('heroAlt')}
+          src={buyers.hero.image}
+          alt={buyers.hero.title}
           fill
           className="object-cover"
           priority
@@ -58,7 +86,7 @@ export default async function BuyersPage({ params }: Props) {
         <div className="absolute inset-x-0 bottom-0 h-[480px] bg-gradient-to-t from-black/90 to-transparent" />
         <div className="relative z-10 text-center text-white px-4">
           <h1 className="text-4xl md:text-[50px] font-light leading-tight">
-            {t('heroHeading').split('\n').map((line, i, arr) => (
+            {buyers.hero.title.split('\n').map((line, i, arr) => (
               <span key={i}>
                 {line}
                 {i < arr.length - 1 && <br />}
@@ -72,15 +100,15 @@ export default async function BuyersPage({ params }: Props) {
       <section className="py-20">
         <div className="container-narrow text-center">
           <AnimateOnScroll>
-            <SectionLabel>{t('introLabel')}</SectionLabel>
+            <SectionLabel>{buyers.intro.label}</SectionLabel>
             <SectionHeading
-              title={t('introHeading')}
+              title={buyers.intro.title}
               className="mt-5 max-w-[542px] mx-auto"
             />
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.2}>
             <p className="mt-8 text-[16px] leading-[28px] tracking-[0.16px] text-[#5f6368] max-w-[1382px] mx-auto">
-              {t('introDescription')}
+              {buyers.intro.description}
             </p>
           </AnimateOnScroll>
         </div>
@@ -111,8 +139,8 @@ export default async function BuyersPage({ params }: Props) {
         <div className="flex flex-col lg:flex-row">
           <div className="relative w-full lg:w-1/2 min-h-[400px] lg:min-h-[748px]">
             <Image
-              src="/images/buyers/tab-why-invest.jpg"
-              alt="Luxury penthouse overlooking Dubai skyline"
+              src={buyers.whyInvest.image}
+              alt={buyers.whyInvest.title}
               fill
               className="object-cover"
             />
@@ -121,10 +149,10 @@ export default async function BuyersPage({ params }: Props) {
             <div className="px-8 lg:px-16 py-16 max-w-[627px]">
               <AnimateOnScroll>
                 <h2 className="text-[32px] lg:text-[42px] font-light leading-[45px] lg:leading-[55px]">
-                  {t('whyInvestHeading')}
+                  {buyers.whyInvest.title}
                 </h2>
                 <p className="mt-10 text-[18px] font-normal leading-[30px] text-white">
-                  {t('whyInvestDescription')}
+                  {buyers.whyInvest.content}
                 </p>
               </AnimateOnScroll>
             </div>
@@ -137,9 +165,9 @@ export default async function BuyersPage({ params }: Props) {
         <div className="container-wide">
           <AnimateOnScroll>
             <div className="text-center mb-12">
-              <SectionLabel>{t('minimalRiskLabel')}</SectionLabel>
+              <SectionLabel>{buyers.minimalRisk.label}</SectionLabel>
               <SectionHeading
-                title={t('minimalRiskHeading')}
+                title={buyers.minimalRisk.title}
                 className="mt-5"
               />
             </div>
@@ -147,20 +175,15 @@ export default async function BuyersPage({ params }: Props) {
           <AnimateOnScroll delay={0.2}>
             <div className="text-[16px] leading-[28px] tracking-[0.16px] text-[#5f6368] max-w-[1382px] mx-auto space-y-10">
               <div className="space-y-6">
-                <p>
-                  With any real estate investment or purchase, risk must be examined. When it comes to Dubai, risk is minimal. Here&apos;s why:
-                </p>
-                <p>
-                  Great quality assets (in an equally great market which typically, anywhere else should be yielding far lower).
-                </p>
+                <p>{buyers.minimalRisk.intro}</p>
+                <p>{buyers.minimalRisk.sub}</p>
               </div>
-              <ul className="list-disc pl-6 space-y-1">
-                <li>Today, investors can generate property yields of anything between 6-12%.</li>
-                <li>When considering capital appreciation, property yields could produce even higher total investor returns.</li>
+              <ul className="list-disc ps-6 space-y-1">
+                {buyers.minimalRisk.bullets.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
-              <p>
-                There&apos;s more too. Dubai is one of the most &ldquo;connected&rdquo; cities, easy to get to by airplane and it&apos;s a superb international business hub that will always see a high level of demand when it comes to property. Additionally, the Dubai government continues to heavily invest in the country, from all perspectives; business, social and entertainment. While there is a large supply of residential projects in Dubai, the stock constantly transacts and it&apos;s no surprise that more and more people consider Dubai as their home.
-              </p>
+              <p>{buyers.minimalRisk.closing}</p>
             </div>
           </AnimateOnScroll>
         </div>
@@ -171,67 +194,29 @@ export default async function BuyersPage({ params }: Props) {
         <div className="container-wide">
           <AnimateOnScroll>
             <div className="text-center mb-12">
-              <SectionLabel>{t('obtainingVisaLabel')}</SectionLabel>
+              <SectionLabel>{buyers.visa.label}</SectionLabel>
               <SectionHeading
-                title={t('obtainingVisaHeading')}
+                title={buyers.visa.title}
                 className="mt-5"
               />
             </div>
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.2}>
             <div className="text-[16px] leading-[28px] tracking-[0.16px] text-[#5f6368] max-w-[1382px] mx-auto">
-              <p className="mb-10">
-                You can get a visa if you buy a property in Dubai. There are a few types of visas that are ideal for property investors:
-              </p>
+              <p className="mb-10">{buyers.visa.intro}</p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Visa Card 1 */}
-                <div className="bg-white p-8 border border-gray-200">
-                  <h3 className="text-[22px] font-normal leading-[32px] text-black mb-6">
-                    Six-Month Renewable Residency Visa
-                  </h3>
-                  <ul className="list-disc pl-5 space-y-2 text-[#5f6368]">
-                    <li>This residential only visa is issued by the relevant immigration authority.</li>
-                    <li>It is renewable.</li>
-                    <li>The cost is approximately AED 2,500.</li>
-                    <li>Property must be at the completion stage and freehold only.</li>
-                    <li>Note, this visa is not suited for working in Dubai.</li>
-                  </ul>
-                </div>
-                {/* Visa Card 2 */}
-                <div className="bg-white p-8 border border-gray-200">
-                  <h3 className="text-[22px] font-normal leading-[32px] text-black mb-6">
-                    5-Year Visa — The Golden Visa
-                  </h3>
-                  <ul className="list-disc pl-5 space-y-2 text-[#5f6368]">
-                    <li>You must invest no less than AED 5 million in property in the UAE (gross).</li>
-                    <li>Any amount that you invest cannot be on a loan basis.</li>
-                    <li>The property must be retained for at least three years.</li>
-                  </ul>
-                </div>
-                {/* Visa Card 3 */}
-                <div className="bg-white p-8 border border-gray-200">
-                  <h3 className="text-[22px] font-normal leading-[32px] text-black mb-6">
-                    2-Year Renewable Property Investor Visa
-                  </h3>
-                  <ul className="list-disc pl-5 space-y-2 text-[#5f6368]">
-                    <li>This visa permits you to become a UAE resident only if you&apos;ve made a property investment.</li>
-                    <li>You must invest less than AED 1 million in property in the UAE (gross).</li>
-                    <li>If jointly owned, the value must exceed AED 1 million.</li>
-                    <li>It costs approximately AED 14,000.</li>
-                  </ul>
-                </div>
-                {/* Visa Card 4 */}
-                <div className="bg-white p-8 border border-gray-200">
-                  <h3 className="text-[22px] font-normal leading-[32px] text-black mb-6">
-                    3-Year Investor Visa
-                  </h3>
-                  <ul className="list-disc pl-5 space-y-2 text-[#5f6368]">
-                    <li>You must invest no less than AED 1 million in property in the UAE (gross).</li>
-                    <li>With this visa you are considered eligible to become a UAE resident.</li>
-                    <li>Visa costs approximately AED 14,000.</li>
-                    <li>You may not stay outside of Dubai for more than 6 months.</li>
-                  </ul>
-                </div>
+                {buyers.visa.types.map((type, i) => (
+                  <div key={i} className="bg-white p-8 border border-gray-200">
+                    <h3 className="text-[22px] font-normal leading-[32px] text-black mb-6">
+                      {type.name}
+                    </h3>
+                    <ul className="list-disc ps-5 space-y-2 text-[#5f6368]">
+                      {type.bullets.map((bullet, bi) => (
+                        <li key={bi}>{bullet}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
             </div>
           </AnimateOnScroll>
@@ -243,22 +228,20 @@ export default async function BuyersPage({ params }: Props) {
         <div className="container-wide">
           <AnimateOnScroll>
             <div className="text-center mb-12">
-              <SectionLabel>{t('propertyManagementLabel')}</SectionLabel>
+              <SectionLabel>{buyers.managingProperty.label}</SectionLabel>
               <SectionHeading
-                title={t('propertyManagementHeading')}
+                title={buyers.managingProperty.title}
                 className="mt-5 max-w-[700px] mx-auto"
               />
             </div>
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.2}>
             <div className="text-[16px] leading-[28px] tracking-[0.16px] text-[#5f6368] max-w-[1382px] mx-auto space-y-8">
-              <p>
-                Black Oak does not just deal in property sales, we also manage properties for our many clients when they are outside Dubai. There are various different options to choose from, as follows:
-              </p>
-              <ul className="list-disc pl-6 space-y-4">
-                <li>The property is empty so our property management team will check it periodically to ensure security and that there are no maintenance issues. Before your return to Dubai, our team will also check and prepare your property ready for your arrival.</li>
-                <li>Our property management team can manage everything for you, including leasing your property out to maintaining it on your behalf. This is our full property management service.</li>
-                <li>Short-term let management, which increases your investment return. However, as with any letting, appliances, decor and furniture will also need maintenance.</li>
+              <p>{buyers.managingProperty.intro}</p>
+              <ul className="list-disc ps-6 space-y-4">
+                {buyers.managingProperty.options.map((option, i) => (
+                  <li key={i}>{option}</li>
+                ))}
               </ul>
             </div>
           </AnimateOnScroll>
@@ -270,21 +253,18 @@ export default async function BuyersPage({ params }: Props) {
         <div className="container-wide">
           <AnimateOnScroll>
             <div className="text-center mb-12">
-              <SectionLabel>{t('mortgageGuideLabel')}</SectionLabel>
+              <SectionLabel>{buyers.mortgage.label}</SectionLabel>
               <SectionHeading
-                title={t('mortgageGuideHeading')}
+                title={buyers.mortgage.title}
                 className="mt-5"
               />
             </div>
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.2}>
             <div className="text-[16px] leading-[28px] tracking-[0.16px] text-[#5f6368] max-w-[1382px] mx-auto space-y-6">
-              <p>
-                It&apos;s important to note that most international buyers purchasing properties in Dubai use cash transactions but mortgages are still used to secure a property. Generally, they are not difficult to obtain, UAE nationals, expats and non-residents may apply for a mortgage in Dubai as long as they have valid ID and proof of income. Pre-approvals are fast too, within 4 days and another week for a final mortgage offer. Keep an eye on mortgage rates. They change regularly. Most major UAE banks offer mortgages. You will be asked to put at least a 20% down-payment on the property in question.
-              </p>
-              <p>
-                As for eligibility you must have a stable income, good credit rating and minimum salary income of AED 7,000 for UAE Nationals and AED 10,000 for expats. Mortgage repayments must be repaid monthly and must not exceed 50% of your monthly income. Finally, you must be over 21 years old to apply for a mortgage.
-              </p>
+              {buyers.mortgage.paragraphs.map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
             </div>
           </AnimateOnScroll>
         </div>
@@ -295,26 +275,20 @@ export default async function BuyersPage({ params }: Props) {
         <div className="container-wide">
           <AnimateOnScroll>
             <div className="text-center mb-12">
-              <SectionLabel>{t('internationalBuyersLabel')}</SectionLabel>
+              <SectionLabel>{buyers.internationalBuyers.label}</SectionLabel>
               <SectionHeading
-                title={t('internationalBuyersHeading')}
+                title={buyers.internationalBuyers.title}
                 className="mt-5 max-w-[700px] mx-auto"
               />
             </div>
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.2}>
             <div className="text-[16px] leading-[28px] tracking-[0.16px] text-[#5f6368] max-w-[1382px] mx-auto space-y-8">
-              <p>
-                At Black Oak, we want to help you find your perfect Dubai investment property. Contact us to discuss your requirements.
-              </p>
-              <ol className="list-decimal pl-6 space-y-4">
-                <li>Locate your ideal property that matches your own requirements with help from our knowledgeable, experienced property team.</li>
-                <li>Be aware of the Free-Zone Areas. As a non-UAE or GCC citizen you are limited to these areas. Rest assured, all of our listed properties are in the free-zone and specifically for international buyers.</li>
-                <li>Always negotiate and outline terms with seller — Black Oak can assist with this directly, with the developers.</li>
-                <li>Sign an MOU (Memorandum of Understanding) / Form F (available on DLD website).</li>
-                <li>Once both you, the buyer and the seller form an agreement, you must both sign it at the registration trustee.</li>
-                <li>Obtain an NOC (No Objection Certificate) from the developer to transfer ownership.</li>
-                <li>Finally, there will be a meeting at the DLD (Dubai Land Department) to effect transfer with developer.</li>
+              <p>{buyers.internationalBuyers.intro}</p>
+              <ol className="list-decimal ps-6 space-y-4">
+                {buyers.internationalBuyers.steps.map((step, i) => (
+                  <li key={i}>{step}</li>
+                ))}
               </ol>
             </div>
           </AnimateOnScroll>
@@ -326,29 +300,20 @@ export default async function BuyersPage({ params }: Props) {
         <div className="container-wide">
           <AnimateOnScroll>
             <div className="text-center mb-12">
-              <SectionLabel>{t('buyingCostsLabel')}</SectionLabel>
+              <SectionLabel>{buyers.costs.label}</SectionLabel>
               <SectionHeading
-                title={t('buyingCostsHeading')}
+                title={buyers.costs.title}
                 className="mt-5 max-w-[700px] mx-auto"
               />
             </div>
           </AnimateOnScroll>
           <AnimateOnScroll delay={0.2}>
             <div className="text-[16px] leading-[28px] tracking-[0.16px] text-[#5f6368] max-w-[1382px] mx-auto space-y-8">
-              <p>
-                We&apos;ve put together a brief explanation of the administrative costs associated with purchasing property in Dubai.
-              </p>
-              <ul className="list-disc pl-6 space-y-3">
-                <li>4% of the property value goes to the DLD (Dubai Land Department) as a fee payment.</li>
-                <li>Additionally, there is an AED 4,200 fee for administrative purposes paid to the DLD.</li>
-                <li>There is an AED 520 fee for issuing the Title Deeds.</li>
-                <li>The Real Estate Agent will receive 2% of the purchase price for commission.</li>
-                <li>There are NOC charges (No Objection Certificate) that range from AED 500 to AED 5,000 and this very much depends on the developer.</li>
-                <li>Your mortgage registration fees (if you have a mortgage) will be calculated at a rate of 0.25% of the registered loan amount plus AED 290 (an admin fee). This is paid to the DLD (Dubai Land Department). Note, if you purchase your property with a full cash payment, the DLD Mortgage Registration Fee will not apply.</li>
-                <li>Annual Service Charge must be paid in advance to the developers — as the buyer, you should account for this amount.</li>
-                <li>There is also a Property Registration Fee, if the property is below AED 500,000 it is AED 2,000 +VAT. Above AED 500,000, the fee is AED 4,000 + VAT.</li>
-                <li>Factor in the valuation fees of AED 2,500 to AED 3,500.</li>
-                <li>Finally, there is the cost of the Oqood Certificate (which registers the property in the buyer&apos;s name) which costs AED 5,250.</li>
+              <p>{buyers.costs.intro}</p>
+              <ul className="list-disc ps-6 space-y-3">
+                {buyers.costs.items.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
               </ul>
             </div>
           </AnimateOnScroll>

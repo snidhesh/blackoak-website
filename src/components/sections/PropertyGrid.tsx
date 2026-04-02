@@ -1,3 +1,6 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
 import PropertyCard from './PropertyCard';
 
 interface Project {
@@ -22,10 +25,12 @@ interface PropertyGridProps {
 }
 
 export default function PropertyGrid({ projects, columns = 3 }: PropertyGridProps) {
+  const t = useTranslations('common');
+
   if (projects.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-500">No properties found matching your criteria.</p>
+        <p className="text-gray-500">{t('noPropertiesFound')}</p>
       </div>
     );
   }

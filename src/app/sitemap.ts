@@ -5,7 +5,7 @@ import { locales, defaultLocale } from '@/i18n/config';
 const BASE_URL = 'https://blackoak-re.com';
 
 // Fixed date for static content — update when static pages are meaningfully changed
-const STATIC_LAST_MODIFIED = new Date('2026-03-19');
+const STATIC_LAST_MODIFIED = new Date('2026-04-02');
 
 function localePath(path: string, locale: string): string {
   return locale === defaultLocale ? `${BASE_URL}${path}` : `${BASE_URL}/${locale}${path}`;

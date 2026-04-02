@@ -24,7 +24,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-figtree)", "system-ui", "sans-serif"],
+        sans: ["var(--font-figtree)", "var(--font-noto-arabic)", "system-ui", "sans-serif"],
         raleway: ["var(--font-raleway)", "system-ui", "sans-serif"],
       },
       container: {
@@ -53,12 +53,17 @@ const config: Config = {
           "0%": { transform: "translate3d(0, 0, 0)" },
           "100%": { transform: "translate3d(-50%, 0, 0)" },
         },
+        "marquee-rtl": {
+          "0%": { transform: "translate3d(0, 0, 0)" },
+          "100%": { transform: "translate3d(50%, 0, 0)" },
+        },
       },
       animation: {
         "fade-in": "fade-in 0.6s ease-out forwards",
         "fade-in-up": "fade-in-up 0.8s ease-out forwards",
         "slide-down": "slide-down 0.3s ease-out forwards",
         marquee: "marquee 30s linear infinite",
+        "marquee-rtl": "marquee-rtl 30s linear infinite",
       },
     },
   },

@@ -11,20 +11,26 @@ interface Props {
   params: { locale: string };
 }
 
-export const metadata: Metadata = {
-  title: 'Dubai Property Investment Opportunities',
-  description:
-    'Exclusive access to institutional-grade real estate investments in Dubai. Syndicated deals, high ROI opportunities & expert advisory for HNW investors.',
-  alternates: { canonical: 'https://blackoak-re.com/insights/investors/' },
-  openGraph: {
-    title: 'Dubai Property Investment Opportunities | BlackOak',
-    description:
-      'Exclusive access to institutional-grade real estate investments in Dubai. Syndicated deals, high ROI opportunities & expert advisory.',
-    type: 'website',
-    url: 'https://blackoak-re.com/insights/investors/',
-    images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'Dubai Property Investment with BlackOak' }],
-  },
-};
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'metadata.investors' });
+  return {
+    title: t('title'),
+    description: t('description'),
+    keywords: ['Dubai property investment', 'real estate investment Dubai', 'Dubai ROI property', 'high yield Dubai property', 'syndicated real estate deals Dubai', 'HNWI investment Dubai', 'Golden Visa property investment', 'Dubai real estate returns'],
+    alternates: {
+      canonical: locale === 'en' ? 'https://blackoak-re.com/insights/investors/' : `https://blackoak-re.com/${locale}/insights/investors/`,
+      languages: { en: 'https://blackoak-re.com/insights/investors/', fr: 'https://blackoak-re.com/fr/insights/investors/', ar: 'https://blackoak-re.com/ar/insights/investors/' },
+    },
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      type: 'website',
+      url: 'https://blackoak-re.com/insights/investors/',
+      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+    },
+  };
+}
 
 const sectionKeys = ['syndicated', 'tailored', 'institutional', 'collaborative'] as const;
 

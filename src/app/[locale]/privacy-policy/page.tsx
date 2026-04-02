@@ -1,20 +1,31 @@
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import { getPrivacyPolicy } from '@/lib/content';
 import type { Locale } from '@/i18n/config';
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy - Your Data Rights',
-  description:
-    'Learn how BlackOak Real Estate collects, uses, and protects your personal data. Our commitment to privacy and transparency in Dubai luxury real estate services.',
-  alternates: { canonical: 'https://blackoak-re.com/privacy-policy/' },
-  openGraph: {
-    title: 'Privacy Policy | BlackOak Real Estate',
-    description:
-      'Learn how BlackOak Real Estate collects, uses, and protects your personal data.',
-    type: 'website',
-    url: 'https://blackoak-re.com/privacy-policy/',
-  },
-};
+interface Props {
+  params: { locale: string };
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'metadata.privacyPolicy' });
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: locale === 'en' ? 'https://blackoak-re.com/privacy-policy/' : `https://blackoak-re.com/${locale}/privacy-policy/`,
+      languages: { en: 'https://blackoak-re.com/privacy-policy/', fr: 'https://blackoak-re.com/fr/privacy-policy/', ar: 'https://blackoak-re.com/ar/privacy-policy/' },
+    },
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      type: 'website',
+      url: 'https://blackoak-re.com/privacy-policy/',
+      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+    },
+  };
+}
 
 export default function PrivacyPolicyPage({ params }: { params: { locale: string } }) {
   const privacyData = getPrivacyPolicy(params.locale as Locale);

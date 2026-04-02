@@ -1,4 +1,4 @@
-import { Figtree, Raleway } from 'next/font/google';
+import { Figtree, Raleway, Noto_Sans_Arabic } from 'next/font/google';
 import { getLocale } from 'next-intl/server';
 import './globals.css';
 
@@ -14,6 +14,12 @@ const raleway = Raleway({
   variable: '--font-raleway',
 });
 
+const notoSansArabic = Noto_Sans_Arabic({
+  subsets: ['arabic'],
+  display: 'swap',
+  variable: '--font-noto-arabic',
+});
+
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -24,7 +30,8 @@ export default async function RootLayout({
   return (
     <html
       lang={locale}
-      className={`${figtree.variable} ${raleway.variable}`}
+      dir={locale === 'ar' ? 'rtl' : 'ltr'}
+      className={`${figtree.variable} ${raleway.variable} ${notoSansArabic.variable}`}
     >
       <body className="font-sans antialiased">
         {children}

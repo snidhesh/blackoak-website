@@ -12,20 +12,26 @@ interface Props {
   params: { locale: string };
 }
 
-export const metadata: Metadata = {
-  title: 'Sell Your Property in Dubai',
-  description:
-    'List your property with BlackOak Real Estate. Global buyer network, professional marketing & dedicated agent support to sell or rent your Dubai property fast.',
-  alternates: { canonical: 'https://blackoak-re.com/list-your-property/' },
-  openGraph: {
-    title: 'Sell Your Property in Dubai | BlackOak Real Estate',
-    description:
-      'List your property with BlackOak Real Estate. Global buyer network, professional marketing & dedicated agent support.',
-    type: 'website',
-    url: 'https://blackoak-re.com/list-your-property/',
-    images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: 'List Your Property with BlackOak' }],
-  },
-};
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'metadata.listProperty' });
+  return {
+    title: t('title'),
+    description: t('description'),
+    keywords: ['sell property Dubai', 'list property Dubai', 'sell villa Dubai', 'sell apartment Dubai', 'Dubai property agent', 'property valuation Dubai', 'rent property Dubai'],
+    alternates: {
+      canonical: locale === 'en' ? 'https://blackoak-re.com/list-your-property/' : `https://blackoak-re.com/${locale}/list-your-property/`,
+      languages: { en: 'https://blackoak-re.com/list-your-property/', fr: 'https://blackoak-re.com/fr/list-your-property/', ar: 'https://blackoak-re.com/ar/list-your-property/' },
+    },
+    openGraph: {
+      title: t('ogTitle'),
+      description: t('ogDescription'),
+      type: 'website',
+      url: 'https://blackoak-re.com/list-your-property/',
+      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+    },
+  };
+}
 
 const benefitKeys = [
   'internationalReach',
@@ -57,8 +63,28 @@ export default async function ListYourPropertyPage({ params }: Props) {
     label: t(`stats.${key}.label`),
   }));
 
+  const listPropertyJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Sell Your Property with BlackOak Real Estate',
+    description: 'List your property with BlackOak Real Estate. Global buyer network, professional marketing & dedicated agent support to sell or rent your Dubai property.',
+    url: 'https://blackoak-re.com/list-your-property/',
+    provider: {
+      '@type': 'RealEstateAgent',
+      name: 'BlackOak Real Estate',
+      url: 'https://blackoak-re.com',
+      telephone: '+971 4 398 9055',
+    },
+    areaServed: { '@type': 'City', name: 'Dubai' },
+    serviceType: 'Property Listing & Sales',
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(listPropertyJsonLd) }}
+      />
       {/* Header */}
       <section className="pt-[156px] pb-8">
         <div className="container-narrow text-center">

@@ -119,12 +119,12 @@ export default function ContactForm({
             {t('phone')} <span className="text-red-500">*</span>
           </label>
           <div className="flex">
-            <div className="flex items-center gap-1.5 px-3 bg-[#f5f5f5] border border-[#d1d5db] border-r-0 shrink-0">
+            <div className="flex items-center gap-1.5 px-3 bg-[#f5f5f5] border border-[#d1d5db] border-e-0 shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/images/contact/uae-flag.svg" alt={t('phoneCountryFlag')} className="w-5 h-5" />
               <span className="text-[13.7px] text-[#374151]">{t('phoneCountryCode')}</span>
             </div>
-            <div className="flex-1">
+            <div className="flex-1" dir="ltr">
               <Input
                 placeholder={t('placeholder')}
                 {...register('phone')}

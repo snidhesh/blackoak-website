@@ -1,10 +1,13 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import type { Metadata } from 'next';
+import { getTranslations } from 'next-intl/server';
 import { MapPin, Bed, Maximize, Check, ExternalLink } from 'lucide-react';
 import { getProjects, getProjectBySlug } from '@/lib/content';
-import { formatPriceNumber } from '@/lib/formatters';
-import DirhamIcon from '@/components/ui/DirhamIcon';
+import { formatArea } from '@/lib/formatters';
+import { getProjectName, getProjectDescription } from '@/lib/crm-transform';
+import type { Locale } from '@/i18n/config';
+import FormattedPrice from '@/components/ui/FormattedPrice';
 import SectionLabel from '@/components/ui/SectionLabel';
 import ContactForm from '@/components/sections/ContactForm';
 import AgentCard from '@/components/sections/AgentCard';
@@ -15,7 +18,7 @@ export const dynamicParams = true;
 export const revalidate = 300;
 
 interface Props {
-  params: { slug: string };
+  params: { slug: string; locale: string };
 }
 
 export async function generateStaticParams() {
@@ -25,11 +28,16 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = await getProjectBySlug(params.slug);
-  if (!project) return { title: 'Project Not Found' };
+  const locale = params.locale as Locale;
+  const tMeta = await getTranslations({ locale, namespace: 'metadata.projectDetail' });
+  const tCommon = await getTranslations({ locale, namespace: 'common' });
+  if (!project) return { title: tMeta('notFoundTitle') };
 
-  const offeringLabel = project.offering === 'sale' ? 'for Sale' : project.offering === 'rent' ? 'for Rent' : '';
-  const title = `${project.name} | ${project.propertyType} ${offeringLabel} in ${project.location.address}`.trim();
-  const description = `${project.name} — ${project.propertyType} ${offeringLabel} in ${project.location.address}. ${project.bedrooms} bedrooms, ${project.area.toLocaleString('en-US')} ${project.areaUnit}. ${project.description.slice(0, 120)}`;
+  const name = getProjectName(project, locale);
+  const desc = getProjectDescription(project, locale);
+  const offeringLabel = project.offering === 'sale' ? tMeta('forSale') : project.offering === 'rent' ? tMeta('forRent') : '';
+  const title = `${name} | ${project.propertyType} ${offeringLabel} in ${project.location.address}`.trim();
+  const description = `${name} — ${project.propertyType} ${offeringLabel} in ${project.location.address}. ${project.bedrooms} ${tCommon('bedrooms')}, ${formatArea(project.area, locale)} ${project.areaUnit}. ${desc.slice(0, 120)}`;
 
   return {
     title,
@@ -39,7 +47,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       type: 'website',
       url: `https://blackoak-re.com/projects/${params.slug}/`,
-      images: [{ url: project.mainImage, alt: project.name }],
+      images: [{ url: project.mainImage, alt: name }],
     },
     alternates: {
       canonical: `https://blackoak-re.com/projects/${params.slug}/`,
@@ -51,16 +59,22 @@ export default async function ProjectDetailPage({ params }: Props) {
   const project = await getProjectBySlug(params.slug);
   if (!project) notFound();
 
+  const locale = params.locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'pages.projectDetail' });
+  const tCommon = await getTranslations({ locale, namespace: 'common' });
+  const projectName = getProjectName(project, locale);
+  const projectDescription = getProjectDescription(project, locale);
+
   const hasCoordinates = project.location.lat !== 0 && project.location.lng !== 0;
   const hasFloorPlans = project.floorPlans.length > 0;
 
   const stickyNavSections = [
-    { id: 'details', label: 'Details' },
-    { id: 'gallery', label: 'Gallery' },
-    ...(hasFloorPlans ? [{ id: 'floor-plans', label: 'Floor Plans' }] : []),
-    { id: 'amenities', label: 'Amenities' },
-    { id: 'location', label: 'Location' },
-    { id: 'enquiry', label: 'Enquiry' },
+    { id: 'details', label: t('stickyNav.details') },
+    { id: 'gallery', label: t('stickyNav.gallery') },
+    ...(hasFloorPlans ? [{ id: 'floor-plans', label: t('stickyNav.floorPlans') }] : []),
+    { id: 'amenities', label: t('stickyNav.amenities') },
+    { id: 'location', label: t('stickyNav.location') },
+    { id: 'enquiry', label: t('stickyNav.enquiry') },
   ];
 
   const allImages = [project.mainImage, ...project.gallery];
@@ -68,8 +82,8 @@ export default async function ProjectDetailPage({ params }: Props) {
   const listingJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'RealEstateListing',
-    name: project.name,
-    description: project.description,
+    name: projectName,
+    description: projectDescription,
     url: `https://blackoak-re.com/projects/${params.slug}/`,
     image: allImages,
     datePosted: project.availableFrom || new Date().toISOString().split('T')[0],
@@ -116,9 +130,9 @@ export default async function ProjectDetailPage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://blackoak-re.com' },
-      { '@type': 'ListItem', position: 2, name: 'Projects', item: 'https://blackoak-re.com/projects' },
-      { '@type': 'ListItem', position: 3, name: project.name, item: `https://blackoak-re.com/projects/${params.slug}` },
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: 'https://blackoak-re.com' },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.projects'), item: 'https://blackoak-re.com/projects' },
+      { '@type': 'ListItem', position: 3, name: projectName, item: `https://blackoak-re.com/projects/${params.slug}` },
     ],
   };
 
@@ -136,7 +150,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       <section className="relative h-[520px] md:h-[700px] lg:h-[800px] flex items-end overflow-hidden">
         <Image
           src={project.mainImage}
-          alt={project.name}
+          alt={projectName}
           fill
           className="object-cover"
           priority
@@ -151,34 +165,33 @@ export default async function ProjectDetailPage({ params }: Props) {
             {/* Left side: Name, Location, Specs */}
             <div className="min-w-0">
               <h1 className="text-[24px] md:text-[36px] lg:text-[42px] font-light leading-[1.2] text-white">
-                {project.name}
+                {projectName}
               </h1>
               <div className="flex items-center gap-1.5 mt-2 md:mt-3 text-white/90">
                 <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0" />
                 <span className="text-[13px] md:text-base">{project.location.address}</span>
               </div>
-              <div className="flex items-center gap-2.5 mt-2 md:mt-3 text-white/90 text-[13px] md:text-base font-medium">
+      <div className="flex items-center gap-2.5 mt-2 md:mt-3 text-white/90 text-[13px] md:text-base font-medium">
                 <span className="flex items-center gap-1.5">
                   <Bed className="w-4 h-4 md:w-5 md:h-5" />
-                  {project.bedrooms} Bed
+                  {project.bedrooms} {tCommon('bed')}
                 </span>
                 <span className="w-1 h-1 rounded-full bg-white/60" />
                 <span className="flex items-center gap-1.5">
                   <Maximize className="w-4 h-4 md:w-[18px] md:h-[18px]" />
-                  {project.area.toLocaleString()} {project.areaUnit}
+                  {formatArea(project.area, locale)} {project.areaUnit}
                 </span>
               </div>
             </div>
 
             {/* Right side: Price + CTAs */}
-            <div className="md:text-right shrink-0">
+            <div className="md:text-end shrink-0">
               <p className="text-[11px] md:text-[13px] text-white/70 uppercase tracking-wider">
-                Price Starting From
+                {tCommon('priceStartingFrom')}
               </p>
               <div className="flex items-center md:justify-end gap-2 mt-1">
-                <DirhamIcon size={18} className="invert shrink-0" />
                 <span className="text-[22px] md:text-[28px] font-semibold text-white">
-                  {formatPriceNumber(project.price)}
+                  <FormattedPrice price={project.price} size="lg" light />
                 </span>
               </div>
               <div className="flex items-center gap-3 mt-4">
@@ -186,13 +199,13 @@ export default async function ProjectDetailPage({ params }: Props) {
                   href="#enquiry"
                   className="flex items-center justify-center flex-1 md:flex-none md:w-[180px] h-[44px] md:h-[48px] bg-black border-2 border-black text-white text-[11px] md:text-xs font-medium uppercase tracking-wider hover:bg-gray-900 transition-colors"
                 >
-                  Register Interest
+                  {tCommon('registerInterest')}
                 </a>
                 <a
                   href="#enquiry"
                   className="flex items-center justify-center flex-1 md:flex-none md:w-[180px] h-[44px] md:h-[48px] bg-white border-2 border-black text-black text-[11px] md:text-xs font-medium uppercase tracking-wider hover:bg-gray-100 transition-colors"
                 >
-                  Request Callback
+                  {tCommon('requestCallback')}
                 </a>
               </div>
             </div>
@@ -208,13 +221,13 @@ export default async function ProjectDetailPage({ params }: Props) {
         <div className="container-wide">
           <AnimateOnScroll>
             <div className="text-center mb-10">
-              <SectionLabel>Details</SectionLabel>
+              <SectionLabel>{t('details.label')}</SectionLabel>
               <h2 className="text-[32px] font-light mt-5">
-                Where Luxury Meets the Horizon
+                {t('details.heading')}
               </h2>
             </div>
             <p className="text-[#5f6368] text-base leading-[28px] tracking-[0.16px] whitespace-pre-line">
-              {project.description}
+              {projectDescription}
             </p>
 
             {/* Additional details from CRM */}
@@ -222,20 +235,20 @@ export default async function ProjectDetailPage({ params }: Props) {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8 pt-8 border-t border-gray-200">
                 {project.reference && (
                   <div>
-                    <p className="text-sm font-medium text-black">Reference</p>
+                    <p className="text-sm font-medium text-black">{t('details.reference')}</p>
                     <p className="text-sm text-[#5f6368] mt-1">{project.reference}</p>
                   </div>
                 )}
                 {project.furnishingType && (
                   <div>
-                    <p className="text-sm font-medium text-black">Furnishing</p>
+                    <p className="text-sm font-medium text-black">{t('details.furnishing')}</p>
                     <p className="text-sm text-[#5f6368] mt-1">{project.furnishingType}</p>
                   </div>
                 )}
                 {project.parkingSlots !== undefined && project.parkingSlots > 0 && (
                   <div>
-                    <p className="text-sm font-medium text-black">Parking</p>
-                    <p className="text-sm text-[#5f6368] mt-1">{project.parkingSlots} slot{project.parkingSlots !== 1 ? 's' : ''}</p>
+                    <p className="text-sm font-medium text-black">{t('details.parking')}</p>
+                    <p className="text-sm text-[#5f6368] mt-1">{t('details.parkingSlots', { count: project.parkingSlots })}</p>
                   </div>
                 )}
               </div>
@@ -249,9 +262,9 @@ export default async function ProjectDetailPage({ params }: Props) {
         <div className="container-wide">
           <AnimateOnScroll>
             <div className="text-center mb-10">
-              <SectionLabel>Gallery</SectionLabel>
+              <SectionLabel>{t('gallery.label')}</SectionLabel>
               <h2 className="text-[32px] font-light mt-5">
-                A Visual Symphony of Luxury
+                {t('gallery.heading')}
               </h2>
             </div>
           </AnimateOnScroll>
@@ -261,7 +274,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             <div className="relative aspect-[4/3] lg:row-span-2 bg-gray-200 overflow-hidden">
               <Image
                 src={project.mainImage}
-                alt={`${project.name} main`}
+                alt={t('gallery.mainAlt', { name: projectName })}
                 fill
                 className="object-cover hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -272,7 +285,7 @@ export default async function ProjectDetailPage({ params }: Props) {
               <div key={i} className="relative aspect-[4/3] bg-gray-200 overflow-hidden">
                 <Image
                   src={img}
-                  alt={`${project.name} gallery ${i + 1}`}
+                  alt={t('gallery.galleryAlt', { name: projectName, index: i + 1 })}
                   fill
                   className="object-cover hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 1024px) 100vw, 25vw"
@@ -289,9 +302,9 @@ export default async function ProjectDetailPage({ params }: Props) {
           <div className="container-wide">
             <AnimateOnScroll>
               <div className="text-center mb-10">
-                <SectionLabel>Floor Plans</SectionLabel>
+                <SectionLabel>{t('floorPlans.label')}</SectionLabel>
                 <h2 className="text-[32px] font-light mt-5">
-                  Layouts Designed Around Your Life
+                  {t('floorPlans.heading')}
                 </h2>
               </div>
             </AnimateOnScroll>
@@ -300,23 +313,23 @@ export default async function ProjectDetailPage({ params }: Props) {
               <div className="flex-1 space-y-5">
                 <div>
                   <p className="text-base font-medium text-black leading-[26px]">
-                    Bedrooms &amp; Private Suites :
+                    {t('floorPlans.bedroomsAndSuites')}
                   </p>
                   <p className="text-[#5f6368] text-base tracking-[0.16px] leading-[28px]">
-                    {project.bedrooms} Bedrooms | {project.bathrooms} Bathrooms
+                    {t('floorPlans.bedroomsBathrooms', { bedrooms: project.bedrooms, bathrooms: project.bathrooms })}
                   </p>
                 </div>
                 <div>
                   <p className="text-base font-medium text-black leading-[26px]">
-                    Total Area :
+                    {t('floorPlans.totalArea')}
                   </p>
                   <p className="text-[#5f6368] text-base tracking-[0.16px] leading-[28px]">
-                    {project.area.toLocaleString()} {project.areaUnit}
+                    {formatArea(project.area, locale)} {project.areaUnit}
                   </p>
                 </div>
                 <div>
                   <p className="text-base font-medium text-black leading-[26px]">
-                    Developer :
+                    {t('floorPlans.developer')}
                   </p>
                   <p className="text-[#5f6368] text-base tracking-[0.16px] leading-[28px]">
                     {project.developer}
@@ -344,9 +357,9 @@ export default async function ProjectDetailPage({ params }: Props) {
           <div className="container-wide">
             <AnimateOnScroll>
               <div className="text-center mb-14">
-                <SectionLabel light>Amenities</SectionLabel>
+                <SectionLabel light>{t('amenities.label')}</SectionLabel>
                 <h2 className="text-[32px] font-light text-white mt-5">
-                  Where Every Desire is Anticipated
+                  {t('amenities.heading')}
                 </h2>
               </div>
             </AnimateOnScroll>
@@ -369,9 +382,9 @@ export default async function ProjectDetailPage({ params }: Props) {
         <div className="container-wide">
           <AnimateOnScroll>
             <div className="text-center mb-10">
-              <SectionLabel light>Location</SectionLabel>
+              <SectionLabel light>{t('location.label')}</SectionLabel>
               <h2 className="text-[32px] font-light text-white mt-5">
-                Positioned at the Pinnacle of Prestige
+                {t('location.heading')}
               </h2>
             </div>
           </AnimateOnScroll>
@@ -382,7 +395,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 className="absolute inset-0 w-full h-full border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title={`${project.name} location`}
+                title={`${projectName} location`}
               />
             </div>
           ) : (
@@ -395,7 +408,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 text-white/70 hover:text-white text-sm transition-colors mt-2"
               >
-                View on Google Maps <ExternalLink className="w-3.5 h-3.5" />
+                {tCommon('viewOnGoogleMaps')} <ExternalLink className="w-3.5 h-3.5 icon-directional" />
               </a>
             </div>
           )}
@@ -407,11 +420,9 @@ export default async function ProjectDetailPage({ params }: Props) {
         <div className="container-narrow">
           <AnimateOnScroll>
             <div className="text-center mb-10">
-              <SectionLabel>Enquiry</SectionLabel>
+              <SectionLabel>{t('enquiry.label')}</SectionLabel>
               <h2 className="text-[32px] font-light mt-5">
-                Your Dream Residence Awaits —{' '}
-                <br className="hidden md:block" />
-                Let&apos;s Connect
+                {t('enquiry.heading')}
               </h2>
             </div>
           </AnimateOnScroll>
@@ -426,8 +437,8 @@ export default async function ProjectDetailPage({ params }: Props) {
           <ContactForm
             endpoint="/api/project-enquiry"
             projectSlug={project.slug}
-            projectName={project.name}
-            submitLabel="Submit Enquiry"
+            projectName={projectName}
+            submitLabel={t('enquiry.submitLabel')}
           />
         </div>
       </section>
