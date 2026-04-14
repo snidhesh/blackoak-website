@@ -24,19 +24,27 @@ export function generateMetadata({ params }: Props): Metadata {
   const locale = params.locale as Locale;
   const job = getCareerBySlug(params.slug, locale);
   if (!job) return { title: 'Not Found' };
-  const title = `${job.title} - Careers at BlackOak Real Estate`;
+  const title = `${job.title} | Careers at BlackOak Real Estate`;
   const description = `Join BlackOak as ${job.title} in ${job.location}. ${job.type}. ${job.description.slice(0, 120)}`;
   return {
     title,
     description,
+    keywords: [`${job.title} Dubai`, 'real estate jobs Dubai', `${job.department} jobs Dubai`, 'BlackOak careers', 'luxury real estate career Dubai'],
     alternates: {
-      canonical: `https://blackoak-re.com/career/${params.slug}/`,
+      canonical: locale === 'en' ? `https://blackoak-re.com/career/${params.slug}/` : `https://blackoak-re.com/${locale}/career/${params.slug}/`,
+      languages: {
+        en: `https://blackoak-re.com/career/${params.slug}/`,
+        fr: `https://blackoak-re.com/fr/career/${params.slug}/`,
+        ar: `https://blackoak-re.com/ar/career/${params.slug}/`,
+      },
     },
     openGraph: {
       title,
       description,
       type: 'website',
-      url: `https://blackoak-re.com/career/${params.slug}/`,
+      locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
+      url: locale === 'en' ? `https://blackoak-re.com/career/${params.slug}/` : `https://blackoak-re.com/${locale}/career/${params.slug}/`,
+      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: title }],
     },
   };
 }
@@ -64,6 +72,7 @@ export default async function CareerDetailPage({ params }: Props) {
       address: {
         '@type': 'PostalAddress',
         addressLocality: 'Dubai',
+        addressRegion: 'Dubai',
         addressCountry: 'AE',
       },
     },
@@ -73,9 +82,9 @@ export default async function CareerDetailPage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://blackoak-re.com' },
-      { '@type': 'ListItem', position: 2, name: 'Careers', item: 'https://blackoak-re.com/career' },
-      { '@type': 'ListItem', position: 3, name: job.title, item: `https://blackoak-re.com/career/${params.slug}` },
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.careers'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/career/` },
+      { '@type': 'ListItem', position: 3, name: job.title, item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/career/${params.slug}/` },
     ],
   };
 

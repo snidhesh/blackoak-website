@@ -26,7 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
-      url: 'https://blackoak-re.com/insights/investors/',
+      locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
+      url: locale === 'en' ? 'https://blackoak-re.com/insights/investors/' : `https://blackoak-re.com/${locale}/insights/investors/`,
       images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
@@ -54,6 +55,16 @@ export default async function InvestorsPage({ params }: Props) {
   const locale = params.locale as Locale;
   const t = await getTranslations({ locale, namespace: 'pages.insights.investors' });
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.insights'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/investors/` },
+      { '@type': 'ListItem', position: 3, name: t('breadcrumbs.investors'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/investors/` },
+    ],
+  };
+
   const sections = sectionKeys.map((key) => ({
     key,
     title: t(`sections.${key}.title`),
@@ -70,6 +81,7 @@ export default async function InvestorsPage({ params }: Props) {
   const faqJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
+    inLanguage: locale,
     mainEntity: faq.map((item) => ({
       '@type': 'Question',
       name: item.question,
@@ -82,6 +94,10 @@ export default async function InvestorsPage({ params }: Props) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

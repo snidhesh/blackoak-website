@@ -42,15 +42,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title,
     description,
+    keywords: [
+      `${project.propertyType} ${offeringLabel} Dubai`.trim(),
+      `${project.propertyType} ${project.location.address}`,
+      `${project.bedrooms} bedroom ${project.propertyType} Dubai`,
+      `luxury ${project.propertyType} Dubai`,
+      `buy ${project.propertyType} ${project.neighbourhood || 'Dubai'}`,
+      `Dubai ${project.propertyType} investment`,
+      project.developer ? `${project.developer} Dubai` : '',
+    ].filter(Boolean),
     openGraph: {
       title,
       description,
       type: 'website',
-      url: `https://blackoak-re.com/projects/${params.slug}/`,
-      images: [{ url: project.mainImage, alt: name }],
+      locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
+      url: locale === 'en' ? `https://blackoak-re.com/projects/${params.slug}/` : `https://blackoak-re.com/${locale}/projects/${params.slug}/`,
+      images: [{ url: project.mainImage, width: 1200, height: 630, alt: name }],
     },
     alternates: {
-      canonical: `https://blackoak-re.com/projects/${params.slug}/`,
+      canonical: locale === 'en' ? `https://blackoak-re.com/projects/${params.slug}/` : `https://blackoak-re.com/${locale}/projects/${params.slug}/`,
+      languages: {
+        en: `https://blackoak-re.com/projects/${params.slug}/`,
+        fr: `https://blackoak-re.com/fr/projects/${params.slug}/`,
+        ar: `https://blackoak-re.com/ar/projects/${params.slug}/`,
+      },
     },
   };
 }
@@ -84,7 +99,8 @@ export default async function ProjectDetailPage({ params }: Props) {
     '@type': 'RealEstateListing',
     name: projectName,
     description: projectDescription,
-    url: `https://blackoak-re.com/projects/${params.slug}/`,
+    url: locale === 'en' ? `https://blackoak-re.com/projects/${params.slug}/` : `https://blackoak-re.com/${locale}/projects/${params.slug}/`,
+    inLanguage: locale,
     image: allImages,
     datePosted: project.availableFrom || new Date().toISOString().split('T')[0],
     offers: {
@@ -93,7 +109,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       priceCurrency: 'AED',
       availability: 'https://schema.org/InStock',
     },
-    ...(project.propertyType && { '@additionalType': project.propertyType }),
+    ...(project.propertyType && { additionalType: `https://schema.org/${project.propertyType.replace(/\s+/g, '')}` }),
     numberOfRooms: project.bedrooms,
     numberOfBathroomsTotal: project.bathrooms,
     floorSize: {
@@ -130,9 +146,9 @@ export default async function ProjectDetailPage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: 'https://blackoak-re.com' },
-      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.projects'), item: 'https://blackoak-re.com/projects' },
-      { '@type': 'ListItem', position: 3, name: projectName, item: `https://blackoak-re.com/projects/${params.slug}` },
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.projects'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/projects/` },
+      { '@type': 'ListItem', position: 3, name: projectName, item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/projects/${params.slug}/` },
     ],
   };
 

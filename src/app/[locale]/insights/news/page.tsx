@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
-      url: 'https://blackoak-re.com/insights/news/',
+      locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
+      url: locale === 'en' ? 'https://blackoak-re.com/insights/news/' : `https://blackoak-re.com/${locale}/insights/news/`,
       images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
@@ -42,12 +43,23 @@ export default async function NewsPage({ params }: Props) {
   const featured = news[0];
   const gridArticles = news.slice(1);
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.insights'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/news/` },
+      { '@type': 'ListItem', position: 3, name: t('breadcrumbs.news'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/news/` },
+    ],
+  };
+
   const newsJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Blog',
     name: 'Dubai Real Estate News & Market Insights',
     description: 'Latest Dubai real estate news, market reports & investment insights from BlackOak Real Estate.',
-    url: 'https://blackoak-re.com/insights/news/',
+    url: locale === 'en' ? 'https://blackoak-re.com/insights/news/' : `https://blackoak-re.com/${locale}/insights/news/`,
+    inLanguage: locale,
     publisher: {
       '@type': 'Organization',
       name: 'BlackOak Real Estate',
@@ -58,13 +70,18 @@ export default async function NewsPage({ params }: Props) {
       headline: article.title,
       description: article.excerpt,
       datePublished: article.publishedDate,
+      inLanguage: locale,
       image: article.image ? `https://blackoak-re.com${article.image}` : undefined,
-      url: `https://blackoak-re.com/insights/news/${article.slug}/`,
+      url: locale === 'en' ? `https://blackoak-re.com/insights/news/${article.slug}/` : `https://blackoak-re.com/${locale}/insights/news/${article.slug}/`,
     })),
   };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(newsJsonLd) }}
@@ -147,9 +164,9 @@ export default async function NewsPage({ params }: Props) {
                         <p className="text-[12px] font-medium leading-[30px] text-[#5f6368]">
                           {formatDate(item.publishedDate, locale)}
                         </p>
-                        <h2 className="text-[20px] font-semibold leading-[30px] text-black">
+                        <h3 className="text-[20px] font-semibold leading-[30px] text-black">
                           {item.title}
-                        </h2>
+                        </h3>
                       </div>
                       <p className="text-[14px] font-medium leading-[20px] text-[#5f6368] line-clamp-3">
                         {item.excerpt}

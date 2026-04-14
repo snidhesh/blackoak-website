@@ -77,6 +77,13 @@
     "category": "real-estate"
   },
   {
+    "id": "23",
+    "name": "Nader Baky",
+    "title": "شريك مساعد",
+    "image": "/images/team/nader-baky.jpg",
+    "category": "real-estate"
+  },
+  {
     "id": "12",
     "name": "Fenella Rose",
     "title": "مدير مساعد",
@@ -144,13 +151,6 @@
     "name": "Laleh Changizi",
     "title": "مستشار عقاري أول",
     "image": "/images/team/laleh-changizi.jpg",
-    "category": "real-estate"
-  },
-  {
-    "id": "23",
-    "name": "Nader Baky",
-    "title": "مستشار عقاري أول",
-    "image": "/images/team/nader-baky.jpg",
     "category": "real-estate"
   },
   {

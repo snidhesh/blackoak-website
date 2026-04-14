@@ -26,7 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
-      url: 'https://blackoak-re.com/projects/',
+      locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
+      url: locale === 'en' ? 'https://blackoak-re.com/projects/' : `https://blackoak-re.com/${locale}/projects/`,
       images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
@@ -46,14 +47,15 @@ export default async function ProjectsPage({ params }: { params: { locale: strin
     '@type': 'CollectionPage',
     name: 'Luxury Properties for Sale & Rent in Dubai',
     description: 'Explore luxury villas, apartments & penthouses for sale and rent across Dubai\'s most prestigious neighbourhoods.',
-    url: 'https://blackoak-re.com/projects/',
+    url: locale === 'en' ? 'https://blackoak-re.com/projects/' : `https://blackoak-re.com/${locale}/projects/`,
+    inLanguage: locale,
     mainEntity: {
       '@type': 'ItemList',
       numberOfItems: projects.length,
       itemListElement: projects.slice(0, 20).map((p, i) => ({
         '@type': 'ListItem',
         position: i + 1,
-        url: `https://blackoak-re.com/projects/${p.slug}/`,
+        url: locale === 'en' ? `https://blackoak-re.com/projects/${p.slug}/` : `https://blackoak-re.com/${locale}/projects/${p.slug}/`,
         name: p.name,
       })),
     },

@@ -21,16 +21,18 @@ export function generateMetadata({ params }: Props): Metadata {
   const locale = params.locale;
   const neighbourhood = getNeighbourhoodBySlug(params.slug, locale as Locale);
   if (!neighbourhood) return { title: 'Not Found' };
+  const enhancedTitle = `${neighbourhood.seo.title} | Properties for Sale`;
   return {
-    title: neighbourhood.seo.title,
+    title: enhancedTitle,
     description: neighbourhood.seo.description,
-    keywords: [`${neighbourhood.name} property`, `${neighbourhood.name} villas`, `${neighbourhood.name} apartments`, `buy property ${neighbourhood.name}`, `${neighbourhood.name} real estate`, `invest ${neighbourhood.name} Dubai`, `luxury homes ${neighbourhood.name}`],
+    keywords: [`${neighbourhood.name} property for sale`, `${neighbourhood.name} villas for sale`, `${neighbourhood.name} apartments for sale`, `buy property ${neighbourhood.name}`, `${neighbourhood.name} real estate investment`, `invest ${neighbourhood.name} Dubai`, `luxury homes ${neighbourhood.name}`, `${neighbourhood.name} penthouse`, `${neighbourhood.name} Dubai property prices`],
     openGraph: {
       title: neighbourhood.seo.title,
       description: neighbourhood.seo.description,
       type: 'website',
-      url: `https://blackoak-re.com/neighbourhoods/${params.slug}/`,
-      images: [{ url: neighbourhood.heroImage, alt: `${neighbourhood.name} - Dubai` }],
+      locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
+      url: locale === 'en' ? `https://blackoak-re.com/neighbourhoods/${params.slug}/` : `https://blackoak-re.com/${locale}/neighbourhoods/${params.slug}/`,
+      images: [{ url: neighbourhood.heroImage, width: 1200, height: 630, alt: `${neighbourhood.name} - Dubai` }],
     },
     alternates: {
       canonical: locale === 'en' ? `https://blackoak-re.com/neighbourhoods/${params.slug}/` : `https://blackoak-re.com/${locale}/neighbourhoods/${params.slug}/`,
@@ -58,7 +60,7 @@ export default async function NeighbourhoodPage({ params }: Props) {
     '@type': 'Place',
     name: neighbourhood.name,
     description: neighbourhood.seo.description,
-    url: `https://blackoak-re.com/neighbourhoods/${params.slug}/`,
+    url: locale === 'en' ? `https://blackoak-re.com/neighbourhoods/${params.slug}/` : `https://blackoak-re.com/${locale}/neighbourhoods/${params.slug}/`,
     address: {
       '@type': 'PostalAddress',
       addressLocality: neighbourhood.name,
@@ -74,13 +76,27 @@ export default async function NeighbourhoodPage({ params }: Props) {
     hasMap: `https://maps.google.com/?q=${encodeURIComponent(neighbourhood.name + ', Dubai, UAE')}`,
   };
 
+  const faqJsonLd = neighbourhood.whyInvest.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: locale,
+    mainEntity: neighbourhood.whyInvest.map((item) => ({
+      '@type': 'Question',
+      name: item.title,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.description,
+      },
+    })),
+  } : null;
+
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://blackoak-re.com' },
-      { '@type': 'ListItem', position: 2, name: 'Neighbourhoods', item: 'https://blackoak-re.com' },
-      { '@type': 'ListItem', position: 3, name: neighbourhood.name, item: `https://blackoak-re.com/neighbourhoods/${params.slug}` },
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.neighbourhoods'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/neighbourhoods/` },
+      { '@type': 'ListItem', position: 3, name: neighbourhood.name, item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/neighbourhoods/${params.slug}/` },
     ],
   };
 
@@ -90,6 +106,12 @@ export default async function NeighbourhoodPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(placeJsonLd) }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}

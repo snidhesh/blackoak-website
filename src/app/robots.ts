@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/', '/thank-you/', '/fr/thank-you/', '/ar/thank-you/'],
       },
       {
-        userAgent: ['Amazonbot', 'Bytespider', 'CCBot', 'GPTBot', 'Google-Extended', 'meta-externalagent'],
+        userAgent: ['Amazonbot', 'Bytespider', 'CCBot', 'GPTBot', 'Google-Extended', 'meta-externalagent', 'Claudebot', 'ChatGPT-User', 'PerplexityBot', 'Diffbot'],
         disallow: '/',
       },
     ],

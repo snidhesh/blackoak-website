@@ -47,7 +47,7 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
     openGraph: {
       type: 'website',
       locale: ogLocale,
-      url: BASE_URL + '/',
+      url: locale === 'en' ? `${BASE_URL}/` : `${BASE_URL}/${locale}/`,
       siteName: 'BlackOak Real Estate',
       images: [
         {
@@ -61,9 +61,10 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
     twitter: {
       card: 'summary_large_image',
       site: '@blackoakrealestate',
+      creator: '@blackoakrealestate',
     },
     alternates: {
-      canonical: locale === 'fr' ? `${BASE_URL}/fr/` : `${BASE_URL}/`,
+      canonical: locale === 'en' ? `${BASE_URL}/` : `${BASE_URL}/${locale}/`,
       languages: {
         en: `${BASE_URL}/`,
         fr: `${BASE_URL}/fr/`,

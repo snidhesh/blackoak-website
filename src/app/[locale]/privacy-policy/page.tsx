@@ -17,11 +17,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       canonical: locale === 'en' ? 'https://blackoak-re.com/privacy-policy/' : `https://blackoak-re.com/${locale}/privacy-policy/`,
       languages: { en: 'https://blackoak-re.com/privacy-policy/', fr: 'https://blackoak-re.com/fr/privacy-policy/', ar: 'https://blackoak-re.com/ar/privacy-policy/' },
     },
+    keywords: ['privacy policy BlackOak', 'data privacy Dubai real estate', 'BlackOak data protection', 'real estate privacy policy UAE'],
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
-      url: 'https://blackoak-re.com/privacy-policy/',
+      locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
+      url: locale === 'en' ? 'https://blackoak-re.com/privacy-policy/' : `https://blackoak-re.com/${locale}/privacy-policy/`,
       images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };

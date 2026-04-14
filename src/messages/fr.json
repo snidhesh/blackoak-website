@@ -116,6 +116,13 @@
     "readMore": "En savoir plus",
     "backTo": "Retour à {page}",
     "backToNews": "Retour aux actualités",
+    "breadcrumbs": {
+      "home": "Accueil",
+      "news": "Actualités",
+      "projects": "Projets",
+      "neighbourhoods": "Quartiers",
+      "careers": "Carrières"
+    },
     "backToPage": "RETOUR À LA PAGE",
     "returnToHomepage": "RETOUR À L''ACCUEIL",
     "viewAllProperties": "Voir toutes les propriétés",
@@ -496,7 +503,11 @@
       "aboutLabel": "À propos de {name}",
       "propertiesIn": "Propriétés à {name}",
       "attractionsOf": "Attractions de {name}",
-      "whyInvestIn": "Pourquoi investir dans l''immobilier de luxe à {name} ?"
+      "whyInvestIn": "Pourquoi investir dans l''immobilier de luxe à {name} ?",
+      "breadcrumbs": {
+        "home": "Accueil",
+        "neighbourhoods": "Quartiers"
+      }
     },
     "contact": {
       "headerLabel": "Contactez-nous",
@@ -522,6 +533,10 @@
       "formHeading": "Échangez avec nos spécialistes en immobilier de luxe."
     },
     "listProperty": {
+      "breadcrumbs": {
+        "home": "Accueil",
+        "listProperty": "Référencer Votre Bien"
+      },
       "headerLabel": "Mettez votre bien en vente",
       "heading": "Vendez ou louez votre bien en toute confiance",
       "subtitle": "Associez-vous au premier cabinet immobilier de luxe de Dubai pour une visibilité inégalée et un accompagnement expert.",
@@ -607,6 +622,10 @@
           "description": "Rejoindre notre équipe signifie que vous bénéficierez du soutien et de la flexibilité nécessaires pour créer un style de vie en accord avec vos valeurs, garantissant un épanouissement personnel et professionnel."
         }
       },
+      "breadcrumbs": {
+        "home": "Accueil",
+        "careers": "Carrières"
+      },
       "exploreOpeningsLabel": "Postes ouverts",
       "exploreOpeningsHeading": "Trouvez le poste qui vous convient",
       "viewDetails": "Voir les détails",
@@ -623,7 +642,11 @@
         "numberOfPositions": "Nombre de postes",
         "keyResponsibilities": "Responsabilités clés",
         "applyLabel": "POSTULER MAINTENANT",
-        "applyHeading": "Prêt(e) à propulser votre carrière au niveau supérieur ?"
+        "applyHeading": "Prêt(e) à propulser votre carrière au niveau supérieur ?",
+        "breadcrumbs": {
+          "home": "Accueil",
+          "careers": "Carrières"
+        }
       }
     },
     "about": {
@@ -733,6 +756,11 @@
             "description": "Notre plateforme d''investissement syndiqué réunit les investisseurs dans des projets immobiliers exclusifs. Cette approche ouvre l''accès à des projets et stratégies généralement réservés aux grands acteurs institutionnels, avec une gouvernance professionnelle, de la transparence et des normes de reporting rigoureuses.\n\nChaque transaction est évaluée indépendamment, en se concentrant sur des fondamentaux d''actifs solides, des structures de capital judicieuses, une visibilité claire sur les sorties et un fort alignement entre sponsors, promoteurs et investisseurs. Des objectifs de rendement conservateurs, ajustés au risque, restent au cœur de chaque investissement."
           }
         },
+        "breadcrumbs": {
+          "home": "Accueil",
+          "insights": "Perspectives",
+          "investors": "Investisseurs"
+        },
         "faqLabel": "FAQ",
         "faqHeading": "Tout ce que vous devez savoir pour investir en toute clarté",
         "faq": {
@@ -755,6 +783,11 @@
         }
       },
       "buyers": {
+        "breadcrumbs": {
+          "home": "Accueil",
+          "insights": "Perspectives",
+          "buyers": "Guide Acheteurs"
+        },
         "heroHeading": "Bâti sur la confiance.\nAnimé par la passion.",
         "heroAlt": "Propriété de luxe à Dubai avec vue panoramique sur la ville",
         "introLabel": "guide de l''acheteur immobilier",
@@ -784,6 +817,11 @@
         "buyingCostsHeading": "Les frais administratifs d''achat d''un bien achevé à Dubai"
       },
       "news": {
+        "breadcrumbs": {
+          "home": "Accueil",
+          "insights": "Perspectives",
+          "news": "Actualités"
+        },
         "readMore": "En savoir plus",
         "latestNewsLabel": "Dernières actualités",
         "latestNewsHeading": "Perspectives sélectionnées sur le paysage immobilier le plus dynamique des EAU.",

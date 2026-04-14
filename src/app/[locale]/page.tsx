@@ -37,7 +37,8 @@ export async function generateMetadata({ params }: { params: { locale: string } 
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
-      url: 'https://blackoak-re.com/',
+      locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
+      url: locale === 'en' ? 'https://blackoak-re.com/' : `https://blackoak-re.com/${locale}/`,
       images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogImageAlt') }],
     },
   };
@@ -64,6 +65,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
     '@type': 'WebSite',
     name: 'BlackOak Real Estate',
     url: 'https://blackoak-re.com',
+    inLanguage: locale,
     potentialAction: {
       '@type': 'SearchAction',
       target: 'https://blackoak-re.com/projects?q={search_term_string}',

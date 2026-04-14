@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t('ogDescription'),
       type: 'website',
       url: `https://blackoak-re.com${localePath}`,
-      locale: locale === 'ar' ? 'ar_AE' : locale === 'fr' ? 'fr_FR' : 'en_AE',
+      locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
       images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('title') }],
     },
   };
@@ -45,8 +45,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BuyersPage({ params }: Props) {
   const locale = params.locale as Locale;
+  const t = await getTranslations({ locale, namespace: 'pages.insights.buyers' });
   const buyers = getBuyers(locale);
   const guides = buyers.guides;
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.insights'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/buyers/` },
+      { '@type': 'ListItem', position: 3, name: t('breadcrumbs.buyers'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/buyers/` },
+    ],
+  };
 
   const buyersJsonLd = {
     '@context': 'https://schema.org',
@@ -54,6 +65,7 @@ export default async function BuyersPage({ params }: Props) {
     name: 'How to Buy Property in Dubai',
     description: 'Complete guide to buying property in Dubai as a foreigner — covering Golden Visa, freehold areas, mortgages, and the buying process.',
     url: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/buyers/`,
+    inLanguage: locale,
     step: guides.map((guide, i) => ({
       '@type': 'HowToStep',
       position: i + 1,
@@ -69,6 +81,10 @@ export default async function BuyersPage({ params }: Props) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(buyersJsonLd) }}

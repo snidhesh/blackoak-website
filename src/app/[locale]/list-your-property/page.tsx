@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
-      url: 'https://blackoak-re.com/list-your-property/',
+      locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
+      url: locale === 'en' ? 'https://blackoak-re.com/list-your-property/' : `https://blackoak-re.com/${locale}/list-your-property/`,
       images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
@@ -63,12 +64,21 @@ export default async function ListYourPropertyPage({ params }: Props) {
     label: t(`stats.${key}.label`),
   }));
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.listProperty'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/list-your-property/` },
+    ],
+  };
+
   const listPropertyJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: 'Sell Your Property with BlackOak Real Estate',
     description: 'List your property with BlackOak Real Estate. Global buyer network, professional marketing & dedicated agent support to sell or rent your Dubai property.',
-    url: 'https://blackoak-re.com/list-your-property/',
+    url: locale === 'en' ? 'https://blackoak-re.com/list-your-property/' : `https://blackoak-re.com/${locale}/list-your-property/`,
     provider: {
       '@type': 'RealEstateAgent',
       name: 'BlackOak Real Estate',
@@ -76,11 +86,16 @@ export default async function ListYourPropertyPage({ params }: Props) {
       telephone: '+971 4 398 9055',
     },
     areaServed: { '@type': 'City', name: 'Dubai' },
+    inLanguage: locale,
     serviceType: 'Property Listing & Sales',
   };
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(listPropertyJsonLd) }}

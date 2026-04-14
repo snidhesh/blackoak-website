@@ -26,7 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
-      url: 'https://blackoak-re.com/about/our-team/',
+      locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
+      url: locale === 'en' ? 'https://blackoak-re.com/about/our-team/' : `https://blackoak-re.com/${locale}/about/our-team/`,
       images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
@@ -46,6 +47,7 @@ export default async function OurTeamPage({ params }: { params: { locale: string
     name: 'BlackOak Real Estate',
     url: 'https://blackoak-re.com',
     logo: 'https://blackoak-re.com/images/logo-white.png',
+    inLanguage: locale,
     employee: team.map((member) => ({
       '@type': 'Person',
       name: member.name,

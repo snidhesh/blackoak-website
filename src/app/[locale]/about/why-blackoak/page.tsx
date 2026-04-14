@@ -27,7 +27,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
-      url: 'https://blackoak-re.com/about/why-blackoak/',
+      locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
+      url: locale === 'en' ? 'https://blackoak-re.com/about/why-blackoak/' : `https://blackoak-re.com/${locale}/about/why-blackoak/`,
       images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
@@ -71,7 +72,8 @@ export default async function WhyBlackOakPage({ params }: { params: { locale: st
     '@type': 'AboutPage',
     name: 'Why BlackOak Real Estate',
     description: 'BlackOak Real Estate combines private advisory, concierge services & strategic investments across Dubai.',
-    url: 'https://blackoak-re.com/about/why-blackoak/',
+    url: locale === 'en' ? 'https://blackoak-re.com/about/why-blackoak/' : `https://blackoak-re.com/${locale}/about/why-blackoak/`,
+    inLanguage: locale,
     mainEntity: {
       '@type': 'RealEstateAgent',
       name: 'BlackOak Real Estate',

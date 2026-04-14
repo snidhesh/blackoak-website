@@ -33,7 +33,7 @@ export default function HeroSection({
         <>
           <Image
             src={image}
-            alt=""
+            alt={title}
             fill
             className="object-cover"
             priority

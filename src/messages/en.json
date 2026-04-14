@@ -116,6 +116,13 @@
     "readMore": "Read  More",
     "backTo": "Back to {page}",
     "backToNews": "Back to News",
+    "breadcrumbs": {
+      "home": "Home",
+      "news": "News",
+      "projects": "Projects",
+      "neighbourhoods": "Neighbourhoods",
+      "careers": "Careers"
+    },
     "backToPage": "BACK TO PAGE",
     "returnToHomepage": "RETURN TO HOMEPAGE",
     "viewAllProperties": "View All Properties",
@@ -496,7 +503,11 @@
       "aboutLabel": "About {name}",
       "propertiesIn": "Properties in {name}",
       "attractionsOf": "Attractions of {name}",
-      "whyInvestIn": "Why Invest in Luxury Property in {name}?"
+      "whyInvestIn": "Why Invest in Luxury Property in {name}?",
+      "breadcrumbs": {
+        "home": "Home",
+        "neighbourhoods": "Neighbourhoods"
+      }
     },
     "contact": {
       "headerLabel": "Contact Us",
@@ -522,6 +533,10 @@
       "formHeading": "Connect with our specialists in luxury real estate."
     },
     "listProperty": {
+      "breadcrumbs": {
+        "home": "Home",
+        "listProperty": "List Your Property"
+      },
       "headerLabel": "List Your Property",
       "heading": "Sell or Rent Your Property with Confidence",
       "subtitle": "Partner with Dubai''s premier luxury real estate firm for unmatched exposure and expert guidance.",
@@ -607,6 +622,10 @@
           "description": "Joining our team means you''ll have the support and flexibility to create a lifestyle that aligns with your values, ensuring both personal and professional fulfilment."
         }
       },
+      "breadcrumbs": {
+        "home": "Home",
+        "careers": "Careers"
+      },
       "exploreOpeningsLabel": "Explore Openings",
       "exploreOpeningsHeading": "Find the right job for you",
       "viewDetails": "View Details",
@@ -623,7 +642,11 @@
         "numberOfPositions": "Number of Positions",
         "keyResponsibilities": "Key Responsibilities",
         "applyLabel": "APPLY NOW",
-        "applyHeading": "Ready to Elevate Your Career to the Next Level?"
+        "applyHeading": "Ready to Elevate Your Career to the Next Level?",
+        "breadcrumbs": {
+          "home": "Home",
+          "careers": "Careers"
+        }
       }
     },
     "about": {
@@ -733,6 +756,11 @@
             "description": "Our syndicated investment platform unites investors in exclusive real estate ventures. This approach opens access to projects and strategies typically reserved for larger institutional players, supported by professional governance, transparency, and robust reporting standards.\n\nEach transaction is evaluated independently, focusing on solid asset fundamentals, sensible capital structures, clear exit visibility, and strong alignment among sponsors, developers, and investors. Conservative, risk-adjusted return targets remain central to every investment."
           }
         },
+        "breadcrumbs": {
+          "home": "Home",
+          "insights": "Insights",
+          "investors": "Investors"
+        },
         "faqLabel": "FAQs",
         "faqHeading": "Everything you need to know about investing with clarity",
         "faq": {
@@ -755,6 +783,11 @@
         }
       },
       "buyers": {
+        "breadcrumbs": {
+          "home": "Home",
+          "insights": "Insights",
+          "buyers": "Buyers Guide"
+        },
         "heroHeading": "Built on Trust.\nDriven by Passion.",
         "heroAlt": "Luxury Dubai property with panoramic city views",
         "introLabel": "property buyers guide",
@@ -784,6 +817,11 @@
         "buyingCostsHeading": "The Administrative Costs of Buying a Completed Property in Dubai"
       },
       "news": {
+        "breadcrumbs": {
+          "home": "Home",
+          "insights": "Insights",
+          "news": "News"
+        },
         "readMore": "Read  More",
         "latestNewsLabel": "Latest News",
         "latestNewsHeading": "Curated perspectives on the UAE''s most dynamic real estate landscape.",

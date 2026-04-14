@@ -28,7 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
-      url: 'https://blackoak-re.com/career/',
+      locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
+      url: locale === 'en' ? 'https://blackoak-re.com/career/' : `https://blackoak-re.com/${locale}/career/`,
       images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
@@ -77,12 +78,22 @@ export default async function CareerPage({ params }: Props) {
     description: t(`whyJoinCards.${key}.description`),
   }));
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.careers'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/career/` },
+    ],
+  };
+
   const careerJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
     name: 'Careers at BlackOak Real Estate',
     description: 'Join BlackOak Real Estate. Open positions for real estate consultants, investment advisors & property specialists in Dubai.',
-    url: 'https://blackoak-re.com/career/',
+    url: locale === 'en' ? 'https://blackoak-re.com/career/' : `https://blackoak-re.com/${locale}/career/`,
+    inLanguage: locale,
     mainEntity: {
       '@type': 'ItemList',
       numberOfItems: careers.length,
@@ -98,7 +109,7 @@ export default async function CareerPage({ params }: Props) {
             address: { '@type': 'PostalAddress', addressLocality: job.location, addressCountry: 'AE' },
           },
           hiringOrganization: { '@type': 'Organization', name: 'BlackOak Real Estate', sameAs: 'https://blackoak-re.com' },
-          url: `https://blackoak-re.com/career/${job.slug}/`,
+          url: locale === 'en' ? `https://blackoak-re.com/career/${job.slug}/` : `https://blackoak-re.com/${locale}/career/${job.slug}/`,
         },
       })),
     },
@@ -106,6 +117,10 @@ export default async function CareerPage({ params }: Props) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(careerJsonLd) }}

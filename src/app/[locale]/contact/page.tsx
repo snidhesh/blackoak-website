@@ -26,7 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
-      url: 'https://blackoak-re.com/contact/',
+      locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
+      url: locale === 'en' ? 'https://blackoak-re.com/contact/' : `https://blackoak-re.com/${locale}/contact/`,
       images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
@@ -53,32 +54,56 @@ const offices = [
   },
 ];
 
-const contactJsonLd = {
+const localBusinessJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'ContactPage',
-  name: 'Contact BlackOak Real Estate',
-  description: 'Contact BlackOak Real Estate for luxury property enquiries in Dubai.',
-  url: 'https://blackoak-re.com/contact/',
-  mainEntity: {
-    '@type': 'RealEstateAgent',
-    name: 'BlackOak Real Estate',
-    telephone: '+971 4 398 9055',
-    email: 'info@blackoak-re.com',
-    address: [
-      {
-        '@type': 'PostalAddress',
-        streetAddress: 'Office 1406, Marina Plaza, Dubai Marina',
-        addressLocality: 'Dubai',
-        addressCountry: 'AE',
-      },
-      {
-        '@type': 'PostalAddress',
-        streetAddress: '71-75 Shelton Street',
-        addressLocality: 'London',
-        postalCode: 'WC2H 9JQ',
-        addressCountry: 'GB',
-      },
-    ],
+  '@type': 'LocalBusiness',
+  '@id': 'https://blackoak-re.com/#organization',
+  name: 'BlackOak Real Estate',
+  image: 'https://blackoak-re.com/images/logo-white.png',
+  url: 'https://blackoak-re.com',
+  telephone: '+971 4 398 9055',
+  email: 'info@blackoak-re.com',
+  priceRange: 'AED 1,000,000 - AED 200,000,000+',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Office 1406, Marina Plaza, Dubai Marina',
+    addressLocality: 'Dubai',
+    addressRegion: 'Dubai',
+    addressCountry: 'AE',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 25.0762,
+    longitude: 55.1386,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '09:00',
+      closes: '18:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Saturday'],
+      opens: '10:00',
+      closes: '16:00',
+    },
+  ],
+  sameAs: [
+    'https://www.instagram.com/blackoak_re/',
+    'https://www.linkedin.com/company/blackoakrealestate/',
+    'https://www.facebook.com/BlackOakRE/',
+    'https://www.youtube.com/@BlackOakRealEstate',
+  ],
+  areaServed: {
+    '@type': 'GeoCircle',
+    geoMidpoint: {
+      '@type': 'GeoCoordinates',
+      latitude: 25.1864,
+      longitude: 55.2662,
+    },
+    geoRadius: '100000',
   },
 };
 
@@ -87,11 +112,58 @@ export default async function ContactPage({ params }: Props) {
   const t = await getTranslations({ locale, namespace: 'pages.contact' });
   const tCommon = await getTranslations({ locale, namespace: 'common' });
 
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: tCommon('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('headerLabel'), item: locale === 'en' ? 'https://blackoak-re.com/contact/' : `https://blackoak-re.com/${locale}/contact/` },
+    ],
+  };
+
+  const contactJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contact BlackOak Real Estate',
+    description: 'Contact BlackOak Real Estate for luxury property enquiries in Dubai.',
+    url: locale === 'en' ? 'https://blackoak-re.com/contact/' : `https://blackoak-re.com/${locale}/contact/`,
+    inLanguage: locale,
+    mainEntity: {
+      '@type': 'RealEstateAgent',
+      name: 'BlackOak Real Estate',
+      telephone: '+971 4 398 9055',
+      email: 'info@blackoak-re.com',
+      address: [
+        {
+          '@type': 'PostalAddress',
+          streetAddress: 'Office 1406, Marina Plaza, Dubai Marina',
+          addressLocality: 'Dubai',
+          addressCountry: 'AE',
+        },
+        {
+          '@type': 'PostalAddress',
+          streetAddress: '71-75 Shelton Street',
+          addressLocality: 'London',
+          postalCode: 'WC2H 9JQ',
+          addressCountry: 'GB',
+        },
+      ],
+    },
+  };
+
   return (
     <>
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
       />
       {/* Header Label + Heading */}
       <section className="pt-[156px] pb-8">
@@ -151,9 +223,9 @@ export default async function ContactPage({ params }: Props) {
 
                   {/* Details */}
                   <div className="flex flex-col gap-6 px-5 pb-5 md:p-0 md:pt-[49px]">
-                    <h3 className="text-[18px] font-normal uppercase text-black">
+                    <h2 className="text-[18px] font-normal uppercase text-black">
                       {office.city}
-                    </h3>
+                    </h2>
                     <div className="flex flex-col gap-[10px] text-[16px] font-light leading-[28px] text-[#5f6368]">
                       <p className="max-w-[279px]">{office.address}</p>
                       <a href={office.phoneHref} className="hover:text-black transition-colors">

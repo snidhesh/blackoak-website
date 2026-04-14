@@ -77,6 +77,13 @@
     "category": "real-estate"
   },
   {
+    "id": "23",
+    "name": "Nader Baky",
+    "title": "Associate Partner",
+    "image": "/images/team/nader-baky.jpg",
+    "category": "real-estate"
+  },
+  {
     "id": "12",
     "name": "Fenella Rose",
     "title": "Associate Director",
@@ -144,13 +151,6 @@
     "name": "Laleh Changizi",
     "title": "Senior Property Consultant",
     "image": "/images/team/laleh-changizi.jpg",
-    "category": "real-estate"
-  },
-  {
-    "id": "23",
-    "name": "Nader Baky",
-    "title": "Senior Property Consultant",
-    "image": "/images/team/nader-baky.jpg",
     "category": "real-estate"
   },
   {

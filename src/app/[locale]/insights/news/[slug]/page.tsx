@@ -20,22 +20,36 @@ export function generateStaticParams() {
 }
 
 export function generateMetadata({ params }: Props): Metadata {
-  const article = getNewsBySlug(params.slug, params.locale as Locale);
+  const locale = params.locale as Locale;
+  const article = getNewsBySlug(params.slug, locale);
   if (!article) return { title: 'Not Found' };
   return {
     title: article.title,
     description: article.excerpt,
+    keywords: [
+      'Dubai real estate news',
+      ...(article.tags || []),
+      article.category ? `${article.category} Dubai property` : '',
+      'Dubai property market',
+      'UAE real estate insights',
+    ].filter(Boolean),
     openGraph: {
       title: article.title,
       description: article.excerpt,
       type: 'article',
-      url: `https://blackoak-re.com/insights/news/${params.slug}/`,
+      locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
+      url: locale === 'en' ? `https://blackoak-re.com/insights/news/${params.slug}/` : `https://blackoak-re.com/${locale}/insights/news/${params.slug}/`,
       publishedTime: article.publishedDate,
       authors: [article.author],
-      images: [{ url: article.image, alt: article.title }],
+      images: [{ url: article.image, width: 1200, height: 630, alt: article.title }],
     },
     alternates: {
-      canonical: `https://blackoak-re.com/insights/news/${params.slug}/`,
+      canonical: locale === 'en' ? `https://blackoak-re.com/insights/news/${params.slug}/` : `https://blackoak-re.com/${locale}/insights/news/${params.slug}/`,
+      languages: {
+        en: `https://blackoak-re.com/insights/news/${params.slug}/`,
+        fr: `https://blackoak-re.com/fr/insights/news/${params.slug}/`,
+        ar: `https://blackoak-re.com/ar/insights/news/${params.slug}/`,
+      },
     },
   };
 }
@@ -65,6 +79,7 @@ export default async function NewsDetailPage({ params }: Props) {
     description: article.excerpt,
     image: article.image,
     datePublished: article.publishedDate,
+    inLanguage: locale,
     author: {
       '@type': 'Organization',
       name: article.author,
@@ -74,16 +89,16 @@ export default async function NewsDetailPage({ params }: Props) {
       name: 'BlackOak Real Estate',
       logo: { '@type': 'ImageObject', url: 'https://blackoak-re.com/images/logo-white.png' },
     },
-    mainEntityOfPage: `https://blackoak-re.com/insights/news/${params.slug}`,
+    mainEntityOfPage: locale === 'en' ? `https://blackoak-re.com/insights/news/${params.slug}/` : `https://blackoak-re.com/${locale}/insights/news/${params.slug}/`,
   };
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://blackoak-re.com' },
-      { '@type': 'ListItem', position: 2, name: 'News', item: 'https://blackoak-re.com/insights/news' },
-      { '@type': 'ListItem', position: 3, name: article.title, item: `https://blackoak-re.com/insights/news/${params.slug}` },
+      { '@type': 'ListItem', position: 1, name: tCommon('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: tCommon('breadcrumbs.news'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/news/` },
+      { '@type': 'ListItem', position: 3, name: article.title, item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/news/${params.slug}/` },
     ],
   };
 
