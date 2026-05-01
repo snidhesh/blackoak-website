@@ -24,12 +24,12 @@ export const ADDRESSES = {
 } as const;
 
 export const SOCIAL_LINKS = [
-  { platform: 'facebook', url: 'https://facebook.com/blackoakre', icon: 'Facebook' },
+  { platform: 'facebook', url: 'https://www.facebook.com/BlackOakRE/', icon: 'Facebook' },
   { platform: 'twitter', url: 'https://x.com/blackoakre', icon: 'Twitter' },
-  { platform: 'linkedin', url: 'https://linkedin.com/company/blackoakre', icon: 'Linkedin' },
+  { platform: 'linkedin', url: 'https://www.linkedin.com/company/blackoakrealestate', icon: 'Linkedin' },
   { platform: 'whatsapp', url: 'https://wa.me/97143989055', icon: 'MessageCircle' },
-  { platform: 'instagram', url: 'https://instagram.com/blackoakre', icon: 'Instagram' },
-  { platform: 'youtube', url: 'https://youtube.com/blackoakre', icon: 'Youtube' },
+  { platform: 'instagram', url: 'https://www.instagram.com/blackoakrealestate', icon: 'Instagram' },
+  { platform: 'youtube', url: 'https://www.youtube.com/@BlackOakRealEstate', icon: 'Youtube' },
 ] as const;
 
 export const PHONE_PREFIX = '+971';

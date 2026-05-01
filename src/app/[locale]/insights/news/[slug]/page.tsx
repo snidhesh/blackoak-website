@@ -79,7 +79,10 @@ export default async function NewsDetailPage({ params }: Props) {
     description: article.excerpt,
     image: article.image,
     datePublished: article.publishedDate,
+    dateModified: article.publishedDate,
     inLanguage: locale,
+    wordCount: article.content.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length,
+    articleSection: article.category,
     author: {
       '@type': 'Organization',
       name: article.author,
@@ -113,6 +116,7 @@ export default async function NewsDetailPage({ params }: Props) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {/* Header area */}
+      <article>
       <section className="pt-[152px] pb-0">
         <div className="max-w-[1094px] mx-auto px-6">
           {/* Back to News */}
@@ -126,7 +130,7 @@ export default async function NewsDetailPage({ params }: Props) {
 
           {/* Date */}
           <p className="text-[16px] font-medium leading-[26px] text-[#5f6368]">
-            {formattedDate}
+            <time dateTime={article.publishedDate}>{formattedDate}</time>
           </p>
 
           {/* Title */}
@@ -217,6 +221,7 @@ export default async function NewsDetailPage({ params }: Props) {
           <div className="border-t border-[#ccc] mt-[60px]" />
         </div>
       </section>
+      </article>
 
       {/* Related News */}
       <section className="pb-20">

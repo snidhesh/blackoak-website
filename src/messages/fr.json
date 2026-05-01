@@ -27,9 +27,9 @@
     },
     "ourTeam": {
       "title": "Notre équipe - Experts immobiliers à Dubai",
-      "description": "Rencontrez l''équipe BlackOak Real Estate. Consultants immobiliers expérimentés, conseillers en investissement et spécialistes immobiliers au service de clients à Dubai et dans le monde entier.",
+      "description": "Rencontrez l''équipe BlackOak Real Estate, basée à Dubai Marina. Consultants immobiliers expérimentés, conseillers en investissement et spécialistes immobiliers au service de clients à Dubai et dans le monde entier.",
       "ogTitle": "Notre équipe - Experts immobiliers à Dubai",
-      "ogDescription": "Rencontrez l''équipe BlackOak Real Estate. Consultants immobiliers expérimentés, conseillers en investissement et spécialistes immobiliers au service de clients à Dubai et dans le monde entier."
+      "ogDescription": "Rencontrez l''équipe BlackOak Real Estate, basée à Dubai Marina. Consultants immobiliers expérimentés, conseillers en investissement et spécialistes immobiliers au service de clients à Dubai et dans le monde entier."
     },
     "investors": {
       "title": "Opportunités d''investissement immobilier à Dubai",
@@ -61,9 +61,9 @@
     },
     "contact": {
       "title": "Contactez-nous - Bureaux de Dubai et Londres",
-      "description": "Contactez BlackOak Real Estate pour vos demandes immobilières de luxe à Dubai. Bureaux à Dubai Marina et Londres. Planifiez une consultation privée dès aujourd''hui.",
+      "description": "Contactez BlackOak Real Estate pour vos demandes immobilières de luxe à Dubai. Bureaux à Dubai Marina et Londres. Planifiez une consultation privée gratuite dès aujourd''hui.",
       "ogTitle": "Contactez-nous | BlackOak Real Estate",
-      "ogDescription": "Contactez BlackOak Real Estate pour vos demandes immobilières de luxe à Dubai. Bureaux à Dubai Marina et Londres."
+      "ogDescription": "Contactez BlackOak Real Estate pour vos demandes immobilières de luxe à Dubai. Bureaux à Dubai Marina et Londres. Consultation gratuite."
     },
     "listProperty": {
       "title": "Vendez votre propriété à Dubai",
@@ -97,6 +97,19 @@
       "description": "Avertissements importants concernant les annonces immobilières, les informations de marché et les services de conseil de BlackOak Real Estate à Dubai.",
       "ogTitle": "Avertissement | BlackOak Real Estate",
       "ogDescription": "Avertissements importants concernant les annonces immobilières, les informations de marché et les services de conseil."
+    },
+    "internationalProperties": {
+      "title": "Propriétés internationales de luxe à vendre",
+      "description": "Explorez villas, penthouses et domaines de luxe à vendre en Europe, en Asie et dans les Amériques. Propriétés internationales sélectionnées par BlackOak Real Estate.",
+      "ogTitle": "Propriétés internationales de luxe à vendre | BlackOak",
+      "ogDescription": "Explorez villas, penthouses et domaines de luxe à vendre en Europe, en Asie et dans les Amériques."
+    },
+    "internationalPropertyDetail": {
+      "notFoundTitle": "Propriété non trouvée",
+      "forSale": "à vendre"
+    },
+    "internationalCountry": {
+      "titleSuffix": "Propriétés de luxe | BlackOak"
     }
   },
   "common": {
@@ -181,7 +194,9 @@
       "removeLocation": "Supprimer {location}",
       "clearAllLocations": "Effacer tous les emplacements",
       "noLocationsFound": "Aucun emplacement trouvé",
-      "searchButton": "Rechercher"
+      "searchButton": "Rechercher",
+      "region": "Région",
+      "country": "Pays"
     },
     "noPropertiesFound": "Aucune propriété ne correspond à vos critères.",
     "whatsappContactAria": "Contactez-nous sur WhatsApp"
@@ -198,6 +213,8 @@
     "buyers": "Acheteurs",
     "newsAndPress": "Actualités et presse",
     "contact": "Contact",
+    "more": "Plus",
+    "internationalProperties": "International",
     "listYourProperty": "METTRE EN VENTE",
     "whatsapp": "WHATSAPP",
     "openMenu": "Ouvrir le menu",
@@ -240,7 +257,8 @@
       "whyBlackoak": "Pourquoi BlackOak",
       "ourTeam": "Notre équipe",
       "careers": "Carrières",
-      "contact": "Contact"
+      "contact": "Contact",
+      "internationalProperties": "Propriétés Internationales"
     },
     "neighbourhoodLinks": {
       "emiratesHills": "Emirates Hills",
@@ -497,6 +515,78 @@
       "breadcrumbs": {
         "home": "Accueil",
         "projects": "Projets"
+      }
+    },
+    "internationalProperties": {
+      "sectionLabel": "Propriétés internationales",
+      "heading": "Résidences de luxe à travers le monde",
+      "subheading": "Explorez des propriétés d'exception dans les destinations les plus prestigieuses du monde.",
+      "comingSoon": "Bientôt disponible",
+      "comingSoonDescription": "Nous constituons un portefeuille exclusif de propriétés de luxe internationales dans les destinations les plus prestigieuses du monde. Notre collection mondiale sera bientôt disponible.",
+      "notifyMe": "Enregistrez votre intérêt",
+      "regionsLabel": "EXPLORER LES RÉGIONS",
+      "regionsHeading": "Découvrez les destinations les plus convoitées au monde",
+      "countriesInRegion": "{region}",
+      "seoName": "Propriétés de luxe internationales par pays",
+      "seoDescription": "Explorez des propriétés de luxe dans 8 pays en Europe, Asie et Amériques. Sélectionnées par BlackOak Real Estate.",
+      "ctaLabel": "BUREAU INTERNATIONAL",
+      "ctaHeading": "Contactez notre bureau international",
+      "ctaDescription": "Notre équipe mondiale de spécialistes est prête à vous accompagner dans vos acquisitions immobilières internationales.",
+      "ctaButton": "Nous contacter",
+      "breadcrumbs": {
+        "home": "Accueil",
+        "internationalProperties": "Propriétés internationales"
+      },
+      "propertiesCount": "{count} {count, plural, one {propriété} other {propriétés}}"
+    },
+    "internationalCountry": {
+      "aboutLabel": "À PROPOS",
+      "propertiesLabel": "PROPRIÉTÉS",
+      "propertiesHeading": "Propriétés disponibles en {country}",
+      "whyInvestLabel": "POURQUOI INVESTIR",
+      "ctaLabel": "BUREAU INTERNATIONAL",
+      "ctaHeading": "Intéressé par {country} ?",
+      "ctaDescription": "Nos spécialistes du bureau international sont prêts à vous accompagner dans le processus d''acquisition.",
+      "ctaButton": "Nous contacter",
+      "breadcrumbs": {
+        "home": "Accueil",
+        "internationalProperties": "Propriétés internationales"
+      }
+    },
+    "internationalPropertyDetail": {
+      "stickyNav": {
+        "details": "Détails",
+        "gallery": "Galerie",
+        "amenities": "Équipements",
+        "location": "Emplacement",
+        "enquiry": "Demande"
+      },
+      "details": {
+        "label": "Détails",
+        "heading": "Aperçu de la propriété"
+      },
+      "gallery": {
+        "label": "Galerie",
+        "heading": "Une symphonie visuelle du luxe",
+        "mainAlt": "{name} principale",
+        "galleryAlt": "{name} galerie {index}"
+      },
+      "amenities": {
+        "label": "Équipements",
+        "heading": "Là où chaque désir est anticipé"
+      },
+      "location": {
+        "label": "Emplacement",
+        "heading": "Situé au sommet du prestige"
+      },
+      "enquiry": {
+        "label": "Demande",
+        "heading": "Intéressé par cette propriété ? Connectons-nous",
+        "submitLabel": "Envoyer la demande"
+      },
+      "breadcrumbs": {
+        "home": "Accueil",
+        "internationalProperties": "Propriétés internationales"
       }
     },
     "neighbourhoods": {

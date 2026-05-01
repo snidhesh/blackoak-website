@@ -27,9 +27,9 @@
     },
     "ourTeam": {
       "title": "فريقنا - خبراء العقارات في دبي",
-      "description": "تعرّف على فريق BlackOak للعقارات. مستشارون عقاريون ذوو خبرة ومستشارو استثمار ومتخصصون في العقارات يخدمون عملاء دبي والعملاء الدوليين.",
+      "description": "تعرّف على فريق BlackOak للعقارات في دبي مارينا. مستشارون عقاريون ذوو خبرة ومستشارو استثمار ومتخصصون في العقارات يخدمون عملاء دبي والعملاء الدوليين.",
       "ogTitle": "فريقنا - خبراء العقارات في دبي",
-      "ogDescription": "تعرّف على فريق BlackOak للعقارات. مستشارون عقاريون ذوو خبرة ومستشارو استثمار ومتخصصون في العقارات يخدمون عملاء دبي والعملاء الدوليين."
+      "ogDescription": "تعرّف على فريق BlackOak للعقارات في دبي مارينا. مستشارون عقاريون ذوو خبرة ومستشارو استثمار ومتخصصون في العقارات يخدمون عملاء دبي والعملاء الدوليين."
     },
     "investors": {
       "title": "فرص الاستثمار العقاري في دبي",
@@ -61,9 +61,9 @@
     },
     "contact": {
       "title": "تواصل معنا - مكاتب دبي ولندن",
-      "description": "تواصل مع BlackOak للعقارات لاستفسارات العقارات الفاخرة في دبي. مكاتب في دبي مارينا ولندن. احجز استشارة خاصة اليوم.",
+      "description": "تواصل مع BlackOak للعقارات لاستفسارات العقارات الفاخرة في دبي. مكاتب في دبي مارينا ولندن. احجز استشارة خاصة مجانية اليوم.",
       "ogTitle": "تواصل معنا | BlackOak للعقارات",
-      "ogDescription": "تواصل مع BlackOak للعقارات لاستفسارات العقارات الفاخرة في دبي. مكاتب في دبي مارينا ولندن."
+      "ogDescription": "تواصل مع BlackOak للعقارات لاستفسارات العقارات الفاخرة في دبي. مكاتب في دبي مارينا ولندن. استشارة مجانية."
     },
     "listProperty": {
       "title": "بِع عقارك في دبي",
@@ -97,6 +97,19 @@
       "description": "إخلاءات مسؤولية مهمة بشأن قوائم العقارات ومعلومات السوق والخدمات الاستشارية لـ BlackOak للعقارات في دبي.",
       "ogTitle": "إخلاء المسؤولية | BlackOak للعقارات",
       "ogDescription": "إخلاءات مسؤولية مهمة بشأن قوائم العقارات ومعلومات السوق والخدمات الاستشارية."
+    },
+    "internationalProperties": {
+      "title": "عقارات دولية فاخرة للبيع",
+      "description": "استكشف الفلل والبنتهاوس والعقارات الفاخرة للبيع في أوروبا وآسيا والأمريكتين. عقارات دولية مختارة من BlackOak للعقارات.",
+      "ogTitle": "عقارات دولية فاخرة للبيع | BlackOak",
+      "ogDescription": "استكشف الفلل والبنتهاوس والعقارات الفاخرة للبيع في أوروبا وآسيا والأمريكتين."
+    },
+    "internationalPropertyDetail": {
+      "notFoundTitle": "لم يتم العثور على العقار",
+      "forSale": "للبيع"
+    },
+    "internationalCountry": {
+      "titleSuffix": "عقارات فاخرة | BlackOak"
     }
   },
   "common": {
@@ -181,6 +194,8 @@
       "removeLocation": "إزالة {location}",
       "clearAllLocations": "مسح جميع المواقع",
       "noLocationsFound": "لم يتم العثور على مواقع",
+      "region": "المنطقة",
+      "country": "الدولة",
       "searchButton": "بحث"
     },
     "noPropertiesFound": "لا توجد عقارات تطابق معاييرك.",
@@ -198,6 +213,8 @@
     "buyers": "المشترون",
     "newsAndPress": "الأخبار والصحافة",
     "contact": "تواصل معنا",
+    "more": "المزيد",
+    "internationalProperties": "دولي",
     "listYourProperty": "أدرج عقارك",
     "whatsapp": "واتساب",
     "openMenu": "فتح القائمة",
@@ -240,7 +257,8 @@
       "whyBlackoak": "لماذا BlackOak",
       "ourTeam": "فريقنا",
       "careers": "الوظائف",
-      "contact": "تواصل معنا"
+      "contact": "تواصل معنا",
+      "internationalProperties": "العقارات الدولية"
     },
     "neighbourhoodLinks": {
       "emiratesHills": "تلال الإمارات",
@@ -497,6 +515,78 @@
       "breadcrumbs": {
         "home": "الرئيسية",
         "projects": "المشاريع"
+      }
+    },
+    "internationalProperties": {
+      "sectionLabel": "عقارات دولية",
+      "heading": "مساكن فاخرة حول العالم",
+      "subheading": "استكشف عقارات مميّزة في أرقى الوجهات العالمية.",
+      "comingSoon": "قريباً",
+      "comingSoonDescription": "نحن نعمل على تنسيق مجموعة حصرية من العقارات الفاخرة الدولية في أرقى الوجهات العالمية. ستكون مجموعتنا العالمية متاحة قريباً.",
+      "notifyMe": "سجّل اهتمامك",
+      "regionsLabel": "استكشف المناطق",
+      "regionsHeading": "اكتشف أكثر الوجهات المرغوبة في العالم",
+      "countriesInRegion": "{region}",
+      "seoName": "عقارات فاخرة دولية حسب الدولة",
+      "seoDescription": "استكشف عقارات فاخرة في 8 دول عبر أوروبا وآسيا والأمريكتين. مختارة من BlackOak للعقارات.",
+      "ctaLabel": "المكتب الدولي",
+      "ctaHeading": "تواصل مع مكتبنا الدولي",
+      "ctaDescription": "فريقنا العالمي من المتخصصين جاهز لمساعدتك في عمليات الاستحواذ العقارية الدولية.",
+      "ctaButton": "تواصل معنا",
+      "breadcrumbs": {
+        "home": "الرئيسية",
+        "internationalProperties": "العقارات الدولية"
+      },
+      "propertiesCount": "{count} {count, plural, one {عقار} other {عقارات}}"
+    },
+    "internationalCountry": {
+      "aboutLabel": "حول",
+      "propertiesLabel": "العقارات",
+      "propertiesHeading": "العقارات المتاحة في {country}",
+      "whyInvestLabel": "لماذا الاستثمار",
+      "ctaLabel": "المكتب الدولي",
+      "ctaHeading": "مهتم بـ{country}؟",
+      "ctaDescription": "متخصصو مكتبنا الدولي جاهزون لإرشادك خلال عملية الاستحواذ.",
+      "ctaButton": "تواصل معنا",
+      "breadcrumbs": {
+        "home": "الرئيسية",
+        "internationalProperties": "العقارات الدولية"
+      }
+    },
+    "internationalPropertyDetail": {
+      "stickyNav": {
+        "details": "التفاصيل",
+        "gallery": "المعرض",
+        "amenities": "المرافق",
+        "location": "الموقع",
+        "enquiry": "استفسار"
+      },
+      "details": {
+        "label": "التفاصيل",
+        "heading": "نظرة عامة على العقار"
+      },
+      "gallery": {
+        "label": "المعرض",
+        "heading": "سيمفونية بصرية من الفخامة",
+        "mainAlt": "{name} الرئيسية",
+        "galleryAlt": "{name} المعرض {index}"
+      },
+      "amenities": {
+        "label": "المرافق",
+        "heading": "حيث يُستبَق كل ما تشتهيه"
+      },
+      "location": {
+        "label": "الموقع",
+        "heading": "في قمة الهيبة والتميّز"
+      },
+      "enquiry": {
+        "label": "استفسار",
+        "heading": "مهتم بهذا العقار؟ لنتواصل",
+        "submitLabel": "إرسال الاستفسار"
+      },
+      "breadcrumbs": {
+        "home": "الرئيسية",
+        "internationalProperties": "العقارات الدولية"
       }
     },
     "neighbourhoods": {

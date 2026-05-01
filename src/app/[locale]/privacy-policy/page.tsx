@@ -22,6 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
+      siteName: 'BlackOak Real Estate',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
       url: locale === 'en' ? 'https://blackoak-re.com/privacy-policy/' : `https://blackoak-re.com/${locale}/privacy-policy/`,
       images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
@@ -30,24 +31,41 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function PrivacyPolicyPage({ params }: { params: { locale: string } }) {
-  const privacyData = getPrivacyPolicy(params.locale as Locale);
+  const locale = params.locale as Locale;
+  const privacyData = getPrivacyPolicy(locale);
+
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: privacyData.sections[0]?.title || 'Privacy Policy',
+    url: locale === 'en' ? 'https://blackoak-re.com/privacy-policy/' : `https://blackoak-re.com/${locale}/privacy-policy/`,
+    inLanguage: locale,
+    isPartOf: { '@type': 'WebSite', name: 'BlackOak Real Estate', url: 'https://blackoak-re.com' },
+    dateModified: '2026-05-01',
+  };
 
   return (
-    <section className="pt-24 pb-20">
-      <div className="container-narrow">
-        {privacyData.sections.map((section: { title: string; content: string }, i: number) => (
-          <div key={i} className={i > 0 ? 'mt-10' : ''}>
-            {i === 0 ? (
-              <h1 className="text-4xl font-semibold mb-6">{section.title}</h1>
-            ) : (
-              <h2 className="text-2xl font-semibold mb-4">{section.title}</h2>
-            )}
-            <div className="text-gray-600 leading-relaxed whitespace-pre-line">
-              {section.content}
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
+      <section className="pt-24 pb-20">
+        <div className="container-narrow">
+          {privacyData.sections.map((section: { title: string; content: string }, i: number) => (
+            <div key={i} className={i > 0 ? 'mt-10' : ''}>
+              {i === 0 ? (
+                <h1 className="text-4xl font-semibold mb-6">{section.title}</h1>
+              ) : (
+                <h2 className="text-2xl font-semibold mb-4">{section.title}</h2>
+              )}
+              <div className="text-gray-600 leading-relaxed whitespace-pre-line">
+                {section.content}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }

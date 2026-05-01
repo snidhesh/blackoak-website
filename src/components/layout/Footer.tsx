@@ -6,12 +6,12 @@ import { useTranslations } from 'next-intl';
 import { Mail, Phone, Facebook, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
 
 const socialLinks = [
-  { icon: Facebook, href: 'https://facebook.com/blackoakre', key: 'facebook' as const },
+  { icon: Facebook, href: 'https://www.facebook.com/BlackOakRE/', key: 'facebook' as const },
   { icon: Twitter, href: 'https://x.com/blackoakre', key: 'twitter' as const },
-  { icon: Linkedin, href: 'https://linkedin.com/company/blackoakre', key: 'linkedin' as const },
+  { icon: Linkedin, href: 'https://www.linkedin.com/company/blackoakrealestate', key: 'linkedin' as const },
   // { icon: MessageCircle, href: 'https://wa.me/97143989055', key: 'whatsapp' as const },
-  { icon: Instagram, href: 'https://instagram.com/blackoakre', key: 'instagram' as const },
-  { icon: Youtube, href: 'https://youtube.com/blackoakre', key: 'youtube' as const },
+  { icon: Instagram, href: 'https://www.instagram.com/blackoakrealestate', key: 'instagram' as const },
+  { icon: Youtube, href: 'https://www.youtube.com/@BlackOakRealEstate', key: 'youtube' as const },
 ];
 
 export default function Footer() {
@@ -26,6 +26,7 @@ export default function Footer() {
         { label: t('companyLinks.ourTeam'), href: '/about/our-team' },
         { label: t('companyLinks.careers'), href: '/career' },
         { label: t('companyLinks.contact'), href: '/contact' },
+        { label: t('companyLinks.internationalProperties'), href: '/international-properties' },
       ],
     },
     {

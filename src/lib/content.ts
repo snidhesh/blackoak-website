@@ -51,6 +51,9 @@ import contactAr from '@/content/ar/contact.json';
 import privacyPolicyAr from '@/content/ar/privacy-policy.json';
 import termsOfServiceAr from '@/content/ar/terms-of-service.json';
 import disclaimerAr from '@/content/ar/disclaimer.json';
+import internationalPropertiesEn from '@/content/en/international-properties.json';
+import internationalPropertiesFr from '@/content/fr/international-properties.json';
+import internationalPropertiesAr from '@/content/ar/international-properties.json';
 
 import { fetchAllListings } from '@/lib/crm';
 import { transformListing, deduplicateSlugs } from '@/lib/crm-transform';
@@ -71,6 +74,7 @@ const contentMap = {
   privacyPolicy: { en: privacyPolicyEn, fr: privacyPolicyFr, ar: privacyPolicyAr },
   termsOfService: { en: termsOfServiceEn, fr: termsOfServiceFr, ar: termsOfServiceAr },
   disclaimer: { en: disclaimerEn, fr: disclaimerFr, ar: disclaimerAr },
+  internationalProperties: { en: internationalPropertiesEn, fr: internationalPropertiesFr, ar: internationalPropertiesAr },
 } as const;
 
 function getContent<K extends keyof typeof contentMap>(key: K, locale: Locale = 'en'): (typeof contentMap)[K]['en'] {
@@ -97,6 +101,27 @@ function validateSlugs<T extends { slug: string }>(items: T[], type: string): vo
 validateSlugs(neighbourhoodsEn as Neighbourhood[], 'neighbourhoods');
 validateSlugs(careersEn as CareerJob[], 'careers');
 validateSlugs(newsEn as NewsItem[], 'news');
+validateSlugs(
+  (internationalPropertiesEn as { properties: { slug: string }[] }).properties,
+  'international-properties'
+);
+validateSlugs(
+  (internationalPropertiesEn as { countries: { slug: string }[] }).countries,
+  'international-countries'
+);
+
+// Cross-slug collision check: country slugs vs property slugs
+{
+  const countrySlugs = new Set(
+    (internationalPropertiesEn as { countries: { slug: string }[] }).countries.map((c) => c.slug)
+  );
+  const propertySlugs = (internationalPropertiesEn as { properties: { slug: string }[] }).properties.map((p) => p.slug);
+  for (const ps of propertySlugs) {
+    if (countrySlugs.has(ps)) {
+      throw new Error(`[content] Slug collision: "${ps}" exists as both a country and a property`);
+    }
+  }
+}
 
 // --- CRM-backed project functions (async) ---
 
@@ -212,4 +237,47 @@ export function getTermsOfService(locale: Locale = 'en') {
 
 export function getDisclaimer(locale: Locale = 'en') {
   return getContent('disclaimer', locale);
+}
+
+// --- International Properties (static, locale-aware) ---
+
+import type { InternationalProperty, InternationalRegion, InternationalRegionSlug, InternationalCountry } from '@/types/international-property';
+
+export function getInternationalProperties(locale: Locale = 'en'): InternationalProperty[] {
+  const data = getContent('internationalProperties', locale) as { properties: InternationalProperty[] };
+  return data.properties;
+}
+
+export function getInternationalPropertyBySlug(slug: string, locale: Locale = 'en'): InternationalProperty | undefined {
+  return getInternationalProperties(locale).find((p) => p.slug === slug);
+}
+
+export function getInternationalRegions(locale: Locale = 'en'): InternationalRegion[] {
+  const data = getContent('internationalProperties', locale) as { regions: InternationalRegion[] };
+  return data.regions;
+}
+
+export function getInternationalCountries(locale: Locale = 'en'): InternationalCountry[] {
+  const data = getContent('internationalProperties', locale) as { countries: InternationalCountry[] };
+  return data.countries;
+}
+
+export function getInternationalCountryBySlug(slug: string, locale: Locale = 'en'): InternationalCountry | undefined {
+  return getInternationalCountries(locale).find((c) => c.slug === slug);
+}
+
+export function getInternationalCountryByCode(countryCode: string, locale: Locale = 'en'): InternationalCountry | undefined {
+  return getInternationalCountries(locale).find((c) => c.countryCode === countryCode);
+}
+
+export function getInternationalPropertiesByCountry(countryCode: string, locale: Locale = 'en'): InternationalProperty[] {
+  return getInternationalProperties(locale).filter((p) => p.countryCode === countryCode);
+}
+
+export function getInternationalPropertiesByRegion(regionSlug: InternationalRegionSlug, locale: Locale = 'en'): InternationalProperty[] {
+  return getInternationalProperties(locale).filter((p) => p.region === regionSlug);
+}
+
+export function getFeaturedInternationalProperties(locale: Locale = 'en'): InternationalProperty[] {
+  return getInternationalProperties(locale).filter((p) => p.featured).slice(0, 3);
 }

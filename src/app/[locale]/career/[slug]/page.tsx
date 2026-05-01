@@ -76,6 +76,7 @@ export default async function CareerDetailPage({ params }: Props) {
         addressCountry: 'AE',
       },
     },
+    directApply: true,
   };
 
   const breadcrumbJsonLd = {

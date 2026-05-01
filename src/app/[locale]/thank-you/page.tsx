@@ -17,6 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: t('description'),
     alternates: {
       canonical: locale === 'en' ? 'https://blackoak-re.com/thank-you/' : `https://blackoak-re.com/${locale}/thank-you/`,
+      languages: { en: 'https://blackoak-re.com/thank-you/', fr: 'https://blackoak-re.com/fr/thank-you/', ar: 'https://blackoak-re.com/ar/thank-you/' },
     },
     openGraph: {
       title: t('ogTitle'),

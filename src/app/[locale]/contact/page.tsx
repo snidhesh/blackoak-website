@@ -91,8 +91,8 @@ const localBusinessJsonLd = {
     },
   ],
   sameAs: [
-    'https://www.instagram.com/blackoak_re/',
-    'https://www.linkedin.com/company/blackoakrealestate/',
+    'https://www.instagram.com/blackoakrealestate',
+    'https://www.linkedin.com/company/blackoakrealestate',
     'https://www.facebook.com/BlackOakRE/',
     'https://www.youtube.com/@BlackOakRealEstate',
   ],

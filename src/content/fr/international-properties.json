@@ -1,0 +1,706 @@
+{
+  "regions": [
+    {
+      "id": "region-europe",
+      "slug": "europe",
+      "name": "Europe",
+      "description": "Découvrez des domaines d'exception à travers les destinations les plus convoitées d'Europe.",
+      "image": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80",
+      "propertyCount": 4
+    },
+    {
+      "id": "region-asia",
+      "slug": "asia",
+      "name": "Asie et Océan Indien",
+      "description": "Explorez des résidences tropicales de luxe dans les destinations insulaires les plus prisées d'Asie.",
+      "image": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80",
+      "propertyCount": 3
+    },
+    {
+      "id": "region-americas",
+      "slug": "americas",
+      "name": "Amériques",
+      "description": "Un art de vivre premium en bord de mer et des domaines emblématiques à travers les Amériques.",
+      "image": "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&q=80",
+      "propertyCount": 2
+    }
+  ],
+  "countries": [
+    {
+      "slug": "united-kingdom",
+      "name": "Royaume-Uni",
+      "countryCode": "GB",
+      "region": "europe",
+      "heroImage": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1600&q=80",
+      "thumbnail": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80",
+      "description": "Le Royaume-Uni demeure l'une des destinations les plus prisées au monde pour l'immobilier de prestige. Londres, véritable capitale mondiale de la finance et de la culture, attire depuis des siècles une clientèle internationale exigeante en quête de résidences d'exception. Des penthouses surplombant Hyde Park aux demeures georgiennes de Belgravia, le marché londonien offre une diversité architecturale remarquable. Au-delà de la capitale, les domaines des Cotswolds et les propriétés écossaises séduisent les acquéreurs en quête d'authenticité et d'espaces naturels préservés. Le cadre juridique britannique, reconnu pour sa transparence et sa solidité, garantit une sécurité optimale aux investisseurs étrangers. Les quartiers emblématiques tels que Mayfair, Knightsbridge et Chelsea continuent d'enregistrer une demande soutenue, consolidant la position du Royaume-Uni comme valeur refuge de l'immobilier de luxe mondial.",
+      "whyInvest": {
+        "title": "Pourquoi investir au Royaume-Uni",
+        "points": [
+          {
+            "title": "Capitale financière mondiale",
+            "description": "Londres figure parmi les trois premières places financières mondiales, attirant un flux constant de capitaux internationaux et de professionnels fortunés qui soutiennent la demande immobilière haut de gamme."
+          },
+          {
+            "title": "Cadre juridique robuste",
+            "description": "Le système juridique britannique offre une protection exceptionnelle des droits de propriété, une transparence des transactions et un cadre réglementaire stable qui rassure les investisseurs du monde entier."
+          },
+          {
+            "title": "Patrimoine architectural inégalé",
+            "description": "Des résidences georgiennes aux tours ultramodernes de Canary Wharf, le Royaume-Uni propose un éventail architectural unique alliant héritage historique et innovation contemporaine."
+          },
+          {
+            "title": "Excellence éducative et culturelle",
+            "description": "La présence d'universités de renommée mondiale comme Oxford et Cambridge, ainsi qu'une scène culturelle dynamique, confèrent au Royaume-Uni un attrait durable pour les familles fortunées internationales."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Propriétés de luxe au Royaume-Uni | BlackOak",
+        "description": "Découvrez notre sélection exclusive de propriétés de prestige au Royaume-Uni. Penthouses londoniens, demeures historiques et domaines champêtres dans les adresses les plus recherchées.",
+        "ogTitle": "Propriétés de luxe au Royaume-Uni | BlackOak Real Estate",
+        "ogDescription": "Explorez des biens immobiliers d'exception au Royaume-Uni : penthouses avec vue sur Hyde Park, résidences à Mayfair et domaines dans la campagne anglaise."
+      }
+    },
+    {
+      "slug": "spain",
+      "name": "Espagne",
+      "countryCode": "ES",
+      "region": "europe",
+      "heroImage": "https://images.unsplash.com/photo-1509840841025-9088ba78a826?w=1600&q=80",
+      "thumbnail": "https://images.unsplash.com/photo-1509840841025-9088ba78a826?w=600&q=80",
+      "description": "L'Espagne incarne un art de vivre méditerranéen qui séduit les acquéreurs les plus exigeants du monde entier. De la Costa del Sol à Ibiza en passant par Majorque et Barcelone, le pays offre une mosaïque de destinations balnéaires d'exception où le soleil brille plus de 300 jours par an. Marbella, avec son célèbre Golden Mile, s'est imposée comme la riviera de référence pour la clientèle internationale fortunée. Les villas contemporaines aux lignes épurées côtoient les fincas traditionnelles restaurées avec un goût irréprochable. Le marché espagnol bénéficie d'un excellent rapport qualité-prix comparé aux autres destinations européennes de premier plan, tout en offrant des infrastructures de classe mondiale : marinas privées, parcours de golf prestigieux et gastronomie étoilée. Le programme de visa doré et un régime fiscal attractif pour les résidents non habituels renforcent l'attrait de l'Espagne auprès des investisseurs internationaux.",
+      "whyInvest": {
+        "title": "Pourquoi investir en Espagne",
+        "points": [
+          {
+            "title": "Art de vivre méditerranéen",
+            "description": "Plus de 300 jours d'ensoleillement par an, une gastronomie de renommée mondiale et un rythme de vie détendu font de l'Espagne l'une des destinations les plus attractives pour une résidence de prestige."
+          },
+          {
+            "title": "Rapport qualité-prix exceptionnel",
+            "description": "Comparé à la Côte d'Azur ou à la côte amalfitaine, le marché de luxe espagnol offre des surfaces plus généreuses et des prestations supérieures à prix équivalent, maximisant la valeur de chaque investissement."
+          },
+          {
+            "title": "Programme Golden Visa",
+            "description": "Le programme de visa doré espagnol permet aux investisseurs non européens d'obtenir un titre de séjour grâce à l'acquisition immobilière, ouvrant l'accès à l'espace Schengen et au mode de vie européen."
+          },
+          {
+            "title": "Infrastructures de classe mondiale",
+            "description": "Des marinas privées aux parcours de golf dessinés par les plus grands architectes, l'Espagne dispose d'infrastructures sportives et de loisirs qui rivalisent avec les meilleures destinations mondiales."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Propriétés de luxe en Espagne | BlackOak",
+        "description": "Découvrez des villas et résidences de prestige en Espagne. Propriétés d'exception à Marbella, Ibiza, Majorque et Barcelone avec vue mer et prestations haut de gamme.",
+        "ogTitle": "Propriétés de luxe en Espagne | BlackOak Real Estate",
+        "ogDescription": "Explorez notre collection de biens immobiliers de luxe en Espagne : villas sur le Golden Mile, penthouses en bord de mer et fincas méditerranéennes d'exception."
+      }
+    },
+    {
+      "slug": "italy",
+      "name": "Italie",
+      "countryCode": "IT",
+      "region": "europe",
+      "heroImage": "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1600&q=80",
+      "thumbnail": "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=600&q=80",
+      "description": "L'Italie représente le summum du raffinement et de l'élégance dans l'immobilier de prestige mondial. Des palazzi vénitiens aux domaines viticoles toscans, en passant par les villas surplombant le lac de Côme et les propriétés de la côte amalfitaine, chaque région offre un cadre de vie unique imprégné de plusieurs millénaires d'histoire et de culture. La Toscane, avec ses collines ondulantes parsemées de cyprès et ses vignobles réputés, attire une clientèle internationale en quête d'authenticité et de sérénité. Milan et Rome proposent des appartements d'exception dans des palais historiques restaurés avec des matériaux nobles et un savoir-faire artisanal inégalé. Le patrimoine architectural italien, classé parmi les plus riches au monde, confère à chaque propriété une dimension culturelle et esthétique incomparable. L'art de vivre à l'italienne, la dolce vita, reste un attrait irrésistible pour les acquéreurs les plus raffinés.",
+      "whyInvest": {
+        "title": "Pourquoi investir en Italie",
+        "points": [
+          {
+            "title": "Patrimoine culturel incomparable",
+            "description": "L'Italie détient le plus grand nombre de sites classés au patrimoine mondial de l'UNESCO, offrant aux propriétaires un cadre de vie enrichi par des millénaires d'art, d'architecture et de civilisation."
+          },
+          {
+            "title": "Diversité des terroirs et des paysages",
+            "description": "Des lacs alpins aux côtes méditerranéennes, des collines toscanes aux îles siciliennes, l'Italie propose une variété de cadres naturels exceptionnels pour des résidences de villégiature uniques."
+          },
+          {
+            "title": "Régime fiscal avantageux pour les nouveaux résidents",
+            "description": "Le régime forfaitaire italien permet aux nouveaux résidents fiscaux de bénéficier d'un impôt annuel fixe sur les revenus étrangers, rendant l'installation en Italie particulièrement attractive pour les fortunes internationales."
+          },
+          {
+            "title": "Excellence artisanale et gastronomique",
+            "description": "Le savoir-faire italien dans la restauration de propriétés historiques, associé à une gastronomie et une viticulture de renommée mondiale, garantit un art de vivre d'une qualité inégalée."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Propriétés de luxe en Italie | BlackOak",
+        "description": "Découvrez des propriétés d'exception en Italie. Domaines toscans, villas sur le lac de Côme, palazzi vénitiens et résidences sur la côte amalfitaine.",
+        "ogTitle": "Propriétés de luxe en Italie | BlackOak Real Estate",
+        "ogDescription": "Explorez notre sélection de biens immobiliers de prestige en Italie : domaines viticoles en Toscane, villas lacustres et appartements historiques dans les plus belles villes italiennes."
+      }
+    },
+    {
+      "slug": "switzerland",
+      "name": "Suisse",
+      "countryCode": "CH",
+      "region": "europe",
+      "heroImage": "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=1600&q=80",
+      "thumbnail": "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=600&q=80",
+      "description": "La Suisse s'affirme comme la destination par excellence pour l'immobilier ultra-premium, alliant sécurité, discrétion et cadre naturel spectaculaire. Genève et Zurich figurent régulièrement parmi les villes les plus exclusives au monde, tandis que les stations alpines de Gstaad, Verbier et Saint-Moritz attirent une clientèle internationale fortunée en quête de chalets d'exception. Les propriétés au bord du lac Léman offrent des panoramas à couper le souffle sur les Alpes et le Mont-Blanc, dans un environnement d'une tranquillité absolue. La stabilité politique et économique légendaire de la Confédération helvétique, associée à un système bancaire de premier ordre et à une fiscalité cantonale compétitive, font de la Suisse une valeur refuge incontestable. La qualité de vie exceptionnelle, les infrastructures de transport de pointe et la position centrale en Europe renforcent l'attractivité de ce marché immobilier parmi les plus sélectifs de la planète.",
+      "whyInvest": {
+        "title": "Pourquoi investir en Suisse",
+        "points": [
+          {
+            "title": "Stabilité politique et économique",
+            "description": "La neutralité historique, la solidité du franc suisse et la gouvernance exemplaire de la Confédération helvétique offrent aux investisseurs une sécurité et une prévisibilité sans égales sur le marché mondial."
+          },
+          {
+            "title": "Cadre alpin spectaculaire",
+            "description": "Des rives du lac Léman aux sommets enneigés de l'Engadine, la Suisse offre des panoramas naturels d'une beauté exceptionnelle qui valorisent durablement chaque propriété."
+          },
+          {
+            "title": "Discrétion et confidentialité",
+            "description": "La tradition suisse de respect de la vie privée et de discrétion attire les familles fortunées et les personnalités internationales recherchant un cadre de vie protégé des regards."
+          },
+          {
+            "title": "Fiscalité cantonale compétitive",
+            "description": "Certains cantons proposent des régimes d'imposition forfaitaire particulièrement avantageux pour les résidents étrangers fortunés, faisant de la Suisse un choix fiscal stratégique pour les grandes fortunes."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Propriétés de luxe en Suisse | BlackOak",
+        "description": "Découvrez des propriétés de prestige en Suisse. Chalets alpins à Gstaad et Verbier, résidences au bord du lac Léman et appartements d'exception à Genève et Zurich.",
+        "ogTitle": "Propriétés de luxe en Suisse | BlackOak Real Estate",
+        "ogDescription": "Explorez notre collection de biens immobiliers ultra-premium en Suisse : chalets dans les Alpes, propriétés lacustres et résidences urbaines dans les villes les plus exclusives."
+      }
+    },
+    {
+      "slug": "thailand",
+      "name": "Thaïlande",
+      "countryCode": "TH",
+      "region": "asia",
+      "heroImage": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=1600&q=80",
+      "thumbnail": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80",
+      "description": "La Thaïlande s'est imposée comme l'une des destinations les plus séduisantes d'Asie du Sud-Est pour l'immobilier de luxe tropical. Phuket, avec ses baies turquoise et ses promontoires rocheux spectaculaires, accueille des villas d'exception signées par des architectes de renommée internationale. Koh Samui et Krabi complètent cette offre insulaire avec des résidences alliant design contemporain et immersion dans la nature tropicale. Bangkok, métropole vibrante et cosmopolite, propose des penthouses ultramodernes avec vue panoramique sur la skyline scintillante de la ville. Le coût de la vie remarquablement avantageux, associé à des prestations hôtelières de classe mondiale et à une hospitalité légendaire, permet aux propriétaires de bénéficier d'un service de majordome et d'un personnel de maison à des tarifs sans équivalent. Le marché immobilier thaïlandais offre des rendements locatifs attractifs grâce à un tourisme de luxe en pleine expansion et à une demande croissante de résidences secondaires haut de gamme.",
+      "whyInvest": {
+        "title": "Pourquoi investir en Thaïlande",
+        "points": [
+          {
+            "title": "Cadre tropical d'exception",
+            "description": "Des plages de sable blanc de Phuket aux montagnes verdoyantes de Chiang Mai, la Thaïlande offre des paysages naturels spectaculaires qui constituent l'écrin idéal pour des résidences de villégiature haut de gamme."
+          },
+          {
+            "title": "Rapport qualité-prix imbattable",
+            "description": "Le marché de luxe thaïlandais offre des superficies généreuses, des finitions haut de gamme et un personnel de maison qualifié à des tarifs considérablement inférieurs à ceux des destinations occidentales comparables."
+          },
+          {
+            "title": "Rendements locatifs attractifs",
+            "description": "Le tourisme de luxe en plein essor et la popularité croissante de la Thaïlande auprès des expatriés fortunés génèrent des rendements locatifs parmi les plus élevés de la région Asie-Pacifique."
+          },
+          {
+            "title": "Hospitalité et art de vivre",
+            "description": "La légendaire hospitalité thaïlandaise, combinée à une gastronomie raffinée, des spas de renommée mondiale et une culture bienveillante, garantit une qualité de vie quotidienne exceptionnelle."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Propriétés de luxe en Thaïlande | BlackOak",
+        "description": "Découvrez des villas et résidences de luxe en Thaïlande. Propriétés d'exception à Phuket, Koh Samui et Bangkok avec piscine à débordement et vue mer panoramique.",
+        "ogTitle": "Propriétés de luxe en Thaïlande | BlackOak Real Estate",
+        "ogDescription": "Explorez notre sélection de biens immobiliers tropicaux de prestige en Thaïlande : villas en bord de mer, résidences avec plage privée et penthouses urbains d'exception."
+      }
+    },
+    {
+      "slug": "maldives",
+      "name": "Maldives",
+      "countryCode": "MV",
+      "region": "asia",
+      "heroImage": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1600&q=80",
+      "thumbnail": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&q=80",
+      "description": "Les Maldives incarnent le rêve ultime de l'immobilier insulaire de luxe, un archipel de 1 190 îles coralliennes éparpillées dans les eaux cristallines de l'océan Indien. Ce paradis tropical abrite désormais certaines des résidences les plus exclusives au monde, des villas sur pilotis suspendues au-dessus de lagons turquoise aux demeures privées nichées sur des îles entières. Les plus grandes enseignes hôtelières de luxe — Soneva, Aman, Four Seasons, Waldorf Astoria — proposent des programmes résidentiels permettant d'allier propriété privée et services hôteliers cinq étoiles. La biodiversité marine exceptionnelle des Maldives, avec ses récifs coralliens préservés et ses eaux peuplées de raies manta et de requins-baleines, offre un spectacle naturel incomparable à quelques mètres de votre terrasse. L'absence d'impôt sur le revenu et de taxe foncière, combinée à un cadre de vie d'une sérénité absolue, fait des Maldives une destination de choix pour les ultra-fortunés en quête d'intimité et de beauté naturelle.",
+      "whyInvest": {
+        "title": "Pourquoi investir aux Maldives",
+        "points": [
+          {
+            "title": "Exclusivité absolue",
+            "description": "Le concept unique d'une île par resort garantit une intimité et une exclusivité sans égales, chaque propriété offrant un accès privé à des plages immaculées et à des lagons cristallins."
+          },
+          {
+            "title": "Services hôteliers intégrés",
+            "description": "Les résidences de marque adossées aux plus grands groupes hôteliers de luxe permettent de bénéficier d'un service de majordome, de spas, de restaurants gastronomiques et d'activités nautiques tout au long de l'année."
+          },
+          {
+            "title": "Fiscalité avantageuse",
+            "description": "L'absence d'impôt sur le revenu des personnes physiques et de taxe foncière fait des Maldives une juridiction fiscalement attractive pour les investisseurs internationaux à la recherche d'optimisation patrimoniale."
+          },
+          {
+            "title": "Écosystème marin exceptionnel",
+            "description": "Les récifs coralliens préservés, la mégafaune marine et les eaux parmi les plus limpides de la planète offrent un cadre naturel d'une beauté rare qui valorise durablement chaque investissement."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Propriétés de luxe aux Maldives | BlackOak",
+        "description": "Découvrez des résidences privées d'exception aux Maldives. Villas sur pilotis, îles privées et résidences de marque dans l'archipel le plus exclusif de l'océan Indien.",
+        "ogTitle": "Propriétés de luxe aux Maldives | BlackOak Real Estate",
+        "ogDescription": "Explorez notre collection de biens immobiliers ultra-premium aux Maldives : villas sur pilotis avec lagon privé, résidences Soneva et propriétés insulaires d'exception."
+      }
+    },
+    {
+      "slug": "singapore",
+      "name": "Singapour",
+      "countryCode": "SG",
+      "region": "asia",
+      "heroImage": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1600&q=80",
+      "thumbnail": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80",
+      "description": "Singapour s'est affirmée comme la plaque tournante de l'immobilier ultra-premium en Asie du Sud-Est, combinant une stabilité politique exemplaire, un dynamisme économique remarquable et un cadre de vie exceptionnel. La cité-État abrite certains des développements résidentiels les plus sophistiqués d'Asie, des penthouses de Marina Bay Sands aux demeures coloniales restaurées de Nassim Road. Sentosa Cove, unique enclave en bord de mer accessible aux acquéreurs étrangers, offre des résidences de prestige avec marina privée et vue sur le détroit. Les Good Class Bungalows (GCB), demeures ultra-exclusives réservées aux citoyens singapouriens, représentent le segment le plus convoité du marché. Singapour attire une communauté grandissante de family offices et de fortunes internationales, attirés par un environnement des affaires favorable, une fiscalité compétitive et une qualité de vie urbaine parmi les meilleures au monde. L'architecture avant-gardiste et les espaces verts omniprésents font de cette métropole tropicale un modèle de développement urbain durable.",
+      "whyInvest": {
+        "title": "Pourquoi investir à Singapour",
+        "points": [
+          {
+            "title": "Hub financier de l'Asie",
+            "description": "Singapour est devenue le centre névralgique des family offices en Asie, attirant un afflux massif de capitaux internationaux et de talents qui soutiennent la demande immobilière de luxe."
+          },
+          {
+            "title": "Stabilité et gouvernance exemplaire",
+            "description": "La réputation de Singapour en matière de stabilité politique, de sécurité juridique et de lutte contre la corruption en fait l'un des environnements d'investissement les plus sûrs de la planète."
+          },
+          {
+            "title": "Qualité de vie urbaine exceptionnelle",
+            "description": "Classée régulièrement parmi les villes les plus agréables à vivre au monde, Singapour offre un système éducatif de premier ordre, des infrastructures de santé ultramodernes et une scène gastronomique cosmopolite."
+          },
+          {
+            "title": "Marché immobilier transparent et régulé",
+            "description": "Le cadre réglementaire singapourien garantit une transparence totale des transactions immobilières, protégeant les investisseurs et assurant l'intégrité du marché sur le long terme."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Propriétés de luxe à Singapour | BlackOak",
+        "description": "Découvrez des résidences de prestige à Singapour. Penthouses à Marina Bay, propriétés à Sentosa Cove et demeures d'exception dans les quartiers les plus exclusifs de la cité-État.",
+        "ogTitle": "Propriétés de luxe à Singapour | BlackOak Real Estate",
+        "ogDescription": "Explorez notre sélection de biens immobiliers ultra-premium à Singapour : penthouses avec vue sur la skyline, résidences en bord de mer et demeures dans les enclaves les plus privées."
+      }
+    },
+    {
+      "slug": "united-states",
+      "name": "États-Unis",
+      "countryCode": "US",
+      "region": "americas",
+      "heroImage": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1600&q=80",
+      "thumbnail": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600&q=80",
+      "description": "Les États-Unis représentent le plus grand et le plus diversifié des marchés immobiliers de luxe au monde, offrant une palette incomparable de destinations et de styles de vie. De la skyline spectaculaire de Manhattan aux manoirs de Beverly Hills, des domaines de Palm Beach aux penthouses de Miami Brickell, chaque métropole américaine possède son propre écosystème de prestige. Le marché floridien connaît un essor remarquable, attirant un nombre croissant de fortunes internationales séduites par une fiscalité avantageuse et un art de vivre balnéaire raffiné. New York reste la référence absolue pour les ultra-penthouses à plusieurs dizaines de millions de dollars, tandis que la Californie propose des propriétés architecturales emblématiques signées par les plus grands noms du design contemporain. Le dynamisme de l'économie américaine, la transparence du marché immobilier et l'accès au programme de visa EB-5 renforcent l'attractivité des États-Unis auprès des investisseurs du Moyen-Orient, d'Asie et d'Europe en quête de diversification patrimoniale.",
+      "whyInvest": {
+        "title": "Pourquoi investir aux États-Unis",
+        "points": [
+          {
+            "title": "Premier marché immobilier mondial",
+            "description": "Les États-Unis disposent du marché immobilier le plus liquide et le plus transparent au monde, offrant une profondeur de marché et des volumes de transactions qui garantissent la revente et la valorisation des actifs."
+          },
+          {
+            "title": "Diversité géographique exceptionnelle",
+            "description": "Des gratte-ciels de Manhattan aux domaines de Napa Valley, des penthouses de Miami aux propriétés en front de mer à Malibu, les États-Unis offrent une diversité de cadres de vie sans équivalent pour l'immobilier de prestige."
+          },
+          {
+            "title": "Dynamisme économique et innovation",
+            "description": "La première économie mondiale, berceau de la Silicon Valley et de Wall Street, attire un afflux continu de talents et de capitaux qui soutiennent la demande immobilière dans les marchés clés."
+          },
+          {
+            "title": "Programme de visa investisseur EB-5",
+            "description": "Le programme EB-5 offre aux investisseurs internationaux la possibilité d'obtenir la résidence permanente aux États-Unis, ouvrant l'accès au mode de vie américain et à l'un des systèmes éducatifs les plus réputés au monde."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Propriétés de luxe aux États-Unis | BlackOak",
+        "description": "Découvrez des propriétés d'exception aux États-Unis. Penthouses à New York et Miami, manoirs à Beverly Hills et domaines en bord de mer dans les adresses les plus prestigieuses d'Amérique.",
+        "ogTitle": "Propriétés de luxe aux États-Unis | BlackOak Real Estate",
+        "ogDescription": "Explorez notre collection de biens immobiliers de prestige aux États-Unis : penthouses à Manhattan, villas à Miami Beach, manoirs à Beverly Hills et domaines en Californie."
+      }
+    }
+  ],
+  "properties": [
+    {
+      "id": "intl-prop-001",
+      "slug": "the-mayfair-penthouse",
+      "name": "Le Penthouse de Mayfair",
+      "country": "Royaume-Uni",
+      "countryCode": "GB",
+      "region": "europe",
+      "city": "Londres",
+      "address": "Mayfair, London W1K",
+      "coordinates": {
+        "lat": 51.5074,
+        "lng": -0.1437
+      },
+      "price": 23400000,
+      "localPrice": 18500000,
+      "localCurrency": "GBP",
+      "developer": "Grosvenor",
+      "propertyType": "Penthouse",
+      "bedrooms": 5,
+      "bathrooms": 6,
+      "area": 8500,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": true,
+      "description": "Un penthouse exceptionnel au cœur de Mayfair offrant des vues panoramiques sur Hyde Park. Les finitions sur mesure et les plafonds de cinq mètres créent un cadre de vie incomparable au sein de l'un des quartiers les plus prestigieux de Londres.",
+      "mainImage": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
+        "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "24-Hour Concierge",
+        "Private Elevator",
+        "Wine Cellar",
+        "Spa & Wellness Suite",
+        "Rooftop Terrace",
+        "Underground Parking",
+        "Smart Home System",
+        "Private Garden"
+      ]
+    },
+    {
+      "id": "intl-prop-002",
+      "slug": "golden-mile-estate",
+      "name": "Domaine du Golden Mile",
+      "country": "Espagne",
+      "countryCode": "ES",
+      "region": "europe",
+      "city": "Marbella",
+      "address": "Golden Mile, Marbella 29602",
+      "coordinates": {
+        "lat": 36.5101,
+        "lng": -4.8861
+      },
+      "price": 14100000,
+      "localPrice": 12900000,
+      "localCurrency": "EUR",
+      "developer": "Sierra Blanca Estates",
+      "propertyType": "Villa",
+      "bedrooms": 7,
+      "bathrooms": 8,
+      "area": 12000,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": true,
+      "description": "Une villa contemporaine spectaculaire sur le célèbre Golden Mile de Marbella avec vue mer directe. La propriété offre un style de vie intérieur-extérieur sans pareil avec des jardins méditerranéens luxuriants et une piscine à débordement.",
+      "mainImage": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+        "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&q=80",
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "Infinity Pool",
+        "Mediterranean Garden",
+        "Home Cinema",
+        "Wine Bodega",
+        "Outdoor Kitchen",
+        "Guest House",
+        "Private Beach Access",
+        "Tennis Court"
+      ]
+    },
+    {
+      "id": "intl-prop-003",
+      "slug": "chianti-hills-estate",
+      "name": "Domaine des Collines du Chianti",
+      "country": "Italie",
+      "countryCode": "IT",
+      "region": "europe",
+      "city": "Toscane",
+      "address": "Chianti, Tuscany 53017",
+      "coordinates": {
+        "lat": 43.4707,
+        "lng": 11.1538
+      },
+      "price": 9500000,
+      "localPrice": 8700000,
+      "localCurrency": "EUR",
+      "developer": "Tuscany Heritage Properties",
+      "propertyType": "Estate",
+      "bedrooms": 8,
+      "bathrooms": 10,
+      "area": 15000,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": true,
+      "description": "Un domaine toscan historique magnifiquement restauré niché dans les collines du Chianti avec vignoble et oliveraie. Cette propriété allie le charme de la Renaissance à des aménagements modernes et offre des vues exceptionnelles sur la campagne environnante.",
+      "mainImage": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1523217553820-e5677a49e2db?w=800&q=80",
+        "https://images.unsplash.com/photo-1505843513577-22bb7d21e455?w=800&q=80",
+        "https://images.unsplash.com/photo-1600585153490-76fb20a32601?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "Vineyard",
+        "Olive Grove",
+        "Wine Cellar",
+        "Chapel",
+        "Heated Pool",
+        "Guest Quarters"
+      ]
+    },
+    {
+      "id": "intl-prop-004",
+      "slug": "lake-geneva-chalet",
+      "name": "Chalet du Lac Léman",
+      "country": "Suisse",
+      "countryCode": "CH",
+      "region": "europe",
+      "city": "Genève",
+      "address": "Cologny, Geneva 1223",
+      "coordinates": {
+        "lat": 46.2044,
+        "lng": 6.1432
+      },
+      "price": 24200000,
+      "localPrice": 22000000,
+      "localCurrency": "CHF",
+      "developer": "Swiss Luxury Developments",
+      "propertyType": "Chalet",
+      "bedrooms": 6,
+      "bathrooms": 7,
+      "area": 10500,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": false,
+      "description": "Un chalet de prestige à Cologny avec des vues imprenables sur le lac Léman et le Mont-Blanc. La propriété dispose de matériaux nobles, d'un quai privé et d'un spa intérieur complet dans l'un des quartiers les plus exclusifs de Genève.",
+      "mainImage": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
+        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80",
+        "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "Lake Views",
+        "Indoor Pool",
+        "Home Cinema",
+        "Wine Cellar",
+        "Private Dock",
+        "Spa Suite",
+        "Smart Home System"
+      ]
+    },
+    {
+      "id": "intl-prop-005",
+      "slug": "kamala-bay-residence",
+      "name": "Résidence de la Baie de Kamala",
+      "country": "Thaïlande",
+      "countryCode": "TH",
+      "region": "asia",
+      "city": "Phuket",
+      "address": "Kamala Beach, Phuket 83150",
+      "coordinates": {
+        "lat": 7.9547,
+        "lng": 98.283
+      },
+      "price": 6800000,
+      "localPrice": 6800000,
+      "localCurrency": "USD",
+      "developer": "Montara Hospitality",
+      "propertyType": "Villa",
+      "bedrooms": 5,
+      "bathrooms": 6,
+      "area": 8200,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": false,
+      "description": "Une villa tropicale exclusive surplombant la baie de Kamala avec une piscine à débordement et un accès direct à la plage. Les espaces de vie ouverts sur l'extérieur et les jardins tropicaux luxuriants créent un véritable paradis insulaire.",
+      "mainImage": "https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&q=80",
+        "https://images.unsplash.com/photo-1570737209810-87a8e7245f88?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "Infinity Pool",
+        "Ocean Views",
+        "Private Beach",
+        "Outdoor Pavilion",
+        "Tropical Gardens",
+        "Staff Quarters"
+      ]
+    },
+    {
+      "id": "intl-prop-006",
+      "slug": "north-male-atoll-retreat",
+      "name": "Retraite de l'Atoll Nord de Malé",
+      "country": "Maldives",
+      "countryCode": "MV",
+      "region": "asia",
+      "city": "Atoll Nord de Malé",
+      "address": "North Male Atoll, Maldives",
+      "coordinates": {
+        "lat": 4.4275,
+        "lng": 73.5361
+      },
+      "price": 15000000,
+      "localPrice": 15000000,
+      "localCurrency": "USD",
+      "developer": "Soneva",
+      "propertyType": "Villa",
+      "bedrooms": 4,
+      "bathrooms": 5,
+      "area": 6500,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": false,
+      "description": "Une retraite privée sur pilotis dans les eaux cristallines de l'atoll Nord de Malé. Cette villa exclusive offre un lagon privé, un service de majordome personnel et un accès sans pareil à l'un des plus beaux récifs coralliens au monde.",
+      "mainImage": "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80",
+        "https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=800&q=80",
+        "https://images.unsplash.com/photo-1540202404-a2f29016b523?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "Overwater Deck",
+        "Private Lagoon",
+        "Outdoor Shower",
+        "Glass Floor Panels",
+        "Personal Butler Service",
+        "Water Sports Facility"
+      ]
+    },
+    {
+      "id": "intl-prop-007",
+      "slug": "sentosa-cove-penthouse",
+      "name": "Penthouse de Sentosa Cove",
+      "country": "Singapour",
+      "countryCode": "SG",
+      "region": "asia",
+      "city": "Singapour",
+      "address": "Sentosa Cove, Singapore 098536",
+      "coordinates": {
+        "lat": 1.2494,
+        "lng": 103.8384
+      },
+      "price": 13500000,
+      "localPrice": 18000000,
+      "localCurrency": "SGD",
+      "developer": "Ho Bee Land",
+      "propertyType": "Penthouse",
+      "bedrooms": 4,
+      "bathrooms": 5,
+      "area": 5800,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": false,
+      "description": "Un penthouse d'exception à Sentosa Cove avec vue panoramique sur la marina et les eaux du détroit de Singapour. La résidence offre un jardin privé en terrasse, un mouillage personnel et un accès exclusif au club nautique.",
+      "mainImage": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&q=80",
+        "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80",
+        "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "Marina Views",
+        "Private Pool",
+        "Sky Garden",
+        "Wine Cellar",
+        "Smart Home System",
+        "Concierge Service",
+        "Private Berth"
+      ]
+    },
+    {
+      "id": "intl-prop-008",
+      "slug": "brickell-waterfront-penthouse",
+      "name": "Penthouse Brickell en Bord de Mer",
+      "country": "États-Unis",
+      "countryCode": "US",
+      "region": "americas",
+      "city": "Miami",
+      "address": "Brickell Avenue, Miami, FL 33131",
+      "coordinates": {
+        "lat": 25.7617,
+        "lng": -80.1918
+      },
+      "price": 11500000,
+      "localPrice": 11500000,
+      "localCurrency": "USD",
+      "developer": "Related Group",
+      "propertyType": "Penthouse",
+      "bedrooms": 4,
+      "bathrooms": 5,
+      "area": 6200,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": false,
+      "description": "Un penthouse ultramoderne dans le quartier de Brickell à Miami avec des vues spectaculaires sur la baie de Biscayne. L'espace de vie en plan ouvert s'ouvre sur une terrasse privée avec piscine, offrant un mode de vie côtier luxueux.",
+      "mainImage": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80",
+        "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "Ocean Views",
+        "Private Pool",
+        "Sky Lounge",
+        "Wine Room",
+        "Home Theater",
+        "Concierge Service"
+      ]
+    },
+    {
+      "id": "intl-prop-009",
+      "slug": "beverly-hills-mansion",
+      "name": "Manoir de Beverly Hills",
+      "country": "États-Unis",
+      "countryCode": "US",
+      "region": "americas",
+      "city": "Los Angeles",
+      "address": "Beverly Hills, Los Angeles, CA 90210",
+      "coordinates": {
+        "lat": 34.0736,
+        "lng": -118.4004
+      },
+      "price": 28000000,
+      "localPrice": 28000000,
+      "localCurrency": "USD",
+      "developer": "Hilton & Hyland",
+      "propertyType": "Mansion",
+      "bedrooms": 9,
+      "bathrooms": 12,
+      "area": 22000,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": false,
+      "description": "Un manoir emblématique dans les rues arborées de Beverly Hills avec des jardins paysagers et une vue sur la ville. La propriété comprend un pavillon d'invités, un cinéma privé et des espaces de divertissement extérieurs adaptés aux réceptions les plus prestigieuses.",
+      "mainImage": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
+        "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "Infinity Pool",
+        "Home Cinema",
+        "Wine Cellar",
+        "Gym & Spa",
+        "Guest House",
+        "Motor Court",
+        "Staff Quarters",
+        "Outdoor Kitchen"
+      ]
+    }
+  ]
+}

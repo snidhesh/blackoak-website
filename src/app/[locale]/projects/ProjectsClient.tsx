@@ -13,7 +13,7 @@ interface ProjectsClientProps {
   offerings: string[];
 }
 
-const ITEMS_PER_PAGE = 9;
+const ITEMS_PER_PAGE = 20;
 
 export default function ProjectsClient({
   projects,
@@ -85,7 +85,7 @@ export default function ProjectsClient({
   };
 
   return (
-    <>
+    <div>
       {/* Sticky filter bar */}
       <div className="sticky top-16 lg:top-20 z-30 bg-white -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-4 border-b border-gray-100 shadow-[0_2px_8px_rgba(0,0,0,0.04)] overflow-x-hidden">
         <FilterBar
@@ -110,6 +110,6 @@ export default function ProjectsClient({
         totalPages={totalPages}
         onPageChange={setCurrentPage}
       />
-    </>
+    </div>
   );
 }

@@ -11,3 +11,10 @@ export type {
   CareerApplicationSubmission,
   ProjectEnquirySubmission,
 } from './forms';
+export type {
+  InternationalProperty,
+  InternationalRegion,
+  InternationalRegionSlug,
+  InternationalOffering,
+  InternationalCountry,
+} from './international-property';

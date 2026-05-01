@@ -225,7 +225,7 @@ export default async function CareerPage({ params }: Props) {
         <div className="max-w-[1080px] mx-auto px-6">
           {careers.map((job, i) => (
             <AnimateOnScroll key={job.slug} delay={i * 0.1}>
-              <div className="border-t border-b border-[#ccc] py-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <article className="border-t border-b border-[#ccc] py-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="flex flex-col gap-3">
                   <h3 className="text-[20px] font-semibold leading-[20px] text-black">
                     {job.title}
@@ -247,7 +247,7 @@ export default async function CareerPage({ params }: Props) {
                 >
                   {t('viewDetails')}
                 </Link>
-              </div>
+              </article>
             </AnimateOnScroll>
           ))}
         </div>

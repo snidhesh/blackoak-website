@@ -27,9 +27,9 @@
     },
     "ourTeam": {
       "title": "Our Team - Dubai Real Estate Experts",
-      "description": "Meet the BlackOak Real Estate team. Experienced real estate consultants, investment advisors & property specialists serving Dubai and global clients.",
+      "description": "Meet the BlackOak Real Estate team based in Dubai Marina. Experienced real estate consultants, investment advisors & property specialists serving Dubai and global clients.",
       "ogTitle": "Our Team - Dubai Real Estate Experts",
-      "ogDescription": "Meet the BlackOak Real Estate team. Experienced real estate consultants, investment advisors & property specialists serving Dubai and global clients."
+      "ogDescription": "Meet the BlackOak Real Estate team based in Dubai Marina. Experienced real estate consultants, investment advisors & property specialists serving Dubai and global clients."
     },
     "investors": {
       "title": "Dubai Property Investment Opportunities",
@@ -61,9 +61,9 @@
     },
     "contact": {
       "title": "Contact Us - Dubai & London Offices",
-      "description": "Contact BlackOak Real Estate for luxury property enquiries in Dubai. Offices in Dubai Marina & London. Schedule a private consultation today.",
+      "description": "Contact BlackOak Real Estate for luxury property enquiries in Dubai. Offices in Dubai Marina & London. Schedule a free private consultation today.",
       "ogTitle": "Contact Us | BlackOak Real Estate",
-      "ogDescription": "Contact BlackOak Real Estate for luxury property enquiries in Dubai. Offices in Dubai Marina & London."
+      "ogDescription": "Contact BlackOak Real Estate for luxury property enquiries in Dubai. Offices in Dubai Marina & London. Schedule a free consultation."
     },
     "listProperty": {
       "title": "Sell Your Property in Dubai",
@@ -97,6 +97,19 @@
       "description": "Important disclaimers regarding BlackOak Real Estate property listings, market information, and advisory services in Dubai.",
       "ogTitle": "Disclaimer | BlackOak Real Estate",
       "ogDescription": "Important disclaimers regarding BlackOak Real Estate property listings, market information, and advisory services."
+    },
+    "internationalProperties": {
+      "title": "International Luxury Properties for Sale",
+      "description": "Explore luxury villas, penthouses & estates for sale across Europe, Asia & the Americas. Curated international properties by BlackOak Real Estate.",
+      "ogTitle": "International Luxury Properties for Sale | BlackOak",
+      "ogDescription": "Explore luxury villas, penthouses & estates for sale across Europe, Asia & the Americas."
+    },
+    "internationalPropertyDetail": {
+      "notFoundTitle": "Property Not Found",
+      "forSale": "for Sale"
+    },
+    "internationalCountry": {
+      "titleSuffix": "Luxury Properties | BlackOak"
     }
   },
   "common": {
@@ -181,7 +194,9 @@
       "removeLocation": "Remove {location}",
       "clearAllLocations": "Clear all locations",
       "noLocationsFound": "No locations found",
-      "searchButton": "Search"
+      "searchButton": "Search",
+      "region": "Region",
+      "country": "Country"
     },
     "noPropertiesFound": "No properties found matching your criteria.",
     "whatsappContactAria": "Contact us on WhatsApp"
@@ -198,6 +213,8 @@
     "buyers": "Buyers",
     "newsAndPress": "News & Press",
     "contact": "Contact",
+    "more": "More",
+    "internationalProperties": "International",
     "listYourProperty": "LIST YOUR PROPERTY",
     "whatsapp": "WHATSAPP",
     "openMenu": "Open menu",
@@ -240,7 +257,8 @@
       "whyBlackoak": "Why BlackOak",
       "ourTeam": "Our Team",
       "careers": "Careers",
-      "contact": "Contact"
+      "contact": "Contact",
+      "internationalProperties": "International Properties"
     },
     "neighbourhoodLinks": {
       "emiratesHills": "Emirates Hills",
@@ -497,6 +515,78 @@
       "breadcrumbs": {
         "home": "Home",
         "projects": "Projects"
+      }
+    },
+    "internationalProperties": {
+      "sectionLabel": "International Properties",
+      "heading": "Luxury Residences Across the Globe",
+      "subheading": "Explore premium properties across the world's most prestigious destinations.",
+      "comingSoon": "Coming Soon",
+      "comingSoonDescription": "We are curating an exclusive portfolio of international luxury properties across the world's most prestigious destinations. Our global collection will be available soon.",
+      "notifyMe": "Register Your Interest",
+      "regionsLabel": "EXPLORE REGIONS",
+      "regionsHeading": "Discover the World's Most Coveted Destinations",
+      "countriesInRegion": "{region}",
+      "seoName": "International Luxury Properties by Country",
+      "seoDescription": "Explore luxury properties across 8 countries in Europe, Asia & the Americas. Curated by BlackOak Real Estate.",
+      "ctaLabel": "INTERNATIONAL DESK",
+      "ctaHeading": "Contact Our International Desk",
+      "ctaDescription": "Our global team of specialists is ready to assist you with international property acquisitions.",
+      "ctaButton": "Get in Touch",
+      "breadcrumbs": {
+        "home": "Home",
+        "internationalProperties": "International Properties"
+      },
+      "propertiesCount": "{count} {count, plural, one {property} other {properties}}"
+    },
+    "internationalCountry": {
+      "aboutLabel": "ABOUT",
+      "propertiesLabel": "PROPERTIES",
+      "propertiesHeading": "Available Properties in {country}",
+      "whyInvestLabel": "WHY INVEST",
+      "ctaLabel": "INTERNATIONAL DESK",
+      "ctaHeading": "Interested in {country}?",
+      "ctaDescription": "Our international desk specialists are ready to guide you through the acquisition process.",
+      "ctaButton": "Get in Touch",
+      "breadcrumbs": {
+        "home": "Home",
+        "internationalProperties": "International Properties"
+      }
+    },
+    "internationalPropertyDetail": {
+      "stickyNav": {
+        "details": "Details",
+        "gallery": "Gallery",
+        "amenities": "Amenities",
+        "location": "Location",
+        "enquiry": "Enquiry"
+      },
+      "details": {
+        "label": "Details",
+        "heading": "Property Overview"
+      },
+      "gallery": {
+        "label": "Gallery",
+        "heading": "A Visual Symphony of Luxury",
+        "mainAlt": "{name} main",
+        "galleryAlt": "{name} gallery {index}"
+      },
+      "amenities": {
+        "label": "Amenities",
+        "heading": "Where Every Desire is Anticipated"
+      },
+      "location": {
+        "label": "Location",
+        "heading": "Positioned at the Pinnacle of Prestige"
+      },
+      "enquiry": {
+        "label": "Enquiry",
+        "heading": "Interested in This Property? Let's Connect",
+        "submitLabel": "Submit Enquiry"
+      },
+      "breadcrumbs": {
+        "home": "Home",
+        "internationalProperties": "International Properties"
       }
     },
     "neighbourhoods": {

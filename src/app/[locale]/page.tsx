@@ -4,7 +4,7 @@ import { Link } from '@/i18n/navigation';
 import dynamic from 'next/dynamic';
 import { ArrowRight, ArrowUpRight, MapPin, BedDouble, Maximize2 } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
-import { getFeaturedProjects, getNeighbourhoods, getNews } from '@/lib/content';
+import { getFeaturedProjects, getNeighbourhoods, getNews, getInternationalRegions } from '@/lib/content';
 import { formatDate } from '@/lib/formatters';
 import SectionLabel from '@/components/ui/SectionLabel';
 import SectionHeading from '@/components/ui/SectionHeading';
@@ -12,6 +12,7 @@ import FormattedPrice from '@/components/ui/FormattedPrice';
 import HomeSearchBar from '@/components/ui/HomeSearchBar';
 import Button from '@/components/ui/Button';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
+import RegionCard from '@/components/sections/RegionCard';
 import { getHomepage, getSplash } from '@/lib/content';
 import type { Locale } from '@/i18n/config';
 
@@ -59,6 +60,8 @@ export default async function HomePage({ params }: { params: { locale: string } 
     .map(slug => allNeighbourhoods.find(n => n.slug === slug))
     .filter(Boolean) as typeof allNeighbourhoods;
   const news = getNews(locale).slice(0, 3);
+  const tIntl = await getTranslations({ locale, namespace: 'pages.internationalProperties' });
+  const internationalRegions = getInternationalRegions(locale);
 
   const websiteJsonLd = {
     '@context': 'https://schema.org',
@@ -79,6 +82,28 @@ export default async function HomePage({ params }: { params: { locale: string } 
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'VideoObject',
+            name: homepage.hero.heading,
+            description: homepage.hero.subtitle,
+            thumbnailUrl: `https://blackoak-re.com${homepage.hero.image}`,
+            contentUrl: 'https://blackoak-re.com/images/homepage/hero.mp4',
+            uploadDate: '2024-01-01',
+            publisher: {
+              '@type': 'Organization',
+              name: 'BlackOak Real Estate',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://blackoak-re.com/images/logo-white.png',
+              },
+            },
+          }),
+        }}
       />
 
       {/* Hero Section */}
@@ -407,6 +432,59 @@ export default async function HomePage({ params }: { params: { locale: string } 
         </div>
       </section>
 
+      {/* International Properties — Coming Soon */}
+      <section className="bg-black py-20">
+        <div className="container-wide">
+          <AnimateOnScroll>
+            <div className="text-center mb-12">
+              <SectionLabel light>{homepage.internationalProperties.label}</SectionLabel>
+              <SectionHeading
+                title={homepage.internationalProperties.heading}
+                subtitle={homepage.internationalProperties.description}
+                light
+              />
+            </div>
+          </AnimateOnScroll>
+
+          {/* Blurred region cards with coming soon overlay */}
+          <div className="relative">
+            {/* Coming soon overlay */}
+            <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/50 backdrop-blur-[2px] rounded-md">
+              <div className="text-center px-4">
+                <span className="inline-block border border-white/40 text-white text-[13px] font-medium tracking-[3px] uppercase px-7 py-3 rounded-sm mb-4">
+                  {tIntl('comingSoon')}
+                </span>
+                <p className="text-white/70 text-[14px] leading-[24px] max-w-md mx-auto">
+                  {tIntl('comingSoonDescription')}
+                </p>
+                <div className="mt-6">
+                  <Button href="/international-properties" variant="outline-light">
+                    {tIntl('notifyMe')} <ArrowRight className="w-4 h-4 ms-2 icon-directional" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+            {/* Blurred background cards (non-interactive) */}
+            <div className="pointer-events-none select-none blur-[2px]" aria-hidden="true">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {internationalRegions.map((region) => (
+                  <RegionCard
+                    key={region.slug}
+                    slug={region.slug}
+                    name={region.name}
+                    description={region.description}
+                    image={region.image}
+                    propertyCount={region.propertyCount}
+                    propertyLabel={region.propertyCount === 1 ? tCommon('property') : tCommon('properties')}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* BlackOak Advantage */}
       <section className="py-20">
         <div className="container-wide">
@@ -609,7 +687,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
           <div className="hidden md:grid md:grid-cols-3 gap-6">
             {news.map((article, i) => (
               <AnimateOnScroll key={article.slug} delay={(i + 1) * 0.1}>
-                <Link href="/insights/news" className="group block">
+                <Link href={`/insights/news/${article.slug}`} className="group block">
                   <div className="relative aspect-[454/314] bg-gray-200 overflow-hidden">
                     <Image
                       src={article.image}
@@ -619,9 +697,9 @@ export default async function HomePage({ params }: { params: { locale: string } 
                       sizes="33vw"
                     />
                   </div>
-                  <div className="mt-4 space-y-2">
+                  <article className="mt-4 space-y-2">
                     <p className="text-[12px] font-medium leading-[30px] text-[#5F6368]">
-                      {formatDate(article.publishedDate)}
+                      <time dateTime={article.publishedDate}>{formatDate(article.publishedDate)}</time>
                     </p>
                     <h3 className="font-semibold text-[20px] leading-[30px] text-gray-900 group-hover:text-gray-600 transition-colors line-clamp-2">
                       {article.title}
@@ -629,7 +707,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
                     <p className="font-medium text-[14px] leading-[20px] text-[#5F6368] line-clamp-2">
                       {article.excerpt}
                     </p>
-                  </div>
+                  </article>
                 </Link>
               </AnimateOnScroll>
             ))}
@@ -642,7 +720,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
               {news.map((article) => (
                 <Link
                   key={article.slug}
-                  href="/insights/news"
+                  href={`/insights/news/${article.slug}`}
                   className="group flex-shrink-0 w-[85vw] snap-start"
                 >
                   <div className="relative aspect-[454/314] bg-gray-200 overflow-hidden">
@@ -654,9 +732,9 @@ export default async function HomePage({ params }: { params: { locale: string } 
                       sizes="85vw"
                     />
                   </div>
-                  <div className="mt-4 space-y-2">
+                  <article className="mt-4 space-y-2">
                     <p className="text-[12px] font-medium leading-[30px] text-[#5F6368]">
-                      {formatDate(article.publishedDate)}
+                      <time dateTime={article.publishedDate}>{formatDate(article.publishedDate)}</time>
                     </p>
                     <h3 className="font-semibold text-[18px] leading-[26px] text-gray-900 line-clamp-2">
                       {article.title}
@@ -664,7 +742,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
                     <p className="font-medium text-[14px] leading-[20px] text-[#5F6368] line-clamp-2">
                       {article.excerpt}
                     </p>
-                  </div>
+                  </article>
                 </Link>
               ))}
             </div>

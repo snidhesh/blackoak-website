@@ -144,6 +144,23 @@ export default async function LocaleLayout({
               name: 'Dubai',
             },
             priceRange: '$$$$',
+            knowsAbout: [
+              'Luxury real estate',
+              'Dubai property investment',
+              'Off-plan property',
+              'Golden Visa through real estate',
+              'High-net-worth property advisory',
+            ],
+            hasOfferCatalog: {
+              '@type': 'OfferCatalog',
+              name: 'Real Estate Services',
+              itemListElement: [
+                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Luxury Property Brokerage' } },
+                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Private Advisory & Concierge' } },
+                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Real Estate Investment & Syndication' } },
+                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Property Management' } },
+              ],
+            },
             sameAs: [
               'https://www.instagram.com/blackoakrealestate',
               'https://www.linkedin.com/company/blackoakrealestate',

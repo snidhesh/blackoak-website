@@ -1,0 +1,706 @@
+{
+  "regions": [
+    {
+      "id": "region-europe",
+      "slug": "europe",
+      "name": "Europe",
+      "description": "Discover exceptional estates across Europe's most coveted destinations.",
+      "image": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&q=80",
+      "propertyCount": 4
+    },
+    {
+      "id": "region-asia",
+      "slug": "asia",
+      "name": "Asia & Indian Ocean",
+      "description": "Explore tropical luxury residences across Asia's premier island destinations.",
+      "image": "https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=800&q=80",
+      "propertyCount": 3
+    },
+    {
+      "id": "region-americas",
+      "slug": "americas",
+      "name": "Americas",
+      "description": "Premium waterfront living and iconic estates across the Americas.",
+      "image": "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&q=80",
+      "propertyCount": 2
+    }
+  ],
+  "countries": [
+    {
+      "slug": "united-kingdom",
+      "name": "United Kingdom",
+      "countryCode": "GB",
+      "region": "europe",
+      "heroImage": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1600&q=80",
+      "thumbnail": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600&q=80",
+      "description": "The United Kingdom remains one of the most resilient and sought-after luxury property markets in the world, anchored by London's enduring status as a global financial and cultural capital. Prime Central London neighbourhoods such as Mayfair, Knightsbridge, Belgravia, and Chelsea consistently attract ultra-high-net-worth buyers seeking trophy assets that combine heritage architecture with world-class amenities. Beyond the capital, the Cotswolds, Surrey's private estates, and Scotland's Highland lodges offer country retreats of extraordinary character. The UK's transparent legal framework, freehold ownership structures, and deep liquidity make it a cornerstone of any international property portfolio. Sterling-denominated assets also serve as a natural hedge for investors with multi-currency exposure, while the country's elite educational institutions, healthcare, and lifestyle infrastructure continue to draw global families year after year.",
+      "whyInvest": {
+        "title": "Why Invest in the United Kingdom",
+        "points": [
+          {
+            "title": "Global Financial Hub",
+            "description": "London is the world's leading financial centre, ensuring sustained demand for premium residential real estate from international executives, entrepreneurs, and diplomatic communities."
+          },
+          {
+            "title": "Transparent Legal Framework",
+            "description": "English property law is widely regarded as the gold standard for real estate transactions, offering robust buyer protections, clear title registration, and well-established freehold and leasehold structures."
+          },
+          {
+            "title": "Education & Lifestyle Appeal",
+            "description": "Home to Oxford, Cambridge, and an unmatched network of independent schools, the UK draws global families who invest in residential property alongside their children's education."
+          },
+          {
+            "title": "Long-Term Capital Appreciation",
+            "description": "Prime Central London property has delivered consistent long-term capital growth, with limited new supply in heritage-protected neighbourhoods underpinning enduring value for trophy assets."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Luxury Properties in the United Kingdom | BlackOak",
+        "description": "Explore BlackOak's curated selection of luxury properties across the United Kingdom, from prestigious London penthouses to grand country estates in the English and Scottish countryside.",
+        "ogTitle": "Luxury Properties in the United Kingdom | BlackOak Real Estate",
+        "ogDescription": "Discover prime residential investments in London, the Cotswolds, and beyond. BlackOak connects discerning buyers with the UK's finest trophy properties."
+      }
+    },
+    {
+      "slug": "spain",
+      "name": "Spain",
+      "countryCode": "ES",
+      "region": "europe",
+      "heroImage": "https://images.unsplash.com/photo-1509840841025-9088ba78a826?w=1600&q=80",
+      "thumbnail": "https://images.unsplash.com/photo-1509840841025-9088ba78a826?w=600&q=80",
+      "description": "Spain's luxury property market offers an irresistible blend of Mediterranean climate, rich cultural heritage, and exceptional value relative to northern European capitals. The Costa del Sol, anchored by Marbella's legendary Golden Mile, remains the premier destination for high-net-worth buyers seeking sun-drenched villas with panoramic sea views. Ibiza and Mallorca provide exclusive island retreats, while Barcelona and Madrid deliver vibrant cosmopolitan living in architecturally stunning settings. Spain's Golden Visa programme has historically attracted international capital, and the country's modern infrastructure, world-renowned gastronomy, and relaxed yet sophisticated lifestyle continue to make it one of Europe's most compelling luxury markets. From contemporary beachfront residences to restored Andalusian fincas, Spain rewards investors with strong rental yields driven by year-round tourism and a growing expatriate community.",
+      "whyInvest": {
+        "title": "Why Invest in Spain",
+        "points": [
+          {
+            "title": "Exceptional Lifestyle Value",
+            "description": "Spain offers a lower cost of living than the UK, France, or Switzerland while delivering over 300 days of sunshine, world-class healthcare, and a vibrant cultural scene that consistently ranks among Europe's best quality of life."
+          },
+          {
+            "title": "Strong Rental Demand",
+            "description": "With over 85 million annual tourists, Spain's luxury short-term rental market generates compelling yields, particularly in coastal hotspots like Marbella, Ibiza, and Mallorca during peak seasons."
+          },
+          {
+            "title": "Golden Visa & Residency Pathways",
+            "description": "Spain's investor residency programmes have provided a pathway to European residency through qualifying real estate acquisitions, making it a strategic gateway to the Schengen zone."
+          },
+          {
+            "title": "Diverse Property Landscape",
+            "description": "From ultra-modern penthouses in Barcelona to centuries-old Andalusian estates and minimalist Balearic villas, Spain's luxury market offers remarkable architectural diversity to suit every taste and investment strategy."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Luxury Properties in Spain | BlackOak",
+        "description": "Browse BlackOak's exclusive portfolio of luxury villas and estates in Spain, featuring premium properties in Marbella, Ibiza, Mallorca, Barcelona, and the Costa del Sol.",
+        "ogTitle": "Luxury Properties in Spain | BlackOak Real Estate",
+        "ogDescription": "Discover sun-drenched Mediterranean villas, beachfront estates, and cosmopolitan residences across Spain's most prestigious addresses with BlackOak."
+      }
+    },
+    {
+      "slug": "italy",
+      "name": "Italy",
+      "countryCode": "IT",
+      "region": "europe",
+      "heroImage": "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=1600&q=80",
+      "thumbnail": "https://images.unsplash.com/photo-1534445867742-43195f401b6c?w=600&q=80",
+      "description": "Italy's luxury real estate market is steeped in centuries of art, architecture, and la dolce vita, offering properties that are as much cultural treasures as they are residences. Tuscany's vine-clad estates, Lake Como's palatial waterfront villas, and the Amalfi Coast's cliff-side retreats rank among the most coveted addresses on earth. In the cities, Rome's historic centre and Milan's fashion district deliver sophisticated urban living within settings of unparalleled beauty. Italy's flat tax regime for new residents has opened the market to international wealth, while the scarcity of truly prime properties in heritage-protected zones ensures enduring exclusivity. Whether drawn by the vineyard lifestyle of Chianti, the glamour of Portofino, or the timeless elegance of Venetian palazzi, investors in Italian property acquire not just real estate but a legacy of extraordinary craftsmanship and cultural significance.",
+      "whyInvest": {
+        "title": "Why Invest in Italy",
+        "points": [
+          {
+            "title": "Cultural Heritage & Scarcity",
+            "description": "Italy's strict preservation laws limit new development in historic zones, creating natural scarcity that protects property values in the most desirable locations such as Tuscany, Lake Como, and the Amalfi Coast."
+          },
+          {
+            "title": "Favourable Tax Regime",
+            "description": "Italy's flat tax option for new residents allows qualifying individuals to pay a fixed annual sum on worldwide income, making it one of Europe's most attractive jurisdictions for relocating wealth."
+          },
+          {
+            "title": "Unrivalled Lifestyle",
+            "description": "From Michelin-starred dining and world-class wine regions to fashion, art, and a mild Mediterranean climate, Italy offers a quality of life that few countries can rival, sustaining perpetual demand from global buyers."
+          },
+          {
+            "title": "Robust Tourism-Driven Yields",
+            "description": "As one of the world's top tourism destinations with over 60 million annual visitors, Italy's luxury rental market provides attractive seasonal income, particularly for villa properties in Tuscany, Sardinia, and the Italian Lakes."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Luxury Properties in Italy | BlackOak",
+        "description": "Explore BlackOak's curated collection of luxury Italian properties, from Tuscan vineyard estates and Lake Como villas to historic Roman residences and Amalfi Coast retreats.",
+        "ogTitle": "Luxury Properties in Italy | BlackOak Real Estate",
+        "ogDescription": "Acquire exceptional Italian real estate with BlackOak. Discover heritage estates, lakefront villas, and coastal retreats across Italy's most prestigious regions."
+      }
+    },
+    {
+      "slug": "switzerland",
+      "name": "Switzerland",
+      "countryCode": "CH",
+      "region": "europe",
+      "heroImage": "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=1600&q=80",
+      "thumbnail": "https://images.unsplash.com/photo-1530122037265-a5f1f91d3b99?w=600&q=80",
+      "description": "Switzerland represents the pinnacle of stability, privacy, and precision in global luxury real estate. From the gilded shores of Lake Geneva to the alpine grandeur of Gstaad, Verbier, and St. Moritz, Swiss properties command among the highest per-square-metre prices in the world and reward their owners with unmatched discretion and quality of life. Geneva and Zurich offer sophisticated urban residences favoured by international diplomats, financiers, and corporate leaders, while the country's renowned ski resorts deliver year-round alpine luxury. Switzerland's political neutrality, rock-solid banking system, low crime rates, and exceptional public services create an environment of enduring security for real estate assets. Though the Lex Koller framework regulates foreign ownership, qualifying properties in designated tourist zones remain accessible to international buyers, and the Swiss franc's strength provides a powerful store of value for global investors.",
+      "whyInvest": {
+        "title": "Why Invest in Switzerland",
+        "points": [
+          {
+            "title": "Unparalleled Stability",
+            "description": "Switzerland's political neutrality, AAA-rated economy, and consistently strong Swiss franc make it one of the world's safest havens for real estate investment and long-term wealth preservation."
+          },
+          {
+            "title": "Privacy & Discretion",
+            "description": "Swiss property ownership offers a level of privacy unmatched in most jurisdictions, attracting ultra-high-net-worth individuals who value discretion in their personal and financial affairs."
+          },
+          {
+            "title": "Limited Supply & Premium Values",
+            "description": "Strict zoning regulations, the Lex Weber initiative capping second-home construction, and geographic constraints ensure that prime Swiss properties remain exceptionally scarce, supporting robust long-term price appreciation."
+          },
+          {
+            "title": "World-Class Alpine Lifestyle",
+            "description": "From Michelin-starred mountain dining to Europe's finest ski slopes and pristine lakeside living, Switzerland delivers a quality of life that consistently ranks at the top of global indices, sustaining perennial buyer demand."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Luxury Properties in Switzerland | BlackOak",
+        "description": "Discover BlackOak's exclusive Swiss property portfolio, featuring lakeside estates in Geneva, alpine chalets in Verbier and Gstaad, and premium residences in Zurich.",
+        "ogTitle": "Luxury Properties in Switzerland | BlackOak Real Estate",
+        "ogDescription": "Invest in Swiss luxury real estate with BlackOak. Explore lakefront villas, alpine retreats, and prestigious urban residences across Switzerland's most coveted addresses."
+      }
+    },
+    {
+      "slug": "thailand",
+      "name": "Thailand",
+      "countryCode": "TH",
+      "region": "asia",
+      "heroImage": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=1600&q=80",
+      "thumbnail": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?w=600&q=80",
+      "description": "Thailand's luxury property market has matured into one of Southeast Asia's most dynamic and accessible destinations for international investors. Phuket leads the market with world-class pool villas perched above the Andaman Sea, while Koh Samui and Krabi offer more secluded tropical retreats with equally stunning natural backdrops. In Bangkok, ultra-luxury condominiums along the Chao Phraya River and in the Sukhumvit corridor deliver five-star urban living at a fraction of comparable Asian capitals. Thailand's well-established tourism infrastructure, affordable cost of living, and warm hospitality culture have created a thriving luxury rental market, particularly for branded residences managed by international hotel groups. Condominium ownership is available freehold to foreign nationals, and leasehold structures for villas offer long-term security. With ongoing infrastructure investment, including high-speed rail connections, Thailand continues to strengthen its position as a premier lifestyle and investment destination in the Asia-Pacific region.",
+      "whyInvest": {
+        "title": "Why Invest in Thailand",
+        "points": [
+          {
+            "title": "Exceptional Value Proposition",
+            "description": "Thailand offers luxury finishes and resort-calibre amenities at significantly lower price points than comparable markets in Singapore, Hong Kong, or Australia, delivering outstanding value per square metre for international buyers."
+          },
+          {
+            "title": "Thriving Rental Market",
+            "description": "With nearly 40 million annual visitors and a booming digital nomad community, Thailand's luxury short-term rental market generates strong yields, particularly in Phuket, Koh Samui, and central Bangkok."
+          },
+          {
+            "title": "Foreign Freehold Ownership",
+            "description": "Thailand permits foreign nationals to own condominium units freehold, providing a clear and secure ownership pathway that is rare among Southeast Asian markets."
+          },
+          {
+            "title": "World-Class Hospitality Brands",
+            "description": "Leading hotel operators such as Banyan Tree, Aman, and Six Senses manage branded residence projects across Thailand, offering investors turnkey luxury with professional management and global marketing reach."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Luxury Properties in Thailand | BlackOak",
+        "description": "Explore BlackOak's curated selection of luxury Thai properties, from Phuket oceanfront villas and Koh Samui retreats to ultra-luxury Bangkok penthouses and branded residences.",
+        "ogTitle": "Luxury Properties in Thailand | BlackOak Real Estate",
+        "ogDescription": "Discover tropical luxury real estate in Thailand with BlackOak. Browse premium villas, branded residences, and waterfront properties across Phuket, Koh Samui, and Bangkok."
+      }
+    },
+    {
+      "slug": "maldives",
+      "name": "Maldives",
+      "countryCode": "MV",
+      "region": "asia",
+      "heroImage": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1600&q=80",
+      "thumbnail": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&q=80",
+      "description": "The Maldives has emerged as the ultimate frontier for ultra-luxury residential real estate, offering a rare opportunity to own private overwater and beachfront villas within the world's most exclusive resort archipelago. Spanning 26 atolls and over 1,000 coral islands across the Indian Ocean, the Maldives delivers a level of seclusion, natural beauty, and barefoot luxury that is simply unattainable elsewhere. The government's landmark decision to allow integrated tourism property ownership has unlocked a new asset class, with developments by Soneva, Patina, Waldorf Astoria, and The Ritz-Carlton offering branded residences that combine private island living with five-star hotel services. Properties typically include personal butler service, direct lagoon access, and world-class diving and water sports. With the Maldives commanding the highest average nightly hotel rates globally, residential ownership here offers both an incomparable lifestyle and compelling rental income potential through managed resort programmes.",
+      "whyInvest": {
+        "title": "Why Invest in the Maldives",
+        "points": [
+          {
+            "title": "Ultimate Exclusivity",
+            "description": "Maldivian residential properties are among the rarest on earth, with strict development controls and limited island availability ensuring that each residence offers unmatched privacy and seclusion."
+          },
+          {
+            "title": "Branded Residence Returns",
+            "description": "With the world's highest average hotel room rates, managed resort residences in the Maldives generate exceptional rental yields when owners are not in residence, often exceeding comparable tropical markets."
+          },
+          {
+            "title": "Zero Income Tax",
+            "description": "The Maldives imposes no personal income tax on residents, and rental income from tourism properties benefits from a favourable fiscal environment, enhancing net returns for international investors."
+          },
+          {
+            "title": "Pristine Natural Environment",
+            "description": "Crystal-clear lagoons, vibrant coral reefs, and year-round tropical warmth provide a living environment of extraordinary natural beauty, with the Maldivian government committed to sustainable development and marine conservation."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Luxury Properties in the Maldives | BlackOak",
+        "description": "Discover BlackOak's exclusive Maldives property collection, featuring ultra-luxury overwater villas, private island residences, and branded resort homes across the Indian Ocean.",
+        "ogTitle": "Luxury Properties in the Maldives | BlackOak Real Estate",
+        "ogDescription": "Own a piece of paradise in the Maldives with BlackOak. Explore overwater villas, private island estates, and branded residences in the world's most exclusive archipelago."
+      }
+    },
+    {
+      "slug": "singapore",
+      "name": "Singapore",
+      "countryCode": "SG",
+      "region": "asia",
+      "heroImage": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1600&q=80",
+      "thumbnail": "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&q=80",
+      "description": "Singapore stands as Asia's most transparent, secure, and efficiently governed luxury property market, attracting ultra-high-net-worth buyers from across the globe. The city-state's prime districts -- Orchard Road, Sentosa Cove, Marina Bay, and the historic shophouse enclaves of Emerald Hill -- offer a curated spectrum of luxury living, from sky-high penthouses with panoramic city views to rare landed properties with private gardens. Singapore's rule of law, zero capital gains tax, and robust financial infrastructure make it a cornerstone market for wealth preservation, while its position as a gateway to Southeast Asia ensures perpetual demand from regional and international executives. The Good Class Bungalow segment represents the pinnacle of Singapore real estate, with fewer than 2,800 plots in existence and prices reaching well above SGD 50 million. Sentosa Cove remains the only enclave where foreign nationals may purchase landed property, creating a unique and tightly held market of exceptional waterfront homes.",
+      "whyInvest": {
+        "title": "Why Invest in Singapore",
+        "points": [
+          {
+            "title": "Asia's Safest Market",
+            "description": "Singapore's transparent legal system, strong property rights, zero capital gains tax, and AAA sovereign credit rating make it one of the safest real estate investment destinations in the world."
+          },
+          {
+            "title": "Limited Land Supply",
+            "description": "As a 733-square-kilometre city-state, Singapore's finite land supply creates inherent scarcity, particularly for landed properties, supporting long-term capital appreciation across prime residential segments."
+          },
+          {
+            "title": "Gateway to Asia",
+            "description": "Singapore's strategic position as the business and financial hub of Southeast Asia ensures sustained demand from multinational executives, family offices, and entrepreneurs establishing regional headquarters."
+          },
+          {
+            "title": "World-Class Urban Living",
+            "description": "Consistently ranked among the world's best cities for quality of life, Singapore delivers exceptional education, healthcare, safety, and cultural amenities within a compact, garden-city environment."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Luxury Properties in Singapore | BlackOak",
+        "description": "Browse BlackOak's premium Singapore property portfolio, featuring Sentosa Cove waterfront residences, Orchard Road penthouses, and exclusive Good Class Bungalows.",
+        "ogTitle": "Luxury Properties in Singapore | BlackOak Real Estate",
+        "ogDescription": "Invest in Singapore's premier luxury real estate with BlackOak. Discover penthouses, waterfront villas, and rare landed properties across the city-state's most prestigious addresses."
+      }
+    },
+    {
+      "slug": "united-states",
+      "name": "United States",
+      "countryCode": "US",
+      "region": "americas",
+      "heroImage": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1600&q=80",
+      "thumbnail": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=600&q=80",
+      "description": "The United States offers the world's largest, most liquid, and most diverse luxury property market, spanning iconic urban skylines, sun-soaked waterfronts, and sprawling private estates. Miami has solidified its position as the international capital of luxury real estate, with Brickell, Miami Beach, and Coconut Grove attracting a surge of global wealth drawn by Florida's zero state income tax and vibrant cosmopolitan lifestyle. New York's trophy penthouses along Billionaires' Row and in Tribeca remain the ultimate status symbols, while Los Angeles delivers the glamour of Beverly Hills, Bel Air, and Malibu's oceanfront compounds. Beyond the gateway cities, Aspen, the Hamptons, and Palm Beach cater to ultra-high-net-worth buyers seeking seasonal retreats of unparalleled prestige. The US market's transparency, deep mortgage liquidity, strong rule of law, and unrestricted foreign ownership make it exceptionally accessible to international investors. With major metropolitan areas continuing to attract global talent and capital, prime US residential real estate remains a cornerstone allocation for diversified luxury portfolios.",
+      "whyInvest": {
+        "title": "Why Invest in the United States",
+        "points": [
+          {
+            "title": "Unrestricted Foreign Ownership",
+            "description": "The United States places no restrictions on foreign nationals purchasing residential real estate, offering one of the most open and accessible luxury property markets in the world."
+          },
+          {
+            "title": "Market Depth & Liquidity",
+            "description": "As the world's largest real estate market, the US offers unmatched transaction volume, financing options, and exit liquidity, enabling investors to enter and exit positions with confidence."
+          },
+          {
+            "title": "Tax-Advantaged Jurisdictions",
+            "description": "States such as Florida, Texas, and Nevada impose no state income tax, creating significant tax efficiencies for both resident owners and rental investors in prime luxury markets like Miami, Austin, and Las Vegas."
+          },
+          {
+            "title": "Global Brand Recognition",
+            "description": "Addresses in Beverly Hills, Manhattan, and Miami Beach carry unrivalled global prestige, ensuring strong resale demand and providing a tangible store of value that transcends market cycles."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Luxury Properties in the United States | BlackOak",
+        "description": "Explore BlackOak's curated portfolio of luxury American properties, from Miami waterfront penthouses and Beverly Hills mansions to New York sky residences and Hamptons estates.",
+        "ogTitle": "Luxury Properties in the United States | BlackOak Real Estate",
+        "ogDescription": "Discover premier US luxury real estate with BlackOak. Browse penthouses, mansions, and waterfront estates across Miami, New York, Los Angeles, and America's most prestigious addresses."
+      }
+    }
+  ],
+  "properties": [
+    {
+      "id": "intl-prop-001",
+      "slug": "the-mayfair-penthouse",
+      "name": "The Mayfair Penthouse",
+      "country": "United Kingdom",
+      "countryCode": "GB",
+      "region": "europe",
+      "city": "London",
+      "address": "Mayfair, London W1K",
+      "coordinates": {
+        "lat": 51.5074,
+        "lng": -0.1437
+      },
+      "price": 23400000,
+      "localPrice": 18500000,
+      "localCurrency": "GBP",
+      "developer": "Grosvenor",
+      "propertyType": "Penthouse",
+      "bedrooms": 5,
+      "bathrooms": 6,
+      "area": 8500,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": true,
+      "description": "An extraordinary crown jewel positioned above the storied streets of Mayfair, this five-bedroom penthouse offers unrivalled views across Hyde Park and the London skyline. The residence showcases bespoke interiors with hand-selected marble, oak herringbone flooring, and floor-to-ceiling glazing that floods every room with natural light. A private rooftop terrace and dedicated elevator entrance ensure the ultimate in exclusivity and refinement.",
+      "mainImage": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
+        "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "24-Hour Concierge",
+        "Private Elevator",
+        "Wine Cellar",
+        "Spa & Wellness Suite",
+        "Rooftop Terrace",
+        "Underground Parking",
+        "Smart Home System",
+        "Private Garden"
+      ]
+    },
+    {
+      "id": "intl-prop-002",
+      "slug": "golden-mile-estate",
+      "name": "Golden Mile Estate",
+      "country": "Spain",
+      "countryCode": "ES",
+      "region": "europe",
+      "city": "Marbella",
+      "address": "Golden Mile, Marbella 29602",
+      "coordinates": {
+        "lat": 36.5101,
+        "lng": -4.8861
+      },
+      "price": 14100000,
+      "localPrice": 12900000,
+      "localCurrency": "EUR",
+      "developer": "Sierra Blanca Estates",
+      "propertyType": "Villa",
+      "bedrooms": 7,
+      "bathrooms": 8,
+      "area": 12000,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": true,
+      "description": "Set along Marbella's legendary Golden Mile, this seven-bedroom Mediterranean villa embodies the pinnacle of Costa del Sol living. Expansive open-plan living spaces flow seamlessly to manicured gardens and an infinity pool overlooking the Mediterranean Sea. The estate features a private guest house, home cinema, and direct beach access, creating a resort-calibre retreat in one of Europe's most prestigious addresses.",
+      "mainImage": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+        "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?w=800&q=80",
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "Infinity Pool",
+        "Mediterranean Garden",
+        "Home Cinema",
+        "Wine Bodega",
+        "Outdoor Kitchen",
+        "Guest House",
+        "Private Beach Access",
+        "Tennis Court"
+      ]
+    },
+    {
+      "id": "intl-prop-003",
+      "slug": "chianti-hills-estate",
+      "name": "Chianti Hills Estate",
+      "country": "Italy",
+      "countryCode": "IT",
+      "region": "europe",
+      "city": "Tuscany",
+      "address": "Chianti, Tuscany 53017",
+      "coordinates": {
+        "lat": 43.4707,
+        "lng": 11.1538
+      },
+      "price": 9500000,
+      "localPrice": 8700000,
+      "localCurrency": "EUR",
+      "developer": "Tuscany Heritage Properties",
+      "propertyType": "Estate",
+      "bedrooms": 8,
+      "bathrooms": 10,
+      "area": 15000,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": true,
+      "description": "A breathtaking Tuscan estate nestled among the rolling hills of the Chianti wine region, offering eight bedrooms across a meticulously restored 17th-century main villa and guest quarters. The property encompasses a private vineyard, centuries-old olive grove, and a consecrated chapel, all surrounded by panoramic views of the Tuscan countryside. Every detail honours the estate's heritage while incorporating modern comforts, from the vaulted stone ceilings to the heated infinity pool.",
+      "mainImage": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1523217553820-e5677a49e2db?w=800&q=80",
+        "https://images.unsplash.com/photo-1505843513577-22bb7d21e455?w=800&q=80",
+        "https://images.unsplash.com/photo-1600585153490-76fb20a32601?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "Vineyard",
+        "Olive Grove",
+        "Wine Cellar",
+        "Chapel",
+        "Heated Pool",
+        "Guest Quarters"
+      ]
+    },
+    {
+      "id": "intl-prop-004",
+      "slug": "lake-geneva-chalet",
+      "name": "Lake Geneva Chalet",
+      "country": "Switzerland",
+      "countryCode": "CH",
+      "region": "europe",
+      "city": "Geneva",
+      "address": "Cologny, Geneva 1223",
+      "coordinates": {
+        "lat": 46.2044,
+        "lng": 6.1432
+      },
+      "price": 24200000,
+      "localPrice": 22000000,
+      "localCurrency": "CHF",
+      "developer": "Swiss Luxury Developments",
+      "propertyType": "Chalet",
+      "bedrooms": 6,
+      "bathrooms": 7,
+      "area": 10500,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": false,
+      "description": "Perched in the exclusive enclave of Cologny, this six-bedroom lakeside chalet commands sweeping views across Lake Geneva to the snow-capped peaks of Mont Blanc. The residence blends traditional alpine craftsmanship with cutting-edge smart home technology, featuring warm timber interiors, an indoor lap pool, and a private dock on the lake. A world-class wine cellar and home cinema complete this sanctuary of Swiss precision and understated elegance.",
+      "mainImage": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80",
+        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80",
+        "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "Lake Views",
+        "Indoor Pool",
+        "Home Cinema",
+        "Wine Cellar",
+        "Private Dock",
+        "Spa Suite",
+        "Smart Home System"
+      ]
+    },
+    {
+      "id": "intl-prop-005",
+      "slug": "kamala-bay-residence",
+      "name": "Kamala Bay Residence",
+      "country": "Thailand",
+      "countryCode": "TH",
+      "region": "asia",
+      "city": "Phuket",
+      "address": "Kamala Beach, Phuket 83150",
+      "coordinates": {
+        "lat": 7.9547,
+        "lng": 98.283
+      },
+      "price": 6800000,
+      "localPrice": 6800000,
+      "localCurrency": "USD",
+      "developer": "Montara Hospitality",
+      "propertyType": "Villa",
+      "bedrooms": 5,
+      "bathrooms": 6,
+      "area": 8200,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": false,
+      "description": "A striking five-bedroom tropical villa cascading down Kamala's lush hillside with unobstructed views over the Andaman Sea. Open-air living pavilions, natural stone finishes, and expansive teak decking blur the line between indoor luxury and the surrounding tropical landscape. The infinity pool appears to merge with the ocean horizon, while private staff quarters and a dedicated outdoor entertaining pavilion ensure effortless island living.",
+      "mainImage": "https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=800&q=80",
+        "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&q=80",
+        "https://images.unsplash.com/photo-1570737209810-87a8e7245f88?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "Infinity Pool",
+        "Ocean Views",
+        "Private Beach",
+        "Outdoor Pavilion",
+        "Tropical Gardens",
+        "Staff Quarters"
+      ]
+    },
+    {
+      "id": "intl-prop-006",
+      "slug": "north-male-atoll-retreat",
+      "name": "North Male Atoll Retreat",
+      "country": "Maldives",
+      "countryCode": "MV",
+      "region": "asia",
+      "city": "North Male Atoll",
+      "address": "North Male Atoll, Maldives",
+      "coordinates": {
+        "lat": 4.4275,
+        "lng": 73.5361
+      },
+      "price": 15000000,
+      "localPrice": 15000000,
+      "localCurrency": "USD",
+      "developer": "Soneva",
+      "propertyType": "Villa",
+      "bedrooms": 4,
+      "bathrooms": 5,
+      "area": 6500,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": false,
+      "description": "An ultra-exclusive four-bedroom overwater villa set within a pristine private lagoon in the North Male Atoll, offering the rarest form of Maldivian luxury. Glass floor panels reveal the vibrant coral reef below, while the expansive overwater deck provides a private vantage point for endless Indian Ocean sunsets. A personal butler, direct lagoon access, and world-class water sports facilities elevate this retreat to a class of its own.",
+      "mainImage": "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=800&q=80",
+        "https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=800&q=80",
+        "https://images.unsplash.com/photo-1540202404-a2f29016b523?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "Overwater Deck",
+        "Private Lagoon",
+        "Outdoor Shower",
+        "Glass Floor Panels",
+        "Personal Butler Service",
+        "Water Sports Facility"
+      ]
+    },
+    {
+      "id": "intl-prop-007",
+      "slug": "sentosa-cove-penthouse",
+      "name": "Sentosa Cove Penthouse",
+      "country": "Singapore",
+      "countryCode": "SG",
+      "region": "asia",
+      "city": "Singapore",
+      "address": "Sentosa Cove, Singapore 098536",
+      "coordinates": {
+        "lat": 1.2494,
+        "lng": 103.8384
+      },
+      "price": 13500000,
+      "localPrice": 18000000,
+      "localCurrency": "SGD",
+      "developer": "Ho Bee Land",
+      "propertyType": "Penthouse",
+      "bedrooms": 4,
+      "bathrooms": 5,
+      "area": 5800,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": false,
+      "description": "A prestigious four-bedroom penthouse crowning one of Sentosa Cove's most sought-after waterfront developments, with panoramic views across the marina and the South China Sea. The sky-level residence features double-height living spaces, a private rooftop pool, and a lush sky garden that offers a serene escape above the city. With a private berth included and full concierge service, this is Singapore's most exclusive island address.",
+      "mainImage": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=800&q=80",
+        "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80",
+        "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "Marina Views",
+        "Private Pool",
+        "Sky Garden",
+        "Wine Cellar",
+        "Smart Home System",
+        "Concierge Service",
+        "Private Berth"
+      ]
+    },
+    {
+      "id": "intl-prop-008",
+      "slug": "brickell-waterfront-penthouse",
+      "name": "Brickell Waterfront Penthouse",
+      "country": "United States",
+      "countryCode": "US",
+      "region": "americas",
+      "city": "Miami",
+      "address": "Brickell Avenue, Miami, FL 33131",
+      "coordinates": {
+        "lat": 25.7617,
+        "lng": -80.1918
+      },
+      "price": 11500000,
+      "localPrice": 11500000,
+      "localCurrency": "USD",
+      "developer": "Related Group",
+      "propertyType": "Penthouse",
+      "bedrooms": 4,
+      "bathrooms": 5,
+      "area": 6200,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": false,
+      "description": "Soaring above Miami's glittering Brickell financial district, this four-bedroom penthouse offers wraparound views of Biscayne Bay, the Atlantic Ocean, and the city skyline. Floor-to-ceiling glass walls and an open-concept layout create a luminous living environment complemented by Italian marble finishes and a chef-grade kitchen. A private plunge pool, sky lounge access, and full-service concierge deliver the quintessential Miami luxury lifestyle.",
+      "mainImage": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&q=80",
+        "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "Ocean Views",
+        "Private Pool",
+        "Sky Lounge",
+        "Wine Room",
+        "Home Theater",
+        "Concierge Service"
+      ]
+    },
+    {
+      "id": "intl-prop-009",
+      "slug": "beverly-hills-mansion",
+      "name": "Beverly Hills Mansion",
+      "country": "United States",
+      "countryCode": "US",
+      "region": "americas",
+      "city": "Los Angeles",
+      "address": "Beverly Hills, Los Angeles, CA 90210",
+      "coordinates": {
+        "lat": 34.0736,
+        "lng": -118.4004
+      },
+      "price": 28000000,
+      "localPrice": 28000000,
+      "localCurrency": "USD",
+      "developer": "Hilton & Hyland",
+      "propertyType": "Mansion",
+      "bedrooms": 9,
+      "bathrooms": 12,
+      "area": 22000,
+      "areaUnit": "Sq.Ft.",
+      "offering": "sale",
+      "status": "available",
+      "featured": false,
+      "description": "An iconic nine-bedroom mansion set behind private gates in the heart of Beverly Hills, commanding over 22,000 square feet of refined living space across meticulously landscaped grounds. The estate features grand entertaining rooms with soaring ceilings, a professional home cinema, and a resort-style infinity pool overlooking the Los Angeles basin. A separate guest house, motor court, and full staff quarters make this one of the most complete private estates in the 90210.",
+      "mainImage": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+      "gallery": [
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
+        "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
+        "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=800&q=80"
+      ],
+      "floorPlans": [],
+      "amenities": [
+        "Infinity Pool",
+        "Home Cinema",
+        "Wine Cellar",
+        "Gym & Spa",
+        "Guest House",
+        "Motor Court",
+        "Staff Quarters",
+        "Outdoor Kitchen"
+      ]
+    }
+  ]
+}

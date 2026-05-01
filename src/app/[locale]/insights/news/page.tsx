@@ -73,6 +73,7 @@ export default async function NewsPage({ params }: Props) {
       inLanguage: locale,
       image: article.image ? `https://blackoak-re.com${article.image}` : undefined,
       url: locale === 'en' ? `https://blackoak-re.com/insights/news/${article.slug}/` : `https://blackoak-re.com/${locale}/insights/news/${article.slug}/`,
+      author: { '@type': 'Organization', name: article.author || 'BlackOak Real Estate' },
     })),
   };
 

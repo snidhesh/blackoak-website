@@ -105,7 +105,7 @@ export default async function ProjectDetailPage({ params }: Props) {
     datePosted: project.availableFrom || new Date().toISOString().split('T')[0],
     offers: {
       '@type': 'Offer',
-      price: project.price,
+      price: String(project.price),
       priceCurrency: 'AED',
       availability: 'https://schema.org/InStock',
     },

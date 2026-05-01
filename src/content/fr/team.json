@@ -35,24 +35,24 @@
     "category": "real-estate"
   },
   {
-    "id": "6",
-    "name": "Ana Ambrosio",
-    "title": "Associée",
-    "image": "/images/team/ana-ambrosio.jpg",
-    "category": "real-estate"
-  },
-  {
-    "id": "7",
-    "name": "Ahmed Lababidi",
-    "title": "Associé",
-    "image": "/images/team/ahmed-lababidi.jpg",
-    "category": "real-estate"
-  },
-  {
     "id": "8",
     "name": "Dayan Candamil",
     "title": "Associé",
     "image": "/images/team/dayan-candamil.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "11",
+    "name": "Jahongir Usmonov",
+    "title": "Associé",
+    "image": "/images/team/jahongir-usmonov.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "6",
+    "name": "Ana Ambrosio",
+    "title": "Associée",
+    "image": "/images/team/ana-ambrosio.jpg",
     "category": "real-estate"
   },
   {
@@ -70,13 +70,6 @@
     "category": "real-estate"
   },
   {
-    "id": "11",
-    "name": "Jahongir Usmonov",
-    "title": "Associé",
-    "image": "/images/team/jahongir-usmonov.jpg",
-    "category": "real-estate"
-  },
-  {
     "id": "23",
     "name": "Nader Baky",
     "title": "Associé",
@@ -91,17 +84,17 @@
     "category": "real-estate"
   },
   {
+    "id": "49",
+    "name": "Peter Siwik",
+    "title": "Directeur Associé",
+    "image": "/images/team/peter-siwik.jpg",
+    "category": "real-estate"
+  },
+  {
     "id": "13",
     "name": "Ridwan Hassan",
     "title": "Directeur Associé",
     "image": "/images/team/ridwan-hassan.jpg",
-    "category": "real-estate"
-  },
-  {
-    "id": "14",
-    "name": "Kareem Hafez",
-    "title": "Directeur Associé",
-    "image": "/images/team/kareem-hafez.jpg",
     "category": "real-estate"
   },
   {
@@ -112,10 +105,17 @@
     "category": "real-estate"
   },
   {
-    "id": "16",
-    "name": "Tarek Barbary",
+    "id": "32",
+    "name": "Iwona Piotrowska",
+    "title": "Directrice Associée",
+    "image": "/images/team/iwona-piotrowska.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "14",
+    "name": "Kareem Hafez",
     "title": "Directeur Associé",
-    "image": "/images/team/tarek-barbary.jpg",
+    "image": "/images/team/kareem-hafez.jpg",
     "category": "real-estate"
   },
   {
@@ -123,6 +123,13 @@
     "name": "Bakhodur Usmanov",
     "title": "Directeur Associé",
     "image": "/images/team/bakhodur-usmanov.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "16",
+    "name": "Tarek Barbary",
+    "title": "Directeur Associé",
+    "image": "/images/team/tarek-barbary.jpg",
     "category": "real-estate"
   },
   {
@@ -140,13 +147,6 @@
     "category": "real-estate"
   },
   {
-    "id": "21",
-    "name": "Philippa Blunden",
-    "title": "Consultante Immobilière Senior",
-    "image": "/images/team/philippa-blunden.jpg",
-    "category": "real-estate"
-  },
-  {
     "id": "22",
     "name": "Laleh Changizi",
     "title": "Consultante Immobilière Senior",
@@ -154,10 +154,10 @@
     "category": "real-estate"
   },
   {
-    "id": "24",
-    "name": "Carol Ozon",
+    "id": "46",
+    "name": "Merihan Magdy",
     "title": "Consultante Immobilière Senior",
-    "image": "/images/team/carol-ozon.jpg",
+    "image": "/images/team/merihan-magdy.jpg",
     "category": "real-estate"
   },
   {
@@ -196,17 +196,17 @@
     "category": "real-estate"
   },
   {
-    "id": "46",
-    "name": "Merihan Magdy",
+    "id": "24",
+    "name": "Carol Ozon",
     "title": "Consultante Immobilière Senior",
-    "image": "/images/team/merihan-magdy.jpg",
+    "image": "/images/team/carol-ozon.jpg",
     "category": "real-estate"
   },
   {
-    "id": "32",
-    "name": "Iwona Piotrowska",
+    "id": "21",
+    "name": "Philippa Blunden",
     "title": "Consultante Immobilière Senior",
-    "image": "/images/team/iwona-piotrowska.jpg",
+    "image": "/images/team/philippa-blunden.jpg",
     "category": "real-estate"
   },
   {
@@ -217,10 +217,10 @@
     "category": "real-estate"
   },
   {
-    "id": "34",
-    "name": "Indira Tulegenova",
-    "title": "Consultante Immobilière",
-    "image": "/images/team/indira-tulegenova.jpg",
+    "id": "47",
+    "name": "Aimerey Beisembay",
+    "title": "Consultant Immobilier",
+    "image": "/images/team/aimerey-beisembay-v2.jpg",
     "category": "real-estate"
   },
   {
@@ -238,17 +238,10 @@
     "category": "real-estate"
   },
   {
-    "id": "35",
-    "name": "Gurpreet Jandu",
-    "title": "Consultant Immobilier",
-    "image": "/images/team/gurpreet-jandu.jpg",
-    "category": "real-estate"
-  },
-  {
-    "id": "47",
-    "name": "Aimerey Beisembay",
-    "title": "Consultant Immobilier",
-    "image": "/images/team/aimerey-beisembay-v2.jpg",
+    "id": "34",
+    "name": "Indira Tulegenova",
+    "title": "Consultante Immobilière",
+    "image": "/images/team/indira-tulegenova.jpg",
     "category": "real-estate"
   },
   {

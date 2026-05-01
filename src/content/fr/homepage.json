@@ -189,5 +189,11 @@
     "label": "DANS LES MEDIAS",
     "heading": "Couverture mediatique, analyses et actualites officielles de BlackOak Real Estate",
     "cta": { "label": "Plus d'actualites", "href": "/insights/news" }
+  },
+  "internationalProperties": {
+    "label": "PROPRIÉTÉS INTERNATIONALES",
+    "heading": "Résidences de luxe à travers le monde",
+    "description": "Explorez des propriétés d'exception dans les destinations les plus prestigieuses du monde.",
+    "cta": "Explorer les propriétés internationales"
   }
 }
