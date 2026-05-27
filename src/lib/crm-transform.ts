@@ -61,6 +61,10 @@ const COMMUNITY_TO_SLUG: Record<string, string> = {
 export function resolveImageUrl(url: string | undefined | null): string {
   if (!url) return '/images/placeholder.jpg';
   if (url.startsWith('http://') || url.startsWith('https://')) return url;
+  // The CRM sometimes returns inline base64 data URIs. Prefixing them with the
+  // base URL produced broken src values that next/image expanded into multi-MB
+  // srcset entries (a single one reached ~29MB), so fall back to a placeholder.
+  if (url.startsWith('data:')) return '/images/placeholder.jpg';
   return `${CRM_API_BASE_URL}${url.startsWith('/') ? '' : '/'}${url}`;
 }
 
