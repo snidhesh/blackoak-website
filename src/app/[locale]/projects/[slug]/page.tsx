@@ -16,6 +16,7 @@ import StickyNav from '@/components/ui/StickyNav';
 
 export const dynamicParams = true;
 export const revalidate = 300;
+export const maxDuration = 60;
 
 interface Props {
   params: { slug: string; locale: string };

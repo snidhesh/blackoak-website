@@ -3,9 +3,11 @@ import type { CrmListing, CrmListResponse } from '@/types/crm';
 const CRM_API_BASE_URL = process.env.CRM_API_BASE_URL ?? '';
 const CRM_API_KEY = process.env.CRM_API_KEY ?? '';
 
-async function crmFetch<T>(path: string): Promise<T> {
+const CRM_TIMEOUT_MS = 30_000;
+
+async function crmFetch<T>(path: string, attempt = 1): Promise<T> {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 10_000);
+  const timeout = setTimeout(() => controller.abort(), CRM_TIMEOUT_MS);
 
   try {
     const res = await fetch(`${CRM_API_BASE_URL}${path}`, {
@@ -20,8 +22,12 @@ async function crmFetch<T>(path: string): Promise<T> {
 
     return res.json() as Promise<T>;
   } catch (error) {
-    if (error instanceof DOMException && error.name === 'AbortError') {
-      throw new Error(`CRM API timeout after 10s for ${path}`);
+    const isTimeout = error instanceof DOMException && error.name === 'AbortError';
+    if (attempt < 2) {
+      return crmFetch<T>(path, attempt + 1);
+    }
+    if (isTimeout) {
+      throw new Error(`CRM API timeout after ${CRM_TIMEOUT_MS / 1000}s for ${path}`);
     }
     throw error;
   } finally {

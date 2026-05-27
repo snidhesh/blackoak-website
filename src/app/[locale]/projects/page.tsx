@@ -6,6 +6,7 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import ProjectsClient from './ProjectsClient';
 
 export const revalidate = 300;
+export const maxDuration = 60;
 
 interface Props {
   params: { locale: string };
