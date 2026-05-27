@@ -1,5 +1,5 @@
 import { cache } from 'react';
-import type { Project } from '@/types/project';
+import type { Project, ProjectListItem } from '@/types/project';
 import type { Neighbourhood } from '@/types/neighbourhood';
 import type { CareerJob } from '@/types/career';
 import type { NewsItem } from '@/types/news';
@@ -165,6 +165,29 @@ export async function getFeaturedProjects(): Promise<Project[]> {
 export async function getProjectsByNeighbourhood(neighbourhoodSlug: string): Promise<Project[]> {
   const projects = await getProjects();
   return projects.filter((p) => p.neighbourhood === neighbourhoodSlug);
+}
+
+export function toProjectListItem(p: Project): ProjectListItem {
+  return {
+    slug: p.slug,
+    name: p.name,
+    mainImage: p.mainImage,
+    price: p.price,
+    currency: p.currency,
+    developer: p.developer,
+    neighbourhood: p.neighbourhood,
+    propertyType: p.propertyType,
+    bedrooms: p.bedrooms,
+    bathrooms: p.bathrooms,
+    area: p.area,
+    areaUnit: p.areaUnit,
+    offering: p.offering,
+  };
+}
+
+export async function getProjectListItems(): Promise<ProjectListItem[]> {
+  const projects = await getProjects();
+  return projects.map(toProjectListItem);
 }
 
 // --- Static data functions (locale-aware) ---

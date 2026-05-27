@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n/config';
-import { getProjects } from '@/lib/content';
+import { getProjectListItems } from '@/lib/content';
 import SectionLabel from '@/components/ui/SectionLabel';
 import ProjectsClient from './ProjectsClient';
 
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProjectsPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as Locale;
   const t = await getTranslations({ locale, namespace: 'pages.projects' });
-  const projects = await getProjects();
+  const projects = await getProjectListItems();
 
   const neighbourhoodSlugs = [...new Set(projects.map((p) => p.neighbourhood))];
   const propertyTypes = [...new Set(projects.map((p) => p.propertyType))];

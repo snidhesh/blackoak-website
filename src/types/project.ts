@@ -9,6 +9,25 @@ export interface ProjectAgent {
   brn: string;
 }
 
+// Lightweight projection for list/grid views — excludes heavy fields
+// (gallery, descriptions, floorPlans, amenities, agent, location) so the
+// projects listing doesn't serialize ~1000 full objects into the client payload.
+export interface ProjectListItem {
+  slug: string;
+  name: string;
+  mainImage: string;
+  price: number;
+  currency: string;
+  developer: string;
+  neighbourhood: string;
+  propertyType: string;
+  bedrooms: number;
+  bathrooms: number;
+  area: number;
+  areaUnit: string;
+  offering?: string;
+}
+
 export interface Project {
   id: string;
   slug: string;

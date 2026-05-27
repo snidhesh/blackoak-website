@@ -1,13 +1,13 @@
 'use client';
 
 import { useState, useMemo, useEffect, useRef } from 'react';
-import type { Project } from '@/types/project';
+import type { ProjectListItem } from '@/types/project';
 import FilterBar, { type FilterState } from '@/components/sections/FilterBar';
 import PropertyGrid from '@/components/sections/PropertyGrid';
 import Pagination from '@/components/ui/Pagination';
 
 interface ProjectsClientProps {
-  projects: Project[];
+  projects: ProjectListItem[];
   neighbourhoodSlugs: string[];
   propertyTypes: string[];
   offerings: string[];

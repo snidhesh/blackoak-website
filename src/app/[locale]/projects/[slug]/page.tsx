@@ -3,7 +3,7 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { MapPin, Bed, Maximize, Check, ExternalLink } from 'lucide-react';
-import { getProjects, getProjectBySlug } from '@/lib/content';
+import { getProjectBySlug } from '@/lib/content';
 import { formatArea } from '@/lib/formatters';
 import { getProjectName, getProjectDescription } from '@/lib/crm-transform';
 import type { Locale } from '@/i18n/config';
@@ -22,9 +22,10 @@ interface Props {
   params: { slug: string; locale: string };
 }
 
+// Render project pages on-demand via ISR (dynamicParams = true) instead of
+// pre-rendering ~1000 slugs at build time, which overloads the slow CRM.
 export async function generateStaticParams() {
-  const projects = await getProjects();
-  return projects.map((p) => ({ slug: p.slug }));
+  return [];
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
