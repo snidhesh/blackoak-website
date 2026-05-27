@@ -5,6 +5,20 @@ import { slugify } from '@/lib/utils';
 
 const CRM_API_BASE_URL = process.env.CRM_API_BASE_URL ?? '';
 
+// The CRM returns some images as multi-MB base64 data URIs that the app
+// discards anyway (see resolveImageUrl). Strip them before storing a snapshot
+// so it stays small (~2MB instead of ~50MB).
+export function sanitizeListing(listing: CrmListing): CrmListing {
+  const images = Array.isArray(listing.images)
+    ? listing.images.filter((img) => typeof img === 'string' && !img.startsWith('data:'))
+    : [];
+  const agent =
+    listing.agent && listing.agent.profileImage?.startsWith?.('data:')
+      ? { ...listing.agent, profileImage: '' }
+      : listing.agent;
+  return { ...listing, images, agent };
+}
+
 const COMMUNITY_TO_SLUG: Record<string, string> = {
   // Neighbourhood pages
   'emirates hills': 'emirates-hills',

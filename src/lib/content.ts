@@ -1,4 +1,6 @@
 import { cache } from 'react';
+import { unstable_cache } from 'next/cache';
+import { list } from '@vercel/blob';
 import type { Project, ProjectListItem } from '@/types/project';
 import type { Neighbourhood } from '@/types/neighbourhood';
 import type { CareerJob } from '@/types/career';
@@ -126,11 +128,35 @@ validateSlugs(
 
 // --- CRM-backed project functions (async) ---
 
+// Reads the snapshot from Vercel Blob (refreshed every 15 min by the cron at
+// /api/cron/refresh-projects). Cached 60s so Blob is hit at most once per minute
+// per region. Returns null if Blob is unavailable so we can fall back to the
+// committed snapshot — the CRM is never called on the request path.
+const readSnapshotFromBlob = unstable_cache(
+  async (): Promise<CrmListing[] | null> => {
+    try {
+      if (!process.env.BLOB_READ_WRITE_TOKEN) return null;
+      const { blobs } = await list({ prefix: 'listings-snapshot' });
+      if (blobs.length === 0) return null;
+      const latest = blobs.sort(
+        (a, b) => +new Date(b.uploadedAt) - +new Date(a.uploadedAt)
+      )[0];
+      const res = await fetch(latest.url, { cache: 'no-store' });
+      if (!res.ok) return null;
+      return (await res.json()) as CrmListing[];
+    } catch (error) {
+      console.error('[content] Blob snapshot read failed, using committed fallback:', error);
+      return null;
+    }
+  },
+  ['projects-snapshot-blob'],
+  { revalidate: 60 }
+);
+
 async function _getProjects(): Promise<Project[]> {
   try {
-    // Read from the committed local snapshot (refreshed by a scheduled job)
-    // instead of calling the CRM per request — see scripts/fetch-projects-snapshot.mjs
-    const listings = listingsSnapshot as unknown as CrmListing[];
+    const listings =
+      (await readSnapshotFromBlob()) ?? (listingsSnapshot as unknown as CrmListing[]);
     const projects = deduplicateSlugs(listings.map(transformListing));
 
     // Post-transform neighbourhood validation
