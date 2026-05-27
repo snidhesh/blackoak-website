@@ -110,6 +110,12 @@
     },
     "internationalCountry": {
       "titleSuffix": "Propriétés de luxe | BlackOak"
+    },
+    "neighbourhoods": {
+      "title": "Quartiers de Dubai - Explorez les communautés de luxe | BlackOak Real Estate",
+      "description": "Découvrez les quartiers les plus prestigieux de Dubai. D''Emirates Hills à Palm Jumeirah, explorez les communautés de luxe et trouvez votre propriété idéale avec BlackOak Real Estate.",
+      "ogTitle": "Quartiers de Dubai - Explorez les communautés de luxe | BlackOak",
+      "ogDescription": "Découvrez les quartiers les plus prestigieux de Dubai. Explorez les communautés de luxe et trouvez votre propriété idéale avec BlackOak Real Estate."
     }
   },
   "common": {
@@ -588,6 +594,11 @@
         "home": "Accueil",
         "internationalProperties": "Propriétés internationales"
       }
+    },
+    "neighbourhoodsLanding": {
+      "sectionLabel": "Quartiers",
+      "heading": "Découvrez les communautés les plus prestigieuses de Dubai",
+      "subtitle": "Explorez l''immobilier de luxe dans les plus beaux quartiers de Dubai, chacun offrant un style de vie distinct et un potentiel d''investissement exceptionnel."
     },
     "neighbourhoods": {
       "aboutLabel": "À propos de {name}",

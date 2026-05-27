@@ -66,6 +66,7 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
     alternates: {
       canonical: locale === 'en' ? `${BASE_URL}/` : `${BASE_URL}/${locale}/`,
       languages: {
+        'x-default': `${BASE_URL}/`,
         en: `${BASE_URL}/`,
         fr: `${BASE_URL}/fr/`,
         ar: `${BASE_URL}/ar/`,
@@ -164,6 +165,9 @@ export default async function LocaleLayout({
             sameAs: [
               'https://www.instagram.com/blackoakrealestate',
               'https://www.linkedin.com/company/blackoakrealestate',
+              'https://www.facebook.com/BlackOakRE/',
+              'https://x.com/blackoakre',
+              'https://www.youtube.com/@BlackOakRealEstate',
             ],
           }),
         }}

@@ -20,7 +20,7 @@ interface NavItem {
 const getNavKey = (item: NavItem) => item.id ?? item.label;
 
 const MORE_KEY = 'more';
-const PRIMARY_IDS = new Set(['properties', 'international', 'neighbourhoods']);
+const PRIMARY_IDS = new Set(['properties', 'international', 'about', 'contact']);
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -41,25 +41,8 @@ export default function Navbar() {
     },
     { id: 'properties', label: t('properties'), href: '/projects' },
     { id: 'international', label: t('internationalProperties'), href: '/international-properties' },
-    {
-      id: 'neighbourhoods',
-      label: t('neighbourhoods'),
-      dropdown: [
-        { label: t('neighbourhoodNames.emiratesHills'), href: '/neighbourhoods/emirates-hills' },
-        { label: t('neighbourhoodNames.palmJumeirah'), href: '/neighbourhoods/palm-jumeirah' },
-        { label: t('neighbourhoodNames.dubaiHillsEstate'), href: '/neighbourhoods/dubai-hills-estate' },
-        { label: t('neighbourhoodNames.alBarari'), href: '/neighbourhoods/al-barari' },
-        { label: t('neighbourhoodNames.downtownDubai'), href: '/neighbourhoods/downtown-dubai' },
-        { label: t('neighbourhoodNames.difc'), href: '/neighbourhoods/difc' },
-        { label: t('neighbourhoodNames.jumeirahGolfEstates'), href: '/neighbourhoods/jumeirah-golf-estates' },
-        { label: t('neighbourhoodNames.jumeirahIslands'), href: '/neighbourhoods/jumeirah-islands' },
-        { label: t('neighbourhoodNames.dubaiMarina'), href: '/neighbourhoods/dubai-marina' },
-        { label: t('neighbourhoodNames.mohammedBinRashidCity'), href: '/neighbourhoods/mohammed-bin-rashid-city' },
-        { label: t('neighbourhoodNames.cityWalk'), href: '/neighbourhoods/city-walk' },
-        { label: t('neighbourhoodNames.businessBay'), href: '/neighbourhoods/business-bay' },
-        { label: t('neighbourhoodNames.bluewaterIsland'), href: '/neighbourhoods/bluewaters-island' },
-      ],
-    },
+    { id: 'contact', label: t('contact'), href: '/contact' },
+    { id: 'neighbourhoods', label: t('neighbourhoods'), href: '/neighbourhoods' },
     {
       id: 'insights',
       label: t('insightsAndIntelligence'),
@@ -69,7 +52,6 @@ export default function Navbar() {
         { label: t('newsAndPress'), href: '/insights/news' },
       ],
     },
-    { id: 'contact', label: t('contact'), href: '/contact' },
   ];
 
   const primaryNav = navigation.filter(item => item.id && PRIMARY_IDS.has(item.id));
@@ -88,7 +70,7 @@ export default function Navbar() {
 
   // Pages with white/light backgrounds need a solid black navbar
   const p = pathname.replace(/\/$/, '') || '/';
-  const needsSolidNav = p === '/projects' || p === '/international-properties' || p.startsWith('/international-properties/') || p.startsWith('/insights/news') || p === '/career' || p === '/contact' || p === '/list-your-property' || p === '/privacy-policy' || p === '/disclaimer' || p === '/terms-of-service';
+  const needsSolidNav = p === '/projects' || p === '/neighbourhoods' || p === '/international-properties' || p.startsWith('/international-properties/') || p.startsWith('/insights/news') || p === '/career' || p === '/contact' || p === '/list-your-property' || p === '/privacy-policy' || p === '/disclaimer' || p === '/terms-of-service';
 
   const isActive = (item: NavItem): boolean => {
     if (item.href && p === item.href) return true;

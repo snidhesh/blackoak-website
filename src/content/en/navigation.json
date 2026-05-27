@@ -13,21 +13,7 @@
   },
   {
     "label": "Neighbourhoods",
-    "dropdown": [
-      { "label": "Emirates Hills", "href": "/neighbourhoods/emirates-hills" },
-      { "label": "Palm Jumeirah", "href": "/neighbourhoods/palm-jumeirah" },
-      { "label": "Dubai Hills Estate", "href": "/neighbourhoods/dubai-hills-estate" },
-      { "label": "Al Barari", "href": "/neighbourhoods/al-barari" },
-      { "label": "Downtown Dubai", "href": "/neighbourhoods/downtown-dubai" },
-      { "label": "DIFC", "href": "/neighbourhoods/difc" },
-      { "label": "Jumeirah Golf Estates", "href": "/neighbourhoods/jumeirah-golf-estates" },
-      { "label": "Jumeirah Islands", "href": "/neighbourhoods/jumeirah-islands" },
-      { "label": "Dubai Marina", "href": "/neighbourhoods/dubai-marina" },
-      { "label": "Mohammed Bin Rashid City", "href": "/neighbourhoods/mohammed-bin-rashid-city" },
-      { "label": "City Walk", "href": "/neighbourhoods/city-walk" },
-      { "label": "Business Bay", "href": "/neighbourhoods/business-bay" },
-      { "label": "Bluewaters Island", "href": "/neighbourhoods/bluewaters-island" }
-    ]
+    "href": "/neighbourhoods"
   },
   {
     "label": "Insights & Intelligence",

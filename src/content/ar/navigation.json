@@ -22,60 +22,7 @@
   },
   {
     "label": "الأحياء",
-    "dropdown": [
-      {
-        "label": "تلال الإمارات",
-        "href": "/neighbourhoods/emirates-hills"
-      },
-      {
-        "label": "نخلة جميرا",
-        "href": "/neighbourhoods/palm-jumeirah"
-      },
-      {
-        "label": "دبي هيلز إستيت",
-        "href": "/neighbourhoods/dubai-hills-estate"
-      },
-      {
-        "label": "البراري",
-        "href": "/neighbourhoods/al-barari"
-      },
-      {
-        "label": "وسط مدينة دبي",
-        "href": "/neighbourhoods/downtown-dubai"
-      },
-      {
-        "label": "مركز دبي المالي العالمي (DIFC)",
-        "href": "/neighbourhoods/difc"
-      },
-      {
-        "label": "جميرا غولف إستيتس",
-        "href": "/neighbourhoods/jumeirah-golf-estates"
-      },
-      {
-        "label": "جزر جميرا",
-        "href": "/neighbourhoods/jumeirah-islands"
-      },
-      {
-        "label": "دبي مارينا",
-        "href": "/neighbourhoods/dubai-marina"
-      },
-      {
-        "label": "مدينة محمد بن راشد",
-        "href": "/neighbourhoods/mohammed-bin-rashid-city"
-      },
-      {
-        "label": "سيتي ووك",
-        "href": "/neighbourhoods/city-walk"
-      },
-      {
-        "label": "الخليج التجاري",
-        "href": "/neighbourhoods/business-bay"
-      },
-      {
-        "label": "جزيرة بلوواترز",
-        "href": "/neighbourhoods/bluewaters-island"
-      }
-    ]
+    "href": "/neighbourhoods"
   },
   {
     "label": "الرؤى والتحليلات",

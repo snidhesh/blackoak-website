@@ -12,7 +12,9 @@ function localePath(path: string, locale: string): string {
 }
 
 function alternates(path: string): Record<string, string> {
-  const langs: Record<string, string> = {};
+  const langs: Record<string, string> = {
+    'x-default': localePath(path, defaultLocale),
+  };
   for (const l of locales) {
     langs[l] = localePath(path, l);
   }
@@ -30,6 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/about/why-blackoak/',
     '/about/our-team/',
     '/projects/',
+    '/neighbourhoods/',
     '/insights/investors/',
     '/insights/buyers/',
     '/insights/news/',
