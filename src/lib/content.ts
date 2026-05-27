@@ -55,7 +55,8 @@ import internationalPropertiesEn from '@/content/en/international-properties.jso
 import internationalPropertiesFr from '@/content/fr/international-properties.json';
 import internationalPropertiesAr from '@/content/ar/international-properties.json';
 
-import { fetchAllListings } from '@/lib/crm';
+import type { CrmListing } from '@/types/crm';
+import listingsSnapshot from '@/data/listings-snapshot.json';
 import { transformListing, deduplicateSlugs } from '@/lib/crm-transform';
 
 // Locale content maps
@@ -127,7 +128,9 @@ validateSlugs(
 
 async function _getProjects(): Promise<Project[]> {
   try {
-    const listings = await fetchAllListings();
+    // Read from the committed local snapshot (refreshed by a scheduled job)
+    // instead of calling the CRM per request — see scripts/fetch-projects-snapshot.mjs
+    const listings = listingsSnapshot as unknown as CrmListing[];
     const projects = deduplicateSlugs(listings.map(transformListing));
 
     // Post-transform neighbourhood validation
