@@ -11,7 +11,8 @@
     "start": "next start",
     "lint": "next lint",
     "i18n:check-hardcoded": "node scripts/check-i18n-hardcoded.mjs",
-    "snapshot:projects": "node scripts/fetch-projects-snapshot.mjs"
+    "snapshot:projects": "node scripts/fetch-projects-snapshot.mjs",
+    "snapshot:blob": "node scripts/refresh-blob-snapshot.mjs"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",

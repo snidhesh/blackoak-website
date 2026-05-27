@@ -1,0 +1,25 @@
+name: Refresh projects snapshot (Blob)
+
+on:
+  schedule:
+    - cron: '*/15 * * * *' # every 15 minutes
+  workflow_dispatch: {}
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - run: npm ci
+
+      - name: Fetch CRM and upload snapshot to Vercel Blob
+        env:
+          CRM_API_BASE_URL: ${{ secrets.CRM_API_BASE_URL }}
+          CRM_API_KEY: ${{ secrets.CRM_API_KEY }}
+          BLOB_READ_WRITE_TOKEN: ${{ secrets.BLOB_READ_WRITE_TOKEN }}
+        run: npm run snapshot:blob
