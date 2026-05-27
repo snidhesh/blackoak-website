@@ -1,6 +1,4 @@
 import { cache } from 'react';
-import { unstable_cache } from 'next/cache';
-import { list } from '@vercel/blob';
 import type { Project, ProjectListItem } from '@/types/project';
 import type { Neighbourhood } from '@/types/neighbourhood';
 import type { CareerJob } from '@/types/career';
@@ -128,30 +126,25 @@ validateSlugs(
 
 // --- CRM-backed project functions (async) ---
 
-// Reads the snapshot from Vercel Blob (refreshed every 15 min by the cron at
-// /api/cron/refresh-projects). Cached 60s so Blob is hit at most once per minute
-// per region. Returns null if Blob is unavailable so we can fall back to the
-// committed snapshot — the CRM is never called on the request path.
-const readSnapshotFromBlob = unstable_cache(
-  async (): Promise<CrmListing[] | null> => {
-    try {
-      if (!process.env.BLOB_READ_WRITE_TOKEN) return null;
-      const { blobs } = await list({ prefix: 'listings-snapshot' });
-      if (blobs.length === 0) return null;
-      const latest = blobs.sort(
-        (a, b) => +new Date(b.uploadedAt) - +new Date(a.uploadedAt)
-      )[0];
-      const res = await fetch(latest.url, { cache: 'no-store' });
-      if (!res.ok) return null;
-      return (await res.json()) as CrmListing[];
-    } catch (error) {
-      console.error('[content] Blob snapshot read failed, using committed fallback:', error);
-      return null;
-    }
-  },
-  ['projects-snapshot-blob'],
-  { revalidate: 60 }
-);
+// Public URL of the snapshot in Vercel Blob (refreshed every 15 min by the
+// GitHub Action). addRandomSuffix:false keeps this URL stable.
+const SNAPSHOT_BLOB_URL =
+  process.env.PROJECTS_SNAPSHOT_URL ??
+  'https://w3lbfhke8nf2vtpc.public.blob.vercel-storage.com/listings-snapshot.json';
+
+// Reads the snapshot from Blob with a cacheable fetch (revalidated every 60s),
+// so it works in static/ISR rendering. Returns null on failure so callers fall
+// back to the committed snapshot — the CRM is never hit on the request path.
+async function readSnapshotFromBlob(): Promise<CrmListing[] | null> {
+  try {
+    const res = await fetch(SNAPSHOT_BLOB_URL, { next: { revalidate: 60 } });
+    if (!res.ok) return null;
+    return (await res.json()) as CrmListing[];
+  } catch (error) {
+    console.error('[content] Blob snapshot read failed, using committed fallback:', error);
+    return null;
+  }
+}
 
 async function _getProjects(): Promise<Project[]> {
   try {

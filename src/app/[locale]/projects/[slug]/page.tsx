@@ -14,16 +14,15 @@ import AgentCard from '@/components/sections/AgentCard';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 import StickyNav from '@/components/ui/StickyNav';
 
-export const dynamicParams = true;
-export const revalidate = 300;
-export const maxDuration = 60;
+// Render detail pages dynamically (data comes from the cached Blob snapshot, so
+// this stays fast). Avoids a static-generation DYNAMIC_SERVER_USAGE error from
+// next-intl reading request headers during on-demand ISR.
+export const dynamic = 'force-dynamic';
 
 interface Props {
   params: { slug: string; locale: string };
 }
 
-// Render project pages on-demand via ISR (dynamicParams = true) instead of
-// pre-rendering ~1000 slugs at build time, which overloads the slow CRM.
 export async function generateStaticParams() {
   return [];
 }
