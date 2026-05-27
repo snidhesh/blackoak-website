@@ -4,7 +4,7 @@
   "regions": ["fra1"],
   "crons": [
     {
-      "path": "/api/cron/refresh-projects",
+      "path": "/api/cron/refresh-projects/",
       "schedule": "*/15 * * * *"
     }
   ]
