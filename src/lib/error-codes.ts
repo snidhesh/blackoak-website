@@ -11,6 +11,7 @@ export const FIELD_ERROR_CODES = {
   enterLocation: 'enterLocation',
   fileTooLarge: 'fileTooLarge',
   fileTypeInvalid: 'fileTypeInvalid',
+  consentRequired: 'consentRequired',
 } as const;
 
 // Form-level codes -> client resolves via useTranslations('forms')

@@ -10,6 +10,7 @@ const FIELD_CODE_MAP: Record<string, string> = {
   phone: FIELD_ERROR_CODES.phoneInvalid,
   email: FIELD_ERROR_CODES.emailInvalid,
   message: FIELD_ERROR_CODES.messageMin,
+  consent: FIELD_ERROR_CODES.consentRequired,
 };
 
 export async function POST(request: NextRequest) {

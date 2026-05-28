@@ -1,26 +1,44 @@
 import Image from 'next/image';
-import { Phone, Mail, MessageCircle } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
 import type { ProjectAgent } from '@/types/project';
 
 interface AgentCardProps {
   agent: ProjectAgent;
 }
 
-export default async function AgentCard({ agent }: AgentCardProps) {
-  const t = await getTranslations('common');
+function getInitials(name: string): string {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? '')
+    .join('');
+}
+
+export default function AgentCard({ agent }: AgentCardProps) {
+  // The CRM returns agent profileImages as base64 data URIs which we strip in
+  // the snapshot; the transform then resolves them to /images/placeholder.jpg
+  // (which doesn't exist). Render an initials avatar instead of a broken image.
+  const hasProfileImage =
+    agent.profileImage &&
+    !agent.profileImage.endsWith('/placeholder.jpg');
 
   return (
     <div className="bg-white border border-gray-200 p-6 flex flex-col sm:flex-row items-center gap-6">
-      {/* Profile Image */}
-      <div className="relative w-20 h-20 rounded-full overflow-hidden bg-gray-200 shrink-0">
-        <Image
-          src={agent.profileImage}
-          alt={agent.name}
-          fill
-          className="object-cover"
-          sizes="80px"
-        />
+      {/* Profile Image or initials avatar */}
+      <div className="relative w-20 h-20 rounded-full overflow-hidden bg-gray-200 shrink-0 flex items-center justify-center">
+        {hasProfileImage ? (
+          <Image
+            src={agent.profileImage}
+            alt={agent.name}
+            fill
+            className="object-cover"
+            sizes="80px"
+          />
+        ) : (
+          <span className="text-gray-600 font-medium text-xl select-none">
+            {getInitials(agent.name)}
+          </span>
+        )}
       </div>
 
       {/* Info */}
@@ -34,35 +52,6 @@ export default async function AgentCard({ agent }: AgentCardProps) {
         )}
       </div>
 
-      {/* Action Buttons */}
-      <div className="flex items-center gap-2 shrink-0">
-        {agent.phone && (
-          <a
-            href={`tel:${agent.phone}`}
-            className="flex items-center gap-1.5 px-4 py-2.5 bg-gray-100 text-xs text-gray-600 hover:bg-gray-200 hover:text-black transition-colors"
-          >
-            <Phone className="w-3.5 h-3.5" /> {t('call')}
-          </a>
-        )}
-        {agent.email && (
-          <a
-            href={`mailto:${agent.email}`}
-            className="flex items-center gap-1.5 px-4 py-2.5 bg-gray-100 text-xs text-gray-600 hover:bg-gray-200 hover:text-black transition-colors"
-          >
-            <Mail className="w-3.5 h-3.5" /> {t('email')}
-          </a>
-        )}
-        {agent.whatsapp && (
-          <a
-            href={`https://wa.me/${agent.whatsapp.replace(/[^0-9]/g, '')}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 px-4 py-2.5 bg-gray-100 text-xs text-gray-600 hover:bg-gray-200 hover:text-black transition-colors"
-          >
-            <MessageCircle className="w-3.5 h-3.5" /> {t('whatsapp')}
-          </a>
-        )}
-      </div>
     </div>
   );
 }

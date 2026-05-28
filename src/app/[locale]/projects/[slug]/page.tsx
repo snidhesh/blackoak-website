@@ -218,12 +218,6 @@ export default async function ProjectDetailPage({ params }: Props) {
                 >
                   {tCommon('registerInterest')}
                 </a>
-                <a
-                  href="#enquiry"
-                  className="flex items-center justify-center flex-1 md:flex-none md:w-[180px] h-[44px] md:h-[48px] bg-white border-2 border-black text-black text-[11px] md:text-xs font-medium uppercase tracking-wider hover:bg-gray-100 transition-colors"
-                >
-                  {tCommon('requestCallback')}
-                </a>
               </div>
             </div>
           </div>
@@ -455,6 +449,7 @@ export default async function ProjectDetailPage({ params }: Props) {
             endpoint="/api/project-enquiry"
             projectSlug={project.slug}
             projectName={projectName}
+            reference={project.reference}
             submitLabel={t('enquiry.submitLabel')}
           />
         </div>

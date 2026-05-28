@@ -2,6 +2,33 @@ import { z } from 'zod';
 
 const phoneRegex = /^\+?[0-9\s\-()]{7,20}$/;
 
+// UTM allowlist + sanitizer (mirrors the JPJ4J2 sibling project)
+export const ALLOWED_UTM_KEYS = [
+  'utm_source',
+  'utm_medium',
+  'utm_campaign',
+  'utm_term',
+  'utm_content',
+] as const;
+
+export function sanitizeUtm(
+  input?: Record<string, string>
+): Record<string, string> | undefined {
+  if (!input) return undefined;
+  const out: Record<string, string> = {};
+  for (const key of ALLOWED_UTM_KEYS) {
+    const v = input[key];
+    if (typeof v === 'string' && v.length > 0) {
+      out[key] = v.slice(0, 200);
+    }
+  }
+  return Object.keys(out).length > 0 ? out : undefined;
+}
+
+const utmField = z
+  .record(z.string().max(40), z.string().max(200))
+  .optional();
+
 // ---------- Static schemas (used by API routes — English-only, server-side) ----------
 
 export const contactSchema = z.object({
@@ -10,6 +37,8 @@ export const contactSchema = z.object({
   phone: z.string().regex(phoneRegex, 'Please enter a valid phone number'),
   email: z.string().email('Please enter a valid email address'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
+  utm: utmField,
+  consent: z.boolean().refine((v) => v === true, { message: 'consentRequired' }),
   _honeypot: z.string().max(0, 'Bot detected'),
 });
 
@@ -21,6 +50,9 @@ export const projectEnquirySchema = z.object({
   message: z.string().min(10, 'Message must be at least 10 characters'),
   projectSlug: z.string().min(1),
   projectName: z.string().min(1),
+  reference: z.string().max(200).optional(),
+  utm: utmField,
+  consent: z.boolean().refine((v) => v === true, { message: 'consentRequired' }),
   _honeypot: z.string().max(0, 'Bot detected'),
 });
 
@@ -61,6 +93,7 @@ export interface ValidationMessages {
   phoneInvalid: string;
   emailInvalid: string;
   messageMin: string;
+  consentRequired?: string;
   selectPropertyType?: string;
   selectBedrooms?: string;
   selectListingType?: string;
@@ -74,6 +107,8 @@ export function createContactSchema(msgs: ValidationMessages) {
     phone: z.string().regex(phoneRegex, msgs.phoneInvalid),
     email: z.string().email(msgs.emailInvalid),
     message: z.string().min(10, msgs.messageMin),
+    utm: utmField,
+    consent: z.boolean().refine((v) => v === true, { message: msgs.consentRequired }),
     _honeypot: z.string().max(0),
   });
 }
@@ -87,6 +122,9 @@ export function createProjectEnquirySchema(msgs: ValidationMessages) {
     message: z.string().min(10, msgs.messageMin),
     projectSlug: z.string().min(1),
     projectName: z.string().min(1),
+    reference: z.string().max(200).optional(),
+    utm: utmField,
+    consent: z.boolean().refine((v) => v === true, { message: msgs.consentRequired }),
     _honeypot: z.string().max(0),
   });
 }

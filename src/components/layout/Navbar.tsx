@@ -20,7 +20,9 @@ interface NavItem {
 const getNavKey = (item: NavItem) => item.id ?? item.label;
 
 const MORE_KEY = 'more';
-const PRIMARY_IDS = new Set(['properties', 'international', 'about', 'contact']);
+const PRIMARY_IDS = new Set(['properties', 'international', 'about', 'insights', 'contact']);
+// Toggle to bring the "More" dropdown back when there are secondary nav items to surface.
+const SHOW_MORE_NAV = false;
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -41,8 +43,6 @@ export default function Navbar() {
     },
     { id: 'properties', label: t('properties'), href: '/projects' },
     { id: 'international', label: t('internationalProperties'), href: '/international-properties' },
-    { id: 'contact', label: t('contact'), href: '/contact' },
-    { id: 'neighbourhoods', label: t('neighbourhoods'), href: '/neighbourhoods' },
     {
       id: 'insights',
       label: t('insightsAndIntelligence'),
@@ -52,6 +52,8 @@ export default function Navbar() {
         { label: t('newsAndPress'), href: '/insights/news' },
       ],
     },
+    { id: 'contact', label: t('contact'), href: '/contact' },
+    { id: 'neighbourhoods', label: t('neighbourhoods'), href: '/neighbourhoods' },
   ];
 
   const primaryNav = navigation.filter(item => item.id && PRIMARY_IDS.has(item.id));
@@ -174,8 +176,8 @@ export default function Navbar() {
               </div>
             ))}
 
-            {/* "More" dropdown */}
-            <div
+            {/* "More" dropdown (hidden via SHOW_MORE_NAV flag) */}
+            {SHOW_MORE_NAV && <div
               className="relative"
               onMouseEnter={() => setActiveDropdown(MORE_KEY)}
               onMouseLeave={() => setActiveDropdown(null)}
@@ -250,7 +252,7 @@ export default function Navbar() {
                   )}
                 </div>
               )}
-            </div>
+            </div>}
           </div>
 
           {/* Right Actions */}

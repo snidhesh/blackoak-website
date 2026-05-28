@@ -381,7 +381,8 @@
     "selectListingType": "يرجى اختيار نوع الإدراج",
     "enterLocation": "يرجى إدخال موقع العقار",
     "fileTooLarge": "يجب أن يكون حجم الملف أقل من ٤ ميغابايت",
-    "fileTypeInvalid": "يُسمح فقط بملفات PDF وDOC وDOCX"
+    "fileTypeInvalid": "يُسمح فقط بملفات PDF وDOC وDOCX",
+    "consentRequired": "يرجى قبول سياسة الخصوصية والشروط للمتابعة."
   },
   "pages": {
     "home": {

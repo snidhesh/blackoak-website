@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { useLocale, useTranslations } from 'next-intl';
-import { MapPin, Bed, Maximize, Mail, Phone, MessageCircle } from 'lucide-react';
+import { MapPin, Bed, Maximize } from 'lucide-react';
 import { formatArea } from '@/lib/formatters';
 import type { Locale } from '@/i18n/config';
 import FormattedPrice from '@/components/ui/FormattedPrice';
@@ -96,29 +96,13 @@ export default function PropertyCard({
         </div>
       </Link>
 
-      {/* Action buttons */}
-      <div className="flex items-center gap-2 mt-4">
-        <a
-          href={`mailto:info@blackoak-re.com?subject=Enquiry: ${name}`}
-          className="flex items-center gap-1.5 px-4 py-2.5 bg-gray-100 text-xs text-gray-600 hover:bg-gray-200 hover:text-black transition-colors"
-        >
-          <Mail className="w-3.5 h-3.5" /> {t('email')}
-        </a>
-        <a
-          href="tel:+97143989055"
-          className="flex items-center gap-1.5 px-4 py-2.5 bg-gray-100 text-xs text-gray-600 hover:bg-gray-200 hover:text-black transition-colors"
-        >
-          <Phone className="w-3.5 h-3.5" /> {t('call')}
-        </a>
-        <a
-          href={`https://wa.me/97143989055?text=${encodeURIComponent(t('whatsappInterestMessage', { propertyName: name }))}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-1.5 px-4 py-2.5 bg-gray-100 text-xs text-gray-600 hover:bg-gray-200 hover:text-black transition-colors"
-        >
-          <MessageCircle className="w-3.5 h-3.5" /> {t('whatsapp')}
-        </a>
-      </div>
+      {/* CTA */}
+      <Link
+        href={`/projects/${slug}`}
+        className="mt-4 flex items-center justify-center w-full h-11 bg-black text-white text-[11px] font-medium uppercase tracking-wider hover:bg-gray-900 transition-colors"
+      >
+        {t('viewDetails')}
+      </Link>
     </div>
   );
 }

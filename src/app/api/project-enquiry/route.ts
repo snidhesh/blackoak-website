@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { projectEnquirySchema } from '@/lib/schemas';
-import { forwardToWebhook } from '@/lib/webhook';
+import { projectEnquirySchema, sanitizeUtm } from '@/lib/schemas';
+import { submitCrmLead } from '@/lib/crm-lead';
 import { checkRateLimit, getClientIP } from '@/lib/rate-limit';
 import { FIELD_ERROR_CODES, FORM_ERROR_CODES } from '@/lib/error-codes';
 
@@ -10,6 +10,7 @@ const FIELD_CODE_MAP: Record<string, string> = {
   phone: FIELD_ERROR_CODES.phoneInvalid,
   email: FIELD_ERROR_CODES.emailInvalid,
   message: FIELD_ERROR_CODES.messageMin,
+  consent: FIELD_ERROR_CODES.consentRequired,
 };
 
 export async function POST(request: NextRequest) {
@@ -38,14 +39,13 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, errors }, { status: 400 });
     }
 
-    const webhookResult = await forwardToWebhook({
-      type: 'project-enquiry',
+    const crmResult = await submitCrmLead({
       data: result.data,
-      timestamp: new Date().toISOString(),
+      utm: sanitizeUtm(result.data.utm),
     });
 
-    if (!webhookResult.success) {
-      console.error('[api/project-enquiry] Webhook failed:', webhookResult.error);
+    if (!crmResult.success) {
+      console.error('[api/project-enquiry] CRM lead failed:', crmResult.status);
       return NextResponse.json(
         { success: false, errors: [{ field: '_form', code: FORM_ERROR_CODES.submitFailed }] },
         { status: 502 }

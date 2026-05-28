@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useRouter, Link } from '@/i18n/navigation';
 import { useTranslations } from 'next-intl';
-import { createContactSchema, type ContactFormData } from '@/lib/schemas';
+import { createContactSchema, ALLOWED_UTM_KEYS, type ContactFormData } from '@/lib/schemas';
 import { FORM_ERROR_CODES } from '@/lib/error-codes';
 import Input from '@/components/ui/Input';
 import Textarea from '@/components/ui/Textarea';
@@ -14,13 +14,26 @@ interface ContactFormProps {
   endpoint?: string;
   projectSlug?: string;
   projectName?: string;
+  reference?: string;
   submitLabel?: string;
+}
+
+function readUtmFromLocation(): Record<string, string> | undefined {
+  if (typeof window === 'undefined') return undefined;
+  const params = new URLSearchParams(window.location.search);
+  const out: Record<string, string> = {};
+  for (const key of ALLOWED_UTM_KEYS) {
+    const v = params.get(key);
+    if (v) out[key] = v.slice(0, 200);
+  }
+  return Object.keys(out).length > 0 ? out : undefined;
 }
 
 export default function ContactForm({
   endpoint = '/api/contact',
   projectSlug,
   projectName,
+  reference,
   submitLabel,
 }: ContactFormProps) {
   const t = useTranslations('forms');
@@ -35,6 +48,7 @@ export default function ContactForm({
     phoneInvalid: tv('phoneInvalid'),
     emailInvalid: tv('emailInvalid'),
     messageMin: tv('messageMin'),
+    consentRequired: tv('consentRequired'),
   }), [tv]);
 
   const {
@@ -44,7 +58,7 @@ export default function ContactForm({
     formState: { errors },
   } = useForm<ContactFormData>({
     resolver: zodResolver(schema),
-    defaultValues: { _honeypot: '' },
+    defaultValues: { _honeypot: '', consent: false },
   });
 
   const onSubmit = async (data: ContactFormData) => {
@@ -52,9 +66,12 @@ export default function ContactForm({
     setError(null);
 
     try {
-      const body: Record<string, string> = { ...data };
+      const body: Record<string, unknown> = { ...data };
       if (projectSlug) body.projectSlug = projectSlug;
       if (projectName) body.projectName = projectName;
+      if (reference) body.reference = reference;
+      const utm = readUtmFromLocation();
+      if (utm) body.utm = utm;
 
       let response: Response | undefined;
       try {
@@ -70,7 +87,7 @@ export default function ContactForm({
       if (response && !response.ok) {
         const result = await response.json().catch(() => null);
         if (result?.errors) {
-          const validFields = new Set(['firstName', 'lastName', 'phone', 'email', 'message']);
+          const validFields = new Set(['firstName', 'lastName', 'phone', 'email', 'message', 'consent']);
           for (const err of result.errors) {
             if (err.field === '_form') {
               const code = Object.values(FORM_ERROR_CODES).includes(err.code)
@@ -159,12 +176,24 @@ export default function ContactForm({
         <p className="text-sm text-red-500">{error}</p>
       )}
 
-      <p className="text-[12px] leading-[16px] text-[#525252]">
-        {t.rich('consentText', {
-          privacyPolicy: (chunks) => <Link href="/privacy-policy" className="underline text-[#0a0a0a]">{chunks}</Link>,
-          termsOfUse: (chunks) => <Link href="/terms-of-service" className="underline text-[#0a0a0a]">{chunks}</Link>,
-        })}
-      </p>
+      <div>
+        <label className="flex items-start gap-2 cursor-pointer">
+          <input
+            type="checkbox"
+            {...register('consent')}
+            className="mt-[3px] h-4 w-4 shrink-0 accent-black"
+          />
+          <span className="text-[12px] leading-[16px] text-[#525252]">
+            {t.rich('consentText', {
+              privacyPolicy: (chunks) => <Link href="/privacy-policy" className="underline text-[#0a0a0a]">{chunks}</Link>,
+              termsOfUse: (chunks) => <Link href="/terms-of-service" className="underline text-[#0a0a0a]">{chunks}</Link>,
+            })}
+          </span>
+        </label>
+        {errors.consent && (
+          <p className="mt-1 text-sm text-red-500">{tv('consentRequired')}</p>
+        )}
+      </div>
 
       <button
         type="submit"

@@ -381,7 +381,8 @@
     "selectListingType": "Please select a listing type",
     "enterLocation": "Please enter the property location",
     "fileTooLarge": "File size must be less than 4MB",
-    "fileTypeInvalid": "Only PDF, DOC, and DOCX files are allowed"
+    "fileTypeInvalid": "Only PDF, DOC, and DOCX files are allowed",
+    "consentRequired": "Please accept the privacy policy and terms to continue."
   },
   "pages": {
     "home": {

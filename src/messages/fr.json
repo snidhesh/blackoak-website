@@ -381,7 +381,8 @@
     "selectListingType": "Veuillez sélectionner un type d''annonce",
     "enterLocation": "Veuillez saisir l''emplacement du bien",
     "fileTooLarge": "La taille du fichier ne doit pas dépasser 4 Mo",
-    "fileTypeInvalid": "Seuls les fichiers PDF, DOC et DOCX sont acceptés"
+    "fileTypeInvalid": "Seuls les fichiers PDF, DOC et DOCX sont acceptés",
+    "consentRequired": "Veuillez accepter la politique de confidentialité et les conditions pour continuer."
   },
   "pages": {
     "home": {
