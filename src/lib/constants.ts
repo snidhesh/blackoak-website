@@ -3,7 +3,7 @@ export const COMPANY = {
   tagline: 'A global luxury real estate firm delivering expert guidance, exclusive opportunities, and tailored investment services.',
   email: 'info@blackoak-re.com',
   phone: '+971 4 398 9055',
-  whatsapp: 'https://wa.me/97143989055',
+  whatsapp: 'https://wa.me/971501046890',
 } as const;
 
 export const ADDRESSES = {
@@ -24,12 +24,12 @@ export const ADDRESSES = {
 } as const;
 
 export const SOCIAL_LINKS = [
-  { platform: 'facebook', url: 'https://www.facebook.com/BlackOakRE/', icon: 'Facebook' },
-  { platform: 'twitter', url: 'https://x.com/blackoakre', icon: 'Twitter' },
-  { platform: 'linkedin', url: 'https://www.linkedin.com/company/blackoakrealestate', icon: 'Linkedin' },
-  { platform: 'whatsapp', url: 'https://wa.me/97143989055', icon: 'MessageCircle' },
-  { platform: 'instagram', url: 'https://www.instagram.com/blackoakrealestate', icon: 'Instagram' },
-  { platform: 'youtube', url: 'https://www.youtube.com/@BlackOakRealEstate', icon: 'Youtube' },
+  { platform: 'facebook', url: 'https://www.facebook.com/BlackOakRealEstate/', icon: 'Facebook' },
+  { platform: 'linkedin', url: 'https://ae.linkedin.com/company/blackoak-real-estate', icon: 'Linkedin' },
+  { platform: 'whatsapp', url: 'https://wa.me/971501046890', icon: 'MessageCircle' },
+  { platform: 'instagram', url: 'https://www.instagram.com/blackoakdubai/', icon: 'Instagram' },
+  { platform: 'tiktok', url: 'https://www.tiktok.com/@blackoak.realestate', icon: 'TikTok' },
+  { platform: 'youtube', url: 'https://www.youtube.com/@blackoakrealestate', icon: 'Youtube' },
 ] as const;
 
 export const PHONE_PREFIX = '+971';

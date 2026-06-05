@@ -58,11 +58,6 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
         },
       ],
     },
-    twitter: {
-      card: 'summary_large_image',
-      site: '@blackoakrealestate',
-      creator: '@blackoakrealestate',
-    },
     alternates: {
       canonical: locale === 'en' ? `${BASE_URL}/` : `${BASE_URL}/${locale}/`,
       languages: {
@@ -163,11 +158,11 @@ export default async function LocaleLayout({
               ],
             },
             sameAs: [
-              'https://www.instagram.com/blackoakrealestate',
-              'https://www.linkedin.com/company/blackoakrealestate',
-              'https://www.facebook.com/BlackOakRE/',
-              'https://x.com/blackoakre',
-              'https://www.youtube.com/@BlackOakRealEstate',
+              'https://www.instagram.com/blackoakdubai/',
+              'https://ae.linkedin.com/company/blackoak-real-estate',
+              'https://www.facebook.com/BlackOakRealEstate/',
+              'https://www.tiktok.com/@blackoak.realestate',
+              'https://www.youtube.com/@blackoakrealestate',
             ],
           }),
         }}

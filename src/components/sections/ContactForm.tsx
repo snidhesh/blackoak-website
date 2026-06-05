@@ -9,6 +9,7 @@ import { createContactSchema, ALLOWED_UTM_KEYS, type ContactFormData } from '@/l
 import { FORM_ERROR_CODES } from '@/lib/error-codes';
 import Input from '@/components/ui/Input';
 import Textarea from '@/components/ui/Textarea';
+import PhoneCountryCodeSelect, { DEFAULT_DIAL_ISO, getDialCodeForIso } from '@/components/ui/PhoneCountryCodeSelect';
 
 interface ContactFormProps {
   endpoint?: string;
@@ -29,6 +30,12 @@ function readUtmFromLocation(): Record<string, string> | undefined {
   return Object.keys(out).length > 0 ? out : undefined;
 }
 
+function readUnitFromLocation(): string | undefined {
+  if (typeof window === 'undefined') return undefined;
+  const v = new URLSearchParams(window.location.search).get('unit');
+  return v ? v.slice(0, 200) : undefined;
+}
+
 export default function ContactForm({
   endpoint = '/api/contact',
   projectSlug,
@@ -40,6 +47,7 @@ export default function ContactForm({
   const tv = useTranslations('validation');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [phoneCountryIso, setPhoneCountryIso] = useState(DEFAULT_DIAL_ISO);
   const router = useRouter();
 
   const schema = useMemo(() => createContactSchema({
@@ -66,10 +74,16 @@ export default function ContactForm({
     setError(null);
 
     try {
-      const body: Record<string, unknown> = { ...data };
+      const dialCode = getDialCodeForIso(phoneCountryIso);
+      const body: Record<string, unknown> = {
+        ...data,
+        phone: `${dialCode} ${data.phone}`.trim(),
+      };
       if (projectSlug) body.projectSlug = projectSlug;
       if (projectName) body.projectName = projectName;
-      if (reference) body.reference = reference;
+      const unit = readUnitFromLocation();
+      const effectiveReference = [reference, unit].filter(Boolean).join(' — ') || undefined;
+      if (effectiveReference) body.reference = effectiveReference;
       const utm = readUtmFromLocation();
       if (utm) body.utm = utm;
 
@@ -136,11 +150,11 @@ export default function ContactForm({
             {t('phone')} <span className="text-red-500">*</span>
           </label>
           <div className="flex">
-            <div className="flex items-center gap-1.5 px-3 bg-[#f5f5f5] border border-[#d1d5db] border-e-0 shrink-0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/contact/uae-flag.svg" alt={t('phoneCountryFlag')} className="w-5 h-5" />
-              <span className="text-[13.7px] text-[#374151]">{t('phoneCountryCode')}</span>
-            </div>
+            <PhoneCountryCodeSelect
+              value={phoneCountryIso}
+              onChange={setPhoneCountryIso}
+              ariaLabel={t('phoneCountryFlag')}
+            />
             <div className="flex-1" dir="ltr">
               <Input
                 placeholder={t('placeholder')}

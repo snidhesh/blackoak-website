@@ -8,6 +8,8 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import ContactForm from '@/components/sections/ContactForm';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 import StickyNav from '@/components/ui/StickyNav';
+import AvailableResidencesAccordion from '@/components/sections/AvailableResidencesAccordion';
+import { COMPANY } from '@/lib/constants';
 
 interface Props {
   property: InternationalProperty;
@@ -21,6 +23,7 @@ function formatLocalPrice(price: number, currency: string, locale: string): stri
     return new Intl.NumberFormat(locale === 'ar' ? 'ar-AE' : locale === 'fr' ? 'fr-FR' : 'en-US', {
       style: 'currency',
       currency,
+      minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(price);
   } catch {
@@ -28,15 +31,28 @@ function formatLocalPrice(price: number, currency: string, locale: string): stri
   }
 }
 
-export default async function InternationalPropertyDetailPage({ property, country, locale, slug }: Props) {
+export default async function InternationalPropertyDetailPage({ property, country: _country, locale, slug }: Props) {
+  void _country;
   const t = await getTranslations({ locale, namespace: 'pages.internationalPropertyDetail' });
   const tCommon = await getTranslations({ locale, namespace: 'common' });
 
   const hasCoordinates = property.coordinates.lat !== 0 && property.coordinates.lng !== 0;
   const hasAmenities = property.amenities.length > 0;
+  const hasUnitTypes = (property.unitTypes?.length ?? 0) > 0;
+  const hasPriceRange = typeof property.priceTo === 'number' && property.priceTo !== property.price;
+  const hasBedroomsRange = typeof property.bedroomsTo === 'number' && property.bedroomsTo !== property.bedrooms;
+  const hasAreaRange = typeof property.areaTo === 'number' && property.areaTo !== property.area;
+
+  const bedroomsDisplay = hasBedroomsRange
+    ? `${property.bedrooms}–${property.bedroomsTo}`
+    : `${property.bedrooms}`;
+  const areaDisplay = hasAreaRange
+    ? `${formatArea(property.area, locale)}–${formatArea(property.areaTo!, locale)}`
+    : `${formatArea(property.area, locale)}`;
 
   const stickyNavSections = [
     { id: 'details', label: t('stickyNav.details') },
+    ...(hasUnitTypes ? [{ id: 'residences', label: t('stickyNav.residences') }] : []),
     { id: 'gallery', label: t('stickyNav.gallery') },
     ...(hasAmenities ? [{ id: 'amenities', label: t('stickyNav.amenities') }] : []),
     { id: 'location', label: t('stickyNav.location') },
@@ -48,20 +64,65 @@ export default async function InternationalPropertyDetailPage({ property, countr
   const localePath = (path: string, loc: string) =>
     loc === 'en' ? `https://blackoak-re.com${path}` : `https://blackoak-re.com/${loc}${path}`;
 
+  // Build offers — AggregateOffer when we have a price range, otherwise plain Offer
+  const offers = hasPriceRange
+    ? {
+        '@type': 'AggregateOffer',
+        lowPrice: property.localPrice,
+        highPrice: property.localPriceTo ?? property.priceTo,
+        priceCurrency: property.localCurrency,
+        availability: 'https://schema.org/InStock',
+        ...(property.unitTypes && {
+          offerCount: property.unitTypes.filter((u) => typeof u.price === 'number' && u.price !== null).length,
+        }),
+      }
+    : {
+        '@type': 'Offer',
+        price: property.localPrice,
+        priceCurrency: property.localCurrency,
+        availability: 'https://schema.org/InStock',
+      };
+
+  const rangeSuffixParts: string[] = [];
+  if (hasBedroomsRange) rangeSuffixParts.push(`${bedroomsDisplay} bedrooms`);
+  if (hasAreaRange) rangeSuffixParts.push(`${areaDisplay} ${property.areaUnit}`);
+  if (hasPriceRange) {
+    rangeSuffixParts.push(
+      `from ${formatLocalPrice(property.localPrice, property.localCurrency, 'en')} to ${formatLocalPrice(
+        property.localPriceTo ?? property.priceTo!,
+        property.localCurrency,
+        'en'
+      )}`
+    );
+  }
+  const descriptionForSchema = rangeSuffixParts.length
+    ? `${property.description} · ${rangeSuffixParts.join(' · ')}`
+    : property.description;
+
+  const additionalProperty = [
+    ...(hasBedroomsRange
+      ? [{ '@type': 'PropertyValue', name: 'Bedrooms Range', value: bedroomsDisplay }]
+      : []),
+    ...(hasAreaRange
+      ? [
+          {
+            '@type': 'PropertyValue',
+            name: 'Area Range',
+            value: `${areaDisplay} ${property.areaUnit}`,
+          },
+        ]
+      : []),
+  ];
+
   const listingJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'RealEstateListing',
     name: property.name,
-    description: property.description,
+    description: descriptionForSchema,
     url: localePath(`/international-properties/${slug}/`, locale),
     inLanguage: locale,
     image: allImages,
-    offers: {
-      '@type': 'Offer',
-      price: property.localPrice,
-      priceCurrency: property.localCurrency,
-      availability: 'https://schema.org/InStock',
-    },
+    offers,
     numberOfRooms: property.bedrooms,
     numberOfBathroomsTotal: property.bathrooms,
     floorSize: {
@@ -88,34 +149,14 @@ export default async function InternationalPropertyDetailPage({ property, countr
         name: a,
       })),
     }),
+    ...(additionalProperty.length > 0 && { additionalProperty }),
   };
 
   const breadcrumbItems = [
     { '@type': 'ListItem' as const, position: 1, name: t('breadcrumbs.home'), item: localePath('/', locale) },
     { '@type': 'ListItem' as const, position: 2, name: t('breadcrumbs.internationalProperties'), item: localePath('/international-properties/', locale) },
+    { '@type': 'ListItem' as const, position: 3, name: property.name, item: localePath(`/international-properties/${slug}/`, locale) },
   ];
-
-  if (country) {
-    breadcrumbItems.push({
-      '@type': 'ListItem' as const,
-      position: 3,
-      name: country.name,
-      item: localePath(`/international-properties/${country.slug}/`, locale),
-    });
-    breadcrumbItems.push({
-      '@type': 'ListItem' as const,
-      position: 4,
-      name: property.name,
-      item: localePath(`/international-properties/${slug}/`, locale),
-    });
-  } else {
-    breadcrumbItems.push({
-      '@type': 'ListItem' as const,
-      position: 3,
-      name: property.name,
-      item: localePath(`/international-properties/${slug}/`, locale),
-    });
-  }
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
@@ -159,7 +200,7 @@ export default async function InternationalPropertyDetailPage({ property, countr
               <div className="flex items-center gap-2.5 mt-2 md:mt-3 text-white/90 text-[13px] md:text-base font-medium">
                 <span className="flex items-center gap-1.5">
                   <Bed className="w-4 h-4 md:w-5 md:h-5" />
-                  {property.bedrooms} {tCommon('bed')}
+                  {bedroomsDisplay} {tCommon('bed')}
                 </span>
                 <span className="w-1 h-1 rounded-full bg-white/60" />
                 <span className="flex items-center gap-1.5">
@@ -169,7 +210,7 @@ export default async function InternationalPropertyDetailPage({ property, countr
                 <span className="w-1 h-1 rounded-full bg-white/60" />
                 <span className="flex items-center gap-1.5">
                   <Maximize className="w-4 h-4 md:w-[18px] md:h-[18px]" />
-                  {formatArea(property.area, locale)} {property.areaUnit}
+                  {areaDisplay} {property.areaUnit}
                 </span>
               </div>
             </div>
@@ -186,15 +227,9 @@ export default async function InternationalPropertyDetailPage({ property, countr
               <div className="flex items-center gap-3 mt-4">
                 <a
                   href="#enquiry"
-                  className="flex items-center justify-center flex-1 md:flex-none md:w-[180px] h-[44px] md:h-[48px] bg-black border-2 border-black text-white text-[11px] md:text-xs font-medium uppercase tracking-wider hover:bg-gray-900 transition-colors"
+                  className="flex items-center justify-center flex-1 md:flex-none md:w-[230px] h-[44px] md:h-[50px] bg-white border-2 border-white text-black text-[11px] md:text-xs font-medium uppercase tracking-[2px] hover:bg-transparent hover:text-white transition-colors"
                 >
-                  {tCommon('registerInterest')}
-                </a>
-                <a
-                  href="#enquiry"
-                  className="flex items-center justify-center flex-1 md:flex-none md:w-[180px] h-[44px] md:h-[48px] bg-white border-2 border-black text-black text-[11px] md:text-xs font-medium uppercase tracking-wider hover:bg-gray-100 transition-colors"
-                >
-                  {tCommon('requestCallback')}
+                  {tCommon('requestInformation')}
                 </a>
               </div>
             </div>
@@ -222,15 +257,15 @@ export default async function InternationalPropertyDetailPage({ property, countr
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-8 pt-8 border-t border-gray-200">
               <div>
                 <p className="text-sm font-medium text-black">{tCommon('bedrooms')}</p>
-                <p className="text-sm text-[#5f6368] mt-1">{property.bedrooms}</p>
+                <p className="text-sm text-[#5f6368] mt-1">{bedroomsDisplay}</p>
               </div>
               <div>
                 <p className="text-sm font-medium text-black">{tCommon('bathrooms')}</p>
                 <p className="text-sm text-[#5f6368] mt-1">{property.bathrooms}</p>
               </div>
               <div>
-                <p className="text-sm font-medium text-black">{tCommon('sqFt')}</p>
-                <p className="text-sm text-[#5f6368] mt-1">{formatArea(property.area, locale)} {property.areaUnit}</p>
+                <p className="text-sm font-medium text-black">{tCommon('totalArea')}</p>
+                <p className="text-sm text-[#5f6368] mt-1">{areaDisplay} {property.areaUnit}</p>
               </div>
               <div>
                 <p className="text-sm font-medium text-black">{property.propertyType}</p>
@@ -240,6 +275,26 @@ export default async function InternationalPropertyDetailPage({ property, countr
           </AnimateOnScroll>
         </div>
       </section>
+
+      {/* Available Residences */}
+      {hasUnitTypes && (
+        <section id="residences" className="py-16 bg-[#f9f9f9]">
+          <div className="container-wide">
+            <AnimateOnScroll>
+              <div className="text-center mb-10">
+                <SectionLabel>{t('availableResidences.label')}</SectionLabel>
+                <h2 className="text-[32px] font-light mt-5">
+                  {t('availableResidences.heading')}
+                </h2>
+              </div>
+            </AnimateOnScroll>
+            <AvailableResidencesAccordion
+              property={property}
+              whatsappBaseUrl={COMPANY.whatsapp}
+            />
+          </div>
+        </section>
+      )}
 
       {/* Gallery */}
       <section id="gallery" className="py-16">
@@ -252,27 +307,35 @@ export default async function InternationalPropertyDetailPage({ property, countr
               </h2>
             </div>
           </AnimateOnScroll>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-            <div className="relative aspect-[4/3] lg:row-span-2 bg-gray-200 overflow-hidden">
+          <div className="space-y-2">
+            {/* Wide hero image */}
+            <div className="relative aspect-[16/7] bg-gray-200 overflow-hidden">
               <Image
                 src={property.mainImage}
                 alt={t('gallery.mainAlt', { name: property.name })}
                 fill
-                className="object-cover hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover hover:scale-105 transition-transform duration-700"
+                sizes="100vw"
               />
             </div>
-            {property.gallery.slice(0, 4).map((img, i) => (
-              <div key={i} className="relative aspect-[4/3] bg-gray-200 overflow-hidden">
-                <Image
-                  src={img}
-                  alt={t('gallery.galleryAlt', { name: property.name, index: i + 1 })}
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 1024px) 100vw, 25vw"
-                />
+            {/* Thumbnail strip — adapts to however many gallery images are available */}
+            {property.gallery.length > 0 && (
+              <div className={`grid gap-2 grid-cols-2 ${
+                property.gallery.length >= 4 ? 'md:grid-cols-4' : property.gallery.length === 3 ? 'md:grid-cols-3' : ''
+              }`}>
+                {property.gallery.slice(0, 4).map((img, i) => (
+                  <div key={i} className="relative aspect-[4/3] bg-gray-200 overflow-hidden">
+                    <Image
+                      src={img}
+                      alt={t('gallery.galleryAlt', { name: property.name, index: i + 1 })}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-700"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
+                  </div>
+                ))}
               </div>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -356,6 +419,7 @@ export default async function InternationalPropertyDetailPage({ property, countr
             endpoint="/api/project-enquiry"
             projectSlug={property.slug}
             projectName={property.name}
+            reference={property.name}
             submitLabel={t('enquiry.submitLabel')}
           />
         </div>

@@ -11,6 +11,7 @@ import Input from '@/components/ui/Input';
 import Textarea from '@/components/ui/Textarea';
 import FileUpload from '@/components/ui/FileUpload';
 import Button from '@/components/ui/Button';
+import PhoneCountryCodeSelect, { DEFAULT_DIAL_ISO, getDialCodeForIso } from '@/components/ui/PhoneCountryCodeSelect';
 
 interface CareerApplicationFormProps {
   jobSlug: string;
@@ -24,6 +25,7 @@ export default function CareerApplicationForm({ jobSlug, jobTitle }: CareerAppli
   const [error, setError] = useState<string | null>(null);
   const [cvFile, setCvFile] = useState<File | null>(null);
   const [cvError, setCvError] = useState<string | null>(null);
+  const [phoneCountryIso, setPhoneCountryIso] = useState(DEFAULT_DIAL_ISO);
   const router = useRouter();
 
   const schema = useMemo(() => createCareerApplicationSchema({
@@ -68,8 +70,10 @@ export default function CareerApplicationForm({ jobSlug, jobTitle }: CareerAppli
     setError(null);
 
     try {
+      const dialCode = getDialCodeForIso(phoneCountryIso);
+      const payload = { ...data, phone: `${dialCode} ${data.phone}`.trim() };
       const formData = new FormData();
-      Object.entries(data).forEach(([key, value]) => {
+      Object.entries(payload).forEach(([key, value]) => {
         if (value !== null && value !== undefined) {
           formData.append(key, String(value));
         }
@@ -128,12 +132,23 @@ export default function CareerApplicationForm({ jobSlug, jobTitle }: CareerAppli
         <Input label={t('lastName')} placeholder={t('placeholder')} required {...register('lastName')} error={errors.lastName ? tv('lastNameMin') : undefined} />
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div className="flex gap-2">
-          <div className="w-20 flex-shrink-0">
-            <Input value={t('phoneCountryCode')} readOnly className="text-center bg-gray-50" label={t('phone')} required />
-          </div>
-          <div className="flex-1">
-            <Input placeholder={t('placeholder')} label="&nbsp;" {...register('phone')} error={errors.phone ? tv('phoneInvalid') : undefined} />
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            {t('phone')} <span className="text-red-500">*</span>
+          </label>
+          <div className="flex">
+            <PhoneCountryCodeSelect
+              value={phoneCountryIso}
+              onChange={setPhoneCountryIso}
+              ariaLabel={t('phoneCountryFlag')}
+            />
+            <div className="flex-1" dir="ltr">
+              <Input
+                placeholder={t('placeholder')}
+                {...register('phone')}
+                error={errors.phone ? tv('phoneInvalid') : undefined}
+              />
+            </div>
           </div>
         </div>
         <Input label={t('email')} type="email" placeholder={t('placeholder')} required {...register('email')} error={errors.email ? tv('emailInvalid') : undefined} />

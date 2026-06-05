@@ -9,6 +9,7 @@ import { createListPropertySchema, type ListPropertyFormData } from '@/lib/schem
 import { FORM_ERROR_CODES } from '@/lib/error-codes';
 import Input from '@/components/ui/Input';
 import Textarea from '@/components/ui/Textarea';
+import PhoneCountryCodeSelect, { DEFAULT_DIAL_ISO, getDialCodeForIso } from '@/components/ui/PhoneCountryCodeSelect';
 
 const propertyTypeKeys = ['apartment', 'villa', 'townhouse', 'penthouse', 'land', 'commercial'] as const;
 const bedroomOptionKeys = ['studio', 'one', 'two', 'three', 'four', 'five', 'six', 'sevenPlus'] as const;
@@ -19,6 +20,7 @@ export default function ListPropertyForm() {
   const tv = useTranslations('validation');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [phoneCountryIso, setPhoneCountryIso] = useState(DEFAULT_DIAL_ISO);
   const router = useRouter();
 
   const schema = useMemo(() => createListPropertySchema({
@@ -48,12 +50,14 @@ export default function ListPropertyForm() {
     setError(null);
 
     try {
+      const dialCode = getDialCodeForIso(phoneCountryIso);
+      const payload = { ...data, phone: `${dialCode} ${data.phone}`.trim() };
       let response: Response | undefined;
       try {
         response = await fetch('/api/list-property', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
+          body: JSON.stringify(payload),
         });
       } catch {
         // Static export — API routes unavailable; continue to thank-you
@@ -111,11 +115,11 @@ export default function ListPropertyForm() {
             {t('phone')} <span className="text-red-500">*</span>
           </label>
           <div className="flex">
-            <div className="flex items-center gap-1.5 px-3 bg-[#f5f5f5] border border-[#d1d5db] border-e-0 shrink-0">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/contact/uae-flag.svg" alt={t('phoneCountryFlag')} className="w-5 h-5" />
-              <span className="text-[13.7px] text-[#374151]">{t('phoneCountryCode')}</span>
-            </div>
+            <PhoneCountryCodeSelect
+              value={phoneCountryIso}
+              onChange={setPhoneCountryIso}
+              ariaLabel={t('phoneCountryFlag')}
+            />
             <div className="flex-1" dir="ltr">
               <Input
                 placeholder={t('placeholder')}

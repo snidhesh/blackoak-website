@@ -1,7 +1,8 @@
-import { Facebook, Twitter, Linkedin, Instagram, Youtube, MessageCircle } from 'lucide-react';
+import { Facebook, Linkedin, Instagram, Youtube, MessageCircle } from 'lucide-react';
+import TikTokIcon from './TikTokIcon';
 
 const icons: Record<string, React.ComponentType<{ className?: string }>> = {
-  Facebook, Twitter, Linkedin, Instagram, Youtube, MessageCircle,
+  Facebook, Linkedin, Instagram, Youtube, MessageCircle, TikTok: TikTokIcon,
 };
 
 interface SocialIconsProps {

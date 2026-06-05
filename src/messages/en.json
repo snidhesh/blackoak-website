@@ -126,6 +126,9 @@
     "bedroom": "Bedroom",
     "bathrooms": "Bathrooms",
     "sqFt": "Sq.Ft.",
+    "totalArea": "Total Area",
+    "priceFrom": "From {amount}",
+    "priceOnRequest": "Price on Request",
     "forSale": "For Sale",
     "forRent": "For Rent",
     "loading": "Loading…",
@@ -158,9 +161,14 @@
     "call": "Call",
     "whatsapp": "WhatsApp",
     "whatsappInterestMessage": "Hi, I''m interested in {propertyName}",
+    "whatsappResidenceMessage": "Hi, I''m interested in the {unitName} at {propertyName}. Could you share more information?",
     "enquirySubject": "Enquiry: {propertyName}",
     "registerInterest": "Register Interest",
     "requestCallback": "Request Callback",
+    "requestInformation": "Request Information",
+    "closeDialog": "Close",
+    "nowAvailable": "Available",
+    "exploreMore": "Explore More",
     "tags": "Tags",
     "share": "Share",
     "copy": "Copy",
@@ -307,9 +315,9 @@
     "disclaimer": "Disclaimer",
     "socialLabels": {
       "facebook": "Facebook",
-      "twitter": "Twitter",
       "linkedin": "LinkedIn",
       "instagram": "Instagram",
+      "tiktok": "TikTok",
       "youtube": "YouTube",
       "whatsapp": "WhatsApp"
     },
@@ -563,10 +571,23 @@
     "internationalPropertyDetail": {
       "stickyNav": {
         "details": "Details",
+        "residences": "Residences",
         "gallery": "Gallery",
         "amenities": "Amenities",
         "location": "Location",
         "enquiry": "Enquiry"
+      },
+      "availableResidences": {
+        "label": "Residences",
+        "heading": "Available Residences",
+        "viewFloorPlan": "View Floor Plan",
+        "enquire": "Enquire on WhatsApp",
+        "expand": "View Available Residences",
+        "collapse": "Hide Residences",
+        "categories": {
+          "beach": "Beach Residences",
+          "water": "Water Villas"
+        }
       },
       "details": {
         "label": "Details",

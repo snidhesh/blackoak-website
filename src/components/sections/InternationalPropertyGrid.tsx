@@ -29,14 +29,18 @@ export default function InternationalPropertyGrid({ properties, columns = 3 }: I
           name={property.name}
           mainImage={property.mainImage}
           localPrice={property.localPrice}
+          localPriceTo={property.localPriceTo}
           localCurrency={property.localCurrency}
           city={property.city}
           country={property.country}
           propertyType={property.propertyType}
           bedrooms={property.bedrooms}
+          bedroomsTo={property.bedroomsTo}
           area={property.area}
+          areaTo={property.areaTo}
           areaUnit={property.areaUnit}
           offering={property.offering}
+          status={property.status}
         />
       ))}
     </div>

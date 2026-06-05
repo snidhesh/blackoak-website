@@ -126,6 +126,9 @@
     "bedroom": "Chambre",
     "bathrooms": "Salles de bain",
     "sqFt": "Sq.Ft.",
+    "totalArea": "Surface totale",
+    "priceFrom": "À partir de {amount}",
+    "priceOnRequest": "Prix sur demande",
     "forSale": "À Vendre",
     "forRent": "À Louer",
     "loading": "Chargement…",
@@ -158,9 +161,14 @@
     "call": "Appeler",
     "whatsapp": "WhatsApp",
     "whatsappInterestMessage": "Bonjour, je suis intéressé(e) par {propertyName}",
+    "whatsappResidenceMessage": "Bonjour, je suis intéressé(e) par {unitName} à {propertyName}. Pourriez-vous me donner plus d'informations ?",
     "enquirySubject": "Demande : {propertyName}",
     "registerInterest": "Manifester son intérêt",
     "requestCallback": "Demander un rappel",
+    "requestInformation": "Demander des informations",
+    "closeDialog": "Fermer",
+    "nowAvailable": "Disponible",
+    "exploreMore": "Découvrir",
     "tags": "Mots-clés",
     "share": "Partager",
     "copy": "Copier",
@@ -307,9 +315,9 @@
     "disclaimer": "Avertissement",
     "socialLabels": {
       "facebook": "Facebook",
-      "twitter": "Twitter",
       "linkedin": "LinkedIn",
       "instagram": "Instagram",
+      "tiktok": "TikTok",
       "youtube": "YouTube",
       "whatsapp": "WhatsApp"
     },
@@ -563,10 +571,23 @@
     "internationalPropertyDetail": {
       "stickyNav": {
         "details": "Détails",
+        "residences": "Résidences",
         "gallery": "Galerie",
         "amenities": "Équipements",
         "location": "Emplacement",
         "enquiry": "Demande"
+      },
+      "availableResidences": {
+        "label": "Résidences",
+        "heading": "Résidences disponibles",
+        "viewFloorPlan": "Voir le plan",
+        "enquire": "Contacter sur WhatsApp",
+        "expand": "Voir les résidences",
+        "collapse": "Masquer les résidences",
+        "categories": {
+          "beach": "Résidences de plage",
+          "water": "Villas sur l'eau"
+        }
       },
       "details": {
         "label": "Détails",

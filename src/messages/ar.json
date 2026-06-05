@@ -126,6 +126,9 @@
     "bedroom": "غرفة نوم",
     "bathrooms": "حمّامات",
     "sqFt": "قدم مربع",
+    "totalArea": "المساحة الإجمالية",
+    "priceFrom": "ابتداءً من {amount}",
+    "priceOnRequest": "السعر عند الطلب",
     "forSale": "للبيع",
     "forRent": "للإيجار",
     "loading": "جارٍ التحميل…",
@@ -158,9 +161,14 @@
     "call": "اتصال",
     "whatsapp": "واتساب",
     "whatsappInterestMessage": "مرحباً، أنا مهتم بـ {propertyName}",
+    "whatsappResidenceMessage": "مرحباً، أنا مهتم بـ {unitName} في {propertyName}. هل يمكنكم تزويدي بمزيد من المعلومات؟",
     "enquirySubject": "استفسار: {propertyName}",
     "registerInterest": "سجّل اهتمامك",
     "requestCallback": "طلب اتصال",
+    "requestInformation": "اطلب المعلومات",
+    "closeDialog": "إغلاق",
+    "nowAvailable": "متاح",
+    "exploreMore": "اكتشف المزيد",
     "tags": "الوسوم",
     "share": "مشاركة",
     "copy": "نسخ",
@@ -307,9 +315,9 @@
     "disclaimer": "إخلاء المسؤولية",
     "socialLabels": {
       "facebook": "Facebook",
-      "twitter": "Twitter",
       "linkedin": "LinkedIn",
       "instagram": "Instagram",
+      "tiktok": "TikTok",
       "youtube": "YouTube",
       "whatsapp": "واتساب"
     },
@@ -563,10 +571,23 @@
     "internationalPropertyDetail": {
       "stickyNav": {
         "details": "التفاصيل",
+        "residences": "الوحدات",
         "gallery": "المعرض",
         "amenities": "المرافق",
         "location": "الموقع",
         "enquiry": "استفسار"
+      },
+      "availableResidences": {
+        "label": "الوحدات",
+        "heading": "الوحدات المتاحة",
+        "viewFloorPlan": "عرض المخطط",
+        "enquire": "تواصل عبر واتساب",
+        "expand": "عرض الوحدات المتاحة",
+        "collapse": "إخفاء الوحدات",
+        "categories": {
+          "beach": "وحدات الشاطئ",
+          "water": "فيلات المياه"
+        }
       },
       "details": {
         "label": "التفاصيل",

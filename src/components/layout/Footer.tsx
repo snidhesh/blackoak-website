@@ -3,15 +3,16 @@
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { Mail, Phone, Facebook, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
+import { Mail, Phone, Facebook, Linkedin, Instagram, Youtube } from 'lucide-react';
+import TikTokIcon from '@/components/shared/TikTokIcon';
 
 const socialLinks = [
-  { icon: Facebook, href: 'https://www.facebook.com/BlackOakRE/', key: 'facebook' as const },
-  { icon: Twitter, href: 'https://x.com/blackoakre', key: 'twitter' as const },
-  { icon: Linkedin, href: 'https://www.linkedin.com/company/blackoakrealestate', key: 'linkedin' as const },
-  // { icon: MessageCircle, href: 'https://wa.me/97143989055', key: 'whatsapp' as const },
-  { icon: Instagram, href: 'https://www.instagram.com/blackoakrealestate', key: 'instagram' as const },
-  { icon: Youtube, href: 'https://www.youtube.com/@BlackOakRealEstate', key: 'youtube' as const },
+  { icon: Facebook, href: 'https://www.facebook.com/BlackOakRealEstate/', key: 'facebook' as const },
+  { icon: Linkedin, href: 'https://ae.linkedin.com/company/blackoak-real-estate', key: 'linkedin' as const },
+  // { icon: MessageCircle, href: 'https://wa.me/971501046890', key: 'whatsapp' as const },
+  { icon: Instagram, href: 'https://www.instagram.com/blackoakdubai/', key: 'instagram' as const },
+  { icon: TikTokIcon, href: 'https://www.tiktok.com/@blackoak.realestate', key: 'tiktok' as const },
+  { icon: Youtube, href: 'https://www.youtube.com/@blackoakrealestate', key: 'youtube' as const },
 ];
 
 export default function Footer() {
@@ -139,7 +140,7 @@ export default function Footer() {
                 +971 4 398 9055
               </a>
               <a
-                href="https://wa.me/97143989055"
+                href="https://wa.me/971501046890"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm text-gray-400 hover:text-white transition-colors"

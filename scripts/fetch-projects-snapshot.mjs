@@ -5,11 +5,12 @@
 
 import { writeFile, mkdir, readFile } from 'node:fs/promises';
 import { dirname } from 'node:path';
-import { fetchAllListings } from './fetch-listings.mjs';
+import { fetchAllListings, uploadAgentImagesToBlob } from './fetch-listings.mjs';
 
 const OUT = 'src/data/listings-snapshot.json';
 
 const listings = await fetchAllListings();
+await uploadAgentImagesToBlob(listings, process.env.BLOB_READ_WRITE_TOKEN);
 
 if (listings.length === 0) {
   console.error('CRM returned 0 listings — refusing to overwrite snapshot with empty data.');

@@ -324,5 +324,7 @@ export function getInternationalPropertiesByRegion(regionSlug: InternationalRegi
 }
 
 export function getFeaturedInternationalProperties(locale: Locale = 'en'): InternationalProperty[] {
-  return getInternationalProperties(locale).filter((p) => p.featured).slice(0, 3);
+  return getInternationalProperties(locale)
+    .filter((p) => p.featured && p.status === 'available')
+    .slice(0, 3);
 }

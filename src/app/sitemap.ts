@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { getProjects, getNeighbourhoods, getCareers, getNews } from '@/lib/content';
+import { getProjects, getNeighbourhoods, getCareers, getNews, getInternationalProperties } from '@/lib/content';
 import { locales, defaultLocale } from '@/i18n/config';
 
 const BASE_URL = 'https://blackoak-re.com';
@@ -111,6 +111,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: new Date(c.postedDate),
         changeFrequency: 'weekly',
         priority: 0.6,
+        alternates: { languages: alternates(path) },
+      });
+    }
+  }
+
+  // International properties — only `available` listings get detail URLs
+  const intlProperties = getInternationalProperties().filter((p) => p.status === 'available');
+  for (const locale of locales) {
+    for (const p of intlProperties) {
+      const path = `/international-properties/${p.slug}/`;
+      entries.push({
+        url: localePath(path, locale),
+        lastModified: STATIC_LAST_MODIFIED,
+        changeFrequency: 'weekly',
+        priority: 0.85,
         alternates: { languages: alternates(path) },
       });
     }

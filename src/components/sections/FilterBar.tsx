@@ -111,7 +111,7 @@ export default function FilterBar({
           {offerings.length > 0 && (
             <div className="flex items-center border-e border-b md:border-b-0 border-gray-200">
               {offerings.map(o => {
-                const label = o === 'sale' ? t('filter.buy') : o === 'rent' ? t('filter.rent') : o.charAt(0).toUpperCase() + o.slice(1);
+                const label = o === 'sale' ? t('filter.buy') : o === 'rent' || o === 'yearly' ? t('filter.rent') : o.charAt(0).toUpperCase() + o.slice(1);
                 const isActive = filters.offering === o;
                 return (
                   <button

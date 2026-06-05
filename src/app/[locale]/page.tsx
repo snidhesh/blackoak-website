@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
-import { getNeighbourhoods, getNews, getInternationalRegions } from '@/lib/content';
+import { getNeighbourhoods, getNews, getInternationalCountries } from '@/lib/content';
 import { formatDate } from '@/lib/formatters';
 import SectionLabel from '@/components/ui/SectionLabel';
 import SectionHeading from '@/components/ui/SectionHeading';
@@ -13,7 +13,7 @@ import FeaturedProjectsGrid, { FeaturedProjectsSkeleton } from '@/components/sec
 import HomeSearchBar from '@/components/ui/HomeSearchBar';
 import Button from '@/components/ui/Button';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
-import RegionCard from '@/components/sections/RegionCard';
+import InternationalMarketsStack, { type MarketEntry } from '@/components/sections/InternationalMarketsStack';
 import { getHomepage, getSplash } from '@/lib/content';
 import type { Locale } from '@/i18n/config';
 
@@ -60,8 +60,21 @@ export default async function HomePage({ params }: { params: { locale: string } 
     .map(slug => allNeighbourhoods.find(n => n.slug === slug))
     .filter(Boolean) as typeof allNeighbourhoods;
   const news = getNews(locale).slice(0, 3);
-  const tIntl = await getTranslations({ locale, namespace: 'pages.internationalProperties' });
-  const internationalRegions = getInternationalRegions(locale);
+  const internationalCountries = getInternationalCountries(locale);
+  // Maldives leads (our flagship listing); everything else follows the data order.
+  const maldives = internationalCountries.find((c) => c.countryCode === 'MV');
+  const otherCountries = internationalCountries.filter((c) => c.countryCode !== 'MV');
+  const orderedCountries = maldives ? [maldives, ...otherCountries] : internationalCountries;
+  const exploreMoreLabel = tCommon('exploreMore');
+  const homepageMarketEntries: MarketEntry[] = orderedCountries.map((c) => ({
+    name: c.name,
+    country: c.region === 'europe' ? 'Europe' : c.region === 'asia' ? 'Asia & Indian Ocean' : 'Americas',
+    focus: c.shortFocus,
+    image: c.heroImage,
+    status: 'active',
+    href: '/international-properties',
+    ctaLabel: exploreMoreLabel,
+  }));
 
   const websiteJsonLd = {
     '@context': 'https://schema.org',
@@ -321,58 +334,14 @@ export default async function HomePage({ params }: { params: { locale: string } 
         </div>
       </section>
 
-      {/* International Properties — Coming Soon */}
-      <section className="bg-black py-20">
-        <div className="container-wide">
-          <AnimateOnScroll>
-            <div className="text-center mb-12">
-              <SectionLabel light>{homepage.internationalProperties.label}</SectionLabel>
-              <SectionHeading
-                title={homepage.internationalProperties.heading}
-                subtitle={homepage.internationalProperties.description}
-                light
-              />
-            </div>
-          </AnimateOnScroll>
-
-          {/* Blurred region cards with coming soon overlay */}
-          <div className="relative">
-            {/* Coming soon overlay */}
-            <div className="absolute inset-0 z-10 flex items-center justify-center bg-black/50 backdrop-blur-[2px] rounded-md">
-              <div className="text-center px-4">
-                <span className="inline-block border border-white/40 text-white text-[13px] font-medium tracking-[3px] uppercase px-7 py-3 rounded-sm mb-4">
-                  {tIntl('comingSoon')}
-                </span>
-                <p className="text-white/70 text-[14px] leading-[24px] max-w-md mx-auto">
-                  {tIntl('comingSoonDescription')}
-                </p>
-                <div className="mt-6">
-                  <Button href="/international-properties" variant="outline-light">
-                    {tIntl('notifyMe')} <ArrowRight className="w-4 h-4 ms-2 icon-directional" />
-                  </Button>
-                </div>
-              </div>
-            </div>
-
-            {/* Blurred background cards (non-interactive) */}
-            <div className="pointer-events-none select-none blur-[2px]" aria-hidden="true">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {internationalRegions.map((region) => (
-                  <RegionCard
-                    key={region.slug}
-                    slug={region.slug}
-                    name={region.name}
-                    description={region.description}
-                    image={region.image}
-                    propertyCount={region.propertyCount}
-                    propertyLabel={region.propertyCount === 1 ? tCommon('property') : tCommon('properties')}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* International Properties — horizontal stack slider over all destinations.
+          Maldives leads; every panel links to /international-properties with the same CTA. */}
+      <InternationalMarketsStack
+        entries={homepageMarketEntries}
+        eyebrow={homepage.internationalProperties.label}
+        heading={homepage.internationalProperties.heading}
+        showStatus={false}
+      />
 
       {/* BlackOak Advantage */}
       <section className="py-20">

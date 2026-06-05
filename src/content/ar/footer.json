@@ -125,32 +125,32 @@
   "social": [
     {
       "platform": "facebook",
-      "url": "https://www.facebook.com/BlackOakRE/",
+      "url": "https://www.facebook.com/BlackOakRealEstate/",
       "icon": "Facebook"
     },
     {
-      "platform": "twitter",
-      "url": "https://x.com/blackoakre",
-      "icon": "Twitter"
-    },
-    {
       "platform": "linkedin",
-      "url": "https://www.linkedin.com/company/blackoakrealestate",
+      "url": "https://ae.linkedin.com/company/blackoak-real-estate",
       "icon": "Linkedin"
     },
     {
       "platform": "whatsapp",
-      "url": "https://wa.me/97143989055",
+      "url": "https://wa.me/971501046890",
       "icon": "MessageCircle"
     },
     {
       "platform": "instagram",
-      "url": "https://www.instagram.com/blackoakrealestate",
+      "url": "https://www.instagram.com/blackoakdubai/",
       "icon": "Instagram"
     },
     {
+      "platform": "tiktok",
+      "url": "https://www.tiktok.com/@blackoak.realestate",
+      "icon": "TikTok"
+    },
+    {
       "platform": "youtube",
-      "url": "https://www.youtube.com/@BlackOakRealEstate",
+      "url": "https://www.youtube.com/@blackoakrealestate",
       "icon": "Youtube"
     }
   ],

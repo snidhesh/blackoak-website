@@ -60,7 +60,8 @@
         "description": "اكتشف أرقى العقارات الفاخرة في المملكة المتحدة مع BlackOak للعقارات. شقق بنتهاوس في لندن، قصور ريفية، واستثمارات عقارية متميزة.",
         "ogTitle": "عقارات فاخرة في المملكة المتحدة | BlackOak للعقارات",
         "ogDescription": "استكشف مجموعة حصرية من العقارات الفاخرة في المملكة المتحدة، من بنتهاوسات مايفير إلى القصور الريفية التاريخية."
-      }
+      },
+      "shortFocus": "عقارات مرموقة في مايفر ونايتسبردج بلندن."
     },
     {
       "slug": "spain",
@@ -96,7 +97,8 @@
         "description": "اكتشف أفخم العقارات في إسبانيا مع BlackOak للعقارات. فيلات ماربيا، شقق برشلونة، وإقامات جزرية حصرية في البليار.",
         "ogTitle": "عقارات فاخرة في إسبانيا | BlackOak للعقارات",
         "ogDescription": "استكشف مجموعة مختارة من العقارات الفاخرة على الساحل الإسباني، من الميل الذهبي في ماربيا إلى جزر البليار الساحرة."
-      }
+      },
+      "shortFocus": "عقارات ساحلية فاخرة من ماربيا إلى مايورقا."
     },
     {
       "slug": "italy",
@@ -132,7 +134,8 @@
         "description": "اكتشف أرقى العقارات الفاخرة في إيطاليا مع BlackOak للعقارات. عقارات توسكانا التاريخية، فيلات بحيرة كومو، وبنتهاوسات ميلانو.",
         "ogTitle": "عقارات فاخرة في إيطاليا | BlackOak للعقارات",
         "ogDescription": "استكشف مجموعة حصرية من العقارات الإيطالية الفاخرة، من قصور توسكانا إلى المساكن العصرية على ضفاف بحيرة كومو."
-      }
+      },
+      "shortFocus": "قصور تاريخية وعزب توسكانية أصيلة."
     },
     {
       "slug": "switzerland",
@@ -168,7 +171,8 @@
         "description": "اكتشف أرقى العقارات الفاخرة في سويسرا مع BlackOak للعقارات. شاليهات جبال الألب، فيلات على ضفاف البحيرات، ومساكن فاخرة في جنيف وزيورخ.",
         "ogTitle": "عقارات فاخرة في سويسرا | BlackOak للعقارات",
         "ogDescription": "استكشف مجموعة حصرية من العقارات السويسرية الفاخرة، من شاليهات التزلج في فيربييه إلى المساكن المطلة على بحيرة جنيف."
-      }
+      },
+      "shortFocus": "خصوصية جبلية واستقرار عالمي في أرقى الوجهات."
     },
     {
       "slug": "thailand",
@@ -204,15 +208,16 @@
         "description": "اكتشف أفخم العقارات في تايلاند مع BlackOak للعقارات. فيلات بوكيت الاستوائية، بنتهاوسات بانكوك، ومساكن ساحلية حصرية.",
         "ogTitle": "عقارات فاخرة في تايلاند | BlackOak للعقارات",
         "ogDescription": "استكشف مجموعة مختارة من العقارات الفاخرة في تايلاند، من فيلات خليج كامالا في بوكيت إلى المساكن الفاخرة في بانكوك."
-      }
+      },
+      "shortFocus": "فيلات على الشاطئ في بوكيت وكو ساموي."
     },
     {
       "slug": "maldives",
       "name": "جزر المالديف",
       "countryCode": "MV",
       "region": "asia",
-      "heroImage": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1600&q=80",
-      "thumbnail": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&q=80",
+      "heroImage": "/images/international/baccarat-maldives/hero.jpg",
+      "thumbnail": "/images/international/baccarat-maldives/hero.jpg",
       "description": "تُمثل جزر المالديف الوجهة المطلقة للفخامة العقارية فوق المياه، حيث تتحول الأحلام إلى حقيقة وسط المحيط الهندي الفيروزي. تتألق هذه الجزر المرجانية بفيلات فوق الماء ومنتجعات خاصة تُعد من أكثر العقارات حصرية وتميزاً في العالم. تطور السوق العقاري المالديفي بشكل كبير في السنوات الأخيرة مع إطلاق مشاريع سكنية فاخرة تحمل علامات تجارية عالمية مثل سونيفا وأمان وشيفال بلان، مما يوفر للمستثمرين فرصة امتلاك قطعة من الجنة مع خدمات فندقية فائقة. تتميز العقارات المالديفية ببحيرات خاصة وأرضيات زجاجية تطل على الشعاب المرجانية وشواطئ رملية بيضاء ناصعة. مع تزايد الطلب العالمي على الإقامات الجزرية الخاصة، تُعد جزر المالديف فرصة استثمارية فريدة في فئة العقارات الاستثنائية.",
       "whyInvest": {
         "title": "لماذا الاستثمار في جزر المالديف",
@@ -236,7 +241,8 @@
         "description": "اكتشف أفخم العقارات في جزر المالديف مع BlackOak للعقارات. فيلات فوق الماء، منتجعات جزرية خاصة، ومساكن بعلامات تجارية عالمية.",
         "ogTitle": "عقارات فاخرة في جزر المالديف | BlackOak للعقارات",
         "ogDescription": "استكشف مجموعة حصرية من العقارات المالديفية الفاخرة، من الفيلات فوق الماء إلى المنتجعات الجزرية الخاصة."
-      }
+      },
+      "shortFocus": "مساكن فوق المياه في خمس جزر مترابطة بأتول جنوب ماليه."
     },
     {
       "slug": "singapore",
@@ -272,7 +278,8 @@
         "description": "اكتشف أرقى العقارات الفاخرة في سنغافورة مع BlackOak للعقارات. بنتهاوسات سنتوسا كوف، مساكن مارينا باي، وشقق أورتشارد رود.",
         "ogTitle": "عقارات فاخرة في سنغافورة | BlackOak للعقارات",
         "ogDescription": "استكشف مجموعة حصرية من العقارات السنغافورية الفاخرة، من بنتهاوسات سنتوسا كوف إلى المساكن الفاخرة في قلب المدينة."
-      }
+      },
+      "shortFocus": "أكثر أسواق العقارات الفاخرة شفافية في آسيا."
     },
     {
       "slug": "united-states",
@@ -308,10 +315,156 @@
         "description": "اكتشف أفخم العقارات في الولايات المتحدة مع BlackOak للعقارات. بنتهاوسات نيويورك، قصور بيفرلي هيلز، ومنازل ميامي على الواجهة البحرية.",
         "ogTitle": "عقارات فاخرة في الولايات المتحدة | BlackOak للعقارات",
         "ogDescription": "استكشف مجموعة مختارة من العقارات الأمريكية الفاخرة، من بنتهاوسات مانهاتن إلى قصور بيفرلي هيلز ومنازل ميامي."
-      }
+      },
+      "shortFocus": "أبراج مانهاتن وعزب لوس أنجلوس ومايامي."
     }
   ],
   "properties": [
+    {
+      "id": "intl-prop-baccarat-maldives",
+      "slug": "baccarat-hotel-residences-maldives",
+      "country": "المالديف",
+      "countryCode": "MV",
+      "region": "asia",
+      "city": "South Male Atoll",
+      "coordinates": {
+        "lat": 3.9,
+        "lng": 73.4
+      },
+      "price": 4940000,
+      "priceTo": 12220000,
+      "localPrice": 4940000,
+      "localPriceTo": 12220000,
+      "localCurrency": "USD",
+      "developer": "Baccarat Hotel & Resorts (operated by SH Hotels & Resorts)",
+      "propertyType": "Branded Residence",
+      "bedrooms": 2,
+      "bedroomsTo": 4,
+      "bathrooms": 2,
+      "area": 281,
+      "areaTo": 692,
+      "areaUnit": "Sq.M.",
+      "offering": "sale",
+      "status": "available",
+      "featured": true,
+      "mainImage": "/images/international/baccarat-maldives/hero.jpg",
+      "gallery": [
+        "/images/international/baccarat-maldives/01-arrival-pavilion.jpg",
+        "/images/international/baccarat-maldives/02-marina.jpg",
+        "/images/international/baccarat-maldives/03-villa-front-day.jpg",
+        "/images/international/baccarat-maldives/04-villa-front-night.jpg",
+        "/images/international/baccarat-maldives/05-2br-villa-day.jpg",
+        "/images/international/baccarat-maldives/06-living-dining.jpg",
+        "/images/international/baccarat-maldives/07-primary-suite.jpg",
+        "/images/international/baccarat-maldives/08-primary-en-suite.jpg",
+        "/images/international/baccarat-maldives/09-spa.jpg",
+        "/images/international/baccarat-maldives/10-art-gallery.jpg"
+      ],
+      "floorPlans": [],
+      "unitTypes": [
+        {
+          "name": "2BR Beach Villa",
+          "bedrooms": 2,
+          "area": 281,
+          "areaUnit": "Sq.M.",
+          "price": 4940000,
+          "localPrice": 4940000,
+          "floorPlanUrl": "/floor-plans/baccarat-maldives/2br-beach.pdf",
+          "image": "/images/international/baccarat-maldives/05-2br-villa-day.jpg",
+          "floorPlanImageUrl": "/floor-plans/baccarat-maldives/2br-beach.jpg",
+          "category": "beach"
+        },
+        {
+          "name": "3BR Beach Villa",
+          "bedrooms": 3,
+          "area": 524,
+          "areaUnit": "Sq.M.",
+          "price": 7020000,
+          "localPrice": 7020000,
+          "floorPlanUrl": "/floor-plans/baccarat-maldives/3br-beach.pdf",
+          "image": "/images/international/baccarat-maldives/06-living-dining.jpg",
+          "floorPlanImageUrl": "/floor-plans/baccarat-maldives/3br-beach.jpg",
+          "category": "beach"
+        },
+        {
+          "name": "4BR Beach Estate",
+          "bedrooms": 4,
+          "area": 692,
+          "areaUnit": "Sq.M.",
+          "price": 11180000,
+          "localPrice": 11180000,
+          "floorPlanUrl": "/floor-plans/baccarat-maldives/4br-villa.pdf",
+          "image": "/images/international/baccarat-maldives/03-villa-front-day.jpg",
+          "floorPlanImageUrl": "/floor-plans/baccarat-maldives/4br-villa.jpg",
+          "category": "beach"
+        },
+        {
+          "name": "4BR Golf Estate",
+          "bedrooms": 4,
+          "area": 692,
+          "areaUnit": "Sq.M.",
+          "price": 12220000,
+          "localPrice": 12220000,
+          "floorPlanUrl": "/floor-plans/baccarat-maldives/4br-villa.pdf",
+          "image": "/images/international/baccarat-maldives/04-villa-front-night.jpg",
+          "floorPlanImageUrl": "/floor-plans/baccarat-maldives/4br-villa.jpg",
+          "category": "beach"
+        },
+        {
+          "name": "2BR Water Villa",
+          "bedrooms": 2,
+          "area": null,
+          "areaUnit": "Sq.M.",
+          "price": null,
+          "localPrice": null,
+          "priceOnRequest": true,
+          "floorPlanUrl": "/floor-plans/baccarat-maldives/2br-water.pdf",
+          "image": "/images/international/baccarat-maldives/02-marina.jpg",
+          "floorPlanImageUrl": "/floor-plans/baccarat-maldives/2br-water.jpg",
+          "category": "water"
+        },
+        {
+          "name": "3BR Water Villa",
+          "bedrooms": 3,
+          "area": null,
+          "areaUnit": "Sq.M.",
+          "price": null,
+          "localPrice": null,
+          "priceOnRequest": true,
+          "floorPlanUrl": "/floor-plans/baccarat-maldives/3br-water.pdf",
+          "image": "/images/international/baccarat-maldives/02-marina.jpg",
+          "floorPlanImageUrl": "/floor-plans/baccarat-maldives/3br-water.jpg",
+          "category": "water"
+        },
+        {
+          "name": "4BR Water Villa",
+          "bedrooms": 4,
+          "area": null,
+          "areaUnit": "Sq.M.",
+          "price": null,
+          "localPrice": null,
+          "priceOnRequest": true,
+          "floorPlanUrl": "/floor-plans/baccarat-maldives/4br-water.pdf",
+          "image": "/images/international/baccarat-maldives/02-marina.jpg",
+          "floorPlanImageUrl": "/floor-plans/baccarat-maldives/4br-water.jpg",
+          "category": "water"
+        }
+      ],
+      "name": "باكارات للفنادق والمساكن - المالديف",
+      "address": "خمس جزر مترابطة، أتول جنوب ماليه، المالديف",
+      "description": "مساكن فاخرة تمتد على أكثر من 50 هكتاراً عبر خمس جزر مترابطة في أتول جنوب ماليه — على بُعد نحو 45 دقيقة بالقارب من مطار فيلانا الدولي. 62 مسكناً خاصاً تضم 2 إلى 4 غرف نوم تجمع بين التراث الفرنسي وجمال المالديف وأناقة باكارات المميزة، مع مرافق منتجع متكاملة يديرها SH Hotels & Resorts.",
+      "amenities": [
+        "منتجع صحي ومركز عافية",
+        "ملعب جولف من تسع حفر",
+        "مارينا ورياضات مائية",
+        "معرض فني (سيمون دي بيري)",
+        "حديقة الكريستال (استوديو مارسيل واندرز)",
+        "نادي شاطئ ومطاعم متعددة",
+        "نوادي للعائلات والأطفال",
+        "شاطئ خاص",
+        "مركز لياقة بدنية"
+      ]
+    },
     {
       "id": "intl-prop-001",
       "slug": "the-mayfair-penthouse",
@@ -335,8 +488,8 @@
       "area": 8500,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
-      "featured": true,
+      "status": "coming-soon",
+      "featured": false,
       "description": "بنتهاوس استثنائي في قلب مايفير يطل بإطلالات بانورامية على هايد بارك. التشطيبات المخصصة والأسقف بارتفاع خمسة أمتار تخلق بيئة معيشية لا مثيل لها في أحد أرقى أحياء لندن.",
       "mainImage": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
       "gallery": [
@@ -379,8 +532,8 @@
       "area": 12000,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
-      "featured": true,
+      "status": "coming-soon",
+      "featured": false,
       "description": "فيلا معاصرة مذهلة على الميل الذهبي الشهير في ماربيا مع إطلالة مباشرة على البحر. توفر العقار أسلوب حياة داخلي-خارجي لا مثيل له مع حدائق متوسطية خصبة ومسبح إنفينيتي.",
       "mainImage": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
       "gallery": [
@@ -423,8 +576,8 @@
       "area": 15000,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
-      "featured": true,
+      "status": "coming-soon",
+      "featured": false,
       "description": "عقار توسكاني تاريخي تم ترميمه بشكل رائع وسط تلال كيانتي مع كرم عنب وبستان زيتون. يجمع هذا العقار بين سحر عصر النهضة ووسائل الراحة الحديثة ويوفر إطلالات استثنائية على الريف المحيط.",
       "mainImage": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80",
       "gallery": [
@@ -465,7 +618,7 @@
       "area": 10500,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
+      "status": "coming-soon",
       "featured": false,
       "description": "شاليه فاخر في كولوني مع إطلالات خلابة على بحيرة جنيف وجبل مون بلان. يتميز العقار بمواد فاخرة ورصيف خاص ومنتجع صحي داخلي متكامل في أحد أكثر أحياء جنيف حصرية.",
       "mainImage": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80",
@@ -508,7 +661,7 @@
       "area": 8200,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
+      "status": "coming-soon",
       "featured": false,
       "description": "فيلا استوائية حصرية تطل على خليج كامالا مع مسبح إنفينيتي ووصول مباشر إلى الشاطئ. تخلق مساحات المعيشة المفتوحة والحدائق الاستوائية الخصبة جنة جزرية حقيقية.",
       "mainImage": "https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=800&q=80",
@@ -550,7 +703,7 @@
       "area": 6500,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
+      "status": "coming-soon",
       "featured": false,
       "description": "منتجع خاص فوق الماء في المياه الكريستالية لأتول نورث مالي. توفر هذه الفيلا الحصرية بحيرة خاصة وخدمة خادم شخصي ووصولاً لا مثيل له إلى أحد أجمل الشعاب المرجانية في العالم.",
       "mainImage": "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80",
@@ -592,7 +745,7 @@
       "area": 5800,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
+      "status": "coming-soon",
       "featured": false,
       "description": "بنتهاوس استثنائي في سنتوسا كوف مع إطلالات بانورامية على المرسى ومياه مضيق سنغافورة. توفر الإقامة حديقة خاصة على السطح ورصيف شخصي ووصولاً حصرياً إلى نادي اليخوت.",
       "mainImage": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80",
@@ -635,7 +788,7 @@
       "area": 6200,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
+      "status": "coming-soon",
       "featured": false,
       "description": "بنتهاوس عصري فائق في حي بريكل في ميامي مع إطلالات مذهلة على خليج بيسكين. تفتح مساحة المعيشة المفتوحة على شرفة خاصة مع مسبح توفر أسلوب حياة ساحلي فاخر.",
       "mainImage": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
@@ -677,7 +830,7 @@
       "area": 22000,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
+      "status": "coming-soon",
       "featured": false,
       "description": "قصر أيقوني في شوارع بيفرلي هيلز المظللة بالأشجار مع حدائق منسقة وإطلالات على المدينة. يشمل العقار جناح ضيوف وسينما خاصة ومساحات ترفيه خارجية مناسبة لأرقى الحفلات.",
       "mainImage": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",

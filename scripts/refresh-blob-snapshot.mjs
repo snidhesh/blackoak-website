@@ -3,7 +3,7 @@
 // The app reads this Blob (src/lib/content.ts). Requires BLOB_READ_WRITE_TOKEN.
 
 import { put } from '@vercel/blob';
-import { fetchAllListings } from './fetch-listings.mjs';
+import { fetchAllListings, uploadAgentImagesToBlob } from './fetch-listings.mjs';
 
 const BLOB_PATH = 'listings-snapshot.json';
 
@@ -13,6 +13,7 @@ if (!process.env.BLOB_READ_WRITE_TOKEN) {
 }
 
 const listings = await fetchAllListings();
+await uploadAgentImagesToBlob(listings, process.env.BLOB_READ_WRITE_TOKEN);
 
 if (listings.length === 0) {
   console.error('CRM returned 0 listings — refusing to overwrite Blob with empty data.');

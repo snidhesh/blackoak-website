@@ -91,10 +91,11 @@ const localBusinessJsonLd = {
     },
   ],
   sameAs: [
-    'https://www.instagram.com/blackoakrealestate',
-    'https://www.linkedin.com/company/blackoakrealestate',
-    'https://www.facebook.com/BlackOakRE/',
-    'https://www.youtube.com/@BlackOakRealEstate',
+    'https://www.instagram.com/blackoakdubai/',
+    'https://ae.linkedin.com/company/blackoak-real-estate',
+    'https://www.facebook.com/BlackOakRealEstate/',
+    'https://www.tiktok.com/@blackoak.realestate',
+    'https://www.youtube.com/@blackoakrealestate',
   ],
   areaServed: {
     '@type': 'GeoCircle',

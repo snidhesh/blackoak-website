@@ -47,6 +47,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'static.shared.propertyfinder.ae',
       },
+      {
+        protocol: 'https',
+        hostname: '*.public.blob.vercel-storage.com',
+      },
     ],
   },
 };

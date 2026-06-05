@@ -60,7 +60,8 @@
         "description": "Découvrez notre sélection exclusive de propriétés de prestige au Royaume-Uni. Penthouses londoniens, demeures historiques et domaines champêtres dans les adresses les plus recherchées.",
         "ogTitle": "Propriétés de luxe au Royaume-Uni | BlackOak Real Estate",
         "ogDescription": "Explorez des biens immobiliers d'exception au Royaume-Uni : penthouses avec vue sur Hyde Park, résidences à Mayfair et domaines dans la campagne anglaise."
-      }
+      },
+      "shortFocus": "Domaines historiques de Mayfair et Knightsbridge à la valeur durable."
     },
     {
       "slug": "spain",
@@ -96,7 +97,8 @@
         "description": "Découvrez des villas et résidences de prestige en Espagne. Propriétés d'exception à Marbella, Ibiza, Majorque et Barcelone avec vue mer et prestations haut de gamme.",
         "ogTitle": "Propriétés de luxe en Espagne | BlackOak Real Estate",
         "ogDescription": "Explorez notre collection de biens immobiliers de luxe en Espagne : villas sur le Golden Mile, penthouses en bord de mer et fincas méditerranéennes d'exception."
-      }
+      },
+      "shortFocus": "Propriétés côtières méditerranéennes, de Marbella à Majorque."
     },
     {
       "slug": "italy",
@@ -132,7 +134,8 @@
         "description": "Découvrez des propriétés d'exception en Italie. Domaines toscans, villas sur le lac de Côme, palazzi vénitiens et résidences sur la côte amalfitaine.",
         "ogTitle": "Propriétés de luxe en Italie | BlackOak Real Estate",
         "ogDescription": "Explorez notre sélection de biens immobiliers de prestige en Italie : domaines viticoles en Toscane, villas lacustres et appartements historiques dans les plus belles villes italiennes."
-      }
+      },
+      "shortFocus": "Palazzi historiques et domaines toscans enracinés dans des siècles d’élégance."
     },
     {
       "slug": "switzerland",
@@ -168,7 +171,8 @@
         "description": "Découvrez des propriétés de prestige en Suisse. Chalets alpins à Gstaad et Verbier, résidences au bord du lac Léman et appartements d'exception à Genève et Zurich.",
         "ogTitle": "Propriétés de luxe en Suisse | BlackOak Real Estate",
         "ogDescription": "Explorez notre collection de biens immobiliers ultra-premium en Suisse : chalets dans les Alpes, propriétés lacustres et résidences urbaines dans les villes les plus exclusives."
-      }
+      },
+      "shortFocus": "Discrétion alpine et stabilité mondiale au cœur de Genève."
     },
     {
       "slug": "thailand",
@@ -204,15 +208,16 @@
         "description": "Découvrez des villas et résidences de luxe en Thaïlande. Propriétés d'exception à Phuket, Koh Samui et Bangkok avec piscine à débordement et vue mer panoramique.",
         "ogTitle": "Propriétés de luxe en Thaïlande | BlackOak Real Estate",
         "ogDescription": "Explorez notre sélection de biens immobiliers tropicaux de prestige en Thaïlande : villas en bord de mer, résidences avec plage privée et penthouses urbains d'exception."
-      }
+      },
+      "shortFocus": "Villas en bord de mer à Phuket et Koh Samui, portées par un réseau hospitalier mature."
     },
     {
       "slug": "maldives",
       "name": "Maldives",
       "countryCode": "MV",
       "region": "asia",
-      "heroImage": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1600&q=80",
-      "thumbnail": "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=600&q=80",
+      "heroImage": "/images/international/baccarat-maldives/hero.jpg",
+      "thumbnail": "/images/international/baccarat-maldives/hero.jpg",
       "description": "Les Maldives incarnent le rêve ultime de l'immobilier insulaire de luxe, un archipel de 1 190 îles coralliennes éparpillées dans les eaux cristallines de l'océan Indien. Ce paradis tropical abrite désormais certaines des résidences les plus exclusives au monde, des villas sur pilotis suspendues au-dessus de lagons turquoise aux demeures privées nichées sur des îles entières. Les plus grandes enseignes hôtelières de luxe — Soneva, Aman, Four Seasons, Waldorf Astoria — proposent des programmes résidentiels permettant d'allier propriété privée et services hôteliers cinq étoiles. La biodiversité marine exceptionnelle des Maldives, avec ses récifs coralliens préservés et ses eaux peuplées de raies manta et de requins-baleines, offre un spectacle naturel incomparable à quelques mètres de votre terrasse. L'absence d'impôt sur le revenu et de taxe foncière, combinée à un cadre de vie d'une sérénité absolue, fait des Maldives une destination de choix pour les ultra-fortunés en quête d'intimité et de beauté naturelle.",
       "whyInvest": {
         "title": "Pourquoi investir aux Maldives",
@@ -240,7 +245,8 @@
         "description": "Découvrez des résidences privées d'exception aux Maldives. Villas sur pilotis, îles privées et résidences de marque dans l'archipel le plus exclusif de l'océan Indien.",
         "ogTitle": "Propriétés de luxe aux Maldives | BlackOak Real Estate",
         "ogDescription": "Explorez notre collection de biens immobiliers ultra-premium aux Maldives : villas sur pilotis avec lagon privé, résidences Soneva et propriétés insulaires d'exception."
-      }
+      },
+      "shortFocus": "Résidences sur l’eau signées sur cinq îles interconnectées de l’atoll de Malé Sud."
     },
     {
       "slug": "singapore",
@@ -276,7 +282,8 @@
         "description": "Découvrez des résidences de prestige à Singapour. Penthouses à Marina Bay, propriétés à Sentosa Cove et demeures d'exception dans les quartiers les plus exclusifs de la cité-État.",
         "ogTitle": "Propriétés de luxe à Singapour | BlackOak Real Estate",
         "ogDescription": "Explorez notre sélection de biens immobiliers ultra-premium à Singapour : penthouses avec vue sur la skyline, résidences en bord de mer et demeures dans les enclaves les plus privées."
-      }
+      },
+      "shortFocus": "Le marché du luxe le plus transparent et le mieux gouverné d’Asie."
     },
     {
       "slug": "united-states",
@@ -312,10 +319,156 @@
         "description": "Découvrez des propriétés d'exception aux États-Unis. Penthouses à New York et Miami, manoirs à Beverly Hills et domaines en bord de mer dans les adresses les plus prestigieuses d'Amérique.",
         "ogTitle": "Propriétés de luxe aux États-Unis | BlackOak Real Estate",
         "ogDescription": "Explorez notre collection de biens immobiliers de prestige aux États-Unis : penthouses à Manhattan, villas à Miami Beach, manoirs à Beverly Hills et domaines en Californie."
-      }
+      },
+      "shortFocus": "Tours de Manhattan, domaines de Los Angeles et résidences au bord de l’eau à Miami."
     }
   ],
   "properties": [
+    {
+      "id": "intl-prop-baccarat-maldives",
+      "slug": "baccarat-hotel-residences-maldives",
+      "country": "Maldives",
+      "countryCode": "MV",
+      "region": "asia",
+      "city": "South Male Atoll",
+      "coordinates": {
+        "lat": 3.9,
+        "lng": 73.4
+      },
+      "price": 4940000,
+      "priceTo": 12220000,
+      "localPrice": 4940000,
+      "localPriceTo": 12220000,
+      "localCurrency": "USD",
+      "developer": "Baccarat Hotel & Resorts (operated by SH Hotels & Resorts)",
+      "propertyType": "Branded Residence",
+      "bedrooms": 2,
+      "bedroomsTo": 4,
+      "bathrooms": 2,
+      "area": 281,
+      "areaTo": 692,
+      "areaUnit": "Sq.M.",
+      "offering": "sale",
+      "status": "available",
+      "featured": true,
+      "mainImage": "/images/international/baccarat-maldives/hero.jpg",
+      "gallery": [
+        "/images/international/baccarat-maldives/01-arrival-pavilion.jpg",
+        "/images/international/baccarat-maldives/02-marina.jpg",
+        "/images/international/baccarat-maldives/03-villa-front-day.jpg",
+        "/images/international/baccarat-maldives/04-villa-front-night.jpg",
+        "/images/international/baccarat-maldives/05-2br-villa-day.jpg",
+        "/images/international/baccarat-maldives/06-living-dining.jpg",
+        "/images/international/baccarat-maldives/07-primary-suite.jpg",
+        "/images/international/baccarat-maldives/08-primary-en-suite.jpg",
+        "/images/international/baccarat-maldives/09-spa.jpg",
+        "/images/international/baccarat-maldives/10-art-gallery.jpg"
+      ],
+      "floorPlans": [],
+      "unitTypes": [
+        {
+          "name": "2BR Beach Villa",
+          "bedrooms": 2,
+          "area": 281,
+          "areaUnit": "Sq.M.",
+          "price": 4940000,
+          "localPrice": 4940000,
+          "floorPlanUrl": "/floor-plans/baccarat-maldives/2br-beach.pdf",
+          "image": "/images/international/baccarat-maldives/05-2br-villa-day.jpg",
+          "floorPlanImageUrl": "/floor-plans/baccarat-maldives/2br-beach.jpg",
+          "category": "beach"
+        },
+        {
+          "name": "3BR Beach Villa",
+          "bedrooms": 3,
+          "area": 524,
+          "areaUnit": "Sq.M.",
+          "price": 7020000,
+          "localPrice": 7020000,
+          "floorPlanUrl": "/floor-plans/baccarat-maldives/3br-beach.pdf",
+          "image": "/images/international/baccarat-maldives/06-living-dining.jpg",
+          "floorPlanImageUrl": "/floor-plans/baccarat-maldives/3br-beach.jpg",
+          "category": "beach"
+        },
+        {
+          "name": "4BR Beach Estate",
+          "bedrooms": 4,
+          "area": 692,
+          "areaUnit": "Sq.M.",
+          "price": 11180000,
+          "localPrice": 11180000,
+          "floorPlanUrl": "/floor-plans/baccarat-maldives/4br-villa.pdf",
+          "image": "/images/international/baccarat-maldives/03-villa-front-day.jpg",
+          "floorPlanImageUrl": "/floor-plans/baccarat-maldives/4br-villa.jpg",
+          "category": "beach"
+        },
+        {
+          "name": "4BR Golf Estate",
+          "bedrooms": 4,
+          "area": 692,
+          "areaUnit": "Sq.M.",
+          "price": 12220000,
+          "localPrice": 12220000,
+          "floorPlanUrl": "/floor-plans/baccarat-maldives/4br-villa.pdf",
+          "image": "/images/international/baccarat-maldives/04-villa-front-night.jpg",
+          "floorPlanImageUrl": "/floor-plans/baccarat-maldives/4br-villa.jpg",
+          "category": "beach"
+        },
+        {
+          "name": "2BR Water Villa",
+          "bedrooms": 2,
+          "area": null,
+          "areaUnit": "Sq.M.",
+          "price": null,
+          "localPrice": null,
+          "priceOnRequest": true,
+          "floorPlanUrl": "/floor-plans/baccarat-maldives/2br-water.pdf",
+          "image": "/images/international/baccarat-maldives/02-marina.jpg",
+          "floorPlanImageUrl": "/floor-plans/baccarat-maldives/2br-water.jpg",
+          "category": "water"
+        },
+        {
+          "name": "3BR Water Villa",
+          "bedrooms": 3,
+          "area": null,
+          "areaUnit": "Sq.M.",
+          "price": null,
+          "localPrice": null,
+          "priceOnRequest": true,
+          "floorPlanUrl": "/floor-plans/baccarat-maldives/3br-water.pdf",
+          "image": "/images/international/baccarat-maldives/02-marina.jpg",
+          "floorPlanImageUrl": "/floor-plans/baccarat-maldives/3br-water.jpg",
+          "category": "water"
+        },
+        {
+          "name": "4BR Water Villa",
+          "bedrooms": 4,
+          "area": null,
+          "areaUnit": "Sq.M.",
+          "price": null,
+          "localPrice": null,
+          "priceOnRequest": true,
+          "floorPlanUrl": "/floor-plans/baccarat-maldives/4br-water.pdf",
+          "image": "/images/international/baccarat-maldives/02-marina.jpg",
+          "floorPlanImageUrl": "/floor-plans/baccarat-maldives/4br-water.jpg",
+          "category": "water"
+        }
+      ],
+      "name": "Baccarat Hotel & Residences Maldives",
+      "address": "Cinq îles interconnectées, atoll de Malé Sud, Maldives",
+      "description": "Résidences signées s'étendant sur plus de 50 hectares à travers cinq îles interconnectées de l'atoll de Malé Sud — environ 45 minutes en bateau depuis l'aéroport international de Velana. 62 résidences privées de 2 à 4 chambres mêlent l'héritage français, la beauté maldivienne et l'opulence signature de Baccarat, avec tous les services d'un complexe géré par SH Hotels & Resorts.",
+      "amenities": [
+        "Sanctuaire de Spa et Bien-être",
+        "Parcours de Golf 9 Trous",
+        "Marina et Sports Nautiques",
+        "Galerie d'Art (Simon de Pury)",
+        "Crystal Garden (Marcel Wanders Studio)",
+        "Beach Club et Restaurants",
+        "Clubs Famille et Enfants",
+        "Accès Plage Privée",
+        "Centre de Fitness"
+      ]
+    },
     {
       "id": "intl-prop-001",
       "slug": "the-mayfair-penthouse",
@@ -339,8 +492,8 @@
       "area": 8500,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
-      "featured": true,
+      "status": "coming-soon",
+      "featured": false,
       "description": "Un penthouse exceptionnel au cœur de Mayfair offrant des vues panoramiques sur Hyde Park. Les finitions sur mesure et les plafonds de cinq mètres créent un cadre de vie incomparable au sein de l'un des quartiers les plus prestigieux de Londres.",
       "mainImage": "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
       "gallery": [
@@ -383,8 +536,8 @@
       "area": 12000,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
-      "featured": true,
+      "status": "coming-soon",
+      "featured": false,
       "description": "Une villa contemporaine spectaculaire sur le célèbre Golden Mile de Marbella avec vue mer directe. La propriété offre un style de vie intérieur-extérieur sans pareil avec des jardins méditerranéens luxuriants et une piscine à débordement.",
       "mainImage": "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80",
       "gallery": [
@@ -427,8 +580,8 @@
       "area": 15000,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
-      "featured": true,
+      "status": "coming-soon",
+      "featured": false,
       "description": "Un domaine toscan historique magnifiquement restauré niché dans les collines du Chianti avec vignoble et oliveraie. Cette propriété allie le charme de la Renaissance à des aménagements modernes et offre des vues exceptionnelles sur la campagne environnante.",
       "mainImage": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80",
       "gallery": [
@@ -469,7 +622,7 @@
       "area": 10500,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
+      "status": "coming-soon",
       "featured": false,
       "description": "Un chalet de prestige à Cologny avec des vues imprenables sur le lac Léman et le Mont-Blanc. La propriété dispose de matériaux nobles, d'un quai privé et d'un spa intérieur complet dans l'un des quartiers les plus exclusifs de Genève.",
       "mainImage": "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800&q=80",
@@ -512,7 +665,7 @@
       "area": 8200,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
+      "status": "coming-soon",
       "featured": false,
       "description": "Une villa tropicale exclusive surplombant la baie de Kamala avec une piscine à débordement et un accès direct à la plage. Les espaces de vie ouverts sur l'extérieur et les jardins tropicaux luxuriants créent un véritable paradis insulaire.",
       "mainImage": "https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=800&q=80",
@@ -554,7 +707,7 @@
       "area": 6500,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
+      "status": "coming-soon",
       "featured": false,
       "description": "Une retraite privée sur pilotis dans les eaux cristallines de l'atoll Nord de Malé. Cette villa exclusive offre un lagon privé, un service de majordome personnel et un accès sans pareil à l'un des plus beaux récifs coralliens au monde.",
       "mainImage": "https://images.unsplash.com/photo-1573843981267-be1999ff37cd?w=800&q=80",
@@ -596,7 +749,7 @@
       "area": 5800,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
+      "status": "coming-soon",
       "featured": false,
       "description": "Un penthouse d'exception à Sentosa Cove avec vue panoramique sur la marina et les eaux du détroit de Singapour. La résidence offre un jardin privé en terrasse, un mouillage personnel et un accès exclusif au club nautique.",
       "mainImage": "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&q=80",
@@ -639,7 +792,7 @@
       "area": 6200,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
+      "status": "coming-soon",
       "featured": false,
       "description": "Un penthouse ultramoderne dans le quartier de Brickell à Miami avec des vues spectaculaires sur la baie de Biscayne. L'espace de vie en plan ouvert s'ouvre sur une terrasse privée avec piscine, offrant un mode de vie côtier luxueux.",
       "mainImage": "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80",
@@ -681,7 +834,7 @@
       "area": 22000,
       "areaUnit": "Sq.Ft.",
       "offering": "sale",
-      "status": "available",
+      "status": "coming-soon",
       "featured": false,
       "description": "Un manoir emblématique dans les rues arborées de Beverly Hills avec des jardins paysagers et une vue sur la ville. La propriété comprend un pavillon d'invités, un cinéma privé et des espaces de divertissement extérieurs adaptés aux réceptions les plus prestigieuses.",
       "mainImage": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",

@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const name = getProjectName(project, locale);
   const desc = getProjectDescription(project, locale);
-  const offeringLabel = project.offering === 'sale' ? tMeta('forSale') : project.offering === 'rent' ? tMeta('forRent') : '';
+  const offeringLabel = project.offering === 'sale' ? tMeta('forSale') : project.offering === 'rent' || project.offering === 'yearly' ? tMeta('forRent') : '';
   const title = `${name} | ${project.propertyType} ${offeringLabel} in ${project.location.address}`.trim();
   const description = `${name} — ${project.propertyType} ${offeringLabel} in ${project.location.address}. ${project.bedrooms} ${tCommon('bedrooms')}, ${formatArea(project.area, locale)} ${project.areaUnit}. ${desc.slice(0, 120)}`;
 

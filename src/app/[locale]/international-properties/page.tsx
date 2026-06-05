@@ -1,15 +1,15 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import type { Locale } from '@/i18n/config';
-import Image from 'next/image';
 import {
-  getInternationalRegions,
   getInternationalCountries,
-  getInternationalPropertiesByCountry,
+  getInternationalProperties,
+  getInternationalRegions,
 } from '@/lib/content';
 import SectionLabel from '@/components/ui/SectionLabel';
-import SectionHeading from '@/components/ui/SectionHeading';
-import Button from '@/components/ui/Button';
+import InternationalPropertyGrid from '@/components/sections/InternationalPropertyGrid';
+import FeaturedInternationalShowcase from '@/components/sections/FeaturedInternationalShowcase';
+import ComingSoonBlock from '@/components/sections/ComingSoonBlock';
 
 interface Props {
   params: { locale: string };
@@ -43,13 +43,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function InternationalPropertiesPage({ params }: { params: { locale: string } }) {
   const locale = params.locale as Locale;
   const t = await getTranslations({ locale, namespace: 'pages.internationalProperties' });
-  const regions = getInternationalRegions(locale);
   const countries = getInternationalCountries(locale);
+  const regions = getInternationalRegions(locale);
+  const availableProperties = getInternationalProperties(locale).filter((p) => p.status === 'available');
 
-  const countriesByRegion = regions.map((region) => ({
-    region,
-    countries: countries.filter((c) => c.region === region.slug),
-  })).filter((group) => group.countries.length > 0);
+  // Curated 3 postcards: US, UK, Europe. Europe uses Italy's thumbnail as a stand-in image; its label
+  // comes from the translated region name so fr/ar render correctly.
+  const usCountry = countries.find((c) => c.countryCode === 'US');
+  const ukCountry = countries.find((c) => c.countryCode === 'GB');
+  const europeRegion = regions.find((r) => r.slug === 'europe');
+  const italyCountry = countries.find((c) => c.countryCode === 'IT');
+  const comingSoonEntries = [
+    usCountry && { name: usCountry.name, image: usCountry.thumbnail },
+    ukCountry && { name: ukCountry.name, image: ukCountry.thumbnail },
+    europeRegion && italyCountry && { name: europeRegion.name, image: italyCountry.thumbnail },
+  ].filter(Boolean) as { name: string; image: string }[];
 
   const collectionJsonLd = {
     '@context': 'https://schema.org',
@@ -72,7 +80,7 @@ export default async function InternationalPropertiesPage({ params }: { params: 
         item: {
           '@type': 'Place',
           name: country.name,
-          image: `https://blackoak-re.com${country.thumbnail}`,
+          image: country.thumbnail.startsWith('http') ? country.thumbnail : `https://blackoak-re.com${country.thumbnail}`,
         },
       })),
     },
@@ -87,104 +95,44 @@ export default async function InternationalPropertiesPage({ params }: { params: 
       {/* Black navbar backdrop */}
       <div className="bg-black h-16 lg:h-20" />
 
-      {/* Hero - white bg */}
-      <section className="bg-white pt-12 pb-16">
+      {/* Hero - cream bg for premium editorial feel */}
+      <section className="bg-[#f5f1ea] pt-14 pb-12 md:pt-20 md:pb-16">
         <div className="container-wide text-center">
           <SectionLabel>{t('sectionLabel')}</SectionLabel>
-          <h1 className="text-4xl md:text-[50px] font-light leading-tight text-black mt-5">
+          <h1 className="text-4xl md:text-[50px] font-light leading-tight text-black mt-5 max-w-3xl mx-auto">
             {t('heading')}
           </h1>
-          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="mt-5 text-base md:text-lg text-black/65 max-w-2xl mx-auto leading-relaxed">
             {t('subheading')}
           </p>
         </div>
       </section>
 
-      {/* Blurred content with coming soon overlay */}
-      <div className="relative">
-        {/* Coming soon overlay */}
-        <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/40 backdrop-blur-[2px]">
-          <div className="text-center px-4">
-            <span className="inline-block border border-white/40 text-white text-[14px] font-medium tracking-[3px] uppercase px-8 py-4 rounded-sm mb-5">
-              {t('comingSoon')}
-            </span>
-            <p className="text-white/80 text-[16px] leading-[28px] max-w-lg mx-auto">
-              {t('comingSoonDescription')}
-            </p>
-            <div className="mt-8">
-              <Button href="/contact" variant="outline-light" size="lg">
-                {t('notifyMe')}
-              </Button>
+      {/* Featured listing — premium showcase on cream surround */}
+      {availableProperties.length === 1 ? (
+        <section className="pb-20 md:pb-28 bg-[#f5f1ea]">
+          <div className="container-wide">
+            <div className="shadow-[0_30px_80px_-30px_rgba(0,0,0,0.35)]">
+              <FeaturedInternationalShowcase
+                property={availableProperties[0]}
+                locale={locale}
+                variant="dark"
+              />
             </div>
           </div>
-        </div>
-
-        {/* Blurred background content (non-interactive) */}
-        <div className="pointer-events-none select-none blur-[3px]" aria-hidden="true">
-          {countriesByRegion.map(({ region, countries: regionCountries }, groupIdx) => (
-            <section
-              key={region.slug}
-              className={groupIdx % 2 === 0 ? 'py-16 bg-[#f8f9fa]' : 'py-16'}
-            >
-              <div className="container-wide">
-                <div className="text-center mb-10">
-                  <SectionLabel>{t('regionsLabel')}</SectionLabel>
-                  <SectionHeading title={t('countriesInRegion', { region: region.name })} />
-                  <p className="mt-3 text-gray-600 max-w-xl mx-auto text-sm">
-                    {region.description}
-                  </p>
-                </div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {regionCountries.map((country) => {
-                    const propertyCount = getInternationalPropertiesByCountry(country.countryCode, locale).length;
-                    return (
-                      <div
-                        key={country.slug}
-                        className="relative block aspect-[4/3] overflow-hidden rounded-md"
-                      >
-                        <Image
-                          src={country.thumbnail}
-                          alt={country.name}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 50vw, 25vw"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                        <div className="absolute bottom-0 left-0 right-0 p-4">
-                          <h3 className="text-white text-[16px] md:text-[18px] font-medium leading-tight">
-                            {country.name}
-                          </h3>
-                          <p className="text-white/70 text-[12px] mt-1">
-                            {t('propertiesCount', { count: propertyCount })}
-                          </p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </section>
-          ))}
-        </div>
-      </div>
-
-      {/* CTA Banner */}
-      <section className="bg-black py-20">
-        <div className="container-wide text-center">
-          <SectionLabel light>{t('ctaLabel')}</SectionLabel>
-          <h2 className="text-[28px] md:text-[32px] font-light text-white mt-5">
-            {t('ctaHeading')}
-          </h2>
-          <p className="mt-4 text-gray-300 max-w-xl mx-auto">
-            {t('ctaDescription')}
-          </p>
-          <div className="mt-8">
-            <Button href="/contact" variant="outline-light" size="lg">
-              {t('ctaButton')}
-            </Button>
+        </section>
+      ) : availableProperties.length > 1 ? (
+        <section className="pb-16 bg-[#f5f1ea]">
+          <div className="container-wide">
+            <InternationalPropertyGrid properties={availableProperties} columns={3} />
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
+
+      {/* Coming Soon — 3 curated postcards (US · UK · Europe) blurred together under one shared title */}
+      {comingSoonEntries.length > 0 && (
+        <ComingSoonBlock entries={comingSoonEntries} locale={locale} />
+      )}
     </>
   );
 }
