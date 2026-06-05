@@ -172,11 +172,12 @@ export default async function LocaleLayout({
           __html: `
           (function(){
             var d=document.documentElement;
-            if(d.hasAttribute('data-splash-enabled')
+            if(${splash.enabled ? 'true' : 'false'}
               && /^\\/((?:fr|ar)\\/)?$/.test(location.pathname)
-              && !/blackoak-splash=/.test(document.cookie)){
+              /* TEMP: cookie gate disabled for dev. Restore the next line before shipping. */
+              /* && !/blackoak-splash=/.test(document.cookie) */){
               d.dataset.splash='pending';
-              document.cookie='blackoak-splash=seen;path=/';
+              /* document.cookie='blackoak-splash=seen;path=/'; */
               window.__splashTimer=setTimeout(function(){ delete d.dataset.splash; }, ${splash.autoPlayDuration + 3000});
             }
           })();
