@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { MapPin, Bed, Maximize, Bath, Check, ExternalLink } from 'lucide-react';
 import { formatArea } from '@/lib/formatters';
@@ -8,6 +7,7 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import ContactForm from '@/components/sections/ContactForm';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 import StickyNav from '@/components/ui/StickyNav';
+import ImageCrossfadeSlider from '@/components/ui/ImageCrossfadeSlider';
 import AvailableResidencesAccordion from '@/components/sections/AvailableResidencesAccordion';
 import { COMPANY } from '@/lib/constants';
 
@@ -53,7 +53,6 @@ export default async function InternationalPropertyDetailPage({ property, countr
   const stickyNavSections = [
     { id: 'details', label: t('stickyNav.details') },
     ...(hasUnitTypes ? [{ id: 'residences', label: t('stickyNav.residences') }] : []),
-    { id: 'gallery', label: t('stickyNav.gallery') },
     ...(hasAmenities ? [{ id: 'amenities', label: t('stickyNav.amenities') }] : []),
     { id: 'location', label: t('stickyNav.location') },
     { id: 'enquiry', label: t('stickyNav.enquiry') },
@@ -177,37 +176,38 @@ export default async function InternationalPropertyDetailPage({ property, countr
 
       {/* Hero */}
       <section className="relative h-[520px] md:h-[700px] lg:h-[800px] flex items-end overflow-hidden">
-        <Image
-          src={property.mainImage}
-          alt={property.name}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-x-0 top-0 h-[188px] bg-gradient-to-b from-black/50 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-black via-black/40 to-transparent" />
+        <div className="absolute inset-0">
+          <ImageCrossfadeSlider
+            images={allImages}
+            alt={property.name}
+            sizes="100vw"
+            priorityFirst
+            dotsPosition="top-right"
+            interval={6000}
+          />
+        </div>
 
         <div className="relative z-10 container-wide pb-8 md:pb-12 w-full">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-            <div className="min-w-0">
+            <div className="min-w-0 [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]">
               <h1 className="text-[24px] md:text-[36px] lg:text-[42px] font-light leading-[1.2] text-white">
                 {property.name}
               </h1>
-              <div className="flex items-center gap-1.5 mt-2 md:mt-3 text-white/90">
+              <div className="flex items-center gap-1.5 mt-2 md:mt-3 text-white/95">
                 <MapPin className="w-3.5 h-3.5 md:w-4 md:h-4 shrink-0" />
                 <span className="text-[13px] md:text-base">{property.city}, {property.country}</span>
               </div>
-              <div className="flex items-center gap-2.5 mt-2 md:mt-3 text-white/90 text-[13px] md:text-base font-medium">
+              <div className="flex items-center gap-2.5 mt-2 md:mt-3 text-white text-[13px] md:text-base font-medium">
                 <span className="flex items-center gap-1.5">
                   <Bed className="w-4 h-4 md:w-5 md:h-5" />
                   {bedroomsDisplay} {tCommon('bed')}
                 </span>
-                <span className="w-1 h-1 rounded-full bg-white/60" />
+                <span className="w-1 h-1 rounded-full bg-white/70" />
                 <span className="flex items-center gap-1.5">
                   <Bath className="w-4 h-4 md:w-5 md:h-5" />
                   {property.bathrooms} {tCommon('bathrooms')}
                 </span>
-                <span className="w-1 h-1 rounded-full bg-white/60" />
+                <span className="w-1 h-1 rounded-full bg-white/70" />
                 <span className="flex items-center gap-1.5">
                   <Maximize className="w-4 h-4 md:w-[18px] md:h-[18px]" />
                   {areaDisplay} {property.areaUnit}
@@ -215,19 +215,17 @@ export default async function InternationalPropertyDetailPage({ property, countr
               </div>
             </div>
 
-            <div className="md:text-end shrink-0">
-              <p className="text-[11px] md:text-[13px] text-white/70 uppercase tracking-wider">
+            <div className="md:text-end shrink-0 [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]">
+              <p className="text-[11px] md:text-[13px] text-white/85 uppercase tracking-wider">
                 {tCommon('priceStartingFrom')}
               </p>
-              <div className="flex items-center md:justify-end gap-2 mt-1">
-                <span className="text-[22px] md:text-[28px] font-semibold text-white">
-                  {formatLocalPrice(property.localPrice, property.localCurrency, locale)}
-                </span>
-              </div>
-              <div className="flex items-center gap-3 mt-4">
+              <p className="text-[22px] md:text-[28px] font-semibold text-white mt-1">
+                {formatLocalPrice(property.localPrice, property.localCurrency, locale)}
+              </p>
+              <div className="flex items-center md:justify-end mt-4">
                 <a
                   href="#enquiry"
-                  className="flex items-center justify-center flex-1 md:flex-none md:w-[230px] h-[44px] md:h-[50px] bg-white border-2 border-white text-black text-[11px] md:text-xs font-medium uppercase tracking-[2px] hover:bg-transparent hover:text-white transition-colors"
+                  className="flex items-center justify-center flex-1 md:flex-none md:w-[230px] h-[44px] md:h-[50px] bg-white border-2 border-white text-black text-[11px] md:text-xs font-medium uppercase tracking-[2px] hover:bg-transparent hover:text-white transition-colors [text-shadow:none]"
                 >
                   {tCommon('requestInformation')}
                 </a>
@@ -296,49 +294,6 @@ export default async function InternationalPropertyDetailPage({ property, countr
         </section>
       )}
 
-      {/* Gallery */}
-      <section id="gallery" className="py-16">
-        <div className="container-wide">
-          <AnimateOnScroll>
-            <div className="text-center mb-10">
-              <SectionLabel>{t('gallery.label')}</SectionLabel>
-              <h2 className="text-[32px] font-light mt-5">
-                {t('gallery.heading')}
-              </h2>
-            </div>
-          </AnimateOnScroll>
-          <div className="space-y-2">
-            {/* Wide hero image */}
-            <div className="relative aspect-[16/7] bg-gray-200 overflow-hidden">
-              <Image
-                src={property.mainImage}
-                alt={t('gallery.mainAlt', { name: property.name })}
-                fill
-                className="object-cover hover:scale-105 transition-transform duration-700"
-                sizes="100vw"
-              />
-            </div>
-            {/* Thumbnail strip — adapts to however many gallery images are available */}
-            {property.gallery.length > 0 && (
-              <div className={`grid gap-2 grid-cols-2 ${
-                property.gallery.length >= 4 ? 'md:grid-cols-4' : property.gallery.length === 3 ? 'md:grid-cols-3' : ''
-              }`}>
-                {property.gallery.slice(0, 4).map((img, i) => (
-                  <div key={i} className="relative aspect-[4/3] bg-gray-200 overflow-hidden">
-                    <Image
-                      src={img}
-                      alt={t('gallery.galleryAlt', { name: property.name, index: i + 1 })}
-                      fill
-                      className="object-cover hover:scale-105 transition-transform duration-700"
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                    />
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
 
       {/* Amenities - Black Background */}
       {hasAmenities && (

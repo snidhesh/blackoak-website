@@ -1,14 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react';
-import { Bed, Maximize, ChevronDown, MessageCircle } from 'lucide-react';
+import { Bed, Maximize, ChevronDown, MessageCircle, ArrowRight } from 'lucide-react';
 import { useTranslations, useLocale } from 'next-intl';
 import { formatArea } from '@/lib/formatters';
 import type { Locale } from '@/i18n/config';
 import type { InternationalProperty, UnitType } from '@/types/international-property';
 import FloorPlanModal from '@/components/ui/FloorPlanModal';
+import ImageCrossfadeSlider from '@/components/ui/ImageCrossfadeSlider';
 
 interface Props {
   property: InternationalProperty;
@@ -30,60 +29,6 @@ function formatLocalPrice(price: number, currency: string, locale: string): stri
 
 function uniq<T>(arr: T[]): T[] {
   return Array.from(new Set(arr));
-}
-
-/** Lightweight auto-advancing image slider — no external deps. */
-function ImageSlider({ images, alt }: { images: string[]; alt: string }) {
-  const [index, setIndex] = useState(0);
-
-  useEffect(() => {
-    if (images.length <= 1) return;
-    const id = window.setInterval(() => {
-      setIndex((i) => (i + 1) % images.length);
-    }, 5000);
-    return () => window.clearInterval(id);
-  }, [images.length]);
-
-  if (images.length === 0) return null;
-
-  return (
-    <div className="relative w-full h-full">
-      {images.map((src, i) => (
-        <Image
-          key={src + i}
-          src={src}
-          alt={`${alt} ${i + 1}`}
-          fill
-          priority={i === 0}
-          className={`object-cover transition-opacity duration-[800ms] ease-out ${
-            i === index ? 'opacity-100' : 'opacity-0'
-          }`}
-          sizes="(max-width: 1024px) 100vw, 70vw"
-        />
-      ))}
-      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/55 to-transparent pointer-events-none" />
-
-      {/* Pagination dots */}
-      {images.length > 1 && (
-        <div className="absolute bottom-3 inset-x-0 z-10 flex items-center justify-center gap-1.5">
-          {images.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                setIndex(i);
-              }}
-              aria-label={`Go to slide ${i + 1}`}
-              className={`h-1.5 rounded-full transition-all duration-300 ${
-                i === index ? 'w-6 bg-white' : 'w-1.5 bg-white/50 hover:bg-white/75'
-              }`}
-            />
-          ))}
-        </div>
-      )}
-    </div>
-  );
 }
 
 export default function AvailableResidencesAccordion({ property, whatsappBaseUrl }: Props) {
@@ -124,8 +69,13 @@ export default function AvailableResidencesAccordion({ property, whatsappBaseUrl
               <>
                 {/* Image slider header */}
                 {sliderImages.length > 0 && (
-                  <div className="relative aspect-[16/8] md:aspect-[16/7] bg-gray-200">
-                    <ImageSlider images={sliderImages} alt={categoryLabel} />
+                  <div className="relative aspect-[16/8] md:aspect-[16/7] bg-gray-200 group">
+                    <ImageCrossfadeSlider
+                      images={sliderImages}
+                      alt={categoryLabel}
+                      sizes="(max-width: 1024px) 100vw, 70vw"
+                      bottomGradient
+                    />
 
                     {/* Floating category label */}
                     <div className="absolute top-5 start-5 z-10 pointer-events-none">
@@ -136,10 +86,26 @@ export default function AvailableResidencesAccordion({ property, whatsappBaseUrl
                         {categoryLabel}
                       </h3>
                     </div>
+
+                    {/* Click-affordance pill — visible call-out so users know this group is interactive */}
+                    <DisclosureButton
+                      className="absolute bottom-4 end-4 md:bottom-5 md:end-5 z-10 inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm text-black text-[10px] md:text-[11px] font-medium tracking-[2px] uppercase px-4 py-2.5 shadow-md hover:bg-white transition-colors"
+                    >
+                      <span>
+                        {open
+                          ? t('collapse')
+                          : `${groupUnits.length} ${groupUnits.length === 1 ? tCommon('property') : tCommon('properties')}`}
+                      </span>
+                      {open ? (
+                        <ChevronDown className="w-3.5 h-3.5 rotate-180 transition-transform" />
+                      ) : (
+                        <ArrowRight className="w-3.5 h-3.5 icon-directional" />
+                      )}
+                    </DisclosureButton>
                   </div>
                 )}
 
-                {/* Expand / collapse trigger */}
+                {/* Full-width expand / collapse row — duplicate trigger so the area below the slider also responds */}
                 <DisclosureButton className="w-full flex items-center justify-between gap-4 px-5 md:px-7 py-4 md:py-5 hover:bg-gray-50 transition-colors text-start">
                   <div>
                     <p className="text-[10px] tracking-[2.5px] uppercase text-gray-500">
