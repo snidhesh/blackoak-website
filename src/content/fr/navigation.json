@@ -20,7 +20,8 @@
     "dropdown": [
       { "label": "Investisseurs", "href": "/insights/investors" },
       { "label": "Acquereurs", "href": "/insights/buyers" },
-      { "label": "Actualites & Presse", "href": "/insights/news" }
+      { "label": "Actualites & Presse", "href": "/insights/news" },
+      { "label": "Market Intelligence", "href": "/insights/market-intelligence" }
     ]
   },
   {

@@ -38,6 +38,10 @@
       {
         "label": "الأخبار والصحافة",
         "href": "/insights/news"
+      },
+      {
+        "label": "Market Intelligence",
+        "href": "/insights/market-intelligence"
       }
     ]
   },

@@ -54,6 +54,9 @@ import disclaimerAr from '@/content/ar/disclaimer.json';
 import internationalPropertiesEn from '@/content/en/international-properties.json';
 import internationalPropertiesFr from '@/content/fr/international-properties.json';
 import internationalPropertiesAr from '@/content/ar/international-properties.json';
+import marketIntelligenceEn from '@/content/en/market-intelligence.json';
+import marketIntelligenceFr from '@/content/fr/market-intelligence.json';
+import marketIntelligenceAr from '@/content/ar/market-intelligence.json';
 
 import type { CrmListing } from '@/types/crm';
 import listingsSnapshot from '@/data/listings-snapshot.json';
@@ -76,6 +79,7 @@ const contentMap = {
   termsOfService: { en: termsOfServiceEn, fr: termsOfServiceFr, ar: termsOfServiceAr },
   disclaimer: { en: disclaimerEn, fr: disclaimerFr, ar: disclaimerAr },
   internationalProperties: { en: internationalPropertiesEn, fr: internationalPropertiesFr, ar: internationalPropertiesAr },
+  marketIntelligence: { en: marketIntelligenceEn, fr: marketIntelligenceFr, ar: marketIntelligenceAr },
 } as const;
 
 function getContent<K extends keyof typeof contentMap>(key: K, locale: Locale = 'en'): (typeof contentMap)[K]['en'] {
@@ -266,6 +270,10 @@ export function getInvestors(locale: Locale = 'en') {
 
 export function getBuyers(locale: Locale = 'en') {
   return getContent('buyers', locale);
+}
+
+export function getMarketIntelligence(locale: Locale = 'en') {
+  return getContent('marketIntelligence', locale);
 }
 
 export function getContact(locale: Locale = 'en') {

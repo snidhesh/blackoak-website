@@ -54,6 +54,7 @@ export default function Footer() {
         { label: t('insightsLinks.investors'), href: '/insights/investors' },
         { label: t('insightsLinks.buyers'), href: '/insights/buyers' },
         { label: t('insightsLinks.newsAndPress'), href: '/insights/news' },
+        { label: t('insightsLinks.marketIntelligence'), href: '/insights/market-intelligence' },
       ],
     },
   ];

@@ -1,0 +1,101 @@
+{
+  "hero": {
+    "eyebrow": "Market Intelligence",
+    "title": "Dubai Residential Prices per Sq Ft · 2002 — 2026",
+    "subtitle": "24 years of cycles, shocks and recoveries — now interactive."
+  },
+  "chart": {
+    "axisLabel": "/ SQ FT",
+    "todayLabel": "Today",
+    "legend": {
+      "boom": "Boom Cycle 1",
+      "crash": "GFC Crash",
+      "recovery": "Recovery",
+      "correction": "Oversupply Correction",
+      "super": "Current Supercycle",
+      "historical": "Historical",
+      "forecast": "Your Forecast (to 2030)"
+    },
+    "forecastEndLabel": "2030 PROJECTION",
+    "tooltipPhase": {
+      "historical": "Historical",
+      "forecast": "Forecast"
+    }
+  },
+  "calculator": {
+    "title": "Time-Travel Calculator",
+    "tag": "Backward Look",
+    "sub": "What would the same capital be worth today, had it entered the market at any point in the last 24 years?",
+    "amountLabel": "Capital Deployed",
+    "amountOptions": [
+      { "value": "1000000", "label": "1,000,000" },
+      { "value": "5000000", "label": "5,000,000" },
+      { "value": "10000000", "label": "10,000,000" },
+      { "value": "25000000", "label": "25,000,000" },
+      { "value": "50000000", "label": "50,000,000" }
+    ],
+    "yearLabel": "Entry Year",
+    "yearStartHint": "2002 · Freehold Era",
+    "yearEndHint": "2025 · Last year",
+    "stats": {
+      "endValue": "Today's Value (Q1 2026)",
+      "totalReturn": "Total Return",
+      "cagr": "Annualised (CAGR)",
+      "maxDD": "Worst Drawdown Held"
+    }
+  },
+  "simulator": {
+    "title": "Scenario Simulator",
+    "tag": "2026 → 2030",
+    "sub": "Adjust the four forces shaping Dubai's next five years. The dashed line on the chart updates live.",
+    "presets": {
+      "bear": "Bear Case",
+      "base": "Base Case",
+      "bull": "Bull Case",
+      "shock": "2008 Shock Replay"
+    },
+    "controls": {
+      "supply": {
+        "name": "Supply Pipeline Pressure",
+        "minHint": "Constrained",
+        "maxHint": "Heavy oversupply",
+        "labels": ["Tight", "Constrained", "Moderate", "Elevated", "Heavy"]
+      },
+      "capital": {
+        "name": "Global Capital Inflows",
+        "minHint": "Outflow",
+        "maxHint": "Flight-to-safety",
+        "labels": ["Outflow", "Soft", "Steady", "Strong", "Flight-to-safety"]
+      },
+      "rates": {
+        "name": "Global Interest Rates",
+        "minHint": "Cutting cycle",
+        "maxHint": "Hiking cycle",
+        "labels": ["Aggressive cuts", "Cuts", "Neutral", "Hikes", "Aggressive hikes"]
+      },
+      "oil": {
+        "name": "Regional Energy & GDP",
+        "minHint": "Oil weak",
+        "maxHint": "Oil + GCC boom",
+        "labels": ["Oil weak", "Soft", "Stable", "Firm", "GCC boom"]
+      }
+    },
+    "stats": {
+      "forecast2030": "Implied 2030 Price / Sq Ft",
+      "forecastCagr": "Annualised Growth"
+    }
+  },
+  "sections": {
+    "chartEyebrow": "24-Year Cycle Atlas",
+    "chartTitle": "Two decades of cycles, charted in one view.",
+    "panelsEyebrow": "Interactive Tools",
+    "panelsTitle": "Test the past. Stress-test the future."
+  },
+  "cta": {
+    "eyebrow": "Private Briefings",
+    "title": "Want intelligence tailored to your portfolio?",
+    "body": "Our Private Client Practice produces bespoke market briefings for principals, family offices, and institutional capital deploying into Dubai residential. Speak with us about a confidential consultation.",
+    "cta": "Speak with our team"
+  },
+  "methodology": "Methodology: Series tracks premium freehold residential averages — anchored to published peaks and troughs from DLD, ValuStrat, CBRE, Property Monitor, Primal Alliance and Engel & Völkers. Pre-2008 figures are estimates; 2012–2026 verified from transaction data. Q3 2025 cross-checks against Property Monitor at ~Dh 1,625/sqft. Forecast model: Smooth-growth mode applies weighted impacts from four levers with mean-reversion. \"2008 Shock Replay\" overrides this with the actual 2008–2012 year-on-year crash pattern applied forward from Q1 2026. Outputs are directional, for discussion — not investment advice."
+}

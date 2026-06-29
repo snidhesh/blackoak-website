@@ -49,6 +49,12 @@
       "ogTitle": "أخبار العقارات ورؤى السوق في دبي | BlackOak",
       "ogDescription": "آخر أخبار العقارات وتقارير السوق ورؤى الاستثمار في دبي من BlackOak. ابقَ على اطلاع بأحدث اتجاهات العقارات والفرص."
     },
+    "marketIntelligence": {
+      "title": "Dubai Market Intelligence — Prices, Cycles & Forecast",
+      "description": "24 years of Dubai residential prices per sq ft (2002—2026) — interactive chart, time-travel investment calculator, and 2026—2030 scenario simulator from BlackOak Real Estate.",
+      "ogTitle": "Dubai Market Intelligence | BlackOak Real Estate",
+      "ogDescription": "Interactive Dubai market report: 24 years of prices, cycles, and a 2026—2030 scenario simulator."
+    },
     "career": {
       "title": "وظائف في قطاع العقارات في دبي",
       "description": "انضم إلى BlackOak للعقارات. وظائف شاغرة لمستشاري العقارات ومستشاري الاستثمار والمتخصصين في العقارات في دبي. عمولات تنافسية وفرص نمو.",
@@ -226,6 +232,7 @@
     "investors": "المستثمرون",
     "buyers": "المشترون",
     "newsAndPress": "الأخبار والصحافة",
+    "marketIntelligence": "Market Intelligence",
     "contact": "تواصل معنا",
     "more": "المزيد",
     "internationalProperties": "دولي",
@@ -292,7 +299,8 @@
     "insightsLinks": {
       "investors": "المستثمرون",
       "buyers": "المشترون",
-      "newsAndPress": "الأخبار والصحافة"
+      "newsAndPress": "الأخبار والصحافة",
+      "marketIntelligence": "Market Intelligence"
     },
     "address": "العنوان",
     "offices": {

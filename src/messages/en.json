@@ -49,6 +49,12 @@
       "ogTitle": "Dubai Real Estate News & Market Insights | BlackOak",
       "ogDescription": "Latest Dubai real estate news, market reports & investment insights from BlackOak. Stay informed on property trends & opportunities."
     },
+    "marketIntelligence": {
+      "title": "Dubai Market Intelligence — Prices, Cycles & Forecast",
+      "description": "24 years of Dubai residential prices per sq ft (2002—2026) — interactive chart, time-travel investment calculator, and 2026—2030 scenario simulator from BlackOak Real Estate.",
+      "ogTitle": "Dubai Market Intelligence | BlackOak Real Estate",
+      "ogDescription": "Interactive Dubai market report: 24 years of prices, cycles, and a 2026—2030 scenario simulator."
+    },
     "career": {
       "title": "Careers in Dubai Real Estate",
       "description": "Join BlackOak Real Estate. Open positions for real estate consultants, investment advisors & property specialists in Dubai. Competitive commission & growth.",
@@ -226,6 +232,7 @@
     "investors": "Investors",
     "buyers": "Buyers",
     "newsAndPress": "News & Press",
+    "marketIntelligence": "Market Intelligence",
     "contact": "Contact",
     "more": "More",
     "internationalProperties": "International",
@@ -292,7 +299,8 @@
     "insightsLinks": {
       "investors": "Investors",
       "buyers": "Buyers",
-      "newsAndPress": "News & Press"
+      "newsAndPress": "News & Press",
+      "marketIntelligence": "Market Intelligence"
     },
     "address": "ADDRESS",
     "offices": {
