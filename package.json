@@ -20,6 +20,7 @@
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.36.4",
     "@vercel/blob": "^2.4.0",
+    "@vercel/speed-insights": "^2.0.0",
     "clsx": "^2.1.1",
     "framer-motion": "^12.35.2",
     "lucide-react": "^0.577.0",

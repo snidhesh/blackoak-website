@@ -1,6 +1,7 @@
 import Script from 'next/script';
 import { Figtree, Raleway, Noto_Sans_Arabic } from 'next/font/google';
 import { getLocale } from 'next-intl/server';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
@@ -67,6 +68,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </noscript>
         )}
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
