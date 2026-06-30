@@ -194,6 +194,20 @@
     "label": "PROPRIÉTÉS INTERNATIONALES",
     "heading": "Résidences de luxe à travers le monde",
     "description": "Explorez des propriétés d'exception dans les destinations les plus prestigieuses du monde.",
-    "cta": "Explorer les propriétés internationales"
+    "cta": "Explorer les propriétés internationales",
+    "additions": [
+      {
+        "name": "Égypte",
+        "country": "Afrique",
+        "focus": "Villas de la Côte Nord et fronts de mer en mer Rouge avec un potentiel lié à la devise.",
+        "image": "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=1600&q=80"
+      },
+      {
+        "name": "Maroc",
+        "country": "Afrique",
+        "focus": "Riads de Marrakech et villas côtières atlantiques mêlant patrimoine et luxe contemporain.",
+        "image": "https://images.unsplash.com/photo-1489493585363-d69421e0edd3?w=1600&q=80"
+      }
+    ]
   }
 }

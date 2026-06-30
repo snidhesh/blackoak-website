@@ -194,6 +194,20 @@
     "label": "INTERNATIONAL PROPERTIES",
     "heading": "Luxury Residences Across the Globe",
     "description": "Explore premium properties across the world's most prestigious destinations.",
-    "cta": "Explore International Properties"
+    "cta": "Explore International Properties",
+    "additions": [
+      {
+        "name": "Egypt",
+        "country": "Africa",
+        "focus": "North Coast villas and Red Sea waterfront with currency-led upside.",
+        "image": "https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=1600&q=80"
+      },
+      {
+        "name": "Morocco",
+        "country": "Africa",
+        "focus": "Marrakech riads and Atlantic coastal villas blending heritage and modern luxury.",
+        "image": "https://images.unsplash.com/photo-1489493585363-d69421e0edd3?w=1600&q=80"
+      }
+    ]
   }
 }

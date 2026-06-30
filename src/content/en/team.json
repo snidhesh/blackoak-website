@@ -182,17 +182,17 @@
     "category": "real-estate"
   },
   {
-    "id": "50",
-    "name": "Mathieu Poissonnet",
-    "title": "Senior Property Consultant",
-    "image": "/images/team/mathieu-poissonnet.jpg",
-    "category": "real-estate"
-  },
-  {
     "id": "29",
     "name": "Liliane Hikmat Maher",
     "title": "Senior Property Consultant",
     "image": "/images/team/liliane-hikmat-maher.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "50",
+    "name": "Mathieu Poissonnet",
+    "title": "Senior Property Consultant",
+    "image": "/images/team/mathieu-poissonnet.jpg",
     "category": "real-estate"
   },
   {
@@ -270,13 +270,6 @@
     "name": "Bianca Rae Santos",
     "title": "Operations | AML Officer",
     "image": "/images/team/bianca-rae-santos.jpg",
-    "category": "creative-ops"
-  },
-  {
-    "id": "40",
-    "name": "Nidhesh Pillai",
-    "title": "IT Director",
-    "image": "/images/team/nidhesh-pillai.jpg",
     "category": "creative-ops"
   },
   {

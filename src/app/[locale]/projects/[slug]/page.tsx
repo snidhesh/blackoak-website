@@ -279,30 +279,46 @@ export default async function ProjectDetailPage({ params }: Props) {
               </h2>
             </div>
           </AnimateOnScroll>
-          {/* Mosaic: large left + 2x2 right */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-2">
-            {/* Large image */}
-            <div className="relative aspect-[4/3] lg:row-span-2 bg-gray-200 overflow-hidden">
+          {/* Hero on top + 2×2 (or 1×N) thumbnail grid below — adapts to any gallery size with no empty cells. */}
+          <div className="space-y-2">
+            {/* Hero (mainImage, full width) */}
+            <div className="relative aspect-[16/9] bg-gray-200 overflow-hidden group">
               <Image
                 src={project.mainImage}
                 alt={t('gallery.mainAlt', { name: projectName })}
                 fill
-                className="object-cover hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+                sizes="(max-width: 1024px) 100vw, 80vw"
+                priority
               />
             </div>
-            {/* Smaller images */}
-            {project.gallery.slice(0, 4).map((img, i) => (
-              <div key={i} className="relative aspect-[4/3] bg-gray-200 overflow-hidden">
-                <Image
-                  src={img}
-                  alt={t('gallery.galleryAlt', { name: projectName, index: i + 1 })}
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 1024px) 100vw, 25vw"
-                />
-              </div>
-            ))}
+            {/* Thumbnail grid: exactly fills 2 cols at any responsive width, dropping to 1 odd thumb on mobile only. */}
+            {project.gallery.length > 0 && (() => {
+              // Cap at 4 thumbs, and round down to even so the grid never leaves a hole.
+              const cap = Math.min(project.gallery.length, 4);
+              const thumbCount = cap - (cap % 2);
+              const thumbs = thumbCount > 0
+                ? project.gallery.slice(0, thumbCount)
+                : project.gallery.slice(0, 1); // <2 thumbs available — show what we have
+              return (
+                <div className="grid grid-cols-2 gap-2">
+                  {thumbs.map((img, i) => (
+                    <div
+                      key={i}
+                      className="relative aspect-[4/3] bg-gray-200 overflow-hidden group"
+                    >
+                      <Image
+                        src={img}
+                        alt={t('gallery.galleryAlt', { name: projectName, index: i + 1 })}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 1024px) 50vw, 40vw"
+                      />
+                    </div>
+                  ))}
+                </div>
+              );
+            })()}
           </div>
         </div>
       </section>
