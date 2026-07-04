@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { listPropertySchema } from '@/lib/schemas';
-import { forwardToWebhook } from '@/lib/webhook';
+import { sendFormEmail, renderFieldsTable, escapeHtml } from '@/lib/email';
 import { checkRateLimit, getClientIP } from '@/lib/rate-limit';
 import { FIELD_ERROR_CODES, FORM_ERROR_CODES } from '@/lib/error-codes';
 
@@ -18,7 +18,6 @@ const FIELD_CODE_MAP: Record<string, string> = {
 
 export async function POST(request: NextRequest) {
   try {
-    // Rate limiting
     const ip = getClientIP(request);
     const rateLimitResult = await checkRateLimit(ip, 'list-property');
     if (!rateLimitResult.success) {
@@ -30,13 +29,10 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json();
 
-    // Honeypot check
     if (body._honeypot) {
-      // Silently accept but don't forward
       return NextResponse.json({ success: true });
     }
 
-    // Validate
     const result = listPropertySchema.safeParse(body);
     if (!result.success) {
       const errors = result.error.issues.map((issue) => ({
@@ -46,15 +42,35 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, errors }, { status: 400 });
     }
 
-    // Forward to webhook
-    const webhookResult = await forwardToWebhook({
-      type: 'list-property',
-      data: result.data,
-      timestamp: new Date().toISOString(),
+    const data = result.data;
+    const fullName = `${data.firstName} ${data.lastName}`.trim();
+    const table = renderFieldsTable([
+      ['Name', fullName],
+      ['Email', data.email],
+      ['Phone', data.phone],
+      ['Property Type', data.propertyType],
+      ['Bedrooms', data.bedrooms],
+      ['Listing Type', data.listingType],
+      ['Location', data.location],
+      ['Submitted', new Date().toISOString()],
+    ]);
+    const html = `
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111">
+        <h2 style="margin:0 0 12px;font-size:18px">New Property Listing Request</h2>
+        ${table}
+        <h3 style="margin:20px 0 6px;font-size:15px">Message</h3>
+        <div style="white-space:pre-wrap;font-size:14px;line-height:1.5;color:#333">${escapeHtml(data.message)}</div>
+      </div>
+    `;
+
+    const emailResult = await sendFormEmail({
+      subject: `List Property — ${data.propertyType} in ${data.location} — ${fullName}`,
+      html,
+      replyTo: data.email,
     });
 
-    if (!webhookResult.success) {
-      console.error('[api/list-property] Webhook failed:', webhookResult.error);
+    if (!emailResult.success) {
+      console.error('[api/list-property] Email send failed:', emailResult.error);
       return NextResponse.json(
         { success: false, errors: [{ field: '_form', code: FORM_ERROR_CODES.submitFailed }] },
         { status: 502 }

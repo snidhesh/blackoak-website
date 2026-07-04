@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { careerApplicationSchema, MAX_CV_SIZE, ALLOWED_CV_TYPES, ALLOWED_CV_EXTENSIONS } from '@/lib/schemas';
-import { forwardMultipartToWebhook } from '@/lib/webhook';
+import { sendFormEmail, renderFieldsTable, escapeHtml } from '@/lib/email';
 import { checkRateLimit, getClientIP } from '@/lib/rate-limit';
 import { FIELD_ERROR_CODES, FORM_ERROR_CODES } from '@/lib/error-codes';
 
@@ -25,13 +25,11 @@ export async function POST(request: NextRequest) {
 
     const formData = await request.formData();
 
-    // Honeypot check
     const honeypot = formData.get('_honeypot') as string;
     if (honeypot) {
       return NextResponse.json({ success: true });
     }
 
-    // Extract text fields
     const textData = {
       firstName: formData.get('firstName') as string || '',
       lastName: formData.get('lastName') as string || '',
@@ -43,7 +41,6 @@ export async function POST(request: NextRequest) {
       _honeypot: '',
     };
 
-    // Validate text fields
     const result = careerApplicationSchema.safeParse(textData);
     if (!result.success) {
       const errors = result.error.issues.map((issue) => ({
@@ -53,7 +50,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: false, errors }, { status: 400 });
     }
 
-    // Validate CV file if present
     const cvFile = formData.get('cvFile') as File | null;
     if (cvFile && cvFile.size > 0) {
       if (cvFile.size > MAX_CV_SIZE) {
@@ -75,16 +71,39 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Forward multipart to webhook (pass-through)
-    const forwardData = new FormData();
-    formData.forEach((value, key) => {
-      forwardData.append(key, value);
+    const data = result.data;
+    const fullName = `${data.firstName} ${data.lastName}`.trim();
+    const table = renderFieldsTable([
+      ['Name', fullName],
+      ['Email', data.email],
+      ['Phone', data.phone],
+      ['Position', data.jobTitle],
+      ['Slug', data.jobSlug],
+      ['CV', cvFile && cvFile.size > 0 ? `${cvFile.name} (attached)` : 'Not provided'],
+      ['Submitted', new Date().toISOString()],
+    ]);
+    const html = `
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111">
+        <h2 style="margin:0 0 12px;font-size:18px">New Career Application</h2>
+        ${table}
+        <h3 style="margin:20px 0 6px;font-size:15px">Message</h3>
+        <div style="white-space:pre-wrap;font-size:14px;line-height:1.5;color:#333">${escapeHtml(data.message)}</div>
+      </div>
+    `;
+
+    const attachments = cvFile && cvFile.size > 0
+      ? [{ filename: cvFile.name, content: Buffer.from(await cvFile.arrayBuffer()) }]
+      : undefined;
+
+    const emailResult = await sendFormEmail({
+      subject: `Career Application — ${data.jobTitle} — ${fullName}`,
+      html,
+      replyTo: data.email,
+      attachments,
     });
 
-    const webhookResult = await forwardMultipartToWebhook(forwardData, 'career-application');
-
-    if (!webhookResult.success) {
-      console.error('[api/careers/apply] Webhook failed:', webhookResult.error);
+    if (!emailResult.success) {
+      console.error('[api/careers/apply] Email send failed:', emailResult.error);
       return NextResponse.json(
         { success: false, errors: [{ field: '_form', code: FORM_ERROR_CODES.submitFailed }] },
         { status: 502 }

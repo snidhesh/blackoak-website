@@ -127,20 +127,12 @@ export default async function CareerDetailPage({ params }: Props) {
 
             <div className="mt-8 space-y-3">
               <div className="flex gap-4">
-                <span className="font-medium w-44 flex-shrink-0">{t('remuneration')}</span>
-                <span className="text-gray-600">{job.remuneration}</span>
-              </div>
-              <div className="flex gap-4">
                 <span className="font-medium w-44 flex-shrink-0">{t('benefits')}</span>
                 <span className="text-gray-600">{job.benefits}</span>
               </div>
               <div className="flex gap-4">
                 <span className="font-medium w-44 flex-shrink-0">{t('location')}</span>
                 <span className="text-gray-600">{job.locationDetail}</span>
-              </div>
-              <div className="flex gap-4">
-                <span className="font-medium w-44 flex-shrink-0">{t('numberOfPositions')}</span>
-                <span className="text-gray-600">{job.numberOfPositions}</span>
               </div>
             </div>
           </AnimateOnScroll>
