@@ -38,6 +38,13 @@
         "href": "/projects"
       },
       {
+        "developer": "Ora",
+        "name": "Bayn",
+        "logo": "/images/partners/ora.svg",
+        "image": "/images/featured-projects/ora.jpg",
+        "href": "/projects"
+      },
+      {
         "developer": "H&H",
         "name": "Janu",
         "logo": "/images/partners/hh.svg",
@@ -65,9 +72,6 @@
         "image": "/images/featured-projects/meraas.webp",
         "href": "/projects"
       }
-    ],
-    "_hiddenProjects": [
-      { "developer": "Ora", "name": "Bayn", "logo": "/images/partners/ora.svg", "image": "/images/featured-projects/ora.jpg", "href": "/projects" }
     ]
   },
   "featuredProjects": {
@@ -96,13 +100,11 @@
       { "name": "Damac", "image": "/images/partners/damac.svg" },
       { "name": "Binghatti", "image": "/images/partners/binghatti.svg" },
       { "name": "Ohana", "image": "/images/partners/ohana.svg" },
+      { "name": "ORA", "image": "/images/partners/ora.svg" },
       { "name": "WASL", "image": "/images/partners/wasl.svg" },
       { "name": "R-Evolution", "image": "/images/partners/r-evolution.svg" },
       { "name": "Deyaar", "image": "/images/partners/deyaar.svg" },
       { "name": "Majid Al Futtaim", "image": "/images/partners/majid-al-futtaim.svg" }
-    ],
-    "_hiddenLogos": [
-      { "name": "ORA", "image": "/images/partners/ora.svg" }
     ],
     "attribution": "Tous les logos présentés sont la propriété de leurs promoteurs respectifs et sont affichés dans le cadre d'accords de partenariat ou d'agence en vigueur avec BlackOak Real Estate."
   },

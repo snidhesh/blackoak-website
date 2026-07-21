@@ -95,20 +95,37 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   const allImages = [project.mainImage, ...project.gallery];
 
+  const availability =
+    project.status === 'sold' ? 'https://schema.org/SoldOut' :
+    project.status === 'coming-soon' ? 'https://schema.org/PreOrder' :
+    'https://schema.org/InStock';
+
   const listingJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'RealEstateListing',
+    '@type': ['RealEstateListing', 'Product'],
     name: projectName,
     description: projectDescription,
     url: locale === 'en' ? `https://blackoak-re.com/projects/${params.slug}/` : `https://blackoak-re.com/${locale}/projects/${params.slug}/`,
     inLanguage: locale,
     image: allImages,
     datePosted: project.availableFrom || new Date().toISOString().split('T')[0],
+    ...(project.developer && {
+      brand: {
+        '@type': 'Organization',
+        name: project.developer,
+      },
+    }),
     offers: {
       '@type': 'Offer',
       price: String(project.price),
       priceCurrency: 'AED',
-      availability: 'https://schema.org/InStock',
+      availability,
+      url: locale === 'en' ? `https://blackoak-re.com/projects/${params.slug}/` : `https://blackoak-re.com/${locale}/projects/${params.slug}/`,
+      seller: {
+        '@type': 'RealEstateAgent',
+        name: 'BlackOak Real Estate',
+        url: 'https://blackoak-re.com',
+      },
     },
     ...(project.propertyType && { additionalType: `https://schema.org/${project.propertyType.replace(/\s+/g, '')}` }),
     numberOfRooms: project.bedrooms,

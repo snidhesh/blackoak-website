@@ -38,6 +38,13 @@
         "href": "/projects"
       },
       {
+        "developer": "Ora",
+        "name": "Bayn",
+        "logo": "/images/partners/ora.svg",
+        "image": "/images/featured-projects/ora.jpg",
+        "href": "/projects"
+      },
+      {
         "developer": "H&H",
         "name": "Janu",
         "logo": "/images/partners/hh.svg",
@@ -63,15 +70,6 @@
         "name": "Nad Al Sheba Gardens",
         "logo": "/images/partners/meraas.svg",
         "image": "/images/featured-projects/meraas.webp",
-        "href": "/projects"
-      }
-    ],
-    "_hiddenProjects": [
-      {
-        "developer": "Ora",
-        "name": "Bayn",
-        "logo": "/images/partners/ora.svg",
-        "image": "/images/featured-projects/ora.jpg",
         "href": "/projects"
       }
     ]
@@ -148,6 +146,10 @@
         "image": "/images/partners/ohana.svg"
       },
       {
+        "name": "ORA",
+        "image": "/images/partners/ora.svg"
+      },
+      {
         "name": "WASL",
         "image": "/images/partners/wasl.svg"
       },
@@ -162,12 +164,6 @@
       {
         "name": "Majid Al Futtaim",
         "image": "/images/partners/majid-al-futtaim.svg"
-      }
-    ],
-    "_hiddenLogos": [
-      {
-        "name": "ORA",
-        "image": "/images/partners/ora.svg"
       }
     ],
     "attribution": "جميع الشعارات المعروضة هي ملك لمطوريها المعنيين وتُعرض بموجب اتفاقيات شراكة أو وكالة قائمة مع BlackOak للعقارات."
