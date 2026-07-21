@@ -48,6 +48,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const entries: MetadataRoute.Sitemap = [];
 
+  // Bayn landing page (reverse-proxied from orabayn.vercel.app, single-locale)
+  entries.push({
+    url: `${BASE_URL}/bayn/`,
+    lastModified: STATIC_LAST_MODIFIED,
+    changeFrequency: 'weekly',
+    priority: 0.9,
+  });
+
   // Static pages — both locales
   for (const locale of locales) {
     for (const path of staticPages) {

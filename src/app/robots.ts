@@ -10,6 +10,7 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: ['Amazonbot', 'Bytespider', 'CCBot', 'GPTBot', 'Google-Extended', 'meta-externalagent', 'Claudebot', 'ChatGPT-User', 'PerplexityBot', 'Diffbot'],
+        allow: '/bayn/',
         disallow: '/',
       },
     ],
