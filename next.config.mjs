@@ -20,10 +20,17 @@ const contentSecurityPolicy = [
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: true,
+  async rewrites() {
+    return [
+      { source: '/bayn', destination: 'https://orabayn.vercel.app/bayn' },
+      { source: '/bayn/:path*', destination: 'https://orabayn.vercel.app/bayn/:path*' },
+    ];
+  },
   async headers() {
     return [
       {
-        source: '/(.*)',
+        // Exclude /bayn/* so the proxied Bayn app isn't restricted by the main site's CSP
+        source: '/((?!bayn(?:/.*)?$).*)',
         headers: [
           { key: 'Content-Security-Policy', value: contentSecurityPolicy },
           { key: 'X-Frame-Options', value: 'DENY' },
