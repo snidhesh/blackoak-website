@@ -2,6 +2,21 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' https://*.googletagmanager.com https://*.google-analytics.com",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "img-src 'self' data: blob: https://images.unsplash.com https://studio.blackoak-re.com https://static.shared.propertyfinder.ae https://*.public.blob.vercel-storage.com https://*.googletagmanager.com https://*.google-analytics.com",
+  "font-src 'self' data: https://fonts.gstatic.com",
+  "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://studio.blackoak-re.com",
+  "frame-src 'self' https://www.googletagmanager.com",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+  "frame-ancestors 'none'",
+  'upgrade-insecure-requests',
+].join('; ');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   trailingSlash: true,
@@ -10,6 +25,7 @@ const nextConfig = {
       {
         source: '/(.*)',
         headers: [
+          { key: 'Content-Security-Policy', value: contentSecurityPolicy },
           { key: 'X-Frame-Options', value: 'DENY' },
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },

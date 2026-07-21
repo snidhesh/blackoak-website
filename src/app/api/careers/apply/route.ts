@@ -12,6 +12,35 @@ const FIELD_CODE_MAP: Record<string, string> = {
   message: FIELD_ERROR_CODES.messageMin,
 };
 
+// Magic-byte signatures for the three CV formats we accept.
+// Defends against renamed executables that spoof both MIME and extension.
+async function hasValidMagicBytes(file: File, ext: string): Promise<boolean> {
+  const header = new Uint8Array(await file.slice(0, 8).arrayBuffer());
+  if (ext === '.pdf') {
+    // "%PDF-"
+    return header[0] === 0x25 && header[1] === 0x50 && header[2] === 0x44 && header[3] === 0x46;
+  }
+  if (ext === '.docx') {
+    // ZIP archive header (docx is a zip container): "PK\x03\x04"
+    return header[0] === 0x50 && header[1] === 0x4b && header[2] === 0x03 && header[3] === 0x04;
+  }
+  if (ext === '.doc') {
+    // Microsoft OLE compound file: D0 CF 11 E0 A1 B1 1A E1
+    return (
+      header[0] === 0xd0 && header[1] === 0xcf && header[2] === 0x11 && header[3] === 0xe0 &&
+      header[4] === 0xa1 && header[5] === 0xb1 && header[6] === 0x1a && header[7] === 0xe1
+    );
+  }
+  return false;
+}
+
+// Strip path components, control chars, and shell metacharacters from the
+// uploaded filename before it becomes an email attachment name.
+function sanitizeFilename(name: string): string {
+  const base = name.split(/[/\\]/).pop() ?? 'cv';
+  return base.replace(/[\x00-\x1f<>:"|?*]/g, '_').slice(0, 120) || 'cv';
+}
+
 export async function POST(request: NextRequest) {
   try {
     const ip = getClientIP(request);
@@ -59,11 +88,12 @@ export async function POST(request: NextRequest) {
         );
       }
 
+      const ext = '.' + (cvFile.name.split('.').pop()?.toLowerCase() ?? '');
       const isValidType = ALLOWED_CV_TYPES.includes(cvFile.type);
-      const ext = '.' + cvFile.name.split('.').pop()?.toLowerCase();
       const isValidExt = ALLOWED_CV_EXTENSIONS.includes(ext);
+      const isValidMagic = await hasValidMagicBytes(cvFile, ext);
 
-      if (!isValidType && !isValidExt) {
+      if (!isValidType || !isValidExt || !isValidMagic) {
         return NextResponse.json(
           { success: false, errors: [{ field: 'cvFile', code: FIELD_ERROR_CODES.fileTypeInvalid }] },
           { status: 400 }
@@ -73,13 +103,14 @@ export async function POST(request: NextRequest) {
 
     const data = result.data;
     const fullName = `${data.firstName} ${data.lastName}`.trim();
+    const safeCvName = cvFile && cvFile.size > 0 ? sanitizeFilename(cvFile.name) : null;
     const table = renderFieldsTable([
       ['Name', fullName],
       ['Email', data.email],
       ['Phone', data.phone],
       ['Position', data.jobTitle],
       ['Slug', data.jobSlug],
-      ['CV', cvFile && cvFile.size > 0 ? `${cvFile.name} (attached)` : 'Not provided'],
+      ['CV', safeCvName ? `${safeCvName} (attached)` : 'Not provided'],
       ['Submitted', new Date().toISOString()],
     ]);
     const html = `
@@ -91,8 +122,8 @@ export async function POST(request: NextRequest) {
       </div>
     `;
 
-    const attachments = cvFile && cvFile.size > 0
-      ? [{ filename: cvFile.name, content: Buffer.from(await cvFile.arrayBuffer()) }]
+    const attachments = cvFile && cvFile.size > 0 && safeCvName
+      ? [{ filename: safeCvName, content: Buffer.from(await cvFile.arrayBuffer()) }]
       : undefined;
 
     const emailResult = await sendFormEmail({

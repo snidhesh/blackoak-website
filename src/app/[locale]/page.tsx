@@ -352,6 +352,9 @@ export default async function HomePage({ params }: { params: { locale: string } 
                 </div>
               </div>
             </div>
+            <p className="mt-8 text-center text-xs text-white/50 max-w-3xl mx-auto px-4">
+              {homepage.partners.attribution}
+            </p>
           </div>
         </div>
       </section>
