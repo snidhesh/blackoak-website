@@ -3,9 +3,9 @@
     "siteName": "BlackOak Real Estate",
     "home": {
       "title": "Luxury Properties & Investment in Dubai",
-      "description": "Discover Dubai''s finest luxury properties with BlackOak Real Estate. Browse premium villas, apartments & penthouses across Palm Jumeirah, Emirates Hills, Downtown Dubai and more.",
+      "description": "Discover Dubai's finest luxury properties with BlackOak Real Estate. Browse premium villas, apartments & penthouses across Palm Jumeirah, Emirates Hills, Downtown Dubai and more.",
       "ogTitle": "BlackOak Real Estate | Luxury Properties & Investment in Dubai",
-      "ogDescription": "Discover Dubai''s finest luxury properties. Browse premium villas, apartments & penthouses across Dubai''s most prestigious neighbourhoods.",
+      "ogDescription": "Discover Dubai's finest luxury properties. Browse premium villas, apartments & penthouses across Dubai's most prestigious neighbourhoods.",
       "ogImageAlt": "BlackOak Real Estate - Luxury Properties in Dubai"
     },
     "projects": {
@@ -415,7 +415,7 @@
       },
       "featuredDevelopers": {
         "label": "Featured Projects",
-        "heading": "Premier developments by the region''s most prestigious developers"
+        "heading": "Premier developments by the region's most prestigious developers"
       },
       "featuredProperties": {
         "label": "Featured Properties",
@@ -424,7 +424,7 @@
       },
       "neighbourhoods": {
         "label": "Neighbourhoods",
-        "heading": "Discover luxury real estate in Dubai''s top neighbourhood"
+        "heading": "Discover luxury real estate in Dubai's top neighbourhood"
       },
       "partners": {
         "heading": "Our Trusted Partners"
@@ -459,11 +459,11 @@
       },
       "whyInvest": {
         "heading": "Why BlackOak",
-        "description": "BlackOak delivers strategic real estate opportunities backed by market expertise, transparency, and long-term value creation. We help investors make confident decisions in UAE''s dynamic property market.",
+        "description": "BlackOak delivers strategic real estate opportunities backed by market expertise, transparency, and long-term value creation. We help investors make confident decisions in UAE's dynamic property market.",
         "cards": {
           "marketExpertise": {
             "title": "Market Expertise",
-            "description": "Deep local knowledge combined with global perspective to identify prime investment opportunities in Dubai''s dynamic property market."
+            "description": "Deep local knowledge combined with global perspective to identify prime investment opportunities in Dubai's dynamic property market."
           },
           "curatedInvestment": {
             "title": "Curated Investment Opportunities",
@@ -532,7 +532,7 @@
       },
       "enquiry": {
         "label": "Enquiry",
-        "heading": "Your Dream Residence Awaits — Let''s Connect",
+        "heading": "Your Dream Residence Awaits — Let's Connect",
         "submitLabel": "Submit Enquiry"
       },
       "breadcrumbs": {
@@ -627,8 +627,8 @@
     },
     "neighbourhoodsLanding": {
       "sectionLabel": "Neighbourhoods",
-      "heading": "Discover Dubai''s Most Prestigious Communities",
-      "subtitle": "Explore luxury real estate across Dubai''s finest neighbourhoods, each offering a distinct lifestyle and exceptional investment potential."
+      "heading": "Discover Dubai's Most Prestigious Communities",
+      "subtitle": "Explore luxury real estate across Dubai's finest neighbourhoods, each offering a distinct lifestyle and exceptional investment potential."
     },
     "neighbourhoods": {
       "aboutLabel": "About {name}",
@@ -660,7 +660,7 @@
           "email": "info@blackoak-re.com"
         }
       },
-      "formLabel": "Let''s Connect",
+      "formLabel": "Let's Connect",
       "formHeading": "Connect with our specialists in luxury real estate."
     },
     "listProperty": {
@@ -670,7 +670,7 @@
       },
       "headerLabel": "List Your Property",
       "heading": "Sell or Rent Your Property with Confidence",
-      "subtitle": "Partner with Dubai''s premier luxury real estate firm for unmatched exposure and expert guidance.",
+      "subtitle": "Partner with Dubai's premier luxury real estate firm for unmatched exposure and expert guidance.",
       "whyBlackoakLabel": "Why BlackOak",
       "whyBlackoakHeading": "The Standard Your Property Deserves",
       "whyBlackoakDescription": "BlackOak Real Estate connects global and local buyers with exclusive properties in Dubai. Our team of experienced agents are known for their expertise, diligence, and unwavering commitment to delivering results.",
@@ -733,7 +733,7 @@
       "heroAlt": "BlackOak Real Estate team in Dubai",
       "introP1": "BlackOak Real Estate stands as a premier international property company specializing in facilitating connections between global and local buyers with exclusive properties in Dubai. Our team of experienced agents are known for their expertise, knowledge, diligence and unwavering commitment to enhance the customer journey.",
       "introP2": "Together, we have successfully executed real estate transactions worth billions of dollars, forging robust partnerships with renowned developers across the UAE and throughout the Middle East region. Our extensive network enables us to give our clients a unique, tailor made service that aligns specifically to their personable requirements.",
-      "introP3": "As part of our manpower commitment, we don''t just provide jobs, we guarantee careers, and it''s for this reason, that we are now looking to expand our sales team. With this in mind, our mission is to recruit experienced real estate agents who wish to be part of the BlackOak journey.",
+      "introP3": "As part of our manpower commitment, we don't just provide jobs, we guarantee careers, and it's for this reason, that we are now looking to expand our sales team. With this in mind, our mission is to recruit experienced real estate agents who wish to be part of the BlackOak journey.",
       "whyJoinLabel": "Why join our team",
       "whyJoinHeading": "Join a Standard Few Can Reach",
       "whyJoinCards": {
@@ -750,7 +750,7 @@
         "lifestyle": {
           "label": "BlackOak",
           "title": "Lifestyle",
-          "description": "Joining our team means you''ll have the support and flexibility to create a lifestyle that aligns with your values, ensuring both personal and professional fulfilment."
+          "description": "Joining our team means you'll have the support and flexibility to create a lifestyle that aligns with your values, ensuring both personal and professional fulfilment."
         }
       },
       "breadcrumbs": {
@@ -784,9 +784,9 @@
         "heroAlt": "BlackOak Real Estate Dubai office and luxury property",
         "legacyLabel": "A Legacy of Excellence",
         "legacyHeading1": "BlackOak Real Estate",
-        "legacyHeading2": "UAE''s Premier Property Authority",
-        "legacyP1": "At BlackOak Real Estate, we operate at the pinnacle of the UAE''s most dynamic property market — built on one unwavering principle: that every client deserves an experience as exceptional as the properties we represent.",
-        "legacyP2": "Our team of seasoned professionals brings decades of collective expertise, backed by over $5 billion in successfully executed transactions. Through exclusive partnerships with the UAE''s most prestigious developers, we offer privileged access to the market''s finest opportunities — many of which remain beyond the reach of conventional agencies.",
+        "legacyHeading2": "UAE's Premier Property Authority",
+        "legacyP1": "At BlackOak Real Estate, we operate at the pinnacle of the UAE's most dynamic property market — built on one unwavering principle: that every client deserves an experience as exceptional as the properties we represent.",
+        "legacyP2": "Our team of seasoned professionals brings decades of collective expertise, backed by over $5 billion in successfully executed transactions. Through exclusive partnerships with the UAE's most prestigious developers, we offer privileged access to the market's finest opportunities — many of which remain beyond the reach of conventional agencies.",
         "legacyP3": "At the core of our approach lies rigorous market intelligence and deep regional expertise. We anticipate shifts, identify opportunities, and guide you with clarity and confidence at every step — ensuring every decision you make is informed, strategic, and aligned with your vision. At BlackOak, we understand that property acquisition at this level is more than a transaction. It is a defining decision — and one that deserves the utmost discretion, expertise, and a truly bespoke approach.",
         "setsApartLabel": "What Sets Us Apart",
         "setsApartHeading": "Our Commitment to Excellence",
@@ -830,12 +830,12 @@
         "whyChooseUsHeading": "A legacy of excellence in curating extraordinary",
         "techEnhanced": {
           "title": "Technologically Enhanced",
-          "description": "At BlackOak, we seamlessly blend cutting-edge technology with unparalleled market expertise to deliver an experience that is as sophisticated as it is effortless. Our proprietary AI-driven marketing platform ensures your property receives unrivaled visibility — connecting the right opportunities with the right clientele, with remarkable precision and speed. By embracing the very forefront of technological innovation, we don''t simply keep pace with the future of real estate — we define it.",
+          "description": "At BlackOak, we seamlessly blend cutting-edge technology with unparalleled market expertise to deliver an experience that is as sophisticated as it is effortless. Our proprietary AI-driven marketing platform ensures your property receives unrivaled visibility — connecting the right opportunities with the right clientele, with remarkable precision and speed. By embracing the very forefront of technological innovation, we don't simply keep pace with the future of real estate — we define it.",
           "imageAlt": "Technologically enhanced real estate"
         },
         "experiencedTeam": {
           "title": "Experienced Team",
-          "description": "At BlackOak, our expertise transcends the conventional — serving an exclusive clientele that spans both distinguished private investors and the world''s most prominent institutional players. Our seasoned team brings a rare depth of experience in navigating complex, high-value mandates with the precision and discretion that sophisticated clients demand. From sourcing landmark assets to identifying exceptional development opportunities, we act as a trusted partner to institutions who require not just a service provider — but a strategic ally of the highest caliber.",
+          "description": "At BlackOak, our expertise transcends the conventional — serving an exclusive clientele that spans both distinguished private investors and the world's most prominent institutional players. Our seasoned team brings a rare depth of experience in navigating complex, high-value mandates with the precision and discretion that sophisticated clients demand. From sourcing landmark assets to identifying exceptional development opportunities, we act as a trusted partner to institutions who require not just a service provider — but a strategic ally of the highest caliber.",
           "cta": "Meet Our Team",
           "imageAlt": "BlackOak experienced team"
         },
@@ -854,7 +854,10 @@
         "descriptionP2Middle": "to speak with our team, or",
         "descriptionP2ContactLink": "contact us",
         "descriptionP2Suffix": "today to discover opportunities tailored to you.",
-        "creativeAndOpsTeam": "Creative & Operations Team"
+        "creativeAndOpsTeam": "Creative & Operations Team",
+        "searchPlaceholder": "Search by name or position",
+        "searchNoResults": "No team members match your search.",
+        "searchClearLabel": "Clear search"
       }
     },
     "insights": {
@@ -862,9 +865,9 @@
         "heroHeading": "Built on Trust.\nDriven by Passion.",
         "heroAlt": "Dubai real estate investment opportunities with premium skyline view",
         "whyBlackoakLabel": "Why BlackOak?",
-        "whyBlackoakHeading": "Exclusive access to Dubai''s most exceptional real estate opportunities.",
+        "whyBlackoakHeading": "Exclusive access to Dubai's most exceptional real estate opportunities.",
         "whyBlackoakP1": "Investors choose BlackOak for institutional-grade due diligence, disciplined asset management, transparent structures, and clear investor reporting. Our platform gives access to premium developments and off-market transactions. Alignment is ensured through direct co-investment by BlackOak principals.",
-        "whyBlackoakP2": "BlackOak blends institutional rigor with boutique agility, giving investors the confidence to participate in Dubai''s evolving real estate market through professionally managed, asset-backed investment platforms.",
+        "whyBlackoakP2": "BlackOak blends institutional rigor with boutique agility, giving investors the confidence to participate in Dubai's evolving real estate market through professionally managed, asset-backed investment platforms.",
         "investLabel": "Invest with Blackoak",
         "investHeading": "Where Capital Meets Opportunity",
         "sections": {
@@ -931,7 +934,7 @@
           "costsBuying": "Costs of Buying a Property"
         },
         "whyInvestHeading": "Why You Should Invest or Buy Property in Dubai",
-        "whyInvestDescription": "Over the past few years, Dubai''s real estate market has greatly matured aligning itself with other established cities. Of course, Dubai is still considered a \"new\" city and most real estate projects aren''t even 10 years old! However, this is a great benefit for buyers as buildings are designed and constructed with newer design concepts, advanced engineering techniques and generally, better construction.",
+        "whyInvestDescription": "Over the past few years, Dubai's real estate market has greatly matured aligning itself with other established cities. Of course, Dubai is still considered a \"new\" city and most real estate projects aren't even 10 years old! However, this is a great benefit for buyers as buildings are designed and constructed with newer design concepts, advanced engineering techniques and generally, better construction.",
         "minimalRiskLabel": "Minimal Risk",
         "minimalRiskHeading": "Invest with Assured Confidence",
         "obtainingVisaLabel": "Obtaining a Visa",
@@ -953,15 +956,22 @@
         },
         "readMore": "Read  More",
         "latestNewsLabel": "Latest News",
-        "latestNewsHeading": "Curated perspectives on the UAE''s most dynamic real estate landscape.",
+        "latestNewsHeading": "Curated perspectives on the UAE's most dynamic real estate landscape.",
         "relatedNewsLabel": "Related News",
         "relatedNewsHeading": "Curated updates from the world of luxury real estate."
+      },
+      "marketIntelligence": {
+        "breadcrumbs": {
+          "home": "Home",
+          "insights": "Insights",
+          "marketIntelligence": "Market Intelligence"
+        }
       }
     },
     "notFound": {
       "code": "404",
       "heading": "Page Not Found",
-      "description": "The page you''re looking for doesn''t exist or has been moved.",
+      "description": "The page you're looking for doesn't exist or has been moved.",
       "cta": "RETURN TO HOMEPAGE"
     },
     "error": {

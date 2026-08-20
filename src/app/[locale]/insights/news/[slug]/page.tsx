@@ -19,6 +19,26 @@ export function generateStaticParams() {
   return getNews().map((n) => ({ slug: n.slug }));
 }
 
+// Company/agency suffixes that mark an organization even in "Firstname Lastname" form.
+const ORG_KEYWORDS = /\b(inc|ltd|llc|llp|group|advisory|advisors?|research|communications?|media|news|reuters|bloomberg|reports?|associates|holdings?|partners?|capital|realty|properties|estate|company|co\.?)\b/i;
+
+function isLikelyPersonName(name: string) {
+  const trimmed = name.trim();
+  if (ORG_KEYWORDS.test(trimmed)) return false;
+  const words = trimmed.split(/\s+/);
+  if (words.length < 2 || words.length > 4) return false;
+  return words.every((w) => /^[A-Z][a-zA-Z’'-]+\.?$/.test(w));
+}
+
+function buildAuthorSchema(name: string, type?: 'Person' | 'Organization', url?: string) {
+  const resolved = type ?? (isLikelyPersonName(name) ? 'Person' : 'Organization');
+  return {
+    '@type': resolved,
+    name,
+    ...(url ? { url } : {}),
+  };
+}
+
 export function generateMetadata({ params }: Props): Metadata {
   const locale = params.locale as Locale;
   const article = getNewsBySlug(params.slug, locale);
@@ -72,6 +92,8 @@ export default async function NewsDetailPage({ params }: Props) {
   const firstHalf = contentParagraphs.slice(0, midpoint).join('</p>') + '</p>';
   const secondHalf = contentParagraphs.slice(midpoint).join('</p>') + '</p>';
 
+  const authorSchema = buildAuthorSchema(article.author, article.authorType, article.authorUrl);
+
   const articleJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -83,10 +105,7 @@ export default async function NewsDetailPage({ params }: Props) {
     inLanguage: locale,
     wordCount: article.content.replace(/<[^>]*>/g, '').split(/\s+/).filter(Boolean).length,
     articleSection: article.category,
-    author: {
-      '@type': 'Organization',
-      name: article.author,
-    },
+    author: authorSchema,
     publisher: {
       '@type': 'Organization',
       name: 'BlackOak Real Estate',

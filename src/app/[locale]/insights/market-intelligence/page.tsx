@@ -58,6 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function MarketIntelligencePage({ params }: Props) {
   const locale = params.locale as Locale;
   const t = await getTranslations({ locale, namespace: 'metadata.marketIntelligence' });
+  const tCrumb = await getTranslations({ locale, namespace: 'pages.insights.marketIntelligence.breadcrumbs' });
   const content = getMarketIntelligence(locale);
 
   const canonical = `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/market-intelligence/`;
@@ -67,9 +68,9 @@ export default async function MarketIntelligencePage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: homeUrl },
-      { '@type': 'ListItem', position: 2, name: 'Insights & Intelligence', item: canonical },
-      { '@type': 'ListItem', position: 3, name: 'Market Intelligence', item: canonical },
+      { '@type': 'ListItem', position: 1, name: tCrumb('home'), item: homeUrl },
+      { '@type': 'ListItem', position: 2, name: tCrumb('insights'), item: canonical },
+      { '@type': 'ListItem', position: 3, name: tCrumb('marketIntelligence'), item: canonical },
     ],
   };
 

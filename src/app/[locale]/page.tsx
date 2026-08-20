@@ -111,12 +111,37 @@ export default async function HomePage({ params }: { params: { locale: string } 
     },
   };
 
+  // "Million Dollar Listing" on STARZPLAY — BlackOak is featured on the show.
+  // Modeled as TVSeries with `about` linking back to the org so LLMs/search
+  // can associate the featured content with BlackOak.
+  const starzplayJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TVSeries',
+    name: homepage.starzplay.heading,
+    description: homepage.starzplay.subheading,
+    inLanguage: locale,
+    genre: ['Reality', 'Real Estate'],
+    image: homepage.starzplay.posters.map((p: string) => `https://blackoak-re.com${p}`),
+    publisher: { '@type': 'Organization', name: 'STARZPLAY' },
+    productionCompany: (homepage.starzplay.productionLogos as Array<{ name: string }>)
+      .map((l) => ({ '@type': 'Organization', name: l.name })),
+    about: {
+      '@type': 'RealEstateAgent',
+      name: 'BlackOak Real Estate',
+      url: 'https://blackoak-re.com',
+    },
+  };
+
   return (
     <>
       {splash.enabled && <SplashScreen {...splash} />}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(starzplayJsonLd) }}
       />
       <script
         type="application/ld+json"
@@ -129,6 +154,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
             thumbnailUrl: `https://blackoak-re.com${homepage.hero.image}`,
             contentUrl: 'https://blackoak-re.com/images/homepage/hero.mp4',
             uploadDate: '2024-01-01',
+            duration: 'PT29S',
             publisher: {
               '@type': 'Organization',
               name: 'BlackOak Real Estate',
@@ -150,9 +176,12 @@ export default async function HomePage({ params }: { params: { locale: string } 
           playsInline
           preload="auto"
           poster={homepage.hero.image}
+          aria-hidden="true"
+          tabIndex={-1}
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="/images/homepage/hero.mp4" type="video/mp4" />
+          {homepage.hero.heading} — {homepage.hero.subtitle}
         </video>
         <div className="absolute inset-0 bg-black/40" />
         <div className="relative z-10 text-center text-white px-4 max-w-4xl mx-auto">

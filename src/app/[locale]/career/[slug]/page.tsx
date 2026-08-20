@@ -20,6 +20,48 @@ export function generateStaticParams() {
   return getCareers().map((c) => ({ slug: c.slug }));
 }
 
+const COUNTRY_TO_ISO: Record<string, string> = {
+  'united arab emirates': 'AE',
+  uae: 'AE',
+  'united kingdom': 'GB',
+  uk: 'GB',
+  'united states': 'US',
+  usa: 'US',
+};
+
+function parseJobLocation(location: string) {
+  const trimmed = location.trim();
+  const iso = COUNTRY_TO_ISO[trimmed.toLowerCase()];
+  if (iso) {
+    return { '@type': 'Place', address: { '@type': 'PostalAddress', addressCountry: iso } };
+  }
+  const parts = trimmed.split(',').map((s) => s.trim()).filter(Boolean);
+  if (parts.length >= 2) {
+    const countryPart = parts[parts.length - 1];
+    return {
+      '@type': 'Place',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: parts.slice(0, -1).join(', '),
+        addressCountry: COUNTRY_TO_ISO[countryPart.toLowerCase()] ?? countryPart,
+      },
+    };
+  }
+  return { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: trimmed } };
+}
+
+function parseEmploymentType(type: string): string | string[] {
+  const t = type.toLowerCase();
+  const out: string[] = [];
+  if (/full[-\s]?time/.test(t)) out.push('FULL_TIME');
+  if (/part[-\s]?time/.test(t)) out.push('PART_TIME');
+  if (/contract/.test(t)) out.push('CONTRACTOR');
+  if (/intern/.test(t)) out.push('INTERN');
+  if (/temp/.test(t)) out.push('TEMPORARY');
+  if (out.length === 0) return 'FULL_TIME';
+  return out.length === 1 ? out[0] : out;
+}
+
 export function generateMetadata({ params }: Props): Metadata {
   const locale = params.locale as Locale;
   const job = getCareerBySlug(params.slug, locale);
@@ -61,21 +103,13 @@ export default async function CareerDetailPage({ params }: Props) {
     title: job.title,
     description: job.description,
     datePosted: job.postedDate,
-    employmentType: job.type.includes('Full-time') ? 'FULL_TIME' : 'PART_TIME',
+    employmentType: parseEmploymentType(job.type),
     hiringOrganization: {
       '@type': 'Organization',
       name: 'BlackOak Real Estate',
       sameAs: 'https://blackoak-re.com',
     },
-    jobLocation: {
-      '@type': 'Place',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Dubai',
-        addressRegion: 'Dubai',
-        addressCountry: 'AE',
-      },
-    },
+    jobLocation: parseJobLocation(job.location),
     directApply: true,
   };
 

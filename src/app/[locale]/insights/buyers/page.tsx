@@ -79,6 +79,35 @@ export default async function BuyersPage({ params }: Props) {
     },
   };
 
+  // Trim to a reasonable answer length at a sentence boundary (~800 chars).
+  const trimAnswer = (text: string, max = 800) => {
+    const t = text.trim();
+    if (t.length <= max) return t;
+    const cut = t.slice(0, max);
+    const boundary = Math.max(cut.lastIndexOf('. '), cut.lastIndexOf('. '));
+    return (boundary > 200 ? cut.slice(0, boundary + 1) : cut) + '…';
+  };
+
+  const faqEntries: Array<{ question: string; answer: string }> = [
+    { question: buyers.whyInvest.title, answer: trimAnswer(buyers.whyInvest.content) },
+    { question: buyers.visa.title, answer: trimAnswer(buyers.visa.intro) },
+    { question: buyers.managingProperty.title, answer: trimAnswer(buyers.managingProperty.intro) },
+    { question: buyers.mortgage.title, answer: trimAnswer(buyers.mortgage.paragraphs[0]) },
+    { question: buyers.internationalBuyers.title, answer: trimAnswer(buyers.internationalBuyers.intro) },
+    { question: buyers.costs.title, answer: trimAnswer(buyers.costs.intro) },
+  ].filter((e) => e.answer);
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    inLanguage: locale,
+    mainEntity: faqEntries.map((e) => ({
+      '@type': 'Question',
+      name: e.question,
+      acceptedAnswer: { '@type': 'Answer', text: e.answer },
+    })),
+  };
+
   return (
     <>
       <script
@@ -88,6 +117,10 @@ export default async function BuyersPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(buyersJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       {/* Hero */}
       <section className="relative flex items-center justify-center min-h-[70vh] overflow-hidden">

@@ -14,7 +14,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: ['GPTBot', 'ChatGPT-User', 'OAI-SearchBot', 'Claudebot', 'Claude-Web', 'anthropic-ai', 'PerplexityBot', 'Google-Extended'],
         allow: '/',
-        disallow: ['/api/', '/thank-you/', '/fr/thank-you/', '/ar/thank-you/', '/list-your-property/', '/contact/'],
+        // /contact/ intentionally allowed so AI overviews can cite office hours,
+        // phone, email, and Dubai/London addresses.
+        disallow: ['/api/', '/thank-you/', '/fr/thank-you/', '/ar/thank-you/', '/list-your-property/'],
       },
       // Bulk training / scraping crawlers: keep blocked. Bayn (proxied external
       // app) is explicitly allowed since it's hosted separately.

@@ -9,5 +9,7 @@ export interface NewsItem {
   publishedDate: string;
   category: string;
   author: string;
+  authorType?: 'Person' | 'Organization';
+  authorUrl?: string;
   tags?: string[];
 }

@@ -854,7 +854,10 @@
         "descriptionP2Middle": "للتحدث مع فريقنا، أو",
         "descriptionP2ContactLink": "تواصل معنا",
         "descriptionP2Suffix": "اليوم لاكتشاف فرص مصمّمة خصيصاً لك.",
-        "creativeAndOpsTeam": "الفريق الإبداعي والعمليات"
+        "creativeAndOpsTeam": "الفريق الإبداعي والعمليات",
+        "searchPlaceholder": "ابحث بالاسم أو المنصب",
+        "searchNoResults": "لا يوجد أعضاء يطابقون بحثك.",
+        "searchClearLabel": "مسح البحث"
       }
     },
     "insights": {
@@ -956,6 +959,13 @@
         "latestNewsHeading": "وجهات نظر مختارة عن أكثر مشاهد العقارات ديناميكية في الإمارات.",
         "relatedNewsLabel": "أخبار ذات صلة",
         "relatedNewsHeading": "تحديثات مختارة من عالم العقارات الفاخرة."
+      },
+      "marketIntelligence": {
+        "breadcrumbs": {
+          "home": "الرئيسية",
+          "insights": "رؤى",
+          "marketIntelligence": "ذكاء السوق"
+        }
       }
     },
     "notFound": {

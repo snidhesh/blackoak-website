@@ -42,13 +42,6 @@
     "category": "real-estate"
   },
   {
-    "id": "11",
-    "name": "Jahongir Usmonov",
-    "title": "شريك مساعد",
-    "image": "/images/team/jahongir-usmonov.jpg",
-    "category": "real-estate"
-  },
-  {
     "id": "6",
     "name": "Ana Ambrosio",
     "title": "شريك مساعد",
@@ -77,24 +70,10 @@
     "category": "real-estate"
   },
   {
-    "id": "12",
-    "name": "Fenella Rose",
+    "id": "53",
+    "name": "Mirabela Antonache",
     "title": "مدير مساعد",
-    "image": "/images/team/fenella-rose.jpg",
-    "category": "real-estate"
-  },
-  {
-    "id": "49",
-    "name": "Peter Siwik",
-    "title": "مدير مساعد",
-    "image": "/images/team/peter-siwik.jpg",
-    "category": "real-estate"
-  },
-  {
-    "id": "13",
-    "name": "Ridwan Hassan",
-    "title": "مدير مساعد",
-    "image": "/images/team/ridwan-hassan.jpg",
+    "image": "/images/team/mirabela-antonache.jpg",
     "category": "real-estate"
   },
   {
@@ -105,17 +84,24 @@
     "category": "real-estate"
   },
   {
-    "id": "32",
-    "name": "Iwona Piotrowska",
+    "id": "12",
+    "name": "Fenella Rose",
     "title": "مدير مساعد",
-    "image": "/images/team/iwona-piotrowska.jpg",
+    "image": "/images/team/fenella-rose.jpg",
     "category": "real-estate"
   },
   {
-    "id": "14",
-    "name": "Kareem Hafez",
+    "id": "13",
+    "name": "Ridwan Hassan",
     "title": "مدير مساعد",
-    "image": "/images/team/kareem-hafez.jpg",
+    "image": "/images/team/ridwan-hassan.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "52",
+    "name": "Sally Shehabi",
+    "title": "مدير مساعد",
+    "image": "/images/team/sally-shehabi.jpg",
     "category": "real-estate"
   },
   {
@@ -123,6 +109,13 @@
     "name": "Bakhodur Usmanov",
     "title": "مدير مساعد",
     "image": "/images/team/bakhodur-usmanov.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "32",
+    "name": "Iwona Piotrowska",
+    "title": "مدير مساعد",
+    "image": "/images/team/iwona-piotrowska.jpg",
     "category": "real-estate"
   },
   {
@@ -147,6 +140,27 @@
     "category": "real-estate"
   },
   {
+    "id": "51",
+    "name": "Salma Elkilawi",
+    "title": "مدير مساعد",
+    "image": "/images/team/salma-elkilawi.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "14",
+    "name": "Kareem Hafez",
+    "title": "مدير مساعد",
+    "image": "/images/team/kareem-hafez.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "49",
+    "name": "Peter Siwik",
+    "title": "مدير مساعد",
+    "image": "/images/team/peter-siwik.jpg",
+    "category": "real-estate"
+  },
+  {
     "id": "22",
     "name": "Laleh Changizi",
     "title": "مستشار عقاري أول",
@@ -154,17 +168,17 @@
     "category": "real-estate"
   },
   {
-    "id": "46",
-    "name": "Merihan Magdy",
-    "title": "مستشار عقاري أول",
-    "image": "/images/team/merihan-magdy.jpg",
-    "category": "real-estate"
-  },
-  {
     "id": "25",
     "name": "Ossama Elrashidy",
     "title": "مستشار عقاري أول",
     "image": "/images/team/ossama-elrashidy.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "46",
+    "name": "Merihan Magdy",
+    "title": "مستشار عقاري أول",
+    "image": "/images/team/merihan-magdy.jpg",
     "category": "real-estate"
   },
   {
@@ -200,13 +214,6 @@
     "name": "Sarah Khaleej",
     "title": "مستشار عقاري أول",
     "image": "/images/team/sarah-khaleej.jpg",
-    "category": "real-estate"
-  },
-  {
-    "id": "24",
-    "name": "Carol Ozon",
-    "title": "مستشار عقاري أول",
-    "image": "/images/team/carol-ozon.jpg",
     "category": "real-estate"
   },
   {

@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
       url: locale === 'en' ? 'https://blackoak-re.com/career/' : `https://blackoak-re.com/${locale}/career/`,
-      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+      images: [{ url: 'https://blackoak-re.com/images/og-career.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
 }

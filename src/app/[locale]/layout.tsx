@@ -58,6 +58,12 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
         },
       ],
     },
+    // twitter:image intentionally omitted — Twitter Cards spec falls back to
+    // og:image, so each page's OG image is used automatically without needing
+    // per-page twitter.images overrides.
+    twitter: {
+      card: 'summary_large_image',
+    },
     alternates: {
       canonical: locale === 'en' ? `${BASE_URL}/` : `${BASE_URL}/${locale}/`,
       languages: {

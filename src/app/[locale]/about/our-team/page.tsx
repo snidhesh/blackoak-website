@@ -4,7 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { getTeam } from '@/lib/content';
 import type { Locale } from '@/i18n/config';
 import SectionLabel from '@/components/ui/SectionLabel';
-import TeamGrid from '@/components/sections/TeamGrid';
+import TeamDirectory from '@/components/sections/TeamDirectory';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 
 interface Props {
@@ -41,20 +41,56 @@ export default async function OurTeamPage({ params }: { params: { locale: string
   const realEstateTeam = team.filter((m) => m.category === 'real-estate');
   const creativeTeam = team.filter((m) => m.category === 'creative-ops');
 
-  const teamJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: 'BlackOak Real Estate',
-    url: 'https://blackoak-re.com',
-    logo: 'https://blackoak-re.com/images/logo-white.png',
-    inLanguage: locale,
-    employee: team.map((member) => ({
+  const SITE = 'https://blackoak-re.com';
+  const teamPageUrl = locale === 'en' ? `${SITE}/about/our-team/` : `${SITE}/${locale}/about/our-team/`;
+  const orgId = `${SITE}/#organization`;
+
+  const personSlug = (name: string) =>
+    name
+      .toLowerCase()
+      .normalize('NFKD')
+      .replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/(^-|-$)/g, '');
+
+  const persons = team.map((member) => {
+    const personId = `${teamPageUrl}#${personSlug(member.name)}`;
+    const p: Record<string, unknown> = {
       '@type': 'Person',
+      '@id': personId,
       name: member.name,
       jobTitle: member.title,
-      image: member.image ? `https://blackoak-re.com${member.image}` : undefined,
-      worksFor: { '@type': 'Organization', name: 'BlackOak Real Estate' },
-    })),
+      worksFor: { '@id': orgId },
+    };
+    if (member.image) {
+      p.image = {
+        '@type': 'ImageObject',
+        url: `${SITE}${member.image}`,
+        width: 325,
+        height: 406,
+      };
+    }
+    if (member.bio) p.description = member.bio;
+    if (member.email) p.email = member.email;
+    if (member.phone) p.telephone = member.phone;
+    if (member.linkedIn) p.sameAs = [member.linkedIn];
+    return p;
+  });
+
+  const teamJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': orgId,
+        name: 'BlackOak Real Estate',
+        url: SITE,
+        logo: `${SITE}/images/logo-white.png`,
+        inLanguage: locale,
+        employee: persons.map((p) => ({ '@id': p['@id'] })),
+      },
+      ...persons,
+    ],
   };
 
   return (
@@ -97,32 +133,12 @@ export default async function OurTeamPage({ params }: { params: { locale: string
         </div>
       </section>
 
-      {/* Partners */}
-      <section className="py-10">
-        <div className="container-wide">
-          <AnimateOnScroll>
-            <TeamGrid members={partners} columns={2} centered />
-          </AnimateOnScroll>
-        </div>
-      </section>
-
-      {/* Real Estate Team */}
-      <section className="py-10">
-        <div className="container-wide">
-          <AnimateOnScroll>
-            <TeamGrid members={realEstateTeam} />
-          </AnimateOnScroll>
-        </div>
-      </section>
-
-      {/* Creative & Operations Team */}
-      <section className="py-16">
-        <div className="container-wide">
-          <AnimateOnScroll>
-            <TeamGrid members={creativeTeam} title={t('creativeAndOpsTeam')} />
-          </AnimateOnScroll>
-        </div>
-      </section>
+      <TeamDirectory
+        partners={partners}
+        realEstateTeam={realEstateTeam}
+        creativeTeam={creativeTeam}
+        creativeTeamTitle={t('creativeAndOpsTeam')}
+      />
     </>
   );
 }

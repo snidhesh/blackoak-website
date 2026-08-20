@@ -17,18 +17,56 @@ export function generateStaticParams() {
   return neighbourhoods.map((n) => ({ slug: n.slug }));
 }
 
-export function generateMetadata({ params }: Props): Metadata {
-  const locale = params.locale;
-  const neighbourhood = getNeighbourhoodBySlug(params.slug, locale as Locale);
+function compactPrice(price: number, currency: string): string {
+  if (price >= 1_000_000_000) return `${currency} ${(price / 1_000_000_000).toFixed(1).replace(/\.0$/, '')}B`;
+  if (price >= 1_000_000) return `${currency} ${(price / 1_000_000).toFixed(1).replace(/\.0$/, '')}M`;
+  if (price >= 1_000) return `${currency} ${Math.round(price / 1_000)}K`;
+  return `${currency} ${price}`;
+}
+
+function buildStatsSuffix(
+  count: number,
+  minPrice: number | null,
+  currency: string,
+  locale: Locale,
+): string {
+  if (count === 0) return '';
+  const priceStr = minPrice ? compactPrice(minPrice, currency) : '';
+  if (locale === 'fr') {
+    return priceStr
+      ? ` ${count} propriétés disponibles à partir de ${priceStr}.`
+      : ` ${count} propriétés disponibles.`;
+  }
+  if (locale === 'ar') {
+    return priceStr
+      ? ` ${count} عقار متاح ابتداءً من ${priceStr}.`
+      : ` ${count} عقار متاح.`;
+  }
+  return priceStr
+    ? ` ${count} properties available from ${priceStr}.`
+    : ` ${count} properties available.`;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const locale = params.locale as Locale;
+  const neighbourhood = getNeighbourhoodBySlug(params.slug, locale);
   if (!neighbourhood) return { title: 'Not Found' };
+
+  const projects = await getProjectsByNeighbourhood(params.slug);
+  const priced = projects.filter((p) => p.price > 0);
+  const minPrice = priced.length ? Math.min(...priced.map((p) => p.price)) : null;
+  const currency = priced[0]?.currency ?? 'AED';
+  const statsSuffix = buildStatsSuffix(projects.length, minPrice, currency, locale);
+  const description = `${neighbourhood.seo.description}${statsSuffix}`;
+
   const enhancedTitle = `${neighbourhood.seo.title} | Properties for Sale`;
   return {
     title: enhancedTitle,
-    description: neighbourhood.seo.description,
+    description,
     keywords: [`${neighbourhood.name} property for sale`, `${neighbourhood.name} villas for sale`, `${neighbourhood.name} apartments for sale`, `buy property ${neighbourhood.name}`, `${neighbourhood.name} real estate investment`, `invest ${neighbourhood.name} Dubai`, `luxury homes ${neighbourhood.name}`, `${neighbourhood.name} penthouse`, `${neighbourhood.name} Dubai property prices`],
     openGraph: {
       title: neighbourhood.seo.title,
-      description: neighbourhood.seo.description,
+      description,
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
       url: locale === 'en' ? `https://blackoak-re.com/neighbourhoods/${params.slug}/` : `https://blackoak-re.com/${locale}/neighbourhoods/${params.slug}/`,
