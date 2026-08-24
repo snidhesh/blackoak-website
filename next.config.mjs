@@ -35,6 +35,7 @@ const nextConfig = {
       { source: '/bayn/:path*', destination: 'https://orabayn.vercel.app/bayn/:path*' },
       { source: '/yasresidences', destination: 'https://yasresidence.vercel.app/yasresidences' },
       { source: '/yasresidences/:path*', destination: 'https://yasresidence.vercel.app/yasresidences/:path*' },
+      { source: '/omoria/api/:path*', destination: 'https://omoria-mauve.vercel.app/api/:path*' },
       { source: '/omoria', destination: 'https://omoria-mauve.vercel.app/omoria' },
       { source: '/omoria/:path*', destination: 'https://omoria-mauve.vercel.app/omoria/:path*' },
     ];
