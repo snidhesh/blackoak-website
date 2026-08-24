@@ -35,13 +35,15 @@ const nextConfig = {
       { source: '/bayn/:path*', destination: 'https://orabayn.vercel.app/bayn/:path*' },
       { source: '/yasresidences', destination: 'https://yasresidence.vercel.app/yasresidences' },
       { source: '/yasresidences/:path*', destination: 'https://yasresidence.vercel.app/yasresidences/:path*' },
+      { source: '/omoria', destination: 'https://omoria-mauve.vercel.app/omoria' },
+      { source: '/omoria/:path*', destination: 'https://omoria-mauve.vercel.app/omoria/:path*' },
     ];
   },
   async headers() {
     return [
       {
         // Exclude /bayn/* so the proxied Bayn app isn't restricted by the main site's CSP
-        source: '/((?!bayn(?:/.*)?$|yasresidences(?:/.*)?$).*)',
+        source: '/((?!bayn(?:/.*)?$|yasresidences(?:/.*)?$|omoria(?:/.*)?$).*)',
         headers: [
           { key: 'Content-Security-Policy', value: contentSecurityPolicy },
           { key: 'X-Frame-Options', value: 'DENY' },
