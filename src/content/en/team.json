@@ -74,7 +74,7 @@
     "name": "Mirabela Antonache",
     "title": "Associate Director",
     "image": "/images/team/mirabela-antonache.jpg",
-    "category": "real-estate"
+    "category": "_hidden"
   },
   {
     "id": "15",
@@ -102,7 +102,7 @@
     "name": "Sally Shehabi",
     "title": "Associate Director",
     "image": "/images/team/sally-shehabi.jpg",
-    "category": "real-estate"
+    "category": "_hidden"
   },
   {
     "id": "17",
@@ -144,7 +144,7 @@
     "name": "Salma Elkilawi",
     "title": "Associate Director",
     "image": "/images/team/salma-elkilawi.jpg",
-    "category": "real-estate"
+    "category": "_hidden"
   },
   {
     "id": "14",

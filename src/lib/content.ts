@@ -235,7 +235,9 @@ export function getNeighbourhoodBySlug(slug: string, locale: Locale = 'en'): Nei
 }
 
 export function getTeam(locale: Locale = 'en'): TeamMember[] {
-  return getContent('team', locale) as TeamMember[];
+  return (getContent('team', locale) as TeamMember[]).filter(
+    (m) => !m.category.startsWith('_'),
+  );
 }
 
 export function getCareers(locale: Locale = 'en'): CareerJob[] {
