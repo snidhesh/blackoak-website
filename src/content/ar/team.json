@@ -182,10 +182,10 @@
     "category": "real-estate"
   },
   {
-    "id": "26",
-    "name": "Anastasiia Samkova",
+    "id": "54",
+    "name": "Yelena Abdushukurova",
     "title": "مستشار عقاري أول",
-    "image": "/images/team/anastasiia-samkova.jpg",
+    "image": "/images/team/yelena-abdushukurova.jpg",
     "category": "real-estate"
   },
   {
@@ -207,6 +207,13 @@
     "name": "Mathieu Poissonnet",
     "title": "مستشار عقاري أول",
     "image": "/images/team/mathieu-poissonnet.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "26",
+    "name": "Anastasiia Samkova",
+    "title": "مستشار عقاري أول",
+    "image": "/images/team/anastasiia-samkova.jpg",
     "category": "real-estate"
   },
   {
@@ -249,6 +256,13 @@
     "name": "Shahinya Khamidova",
     "title": "مستشار عقاري",
     "image": "/images/team/shahinya-khamidova.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "55",
+    "name": "Lauren Crabbe",
+    "title": "مستشار عقاري",
+    "image": "/images/team/lauren-crabbe.jpg",
     "category": "real-estate"
   },
   {
