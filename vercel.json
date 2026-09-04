@@ -1,5 +1,17 @@
+// {
+//   "$schema": "https://openapi.vercel.sh/vercel.json",
+//   "framework": "nextjs",
+//   "regions": ["fra1"]
+// }
+
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "nextjs",
-  "regions": ["fra1"]
-}
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "framework": "nextjs",
+    "regions": ["fra1"],
+    "rewrites": [
+      { "source": "/briefing",        "destination": "https://blackoak-briefing.vercel.app/briefing/" },
+      { "source": "/briefing/",       "destination": "https://blackoak-briefing.vercel.app/briefing/" },
+      { "source": "/briefing/:path*", "destination": "https://blackoak-briefing.vercel.app/briefing/:path*"
+  }
+    ]
+  }
