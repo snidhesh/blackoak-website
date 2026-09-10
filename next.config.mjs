@@ -40,7 +40,9 @@ const nextConfig = {
       { source: '/omoria/:path*', destination: 'https://omoria-mauve.vercel.app/omoria/:path*' },
       { source: '/briefing', destination: 'https://blackoak-briefing.vercel.app/briefing' },
       { source: '/briefing/:path*', destination: 'https://blackoak-briefing.vercel.app/briefing/:path*' },
-   
+      { source: '/baynopenhouse', destination: 'https://baynrsvp.vercel.app/baynopenhouse' },
+      { source: '/baynopenhouse/:path*', destination: 'https://baynrsvp.vercel.app/baynopenhouse/:path*' },
+
     ];
   },
   async headers() {
@@ -48,7 +50,7 @@ const nextConfig = {
       {
         // Exclude /bayn/* so the proxied Bayn app isn't restricted by the main site's CSP
         //source: '/((?!bayn(?:/.*)?$|yasresidences(?:/.*)?$|omoria(?:/.*)?$).*)',
-        source: '/((?!bayn(?:/.*)?$|yasresidences(?:/.*)?$|omoria(?:/.*)?$|briefing(?:/.*)?$).*)',
+        source: '/((?!bayn(?:/.*)?$|yasresidences(?:/.*)?$|omoria(?:/.*)?$|briefing(?:/.*)?$|baynopenhouse(?:/.*)?$).*)',
         headers: [
           { key: 'Content-Security-Policy', value: contentSecurityPolicy },
           { key: 'X-Frame-Options', value: 'DENY' },
