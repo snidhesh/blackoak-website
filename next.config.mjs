@@ -2,11 +2,13 @@ import createNextIntlPlugin from 'next-intl/plugin';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
+const isProd = process.env.NODE_ENV === 'production';
+
 // Next.js dev uses React Refresh, which requires 'unsafe-eval'. Prod bundles do not.
 const scriptSrc = [
   "'self'",
   "'unsafe-inline'",
-  process.env.NODE_ENV !== 'production' && "'unsafe-eval'",
+  !isProd && "'unsafe-eval'",
   'https://*.googletagmanager.com',
   'https://*.google-analytics.com',
 ].filter(Boolean).join(' ');
@@ -23,8 +25,11 @@ const contentSecurityPolicy = [
   "base-uri 'self'",
   "form-action 'self'",
   "frame-ancestors 'none'",
-  'upgrade-insecure-requests',
-].join('; ');
+  // Production only. Browsers exempt localhost from this but not a LAN address, so
+  // in dev it rewrites every asset to https://192.168.x.x:PORT, which does not exist,
+  // and the site loads unstyled and unhydrated on a phone or another machine.
+  isProd && 'upgrade-insecure-requests',
+].filter(Boolean).join('; ');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -60,18 +65,25 @@ const nextConfig = {
           { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
         ],
       },
-      {
-        source: '/images/(.*)',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
-      },
-      {
-        source: '/_next/static/(.*)',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
-      },
+      // Long-lived caching is production-only. In dev, /_next/static chunk names are
+      // not content-hashed (e.g. app/[locale]/page.js), so "immutable" makes the browser
+      // keep stale JS across edits — which surfaces as hydration errors.
+      ...(isProd
+        ? [
+            {
+              source: '/images/(.*)',
+              headers: [
+                { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+              ],
+            },
+            {
+              source: '/_next/static/(.*)',
+              headers: [
+                { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+              ],
+            },
+          ]
+        : []),
     ];
   },
   images: {

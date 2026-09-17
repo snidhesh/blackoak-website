@@ -12,6 +12,72 @@
       "buttonText": "SEARCH"
     }
   },
+  "services": {
+    "label": "What we do",
+    "heading": "One firm for every stage of owning property",
+    "items": [
+      {
+        "id": "brokerage",
+        "title": "Brokerage",
+        "description": "Sales and leasing of prime homes across Dubai and selected international markets, for buyers, sellers and landlords.",
+        "capabilities": [
+          "Sales and acquisitions",
+          "Off-plan and new developments",
+          "Leasing",
+          "International properties"
+        ],
+        "cta": {
+          "label": "View properties",
+          "href": "/projects"
+        }
+      },
+      {
+        "id": "investments",
+        "title": "Investments",
+        "description": "Property investments we source, structure and offer through syndication, with due diligence and reporting held to institutional standards. BlackOak principals co-invest directly.",
+        "capabilities": [
+          "Deal sourcing and due diligence",
+          "Syndicated and club deals",
+          "Capital structuring",
+          "Investor reporting"
+        ],
+        "cta": {
+          "label": "How we invest",
+          "href": "/insights/investors"
+        }
+      },
+      {
+        "id": "advisory",
+        "title": "Real Estate & Development Advisory",
+        "description": "Advice for landowners, developers and family offices, from feasibility and product mix through to pricing and sales strategy.",
+        "capabilities": [
+          "Feasibility and best-use studies",
+          "Product mix and pricing",
+          "Development management",
+          "Launch and sales strategy"
+        ],
+        "cta": {
+          "label": "Speak to an advisor",
+          "href": "/contact"
+        }
+      },
+      {
+        "id": "asset-management",
+        "title": "Asset Management",
+        "description": "Day-to-day and strategic management of the property you already own, so it stays let, maintained and performing.",
+        "capabilities": [
+          "Leasing and tenant management",
+          "Property and maintenance oversight",
+          "Performance reporting",
+          "Hold, refinance or exit planning"
+        ],
+        "cta": {
+          "label": "Discuss your portfolio",
+          "href": "/contact"
+        }
+      }
+    ]
+  },
   "featuredDevelopers": {
     "label": "Featured Projects",
     "heading": "Premier developments by the region's most prestigious developers",

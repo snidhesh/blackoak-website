@@ -80,6 +80,23 @@ export const listPropertySchema = z.object({
   _honeypot: z.string().max(0, 'Bot detected'),
 });
 
+// Market Intelligence subscribe-to-unlock gate. No phone or message: name + email only.
+export const newsletterSchema = z.object({
+  firstName: z.string().min(2, 'First name must be at least 2 characters').max(100),
+  lastName: z.string().min(2, 'Last name must be at least 2 characters').max(100),
+  email: z.string().email('Please enter a valid email address').max(200),
+  locale: z.enum(['en', 'fr', 'ar']).optional(),
+  utm: utmField,
+  consent: z.boolean().refine((v) => v === true, { message: 'consentRequired' }),
+  _honeypot: z.string().max(0, 'Bot detected'),
+});
+
+// Second step of the gate: the signed challenge from step one plus the emailed code.
+export const newsletterVerifySchema = z.object({
+  challenge: z.string().min(1).max(4000),
+  code: z.string().regex(/^\d{6}$/),
+});
+
 export type ContactFormData = z.infer<typeof contactSchema>;
 export type ProjectEnquiryFormData = z.infer<typeof projectEnquirySchema>;
 export type CareerApplicationFormData = z.infer<typeof careerApplicationSchema>;
@@ -112,6 +129,24 @@ export function createContactSchema(msgs: ValidationMessages) {
     _honeypot: z.string().max(0),
   });
 }
+
+export type NewsletterValidationMessages = Pick<
+  ValidationMessages,
+  'firstNameMin' | 'lastNameMin' | 'emailInvalid' | 'consentRequired'
+>;
+
+// `locale` and `utm` are attached at submit time, so they are not form fields here.
+export function createNewsletterSchema(msgs: NewsletterValidationMessages) {
+  return z.object({
+    firstName: z.string().min(2, msgs.firstNameMin).max(100, msgs.firstNameMin),
+    lastName: z.string().min(2, msgs.lastNameMin).max(100, msgs.lastNameMin),
+    email: z.string().email(msgs.emailInvalid).max(200, msgs.emailInvalid),
+    consent: z.boolean().refine((v) => v === true, { message: msgs.consentRequired }),
+    _honeypot: z.string().max(0),
+  });
+}
+
+export type NewsletterFormData = z.infer<ReturnType<typeof createNewsletterSchema>>;
 
 export function createProjectEnquirySchema(msgs: ValidationMessages) {
   return z.object({

@@ -6,6 +6,16 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 import Button from '@/components/ui/Button';
 import MarketIntelligenceModule from '@/components/sections/MarketIntelligenceModule';
+import MarketIntelligenceGate from '@/components/sections/MarketIntelligenceGate';
+import { MI_SUBSCRIBED_STORAGE_KEY } from '@/lib/constants';
+
+// Runs before first paint so returning subscribers never see the locked state
+// (globals.css reveals the content when data-mi-unlocked is set). localStorage
+// throws when storage is blocked, hence the try/catch: on failure the visitor
+// simply sees the gate.
+const PRE_PAINT_UNLOCK_SCRIPT = `try{if(localStorage.getItem(${JSON.stringify(
+  MI_SUBSCRIBED_STORAGE_KEY
+)})==='1'){document.documentElement.dataset.miUnlocked='1'}}catch(e){}`;
 
 interface Props {
   params: { locale: string };
@@ -124,30 +134,35 @@ export default async function MarketIntelligencePage({ params }: Props) {
         </div>
       </section>
 
-      {/* === INTERACTIVE MODULE (chart on dark, panels on light blue) === */}
-      <MarketIntelligenceModule content={content} />
+      <script dangerouslySetInnerHTML={{ __html: PRE_PAINT_UNLOCK_SCRIPT }} />
 
-      {/* === CTA === */}
-      <section className="bg-black text-white py-20 md:py-28">
-        <div className="container-narrow text-center">
-          <AnimateOnScroll>
-            <SectionLabel className="text-gold [&::before]:bg-white/20 [&::after]:bg-white/20">
-              {content.cta.eyebrow}
-            </SectionLabel>
-            <h2 className="mt-6 text-[28px] md:text-[36px] lg:text-[42px] font-light leading-tight tracking-tight text-white max-w-3xl mx-auto">
-              {content.cta.title}
-            </h2>
-            <p className="mt-6 text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl mx-auto">
-              {content.cta.body}
-            </p>
-            <div className="mt-10">
-              <Button href="/contact" variant="outline-light" size="md">
-                {content.cta.cta}
-              </Button>
-            </div>
-          </AnimateOnScroll>
-        </div>
-      </section>
+      {/* Subscribe-to-unlock: everything inside is teased, then revealed after sign-up */}
+      <MarketIntelligenceGate>
+        {/* === INTERACTIVE MODULE (chart on dark, panels on light blue) === */}
+        <MarketIntelligenceModule content={content} />
+
+        {/* === CTA === */}
+        <section className="bg-black text-white py-20 md:py-28">
+          <div className="container-narrow text-center">
+            <AnimateOnScroll>
+              <SectionLabel className="text-gold [&::before]:bg-white/20 [&::after]:bg-white/20">
+                {content.cta.eyebrow}
+              </SectionLabel>
+              <h2 className="mt-6 text-[28px] md:text-[36px] lg:text-[42px] font-light leading-tight tracking-tight text-white max-w-3xl mx-auto">
+                {content.cta.title}
+              </h2>
+              <p className="mt-6 text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl mx-auto">
+                {content.cta.body}
+              </p>
+              <div className="mt-10">
+                <Button href="/contact" variant="outline-light" size="md">
+                  {content.cta.cta}
+                </Button>
+              </div>
+            </AnimateOnScroll>
+          </div>
+        </section>
+      </MarketIntelligenceGate>
 
       {/* === METHODOLOGY === */}
       <section className="bg-white py-12 md:py-16 border-t border-gray-200">

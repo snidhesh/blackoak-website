@@ -12,6 +12,72 @@
       "buttonText": "RECHERCHER"
     }
   },
+  "services": {
+    "label": "Nos métiers",
+    "heading": "Un seul interlocuteur pour chaque étape de la vie d'un bien immobilier",
+    "items": [
+      {
+        "id": "brokerage",
+        "title": "Courtage",
+        "description": "Vente et location de résidences de prestige à Dubaï et sur une sélection de marchés internationaux, pour acheteurs, vendeurs et bailleurs.",
+        "capabilities": [
+          "Vente et acquisition",
+          "Programmes neufs et sur plan",
+          "Location",
+          "Biens à l'international"
+        ],
+        "cta": {
+          "label": "Voir les biens",
+          "href": "/projects"
+        }
+      },
+      {
+        "id": "investments",
+        "title": "Investissements",
+        "description": "Des investissements immobiliers que nous identifions, structurons et proposons en syndication, avec une due diligence et un reporting aux standards institutionnels. Les associés de BlackOak co-investissent directement.",
+        "capabilities": [
+          "Sourcing et due diligence",
+          "Syndications et club deals",
+          "Structuration du capital",
+          "Reporting investisseurs"
+        ],
+        "cta": {
+          "label": "Notre approche de l'investissement",
+          "href": "/insights/investors"
+        }
+      },
+      {
+        "id": "advisory",
+        "title": "Conseil immobilier et en développement",
+        "description": "Un accompagnement pour propriétaires fonciers, promoteurs et family offices, de l'étude de faisabilité et du mix produit jusqu'à la tarification et la stratégie de commercialisation.",
+        "capabilities": [
+          "Études de faisabilité et de meilleur usage",
+          "Mix produit et tarification",
+          "Gestion du développement",
+          "Stratégie de lancement et de vente"
+        ],
+        "cta": {
+          "label": "Parler à un conseiller",
+          "href": "/contact"
+        }
+      },
+      {
+        "id": "asset-management",
+        "title": "Gestion d'actifs",
+        "description": "La gestion courante et stratégique des biens que vous détenez déjà, pour qu'ils restent loués, entretenus et performants.",
+        "capabilities": [
+          "Location et gestion des locataires",
+          "Suivi technique et entretien",
+          "Reporting de performance",
+          "Conserver, refinancer ou céder"
+        ],
+        "cta": {
+          "label": "Parler de votre portefeuille",
+          "href": "/contact"
+        }
+      }
+    ]
+  },
   "featuredDevelopers": {
     "label": "Projets en vedette",
     "heading": "Des developpements d'exception par les promoteurs les plus prestigieux de la region",

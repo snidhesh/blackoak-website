@@ -965,6 +965,26 @@
           "home": "Accueil",
           "insights": "Perspectives",
           "marketIntelligence": "Intelligence de marché"
+        },
+        "gate": {
+          "unlockButton": "Débloquer l'analyse complète",
+          "title": "Abonnez-vous pour lire l'analyse complète",
+          "body": "Accédez à l'historique complet des prix 2002–2026, au calculateur d'investissement et au simulateur de scénarios 2030, et recevez les actualités du marché BlackOak par e-mail.",
+          "submit": "Recevoir mon code",
+          "note": "Lecture gratuite. Nous vous enverrons un code à 6 chiffres pour confirmer votre adresse. Vous pouvez vous désinscrire à tout moment.",
+          "consent": "J'accepte de recevoir par e-mail les actualités du marché de BlackOak Real Estate et j'accepte la <privacyPolicy>Politique de confidentialité</privacyPolicy>.",
+          "consentRequired": "Veuillez cocher la case pour vous abonner.",
+          "codeTitle": "Consultez votre boîte de réception",
+          "codeBody": "Nous avons envoyé un code à 6 chiffres à {email}. Il expire dans 15 minutes.",
+          "codeLabel": "Code de vérification",
+          "verify": "Vérifier et débloquer",
+          "verifying": "Vérification...",
+          "resend": "Renvoyer le code",
+          "resent": "Un nouveau code vous a été envoyé.",
+          "changeEmail": "Modifier l'adresse e-mail",
+          "codeFormat": "Saisissez le code à 6 chiffres reçu par e-mail.",
+          "codeInvalid": "Ce code est incorrect. Vérifiez l'e-mail et réessayez.",
+          "codeExpired": "Ce code a expiré. Demandez-en un nouveau."
         }
       }
     },

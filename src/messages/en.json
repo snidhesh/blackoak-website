@@ -965,6 +965,26 @@
           "home": "Home",
           "insights": "Insights",
           "marketIntelligence": "Market Intelligence"
+        },
+        "gate": {
+          "unlockButton": "Unlock the full analysis",
+          "title": "Subscribe to read the full analysis",
+          "body": "Get the full 2002–2026 price history, the investment calculator and the 2030 scenario simulator, plus BlackOak market updates by email.",
+          "submit": "Send my code",
+          "note": "Free to read. We'll email a 6-digit code to confirm your address. You can opt out of emails at any time.",
+          "consent": "I agree to receive market updates from BlackOak Real Estate by email and accept the <privacyPolicy>Privacy Policy</privacyPolicy>.",
+          "consentRequired": "Please tick the box to subscribe.",
+          "codeTitle": "Check your inbox",
+          "codeBody": "We sent a 6-digit code to {email}. It expires in 15 minutes.",
+          "codeLabel": "Verification code",
+          "verify": "Verify and unlock",
+          "verifying": "Verifying...",
+          "resend": "Resend code",
+          "resent": "A new code is on its way.",
+          "changeEmail": "Change email",
+          "codeFormat": "Enter the 6-digit code from the email.",
+          "codeInvalid": "That code isn't right. Check the email and try again.",
+          "codeExpired": "That code has expired. Request a new one."
         }
       }
     },

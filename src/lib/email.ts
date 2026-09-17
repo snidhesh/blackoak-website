@@ -17,13 +17,56 @@ export interface SendFormEmailResult {
   error?: string;
 }
 
-export async function sendFormEmail(input: SendFormEmailInput): Promise<SendFormEmailResult> {
+interface DeliverInput extends SendFormEmailInput {
+  to: string[];
+  text?: string;
+  /**
+   * Development only: when Resend is not configured, print the message to the
+   * server console and report success, so a flow that depends on receiving an
+   * email (the Market Intelligence code) can be exercised locally. Never applies
+   * in production, where a missing key is always a failure.
+   */
+  devConsoleFallback?: boolean;
+}
+
+/** Team-facing: delivers to the EMAIL_TO inbox. */
+export async function sendFormEmail(
+  input: SendFormEmailInput & { devConsoleFallback?: boolean }
+): Promise<SendFormEmailResult> {
+  const to = (process.env.EMAIL_TO ?? '').split(',').map((t) => t.trim()).filter(Boolean);
+  if (to.length === 0 && !(input.devConsoleFallback && process.env.NODE_ENV !== 'production')) {
+    console.error('[email] Missing EMAIL_TO');
+    return { success: false, error: 'Email not configured' };
+  }
+  return deliver({ ...input, to: to.length > 0 ? to : ['team-inbox (EMAIL_TO not set)'] });
+}
+
+/** Visitor-facing: delivers to an address the visitor supplied. */
+export async function sendVisitorEmail(input: {
+  to: string;
+  subject: string;
+  html: string;
+  text: string;
+  devConsoleFallback?: boolean;
+}): Promise<SendFormEmailResult> {
+  return deliver({ ...input, to: [input.to] });
+}
+
+async function deliver(input: DeliverInput): Promise<SendFormEmailResult> {
   const apiKey = process.env.RESEND_API_KEY;
   const from = process.env.EMAIL_FROM;
-  const to = process.env.EMAIL_TO;
 
-  if (!apiKey || !from || !to) {
-    console.error('[email] Missing RESEND_API_KEY, EMAIL_FROM, or EMAIL_TO');
+  if (!apiKey || !from) {
+    if (input.devConsoleFallback && process.env.NODE_ENV !== 'production') {
+      console.info(
+        `\n[email] DEV FALLBACK — Resend is not configured, so this email was NOT sent.\n` +
+          `  To:      ${input.to.join(', ')}\n` +
+          `  Subject: ${input.subject}\n` +
+          (input.text ? `  ${input.text.split('\n').join('\n  ')}\n` : '')
+      );
+      return { success: true };
+    }
+    console.error('[email] Missing RESEND_API_KEY or EMAIL_FROM');
     return { success: false, error: 'Email not configured' };
   }
 
@@ -32,9 +75,10 @@ export async function sendFormEmail(input: SendFormEmailInput): Promise<SendForm
   try {
     const { error } = await resend.emails.send({
       from,
-      to: to.split(',').map((t) => t.trim()).filter(Boolean),
+      to: input.to,
       subject: input.subject,
       html: input.html,
+      text: input.text,
       replyTo: input.replyTo,
       attachments: input.attachments?.map((a) => ({
         filename: a.filename,

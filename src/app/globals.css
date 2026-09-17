@@ -86,3 +86,28 @@ html[data-splash="pending"] #app-shell {
   width: 0;
   overflow: hidden;
 }
+
+/* Market Intelligence subscribe-to-unlock gate.
+   While locked, only the top of the module shows. The page's inline script sets
+   data-mi-unlocked on <html> before first paint for returning subscribers, so the
+   locked state never flashes; React state catches up after hydration. */
+.mi-gate-clip[data-locked='true'] {
+  max-height: 460px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .mi-gate-clip[data-locked='true'] {
+    max-height: 560px;
+  }
+}
+
+[data-mi-unlocked] .mi-gate-clip[data-locked='true'] {
+  max-height: none;
+  overflow: visible;
+}
+
+[data-mi-unlocked] .mi-gate-fade,
+[data-mi-unlocked] .mi-gate-panel {
+  display: none;
+}

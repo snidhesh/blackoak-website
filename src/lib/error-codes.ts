@@ -21,5 +21,12 @@ export const FORM_ERROR_CODES = {
   unexpectedError: 'errorGeneric',
 } as const;
 
+// Market Intelligence code step -> client resolves via
+// useTranslations('pages.insights.marketIntelligence.gate')
+export const NEWSLETTER_ERROR_CODES = {
+  codeInvalid: 'codeInvalid',
+  codeExpired: 'codeExpired',
+} as const;
+
 export type FieldErrorCode = (typeof FIELD_ERROR_CODES)[keyof typeof FIELD_ERROR_CODES];
 export type FormErrorCode = (typeof FORM_ERROR_CODES)[keyof typeof FORM_ERROR_CODES];

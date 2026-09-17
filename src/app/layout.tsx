@@ -36,6 +36,9 @@ export default async function RootLayout({
       lang={locale}
       dir={locale === 'ar' ? 'rtl' : 'ltr'}
       className={`${figtree.variable} ${raleway.variable} ${notoSansArabic.variable}`}
+      // Inline pre-paint scripts set data-* flags on <html> (splash, Market
+      // Intelligence unlock), which the server render cannot know about.
+      suppressHydrationWarning
     >
       <head>
         <link rel="preconnect" href="https://studio.blackoak-re.com" />

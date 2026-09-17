@@ -33,3 +33,8 @@ export const SOCIAL_LINKS = [
 ] as const;
 
 export const PHONE_PREFIX = '+971';
+
+// localStorage flag set once a visitor subscribes on the Market Intelligence page.
+// Read by both the gate component and the page's pre-paint inline script, so it
+// lives here rather than in the 'use client' component file.
+export const MI_SUBSCRIBED_STORAGE_KEY = 'blackoak-mi-subscribed';

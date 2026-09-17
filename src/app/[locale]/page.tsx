@@ -11,6 +11,7 @@ import SectionLabel from '@/components/ui/SectionLabel';
 import SectionHeading from '@/components/ui/SectionHeading';
 import FeaturedProjectsGrid, { FeaturedProjectsSkeleton } from '@/components/sections/FeaturedProjectsGrid';
 import HomeSearchBar from '@/components/ui/HomeSearchBar';
+import ServiceLines from '@/components/sections/ServiceLines';
 import Button from '@/components/ui/Button';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 import InternationalMarketsStack, { type MarketEntry } from '@/components/sections/InternationalMarketsStack';
@@ -23,6 +24,9 @@ const SplashScreen = dynamic(
 );
 
 export const revalidate = 300;
+
+// Hero search bar is hidden for the time being. Set to true to restore it.
+const SHOW_HOME_SEARCH = false;
 
 export async function generateMetadata({ params }: { params: { locale: string } }): Promise<Metadata> {
   const locale = params.locale as Locale;
@@ -192,14 +196,23 @@ export default async function HomePage({ params }: { params: { locale: string } 
             {homepage.hero.subtitle}
           </p>
 
-          {/* Search Bar */}
-          <div className="mt-10">
-            <HomeSearchBar
-              neighbourhoods={allNeighbourhoods.map(n => ({ value: n.slug, label: n.name }))}
-            />
-          </div>
+          {/* Search Bar — hidden for now; flip SHOW_HOME_SEARCH to restore */}
+          {SHOW_HOME_SEARCH && (
+            <div className="mt-10">
+              <HomeSearchBar
+                neighbourhoods={allNeighbourhoods.map(n => ({ value: n.slug, label: n.name }))}
+              />
+            </div>
+          )}
         </div>
       </section>
+
+      {/* Service Lines — Brokerage, Investments, Advisory, Asset Management */}
+      <ServiceLines
+        label={homepage.services.label}
+        heading={homepage.services.heading}
+        items={homepage.services.items}
+      />
 
       {/* Featured Projects (Developer Boxes) */}
       <section className="py-20">
