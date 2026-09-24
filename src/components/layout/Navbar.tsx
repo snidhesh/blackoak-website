@@ -48,7 +48,6 @@ export default function Navbar() {
       label: t('insightsAndIntelligence'),
       dropdown: [
         { label: t('intelligenceHub'), href: '/insights/intelligence' },
-        { label: t('marketIntelligence'), href: '/insights/market-intelligence' },
         { label: t('investors'), href: '/insights/investors' },
         { label: t('buyers'), href: '/insights/buyers' },
         { label: t('newsAndPress'), href: '/insights/news' },

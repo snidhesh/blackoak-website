@@ -9,19 +9,26 @@ const PREFIX = 'blackoak-ratelimit';
 let redis: Redis | null = null;
 const limiters = new Map<string, Ratelimit>();
 
+// Credentials come either from a hand-added UPSTASH_REDIS_REST_* pair or from the
+// KV_REST_API_* pair that a Vercel Marketplace Upstash store injects by default.
+function getCredentials(): { url: string; token: string } | null {
+  const url = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+  return url && token ? { url, token } : null;
+}
+
 export function isRateLimitConfigured(): boolean {
-  return Boolean(process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN);
+  return getCredentials() !== null;
 }
 
 function getRedis(): Redis | null {
   if (redis) return redis;
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
-  if (!url || !token) {
+  const creds = getCredentials();
+  if (!creds) {
     console.warn('[rate-limit] Upstash Redis not configured, rate limiting disabled');
     return null;
   }
-  redis = new Redis({ url, token });
+  redis = new Redis(creds);
   return redis;
 }
 
