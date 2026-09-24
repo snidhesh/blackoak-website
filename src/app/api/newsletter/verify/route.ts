@@ -127,7 +127,7 @@ export async function POST(request: NextRequest) {
     // Durable copies, after the team email so a subscriber is never on a list the
     // team was not told about. Best-effort: the visitor has proved their address
     // and gets in either way; a failure here is logged for follow-up. The CRM
-    // fills in a phone itself when the visitor gave none.
+    // receives a fixed dummy phone when the visitor gave none (see CRM_DUMMY_PHONE).
     const [contactResult, crmResult] = await Promise.all([
       addSubscriberContact({ email, firstName, lastName }),
       submitNewsletterCrmLead({ firstName, lastName, email, phone, locale, sourceLabel, utm }),

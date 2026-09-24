@@ -6,6 +6,11 @@
 import type { ProjectEnquiryFormData } from '@/lib/schemas';
 
 const NOTE_MAX = 2000;
+
+// Sent when a newsletter subscriber gave no phone. The CRM intake insists on a
+// phone, so it recognises this exact value as "none given". Passes the intake's
+// charset and digit-count checks and cannot be a real number.
+export const CRM_DUMMY_PHONE = '+000000000000';
 const EMAIL_MAX = 200;
 const TIMEOUT_MS = 10_000;
 
@@ -69,7 +74,7 @@ export interface NewsletterCrmLeadInput {
   firstName: string;
   lastName: string;
   email: string;
-  /** Raw phone as typed, normalised to E.164 here. Omitted when the visitor gave none. */
+  /** Raw phone as typed, normalised to E.164 here. CRM_DUMMY_PHONE when the visitor gave none. */
   phone?: string;
   locale?: string;
   sourceLabel: string;
@@ -95,7 +100,7 @@ export async function submitNewsletterCrmLead(input: NewsletterCrmLeadInput): Pr
     note: lines.join('\n').slice(0, NOTE_MAX),
     leadType: 'Newsletter subscriber',
   };
-  if (input.phone?.trim()) payload.phone = toE164(input.phone);
+  payload.phone = input.phone?.trim() ? toE164(input.phone) : CRM_DUMMY_PHONE;
   return postLead(payload, 'crm-lead/newsletter');
 }
 
