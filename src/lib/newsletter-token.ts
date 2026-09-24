@@ -22,6 +22,8 @@ export interface ChallengePayload {
   firstName: string;
   lastName: string;
   email: string;
+  /** Optional, raw as typed. Present only when the visitor chose to give it. */
+  phone?: string;
   locale?: 'en' | 'fr' | 'ar';
   /** Which page started the subscription; see SUBSCRIBE_SOURCES. */
   source?: SubscribeSource;

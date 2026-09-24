@@ -6,6 +6,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { newsletterVerifySchema } from '@/lib/schemas';
 import { sendFormEmail, renderFieldsTable } from '@/lib/email';
+import { addSubscriberContact } from '@/lib/resend-contacts';
+import { submitNewsletterCrmLead } from '@/lib/crm-lead';
 import { verifyChallenge } from '@/lib/newsletter-token';
 import { accessCookieOptions, createAccessToken, hasAccessSecret } from '@/lib/access-cookie';
 import {
@@ -84,7 +86,7 @@ export async function POST(request: NextRequest) {
       return fail('code', NEWSLETTER_ERROR_CODES.codeExpired, 410);
     }
 
-    const { firstName, lastName, email, locale, source, utm } = verified.payload;
+    const { firstName, lastName, email, phone, locale, source, utm } = verified.payload;
     const sourceLabel = (source && SOURCE_LABELS[source]) || SOURCE_LABELS['market-intelligence'];
     const fullName = `${firstName} ${lastName}`.trim();
     const utmRows: Array<[string, string | undefined]> = utm
@@ -94,6 +96,7 @@ export async function POST(request: NextRequest) {
       ['Name', fullName],
       ['Email', email],
       ['Email verified', 'Yes — confirmed with a one-time code'],
+      ['Phone', phone],
       ['Language', locale ? LOCALE_LABELS[locale] : undefined],
       ['Source', `${sourceLabel} — subscribe to unlock`],
       ['Consent', 'Agreed to receive market updates by email'],
@@ -119,6 +122,21 @@ export async function POST(request: NextRequest) {
       console.error('[api/newsletter/verify] Team notification failed:', emailResult.error);
       if (claim === 'claimed') await releaseChallenge(challengeHash).catch(() => undefined);
       return fail('_form', FORM_ERROR_CODES.submitFailed, 502);
+    }
+
+    // Durable copies, after the team email so a subscriber is never on a list the
+    // team was not told about. Best-effort: the visitor has proved their address
+    // and gets in either way; a failure here is logged for follow-up. The CRM
+    // fills in a phone itself when the visitor gave none.
+    const [contactResult, crmResult] = await Promise.all([
+      addSubscriberContact({ email, firstName, lastName }),
+      submitNewsletterCrmLead({ firstName, lastName, email, phone, locale, sourceLabel, utm }),
+    ]);
+    if (!contactResult.success) {
+      console.error('[api/newsletter/verify] Subscriber not saved to Resend contacts:', contactResult.error);
+    }
+    if (!crmResult.success) {
+      console.error('[api/newsletter/verify] Subscriber not filed as a CRM lead:', crmResult.status);
     }
 
     const token = await createAccessToken();

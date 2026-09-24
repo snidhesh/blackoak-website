@@ -16,6 +16,7 @@ const FIELD_CODE_MAP: Record<string, string> = {
   firstName: FIELD_ERROR_CODES.firstNameMin,
   lastName: FIELD_ERROR_CODES.lastNameMin,
   email: FIELD_ERROR_CODES.emailInvalid,
+  phone: FIELD_ERROR_CODES.phoneInvalid,
   consent: FIELD_ERROR_CODES.consentRequired,
 };
 
@@ -75,6 +76,7 @@ export async function POST(request: NextRequest) {
         firstName: data.firstName,
         lastName: data.lastName,
         email: data.email,
+        phone: data.phone?.trim() || undefined,
         locale: data.locale,
         source: data.source,
         utm: sanitizeUtm(data.utm),

@@ -1,4 +1,5 @@
-// Forwards project-enquiry submissions to the CRM inbound-lead endpoint.
+// Forwards project enquiries and verified newsletter subscribers to the CRM
+// inbound-lead endpoint.
 // Pattern mirrors the JPJ4J2 sibling project: minimal { name, phone, email, note }
 // payload with Bearer auth. Single attempt — lead intake isn't idempotent.
 
@@ -54,18 +55,6 @@ function buildNote(input: CrmLeadInput): string {
 }
 
 export async function submitCrmLead(input: CrmLeadInput): Promise<CrmLeadResult> {
-  const endpoint = process.env.CRM_LEAD_ENDPOINT;
-  const token = process.env.CRM_LEAD_TOKEN;
-
-  if (!endpoint) {
-    console.warn('[crm-lead] CRM_LEAD_ENDPOINT not configured; skipping submission');
-    return { success: true };
-  }
-  if (!token) {
-    console.error('[crm-lead] CRM_LEAD_TOKEN missing while CRM_LEAD_ENDPOINT is set');
-    return { success: false };
-  }
-
   const { data } = input;
   const payload: Record<string, unknown> = {
     name: `${data.firstName} ${data.lastName}`.trim(),
@@ -73,28 +62,72 @@ export async function submitCrmLead(input: CrmLeadInput): Promise<CrmLeadResult>
     note: buildNote(input),
   };
   if (data.email) payload.email = data.email.slice(0, EMAIL_MAX);
+  return postLead(payload, 'crm-lead');
+}
 
-  const headers: Record<string, string> = {
-    'Content-Type': 'application/json',
-    Authorization: `Bearer ${token}`,
+export interface NewsletterCrmLeadInput {
+  firstName: string;
+  lastName: string;
+  email: string;
+  /** Raw phone as typed, normalised to E.164 here. Omitted when the visitor gave none. */
+  phone?: string;
+  locale?: string;
+  sourceLabel: string;
+  utm?: Record<string, string>;
+}
+
+// A verified newsletter subscriber, filed as a lead so the sales team sees it.
+// Provenance goes into `note`, the only free-text field the intake accepts.
+export async function submitNewsletterCrmLead(input: NewsletterCrmLeadInput): Promise<CrmLeadResult> {
+  const lines = [
+    `${input.sourceLabel} subscriber (email verified with a one-time code)`,
+    'Source: blackoak-website',
+  ];
+  if (input.locale) lines.push(`Language: ${input.locale}`);
+  if (input.utm && Object.keys(input.utm).length > 0) {
+    lines.push(`UTM: ${Object.entries(input.utm).map(([k, v]) => `${k}=${v}`).join(' ')}`);
+  }
+  lines.push('Consent: agreed to receive market updates by email');
+
+  const payload: Record<string, unknown> = {
+    name: `${input.firstName} ${input.lastName}`.trim(),
+    email: input.email.slice(0, EMAIL_MAX),
+    note: lines.join('\n').slice(0, NOTE_MAX),
+    leadType: 'Newsletter subscriber',
   };
+  if (input.phone?.trim()) payload.phone = toE164(input.phone);
+  return postLead(payload, 'crm-lead/newsletter');
+}
+
+async function postLead(payload: Record<string, unknown>, tag: string): Promise<CrmLeadResult> {
+  const endpoint = process.env.CRM_LEAD_ENDPOINT;
+  const token = process.env.CRM_LEAD_TOKEN;
+
+  if (!endpoint) {
+    console.warn(`[${tag}] CRM_LEAD_ENDPOINT not configured; skipping submission`);
+    return { success: true };
+  }
+  if (!token) {
+    console.error(`[${tag}] CRM_LEAD_TOKEN missing while CRM_LEAD_ENDPOINT is set`);
+    return { success: false };
+  }
 
   try {
     const res = await fetch(endpoint, {
       method: 'POST',
-      headers,
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
       body: JSON.stringify(payload),
       signal: AbortSignal.timeout(TIMEOUT_MS),
     });
 
     if (!res.ok) {
-      console.error('[crm-lead] CRM rejected lead:', res.status);
+      console.error(`[${tag}] CRM rejected lead:`, res.status);
       return { success: false, status: res.status };
     }
     return { success: true, status: res.status };
   } catch (error) {
     const msg = error instanceof Error ? error.message : 'unknown';
-    console.error('[crm-lead] Request failed:', msg);
+    console.error(`[${tag}] Request failed:`, msg);
     return { success: false };
   }
 }

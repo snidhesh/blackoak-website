@@ -985,6 +985,7 @@
         "note": "Lecture gratuite. Nous vous enverrons un code à 6 chiffres pour confirmer votre adresse. Vous pouvez vous désinscrire à tout moment.",
         "consent": "J'accepte de recevoir par e-mail les actualités du marché de BlackOak Real Estate et j'accepte la <privacyPolicy>Politique de confidentialité</privacyPolicy>.",
         "consentRequired": "Veuillez cocher la case pour vous abonner.",
+        "phoneOptional": "Téléphone (facultatif)",
         "codeTitle": "Consultez votre boîte de réception",
         "codeBody": "Nous avons envoyé un code à 6 chiffres à {email}. Il expire dans 15 minutes.",
         "codeLabel": "Code de vérification",

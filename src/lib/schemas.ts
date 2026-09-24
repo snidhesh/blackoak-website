@@ -86,6 +86,8 @@ export const newsletterSchema = z.object({
   firstName: z.string().min(2, 'First name must be at least 2 characters').max(100),
   lastName: z.string().min(2, 'Last name must be at least 2 characters').max(100),
   email: z.string().email('Please enter a valid email address').max(200),
+  // Optional: only needed to file the subscriber as a CRM lead.
+  phone: z.union([z.literal(''), z.string().regex(phoneRegex)]).optional(),
   locale: z.enum(['en', 'fr', 'ar']).optional(),
   source: z.enum(SUBSCRIBE_SOURCES).optional(),
   utm: utmField,
@@ -134,7 +136,7 @@ export function createContactSchema(msgs: ValidationMessages) {
 
 export type NewsletterValidationMessages = Pick<
   ValidationMessages,
-  'firstNameMin' | 'lastNameMin' | 'emailInvalid' | 'consentRequired'
+  'firstNameMin' | 'lastNameMin' | 'emailInvalid' | 'phoneInvalid' | 'consentRequired'
 >;
 
 // `locale` and `utm` are attached at submit time, so they are not form fields here.
@@ -143,6 +145,7 @@ export function createNewsletterSchema(msgs: NewsletterValidationMessages) {
     firstName: z.string().min(2, msgs.firstNameMin).max(100, msgs.firstNameMin),
     lastName: z.string().min(2, msgs.lastNameMin).max(100, msgs.lastNameMin),
     email: z.string().email(msgs.emailInvalid).max(200, msgs.emailInvalid),
+    phone: z.union([z.literal(''), z.string().regex(phoneRegex, msgs.phoneInvalid)]).optional(),
     consent: z.boolean().refine((v) => v === true, { message: msgs.consentRequired }),
     _honeypot: z.string().max(0),
   });

@@ -26,7 +26,7 @@ const VERIFY_ENDPOINT = '/api/newsletter/verify/';
 
 const CODE_PATTERN = /^\d{6}$/;
 const RESEND_COOLDOWN_MS = 30_000;
-const FIELD_NAMES = new Set(['firstName', 'lastName', 'email', 'consent']);
+const FIELD_NAMES = new Set(['firstName', 'lastName', 'email', 'phone', 'consent']);
 
 function readUtmFromLocation(): Record<string, string> | undefined {
   if (typeof window === 'undefined') return undefined;
@@ -126,6 +126,7 @@ export default function SubscribeUnlockForm({ source, open, title, body, titleId
         firstNameMin: tv('firstNameMin'),
         lastNameMin: tv('lastNameMin'),
         emailInvalid: tv('emailInvalid'),
+        phoneInvalid: tv('phoneInvalid'),
         // Gate-specific: the shared message refers to "terms", which this checkbox does not.
         consentRequired: t('consentRequired'),
       }),
@@ -140,7 +141,7 @@ export default function SubscribeUnlockForm({ source, open, title, body, titleId
     formState: { errors },
   } = useForm<NewsletterFormData>({
     resolver: zodResolver(schema),
-    defaultValues: { firstName: '', lastName: '', email: '', consent: false, _honeypot: '' },
+    defaultValues: { firstName: '', lastName: '', email: '', phone: '', consent: false, _honeypot: '' },
   });
 
   const step = pending ? 'code' : 'details';
@@ -333,6 +334,17 @@ export default function SubscribeUnlockForm({ source, open, title, body, titleId
               required
               {...register('email')}
               error={errors.email?.message}
+            />
+            <Input
+              label={t('phoneOptional')}
+              aria-label={t('phoneOptional')}
+              type="tel"
+              inputMode="tel"
+              dir="ltr"
+              placeholder={tf('placeholder')}
+              autoComplete="tel"
+              {...register('phone')}
+              error={errors.phone?.message}
             />
 
             {/* Honeypot */}
