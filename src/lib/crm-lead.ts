@@ -67,7 +67,7 @@ export async function submitCrmLead(input: CrmLeadInput): Promise<CrmLeadResult>
     note: buildNote(input),
   };
   if (data.email) payload.email = data.email.slice(0, EMAIL_MAX);
-  return postLead(payload, 'crm-lead');
+  return postLead(payload, 'crm-lead', process.env.CRM_LEAD_TOKEN);
 }
 
 export interface NewsletterCrmLeadInput {
@@ -101,19 +101,29 @@ export async function submitNewsletterCrmLead(input: NewsletterCrmLeadInput): Pr
     leadType: 'Newsletter subscriber',
   };
   payload.phone = input.phone?.trim() ? toE164(input.phone) : CRM_DUMMY_PHONE;
-  return postLead(payload, 'crm-lead/newsletter');
+  // The CRM stamps a lead's source from the intake key, so newsletter leads use
+  // their own key (source label "Newsletter"). Falls back to the enquiry key,
+  // in which case they arrive under that key's label instead.
+  const token = process.env.CRM_NEWSLETTER_LEAD_TOKEN || process.env.CRM_LEAD_TOKEN;
+  if (!process.env.CRM_NEWSLETTER_LEAD_TOKEN) {
+    console.warn('[crm-lead/newsletter] CRM_NEWSLETTER_LEAD_TOKEN not set; using the enquiry key, so the source will not read "Newsletter"');
+  }
+  return postLead(payload, 'crm-lead/newsletter', token);
 }
 
-async function postLead(payload: Record<string, unknown>, tag: string): Promise<CrmLeadResult> {
+async function postLead(
+  payload: Record<string, unknown>,
+  tag: string,
+  token: string | undefined
+): Promise<CrmLeadResult> {
   const endpoint = process.env.CRM_LEAD_ENDPOINT;
-  const token = process.env.CRM_LEAD_TOKEN;
 
   if (!endpoint) {
     console.warn(`[${tag}] CRM_LEAD_ENDPOINT not configured; skipping submission`);
     return { success: true };
   }
   if (!token) {
-    console.error(`[${tag}] CRM_LEAD_TOKEN missing while CRM_LEAD_ENDPOINT is set`);
+    console.error(`[${tag}] CRM intake token missing while CRM_LEAD_ENDPOINT is set`);
     return { success: false };
   }
 
