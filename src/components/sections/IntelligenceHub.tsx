@@ -6,7 +6,7 @@ import { ArrowRight, Lock } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { hasPendingCode, hasSubscribed } from '@/lib/unlock-storage';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
-import SubscribeUnlockForm, { SubscribeUnlockPanel } from '@/components/sections/SubscribeUnlockForm';
+import SubscribeUnlockForm from '@/components/sections/SubscribeUnlockForm';
 
 // Only the Briefing needs a server-side gate, so it is the only place the
 // middleware can send a visitor back from. Parsed as a URL and pinned to this
@@ -33,7 +33,6 @@ const ctaClass =
 
 export default function IntelligenceHub() {
   const t = useTranslations('pages.insights.intelligence');
-  const panelId = useId();
   const titleId = useId();
 
   // Locked on the server and on the first client render, so the markup always
@@ -153,23 +152,27 @@ export default function IntelligenceHub() {
         </div>
       </section>
 
+      {/* No toggle of its own: the tiles' "Subscribe to unlock" buttons open the
+          form, so the black band only appears once it is needed. The wrapper stays
+          mounted so the scroll target exists in the same tick the form opens. */}
       {locked && (
         <div ref={panelRef} className="scroll-mt-20">
-          <SubscribeUnlockPanel
-            open={formOpen}
-            onToggle={() => setFormOpen((open) => !open)}
-            panelId={panelId}
-            unlockLabel={t('gate.unlockButton')}
-          >
-            <SubscribeUnlockForm
-              source="intelligence-hub"
-              open={formOpen}
-              title={t('gate.title')}
-              body={t('gate.body')}
-              titleId={titleId}
-              onUnlocked={onUnlocked}
-            />
-          </SubscribeUnlockPanel>
+          {formOpen && (
+            <section className="mi-gate-panel bg-black py-20 text-white md:py-28">
+              <div className="container-wide">
+                <div className="mx-auto max-w-xl bg-white p-6 text-black sm:p-10">
+                  <SubscribeUnlockForm
+                    source="intelligence-hub"
+                    open={formOpen}
+                    title={t('gate.title')}
+                    body={t('gate.body')}
+                    titleId={titleId}
+                    onUnlocked={onUnlocked}
+                  />
+                </div>
+              </div>
+            </section>
+          )}
         </div>
       )}
     </>
