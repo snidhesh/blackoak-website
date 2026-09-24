@@ -1,4 +1,4 @@
-// Stateless email verification for the Market Intelligence gate.
+// Stateless email verification for the subscribe-to-unlock gates.
 //
 // There is no database, so nothing is stored. When a visitor asks for a code the
 // server signs their details together with the code and returns that signed
@@ -12,6 +12,7 @@
 // staying server-side: anyone who has it can find a code by trying all 1,000,000.
 
 import { createHmac, randomInt, timingSafeEqual } from 'node:crypto';
+import type { SubscribeSource } from '@/lib/constants';
 
 export const CODE_LENGTH = 6;
 export const CODE_TTL_MS = 15 * 60 * 1000;
@@ -22,6 +23,8 @@ export interface ChallengePayload {
   lastName: string;
   email: string;
   locale?: 'en' | 'fr' | 'ar';
+  /** Which page started the subscription; see SUBSCRIBE_SOURCES. */
+  source?: SubscribeSource;
   utm?: Record<string, string>;
   /** Expiry, epoch milliseconds. */
   exp: number;

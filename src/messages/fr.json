@@ -55,6 +55,12 @@
       "ogTitle": "Dubai Market Intelligence | BlackOak Real Estate",
       "ogDescription": "Interactive Dubai market report: 24 years of prices, cycles, and a 2026—2030 scenario simulator."
     },
+    "intelligence": {
+      "title": "Intelligence Hub — Market Intelligence Dubai et The Market Briefing",
+      "description": "Accès abonnés à l'analyse interactive Market Intelligence de BlackOak et à The Market Briefing, l'intelligence hebdomadaire de l'immobilier aux Émirats ancrée sur le BlackOak Prime Capital Index.",
+      "ogTitle": "Intelligence Hub | BlackOak Real Estate",
+      "ogDescription": "Un abonnement gratuit, deux produits : l'analyse interactive du marché de Dubai et le Market Briefing hebdomadaire."
+    },
     "career": {
       "title": "Carrières dans l'immobilier à Dubai",
       "description": "Rejoignez BlackOak Real Estate. Postes ouverts pour consultants immobiliers, conseillers en investissement et spécialistes immobiliers à Dubai. Commissions compétitives et perspectives d'évolution.",
@@ -233,6 +239,7 @@
     "buyers": "Acheteurs",
     "newsAndPress": "Actualités et presse",
     "marketIntelligence": "Market Intelligence",
+    "intelligenceHub": "Intelligence Hub",
     "contact": "Contact",
     "more": "Plus",
     "internationalProperties": "International",
@@ -300,7 +307,8 @@
       "investors": "Investisseurs",
       "buyers": "Acheteurs",
       "newsAndPress": "Actualités et presse",
-      "marketIntelligence": "Market Intelligence"
+      "marketIntelligence": "Market Intelligence",
+      "intelligenceHub": "Intelligence Hub"
     },
     "address": "ADRESSE",
     "offices": {
@@ -969,22 +977,63 @@
         "gate": {
           "unlockButton": "Débloquer l'analyse complète",
           "title": "Abonnez-vous pour lire l'analyse complète",
-          "body": "Accédez à l'historique complet des prix 2002–2026, au calculateur d'investissement et au simulateur de scénarios 2030, et recevez les actualités du marché BlackOak par e-mail.",
-          "submit": "Recevoir mon code",
-          "note": "Lecture gratuite. Nous vous enverrons un code à 6 chiffres pour confirmer votre adresse. Vous pouvez vous désinscrire à tout moment.",
-          "consent": "J'accepte de recevoir par e-mail les actualités du marché de BlackOak Real Estate et j'accepte la <privacyPolicy>Politique de confidentialité</privacyPolicy>.",
-          "consentRequired": "Veuillez cocher la case pour vous abonner.",
-          "codeTitle": "Consultez votre boîte de réception",
-          "codeBody": "Nous avons envoyé un code à 6 chiffres à {email}. Il expire dans 15 minutes.",
-          "codeLabel": "Code de vérification",
-          "verify": "Vérifier et débloquer",
-          "verifying": "Vérification...",
-          "resend": "Renvoyer le code",
-          "resent": "Un nouveau code vous a été envoyé.",
-          "changeEmail": "Modifier l'adresse e-mail",
-          "codeFormat": "Saisissez le code à 6 chiffres reçu par e-mail.",
-          "codeInvalid": "Ce code est incorrect. Vérifiez l'e-mail et réessayez.",
-          "codeExpired": "Ce code a expiré. Demandez-en un nouveau."
+          "body": "Accédez à l'historique complet des prix 2002–2026, au calculateur d'investissement et au simulateur de scénarios 2030, et recevez les actualités du marché BlackOak par e-mail."
+        }
+      },
+      "gate": {
+        "submit": "Recevoir mon code",
+        "note": "Lecture gratuite. Nous vous enverrons un code à 6 chiffres pour confirmer votre adresse. Vous pouvez vous désinscrire à tout moment.",
+        "consent": "J'accepte de recevoir par e-mail les actualités du marché de BlackOak Real Estate et j'accepte la <privacyPolicy>Politique de confidentialité</privacyPolicy>.",
+        "consentRequired": "Veuillez cocher la case pour vous abonner.",
+        "codeTitle": "Consultez votre boîte de réception",
+        "codeBody": "Nous avons envoyé un code à 6 chiffres à {email}. Il expire dans 15 minutes.",
+        "codeLabel": "Code de vérification",
+        "verify": "Vérifier et débloquer",
+        "verifying": "Vérification...",
+        "resend": "Renvoyer le code",
+        "resent": "Un nouveau code vous a été envoyé.",
+        "changeEmail": "Modifier l'adresse e-mail",
+        "codeFormat": "Saisissez le code à 6 chiffres reçu par e-mail.",
+        "codeInvalid": "Ce code est incorrect. Vérifiez l'e-mail et réessayez.",
+        "codeExpired": "Ce code a expiré. Demandez-en un nouveau."
+      },
+      "intelligence": {
+        "breadcrumbs": {
+          "home": "Accueil",
+          "insights": "Perspectives",
+          "intelligence": "Intelligence Hub"
+        },
+        "hero": {
+          "eyebrow": "Analyses et renseignements",
+          "title": "L'Intelligence Hub",
+          "subtitle": "Deux produits réservés aux abonnés, un seul abonnement gratuit : l'analyse interactive du marché de Dubai et le Market Briefing hebdomadaire."
+        },
+        "locked": "Réservé aux abonnés",
+        "unlockCta": "S'abonner pour débloquer",
+        "tiles": {
+          "marketIntelligence": {
+            "eyebrow": "Analyse interactive",
+            "title": "Market Intelligence",
+            "description": "Vingt-quatre ans de prix résidentiels à Dubai, les cycles qui les expliquent et les outils pour tester vos propres scénarios.",
+            "point1": "Historique des prix au pied carré, 2002–2026",
+            "point2": "Calculateur d'investissement rétroactif",
+            "point3": "Simulateur de scénarios 2026–2030",
+            "cta": "Ouvrir Market Intelligence"
+          },
+          "briefing": {
+            "eyebrow": "Édition hebdomadaire",
+            "title": "The Market Briefing",
+            "description": "L'intelligence de l'immobilier aux Émirats chaque lundi à 07h00 GST, ancrée sur le BlackOak Prime Capital Index.",
+            "point1": "L'indice BPCI et ce qui l'a fait bouger",
+            "point2": "Taux, loyers et activité des promoteurs",
+            "point3": "Le point de vue BlackOak et les éditions passées",
+            "cta": "Lire le Briefing"
+          }
+        },
+        "gate": {
+          "unlockButton": "Débloquer les deux produits",
+          "title": "Abonnez-vous pour débloquer l'Intelligence Hub",
+          "body": "Un abonnement gratuit ouvre Market Intelligence et The Market Briefing, et vous recevez les actualités du marché BlackOak par e-mail."
         }
       }
     },

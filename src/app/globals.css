@@ -111,3 +111,24 @@ html[data-splash="pending"] #app-shell {
 [data-mi-unlocked] .mi-gate-panel {
   display: none;
 }
+
+/* Intelligence Hub tiles. Each tile carries a lock badge plus a "subscribe" button
+   while locked, and the real link once unlocked. The same pre-paint attribute
+   flips them for returning subscribers before React catches up. */
+.intel-tile[data-locked='true'] .intel-cta-open {
+  display: none;
+}
+
+.intel-tile[data-locked='false'] .intel-cta-locked,
+.intel-tile[data-locked='false'] .intel-lock {
+  display: none;
+}
+
+[data-mi-unlocked] .intel-tile[data-locked='true'] .intel-cta-open {
+  display: inline-flex;
+}
+
+[data-mi-unlocked] .intel-tile[data-locked='true'] .intel-cta-locked,
+[data-mi-unlocked] .intel-tile[data-locked='true'] .intel-lock {
+  display: none;
+}

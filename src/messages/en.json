@@ -55,6 +55,12 @@
       "ogTitle": "Dubai Market Intelligence | BlackOak Real Estate",
       "ogDescription": "Interactive Dubai market report: 24 years of prices, cycles, and a 2026—2030 scenario simulator."
     },
+    "intelligence": {
+      "title": "Intelligence Hub — Dubai Market Intelligence & The Market Briefing",
+      "description": "Subscriber access to BlackOak's interactive Dubai Market Intelligence and The Market Briefing, weekly UAE real estate intelligence anchored by the BlackOak Prime Capital Index.",
+      "ogTitle": "Intelligence Hub | BlackOak Real Estate",
+      "ogDescription": "One free subscription, two products: interactive Dubai market intelligence and the weekly Market Briefing."
+    },
     "career": {
       "title": "Careers in Dubai Real Estate",
       "description": "Join BlackOak Real Estate. Open positions for real estate consultants, investment advisors & property specialists in Dubai. Competitive commission & growth.",
@@ -233,6 +239,7 @@
     "buyers": "Buyers",
     "newsAndPress": "News & Press",
     "marketIntelligence": "Market Intelligence",
+    "intelligenceHub": "Intelligence Hub",
     "contact": "Contact",
     "more": "More",
     "internationalProperties": "International",
@@ -300,7 +307,8 @@
       "investors": "Investors",
       "buyers": "Buyers",
       "newsAndPress": "News & Press",
-      "marketIntelligence": "Market Intelligence"
+      "marketIntelligence": "Market Intelligence",
+      "intelligenceHub": "Intelligence Hub"
     },
     "address": "ADDRESS",
     "offices": {
@@ -969,22 +977,63 @@
         "gate": {
           "unlockButton": "Unlock the full analysis",
           "title": "Subscribe to read the full analysis",
-          "body": "Get the full 2002–2026 price history, the investment calculator and the 2030 scenario simulator, plus BlackOak market updates by email.",
-          "submit": "Send my code",
-          "note": "Free to read. We'll email a 6-digit code to confirm your address. You can opt out of emails at any time.",
-          "consent": "I agree to receive market updates from BlackOak Real Estate by email and accept the <privacyPolicy>Privacy Policy</privacyPolicy>.",
-          "consentRequired": "Please tick the box to subscribe.",
-          "codeTitle": "Check your inbox",
-          "codeBody": "We sent a 6-digit code to {email}. It expires in 15 minutes.",
-          "codeLabel": "Verification code",
-          "verify": "Verify and unlock",
-          "verifying": "Verifying...",
-          "resend": "Resend code",
-          "resent": "A new code is on its way.",
-          "changeEmail": "Change email",
-          "codeFormat": "Enter the 6-digit code from the email.",
-          "codeInvalid": "That code isn't right. Check the email and try again.",
-          "codeExpired": "That code has expired. Request a new one."
+          "body": "Get the full 2002–2026 price history, the investment calculator and the 2030 scenario simulator, plus BlackOak market updates by email."
+        }
+      },
+      "gate": {
+        "submit": "Send my code",
+        "note": "Free to read. We'll email a 6-digit code to confirm your address. You can opt out of emails at any time.",
+        "consent": "I agree to receive market updates from BlackOak Real Estate by email and accept the <privacyPolicy>Privacy Policy</privacyPolicy>.",
+        "consentRequired": "Please tick the box to subscribe.",
+        "codeTitle": "Check your inbox",
+        "codeBody": "We sent a 6-digit code to {email}. It expires in 15 minutes.",
+        "codeLabel": "Verification code",
+        "verify": "Verify and unlock",
+        "verifying": "Verifying...",
+        "resend": "Resend code",
+        "resent": "A new code is on its way.",
+        "changeEmail": "Change email",
+        "codeFormat": "Enter the 6-digit code from the email.",
+        "codeInvalid": "That code isn't right. Check the email and try again.",
+        "codeExpired": "That code has expired. Request a new one."
+      },
+      "intelligence": {
+        "breadcrumbs": {
+          "home": "Home",
+          "insights": "Insights",
+          "intelligence": "Intelligence Hub"
+        },
+        "hero": {
+          "eyebrow": "Insights & Intelligence",
+          "title": "The Intelligence Hub",
+          "subtitle": "Two subscriber-only products, one free subscription: the interactive Dubai market analysis and the weekly Market Briefing."
+        },
+        "locked": "Subscribers only",
+        "unlockCta": "Subscribe to unlock",
+        "tiles": {
+          "marketIntelligence": {
+            "eyebrow": "Interactive analysis",
+            "title": "Market Intelligence",
+            "description": "Twenty-four years of Dubai residential prices, the cycles behind them, and the tools to test your own scenarios.",
+            "point1": "Price history per sq ft, 2002–2026",
+            "point2": "Time-travel investment calculator",
+            "point3": "2026–2030 scenario simulator",
+            "cta": "Open Market Intelligence"
+          },
+          "briefing": {
+            "eyebrow": "Weekly edition",
+            "title": "The Market Briefing",
+            "description": "UAE real estate intelligence every Monday at 07:00 GST, anchored by the BlackOak Prime Capital Index.",
+            "point1": "The BPCI print and what moved it",
+            "point2": "Rates, rentals and developer activity",
+            "point3": "The BlackOak View and past editions",
+            "cta": "Read the Briefing"
+          }
+        },
+        "gate": {
+          "unlockButton": "Unlock both products",
+          "title": "Subscribe to unlock the Intelligence Hub",
+          "body": "One free subscription opens Market Intelligence and The Market Briefing, plus BlackOak market updates by email."
         }
       }
     },

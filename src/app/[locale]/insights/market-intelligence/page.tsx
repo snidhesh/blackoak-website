@@ -7,15 +7,7 @@ import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 import Button from '@/components/ui/Button';
 import MarketIntelligenceModule from '@/components/sections/MarketIntelligenceModule';
 import MarketIntelligenceGate from '@/components/sections/MarketIntelligenceGate';
-import { MI_SUBSCRIBED_STORAGE_KEY } from '@/lib/constants';
-
-// Runs before first paint so returning subscribers never see the locked state
-// (globals.css reveals the content when data-mi-unlocked is set). localStorage
-// throws when storage is blocked, hence the try/catch: on failure the visitor
-// simply sees the gate.
-const PRE_PAINT_UNLOCK_SCRIPT = `try{if(localStorage.getItem(${JSON.stringify(
-  MI_SUBSCRIBED_STORAGE_KEY
-)})==='1'){document.documentElement.dataset.miUnlocked='1'}}catch(e){}`;
+import { MI_PRE_PAINT_UNLOCK_SCRIPT } from '@/lib/constants';
 
 interface Props {
   params: { locale: string };
@@ -134,7 +126,8 @@ export default async function MarketIntelligencePage({ params }: Props) {
         </div>
       </section>
 
-      <script dangerouslySetInnerHTML={{ __html: PRE_PAINT_UNLOCK_SCRIPT }} />
+      {/* Returning subscribers are unlocked before first paint; see constants.ts. */}
+      <script dangerouslySetInnerHTML={{ __html: MI_PRE_PAINT_UNLOCK_SCRIPT }} />
 
       {/* Subscribe-to-unlock: everything inside is teased, then revealed after sign-up */}
       <MarketIntelligenceGate>

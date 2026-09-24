@@ -8,15 +8,19 @@
     },
     {
       "title": "Informations que Nous Collectons",
-      "content": "Nous pouvons collecter les informations suivantes :\n\n\u2022 Nom et intitulé de poste\n\u2022 Coordonnées, y compris adresse e-mail et numéro de téléphone\n\u2022 Informations démographiques telles que le code postal, les préférences et les centres d'intérêt\n\u2022 Informations soumises via les formulaires de demande, les formulaires de contact ou les candidatures\n\u2022 Autres informations pertinentes pour les enquêtes clients, les services ou les offres"
+      "content": "Nous pouvons collecter les informations suivantes :\n\n• Nom et intitulé de poste\n• Coordonnées, y compris adresse e-mail et numéro de téléphone\n• Informations démographiques telles que le code postal, les préférences et les centres d'intérêt\n• Informations soumises via les formulaires de demande, les formulaires de contact ou les candidatures\n• Autres informations pertinentes pour les enquêtes clients, les services ou les offres"
     },
     {
       "title": "Comment Nous Utilisons les Informations",
-      "content": "Nous collectons ces informations afin de mieux comprendre vos besoins et de vous fournir des services améliorés. En particulier, nous pouvons utiliser vos informations aux fins suivantes :\n\n\u2022 Tenue de registres internes\n\u2022 Réponse aux demandes et fourniture des services sollicités\n\u2022 Amélioration de nos services, de l'expérience sur notre site internet et de nos offres\n\u2022 Envoi de mises à jour concernant de nouveaux biens, services ou actualités de l'entreprise\n\u2022 Réalisation d'études de marché pour mieux comprendre les besoins de nos clients\n\u2022 Personnalisation du contenu du site internet en fonction des préférences des utilisateurs\n\nNous pouvons vous contacter par e-mail, téléphone ou d'autres canaux de communication concernant votre demande ou les services que nous fournissons."
+      "content": "Nous collectons ces informations afin de mieux comprendre vos besoins et de vous fournir des services améliorés. En particulier, nous pouvons utiliser vos informations aux fins suivantes :\n\n• Tenue de registres internes\n• Réponse aux demandes et fourniture des services sollicités\n• Amélioration de nos services, de l'expérience sur notre site internet et de nos offres\n• Envoi de mises à jour concernant de nouveaux biens, services ou actualités de l'entreprise\n• Réalisation d'études de marché pour mieux comprendre les besoins de nos clients\n• Personnalisation du contenu du site internet en fonction des préférences des utilisateurs\n\nNous pouvons vous contacter par e-mail, téléphone ou d'autres canaux de communication concernant votre demande ou les services que nous fournissons."
     },
     {
       "title": "Sécurité",
       "content": "BlackOak Real Estate s'engage à garantir la sécurité de vos informations. Afin de prévenir tout accès non autorisé ou toute divulgation, nous avons mis en place des procédures physiques, électroniques et organisationnelles appropriées pour protéger et sécuriser les informations que nous collectons en ligne."
+    },
+    {
+      "title": "Cookies",
+      "content": "Ce site utilise un petit nombre de cookies strictement nécessaires à son fonctionnement, et aucun cookie publicitaire ou de suivi entre sites.\n\nLorsque vous vérifiez votre adresse e-mail pour accéder aux contenus réservés aux abonnés (Market Intelligence et The Market Briefing), nous déposons un cookie nommé blackoak-intel-access. Il ne contient aucune donnée personnelle, seulement une date d'expiration signée, et il permet à nos serveurs de reconnaître que vous avez déjà vérifié votre adresse. Il est conservé 90 jours et n'est transmis que lorsque vous ouvrez The Market Briefing. Votre navigateur garde également une note locale indiquant que vous êtes abonné, afin que les contenus débloqués ne vous le redemandent pas. La suppression des données de votre navigateur efface les deux."
     }
   ]
 }

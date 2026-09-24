@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { SUBSCRIBE_SOURCES } from '@/lib/constants';
 
 const phoneRegex = /^\+?[0-9\s\-()]{7,20}$/;
 
@@ -86,6 +87,7 @@ export const newsletterSchema = z.object({
   lastName: z.string().min(2, 'Last name must be at least 2 characters').max(100),
   email: z.string().email('Please enter a valid email address').max(200),
   locale: z.enum(['en', 'fr', 'ar']).optional(),
+  source: z.enum(SUBSCRIBE_SOURCES).optional(),
   utm: utmField,
   consent: z.boolean().refine((v) => v === true, { message: 'consentRequired' }),
   _honeypot: z.string().max(0, 'Bot detected'),

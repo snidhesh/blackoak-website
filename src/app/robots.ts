@@ -6,7 +6,8 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/thank-you/', '/fr/thank-you/', '/ar/thank-you/'],
+        // /briefing/ is subscriber-only: it redirects crawlers to the Intelligence Hub.
+        disallow: ['/api/', '/briefing/', '/thank-you/', '/fr/thank-you/', '/ar/thank-you/'],
       },
       // AI answer-engine bots: allow marketing content so BlackOak can be cited
       // in ChatGPT, Claude, Perplexity, and Google AI Overviews. Forms and

@@ -1,4 +1,4 @@
-// The verification email sent to a visitor unlocking Market Intelligence.
+// The verification email sent to a visitor unlocking BlackOak intelligence content.
 // Copy lives here rather than in src/messages because it is rendered server-side
 // in a route handler, outside next-intl, and must not carry ICU escaping.
 
@@ -20,7 +20,7 @@ const COPY: Record<EmailLocale, Copy> = {
   en: {
     subject: (code) => `${code} is your BlackOak verification code`,
     greeting: (name) => `Hello ${name},`,
-    intro: 'Enter this code on the Market Intelligence page to unlock the full analysis:',
+    intro: 'Enter this code on the BlackOak website to unlock the full analysis:',
     expiry: (m) => `The code expires in ${m} minutes.`,
     ignore: "If you didn't request this, you can ignore this email. Nobody is subscribed until the code is entered.",
     signoff: 'BlackOak Real Estate',
@@ -28,7 +28,7 @@ const COPY: Record<EmailLocale, Copy> = {
   fr: {
     subject: (code) => `${code} est votre code de vérification BlackOak`,
     greeting: (name) => `Bonjour ${name},`,
-    intro: "Saisissez ce code sur la page Intelligence de marché pour débloquer l'analyse complète :",
+    intro: "Saisissez ce code sur le site BlackOak pour débloquer l'analyse complète :",
     expiry: (m) => `Ce code expire dans ${m} minutes.`,
     ignore:
       "Si vous n'êtes pas à l'origine de cette demande, ignorez cet e-mail. Aucun abonnement n'est créé tant que le code n'est pas saisi.",
@@ -37,7 +37,7 @@ const COPY: Record<EmailLocale, Copy> = {
   ar: {
     subject: (code) => `${code} هو رمز التحقق الخاص بك من BlackOak`,
     greeting: (name) => `مرحباً ${name}،`,
-    intro: 'أدخل هذا الرمز في صفحة ذكاء السوق للاطّلاع على التحليل الكامل:',
+    intro: 'أدخل هذا الرمز في موقع BlackOak للاطّلاع على التحليل الكامل:',
     expiry: (m) => `تنتهي صلاحية الرمز خلال ${m} دقيقة.`,
     ignore: 'إذا لم تطلب هذا الرمز، يمكنك تجاهل هذه الرسالة. لن يتم أي اشتراك ما لم يُدخَل الرمز.',
     signoff: 'BlackOak للعقارات',

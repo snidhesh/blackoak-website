@@ -36,6 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/insights/investors/',
     '/insights/buyers/',
     '/insights/news/',
+    '/insights/intelligence/',
     '/insights/market-intelligence/',
     '/career/',
     '/contact/',

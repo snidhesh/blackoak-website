@@ -43,8 +43,7 @@ const nextConfig = {
       { source: '/omoria/api/:path*', destination: 'https://omoria-mauve.vercel.app/api/:path*' },
       { source: '/omoria', destination: 'https://omoria-mauve.vercel.app/omoria' },
       { source: '/omoria/:path*', destination: 'https://omoria-mauve.vercel.app/omoria/:path*' },
-      { source: '/briefing', destination: 'https://blackoak-briefing.vercel.app/briefing' },
-      { source: '/briefing/:path*', destination: 'https://blackoak-briefing.vercel.app/briefing/:path*' },
+      // /briefing is proxied by src/middleware.ts behind the subscriber gate, not here.
       { source: '/baynopenhouse', destination: 'https://baynrsvp.vercel.app/baynopenhouse' },
       { source: '/baynopenhouse/:path*', destination: 'https://baynrsvp.vercel.app/baynopenhouse/:path*' },
 

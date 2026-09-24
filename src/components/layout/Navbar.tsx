@@ -47,6 +47,7 @@ export default function Navbar() {
       id: 'insights',
       label: t('insightsAndIntelligence'),
       dropdown: [
+        { label: t('intelligenceHub'), href: '/insights/intelligence' },
         { label: t('marketIntelligence'), href: '/insights/market-intelligence' },
         { label: t('investors'), href: '/insights/investors' },
         { label: t('buyers'), href: '/insights/buyers' },
@@ -73,7 +74,7 @@ export default function Navbar() {
 
   // Pages with white/light backgrounds need a solid black navbar
   const p = pathname.replace(/\/$/, '') || '/';
-  const needsSolidNav = p === '/projects' || p === '/neighbourhoods' || p === '/international-properties' || p.startsWith('/international-properties/') || p.startsWith('/insights/news') || p.startsWith('/insights/market-intelligence') || p === '/career' || p === '/contact' || p === '/list-your-property' || p === '/privacy-policy' || p === '/disclaimer' || p === '/terms-of-service';
+  const needsSolidNav = p === '/projects' || p === '/neighbourhoods' || p === '/international-properties' || p.startsWith('/international-properties/') || p.startsWith('/insights/news') || p.startsWith('/insights/intelligence') || p.startsWith('/insights/market-intelligence') || p === '/career' || p === '/contact' || p === '/list-your-property' || p === '/privacy-policy' || p === '/disclaimer' || p === '/terms-of-service';
 
   const isActive = (item: NavItem): boolean => {
     if (item.href && p === item.href) return true;

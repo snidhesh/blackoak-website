@@ -21,8 +21,8 @@ export const FORM_ERROR_CODES = {
   unexpectedError: 'errorGeneric',
 } as const;
 
-// Market Intelligence code step -> client resolves via
-// useTranslations('pages.insights.marketIntelligence.gate')
+// Subscribe-to-unlock code step -> client resolves via
+// useTranslations('pages.insights.gate')
 export const NEWSLETTER_ERROR_CODES = {
   codeInvalid: 'codeInvalid',
   codeExpired: 'codeExpired',
