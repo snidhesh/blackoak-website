@@ -1019,7 +1019,8 @@
             "point1": "Price history per sq ft, 2002–2026",
             "point2": "Time-travel investment calculator",
             "point3": "2026–2030 scenario simulator",
-            "cta": "Open Market Intelligence"
+            "cta": "Open Market Intelligence",
+            "snapshotAlt": "Preview of the Market Intelligence chart: Dubai residential prices per sq ft, 2002 to 2030"
           },
           "briefing": {
             "eyebrow": "Weekly edition",
@@ -1028,7 +1029,8 @@
             "point1": "The BPCI print and what moved it",
             "point2": "Rates, rentals and developer activity",
             "point3": "The BlackOak View and past editions",
-            "cta": "Read the Briefing"
+            "cta": "Read the Briefing",
+            "snapshotAlt": "Preview of The Market Briefing: masthead, edition bar and the BlackOak Prime Capital Index"
           }
         },
         "gate": {

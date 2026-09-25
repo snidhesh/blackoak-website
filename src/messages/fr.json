@@ -1019,7 +1019,8 @@
             "point1": "Historique des prix au pied carré, 2002–2026",
             "point2": "Calculateur d'investissement rétroactif",
             "point3": "Simulateur de scénarios 2026–2030",
-            "cta": "Ouvrir Market Intelligence"
+            "cta": "Ouvrir Market Intelligence",
+            "snapshotAlt": "Aperçu du graphique Market Intelligence : prix résidentiels à Dubaï par pied carré, 2002 à 2030"
           },
           "briefing": {
             "eyebrow": "Édition hebdomadaire",
@@ -1028,7 +1029,8 @@
             "point1": "L'indice BPCI et ce qui l'a fait bouger",
             "point2": "Taux, loyers et activité des promoteurs",
             "point3": "Le point de vue BlackOak et les éditions passées",
-            "cta": "Lire le Briefing"
+            "cta": "Lire le Briefing",
+            "snapshotAlt": "Aperçu du Market Briefing : en-tête, bandeau d’édition et BlackOak Prime Capital Index"
           }
         },
         "gate": {
