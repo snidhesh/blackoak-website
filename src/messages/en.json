@@ -1020,7 +1020,11 @@
             "point2": "Time-travel investment calculator",
             "point3": "2026–2030 scenario simulator",
             "cta": "Open Market Intelligence",
-            "snapshotAlt": "Preview of the Market Intelligence chart: Dubai residential prices per sq ft, 2002 to 2030"
+            "frames": {
+              "chart": { "label": "24-year cycle atlas", "alt": "Chart of Dubai residential prices per sq ft from 2002 to 2030, with market cycle bands and key events" },
+              "calculator": { "label": "Time-travel calculator", "alt": "Time-travel calculator showing capital deployed, entry year and the value it would hold today" },
+              "simulator": { "label": "Scenario simulator", "alt": "Scenario simulator with bear, base and bull cases and adjustable market drivers" }
+            }
           },
           "briefing": {
             "eyebrow": "Weekly edition",
@@ -1030,9 +1034,14 @@
             "point2": "Rates, rentals and developer activity",
             "point3": "The BlackOak View and past editions",
             "cta": "Read the Briefing",
-            "snapshotAlt": "Preview of The Market Briefing: masthead, edition bar and the BlackOak Prime Capital Index"
+            "frames": {
+              "index": { "label": "Prime Capital Index", "alt": "The Market Briefing masthead, edition bar and the BlackOak Prime Capital Index" },
+              "numbers": { "label": "The week in numbers", "alt": "The week in numbers: headline sales value, transaction counts and price figures" },
+              "view": { "label": "The BlackOak View", "alt": "The BlackOak View: numbered observations on what moved the market this week" }
+            }
           }
         },
+        "snapshots": { "ariaLabel": "Preview of {product}", "prev": "Previous preview", "next": "Next preview", "goTo": "Show preview {n}" },
         "gate": {
           "unlockButton": "Unlock both products",
           "title": "Subscribe to unlock the Intelligence Hub",

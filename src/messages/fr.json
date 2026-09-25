@@ -1020,7 +1020,11 @@
             "point2": "Calculateur d'investissement rétroactif",
             "point3": "Simulateur de scénarios 2026–2030",
             "cta": "Ouvrir Market Intelligence",
-            "snapshotAlt": "Aperçu du graphique Market Intelligence : prix résidentiels à Dubaï par pied carré, 2002 à 2030"
+            "frames": {
+              "chart": { "label": "Atlas des cycles sur 24 ans", "alt": "Graphique des prix résidentiels à Dubaï par pied carré de 2002 à 2030, avec les cycles de marché et les événements clés" },
+              "calculator": { "label": "Calculateur de voyage dans le temps", "alt": "Calculateur montrant le capital investi, l’année d’entrée et sa valeur actuelle" },
+              "simulator": { "label": "Simulateur de scénarios", "alt": "Simulateur avec scénarios baissier, central et haussier et facteurs de marché ajustables" }
+            }
           },
           "briefing": {
             "eyebrow": "Édition hebdomadaire",
@@ -1030,9 +1034,14 @@
             "point2": "Taux, loyers et activité des promoteurs",
             "point3": "Le point de vue BlackOak et les éditions passées",
             "cta": "Lire le Briefing",
-            "snapshotAlt": "Aperçu du Market Briefing : en-tête, bandeau d’édition et BlackOak Prime Capital Index"
+            "frames": {
+              "index": { "label": "Prime Capital Index", "alt": "En-tête du Market Briefing, bandeau d’édition et BlackOak Prime Capital Index" },
+              "numbers": { "label": "La semaine en chiffres", "alt": "La semaine en chiffres : valeur des ventes, nombre de transactions et prix" },
+              "view": { "label": "Le point de vue BlackOak", "alt": "Le point de vue BlackOak : observations numérotées sur la semaine du marché" }
+            }
           }
         },
+        "snapshots": { "ariaLabel": "Aperçu de {product}", "prev": "Aperçu précédent", "next": "Aperçu suivant", "goTo": "Afficher l’aperçu {n}" },
         "gate": {
           "unlockButton": "Débloquer les deux produits",
           "title": "Abonnez-vous pour débloquer l'Intelligence Hub",
