@@ -123,13 +123,21 @@ export default function TileSnapshotSlider({
           ))}
         </div>
 
-        {/* Section name and dots, over a soft fade so they read on light and dark frames. */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black/65 via-black/25 to-transparent px-4 pb-3 pt-12 text-white sm:px-5">
-          <p aria-live="polite" className="text-[11px] font-medium uppercase tracking-[0.18em]">
+        {/* Section name and dots on solid dark pills, so they read on the light
+            chart frames as well as the dark Briefing ones. */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black/50 to-transparent px-3 pb-3 pt-14 sm:px-4">
+          <p
+            aria-live="polite"
+            className="inline-flex items-center gap-2.5 rounded-sm bg-black/85 px-3.5 py-2 text-[12px] font-semibold uppercase tracking-[0.16em] text-white shadow-md backdrop-blur-sm"
+          >
+            <span aria-hidden="true" className="block h-3 w-[3px] shrink-0 bg-gold" />
             {frames[index].label}
           </p>
           {count > 1 && (
-            <div className="pointer-events-auto flex items-center gap-2" role="tablist">
+            <div
+              className="pointer-events-auto flex h-8 items-center gap-1 rounded-sm bg-black/85 px-2 shadow-md backdrop-blur-sm"
+              role="tablist"
+            >
               {frames.map((frame, i) => (
                 <button
                   key={frame.src}
@@ -138,13 +146,13 @@ export default function TileSnapshotSlider({
                   aria-selected={i === index}
                   aria-label={goToLabel(i + 1)}
                   onClick={() => goTo(i)}
-                  className="flex h-6 w-4 items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+                  className="flex h-8 w-4 items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
                 >
                   <span
                     aria-hidden="true"
                     className={cn(
                       'block h-1.5 rounded-full transition-all duration-300 motion-reduce:transition-none',
-                      i === index ? 'w-4 bg-gold' : 'w-1.5 bg-white/70',
+                      i === index ? 'w-4 bg-gold' : 'w-1.5 bg-white/80',
                     )}
                   />
                 </button>
