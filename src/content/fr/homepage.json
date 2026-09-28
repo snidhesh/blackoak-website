@@ -63,7 +63,7 @@
       },
       {
         "id": "asset-management",
-        "title": "Gestion d'actifs",
+        "title": "Gestion de portefeuille et d'actifs",
         "description": "La gestion courante et stratégique des biens que vous détenez déjà, pour qu'ils restent loués, entretenus et performants.",
         "capabilities": [
           "Location et gestion des locataires",
