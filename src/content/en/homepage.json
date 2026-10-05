@@ -25,7 +25,7 @@
       {
         "id": "brokerage",
         "title": "Brokerage",
-        "description": "Sales and leasing of prime homes across Dubai and selected international markets, for buyers, sellers and landlords.",
+        "description": "Sales and leasing of prime homes across the UAE and selected international markets, for buyers, sellers and landlords.",
         "capabilities": [
           "Sales and acquisitions",
           "Off-plan and new developments",
@@ -40,7 +40,7 @@
       {
         "id": "investments",
         "title": "Investments",
-        "description": "Property investments we source, structure and offer through syndication, with due diligence and reporting held to institutional standards. BlackOak principals co-invest directly.",
+        "description": "Property investments we source and structure, with due diligence and reporting held to institutional standards.",
         "capabilities": [
           "Deal sourcing and due diligence",
           "Syndicated and club deals",
@@ -70,7 +70,7 @@
       {
         "id": "asset-management",
         "title": "Portfolio and Asset Management",
-        "description": "Day-to-day and strategic management of the property you already own, so it stays let, maintained and performing.",
+        "description": "Day-to-day and strategic management of the property and/or portfolio you already own, ensuring it is optimally managed, well maintained and performing.",
         "capabilities": [
           "Leasing and tenant management",
           "Property and maintenance oversight",

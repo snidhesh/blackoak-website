@@ -25,7 +25,7 @@
       {
         "id": "brokerage",
         "title": "Courtage",
-        "description": "Vente et location de résidences de prestige à Dubaï et sur une sélection de marchés internationaux, pour acheteurs, vendeurs et bailleurs.",
+        "description": "Vente et location de résidences de prestige aux Émirats arabes unis et sur une sélection de marchés internationaux, pour acheteurs, vendeurs et bailleurs.",
         "capabilities": [
           "Vente et acquisition",
           "Programmes neufs et sur plan",
@@ -40,7 +40,7 @@
       {
         "id": "investments",
         "title": "Investissements",
-        "description": "Des investissements immobiliers que nous identifions, structurons et proposons en syndication, avec une due diligence et un reporting aux standards institutionnels. Les associés de BlackOak co-investissent directement.",
+        "description": "Des investissements immobiliers que nous identifions et structurons, avec une due diligence et un reporting aux standards institutionnels.",
         "capabilities": [
           "Sourcing et due diligence",
           "Syndications et club deals",
@@ -70,7 +70,7 @@
       {
         "id": "asset-management",
         "title": "Gestion de portefeuille et d'actifs",
-        "description": "La gestion courante et stratégique des biens que vous détenez déjà, pour qu'ils restent loués, entretenus et performants.",
+        "description": "La gestion courante et stratégique du bien et/ou du portefeuille que vous détenez déjà, pour qu'il soit géré de façon optimale, bien entretenu et performant.",
         "capabilities": [
           "Location et gestion des locataires",
           "Suivi technique et entretien",
