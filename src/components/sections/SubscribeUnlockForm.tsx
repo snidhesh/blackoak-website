@@ -60,7 +60,7 @@ export function SubscribeUnlockPanel({ open, onToggle, panelId, unlockLabel, chi
             aria-expanded={open}
             aria-controls={panelId}
             onClick={onToggle}
-            className="relative inline-flex h-14 items-center gap-3 rounded-full bg-white px-8 text-[13px] font-medium uppercase tracking-wider text-black transition-colors [@media(hover:hover)]:hover:bg-gold [@media(hover:hover)]:hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+            className="relative inline-flex h-14 items-center gap-3 rounded-full bg-white px-6 text-[13px] font-medium uppercase tracking-wider text-black transition-colors sm:px-8 [@media(hover:hover)]:hover:bg-gold [@media(hover:hover)]:hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
           >
             {unlockLabel}
             <ChevronDown
@@ -109,6 +109,8 @@ export default function SubscribeUnlockForm({ source, open, title, body, titleId
   const [notice, setNotice] = useState<string | null>(null);
   const [canResend, setCanResend] = useState(true);
 
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const detailsFormRef = useRef<HTMLFormElement>(null);
   const codeInputRef = useRef<HTMLInputElement>(null);
   const resendTimer = useRef<ReturnType<typeof setTimeout>>();
 
@@ -137,7 +139,6 @@ export default function SubscribeUnlockForm({ source, open, title, body, titleId
     register,
     handleSubmit,
     setError: setFieldError,
-    setFocus,
     formState: { errors },
   } = useForm<NewsletterFormData>({
     resolver: zodResolver(schema),
@@ -146,11 +147,20 @@ export default function SubscribeUnlockForm({ source, open, title, body, titleId
 
   const step = pending ? 'code' : 'details';
 
+  // On open and on each step change: caret in the first field, heading at the top
+  // of the screen. The focus itself must not scroll. Left to the browser it centres
+  // the field, which hides the heading under the navbar on short phones, and it
+  // cancels any other scroll that is under way.
   useEffect(() => {
     if (!open) return;
-    if (step === 'code') codeInputRef.current?.focus();
-    else setFocus('firstName');
-  }, [open, step, setFocus]);
+    const field =
+      step === 'code'
+        ? codeInputRef.current
+        : (detailsFormRef.current?.elements.namedItem('firstName') as HTMLInputElement | null);
+    field?.focus({ preventScroll: true });
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    headingRef.current?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+  }, [open, step]);
 
   const formErrorMessage = useCallback(
     (errorCode: unknown) =>
@@ -291,12 +301,20 @@ export default function SubscribeUnlockForm({ source, open, title, body, titleId
 
   const submitButtonClass =
     'flex h-[48px] w-full items-center justify-center border-2 border-[#030303] bg-black px-8 text-[12px] font-medium uppercase tracking-wider text-white transition-colors hover:bg-gray-900 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto';
+  // py-3 makes each text button a 44px-tall tap target.
   const textButtonClass =
-    'text-[13px] text-[#0a0a0a] underline underline-offset-2 disabled:cursor-not-allowed disabled:text-[#9aa0a6] disabled:no-underline';
+    'py-3 text-[13px] text-[#0a0a0a] underline underline-offset-2 disabled:cursor-not-allowed disabled:text-[#9aa0a6] disabled:no-underline';
+  // 16px on touch screens: iOS zooms the page in when a field under 16px takes focus.
+  const fieldClass = '[@media(pointer:coarse)]:text-base';
 
   return (
     <>
-      <h2 id={titleId} className="text-[24px] font-light leading-[1.25] tracking-tight md:text-[28px]">
+      {/* scroll-mt: lands the card 24px below the fixed navbar (64px, 80px from lg). */}
+      <h2
+        id={titleId}
+        ref={headingRef}
+        className="scroll-mt-28 text-[24px] font-light leading-[1.25] tracking-tight sm:scroll-mt-32 md:text-[28px] lg:scroll-mt-36"
+      >
         {step === 'code' ? t('codeTitle') : title}
       </h2>
 
@@ -304,7 +322,13 @@ export default function SubscribeUnlockForm({ source, open, title, body, titleId
         <>
           <p className="mt-3 text-[15px] leading-[1.6] text-[#5F6368]">{body}</p>
 
-          <form onSubmit={handleSubmit(onSubmitDetails)} aria-labelledby={titleId} noValidate className="mt-8 space-y-4">
+          <form
+            ref={detailsFormRef}
+            onSubmit={handleSubmit(onSubmitDetails)}
+            aria-labelledby={titleId}
+            noValidate
+            className="mt-8 space-y-4"
+          >
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <Input
                 label={tf('firstName')}
@@ -312,6 +336,7 @@ export default function SubscribeUnlockForm({ source, open, title, body, titleId
                 placeholder={tf('placeholder')}
                 autoComplete="given-name"
                 required
+                className={fieldClass}
                 {...register('firstName')}
                 error={errors.firstName?.message}
               />
@@ -321,6 +346,7 @@ export default function SubscribeUnlockForm({ source, open, title, body, titleId
                 placeholder={tf('placeholder')}
                 autoComplete="family-name"
                 required
+                className={fieldClass}
                 {...register('lastName')}
                 error={errors.lastName?.message}
               />
@@ -332,6 +358,7 @@ export default function SubscribeUnlockForm({ source, open, title, body, titleId
               placeholder={tf('placeholder')}
               autoComplete="email"
               required
+              className={fieldClass}
               {...register('email')}
               error={errors.email?.message}
             />
@@ -343,6 +370,7 @@ export default function SubscribeUnlockForm({ source, open, title, body, titleId
               dir="ltr"
               placeholder={tf('placeholder')}
               autoComplete="tel"
+              className={fieldClass}
               {...register('phone')}
               error={errors.phone?.message}
             />
@@ -385,7 +413,10 @@ export default function SubscribeUnlockForm({ source, open, title, body, titleId
 
       {step === 'code' && pending && (
         <>
-          <p className="mt-3 text-[15px] leading-[1.6] text-[#5F6368]">{t('codeBody', { email: pending.body.email })}</p>
+          {/* break-words: an address is one unbreakable word and can be wider than a phone. */}
+          <p className="mt-3 break-words text-[15px] leading-[1.6] text-[#5F6368]">
+            {t('codeBody', { email: pending.body.email })}
+          </p>
 
           <form onSubmit={onVerify} aria-labelledby={titleId} noValidate className="mt-8 space-y-4">
             <div dir="ltr">
@@ -422,7 +453,7 @@ export default function SubscribeUnlockForm({ source, open, title, body, titleId
               {submitting ? t('verifying') : t('verify')}
             </button>
 
-            <div className="flex flex-wrap gap-x-6 gap-y-2 pt-2">
+            <div className="-mb-3 flex flex-wrap gap-x-6">
               <button type="button" onClick={onResend} disabled={!canResend || submitting} className={textButtonClass}>
                 {t('resend')}
               </button>

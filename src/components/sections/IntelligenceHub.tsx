@@ -40,8 +40,10 @@ const FRAMES: Record<TileKey, { prefix: string; keys: string[] }> = {
   briefing: { prefix: 'briefing', keys: ['index', 'numbers', 'view'] },
 };
 
+// The padding and matching negative margin give the text link a 46px-tall tap
+// area without moving anything around it.
 const ctaClass =
-  'inline-flex items-center gap-2 text-[12px] font-medium uppercase tracking-wider text-black transition-colors [@media(hover:hover)]:hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold';
+  '-my-3.5 inline-flex items-center gap-2 py-3.5 text-[12px] font-medium uppercase tracking-wider text-black transition-colors [@media(hover:hover)]:hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold';
 
 export default function IntelligenceHub() {
   const t = useTranslations('pages.insights.intelligence');
@@ -53,7 +55,6 @@ export default function IntelligenceHub() {
   const [formOpen, setFormOpen] = useState(false);
   const [next, setNext] = useState<string | null>(null);
   const tilesRef = useRef<HTMLDivElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
     const target = readNextFromLocation();
@@ -84,7 +85,9 @@ export default function IntelligenceHub() {
 
   const openForm = () => {
     setFormOpen(true);
-    scrollTo(panelRef.current);
+    // The form scrolls itself into view when it opens. If it is already open (the
+    // other tile's button) nothing re-renders, so bring its heading back here.
+    scrollTo(document.getElementById(titleId));
   };
 
   const onUnlocked = () => {
@@ -134,7 +137,9 @@ export default function IntelligenceHub() {
                     />
 
                     <div className="flex flex-1 flex-col p-8 md:p-10">
-                      <div className="flex items-start justify-between gap-4">
+                      {/* Wraps: on a narrow tile the lock badge drops under the eyebrow
+                          rather than squeezing it or spilling out of the tile. */}
+                      <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-2">
                         <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-gold">
                           {t(`tiles.${key}.eyebrow`)}
                         </p>
@@ -188,27 +193,22 @@ export default function IntelligenceHub() {
       </section>
 
       {/* No toggle of its own: the tiles' "Subscribe to unlock" buttons open the
-          form, so the black band only appears once it is needed. The wrapper stays
-          mounted so the scroll target exists in the same tick the form opens. */}
-      {locked && (
-        <div ref={panelRef} className="scroll-mt-20">
-          {formOpen && (
-            <section className="mi-gate-panel bg-black py-20 text-white md:py-28">
-              <div className="container-wide">
-                <div className="mx-auto max-w-xl bg-white p-6 text-black sm:p-10">
-                  <SubscribeUnlockForm
-                    source="intelligence-hub"
-                    open={formOpen}
-                    title={t('gate.title')}
-                    body={t('gate.body')}
-                    titleId={titleId}
-                    onUnlocked={onUnlocked}
-                  />
-                </div>
-              </div>
-            </section>
-          )}
-        </div>
+          form, so the black band only appears once it is needed. */}
+      {locked && formOpen && (
+        <section className="mi-gate-panel bg-black py-20 text-white md:py-28">
+          <div className="container-wide">
+            <div className="mx-auto max-w-xl bg-white p-6 text-black sm:p-10">
+              <SubscribeUnlockForm
+                source="intelligence-hub"
+                open={formOpen}
+                title={t('gate.title')}
+                body={t('gate.body')}
+                titleId={titleId}
+                onUnlocked={onUnlocked}
+              />
+            </div>
+          </div>
+        </section>
       )}
     </>
   );

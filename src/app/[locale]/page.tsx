@@ -196,11 +196,12 @@ export default async function HomePage({ params }: { params: { locale: string } 
             {homepage.hero.subtitle}
           </p>
 
-          {/* Intelligence Hub pointer */}
+          {/* Intelligence Hub pointer. The ::after stretches the tap area to 45px
+              without changing how the 39px pill looks. */}
           <div className="mt-8">
             <Link
               href={homepage.hero.intelligenceHub.href}
-              className="group inline-flex max-w-full items-center gap-3 rounded-full border border-white/30 bg-black/40 py-1.5 ps-1.5 pe-4 text-start text-[13px] md:text-[14px] text-white backdrop-blur-sm transition-colors duration-300 hover:border-gold hover:bg-black/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+              className="group relative inline-flex max-w-full items-center gap-3 rounded-full border border-white/30 bg-black/40 py-1.5 ps-1.5 pe-4 text-start text-[13px] md:text-[14px] text-white backdrop-blur-sm transition-colors duration-300 after:absolute after:inset-x-0 after:-inset-y-1 after:content-[''] hover:border-gold hover:bg-black/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
             >
               <span className="shrink-0 rounded-full bg-gold px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-black">
                 {homepage.hero.intelligenceHub.badge}

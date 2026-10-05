@@ -30,6 +30,11 @@ const SWIPE_THRESHOLD_PX = 40;
 // capture per product feature, slow auto-advance that stops on hover, focus,
 // touch, a hidden tab or a reduced-motion preference. Always laid out LTR: the
 // frames are screenshots of LTR pages and the arrows are physical directions.
+//
+// The overlay sizes itself from the frame, not the viewport (container query):
+// the frame is as narrow on a tablet, where the tiles sit two-up, as on a phone.
+// Below 26rem the label and dots are compact so a long label wraps clear of the
+// arrows; from 26rem up they get the roomier desktop treatment.
 export default function TileSnapshotSlider({
   frames,
   ariaLabel,
@@ -81,7 +86,7 @@ export default function TileSnapshotSlider({
       role="region"
       aria-roledescription="carousel"
       aria-label={ariaLabel}
-      className="group/slider relative select-none border-b border-gray-200 bg-[#f6f5f2]"
+      className="group/slider relative select-none border-b border-gray-200 bg-[#f6f5f2] [container-type:inline-size]"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -125,17 +130,20 @@ export default function TileSnapshotSlider({
 
         {/* Section name and dots on solid dark pills, so they read on the light
             chart frames as well as the dark Briefing ones. */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 bg-gradient-to-t from-black/50 to-transparent px-3 pb-3 pt-14 sm:px-4">
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between gap-2 bg-gradient-to-t from-black/50 to-transparent px-2 pb-2 pt-10 [@container(min-width:26rem)]:gap-4 [@container(min-width:26rem)]:px-4 [@container(min-width:26rem)]:pb-3 [@container(min-width:26rem)]:pt-14">
           <p
             aria-live="polite"
-            className="inline-flex items-center gap-2.5 rounded-sm bg-black/85 px-3.5 py-2 text-[12px] font-semibold uppercase tracking-[0.16em] text-white shadow-md backdrop-blur-sm"
+            className="inline-flex items-center gap-2 rounded-sm bg-black/85 px-2.5 py-1.5 text-[10px] font-semibold uppercase leading-[14px] tracking-[0.12em] text-white shadow-md backdrop-blur-sm [@container(min-width:26rem)]:gap-2.5 [@container(min-width:26rem)]:px-3.5 [@container(min-width:26rem)]:py-2 [@container(min-width:26rem)]:text-[12px] [@container(min-width:26rem)]:leading-[18px] [@container(min-width:26rem)]:tracking-[0.16em]"
           >
-            <span aria-hidden="true" className="block h-3 w-[3px] shrink-0 bg-gold" />
+            <span
+              aria-hidden="true"
+              className="block h-2.5 w-[2px] shrink-0 bg-gold [@container(min-width:26rem)]:h-3 [@container(min-width:26rem)]:w-[3px]"
+            />
             {frames[index].label}
           </p>
           {count > 1 && (
             <div
-              className="pointer-events-auto flex h-8 items-center gap-1 rounded-sm bg-black/85 px-2 shadow-md backdrop-blur-sm"
+              className="pointer-events-auto flex h-[26px] shrink-0 items-center gap-1 rounded-sm bg-black/85 px-1.5 shadow-md backdrop-blur-sm [@container(min-width:26rem)]:h-8 [@container(min-width:26rem)]:px-2"
               role="tablist"
             >
               {frames.map((frame, i) => (
@@ -146,7 +154,7 @@ export default function TileSnapshotSlider({
                   aria-selected={i === index}
                   aria-label={goToLabel(i + 1)}
                   onClick={() => goTo(i)}
-                  className="flex h-8 w-4 items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+                  className="flex h-[26px] w-4 items-center justify-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold [@container(min-width:26rem)]:h-8"
                 >
                   <span
                     aria-hidden="true"
@@ -168,7 +176,7 @@ export default function TileSnapshotSlider({
             type="button"
             aria-label={prevLabel}
             onClick={() => goTo(index - 1)}
-            className={cn(arrowClass, 'left-3')}
+            className={cn(arrowClass, 'left-2 [@container(min-width:26rem)]:left-3')}
           >
             <ChevronLeft aria-hidden="true" className="h-4 w-4" />
           </button>
@@ -176,7 +184,7 @@ export default function TileSnapshotSlider({
             type="button"
             aria-label={nextLabel}
             onClick={() => goTo(index + 1)}
-            className={cn(arrowClass, 'right-3')}
+            className={cn(arrowClass, 'right-2 [@container(min-width:26rem)]:right-3')}
           >
             <ChevronRight aria-hidden="true" className="h-4 w-4" />
           </button>
