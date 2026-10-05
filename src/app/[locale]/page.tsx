@@ -196,6 +196,26 @@ export default async function HomePage({ params }: { params: { locale: string } 
             {homepage.hero.subtitle}
           </p>
 
+          {/* Intelligence Hub pointer */}
+          <div className="mt-8">
+            <Link
+              href={homepage.hero.intelligenceHub.href}
+              className="group inline-flex max-w-full items-center gap-3 rounded-full border border-white/30 bg-black/40 py-1.5 ps-1.5 pe-4 text-start text-[13px] md:text-[14px] text-white backdrop-blur-sm transition-colors duration-300 hover:border-gold hover:bg-black/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+            >
+              <span className="shrink-0 rounded-full bg-gold px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-black">
+                {homepage.hero.intelligenceHub.badge}
+              </span>
+              <span className="font-medium">{homepage.hero.intelligenceHub.label}</span>
+              <span className="hidden md:inline h-3 w-px bg-white/30" aria-hidden="true" />
+              <span className="hidden md:inline font-light text-white/80">
+                {homepage.hero.intelligenceHub.description}
+              </span>
+              <span className="shrink-0 transition-transform duration-300 group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
+                <ArrowRight className="w-4 h-4 icon-directional" />
+              </span>
+            </Link>
+          </div>
+
           {/* Search Bar — hidden for now; flip SHOW_HOME_SEARCH to restore */}
           {SHOW_HOME_SEARCH && (
             <div className="mt-10">

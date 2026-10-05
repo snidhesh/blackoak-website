@@ -3,6 +3,12 @@
     "heading": "حيث يلتقي الاستثمار الرؤيوي بالحياة الأيقونية",
     "subtitle": "عقارات عالمية. استراتيجيات مصممة خصيصاً. قيمة دائمة",
     "image": "/images/homepage/hero.webp",
+    "intelligenceHub": {
+      "badge": "جديد",
+      "label": "مركز الذكاء",
+      "description": "تحليل سوق دبي ونشرة السوق الأسبوعية",
+      "href": "/insights/intelligence"
+    },
     "searchBar": {
       "placeholders": {
         "location": "الموقع",

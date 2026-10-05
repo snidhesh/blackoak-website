@@ -3,6 +3,12 @@
     "heading": "Where visionary investment meets iconic living",
     "subtitle": "Global Real Estate. Tailored Strategies. Lasting Value",
     "image": "/images/homepage/hero.webp",
+    "intelligenceHub": {
+      "badge": "New",
+      "label": "The Intelligence Hub",
+      "description": "Dubai market analysis and the weekly Market Briefing",
+      "href": "/insights/intelligence"
+    },
     "searchBar": {
       "placeholders": {
         "location": "Location",

@@ -3,6 +3,12 @@
     "heading": "Quand l'investissement visionnaire rencontre l'art de vivre d'exception",
     "subtitle": "Immobilier mondial. Strategies sur mesure. Valeur durable",
     "image": "/images/homepage/hero.webp",
+    "intelligenceHub": {
+      "badge": "Nouveau",
+      "label": "L'Intelligence Hub",
+      "description": "Analyse du marché de Dubai et Market Briefing hebdomadaire",
+      "href": "/insights/intelligence"
+    },
     "searchBar": {
       "placeholders": {
         "location": "Emplacement",
