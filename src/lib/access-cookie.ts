@@ -61,10 +61,13 @@ function fromBase64Url(value: string): Uint8Array<ArrayBuffer> | null {
 }
 
 /** Returns null when INTEL_ACCESS_SECRET is not configured. */
-export async function createAccessToken(now: number = Date.now()): Promise<{ value: string; exp: number } | null> {
+export async function createAccessToken(
+  now: number = Date.now(),
+  ttlMs: number = INTEL_ACCESS_TTL_MS
+): Promise<{ value: string; exp: number } | null> {
   const secret = getSecret();
   if (!secret) return null;
-  const exp = now + INTEL_ACCESS_TTL_MS;
+  const exp = now + ttlMs;
   const signature = await crypto.subtle.sign('HMAC', await getKey(secret), encoder.encode(MESSAGE_PREFIX + exp));
   return { value: `${exp}.${toBase64Url(new Uint8Array(signature))}`, exp };
 }
@@ -82,6 +85,21 @@ export async function verifyAccessToken(token: string | undefined, now: number =
 
   // The exact string from the cookie is what gets checked, never a re-serialised number.
   return crypto.subtle.verify('HMAC', await getKey(secret), signature, encoder.encode(MESSAGE_PREFIX + expText));
+}
+
+// Preview link: the ?key= value that opens /briefing without a subscription. Set in
+// BRIEFING_PREVIEW_KEY (openssl rand -hex 10 or longer); unset or too short means the
+// link is off. Compared in constant time so timing cannot leak the key byte by byte.
+const MIN_PREVIEW_KEY_LENGTH = 16;
+
+export function matchesPreviewKey(candidate: string | null | undefined): boolean {
+  const key = process.env.BRIEFING_PREVIEW_KEY;
+  if (!key || key.length < MIN_PREVIEW_KEY_LENGTH || !candidate) return false;
+  const a = encoder.encode(key);
+  const b = encoder.encode(candidate);
+  let diff = a.length ^ b.length;
+  for (let i = 0; i < a.length; i++) diff |= a[i] ^ (b[i % b.length] ?? 0);
+  return diff === 0;
 }
 
 // Path-scoped to /briefing: the only reader is the proxy middleware, and this keeps

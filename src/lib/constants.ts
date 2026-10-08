@@ -64,3 +64,10 @@ export type SubscribeSource = (typeof SUBSCRIBE_SOURCES)[number];
 export const BRIEFING_ORIGIN = 'https://blackoak-briefing.vercel.app';
 export const INTEL_ACCESS_COOKIE = 'blackoak-intel-access';
 export const INTEL_ACCESS_TTL_MS = 90 * 24 * 60 * 60 * 1000;
+
+// Ungated preview link: /briefing/?key=<BRIEFING_PREVIEW_KEY> mints the same access
+// cookie without a subscription (for reviewers, sponsors, press), then redirects to
+// the clean /briefing/ address so the key never sits in the visitor's URL bar.
+// Shorter-lived than a subscriber's cookie so a leaked link ages out sooner.
+export const BRIEFING_PREVIEW_PARAM = 'key';
+export const BRIEFING_PREVIEW_TTL_MS = 30 * 24 * 60 * 60 * 1000;
