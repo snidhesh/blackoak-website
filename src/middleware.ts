@@ -1,8 +1,8 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { routing } from '@/i18n/routing';
-import { INTEL_ACCESS_COOKIE } from '@/lib/constants';
-import { verifyAccessToken } from '@/lib/access-cookie';
+import { BRIEFING_PREVIEW_PARAM, BRIEFING_PREVIEW_TTL_MS, INTEL_ACCESS_COOKIE } from '@/lib/constants';
+import { accessCookieOptions, createAccessToken, matchesPreviewKey, verifyAccessToken } from '@/lib/access-cookie';
 import { BRIEFING_PATH, HUB_PATH, hasBriefingPrefix, isTraversal } from '@/lib/briefing-proxy';
 
 const intl = createMiddleware(routing);
@@ -42,6 +42,23 @@ export default async function middleware(request: NextRequest) {
   // mixed-case filenames and ordinary encoded characters keep working.
   if (!hasBriefingPrefix(pathname)) {
     return noStore(NextResponse.redirect(new URL(`${BRIEFING_PATH}/`, request.url), 308));
+  }
+
+  // Preview link: /briefing/...?key=<BRIEFING_PREVIEW_KEY>. A matching key mints the
+  // access cookie and bounces to the same path with the key removed; any other key
+  // is dropped and the request falls through to the normal gate below.
+  if (request.nextUrl.searchParams.has(BRIEFING_PREVIEW_PARAM)) {
+    const clean = new URL(request.url);
+    clean.searchParams.delete(BRIEFING_PREVIEW_PARAM);
+    if (matchesPreviewKey(request.nextUrl.searchParams.get(BRIEFING_PREVIEW_PARAM))) {
+      const token = await createAccessToken(Date.now(), BRIEFING_PREVIEW_TTL_MS);
+      if (token) {
+        const response = noStore(NextResponse.redirect(clean, 303));
+        response.cookies.set(INTEL_ACCESS_COOKIE, token.value, accessCookieOptions(token.exp));
+        return response;
+      }
+    }
+    return noStore(NextResponse.redirect(clean, 303));
   }
 
   const allowed = await verifyAccessToken(request.cookies.get(INTEL_ACCESS_COOKIE)?.value);
