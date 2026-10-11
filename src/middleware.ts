@@ -79,7 +79,7 @@ export const config = {
     // The gated Briefing proxy, including archive/*.html and image files
     '/briefing/:path*',
     // Match all pathnames except api, _next, _vercel, reverse-proxied apps, and static files
-    '/((?!api|_next|_vercel|bayn|yasresidences|omoria|briefing|baynopenhouse|.*\\..*).*)',
+    '/((?!api|_next|_vercel|bayn|yasresidences|omoria|briefing|baynopenhouse|yas_residences_rsvp|.*\\..*).*)',
     // Match locale-prefixed paths
     '/(fr|en|ar)/:path*',
   ],
