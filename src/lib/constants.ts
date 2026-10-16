@@ -71,3 +71,14 @@ export const INTEL_ACCESS_TTL_MS = 90 * 24 * 60 * 60 * 1000;
 // Shorter-lived than a subscriber's cookie so a leaked link ages out sooner.
 export const BRIEFING_PREVIEW_PARAM = 'key';
 export const BRIEFING_PREVIEW_TTL_MS = 30 * 24 * 60 * 60 * 1000;
+
+// One-time preview page: /briefing/preview/ (briefing/preview.html on the origin) shows
+// the current edition once per browser and a subscribe wall after that. The page
+// itself is public; on a first open the middleware also leaves a short-lived grant
+// cookie that lets the page fetch /briefing/index.html exactly once. Serving that
+// file on the grant sets the "used" cookie (readable by the page) and clears the grant.
+export const BRIEFING_PREVIEW_GRANT_COOKIE = 'blackoak-briefing-preview-grant';
+export const BRIEFING_PREVIEW_GRANT_TTL_MS = 2 * 60 * 1000;
+export const BRIEFING_PREVIEW_GRANT_SCOPE = 'preview-grant';
+export const BRIEFING_PREVIEW_USED_COOKIE = 'bo_briefing_preview';
+export const BRIEFING_PREVIEW_USED_TTL_MS = 365 * 24 * 60 * 60 * 1000;

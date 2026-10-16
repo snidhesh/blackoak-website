@@ -1,9 +1,31 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
 import { routing } from '@/i18n/routing';
-import { BRIEFING_PREVIEW_PARAM, BRIEFING_PREVIEW_TTL_MS, INTEL_ACCESS_COOKIE } from '@/lib/constants';
-import { accessCookieOptions, createAccessToken, matchesPreviewKey, verifyAccessToken } from '@/lib/access-cookie';
-import { BRIEFING_PATH, HUB_PATH, hasBriefingPrefix, isTraversal } from '@/lib/briefing-proxy';
+import {
+  BRIEFING_PREVIEW_GRANT_COOKIE,
+  BRIEFING_PREVIEW_GRANT_SCOPE,
+  BRIEFING_PREVIEW_GRANT_TTL_MS,
+  BRIEFING_PREVIEW_PARAM,
+  BRIEFING_PREVIEW_TTL_MS,
+  BRIEFING_PREVIEW_USED_COOKIE,
+  INTEL_ACCESS_COOKIE,
+} from '@/lib/constants';
+import {
+  accessCookieOptions,
+  createAccessToken,
+  matchesPreviewKey,
+  previewGrantCookieOptions,
+  verifyAccessToken,
+} from '@/lib/access-cookie';
+import {
+  BRIEFING_INDEX_PATH,
+  BRIEFING_PATH,
+  HUB_PATH,
+  hasBriefingPrefix,
+  isPreviewPage,
+  isPublicBriefingPath,
+  isTraversal,
+} from '@/lib/briefing-proxy';
 
 const intl = createMiddleware(routing);
 
@@ -61,14 +83,35 @@ export default async function middleware(request: NextRequest) {
     return noStore(NextResponse.redirect(clean, 303));
   }
 
-  const allowed = await verifyAccessToken(request.cookies.get(INTEL_ACCESS_COOKIE)?.value);
+  // One-time preview page (briefing/preview.html on the origin): public. A browser
+  // that has not used its preview yet also gets a short-lived grant cookie, good for
+  // one fetch of /briefing/index.html; the route handler burns it when it serves that
+  // file. The page itself decides, from the used cookie or its own localStorage flag,
+  // whether to show the edition or the subscribe wall.
+  if (isPublicBriefingPath(pathname)) {
+    const response = NextResponse.next();
+    if (isPreviewPage(pathname) && !request.cookies.has(BRIEFING_PREVIEW_USED_COOKIE)) {
+      const grant = await createAccessToken(Date.now(), BRIEFING_PREVIEW_GRANT_TTL_MS, BRIEFING_PREVIEW_GRANT_SCOPE);
+      if (grant) response.cookies.set(BRIEFING_PREVIEW_GRANT_COOKIE, grant.value, previewGrantCookieOptions(grant.exp));
+    }
+    return response;
+  }
+
+  let allowed = await verifyAccessToken(request.cookies.get(INTEL_ACCESS_COOKIE)?.value);
+  if (!allowed && pathname === BRIEFING_INDEX_PATH) {
+    allowed = await verifyAccessToken(
+      request.cookies.get(BRIEFING_PREVIEW_GRANT_COOKIE)?.value,
+      Date.now(),
+      BRIEFING_PREVIEW_GRANT_SCOPE
+    );
+  }
   if (!allowed) {
     const hub = new URL(HUB_PATH, request.url);
     hub.searchParams.set('next', pathname + search);
     return noStore(NextResponse.redirect(hub));
   }
 
-  // On to src/app/briefing/[[...path]]/route.ts, which checks the cookie again.
+  // On to src/app/briefing/[[...path]]/route.ts, which checks the cookies again.
   return NextResponse.next();
 }
 

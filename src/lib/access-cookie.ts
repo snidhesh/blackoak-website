@@ -7,7 +7,7 @@
 // is INTEL_ACCESS_SECRET, separate from the newsletter code secret so the two can
 // rotate independently. No secret means fail closed: nothing verifies.
 
-import { INTEL_ACCESS_TTL_MS } from '@/lib/constants';
+import { BRIEFING_PREVIEW_USED_TTL_MS, INTEL_ACCESS_TTL_MS } from '@/lib/constants';
 
 const MIN_SECRET_LENGTH = 32;
 const MESSAGE_PREFIX = 'intel-access:v1:';
@@ -60,19 +60,28 @@ function fromBase64Url(value: string): Uint8Array<ArrayBuffer> | null {
   }
 }
 
+// A scope keeps a token minted for one purpose (the preview grant) from verifying as
+// the subscriber access cookie: it is signed into the message, so the two never match.
+const message = (scope: string, exp: string | number) => MESSAGE_PREFIX + (scope ? `${scope}:` : '') + exp;
+
 /** Returns null when INTEL_ACCESS_SECRET is not configured. */
 export async function createAccessToken(
   now: number = Date.now(),
-  ttlMs: number = INTEL_ACCESS_TTL_MS
+  ttlMs: number = INTEL_ACCESS_TTL_MS,
+  scope = ''
 ): Promise<{ value: string; exp: number } | null> {
   const secret = getSecret();
   if (!secret) return null;
   const exp = now + ttlMs;
-  const signature = await crypto.subtle.sign('HMAC', await getKey(secret), encoder.encode(MESSAGE_PREFIX + exp));
+  const signature = await crypto.subtle.sign('HMAC', await getKey(secret), encoder.encode(message(scope, exp)));
   return { value: `${exp}.${toBase64Url(new Uint8Array(signature))}`, exp };
 }
 
-export async function verifyAccessToken(token: string | undefined, now: number = Date.now()): Promise<boolean> {
+export async function verifyAccessToken(
+  token: string | undefined,
+  now: number = Date.now(),
+  scope = ''
+): Promise<boolean> {
   const secret = getSecret();
   if (!secret || !token) return false;
 
@@ -84,7 +93,7 @@ export async function verifyAccessToken(token: string | undefined, now: number =
   if (now > Number(expText)) return false;
 
   // The exact string from the cookie is what gets checked, never a re-serialised number.
-  return crypto.subtle.verify('HMAC', await getKey(secret), signature, encoder.encode(MESSAGE_PREFIX + expText));
+  return crypto.subtle.verify('HMAC', await getKey(secret), signature, encoder.encode(message(scope, expText)));
 }
 
 // Preview link: the ?key= value that opens /briefing without a subscription. Set in
@@ -111,5 +120,24 @@ export function accessCookieOptions(exp: number, now: number = Date.now()) {
     path: '/briefing',
     secure: process.env.NODE_ENV === 'production',
     maxAge: Math.max(0, Math.floor((exp - now) / 1000)),
+  };
+}
+
+// The one-time preview grant: same shape as the access cookie, so the same proxy
+// reads it; maxAge 0 clears it once /briefing/index.html has been served on it.
+export function previewGrantCookieOptions(exp: number, now: number = Date.now()) {
+  return accessCookieOptions(exp, now);
+}
+
+// The "preview already used" flag. Not httpOnly on purpose: briefing/preview.html
+// reads it to decide between the edition and the subscribe wall.
+export function previewUsedCookieOptions(now: number = Date.now()) {
+  return {
+    httpOnly: false,
+    sameSite: 'lax' as const,
+    path: '/briefing',
+    secure: process.env.NODE_ENV === 'production',
+    maxAge: Math.floor(BRIEFING_PREVIEW_USED_TTL_MS / 1000),
+    expires: new Date(now + BRIEFING_PREVIEW_USED_TTL_MS),
   };
 }

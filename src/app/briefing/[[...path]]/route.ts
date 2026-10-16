@@ -8,9 +8,22 @@
 // under our control and keeps Next's internal rewrite headers off the wire.
 
 import { NextRequest, NextResponse } from 'next/server';
-import { BRIEFING_ORIGIN, INTEL_ACCESS_COOKIE } from '@/lib/constants';
-import { verifyAccessToken } from '@/lib/access-cookie';
-import { HUB_PATH, hasBriefingPrefix, isTraversal } from '@/lib/briefing-proxy';
+import {
+  BRIEFING_ORIGIN,
+  BRIEFING_PREVIEW_GRANT_COOKIE,
+  BRIEFING_PREVIEW_GRANT_SCOPE,
+  BRIEFING_PREVIEW_USED_COOKIE,
+  INTEL_ACCESS_COOKIE,
+} from '@/lib/constants';
+import { previewGrantCookieOptions, previewUsedCookieOptions, verifyAccessToken } from '@/lib/access-cookie';
+import {
+  BRIEFING_INDEX_PATH,
+  HUB_PATH,
+  hasBriefingPrefix,
+  isPreviewPage,
+  isPublicBriefingPath,
+  isTraversal,
+} from '@/lib/briefing-proxy';
 
 export const dynamic = 'force-dynamic';
 
@@ -36,7 +49,18 @@ async function proxy(request: NextRequest): Promise<NextResponse> {
 
   if (isTraversal(pathname) || !hasBriefingPrefix(pathname)) return notFound();
 
-  const allowed = await verifyAccessToken(request.cookies.get(INTEL_ACCESS_COOKIE)?.value);
+  // Mirrors the middleware: the preview page and its logo are public, and a valid
+  // preview grant opens /briefing/index.html once (burned below when it is used).
+  let allowed = isPublicBriefingPath(pathname) || (await verifyAccessToken(request.cookies.get(INTEL_ACCESS_COOKIE)?.value));
+  let onPreviewGrant = false;
+  if (!allowed && pathname === BRIEFING_INDEX_PATH) {
+    onPreviewGrant = await verifyAccessToken(
+      request.cookies.get(BRIEFING_PREVIEW_GRANT_COOKIE)?.value,
+      Date.now(),
+      BRIEFING_PREVIEW_GRANT_SCOPE
+    );
+    allowed = onPreviewGrant;
+  }
   if (!allowed) {
     const hub = new URL(HUB_PATH, request.url);
     hub.searchParams.set('next', pathname + search);
@@ -69,7 +93,9 @@ async function proxy(request: NextRequest): Promise<NextResponse> {
     const value = upstream.headers.get(name);
     if (value) responseHeaders.set(name, value);
   }
-  responseHeaders.set('Cache-Control', RESPONSE_CACHE_CONTROL);
+  // The preview page must not be reused from the browser cache: every open needs the
+  // middleware to run so the grant cookie reflects whether the preview was used.
+  responseHeaders.set('Cache-Control', isPreviewPage(pathname) ? 'no-store' : RESPONSE_CACHE_CONTROL);
   responseHeaders.set('X-Content-Type-Options', 'nosniff');
 
   // Origin redirects (e.g. its own trailing-slash rules) are re-based onto this
@@ -85,7 +111,13 @@ async function proxy(request: NextRequest): Promise<NextResponse> {
   }
 
   const body = request.method === 'HEAD' ? null : upstream.body;
-  return new NextResponse(body, { status: upstream.status, headers: responseHeaders });
+  const response = new NextResponse(body, { status: upstream.status, headers: responseHeaders });
+  if (onPreviewGrant && upstream.ok) {
+    // The one-time preview has now been read: flag the browser and burn the grant.
+    response.cookies.set(BRIEFING_PREVIEW_USED_COOKIE, '1', previewUsedCookieOptions());
+    response.cookies.set(BRIEFING_PREVIEW_GRANT_COOKIE, '', previewGrantCookieOptions(0, 0));
+  }
+  return response;
 }
 
 export async function GET(request: NextRequest) {
