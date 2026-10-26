@@ -174,7 +174,7 @@ export default async function NewsDetailPage({ params }: Props) {
       <section className="py-10">
         <div className="max-w-[1094px] mx-auto px-6">
           <div
-            className="text-[16px] font-normal leading-[26px] tracking-[0.16px] text-[#5f6368] [&>p]:mb-6"
+            className="text-[16px] font-normal leading-[26px] tracking-[0.16px] text-[#5f6368] [&>p]:mb-6 [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-black"
             dangerouslySetInnerHTML={{ __html: firstHalf }}
           />
 
@@ -191,7 +191,7 @@ export default async function NewsDetailPage({ params }: Props) {
           )}
 
           <div
-            className="text-[16px] font-normal leading-[26px] tracking-[0.16px] text-[#5f6368] [&>p]:mb-6"
+            className="text-[16px] font-normal leading-[26px] tracking-[0.16px] text-[#5f6368] [&>p]:mb-6 [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-black"
             dangerouslySetInnerHTML={{ __html: secondHalf }}
           />
         </div>
@@ -219,12 +219,12 @@ export default async function NewsDetailPage({ params }: Props) {
             {/* Share */}
             <div className="flex flex-col gap-[27px]">
               <p className="text-[18px] font-normal text-black opacity-60">{tCommon('share')}</p>
-              <div className="flex gap-[18px] items-center">
+              <div className="flex flex-wrap gap-[18px] items-center">
                 <button className="border border-[#5f6368] rounded-full px-[18px] h-[34px] flex items-center gap-[9px] text-[14px] font-medium uppercase text-black hover:bg-gray-50 transition-colors">
                   <Copy className="w-5 h-5" />
                   {tCommon('copy')}
                 </button>
-                <div className="flex gap-3 items-center">
+                <div className="flex flex-wrap gap-3 items-center">
                   <Facebook className="w-[31px] h-[31px] text-[#5f6368] hover:text-black transition-colors cursor-pointer" />
                   <svg className="w-[31px] h-[31px] text-[#5f6368] hover:text-black transition-colors cursor-pointer" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                   <Linkedin className="w-[31px] h-[31px] text-[#5f6368] hover:text-black transition-colors cursor-pointer" />
