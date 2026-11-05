@@ -27,6 +27,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: '/',
       },
     ],
-    sitemap: 'https://blackoak-re.com/sitemap.xml',
+    sitemap: 'https://www.blackoak-re.com/sitemap.xml',
   };
 }

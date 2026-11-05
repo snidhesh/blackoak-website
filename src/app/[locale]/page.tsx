@@ -36,16 +36,16 @@ export async function generateMetadata({ params }: { params: { locale: string } 
     description: t('description'),
     keywords: ['Dubai luxury real estate', 'luxury properties Dubai', 'buy villa Dubai', 'apartments for sale Dubai', 'Palm Jumeirah property', 'Emirates Hills mansions', 'Dubai property investment', 'off-plan Dubai', 'BlackOak Real Estate', 'luxury penthouses Dubai Marina'],
     alternates: {
-      canonical: locale === 'en' ? 'https://blackoak-re.com/' : `https://blackoak-re.com/${locale}/`,
-      languages: { en: 'https://blackoak-re.com/', fr: 'https://blackoak-re.com/fr/', ar: 'https://blackoak-re.com/ar/' },
+      canonical: locale === 'en' ? 'https://www.blackoak-re.com/' : `https://www.blackoak-re.com/${locale}/`,
+      languages: { en: 'https://www.blackoak-re.com/', fr: 'https://www.blackoak-re.com/fr/', ar: 'https://www.blackoak-re.com/ar/' },
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? 'https://blackoak-re.com/' : `https://blackoak-re.com/${locale}/`,
-      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogImageAlt') }],
+      url: locale === 'en' ? 'https://www.blackoak-re.com/' : `https://www.blackoak-re.com/${locale}/`,
+      images: [{ url: 'https://www.blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogImageAlt') }],
     },
   };
 }
@@ -106,11 +106,11 @@ export default async function HomePage({ params }: { params: { locale: string } 
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'BlackOak Real Estate',
-    url: 'https://blackoak-re.com',
+    url: 'https://www.blackoak-re.com',
     inLanguage: locale,
     potentialAction: {
       '@type': 'SearchAction',
-      target: 'https://blackoak-re.com/projects?q={search_term_string}',
+      target: 'https://www.blackoak-re.com/projects?q={search_term_string}',
       'query-input': 'required name=search_term_string',
     },
   };
@@ -125,14 +125,14 @@ export default async function HomePage({ params }: { params: { locale: string } 
     description: homepage.starzplay.subheading,
     inLanguage: locale,
     genre: ['Reality', 'Real Estate'],
-    image: homepage.starzplay.posters.map((p: string) => `https://blackoak-re.com${p}`),
+    image: homepage.starzplay.posters.map((p: string) => `https://www.blackoak-re.com${p}`),
     publisher: { '@type': 'Organization', name: 'STARZPLAY' },
     productionCompany: (homepage.starzplay.productionLogos as Array<{ name: string }>)
       .map((l) => ({ '@type': 'Organization', name: l.name })),
     about: {
       '@type': 'RealEstateAgent',
       name: 'BlackOak Real Estate',
-      url: 'https://blackoak-re.com',
+      url: 'https://www.blackoak-re.com',
     },
   };
 
@@ -155,8 +155,8 @@ export default async function HomePage({ params }: { params: { locale: string } 
             '@type': 'VideoObject',
             name: homepage.hero.heading,
             description: homepage.hero.subtitle,
-            thumbnailUrl: `https://blackoak-re.com${homepage.hero.image}`,
-            contentUrl: 'https://blackoak-re.com/images/homepage/hero.mp4',
+            thumbnailUrl: `https://www.blackoak-re.com${homepage.hero.image}`,
+            contentUrl: 'https://www.blackoak-re.com/images/homepage/hero.mp4',
             uploadDate: '2024-01-01',
             duration: 'PT29S',
             publisher: {
@@ -164,7 +164,7 @@ export default async function HomePage({ params }: { params: { locale: string } 
               name: 'BlackOak Real Estate',
               logo: {
                 '@type': 'ImageObject',
-                url: 'https://blackoak-re.com/images/logo-white.png',
+                url: 'https://www.blackoak-re.com/images/logo-white.png',
               },
             },
           }),

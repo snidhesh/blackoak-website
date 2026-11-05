@@ -14,8 +14,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: locale === 'en' ? 'https://blackoak-re.com/privacy-policy/' : `https://blackoak-re.com/${locale}/privacy-policy/`,
-      languages: { en: 'https://blackoak-re.com/privacy-policy/', fr: 'https://blackoak-re.com/fr/privacy-policy/', ar: 'https://blackoak-re.com/ar/privacy-policy/' },
+      canonical: locale === 'en' ? 'https://www.blackoak-re.com/privacy-policy/' : `https://www.blackoak-re.com/${locale}/privacy-policy/`,
+      languages: { en: 'https://www.blackoak-re.com/privacy-policy/', fr: 'https://www.blackoak-re.com/fr/privacy-policy/', ar: 'https://www.blackoak-re.com/ar/privacy-policy/' },
     },
     keywords: ['privacy policy BlackOak', 'data privacy Dubai real estate', 'BlackOak data protection', 'real estate privacy policy UAE'],
     openGraph: {
@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'website',
       siteName: 'BlackOak Real Estate',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? 'https://blackoak-re.com/privacy-policy/' : `https://blackoak-re.com/${locale}/privacy-policy/`,
-      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+      url: locale === 'en' ? 'https://www.blackoak-re.com/privacy-policy/' : `https://www.blackoak-re.com/${locale}/privacy-policy/`,
+      images: [{ url: 'https://www.blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
 }
@@ -38,9 +38,9 @@ export default function PrivacyPolicyPage({ params }: { params: { locale: string
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: privacyData.sections[0]?.title || 'Privacy Policy',
-    url: locale === 'en' ? 'https://blackoak-re.com/privacy-policy/' : `https://blackoak-re.com/${locale}/privacy-policy/`,
+    url: locale === 'en' ? 'https://www.blackoak-re.com/privacy-policy/' : `https://www.blackoak-re.com/${locale}/privacy-policy/`,
     inLanguage: locale,
-    isPartOf: { '@type': 'WebSite', name: 'BlackOak Real Estate', url: 'https://blackoak-re.com' },
+    isPartOf: { '@type': 'WebSite', name: 'BlackOak Real Estate', url: 'https://www.blackoak-re.com' },
     dateModified: '2026-05-01',
   };
 

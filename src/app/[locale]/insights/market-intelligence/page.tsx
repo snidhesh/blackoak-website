@@ -19,9 +19,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const localePath =
     locale === 'en' ? '/insights/market-intelligence/' : `/${locale}/insights/market-intelligence/`;
-  const enUrl = 'https://blackoak-re.com/insights/market-intelligence/';
-  const frUrl = 'https://blackoak-re.com/fr/insights/market-intelligence/';
-  const arUrl = 'https://blackoak-re.com/ar/insights/market-intelligence/';
+  const enUrl = 'https://www.blackoak-re.com/insights/market-intelligence/';
+  const frUrl = 'https://www.blackoak-re.com/fr/insights/market-intelligence/';
+  const arUrl = 'https://www.blackoak-re.com/ar/insights/market-intelligence/';
 
   return {
     title: t('title'),
@@ -36,18 +36,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       'Dubai property historical prices',
     ],
     alternates: {
-      canonical: `https://blackoak-re.com${localePath}`,
+      canonical: `https://www.blackoak-re.com${localePath}`,
       languages: { en: enUrl, fr: frUrl, ar: arUrl },
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'article',
-      url: `https://blackoak-re.com${localePath}`,
+      url: `https://www.blackoak-re.com${localePath}`,
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
       images: [
         {
-          url: 'https://blackoak-re.com/images/og-default.jpg',
+          url: 'https://www.blackoak-re.com/images/og-default.jpg',
           width: 1200,
           height: 630,
           alt: t('title'),
@@ -63,8 +63,8 @@ export default async function MarketIntelligencePage({ params }: Props) {
   const tCrumb = await getTranslations({ locale, namespace: 'pages.insights.marketIntelligence.breadcrumbs' });
   const content = getMarketIntelligence(locale);
 
-  const canonical = `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/market-intelligence/`;
-  const homeUrl = locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}`;
+  const canonical = `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/market-intelligence/`;
+  const homeUrl = locale === 'en' ? 'https://www.blackoak-re.com' : `https://www.blackoak-re.com/${locale}`;
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
@@ -87,14 +87,14 @@ export default async function MarketIntelligencePage({ params }: Props) {
     author: {
       '@type': 'Organization',
       name: 'BlackOak Real Estate',
-      url: 'https://blackoak-re.com',
+      url: 'https://www.blackoak-re.com',
     },
     publisher: {
       '@type': 'Organization',
       name: 'BlackOak Real Estate',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://blackoak-re.com/images/logo-white.png',
+        url: 'https://www.blackoak-re.com/images/logo-white.png',
       },
     },
   };

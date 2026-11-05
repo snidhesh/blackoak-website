@@ -65,7 +65,7 @@ function parseEmploymentType(type: string): string | string[] {
 export function generateMetadata({ params }: Props): Metadata {
   const locale = params.locale as Locale;
   const job = getCareerBySlug(params.slug, locale);
-  if (!job) return { title: 'Not Found' };
+  if (!job) notFound();
   const title = `${job.title} | Careers at BlackOak Real Estate`;
   const description = `Join BlackOak as ${job.title} in ${job.location}. ${job.type}. ${job.description.slice(0, 120)}`;
   return {
@@ -73,11 +73,11 @@ export function generateMetadata({ params }: Props): Metadata {
     description,
     keywords: [`${job.title} Dubai`, 'real estate jobs Dubai', `${job.department} jobs Dubai`, 'BlackOak careers', 'luxury real estate career Dubai'],
     alternates: {
-      canonical: locale === 'en' ? `https://blackoak-re.com/career/${params.slug}/` : `https://blackoak-re.com/${locale}/career/${params.slug}/`,
+      canonical: locale === 'en' ? `https://www.blackoak-re.com/career/${params.slug}/` : `https://www.blackoak-re.com/${locale}/career/${params.slug}/`,
       languages: {
-        en: `https://blackoak-re.com/career/${params.slug}/`,
-        fr: `https://blackoak-re.com/fr/career/${params.slug}/`,
-        ar: `https://blackoak-re.com/ar/career/${params.slug}/`,
+        en: `https://www.blackoak-re.com/career/${params.slug}/`,
+        fr: `https://www.blackoak-re.com/fr/career/${params.slug}/`,
+        ar: `https://www.blackoak-re.com/ar/career/${params.slug}/`,
       },
     },
     openGraph: {
@@ -85,8 +85,8 @@ export function generateMetadata({ params }: Props): Metadata {
       description,
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? `https://blackoak-re.com/career/${params.slug}/` : `https://blackoak-re.com/${locale}/career/${params.slug}/`,
-      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: title }],
+      url: locale === 'en' ? `https://www.blackoak-re.com/career/${params.slug}/` : `https://www.blackoak-re.com/${locale}/career/${params.slug}/`,
+      images: [{ url: 'https://www.blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: title }],
     },
   };
 }
@@ -107,7 +107,7 @@ export default async function CareerDetailPage({ params }: Props) {
     hiringOrganization: {
       '@type': 'Organization',
       name: 'BlackOak Real Estate',
-      sameAs: 'https://blackoak-re.com',
+      sameAs: 'https://www.blackoak-re.com',
     },
     jobLocation: parseJobLocation(job.location),
     directApply: true,
@@ -117,9 +117,9 @@ export default async function CareerDetailPage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
-      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.careers'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/career/` },
-      { '@type': 'ListItem', position: 3, name: job.title, item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/career/${params.slug}/` },
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://www.blackoak-re.com' : `https://www.blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.careers'), item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/career/` },
+      { '@type': 'ListItem', position: 3, name: job.title, item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/career/${params.slug}/` },
     ],
   };
 

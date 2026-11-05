@@ -19,7 +19,7 @@ export default async function InternationalCountryPage({ country, locale }: Prop
   const properties = getInternationalPropertiesByCountry(country.countryCode, locale);
 
   const localePath = (path: string, loc: string) =>
-    loc === 'en' ? `https://blackoak-re.com${path}` : `https://blackoak-re.com/${loc}${path}`;
+    loc === 'en' ? `https://www.blackoak-re.com${path}` : `https://www.blackoak-re.com/${loc}${path}`;
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',

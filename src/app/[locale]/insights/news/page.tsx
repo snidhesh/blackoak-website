@@ -22,16 +22,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: t('description'),
     keywords: ['Dubai real estate news', 'Dubai property market updates', 'Dubai real estate trends', 'luxury property market Dubai', 'Dubai property reports', 'UAE real estate insights'],
     alternates: {
-      canonical: locale === 'en' ? 'https://blackoak-re.com/insights/news/' : `https://blackoak-re.com/${locale}/insights/news/`,
-      languages: { en: 'https://blackoak-re.com/insights/news/', fr: 'https://blackoak-re.com/fr/insights/news/', ar: 'https://blackoak-re.com/ar/insights/news/' },
+      canonical: locale === 'en' ? 'https://www.blackoak-re.com/insights/news/' : `https://www.blackoak-re.com/${locale}/insights/news/`,
+      languages: { en: 'https://www.blackoak-re.com/insights/news/', fr: 'https://www.blackoak-re.com/fr/insights/news/', ar: 'https://www.blackoak-re.com/ar/insights/news/' },
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? 'https://blackoak-re.com/insights/news/' : `https://blackoak-re.com/${locale}/insights/news/`,
-      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+      url: locale === 'en' ? 'https://www.blackoak-re.com/insights/news/' : `https://www.blackoak-re.com/${locale}/insights/news/`,
+      images: [{ url: 'https://www.blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
 }
@@ -47,9 +47,9 @@ export default async function NewsPage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
-      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.insights'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/news/` },
-      { '@type': 'ListItem', position: 3, name: t('breadcrumbs.news'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/news/` },
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://www.blackoak-re.com' : `https://www.blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.insights'), item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/news/` },
+      { '@type': 'ListItem', position: 3, name: t('breadcrumbs.news'), item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/news/` },
     ],
   };
 
@@ -58,12 +58,12 @@ export default async function NewsPage({ params }: Props) {
     '@type': 'Blog',
     name: 'Dubai Real Estate News & Market Insights',
     description: 'Latest Dubai real estate news, market reports & investment insights from BlackOak Real Estate.',
-    url: locale === 'en' ? 'https://blackoak-re.com/insights/news/' : `https://blackoak-re.com/${locale}/insights/news/`,
+    url: locale === 'en' ? 'https://www.blackoak-re.com/insights/news/' : `https://www.blackoak-re.com/${locale}/insights/news/`,
     inLanguage: locale,
     publisher: {
       '@type': 'Organization',
       name: 'BlackOak Real Estate',
-      logo: { '@type': 'ImageObject', url: 'https://blackoak-re.com/images/logo-white.png' },
+      logo: { '@type': 'ImageObject', url: 'https://www.blackoak-re.com/images/logo-white.png' },
     },
     blogPost: news.map((article) => ({
       '@type': 'BlogPosting',
@@ -71,8 +71,8 @@ export default async function NewsPage({ params }: Props) {
       description: article.excerpt,
       datePublished: article.publishedDate,
       inLanguage: locale,
-      image: article.image ? `https://blackoak-re.com${article.image}` : undefined,
-      url: locale === 'en' ? `https://blackoak-re.com/insights/news/${article.slug}/` : `https://blackoak-re.com/${locale}/insights/news/${article.slug}/`,
+      image: article.image ? `https://www.blackoak-re.com${article.image}` : undefined,
+      url: locale === 'en' ? `https://www.blackoak-re.com/insights/news/${article.slug}/` : `https://www.blackoak-re.com/${locale}/insights/news/${article.slug}/`,
       author: { '@type': 'Organization', name: article.author || 'BlackOak Real Estate' },
     })),
   };

@@ -20,16 +20,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: t('description'),
     keywords: ['sell property Dubai', 'list property Dubai', 'sell villa Dubai', 'sell apartment Dubai', 'Dubai property agent', 'property valuation Dubai', 'rent property Dubai'],
     alternates: {
-      canonical: locale === 'en' ? 'https://blackoak-re.com/list-your-property/' : `https://blackoak-re.com/${locale}/list-your-property/`,
-      languages: { en: 'https://blackoak-re.com/list-your-property/', fr: 'https://blackoak-re.com/fr/list-your-property/', ar: 'https://blackoak-re.com/ar/list-your-property/' },
+      canonical: locale === 'en' ? 'https://www.blackoak-re.com/list-your-property/' : `https://www.blackoak-re.com/${locale}/list-your-property/`,
+      languages: { en: 'https://www.blackoak-re.com/list-your-property/', fr: 'https://www.blackoak-re.com/fr/list-your-property/', ar: 'https://www.blackoak-re.com/ar/list-your-property/' },
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? 'https://blackoak-re.com/list-your-property/' : `https://blackoak-re.com/${locale}/list-your-property/`,
-      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+      url: locale === 'en' ? 'https://www.blackoak-re.com/list-your-property/' : `https://www.blackoak-re.com/${locale}/list-your-property/`,
+      images: [{ url: 'https://www.blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
 }
@@ -68,8 +68,8 @@ export default async function ListYourPropertyPage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
-      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.listProperty'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/list-your-property/` },
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://www.blackoak-re.com' : `https://www.blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.listProperty'), item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/list-your-property/` },
     ],
   };
 
@@ -78,11 +78,11 @@ export default async function ListYourPropertyPage({ params }: Props) {
     '@type': 'Service',
     name: 'Sell Your Property with BlackOak Real Estate',
     description: 'List your property with BlackOak Real Estate. Global buyer network, professional marketing & dedicated agent support to sell or rent your Dubai property.',
-    url: locale === 'en' ? 'https://blackoak-re.com/list-your-property/' : `https://blackoak-re.com/${locale}/list-your-property/`,
+    url: locale === 'en' ? 'https://www.blackoak-re.com/list-your-property/' : `https://www.blackoak-re.com/${locale}/list-your-property/`,
     provider: {
       '@type': 'RealEstateAgent',
       name: 'BlackOak Real Estate',
-      url: 'https://blackoak-re.com',
+      url: 'https://www.blackoak-re.com',
       telephone: '+971 4 398 9055',
     },
     areaServed: { '@type': 'City', name: 'Dubai' },

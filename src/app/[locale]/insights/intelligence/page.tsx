@@ -17,7 +17,7 @@ interface Props {
 const PATH = '/insights/intelligence/';
 
 function localeUrl(locale: Locale, path: string = PATH) {
-  return `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}${path}`;
+  return `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}${path}`;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -46,7 +46,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
       images: [
         {
-          url: 'https://blackoak-re.com/images/og-default.jpg',
+          url: 'https://www.blackoak-re.com/images/og-default.jpg',
           width: 1200,
           height: 630,
           alt: t('title'),

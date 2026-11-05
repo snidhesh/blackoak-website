@@ -42,7 +42,7 @@ function buildAuthorSchema(name: string, type?: 'Person' | 'Organization', url?:
 export function generateMetadata({ params }: Props): Metadata {
   const locale = params.locale as Locale;
   const article = getNewsBySlug(params.slug, locale);
-  if (!article) return { title: 'Not Found' };
+  if (!article) notFound();
   return {
     title: article.title,
     description: article.excerpt,
@@ -58,17 +58,17 @@ export function generateMetadata({ params }: Props): Metadata {
       description: article.excerpt,
       type: 'article',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? `https://blackoak-re.com/insights/news/${params.slug}/` : `https://blackoak-re.com/${locale}/insights/news/${params.slug}/`,
+      url: locale === 'en' ? `https://www.blackoak-re.com/insights/news/${params.slug}/` : `https://www.blackoak-re.com/${locale}/insights/news/${params.slug}/`,
       publishedTime: article.publishedDate,
       authors: [article.author],
       images: [{ url: article.image, width: 1200, height: 630, alt: article.title }],
     },
     alternates: {
-      canonical: locale === 'en' ? `https://blackoak-re.com/insights/news/${params.slug}/` : `https://blackoak-re.com/${locale}/insights/news/${params.slug}/`,
+      canonical: locale === 'en' ? `https://www.blackoak-re.com/insights/news/${params.slug}/` : `https://www.blackoak-re.com/${locale}/insights/news/${params.slug}/`,
       languages: {
-        en: `https://blackoak-re.com/insights/news/${params.slug}/`,
-        fr: `https://blackoak-re.com/fr/insights/news/${params.slug}/`,
-        ar: `https://blackoak-re.com/ar/insights/news/${params.slug}/`,
+        en: `https://www.blackoak-re.com/insights/news/${params.slug}/`,
+        fr: `https://www.blackoak-re.com/fr/insights/news/${params.slug}/`,
+        ar: `https://www.blackoak-re.com/ar/insights/news/${params.slug}/`,
       },
     },
   };
@@ -109,18 +109,18 @@ export default async function NewsDetailPage({ params }: Props) {
     publisher: {
       '@type': 'Organization',
       name: 'BlackOak Real Estate',
-      logo: { '@type': 'ImageObject', url: 'https://blackoak-re.com/images/logo-white.png' },
+      logo: { '@type': 'ImageObject', url: 'https://www.blackoak-re.com/images/logo-white.png' },
     },
-    mainEntityOfPage: locale === 'en' ? `https://blackoak-re.com/insights/news/${params.slug}/` : `https://blackoak-re.com/${locale}/insights/news/${params.slug}/`,
+    mainEntityOfPage: locale === 'en' ? `https://www.blackoak-re.com/insights/news/${params.slug}/` : `https://www.blackoak-re.com/${locale}/insights/news/${params.slug}/`,
   };
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: tCommon('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
-      { '@type': 'ListItem', position: 2, name: tCommon('breadcrumbs.news'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/news/` },
-      { '@type': 'ListItem', position: 3, name: article.title, item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/news/${params.slug}/` },
+      { '@type': 'ListItem', position: 1, name: tCommon('breadcrumbs.home'), item: locale === 'en' ? 'https://www.blackoak-re.com' : `https://www.blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: tCommon('breadcrumbs.news'), item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/news/` },
+      { '@type': 'ListItem', position: 3, name: article.title, item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/news/${params.slug}/` },
     ],
   };
 

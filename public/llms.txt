@@ -6,45 +6,45 @@ BlackOak Real Estate is a boutique advisory firm headquartered in Dubai Marina w
 
 ## Company
 
-- [Why BlackOak](https://blackoak-re.com/about/why-blackoak/): Firm background, differentiators, and advisory approach.
-- [Our Team](https://blackoak-re.com/about/our-team/): Partners, real estate advisors, and creative-operations staff.
-- [Contact](https://blackoak-re.com/contact/): Dubai and London office addresses, phone, email, opening hours.
+- [Why BlackOak](https://www.blackoak-re.com/about/why-blackoak/): Firm background, differentiators, and advisory approach.
+- [Our Team](https://www.blackoak-re.com/about/our-team/): Partners, real estate advisors, and creative-operations staff.
+- [Contact](https://www.blackoak-re.com/contact/): Dubai and London office addresses, phone, email, opening hours.
 
 ## Dubai Neighbourhoods
 
-- [Emirates Hills](https://blackoak-re.com/neighbourhoods/emirates-hills/): Dubai's most exclusive gated community, ultra-prime villa enclave.
-- [Palm Jumeirah](https://blackoak-re.com/neighbourhoods/palm-jumeirah/): The world's most iconic island destination — beachfront villas and signature branded residences.
-- [Dubai Hills Estate](https://blackoak-re.com/neighbourhoods/dubai-hills-estate/): Master-planned community centred on a championship golf course.
-- [Al Barari](https://blackoak-re.com/neighbourhoods/al-barari/): Green, low-density luxury villa community.
-- [Downtown Dubai](https://blackoak-re.com/neighbourhoods/downtown-dubai/): Burj Khalifa district — landmark towers and hotel-branded residences.
-- [DIFC](https://blackoak-re.com/neighbourhoods/difc/): Financial district with luxury urban apartments.
-- [Jumeirah Golf Estates](https://blackoak-re.com/neighbourhoods/jumeirah-golf-estates/): Championship golf-course living.
-- [Jumeirah Islands](https://blackoak-re.com/neighbourhoods/jumeirah-islands/): Waterfront villa clusters in New Dubai.
-- [Dubai Marina](https://blackoak-re.com/neighbourhoods/dubai-marina/): High-rise waterfront urban living.
-- [Mohammed Bin Rashid City](https://blackoak-re.com/neighbourhoods/mohammed-bin-rashid-city/): Master-planned "city within a city".
-- [City Walk](https://blackoak-re.com/neighbourhoods/city-walk/): Contemporary urban luxury district.
-- [Business Bay](https://blackoak-re.com/neighbourhoods/business-bay/): Commercial and residential hub adjacent to Downtown.
-- [Bluewaters Island](https://blackoak-re.com/neighbourhoods/bluewaters-island/): Island destination residences.
+- [Emirates Hills](https://www.blackoak-re.com/neighbourhoods/emirates-hills/): Dubai's most exclusive gated community, ultra-prime villa enclave.
+- [Palm Jumeirah](https://www.blackoak-re.com/neighbourhoods/palm-jumeirah/): The world's most iconic island destination — beachfront villas and signature branded residences.
+- [Dubai Hills Estate](https://www.blackoak-re.com/neighbourhoods/dubai-hills-estate/): Master-planned community centred on a championship golf course.
+- [Al Barari](https://www.blackoak-re.com/neighbourhoods/al-barari/): Green, low-density luxury villa community.
+- [Downtown Dubai](https://www.blackoak-re.com/neighbourhoods/downtown-dubai/): Burj Khalifa district — landmark towers and hotel-branded residences.
+- [DIFC](https://www.blackoak-re.com/neighbourhoods/difc/): Financial district with luxury urban apartments.
+- [Jumeirah Golf Estates](https://www.blackoak-re.com/neighbourhoods/jumeirah-golf-estates/): Championship golf-course living.
+- [Jumeirah Islands](https://www.blackoak-re.com/neighbourhoods/jumeirah-islands/): Waterfront villa clusters in New Dubai.
+- [Dubai Marina](https://www.blackoak-re.com/neighbourhoods/dubai-marina/): High-rise waterfront urban living.
+- [Mohammed Bin Rashid City](https://www.blackoak-re.com/neighbourhoods/mohammed-bin-rashid-city/): Master-planned "city within a city".
+- [City Walk](https://www.blackoak-re.com/neighbourhoods/city-walk/): Contemporary urban luxury district.
+- [Business Bay](https://www.blackoak-re.com/neighbourhoods/business-bay/): Commercial and residential hub adjacent to Downtown.
+- [Bluewaters Island](https://www.blackoak-re.com/neighbourhoods/bluewaters-island/): Island destination residences.
 
 ## International Markets
 
-- [International Properties](https://blackoak-re.com/international-properties/): Curated luxury property in the United Kingdom, Spain, Italy, Switzerland, Thailand, the Maldives, Singapore, and the United States.
+- [International Properties](https://www.blackoak-re.com/international-properties/): Curated luxury property in the United Kingdom, Spain, Italy, Switzerland, Thailand, the Maldives, Singapore, and the United States.
 
 ## Insights and Guides
 
-- [Buyers Guide](https://blackoak-re.com/insights/buyers/): Step-by-step guide for international buyers of Dubai property — freehold areas, Golden Visa, mortgages, transaction costs.
-- [Investors](https://blackoak-re.com/insights/investors/): Syndicated investment structures, tailored acquisition strategies, and institutional-grade real estate exposure.
-- [Market Intelligence](https://blackoak-re.com/insights/market-intelligence/): Dubai and international luxury real estate market reports.
-- [News](https://blackoak-re.com/insights/news/): Market news, project launches, and analysis.
+- [Buyers Guide](https://www.blackoak-re.com/insights/buyers/): Step-by-step guide for international buyers of Dubai property — freehold areas, Golden Visa, mortgages, transaction costs.
+- [Investors](https://www.blackoak-re.com/insights/investors/): Syndicated investment structures, tailored acquisition strategies, and institutional-grade real estate exposure.
+- [Market Intelligence](https://www.blackoak-re.com/insights/market-intelligence/): Dubai and international luxury real estate market reports.
+- [News](https://www.blackoak-re.com/insights/news/): Market news, project launches, and analysis.
 
 ## Listings
 
-- [All Projects](https://blackoak-re.com/projects/): Live inventory of luxury developments and resale listings across Dubai. Dynamic content — refreshed regularly from BlackOak's CRM.
+- [All Projects](https://www.blackoak-re.com/projects/): Live inventory of luxury developments and resale listings across Dubai. Dynamic content — refreshed regularly from BlackOak's CRM.
 
 ## Careers
 
-- [Careers](https://blackoak-re.com/career/): Open advisor and support roles at BlackOak.
-- [List Your Property](https://blackoak-re.com/list-your-property/): For owners considering listing a Dubai property with BlackOak.
+- [Careers](https://www.blackoak-re.com/career/): Open advisor and support roles at BlackOak.
+- [List Your Property](https://www.blackoak-re.com/list-your-property/): For owners considering listing a Dubai property with BlackOak.
 
 ## Contact Information
 
@@ -60,12 +60,12 @@ BlackOak Real Estate is a boutique advisory firm headquartered in Dubai Marina w
 
 The site is published in three languages with fully translated content:
 
-- English (default): `https://blackoak-re.com/`
-- French: `https://blackoak-re.com/fr/`
-- Arabic (RTL): `https://blackoak-re.com/ar/`
+- English (default): `https://www.blackoak-re.com/`
+- French: `https://www.blackoak-re.com/fr/`
+- Arabic (RTL): `https://www.blackoak-re.com/ar/`
 
 ## Optional
 
-- [Privacy Policy](https://blackoak-re.com/privacy-policy/)
-- [Terms of Service](https://blackoak-re.com/terms-of-service/)
-- [Disclaimer](https://blackoak-re.com/disclaimer/): Includes attribution for developer logos and trademarks displayed on the site.
+- [Privacy Policy](https://www.blackoak-re.com/privacy-policy/)
+- [Terms of Service](https://www.blackoak-re.com/terms-of-service/)
+- [Disclaimer](https://www.blackoak-re.com/disclaimer/): Includes attribution for developer logos and trademarks displayed on the site.

@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getProjects, getNeighbourhoods, getCareers, getNews, getInternationalProperties } from '@/lib/content';
 import { locales, defaultLocale } from '@/i18n/config';
 
-const BASE_URL = 'https://blackoak-re.com';
+const BASE_URL = 'https://www.blackoak-re.com';
 
 // Fixed date for static content — update when static pages are meaningfully changed
 const STATIC_LAST_MODIFIED = new Date('2026-05-01');

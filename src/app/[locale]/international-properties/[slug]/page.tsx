@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
 import {
   getInternationalProperties,
   getInternationalPropertyBySlug,
@@ -24,11 +23,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = params.locale as Locale;
   const property = getInternationalPropertyBySlug(params.slug, locale);
-  const tMeta = await getTranslations({ locale, namespace: 'metadata.internationalProperties' });
 
-  if (!property || property.status !== 'available') {
-    return { title: tMeta('title') };
-  }
+  if (!property || property.status !== 'available') notFound();
 
   const title = `${property.name} | ${property.city}, ${property.country}`;
   const description = property.description.length > 160
@@ -37,8 +33,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const path = `/international-properties/${params.slug}/`;
   const canonicalUrl = locale === 'en'
-    ? `https://blackoak-re.com${path}`
-    : `https://blackoak-re.com/${locale}${path}`;
+    ? `https://www.blackoak-re.com${path}`
+    : `https://www.blackoak-re.com/${locale}${path}`;
 
   return {
     title,
@@ -54,9 +50,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: canonicalUrl,
       languages: {
-        en: `https://blackoak-re.com${path}`,
-        fr: `https://blackoak-re.com/fr${path}`,
-        ar: `https://blackoak-re.com/ar${path}`,
+        en: `https://www.blackoak-re.com${path}`,
+        fr: `https://www.blackoak-re.com/fr${path}`,
+        ar: `https://www.blackoak-re.com/ar${path}`,
       },
     },
   };
