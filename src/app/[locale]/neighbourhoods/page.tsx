@@ -19,11 +19,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: locale === 'en' ? 'https://blackoak-re.com/neighbourhoods/' : `https://blackoak-re.com/${locale}/neighbourhoods/`,
+      canonical: locale === 'en' ? 'https://www.blackoak-re.com/neighbourhoods/' : `https://www.blackoak-re.com/${locale}/neighbourhoods/`,
       languages: {
-        en: 'https://blackoak-re.com/neighbourhoods/',
-        fr: 'https://blackoak-re.com/fr/neighbourhoods/',
-        ar: 'https://blackoak-re.com/ar/neighbourhoods/',
+        'x-default': 'https://www.blackoak-re.com/neighbourhoods/',
+        en: 'https://www.blackoak-re.com/neighbourhoods/',
+        fr: 'https://www.blackoak-re.com/fr/neighbourhoods/',
+        ar: 'https://www.blackoak-re.com/ar/neighbourhoods/',
       },
     },
     openGraph: {
@@ -31,8 +32,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t('ogDescription'),
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? 'https://blackoak-re.com/neighbourhoods/' : `https://blackoak-re.com/${locale}/neighbourhoods/`,
-      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+      url: locale === 'en' ? 'https://www.blackoak-re.com/neighbourhoods/' : `https://www.blackoak-re.com/${locale}/neighbourhoods/`,
+      images: [{ url: 'https://www.blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
 }
@@ -49,12 +50,12 @@ export default async function NeighbourhoodsPage({ params }: Props) {
     '@type': 'CollectionPage',
     name: t('heading'),
     description: t('subtitle'),
-    url: locale === 'en' ? 'https://blackoak-re.com/neighbourhoods/' : `https://blackoak-re.com/${locale}/neighbourhoods/`,
+    url: locale === 'en' ? 'https://www.blackoak-re.com/neighbourhoods/' : `https://www.blackoak-re.com/${locale}/neighbourhoods/`,
     inLanguage: locale,
     publisher: {
       '@type': 'Organization',
       name: 'BlackOak Real Estate',
-      logo: { '@type': 'ImageObject', url: 'https://blackoak-re.com/images/logo-white.png' },
+      logo: { '@type': 'ImageObject', url: 'https://www.blackoak-re.com/images/logo-white.png' },
     },
     mainEntity: {
       '@type': 'ItemList',
@@ -66,8 +67,8 @@ export default async function NeighbourhoodsPage({ params }: Props) {
           '@type': 'Place',
           name: n.name,
           description: n.tagline,
-          image: `https://blackoak-re.com${n.heroImage}`,
-          url: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/neighbourhoods/${n.slug}/`,
+          image: `https://www.blackoak-re.com${n.heroImage}`,
+          url: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/neighbourhoods/${n.slug}/`,
         },
       })),
     },
@@ -81,13 +82,13 @@ export default async function NeighbourhoodsPage({ params }: Props) {
         '@type': 'ListItem',
         position: 1,
         name: locale === 'fr' ? 'Accueil' : locale === 'ar' ? 'الرئيسية' : 'Home',
-        item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}`,
+        item: locale === 'en' ? 'https://www.blackoak-re.com' : `https://www.blackoak-re.com/${locale}`,
       },
       {
         '@type': 'ListItem',
         position: 2,
         name: t('sectionLabel'),
-        item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/neighbourhoods/`,
+        item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/neighbourhoods/`,
       },
     ],
   };

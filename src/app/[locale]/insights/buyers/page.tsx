@@ -16,17 +16,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'metadata.buyers' });
 
   const localePath = locale === 'en' ? '/insights/buyers/' : `/${locale}/insights/buyers/`;
-  const enUrl = 'https://blackoak-re.com/insights/buyers/';
-  const frUrl = 'https://blackoak-re.com/fr/insights/buyers/';
-  const arUrl = 'https://blackoak-re.com/ar/insights/buyers/';
+  const enUrl = 'https://www.blackoak-re.com/insights/buyers/';
+  const frUrl = 'https://www.blackoak-re.com/fr/insights/buyers/';
+  const arUrl = 'https://www.blackoak-re.com/ar/insights/buyers/';
 
   return {
     title: t('title'),
     description: t('description'),
     keywords: ['buy property Dubai foreigner', 'Dubai property buying guide', 'Golden Visa Dubai property', 'freehold areas Dubai', 'mortgage Dubai property', 'how to buy villa Dubai', 'Dubai property costs', 'international buyers Dubai real estate'],
     alternates: {
-      canonical: `https://blackoak-re.com${localePath}`,
+      canonical: `https://www.blackoak-re.com${localePath}`,
       languages: {
+        'x-default': enUrl,
         en: enUrl,
         fr: frUrl,
         ar: arUrl,
@@ -36,9 +37,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
-      url: `https://blackoak-re.com${localePath}`,
+      url: `https://www.blackoak-re.com${localePath}`,
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('title') }],
+      images: [{ url: 'https://www.blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('title') }],
     },
   };
 }
@@ -53,9 +54,9 @@ export default async function BuyersPage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
-      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.insights'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/buyers/` },
-      { '@type': 'ListItem', position: 3, name: t('breadcrumbs.buyers'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/buyers/` },
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://www.blackoak-re.com' : `https://www.blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.insights'), item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/buyers/` },
+      { '@type': 'ListItem', position: 3, name: t('breadcrumbs.buyers'), item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/buyers/` },
     ],
   };
 
@@ -64,18 +65,18 @@ export default async function BuyersPage({ params }: Props) {
     '@type': 'HowTo',
     name: 'How to Buy Property in Dubai',
     description: 'Complete guide to buying property in Dubai as a foreigner — covering Golden Visa, freehold areas, mortgages, and the buying process.',
-    url: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/buyers/`,
+    url: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/buyers/`,
     inLanguage: locale,
     step: guides.map((guide, i) => ({
       '@type': 'HowToStep',
       position: i + 1,
       name: guide.title,
-      url: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/buyers/#${guide.id}`,
+      url: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/buyers/#${guide.id}`,
     })),
     author: {
       '@type': 'Organization',
       name: 'BlackOak Real Estate',
-      url: 'https://blackoak-re.com',
+      url: 'https://www.blackoak-re.com',
     },
   };
 

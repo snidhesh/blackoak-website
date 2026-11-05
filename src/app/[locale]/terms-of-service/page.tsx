@@ -14,8 +14,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: locale === 'en' ? 'https://blackoak-re.com/terms-of-service/' : `https://blackoak-re.com/${locale}/terms-of-service/`,
-      languages: { en: 'https://blackoak-re.com/terms-of-service/', fr: 'https://blackoak-re.com/fr/terms-of-service/', ar: 'https://blackoak-re.com/ar/terms-of-service/' },
+      canonical: locale === 'en' ? 'https://www.blackoak-re.com/terms-of-service/' : `https://www.blackoak-re.com/${locale}/terms-of-service/`,
+      languages: { 'x-default': 'https://www.blackoak-re.com/terms-of-service/', en: 'https://www.blackoak-re.com/terms-of-service/', fr: 'https://www.blackoak-re.com/fr/terms-of-service/', ar: 'https://www.blackoak-re.com/ar/terms-of-service/' },
     },
     keywords: ['terms of service BlackOak', 'BlackOak Real Estate terms', 'real estate terms of service Dubai', 'property terms and conditions UAE'],
     openGraph: {
@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'website',
       siteName: 'BlackOak Real Estate',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? 'https://blackoak-re.com/terms-of-service/' : `https://blackoak-re.com/${locale}/terms-of-service/`,
-      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+      url: locale === 'en' ? 'https://www.blackoak-re.com/terms-of-service/' : `https://www.blackoak-re.com/${locale}/terms-of-service/`,
+      images: [{ url: 'https://www.blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
 }
@@ -38,9 +38,9 @@ export default function TermsOfServicePage({ params }: { params: { locale: strin
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: termsData.sections[0]?.title || 'Terms of Service',
-    url: locale === 'en' ? 'https://blackoak-re.com/terms-of-service/' : `https://blackoak-re.com/${locale}/terms-of-service/`,
+    url: locale === 'en' ? 'https://www.blackoak-re.com/terms-of-service/' : `https://www.blackoak-re.com/${locale}/terms-of-service/`,
     inLanguage: locale,
-    isPartOf: { '@type': 'WebSite', name: 'BlackOak Real Estate', url: 'https://blackoak-re.com' },
+    isPartOf: { '@type': 'WebSite', name: 'BlackOak Real Estate', url: 'https://www.blackoak-re.com' },
     dateModified: '2026-05-01',
   };
 

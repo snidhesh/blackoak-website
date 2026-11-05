@@ -10,7 +10,7 @@ import { CurrencyProvider } from '@/context/CurrencyContext';
 import { getSplash } from '@/lib/content';
 import type { Locale } from '@/i18n/config';
 
-const BASE_URL = 'https://blackoak-re.com';
+const BASE_URL = 'https://www.blackoak-re.com';
 
 export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
   const locale = params.locale;
@@ -64,15 +64,8 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
     twitter: {
       card: 'summary_large_image',
     },
-    alternates: {
-      canonical: locale === 'en' ? `${BASE_URL}/` : `${BASE_URL}/${locale}/`,
-      languages: {
-        'x-default': `${BASE_URL}/`,
-        en: `${BASE_URL}/`,
-        fr: `${BASE_URL}/fr/`,
-        ar: `${BASE_URL}/ar/`,
-      },
-    },
+    // No layout-level canonical/hreflang: every page sets its own, and a layout
+    // default would leak the locale root as the canonical of 404 pages.
     robots: {
       index: true,
       follow: true,

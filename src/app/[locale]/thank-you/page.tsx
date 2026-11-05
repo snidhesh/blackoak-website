@@ -16,16 +16,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: locale === 'en' ? 'https://blackoak-re.com/thank-you/' : `https://blackoak-re.com/${locale}/thank-you/`,
-      languages: { en: 'https://blackoak-re.com/thank-you/', fr: 'https://blackoak-re.com/fr/thank-you/', ar: 'https://blackoak-re.com/ar/thank-you/' },
+      canonical: locale === 'en' ? 'https://www.blackoak-re.com/thank-you/' : `https://www.blackoak-re.com/${locale}/thank-you/`,
+      languages: { 'x-default': 'https://www.blackoak-re.com/thank-you/', en: 'https://www.blackoak-re.com/thank-you/', fr: 'https://www.blackoak-re.com/fr/thank-you/', ar: 'https://www.blackoak-re.com/ar/thank-you/' },
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? 'https://blackoak-re.com/thank-you/' : `https://blackoak-re.com/${locale}/thank-you/`,
-      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+      url: locale === 'en' ? 'https://www.blackoak-re.com/thank-you/' : `https://www.blackoak-re.com/${locale}/thank-you/`,
+      images: [{ url: 'https://www.blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
     robots: { index: false, follow: false },
   };

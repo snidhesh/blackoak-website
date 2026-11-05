@@ -19,16 +19,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: t('description'),
     keywords: ['Dubai property investment', 'real estate investment Dubai', 'Dubai ROI property', 'high yield Dubai property', 'syndicated real estate deals Dubai', 'HNWI investment Dubai', 'Golden Visa property investment', 'Dubai real estate returns'],
     alternates: {
-      canonical: locale === 'en' ? 'https://blackoak-re.com/insights/investors/' : `https://blackoak-re.com/${locale}/insights/investors/`,
-      languages: { en: 'https://blackoak-re.com/insights/investors/', fr: 'https://blackoak-re.com/fr/insights/investors/', ar: 'https://blackoak-re.com/ar/insights/investors/' },
+      canonical: locale === 'en' ? 'https://www.blackoak-re.com/insights/investors/' : `https://www.blackoak-re.com/${locale}/insights/investors/`,
+      languages: { 'x-default': 'https://www.blackoak-re.com/insights/investors/', en: 'https://www.blackoak-re.com/insights/investors/', fr: 'https://www.blackoak-re.com/fr/insights/investors/', ar: 'https://www.blackoak-re.com/ar/insights/investors/' },
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? 'https://blackoak-re.com/insights/investors/' : `https://blackoak-re.com/${locale}/insights/investors/`,
-      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+      url: locale === 'en' ? 'https://www.blackoak-re.com/insights/investors/' : `https://www.blackoak-re.com/${locale}/insights/investors/`,
+      images: [{ url: 'https://www.blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
 }
@@ -59,9 +59,9 @@ export default async function InvestorsPage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
-      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.insights'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/investors/` },
-      { '@type': 'ListItem', position: 3, name: t('breadcrumbs.investors'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/investors/` },
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://www.blackoak-re.com' : `https://www.blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.insights'), item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/investors/` },
+      { '@type': 'ListItem', position: 3, name: t('breadcrumbs.investors'), item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/insights/investors/` },
     ],
   };
 

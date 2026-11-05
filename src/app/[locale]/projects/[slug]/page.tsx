@@ -23,6 +23,14 @@ interface Props {
   params: { slug: string; locale: string };
 }
 
+// Cut at a word boundary so meta descriptions stay within what Google shows.
+function truncate(text: string, max: number): string {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max - 1);
+  return `${cut.slice(0, Math.max(cut.lastIndexOf(' '), max - 30))}…`;
+}
+
 export async function generateStaticParams() {
   return [];
 }
@@ -31,14 +39,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = await getProjectBySlug(params.slug);
   const locale = params.locale as Locale;
   const tMeta = await getTranslations({ locale, namespace: 'metadata.projectDetail' });
-  const tCommon = await getTranslations({ locale, namespace: 'common' });
-  if (!project) return { title: tMeta('notFoundTitle') };
+  if (!project) notFound();
 
   const name = getProjectName(project, locale);
   const desc = getProjectDescription(project, locale);
   const offeringLabel = project.offering === 'sale' ? tMeta('forSale') : project.offering === 'rent' || project.offering === 'yearly' ? tMeta('forRent') : '';
-  const title = `${name} | ${project.propertyType} ${offeringLabel} in ${project.location.address}`.trim();
-  const description = `${name} — ${project.propertyType} ${offeringLabel} in ${project.location.address}. ${project.bedrooms} ${tCommon('bedrooms')}, ${formatArea(project.area, locale)} ${project.areaUnit}. ${desc.slice(0, 120)}`;
+  // Title: "<beds> Bedroom <type> for Sale in <building>, <community>" — the
+  // listing name itself is broker shorthand ("3BR|Pool|Best Layout") and the
+  // CRM address repeats it, which used to produce 180+ character titles.
+  const locationLabel = [project.locationBuilding, project.locationCommunity || project.neighbourhood || 'Dubai']
+    .filter(Boolean)
+    .join(', ');
+  const titleVars = { bedrooms: project.bedrooms, type: project.propertyType, offering: offeringLabel, location: locationLabel };
+  const title = (project.bedrooms > 0 ? tMeta('titlePattern', titleVars) : tMeta('titlePatternNoBedrooms', titleVars))
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+  const area = `${formatArea(project.area, locale)} ${project.areaUnit}`.replace(/\.$/, '');
+  const description = truncate(`${title}, Dubai. ${area}. ${desc}`, 155);
 
   return {
     title,
@@ -57,15 +74,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? `https://blackoak-re.com/projects/${params.slug}/` : `https://blackoak-re.com/${locale}/projects/${params.slug}/`,
+      url: locale === 'en' ? `https://www.blackoak-re.com/projects/${params.slug}/` : `https://www.blackoak-re.com/${locale}/projects/${params.slug}/`,
       images: [{ url: project.mainImage, width: 1200, height: 630, alt: name }],
     },
     alternates: {
-      canonical: locale === 'en' ? `https://blackoak-re.com/projects/${params.slug}/` : `https://blackoak-re.com/${locale}/projects/${params.slug}/`,
+      canonical: locale === 'en' ? `https://www.blackoak-re.com/projects/${params.slug}/` : `https://www.blackoak-re.com/${locale}/projects/${params.slug}/`,
       languages: {
-        en: `https://blackoak-re.com/projects/${params.slug}/`,
-        fr: `https://blackoak-re.com/fr/projects/${params.slug}/`,
-        ar: `https://blackoak-re.com/ar/projects/${params.slug}/`,
+        'x-default': `https://www.blackoak-re.com/projects/${params.slug}/`,
+        en: `https://www.blackoak-re.com/projects/${params.slug}/`,
+        fr: `https://www.blackoak-re.com/fr/projects/${params.slug}/`,
+        ar: `https://www.blackoak-re.com/ar/projects/${params.slug}/`,
       },
     },
   };
@@ -105,7 +123,7 @@ export default async function ProjectDetailPage({ params }: Props) {
     '@type': ['RealEstateListing', 'Product'],
     name: projectName,
     description: projectDescription,
-    url: locale === 'en' ? `https://blackoak-re.com/projects/${params.slug}/` : `https://blackoak-re.com/${locale}/projects/${params.slug}/`,
+    url: locale === 'en' ? `https://www.blackoak-re.com/projects/${params.slug}/` : `https://www.blackoak-re.com/${locale}/projects/${params.slug}/`,
     inLanguage: locale,
     image: allImages,
     datePosted: project.availableFrom || new Date().toISOString().split('T')[0],
@@ -120,11 +138,11 @@ export default async function ProjectDetailPage({ params }: Props) {
       price: String(project.price),
       priceCurrency: 'AED',
       availability,
-      url: locale === 'en' ? `https://blackoak-re.com/projects/${params.slug}/` : `https://blackoak-re.com/${locale}/projects/${params.slug}/`,
+      url: locale === 'en' ? `https://www.blackoak-re.com/projects/${params.slug}/` : `https://www.blackoak-re.com/${locale}/projects/${params.slug}/`,
       seller: {
         '@type': 'RealEstateAgent',
         name: 'BlackOak Real Estate',
-        url: 'https://blackoak-re.com',
+        url: 'https://www.blackoak-re.com',
       },
     },
     ...(project.propertyType && { additionalType: `https://schema.org/${project.propertyType.replace(/\s+/g, '')}` }),
@@ -164,9 +182,9 @@ export default async function ProjectDetailPage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
-      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.projects'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/projects/` },
-      { '@type': 'ListItem', position: 3, name: projectName, item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/projects/${params.slug}/` },
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://www.blackoak-re.com' : `https://www.blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.projects'), item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/projects/` },
+      { '@type': 'ListItem', position: 3, name: projectName, item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/projects/${params.slug}/` },
     ],
   };
 

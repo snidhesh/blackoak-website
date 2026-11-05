@@ -19,16 +19,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: t('description'),
     keywords: ['Dubai real estate team', 'luxury property consultants Dubai', 'real estate advisors Dubai', 'property specialists UAE', 'BlackOak team'],
     alternates: {
-      canonical: locale === 'en' ? 'https://blackoak-re.com/about/our-team/' : `https://blackoak-re.com/${locale}/about/our-team/`,
-      languages: { en: 'https://blackoak-re.com/about/our-team/', fr: 'https://blackoak-re.com/fr/about/our-team/', ar: 'https://blackoak-re.com/ar/about/our-team/' },
+      canonical: locale === 'en' ? 'https://www.blackoak-re.com/about/our-team/' : `https://www.blackoak-re.com/${locale}/about/our-team/`,
+      languages: { 'x-default': 'https://www.blackoak-re.com/about/our-team/', en: 'https://www.blackoak-re.com/about/our-team/', fr: 'https://www.blackoak-re.com/fr/about/our-team/', ar: 'https://www.blackoak-re.com/ar/about/our-team/' },
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? 'https://blackoak-re.com/about/our-team/' : `https://blackoak-re.com/${locale}/about/our-team/`,
-      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+      url: locale === 'en' ? 'https://www.blackoak-re.com/about/our-team/' : `https://www.blackoak-re.com/${locale}/about/our-team/`,
+      images: [{ url: 'https://www.blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
 }
@@ -41,7 +41,7 @@ export default async function OurTeamPage({ params }: { params: { locale: string
   const realEstateTeam = team.filter((m) => m.category === 'real-estate');
   const creativeTeam = team.filter((m) => m.category === 'creative-ops');
 
-  const SITE = 'https://blackoak-re.com';
+  const SITE = 'https://www.blackoak-re.com';
   const teamPageUrl = locale === 'en' ? `${SITE}/about/our-team/` : `${SITE}/${locale}/about/our-team/`;
   const orgId = `${SITE}/#organization`;
 

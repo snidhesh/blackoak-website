@@ -50,7 +50,7 @@ function buildStatsSuffix(
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = params.locale as Locale;
   const neighbourhood = getNeighbourhoodBySlug(params.slug, locale);
-  if (!neighbourhood) return { title: 'Not Found' };
+  if (!neighbourhood) notFound();
 
   const projects = await getProjectsByNeighbourhood(params.slug);
   const priced = projects.filter((p) => p.price > 0);
@@ -59,9 +59,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const statsSuffix = buildStatsSuffix(projects.length, minPrice, currency, locale);
   const description = `${neighbourhood.seo.description}${statsSuffix}`;
 
-  const enhancedTitle = `${neighbourhood.seo.title} | Properties for Sale`;
   return {
-    title: enhancedTitle,
+    title: neighbourhood.seo.title,
     description,
     keywords: [`${neighbourhood.name} property for sale`, `${neighbourhood.name} villas for sale`, `${neighbourhood.name} apartments for sale`, `buy property ${neighbourhood.name}`, `${neighbourhood.name} real estate investment`, `invest ${neighbourhood.name} Dubai`, `luxury homes ${neighbourhood.name}`, `${neighbourhood.name} penthouse`, `${neighbourhood.name} Dubai property prices`],
     openGraph: {
@@ -69,15 +68,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? `https://blackoak-re.com/neighbourhoods/${params.slug}/` : `https://blackoak-re.com/${locale}/neighbourhoods/${params.slug}/`,
+      url: locale === 'en' ? `https://www.blackoak-re.com/neighbourhoods/${params.slug}/` : `https://www.blackoak-re.com/${locale}/neighbourhoods/${params.slug}/`,
       images: [{ url: neighbourhood.heroImage, width: 1200, height: 630, alt: `${neighbourhood.name} - Dubai` }],
     },
     alternates: {
-      canonical: locale === 'en' ? `https://blackoak-re.com/neighbourhoods/${params.slug}/` : `https://blackoak-re.com/${locale}/neighbourhoods/${params.slug}/`,
+      canonical: locale === 'en' ? `https://www.blackoak-re.com/neighbourhoods/${params.slug}/` : `https://www.blackoak-re.com/${locale}/neighbourhoods/${params.slug}/`,
       languages: {
-        en: `https://blackoak-re.com/neighbourhoods/${params.slug}/`,
-        fr: `https://blackoak-re.com/fr/neighbourhoods/${params.slug}/`,
-        ar: `https://blackoak-re.com/ar/neighbourhoods/${params.slug}/`,
+        'x-default': `https://www.blackoak-re.com/neighbourhoods/${params.slug}/`,
+        en: `https://www.blackoak-re.com/neighbourhoods/${params.slug}/`,
+        fr: `https://www.blackoak-re.com/fr/neighbourhoods/${params.slug}/`,
+        ar: `https://www.blackoak-re.com/ar/neighbourhoods/${params.slug}/`,
       },
     },
   };
@@ -98,7 +98,7 @@ export default async function NeighbourhoodPage({ params }: Props) {
     '@type': 'Place',
     name: neighbourhood.name,
     description: neighbourhood.seo.description,
-    url: locale === 'en' ? `https://blackoak-re.com/neighbourhoods/${params.slug}/` : `https://blackoak-re.com/${locale}/neighbourhoods/${params.slug}/`,
+    url: locale === 'en' ? `https://www.blackoak-re.com/neighbourhoods/${params.slug}/` : `https://www.blackoak-re.com/${locale}/neighbourhoods/${params.slug}/`,
     address: {
       '@type': 'PostalAddress',
       addressLocality: neighbourhood.name,
@@ -110,7 +110,7 @@ export default async function NeighbourhoodPage({ params }: Props) {
       name: 'Dubai',
       containedInPlace: { '@type': 'Country', name: 'United Arab Emirates' },
     },
-    image: neighbourhood.heroImage.startsWith('http') ? neighbourhood.heroImage : `https://blackoak-re.com${neighbourhood.heroImage}`,
+    image: neighbourhood.heroImage.startsWith('http') ? neighbourhood.heroImage : `https://www.blackoak-re.com${neighbourhood.heroImage}`,
     hasMap: `https://maps.google.com/?q=${encodeURIComponent(neighbourhood.name + ', Dubai, UAE')}`,
   };
 
@@ -132,9 +132,9 @@ export default async function NeighbourhoodPage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
-      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.neighbourhoods'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/neighbourhoods/` },
-      { '@type': 'ListItem', position: 3, name: neighbourhood.name, item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/neighbourhoods/${params.slug}/` },
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://www.blackoak-re.com' : `https://www.blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.neighbourhoods'), item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/neighbourhoods/` },
+      { '@type': 'ListItem', position: 3, name: neighbourhood.name, item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/neighbourhoods/${params.slug}/` },
     ],
   };
 

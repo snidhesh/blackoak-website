@@ -21,16 +21,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: t('description'),
     keywords: ['Dubai real estate jobs', 'real estate career Dubai', 'property consultant jobs Dubai', 'luxury real estate careers', 'BlackOak careers', 'real estate agent jobs UAE'],
     alternates: {
-      canonical: locale === 'en' ? 'https://blackoak-re.com/career/' : `https://blackoak-re.com/${locale}/career/`,
-      languages: { en: 'https://blackoak-re.com/career/', fr: 'https://blackoak-re.com/fr/career/', ar: 'https://blackoak-re.com/ar/career/' },
+      canonical: locale === 'en' ? 'https://www.blackoak-re.com/career/' : `https://www.blackoak-re.com/${locale}/career/`,
+      languages: { 'x-default': 'https://www.blackoak-re.com/career/', en: 'https://www.blackoak-re.com/career/', fr: 'https://www.blackoak-re.com/fr/career/', ar: 'https://www.blackoak-re.com/ar/career/' },
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? 'https://blackoak-re.com/career/' : `https://blackoak-re.com/${locale}/career/`,
-      images: [{ url: 'https://blackoak-re.com/images/og-career.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+      url: locale === 'en' ? 'https://www.blackoak-re.com/career/' : `https://www.blackoak-re.com/${locale}/career/`,
+      images: [{ url: 'https://www.blackoak-re.com/images/og-career.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
 }
@@ -82,8 +82,8 @@ export default async function CareerPage({ params }: Props) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://blackoak-re.com' : `https://blackoak-re.com/${locale}` },
-      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.careers'), item: `https://blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/career/` },
+      { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://www.blackoak-re.com' : `https://www.blackoak-re.com/${locale}` },
+      { '@type': 'ListItem', position: 2, name: t('breadcrumbs.careers'), item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/career/` },
     ],
   };
 
@@ -92,7 +92,7 @@ export default async function CareerPage({ params }: Props) {
     '@type': 'CollectionPage',
     name: 'Careers at BlackOak Real Estate',
     description: 'Join BlackOak Real Estate. Open positions for real estate consultants, investment advisors & property specialists in Dubai.',
-    url: locale === 'en' ? 'https://blackoak-re.com/career/' : `https://blackoak-re.com/${locale}/career/`,
+    url: locale === 'en' ? 'https://www.blackoak-re.com/career/' : `https://www.blackoak-re.com/${locale}/career/`,
     inLanguage: locale,
     mainEntity: {
       '@type': 'ItemList',
@@ -108,8 +108,8 @@ export default async function CareerPage({ params }: Props) {
             '@type': 'Place',
             address: { '@type': 'PostalAddress', addressLocality: job.location, addressCountry: 'AE' },
           },
-          hiringOrganization: { '@type': 'Organization', name: 'BlackOak Real Estate', sameAs: 'https://blackoak-re.com' },
-          url: locale === 'en' ? `https://blackoak-re.com/career/${job.slug}/` : `https://blackoak-re.com/${locale}/career/${job.slug}/`,
+          hiringOrganization: { '@type': 'Organization', name: 'BlackOak Real Estate', sameAs: 'https://www.blackoak-re.com' },
+          url: locale === 'en' ? `https://www.blackoak-re.com/career/${job.slug}/` : `https://www.blackoak-re.com/${locale}/career/${job.slug}/`,
         },
       })),
     },

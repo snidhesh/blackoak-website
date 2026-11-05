@@ -22,11 +22,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: t('title'),
     description: t('description'),
     alternates: {
-      canonical: locale === 'en' ? 'https://blackoak-re.com/international-properties/' : `https://blackoak-re.com/${locale}/international-properties/`,
+      canonical: locale === 'en' ? 'https://www.blackoak-re.com/international-properties/' : `https://www.blackoak-re.com/${locale}/international-properties/`,
       languages: {
-        en: 'https://blackoak-re.com/international-properties/',
-        fr: 'https://blackoak-re.com/fr/international-properties/',
-        ar: 'https://blackoak-re.com/ar/international-properties/',
+        'x-default': 'https://www.blackoak-re.com/international-properties/',
+        en: 'https://www.blackoak-re.com/international-properties/',
+        fr: 'https://www.blackoak-re.com/fr/international-properties/',
+        ar: 'https://www.blackoak-re.com/ar/international-properties/',
       },
     },
     openGraph: {
@@ -34,8 +35,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: t('ogDescription'),
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? 'https://blackoak-re.com/international-properties/' : `https://blackoak-re.com/${locale}/international-properties/`,
-      images: [{ url: 'https://blackoak-re.com/images/og-international.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+      url: locale === 'en' ? 'https://www.blackoak-re.com/international-properties/' : `https://www.blackoak-re.com/${locale}/international-properties/`,
+      images: [{ url: 'https://www.blackoak-re.com/images/og-international.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
 }
@@ -64,12 +65,12 @@ export default async function InternationalPropertiesPage({ params }: { params: 
     '@type': 'CollectionPage',
     name: t('heading'),
     description: t('subheading'),
-    url: locale === 'en' ? 'https://blackoak-re.com/international-properties/' : `https://blackoak-re.com/${locale}/international-properties/`,
+    url: locale === 'en' ? 'https://www.blackoak-re.com/international-properties/' : `https://www.blackoak-re.com/${locale}/international-properties/`,
     inLanguage: locale,
     publisher: {
       '@type': 'Organization',
       name: 'BlackOak Real Estate',
-      logo: { '@type': 'ImageObject', url: 'https://blackoak-re.com/images/logo-white.png' },
+      logo: { '@type': 'ImageObject', url: 'https://www.blackoak-re.com/images/logo-white.png' },
     },
     mainEntity: {
       '@type': 'ItemList',
@@ -80,7 +81,7 @@ export default async function InternationalPropertiesPage({ params }: { params: 
         item: {
           '@type': 'Place',
           name: country.name,
-          image: country.thumbnail.startsWith('http') ? country.thumbnail : `https://blackoak-re.com${country.thumbnail}`,
+          image: country.thumbnail.startsWith('http') ? country.thumbnail : `https://www.blackoak-re.com${country.thumbnail}`,
         },
       })),
     },

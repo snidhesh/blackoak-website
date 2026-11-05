@@ -2,7 +2,7 @@
   "metadata": {
     "siteName": "BlackOak Real Estate",
     "home": {
-      "title": "Propriétés de luxe et investissement à Dubai",
+      "title": "Immobilier de luxe et investissement à Dubaï | BlackOak Real Estate",
       "description": "Découvrez les plus belles propriétés de luxe de Dubai avec BlackOak Real Estate. Parcourez villas, appartements et penthouses haut de gamme à Palm Jumeirah, Emirates Hills, Downtown Dubai et plus encore.",
       "ogTitle": "BlackOak Real Estate | Propriétés de luxe et investissement à Dubai",
       "ogDescription": "Découvrez les plus belles propriétés de luxe de Dubai. Parcourez villas, appartements et penthouses haut de gamme dans les quartiers les plus prestigieux de Dubai.",
@@ -17,7 +17,9 @@
     "projectDetail": {
       "notFoundTitle": "Projet non trouvé",
       "forSale": "à vendre",
-      "forRent": "à louer"
+      "forRent": "à louer",
+      "titlePattern": "{type} {bedrooms} chambres {offering} à {location}",
+      "titlePatternNoBedrooms": "{type} {offering} à {location}"
     },
     "whyBlackoak": {
       "title": "Pourquoi BlackOak - Notre cabinet immobilier de luxe",
@@ -124,7 +126,7 @@
       "titleSuffix": "Propriétés de luxe | BlackOak"
     },
     "neighbourhoods": {
-      "title": "Quartiers de Dubai - Explorez les communautés de luxe | BlackOak Real Estate",
+      "title": "Quartiers de Dubai - Explorez les communautés de luxe",
       "description": "Découvrez les quartiers les plus prestigieux de Dubai. D'Emirates Hills à Palm Jumeirah, explorez les communautés de luxe et trouvez votre propriété idéale avec BlackOak Real Estate.",
       "ogTitle": "Quartiers de Dubai - Explorez les communautés de luxe | BlackOak",
       "ogDescription": "Découvrez les quartiers les plus prestigieux de Dubai. Explorez les communautés de luxe et trouvez votre propriété idéale avec BlackOak Real Estate."
@@ -957,6 +959,7 @@
         "buyingCostsHeading": "Les frais administratifs d'achat d'un bien achevé à Dubai"
       },
       "news": {
+        "pageHeading": "Actualités et analyses du marché immobilier de Dubaï",
         "breadcrumbs": {
           "home": "Accueil",
           "insights": "Perspectives",

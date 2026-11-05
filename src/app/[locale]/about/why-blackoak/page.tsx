@@ -20,16 +20,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: t('description'),
     keywords: ['about BlackOak Real Estate', 'luxury real estate firm Dubai', 'Dubai property advisory', 'private real estate office Dubai', 'HNWI real estate Dubai', 'luxury property concierge'],
     alternates: {
-      canonical: locale === 'en' ? 'https://blackoak-re.com/about/why-blackoak/' : `https://blackoak-re.com/${locale}/about/why-blackoak/`,
-      languages: { en: 'https://blackoak-re.com/about/why-blackoak/', fr: 'https://blackoak-re.com/fr/about/why-blackoak/', ar: 'https://blackoak-re.com/ar/about/why-blackoak/' },
+      canonical: locale === 'en' ? 'https://www.blackoak-re.com/about/why-blackoak/' : `https://www.blackoak-re.com/${locale}/about/why-blackoak/`,
+      languages: { 'x-default': 'https://www.blackoak-re.com/about/why-blackoak/', en: 'https://www.blackoak-re.com/about/why-blackoak/', fr: 'https://www.blackoak-re.com/fr/about/why-blackoak/', ar: 'https://www.blackoak-re.com/ar/about/why-blackoak/' },
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? 'https://blackoak-re.com/about/why-blackoak/' : `https://blackoak-re.com/${locale}/about/why-blackoak/`,
-      images: [{ url: 'https://blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+      url: locale === 'en' ? 'https://www.blackoak-re.com/about/why-blackoak/' : `https://www.blackoak-re.com/${locale}/about/why-blackoak/`,
+      images: [{ url: 'https://www.blackoak-re.com/images/og-default.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
 }
@@ -72,13 +72,13 @@ export default async function WhyBlackOakPage({ params }: { params: { locale: st
     '@type': 'AboutPage',
     name: 'Why BlackOak Real Estate',
     description: 'BlackOak Real Estate combines private advisory, concierge services & strategic investments across Dubai.',
-    url: locale === 'en' ? 'https://blackoak-re.com/about/why-blackoak/' : `https://blackoak-re.com/${locale}/about/why-blackoak/`,
+    url: locale === 'en' ? 'https://www.blackoak-re.com/about/why-blackoak/' : `https://www.blackoak-re.com/${locale}/about/why-blackoak/`,
     inLanguage: locale,
     mainEntity: {
       '@type': 'RealEstateAgent',
       name: 'BlackOak Real Estate',
-      url: 'https://blackoak-re.com',
-      logo: 'https://blackoak-re.com/images/logo-white.png',
+      url: 'https://www.blackoak-re.com',
+      logo: 'https://www.blackoak-re.com/images/logo-white.png',
       foundingDate: '2019',
       areaServed: { '@type': 'City', name: 'Dubai' },
       address: [

@@ -2,7 +2,7 @@
   "metadata": {
     "siteName": "BlackOak Real Estate",
     "home": {
-      "title": "Luxury Properties & Investment in Dubai",
+      "title": "Dubai Luxury Real Estate & Property Investment | BlackOak Real Estate",
       "description": "Discover Dubai's finest luxury properties with BlackOak Real Estate. Browse premium villas, apartments & penthouses across Palm Jumeirah, Emirates Hills, Downtown Dubai and more.",
       "ogTitle": "BlackOak Real Estate | Luxury Properties & Investment in Dubai",
       "ogDescription": "Discover Dubai's finest luxury properties. Browse premium villas, apartments & penthouses across Dubai's most prestigious neighbourhoods.",
@@ -17,7 +17,9 @@
     "projectDetail": {
       "notFoundTitle": "Project Not Found",
       "forSale": "for Sale",
-      "forRent": "for Rent"
+      "forRent": "for Rent",
+      "titlePattern": "{bedrooms} Bedroom {type} {offering} in {location}",
+      "titlePatternNoBedrooms": "{type} {offering} in {location}"
     },
     "whyBlackoak": {
       "title": "Why BlackOak - About Our Luxury Real Estate Firm",
@@ -124,7 +126,7 @@
       "titleSuffix": "Luxury Properties | BlackOak"
     },
     "neighbourhoods": {
-      "title": "Dubai Neighbourhoods - Explore Luxury Communities | BlackOak Real Estate",
+      "title": "Dubai Neighbourhoods - Explore Luxury Communities",
       "description": "Discover Dubai's most prestigious neighbourhoods. From Emirates Hills to Palm Jumeirah, explore luxury communities and find your ideal property with BlackOak Real Estate.",
       "ogTitle": "Dubai Neighbourhoods - Explore Luxury Communities | BlackOak",
       "ogDescription": "Discover Dubai's most prestigious neighbourhoods. Explore luxury communities and find your ideal property with BlackOak Real Estate."
@@ -957,6 +959,7 @@
         "buyingCostsHeading": "The Administrative Costs of Buying a Completed Property in Dubai"
       },
       "news": {
+        "pageHeading": "Dubai Real Estate News & Market Insights",
         "breadcrumbs": {
           "home": "Home",
           "insights": "Insights",

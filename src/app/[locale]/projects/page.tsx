@@ -20,16 +20,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: t('description'),
     keywords: ['luxury properties for sale Dubai', 'Dubai apartments for rent', 'villas for sale Dubai', 'penthouses Dubai', 'off-plan properties Dubai', 'Palm Jumeirah property', 'Emirates Hills villas', 'Dubai Hills Estate', 'branded residences Dubai'],
     alternates: {
-      canonical: locale === 'en' ? 'https://blackoak-re.com/projects/' : `https://blackoak-re.com/${locale}/projects/`,
-      languages: { en: 'https://blackoak-re.com/projects/', fr: 'https://blackoak-re.com/fr/projects/', ar: 'https://blackoak-re.com/ar/projects/' },
+      canonical: locale === 'en' ? 'https://www.blackoak-re.com/projects/' : `https://www.blackoak-re.com/${locale}/projects/`,
+      languages: { 'x-default': 'https://www.blackoak-re.com/projects/', en: 'https://www.blackoak-re.com/projects/', fr: 'https://www.blackoak-re.com/fr/projects/', ar: 'https://www.blackoak-re.com/ar/projects/' },
     },
     openGraph: {
       title: t('ogTitle'),
       description: t('ogDescription'),
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? 'https://blackoak-re.com/projects/' : `https://blackoak-re.com/${locale}/projects/`,
-      images: [{ url: 'https://blackoak-re.com/images/og-projects.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
+      url: locale === 'en' ? 'https://www.blackoak-re.com/projects/' : `https://www.blackoak-re.com/${locale}/projects/`,
+      images: [{ url: 'https://www.blackoak-re.com/images/og-projects.jpg', width: 1200, height: 630, alt: t('ogTitle') }],
     },
   };
 }
@@ -48,7 +48,7 @@ export default async function ProjectsPage({ params }: { params: { locale: strin
     '@type': 'CollectionPage',
     name: 'Luxury Properties for Sale & Rent in Dubai',
     description: 'Explore luxury villas, apartments & penthouses for sale and rent across Dubai\'s most prestigious neighbourhoods.',
-    url: locale === 'en' ? 'https://blackoak-re.com/projects/' : `https://blackoak-re.com/${locale}/projects/`,
+    url: locale === 'en' ? 'https://www.blackoak-re.com/projects/' : `https://www.blackoak-re.com/${locale}/projects/`,
     inLanguage: locale,
     mainEntity: {
       '@type': 'ItemList',
@@ -56,7 +56,7 @@ export default async function ProjectsPage({ params }: { params: { locale: strin
       itemListElement: projects.slice(0, 20).map((p, i) => ({
         '@type': 'ListItem',
         position: i + 1,
-        url: locale === 'en' ? `https://blackoak-re.com/projects/${p.slug}/` : `https://blackoak-re.com/${locale}/projects/${p.slug}/`,
+        url: locale === 'en' ? `https://www.blackoak-re.com/projects/${p.slug}/` : `https://www.blackoak-re.com/${locale}/projects/${p.slug}/`,
         name: p.name,
       })),
     },
