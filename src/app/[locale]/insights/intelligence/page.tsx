@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ],
     alternates: {
       canonical: localeUrl(locale),
-      languages: { en: localeUrl('en'), fr: localeUrl('fr'), ar: localeUrl('ar') },
+      languages: { 'x-default': localeUrl('en'), en: localeUrl('en'), fr: localeUrl('fr'), ar: localeUrl('ar') },
     },
     openGraph: {
       title: t('ogTitle'),

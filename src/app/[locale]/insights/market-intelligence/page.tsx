@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     ],
     alternates: {
       canonical: `https://www.blackoak-re.com${localePath}`,
-      languages: { en: enUrl, fr: frUrl, ar: arUrl },
+      languages: { 'x-default': enUrl, en: enUrl, fr: frUrl, ar: arUrl },
     },
     openGraph: {
       title: t('ogTitle'),

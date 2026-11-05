@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: ['about BlackOak Real Estate', 'luxury real estate firm Dubai', 'Dubai property advisory', 'private real estate office Dubai', 'HNWI real estate Dubai', 'luxury property concierge'],
     alternates: {
       canonical: locale === 'en' ? 'https://www.blackoak-re.com/about/why-blackoak/' : `https://www.blackoak-re.com/${locale}/about/why-blackoak/`,
-      languages: { en: 'https://www.blackoak-re.com/about/why-blackoak/', fr: 'https://www.blackoak-re.com/fr/about/why-blackoak/', ar: 'https://www.blackoak-re.com/ar/about/why-blackoak/' },
+      languages: { 'x-default': 'https://www.blackoak-re.com/about/why-blackoak/', en: 'https://www.blackoak-re.com/about/why-blackoak/', fr: 'https://www.blackoak-re.com/fr/about/why-blackoak/', ar: 'https://www.blackoak-re.com/ar/about/why-blackoak/' },
     },
     openGraph: {
       title: t('ogTitle'),

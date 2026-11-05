@@ -32,12 +32,14 @@ export async function generateMetadata({ params }: { params: { locale: string } 
   const locale = params.locale as Locale;
   const t = await getTranslations({ locale, namespace: 'metadata.home' });
   return {
+    // The layout's title template only applies to child segments, not to this
+    // same-segment page, so the home title carries the brand itself.
     title: t('title'),
     description: t('description'),
     keywords: ['Dubai luxury real estate', 'luxury properties Dubai', 'buy villa Dubai', 'apartments for sale Dubai', 'Palm Jumeirah property', 'Emirates Hills mansions', 'Dubai property investment', 'off-plan Dubai', 'BlackOak Real Estate', 'luxury penthouses Dubai Marina'],
     alternates: {
       canonical: locale === 'en' ? 'https://www.blackoak-re.com/' : `https://www.blackoak-re.com/${locale}/`,
-      languages: { en: 'https://www.blackoak-re.com/', fr: 'https://www.blackoak-re.com/fr/', ar: 'https://www.blackoak-re.com/ar/' },
+      languages: { 'x-default': 'https://www.blackoak-re.com/', en: 'https://www.blackoak-re.com/', fr: 'https://www.blackoak-re.com/fr/', ar: 'https://www.blackoak-re.com/ar/' },
     },
     openGraph: {
       title: t('ogTitle'),

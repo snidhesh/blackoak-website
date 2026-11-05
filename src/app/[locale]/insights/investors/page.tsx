@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: ['Dubai property investment', 'real estate investment Dubai', 'Dubai ROI property', 'high yield Dubai property', 'syndicated real estate deals Dubai', 'HNWI investment Dubai', 'Golden Visa property investment', 'Dubai real estate returns'],
     alternates: {
       canonical: locale === 'en' ? 'https://www.blackoak-re.com/insights/investors/' : `https://www.blackoak-re.com/${locale}/insights/investors/`,
-      languages: { en: 'https://www.blackoak-re.com/insights/investors/', fr: 'https://www.blackoak-re.com/fr/insights/investors/', ar: 'https://www.blackoak-re.com/ar/insights/investors/' },
+      languages: { 'x-default': 'https://www.blackoak-re.com/insights/investors/', en: 'https://www.blackoak-re.com/insights/investors/', fr: 'https://www.blackoak-re.com/fr/insights/investors/', ar: 'https://www.blackoak-re.com/ar/insights/investors/' },
     },
     openGraph: {
       title: t('ogTitle'),

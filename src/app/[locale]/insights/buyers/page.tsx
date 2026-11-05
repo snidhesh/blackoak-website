@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `https://www.blackoak-re.com${localePath}`,
       languages: {
+        'x-default': enUrl,
         en: enUrl,
         fr: frUrl,
         ar: arUrl,

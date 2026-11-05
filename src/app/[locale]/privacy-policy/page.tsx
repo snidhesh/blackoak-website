@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: t('description'),
     alternates: {
       canonical: locale === 'en' ? 'https://www.blackoak-re.com/privacy-policy/' : `https://www.blackoak-re.com/${locale}/privacy-policy/`,
-      languages: { en: 'https://www.blackoak-re.com/privacy-policy/', fr: 'https://www.blackoak-re.com/fr/privacy-policy/', ar: 'https://www.blackoak-re.com/ar/privacy-policy/' },
+      languages: { 'x-default': 'https://www.blackoak-re.com/privacy-policy/', en: 'https://www.blackoak-re.com/privacy-policy/', fr: 'https://www.blackoak-re.com/fr/privacy-policy/', ar: 'https://www.blackoak-re.com/ar/privacy-policy/' },
     },
     keywords: ['privacy policy BlackOak', 'data privacy Dubai real estate', 'BlackOak data protection', 'real estate privacy policy UAE'],
     openGraph: {

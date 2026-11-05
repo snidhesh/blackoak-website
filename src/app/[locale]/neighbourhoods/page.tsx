@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: locale === 'en' ? 'https://www.blackoak-re.com/neighbourhoods/' : `https://www.blackoak-re.com/${locale}/neighbourhoods/`,
       languages: {
+        'x-default': 'https://www.blackoak-re.com/neighbourhoods/',
         en: 'https://www.blackoak-re.com/neighbourhoods/',
         fr: 'https://www.blackoak-re.com/fr/neighbourhoods/',
         ar: 'https://www.blackoak-re.com/ar/neighbourhoods/',

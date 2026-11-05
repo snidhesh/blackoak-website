@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: ['Dubai real estate jobs', 'real estate career Dubai', 'property consultant jobs Dubai', 'luxury real estate careers', 'BlackOak careers', 'real estate agent jobs UAE'],
     alternates: {
       canonical: locale === 'en' ? 'https://www.blackoak-re.com/career/' : `https://www.blackoak-re.com/${locale}/career/`,
-      languages: { en: 'https://www.blackoak-re.com/career/', fr: 'https://www.blackoak-re.com/fr/career/', ar: 'https://www.blackoak-re.com/ar/career/' },
+      languages: { 'x-default': 'https://www.blackoak-re.com/career/', en: 'https://www.blackoak-re.com/career/', fr: 'https://www.blackoak-re.com/fr/career/', ar: 'https://www.blackoak-re.com/ar/career/' },
     },
     openGraph: {
       title: t('ogTitle'),

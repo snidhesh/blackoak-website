@@ -66,6 +66,7 @@ export function generateMetadata({ params }: Props): Metadata {
     alternates: {
       canonical: locale === 'en' ? `https://www.blackoak-re.com/insights/news/${params.slug}/` : `https://www.blackoak-re.com/${locale}/insights/news/${params.slug}/`,
       languages: {
+        'x-default': `https://www.blackoak-re.com/insights/news/${params.slug}/`,
         en: `https://www.blackoak-re.com/insights/news/${params.slug}/`,
         fr: `https://www.blackoak-re.com/fr/insights/news/${params.slug}/`,
         ar: `https://www.blackoak-re.com/ar/insights/news/${params.slug}/`,

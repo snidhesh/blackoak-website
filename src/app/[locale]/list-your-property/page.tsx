@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: ['sell property Dubai', 'list property Dubai', 'sell villa Dubai', 'sell apartment Dubai', 'Dubai property agent', 'property valuation Dubai', 'rent property Dubai'],
     alternates: {
       canonical: locale === 'en' ? 'https://www.blackoak-re.com/list-your-property/' : `https://www.blackoak-re.com/${locale}/list-your-property/`,
-      languages: { en: 'https://www.blackoak-re.com/list-your-property/', fr: 'https://www.blackoak-re.com/fr/list-your-property/', ar: 'https://www.blackoak-re.com/ar/list-your-property/' },
+      languages: { 'x-default': 'https://www.blackoak-re.com/list-your-property/', en: 'https://www.blackoak-re.com/list-your-property/', fr: 'https://www.blackoak-re.com/fr/list-your-property/', ar: 'https://www.blackoak-re.com/ar/list-your-property/' },
     },
     openGraph: {
       title: t('ogTitle'),

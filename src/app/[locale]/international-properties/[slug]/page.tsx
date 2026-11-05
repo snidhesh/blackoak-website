@@ -50,6 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: canonicalUrl,
       languages: {
+        'x-default': `https://www.blackoak-re.com${path}`,
         en: `https://www.blackoak-re.com${path}`,
         fr: `https://www.blackoak-re.com/fr${path}`,
         ar: `https://www.blackoak-re.com/ar${path}`,

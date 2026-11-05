@@ -75,6 +75,7 @@ export function generateMetadata({ params }: Props): Metadata {
     alternates: {
       canonical: locale === 'en' ? `https://www.blackoak-re.com/career/${params.slug}/` : `https://www.blackoak-re.com/${locale}/career/${params.slug}/`,
       languages: {
+        'x-default': `https://www.blackoak-re.com/career/${params.slug}/`,
         en: `https://www.blackoak-re.com/career/${params.slug}/`,
         fr: `https://www.blackoak-re.com/fr/career/${params.slug}/`,
         ar: `https://www.blackoak-re.com/ar/career/${params.slug}/`,

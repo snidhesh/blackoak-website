@@ -2,7 +2,7 @@
   "metadata": {
     "siteName": "BlackOak Real Estate",
     "home": {
-      "title": "Luxury Properties & Investment in Dubai",
+      "title": "Dubai Luxury Real Estate & Property Investment | BlackOak Real Estate",
       "description": "Discover Dubai's finest luxury properties with BlackOak Real Estate. Browse premium villas, apartments & penthouses across Palm Jumeirah, Emirates Hills, Downtown Dubai and more.",
       "ogTitle": "BlackOak Real Estate | Luxury Properties & Investment in Dubai",
       "ogDescription": "Discover Dubai's finest luxury properties. Browse premium villas, apartments & penthouses across Dubai's most prestigious neighbourhoods.",
@@ -959,6 +959,7 @@
         "buyingCostsHeading": "The Administrative Costs of Buying a Completed Property in Dubai"
       },
       "news": {
+        "pageHeading": "Dubai Real Estate News & Market Insights",
         "breadcrumbs": {
           "home": "Home",
           "insights": "Insights",

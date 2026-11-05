@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: t('description'),
     alternates: {
       canonical: locale === 'en' ? 'https://www.blackoak-re.com/disclaimer/' : `https://www.blackoak-re.com/${locale}/disclaimer/`,
-      languages: { en: 'https://www.blackoak-re.com/disclaimer/', fr: 'https://www.blackoak-re.com/fr/disclaimer/', ar: 'https://www.blackoak-re.com/ar/disclaimer/' },
+      languages: { 'x-default': 'https://www.blackoak-re.com/disclaimer/', en: 'https://www.blackoak-re.com/disclaimer/', fr: 'https://www.blackoak-re.com/fr/disclaimer/', ar: 'https://www.blackoak-re.com/ar/disclaimer/' },
     },
     keywords: ['disclaimer BlackOak Real Estate', 'real estate disclaimer Dubai', 'property investment disclaimer UAE', 'BlackOak legal disclaimer'],
     openGraph: {

@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: ['Dubai real estate news', 'Dubai property market updates', 'Dubai real estate trends', 'luxury property market Dubai', 'Dubai property reports', 'UAE real estate insights'],
     alternates: {
       canonical: locale === 'en' ? 'https://www.blackoak-re.com/insights/news/' : `https://www.blackoak-re.com/${locale}/insights/news/`,
-      languages: { en: 'https://www.blackoak-re.com/insights/news/', fr: 'https://www.blackoak-re.com/fr/insights/news/', ar: 'https://www.blackoak-re.com/ar/insights/news/' },
+      languages: { 'x-default': 'https://www.blackoak-re.com/insights/news/', en: 'https://www.blackoak-re.com/insights/news/', fr: 'https://www.blackoak-re.com/fr/insights/news/', ar: 'https://www.blackoak-re.com/ar/insights/news/' },
     },
     openGraph: {
       title: t('ogTitle'),
@@ -90,6 +90,9 @@ export default async function NewsPage({ params }: Props) {
       {/* Featured Article */}
       <section className="pt-[156px] pb-16">
         <div className="container-wide">
+          <h1 className="text-[14px] font-medium uppercase tracking-wide text-[#5f6368] mb-10">
+            {t('pageHeading')}
+          </h1>
           <AnimateOnScroll>
             <div className="flex flex-col lg:flex-row items-center gap-16">
               {/* Image */}
@@ -110,9 +113,9 @@ export default async function NewsPage({ params }: Props) {
                     {formatDate(featured.publishedDate, locale)}
                   </p>
                   <div className="flex flex-col gap-8">
-                    <h1 className="text-[40px] font-semibold leading-[48px] text-black max-w-[509px]">
+                    <h2 className="text-[40px] font-semibold leading-[48px] text-black max-w-[509px]">
                       {featured.title}
-                    </h1>
+                    </h2>
                     <p className="text-[16px] font-normal leading-[28px] tracking-[0.16px] text-[#5f6368] max-w-[496px]">
                       {featured.excerpt}
                     </p>

@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     keywords: ['luxury properties for sale Dubai', 'Dubai apartments for rent', 'villas for sale Dubai', 'penthouses Dubai', 'off-plan properties Dubai', 'Palm Jumeirah property', 'Emirates Hills villas', 'Dubai Hills Estate', 'branded residences Dubai'],
     alternates: {
       canonical: locale === 'en' ? 'https://www.blackoak-re.com/projects/' : `https://www.blackoak-re.com/${locale}/projects/`,
-      languages: { en: 'https://www.blackoak-re.com/projects/', fr: 'https://www.blackoak-re.com/fr/projects/', ar: 'https://www.blackoak-re.com/ar/projects/' },
+      languages: { 'x-default': 'https://www.blackoak-re.com/projects/', en: 'https://www.blackoak-re.com/projects/', fr: 'https://www.blackoak-re.com/fr/projects/', ar: 'https://www.blackoak-re.com/ar/projects/' },
     },
     openGraph: {
       title: t('ogTitle'),

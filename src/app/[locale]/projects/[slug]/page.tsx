@@ -80,6 +80,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: locale === 'en' ? `https://www.blackoak-re.com/projects/${params.slug}/` : `https://www.blackoak-re.com/${locale}/projects/${params.slug}/`,
       languages: {
+        'x-default': `https://www.blackoak-re.com/projects/${params.slug}/`,
         en: `https://www.blackoak-re.com/projects/${params.slug}/`,
         fr: `https://www.blackoak-re.com/fr/projects/${params.slug}/`,
         ar: `https://www.blackoak-re.com/ar/projects/${params.slug}/`,
