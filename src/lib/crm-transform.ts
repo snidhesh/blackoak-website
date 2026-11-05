@@ -107,8 +107,13 @@ export function generateListingSlug(listing: CrmListing): string {
 
 export function transformListing(listing: CrmListing): Project {
   const images = listing.images ?? [];
-  const address = [listing.address, listing.locationCommunity, 'Dubai']
-    .filter(Boolean)
+  // The CRM's `address` field usually repeats the listing title, so build the
+  // display/SEO address from the structured location fields instead and only
+  // fall back to `address` when it carries something different.
+  const crmAddress =
+    listing.address && listing.address.trim() !== (listing.titleEn || '').trim() ? listing.address : '';
+  const address = [listing.locationBuilding || crmAddress, listing.locationCommunity, 'Dubai']
+    .filter((part, i, arr) => Boolean(part) && arr.indexOf(part) === i)
     .join(', ');
 
   const isComingSoon =

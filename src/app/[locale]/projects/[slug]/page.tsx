@@ -23,6 +23,14 @@ interface Props {
   params: { slug: string; locale: string };
 }
 
+// Cut at a word boundary so meta descriptions stay within what Google shows.
+function truncate(text: string, max: number): string {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max - 1);
+  return `${cut.slice(0, Math.max(cut.lastIndexOf(' '), max - 30))}…`;
+}
+
 export async function generateStaticParams() {
   return [];
 }
@@ -31,14 +39,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const project = await getProjectBySlug(params.slug);
   const locale = params.locale as Locale;
   const tMeta = await getTranslations({ locale, namespace: 'metadata.projectDetail' });
-  const tCommon = await getTranslations({ locale, namespace: 'common' });
   if (!project) notFound();
 
   const name = getProjectName(project, locale);
   const desc = getProjectDescription(project, locale);
   const offeringLabel = project.offering === 'sale' ? tMeta('forSale') : project.offering === 'rent' || project.offering === 'yearly' ? tMeta('forRent') : '';
-  const title = `${name} | ${project.propertyType} ${offeringLabel} in ${project.location.address}`.trim();
-  const description = `${name} — ${project.propertyType} ${offeringLabel} in ${project.location.address}. ${project.bedrooms} ${tCommon('bedrooms')}, ${formatArea(project.area, locale)} ${project.areaUnit}. ${desc.slice(0, 120)}`;
+  // Title: "<beds> Bedroom <type> for Sale in <building>, <community>" — the
+  // listing name itself is broker shorthand ("3BR|Pool|Best Layout") and the
+  // CRM address repeats it, which used to produce 180+ character titles.
+  const locationLabel = [project.locationBuilding, project.locationCommunity || project.neighbourhood || 'Dubai']
+    .filter(Boolean)
+    .join(', ');
+  const titleVars = { bedrooms: project.bedrooms, type: project.propertyType, offering: offeringLabel, location: locationLabel };
+  const title = (project.bedrooms > 0 ? tMeta('titlePattern', titleVars) : tMeta('titlePatternNoBedrooms', titleVars))
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+  const area = `${formatArea(project.area, locale)} ${project.areaUnit}`.replace(/\.$/, '');
+  const description = truncate(`${title}, Dubai. ${area}. ${desc}`, 155);
 
   return {
     title,

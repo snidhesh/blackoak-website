@@ -17,7 +17,9 @@
     "projectDetail": {
       "notFoundTitle": "لم يتم العثور على المشروع",
       "forSale": "للبيع",
-      "forRent": "للإيجار"
+      "forRent": "للإيجار",
+      "titlePattern": "{type} {bedrooms} غرف نوم {offering} في {location}",
+      "titlePatternNoBedrooms": "{type} {offering} في {location}"
     },
     "whyBlackoak": {
       "title": "لماذا BlackOak - عن شركتنا العقارية الفاخرة",
@@ -124,7 +126,7 @@
       "titleSuffix": "عقارات فاخرة | BlackOak"
     },
     "neighbourhoods": {
-      "title": "أحياء دبي - استكشف المجتمعات الفاخرة | BlackOak للعقارات",
+      "title": "أحياء دبي - استكشف المجتمعات الفاخرة",
       "description": "اكتشف أكثر أحياء دبي شهرة. من تلال الإمارات إلى نخلة جميرا، استكشف المجتمعات الفاخرة وابحث عن عقارك المثالي مع BlackOak للعقارات.",
       "ogTitle": "أحياء دبي - استكشف المجتمعات الفاخرة | BlackOak",
       "ogDescription": "اكتشف أكثر أحياء دبي شهرة. استكشف المجتمعات الفاخرة وابحث عن عقارك المثالي مع BlackOak للعقارات."

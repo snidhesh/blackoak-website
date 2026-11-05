@@ -17,7 +17,9 @@
     "projectDetail": {
       "notFoundTitle": "Project Not Found",
       "forSale": "for Sale",
-      "forRent": "for Rent"
+      "forRent": "for Rent",
+      "titlePattern": "{bedrooms} Bedroom {type} {offering} in {location}",
+      "titlePatternNoBedrooms": "{type} {offering} in {location}"
     },
     "whyBlackoak": {
       "title": "Why BlackOak - About Our Luxury Real Estate Firm",
@@ -124,7 +126,7 @@
       "titleSuffix": "Luxury Properties | BlackOak"
     },
     "neighbourhoods": {
-      "title": "Dubai Neighbourhoods - Explore Luxury Communities | BlackOak Real Estate",
+      "title": "Dubai Neighbourhoods - Explore Luxury Communities",
       "description": "Discover Dubai's most prestigious neighbourhoods. From Emirates Hills to Palm Jumeirah, explore luxury communities and find your ideal property with BlackOak Real Estate.",
       "ogTitle": "Dubai Neighbourhoods - Explore Luxury Communities | BlackOak",
       "ogDescription": "Discover Dubai's most prestigious neighbourhoods. Explore luxury communities and find your ideal property with BlackOak Real Estate."

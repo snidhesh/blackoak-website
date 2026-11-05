@@ -59,9 +59,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const statsSuffix = buildStatsSuffix(projects.length, minPrice, currency, locale);
   const description = `${neighbourhood.seo.description}${statsSuffix}`;
 
-  const enhancedTitle = `${neighbourhood.seo.title} | Properties for Sale`;
   return {
-    title: enhancedTitle,
+    title: neighbourhood.seo.title,
     description,
     keywords: [`${neighbourhood.name} property for sale`, `${neighbourhood.name} villas for sale`, `${neighbourhood.name} apartments for sale`, `buy property ${neighbourhood.name}`, `${neighbourhood.name} real estate investment`, `invest ${neighbourhood.name} Dubai`, `luxury homes ${neighbourhood.name}`, `${neighbourhood.name} penthouse`, `${neighbourhood.name} Dubai property prices`],
     openGraph: {
