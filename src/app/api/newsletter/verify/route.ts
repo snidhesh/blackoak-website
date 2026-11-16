@@ -1,11 +1,10 @@
 // Step 2 of the subscribe-to-unlock gate: check the emailed code against the signed
-// challenge. Only a verified address reaches the team inbox, and only then does the
+// challenge. Only a verified address is saved as a subscriber, and only then does the
 // browser get the access cookie that opens /briefing (the pages themselves unlock
 // client-side).
 
 import { NextRequest, NextResponse } from 'next/server';
 import { newsletterVerifySchema } from '@/lib/schemas';
-import { sendFormEmail, renderFieldsTable } from '@/lib/email';
 import { addSubscriberContact } from '@/lib/resend-contacts';
 import { submitNewsletterCrmLead } from '@/lib/crm-lead';
 import { verifyChallenge } from '@/lib/newsletter-token';
@@ -16,12 +15,10 @@ import {
   getClientIP,
   hashKey,
   isRateLimitConfigured,
-  releaseChallenge,
 } from '@/lib/rate-limit';
 import { FORM_ERROR_CODES, NEWSLETTER_ERROR_CODES } from '@/lib/error-codes';
 import { INTEL_ACCESS_COOKIE, type SubscribeSource } from '@/lib/constants';
 
-const LOCALE_LABELS: Record<string, string> = { en: 'English', fr: 'French', ar: 'Arabic' };
 const SOURCE_LABELS: Record<SubscribeSource, string> = {
   'market-intelligence': 'Market Intelligence',
   'intelligence-hub': 'Intelligence Hub',
@@ -34,7 +31,7 @@ function fail(field: '_form' | 'code', code: string, status: number) {
 export async function POST(request: NextRequest) {
   try {
     // Without the access secret a success here would send the visitor into a loop
-    // between /briefing and the hub, emailing the team on every bounce. Stop first.
+    // between /briefing and the hub, filing a subscriber on every bounce. Stop first.
     if (!hasAccessSecret()) {
       console.error('[api/newsletter/verify] INTEL_ACCESS_SECRET is missing or too short');
       return fail('_form', FORM_ERROR_CODES.submitFailed, 500);
@@ -72,7 +69,7 @@ export async function POST(request: NextRequest) {
         : fail('code', NEWSLETTER_ERROR_CODES.codeInvalid, 400);
     }
 
-    // Single use, claimed before the team email so two parallel requests cannot
+    // Single use, claimed before anything is saved so two parallel requests cannot
     // both get through. An Upstash error is not "unused": fail closed in production.
     let claim: Awaited<ReturnType<typeof claimChallenge>>;
     try {
@@ -88,46 +85,11 @@ export async function POST(request: NextRequest) {
 
     const { firstName, lastName, email, phone, locale, source, utm } = verified.payload;
     const sourceLabel = (source && SOURCE_LABELS[source]) || SOURCE_LABELS['market-intelligence'];
-    const fullName = `${firstName} ${lastName}`.trim();
-    const utmRows: Array<[string, string | undefined]> = utm
-      ? Object.entries(utm).map(([k, v]) => [`UTM ${k}`, v])
-      : [];
-    const table = renderFieldsTable([
-      ['Name', fullName],
-      ['Email', email],
-      ['Email verified', 'Yes — confirmed with a one-time code'],
-      ['Phone', phone],
-      ['Language', locale ? LOCALE_LABELS[locale] : undefined],
-      ['Source', `${sourceLabel} — subscribe to unlock`],
-      ['Consent', 'Agreed to receive market updates by email'],
-      ...utmRows,
-      ['Verified at', new Date().toISOString()],
-    ]);
-    const html = `
-      <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#111">
-        <h2 style="margin:0 0 12px;font-size:18px">New ${sourceLabel} Subscriber</h2>
-        ${table}
-      </div>
-    `;
-
-    const emailResult = await sendFormEmail({
-      subject: `${sourceLabel} subscriber — ${fullName}`,
-      html,
-      replyTo: email,
-      devConsoleFallback: true,
-    });
-
-    if (!emailResult.success) {
-      // Give the code back: it stays valid until it expires, so the visitor can retry.
-      console.error('[api/newsletter/verify] Team notification failed:', emailResult.error);
-      if (claim === 'claimed') await releaseChallenge(challengeHash).catch(() => undefined);
-      return fail('_form', FORM_ERROR_CODES.submitFailed, 502);
-    }
-
-    // Durable copies, after the team email so a subscriber is never on a list the
-    // team was not told about. Best-effort: the visitor has proved their address
-    // and gets in either way; a failure here is logged for follow-up. The CRM
-    // receives a fixed dummy phone when the visitor gave none (see CRM_DUMMY_PHONE).
+    // Durable copies: the Resend contact list (what the Monday edition email is sent
+    // to) and a CRM lead. The team is no longer emailed about each new subscriber.
+    // Best-effort: the visitor has proved their address and gets in either way; a
+    // failure here is logged for follow-up. The CRM receives a fixed dummy phone when
+    // the visitor gave none (see CRM_DUMMY_PHONE).
     const [contactResult, crmResult] = await Promise.all([
       addSubscriberContact({ email, firstName, lastName }),
       submitNewsletterCrmLead({ firstName, lastName, email, phone, locale, sourceLabel, utm }),
