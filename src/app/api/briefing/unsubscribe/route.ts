@@ -23,10 +23,12 @@ function page(title: string, body: string, status = 200): NextResponse {
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>${escapeHtml(title)} | BlackOak Real Estate</title>
-<style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f4f4f5;color:#181a20;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
-main{max-width:440px;margin:16px;background:#fff;padding:36px 32px}h1{font-size:20px;margin:0 0 14px}p{font-size:15px;line-height:1.55;margin:0 0 18px;color:#3d4047}
-button{background:#181a20;color:#fff;border:0;font:inherit;font-size:14px;letter-spacing:.06em;padding:13px 24px;cursor:pointer}a{color:#181a20}</style>
-</head><body><main><h1>${escapeHtml(title)}</h1>${body}</main></body></html>`;
+<style>body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#050505;color:#e8e6e1;font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+main{max-width:440px;margin:16px;background:#0e0d0b;border:1px solid #26231d;padding:36px 32px}img{display:block;width:140px;height:auto;margin:0 0 26px}
+.eyebrow{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#ffb000;margin:0 0 10px}
+h1{font-size:22px;font-weight:400;line-height:1.25;margin:0 0 16px}p{font-size:15px;line-height:1.6;margin:0 0 20px;color:#b3ada2}strong{color:#e8e6e1;font-weight:600}
+button{background:#ffb000;color:#050505;border:0;font:inherit;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:14px 26px;cursor:pointer}a{color:#ffb000}</style>
+</head><body><main><img src="/images/logo-white.png" alt="BlackOak Real Estate"><p class="eyebrow">The Market Briefing</p><h1>${escapeHtml(title)}</h1>${body}</main></body></html>`;
   return new NextResponse(html, {
     status,
     headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Robots-Tag': 'noindex, nofollow' },
