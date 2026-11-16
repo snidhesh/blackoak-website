@@ -71,3 +71,15 @@ export const INTEL_ACCESS_TTL_MS = 90 * 24 * 60 * 60 * 1000;
 // Shorter-lived than a subscriber's cookie so a leaked link ages out sooner.
 export const BRIEFING_PREVIEW_PARAM = 'key';
 export const BRIEFING_PREVIEW_TTL_MS = 30 * 24 * 60 * 60 * 1000;
+
+// Monday "new edition" email. Every subscriber gets a personal link,
+// /briefing/?s=<token>, that mints the access cookie without the subscribe form and
+// then lands on the clean /briefing/ address (see src/lib/briefing-link.ts). The
+// link lasts until the day after the next edition and opens on a few browsers only,
+// so a forwarded email cannot unlock the Briefing for a whole group.
+export const BRIEFING_PUBLIC_ORIGIN = 'https://www.blackoak-re.com';
+export const BRIEFING_LINK_PARAM = 's';
+export const BRIEFING_LINK_TTL_MS = 8 * 24 * 60 * 60 * 1000;
+export const BRIEFING_LINK_MAX_BROWSERS = 3;
+export const BRIEFING_OPEN_PATH = '/api/briefing/open/';
+export const BRIEFING_UNSUBSCRIBE_PATH = '/api/briefing/unsubscribe/';
