@@ -17,12 +17,7 @@ import {
   isRateLimitConfigured,
 } from '@/lib/rate-limit';
 import { FORM_ERROR_CODES, NEWSLETTER_ERROR_CODES } from '@/lib/error-codes';
-import { INTEL_ACCESS_COOKIE, type SubscribeSource } from '@/lib/constants';
-
-const SOURCE_LABELS: Record<SubscribeSource, string> = {
-  'market-intelligence': 'Market Intelligence',
-  'intelligence-hub': 'Intelligence Hub',
-};
+import { INTEL_ACCESS_COOKIE, SUBSCRIBE_SOURCE_LABELS } from '@/lib/constants';
 
 function fail(field: '_form' | 'code', code: string, status: number) {
   return NextResponse.json({ success: false, errors: [{ field, code }] }, { status });
@@ -84,7 +79,7 @@ export async function POST(request: NextRequest) {
     }
 
     const { firstName, lastName, email, phone, locale, source, utm } = verified.payload;
-    const sourceLabel = (source && SOURCE_LABELS[source]) || SOURCE_LABELS['market-intelligence'];
+    const sourceLabel = (source && SUBSCRIBE_SOURCE_LABELS[source]) || SUBSCRIBE_SOURCE_LABELS['market-intelligence'];
     // Durable copies: the Resend contact list (what the Monday edition email is sent
     // to) and a CRM lead. The team is no longer emailed about each new subscriber.
     // Best-effort: the visitor has proved their address and gets in either way; a

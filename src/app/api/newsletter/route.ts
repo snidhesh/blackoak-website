@@ -8,7 +8,10 @@ import { newsletterSchema, sanitizeUtm } from '@/lib/schemas';
 import { sendVisitorEmail } from '@/lib/email';
 import { renderVerificationEmail } from '@/lib/newsletter-email';
 import { createChallenge, generateCode } from '@/lib/newsletter-token';
-import { hasAccessSecret } from '@/lib/access-cookie';
+import { accessCookieOptions, createAccessToken, hasAccessSecret } from '@/lib/access-cookie';
+import { addSubscriberContact } from '@/lib/resend-contacts';
+import { submitNewsletterCrmLead } from '@/lib/crm-lead';
+import { INTEL_ACCESS_COOKIE, SUBSCRIBE_SOURCE_LABELS, skipEmailVerification } from '@/lib/constants';
 import { canonicalEmail, checkRateLimit, getClientIP, hashKey, isRateLimitConfigured } from '@/lib/rate-limit';
 import { FIELD_ERROR_CODES, FORM_ERROR_CODES } from '@/lib/error-codes';
 
@@ -68,6 +71,39 @@ export async function POST(request: NextRequest) {
     const emailLimit = await checkRateLimit(hashKey(canonicalEmail(data.email)), 'newsletter-email');
     if (!emailLimit.success) {
       return formError(FORM_ERROR_CODES.rateLimited, 429);
+    }
+
+    // Code switched off (see skipEmailVerification): file the subscriber and let the
+    // visitor in now. Same saves and the same cookie as ./verify, but the address
+    // is recorded as unverified. The rate limits above still apply.
+    if (skipEmailVerification()) {
+      const sourceLabel =
+        (data.source && SUBSCRIBE_SOURCE_LABELS[data.source]) || SUBSCRIBE_SOURCE_LABELS['market-intelligence'];
+      const [contactResult, crmResult] = await Promise.all([
+        addSubscriberContact({ email: data.email, firstName: data.firstName, lastName: data.lastName }),
+        submitNewsletterCrmLead({
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          phone: data.phone?.trim() || undefined,
+          locale: data.locale,
+          sourceLabel,
+          utm: sanitizeUtm(data.utm),
+          emailVerified: false,
+        }),
+      ]);
+      if (!contactResult.success) {
+        console.error('[api/newsletter] Subscriber not saved to Resend contacts:', contactResult.error);
+      }
+      if (!crmResult.success) {
+        console.error('[api/newsletter] Subscriber not filed as a CRM lead:', crmResult.status);
+      }
+
+      const token = await createAccessToken();
+      if (!token) return formError(FORM_ERROR_CODES.submitFailed, 500);
+      const response = NextResponse.json({ success: true, unlocked: true });
+      response.cookies.set(INTEL_ACCESS_COOKIE, token.value, accessCookieOptions(token.exp));
+      return response;
     }
 
     const code = generateCode();

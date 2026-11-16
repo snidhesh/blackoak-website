@@ -79,13 +79,17 @@ export interface NewsletterCrmLeadInput {
   locale?: string;
   sourceLabel: string;
   utm?: Record<string, string>;
+  /** False while the emailed code is switched off (NEWSLETTER_SKIP_VERIFICATION). Defaults to true. */
+  emailVerified?: boolean;
 }
 
 // A verified newsletter subscriber, filed as a lead so the sales team sees it.
 // Provenance goes into `note`, the only free-text field the intake accepts.
 export async function submitNewsletterCrmLead(input: NewsletterCrmLeadInput): Promise<CrmLeadResult> {
   const lines = [
-    `${input.sourceLabel} subscriber (email verified with a one-time code)`,
+    input.emailVerified === false
+      ? `${input.sourceLabel} subscriber (email NOT verified: the one-time code was switched off)`
+      : `${input.sourceLabel} subscriber (email verified with a one-time code)`,
     'Source: blackoak-website',
   ];
   if (input.locale) lines.push(`Language: ${input.locale}`);
