@@ -58,6 +58,17 @@ export const HUB_PRE_PAINT_UNLOCK_SCRIPT = `try{if(!/[?&]next=/.test(location.se
 // team email and the verification copy can say which product was unlocked.
 export const SUBSCRIBE_SOURCES = ['market-intelligence', 'intelligence-hub'] as const;
 export type SubscribeSource = (typeof SUBSCRIBE_SOURCES)[number];
+export const SUBSCRIBE_SOURCE_LABELS: Record<SubscribeSource, string> = {
+  'market-intelligence': 'Market Intelligence',
+  'intelligence-hub': 'Intelligence Hub',
+};
+
+// Temporary switch: with NEWSLETTER_SKIP_VERIFICATION=1 the subscribe form lets the
+// visitor in on the details step, without emailing a 6-digit code. For when the
+// email service cannot send (for example its quota has run out). While it is on,
+// addresses are not proven: anyone can type any address. Remove the variable and
+// redeploy to bring the code back.
+export const skipEmailVerification = (): boolean => process.env.NEWSLETTER_SKIP_VERIFICATION === '1';
 
 // The Briefing: static site on a separate Vercel project, proxied by the
 // middleware under /briefing once the visitor holds the access cookie.

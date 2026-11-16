@@ -201,6 +201,16 @@ export default function SubscribeUnlockForm({ source, open, title, body, titleId
       return false;
     }
 
+    // The emailed code is switched off server-side (NEWSLETTER_SKIP_VERIFICATION):
+    // the server has already filed the subscription and set the /briefing cookie.
+    if (result?.unlocked === true) {
+      savePending(null);
+      rememberSubscription();
+      window.dataLayer?.push({ event: 'market_intelligence_subscribe', source });
+      onUnlocked();
+      return true;
+    }
+
     if (typeof result?.challenge !== 'string' || typeof result?.expiresAt !== 'number') {
       setError(tf('errorGeneric'));
       return false;
