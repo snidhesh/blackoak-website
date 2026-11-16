@@ -120,3 +120,37 @@ export async function releaseChallenge(challengeHash: string): Promise<void> {
   if (!client) return;
   await client.del(`${PREFIX}:used:${challengeHash}`);
 }
+
+// Monday email: how many browsers a personal link has opened on. Counts only the
+// opens that mint a cookie (a browser that already holds one is not counted), and
+// only POSTs from the opening page, so mail scanners and chat link previews, which
+// fetch with GET, never use a link up. Returns null when Upstash is not configured.
+export async function countLinkOpen(tokenHash: string, expiresAt: number, now: number = Date.now()): Promise<number | null> {
+  const client = getRedis();
+  if (!client) return null;
+  const key = `${PREFIX}:briefing-link:${tokenHash}`;
+  const count = await client.incr(key);
+  if (count === 1) await client.expire(key, Math.max(1, Math.ceil((expiresAt - now) / 1000)));
+  return count;
+}
+
+// One send per edition. The publish workflow can be re-run by hand, and a second
+// run must not email every subscriber twice. Released again if the send fails
+// before any email has gone out.
+const EDITION_LOCK_TTL_SECONDS = 30 * 24 * 60 * 60;
+
+export async function claimEditionSend(edition: string): Promise<'claimed' | 'sent' | 'skipped'> {
+  const client = getRedis();
+  if (!client) return 'skipped';
+  const result = await client.set(`${PREFIX}:briefing-sent:${edition}`, new Date().toISOString(), {
+    nx: true,
+    ex: EDITION_LOCK_TTL_SECONDS,
+  });
+  return result === 'OK' ? 'claimed' : 'sent';
+}
+
+export async function releaseEditionSend(edition: string): Promise<void> {
+  const client = getRedis();
+  if (!client) return;
+  await client.del(`${PREFIX}:briefing-sent:${edition}`);
+}
