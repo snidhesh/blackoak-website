@@ -32,7 +32,7 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
     '',
     intro,
     '',
-    `Read Edition ${input.edition} (${input.dateLabel}):`,
+    `Read the latest edition (Edition ${input.edition}, ${input.dateLabel}):`,
     input.link,
     '',
     personal,
@@ -133,7 +133,7 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
             <table role="presentation" cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td bgcolor="#ffb000" style="background:#ffb000">
-                  <a href="${link}" style="display:inline-block;padding:15px 30px;font-family:${sans};font-size:13px;line-height:16px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#050505;text-decoration:none">Read Edition ${edition}&nbsp;&nbsp;→</a>
+                  <a href="${link}" style="display:inline-block;padding:15px 30px;font-family:${sans};font-size:13px;line-height:16px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#050505;text-decoration:none">Read the latest edition&nbsp;&nbsp;→</a>
                 </td>
               </tr>
             </table>
