@@ -126,6 +126,13 @@
     "category": "real-estate"
   },
   {
+    "id": "57",
+    "name": "Raluca Crupenschi",
+    "title": "مدير مساعد",
+    "image": "/images/team/raluca-crupenschi.jpg",
+    "category": "real-estate"
+  },
+  {
     "id": "18",
     "name": "Julian Cleave",
     "title": "مدير مساعد",
@@ -231,10 +238,10 @@
     "category": "real-estate"
   },
   {
-    "id": "31",
-    "name": "Waleed Elharti",
+    "id": "55",
+    "name": "Lauren Crabbe",
     "title": "مستشار عقاري",
-    "image": "/images/team/waleed-elharti.jpg",
+    "image": "/images/team/lauren-crabbe.jpg",
     "category": "real-estate"
   },
   {
@@ -252,10 +259,17 @@
     "category": "real-estate"
   },
   {
-    "id": "55",
-    "name": "Lauren Crabbe",
+    "id": "58",
+    "name": "Sandra Saad",
     "title": "مستشار عقاري",
-    "image": "/images/team/lauren-crabbe.jpg",
+    "image": "/images/team/sandra-saad.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "31",
+    "name": "Waleed Elharti",
+    "title": "مستشار عقاري",
+    "image": "/images/team/waleed-elharti.jpg",
     "category": "real-estate"
   },
   {
