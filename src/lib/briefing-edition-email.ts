@@ -110,7 +110,6 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
     '',
     'The BlackOak View:',
     content.view,
-    'Imran A. Sheikh, Founder & CEO',
     '',
     'Read this week’s Briefing (charts, district detail, rates, rentals and the full methodology):',
     input.link,
@@ -269,7 +268,6 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
             <div style="font-family:${HEAD};font-weight:600;font-size:17px;line-height:26px;color:#F2EEE6;">
               ${escapeHtml(content.view)}
             </div>
-            <div style="font-family:${BODY};font-size:13px;line-height:18px;color:#9AA4B2;padding-top:10px;">Imran A. Sheikh, Founder &amp; CEO</div>
           </td>
         </tr>
       </table>
