@@ -7,6 +7,10 @@ import { escapeHtml, sendVisitorEmail } from '@/lib/email';
 import { createUnsubscribeToken } from '@/lib/briefing-link';
 import { BRIEFING_PUBLIC_ORIGIN, BRIEFING_UNSUBSCRIBE_PATH } from '@/lib/constants';
 
+// White wordmark, the same file the Monday edition email uses. Mail clients do not
+// render SVG, hence the PNG; the alt text carries the name when images are off.
+const LOGO_URL = `${BRIEFING_PUBLIC_ORIGIN}/images/logo-white.png`;
+
 type EmailLocale = 'en' | 'fr' | 'ar';
 
 interface Copy {
@@ -95,7 +99,7 @@ export function renderWelcomeEmail(input: { firstName: string; unsubscribeLink: 
   const html = `
     <div dir="${dir}" style="margin:0;padding:32px 16px;background:#f4f4f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;color:#181a20">
       <div style="max-width:480px;margin:0 auto;background:#ffffff">
-        <div style="background:#181a20;padding:24px 32px;color:#ffffff;font-size:15px;letter-spacing:2px;text-transform:uppercase" dir="ltr">BlackOak Real Estate</div>
+        <div style="background:#181a20;padding:24px 32px" dir="ltr"><img src="${LOGO_URL}" width="150" height="35" alt="BlackOak Real Estate" style="display:block;border:0;width:150px;height:35px;color:#ffffff;font-size:15px;letter-spacing:2px;text-transform:uppercase"></div>
         <div style="padding:32px">
           ${paragraph(copy.greeting(input.firstName))}
           ${copy.paragraphs.map(paragraph).join('\n          ')}
