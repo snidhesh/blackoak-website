@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { newsletterSchema, sanitizeUtm } from '@/lib/schemas';
 import { sendVisitorEmail } from '@/lib/email';
 import { renderVerificationEmail } from '@/lib/newsletter-email';
+import { sendWelcomeEmail } from '@/lib/newsletter-welcome-email';
 import { createChallenge, generateCode } from '@/lib/newsletter-token';
 import { accessCookieOptions, createAccessToken, hasAccessSecret } from '@/lib/access-cookie';
 import { addSubscriberContact } from '@/lib/resend-contacts';
@@ -97,6 +98,10 @@ export async function POST(request: NextRequest) {
       }
       if (!crmResult.success) {
         console.error('[api/newsletter] Subscriber not filed as a CRM lead:', crmResult.status);
+      }
+      // Welcome email, once: only for an address that was not already on the list.
+      if (contactResult.created) {
+        await sendWelcomeEmail({ email: data.email, firstName: data.firstName, locale: data.locale });
       }
 
       const token = await createAccessToken();

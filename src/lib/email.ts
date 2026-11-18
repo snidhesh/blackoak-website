@@ -10,6 +10,7 @@ export interface SendFormEmailInput {
   html: string;
   replyTo?: string;
   attachments?: EmailAttachment[];
+  headers?: Record<string, string>;
 }
 
 export interface SendFormEmailResult {
@@ -47,6 +48,7 @@ export async function sendVisitorEmail(input: {
   subject: string;
   html: string;
   text: string;
+  headers?: Record<string, string>;
   devConsoleFallback?: boolean;
 }): Promise<SendFormEmailResult> {
   return deliver({ ...input, to: [input.to] });
@@ -80,6 +82,7 @@ async function deliver(input: DeliverInput): Promise<SendFormEmailResult> {
       html: input.html,
       text: input.text,
       replyTo: input.replyTo,
+      headers: input.headers,
       attachments: input.attachments?.map((a) => ({
         filename: a.filename,
         content: a.content,
