@@ -9,7 +9,10 @@
 //
 // Subscribers are the Resend contacts that /api/newsletter/verify files (the
 // RESEND_SEGMENT_ID segment when one is set), minus anyone unsubscribed. Each one
-// gets their own email with a personal link (src/lib/briefing-link.ts). An edition
+// gets their own email with a personal link (src/lib/briefing-link.ts). What the
+// email says (index prints, headline, the View) is read from the live edition's
+// email.json (src/lib/briefing-email-data.ts); if that file is missing or written
+// for another edition, nothing is sent and the call fails with 424. An edition
 // is sent once: a second call for the same date is refused, so re-running the
 // workflow cannot email everyone twice.
 
@@ -25,7 +28,8 @@ import {
 } from '@/lib/constants';
 import { BRIEFING_PATH } from '@/lib/briefing-proxy';
 import { createLinkToken, createUnsubscribeToken, normalizeEmail } from '@/lib/briefing-link';
-import { renderEditionEmail } from '@/lib/briefing-edition-email';
+import { editionDateLabel, renderEditionEmail } from '@/lib/briefing-edition-email';
+import { fetchEditionEmailContent } from '@/lib/briefing-email-data';
 import { claimEditionSend, releaseEditionSend } from '@/lib/rate-limit';
 
 export const dynamic = 'force-dynamic';
@@ -45,7 +49,6 @@ const bodySchema = z.object({
 
 interface Recipient {
   email: string;
-  firstName: string | null;
 }
 
 const pause = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -62,20 +65,6 @@ function authorized(request: NextRequest): boolean {
   if (!header.startsWith('Bearer ')) return false;
   const digest = (value: string) => createHash('sha256').update(value).digest();
   return timingSafeEqual(digest(header.slice(7)), digest(secret));
-}
-
-// "Monday 16 November 2026", built from parts so the wording does not depend on
-// which ICU version the runtime ships.
-function dateLabel(date: Date): string {
-  const parts = new Intl.DateTimeFormat('en-GB', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'UTC',
-  }).formatToParts(date);
-  const part = (type: string) => parts.find((p) => p.type === type)?.value ?? '';
-  return `${part('weekday')} ${part('day')} ${part('month')} ${part('year')}`;
 }
 
 async function listSubscribers(resend: Resend): Promise<Recipient[]> {
@@ -97,7 +86,7 @@ async function listSubscribers(resend: Resend): Promise<Recipient[]> {
       const email = normalizeEmail(contact.email ?? '');
       if (!email || contact.unsubscribed || seen.has(email)) continue;
       seen.add(email);
-      recipients.push({ email, firstName: contact.first_name });
+      recipients.push({ email });
     }
 
     if (!data.has_more || data.data.length === 0) return recipients;
@@ -127,9 +116,17 @@ export async function POST(request: NextRequest) {
   }
   const resend = new Resend(apiKey);
 
+  // Before anything is listed, locked or sent: no content, no email.
+  const emailContent = await fetchEditionEmailContent(edition);
+  if (!emailContent.ok) {
+    console.error('[api/briefing/notify] Edition email content not usable:', emailContent.error);
+    return json({ success: false, error: `email content not ready: ${emailContent.error}` }, 424);
+  }
+  const { content } = emailContent;
+
   let recipients: Recipient[];
   try {
-    recipients = testTo ? [{ email: normalizeEmail(testTo), firstName: null }] : await listSubscribers(resend);
+    recipients = testTo ? [{ email: normalizeEmail(testTo) }] : await listSubscribers(resend);
   } catch (error) {
     console.error('[api/briefing/notify]', error);
     return json({ success: false, error: 'could not list subscribers' }, 502);
@@ -154,7 +151,7 @@ export async function POST(request: NextRequest) {
     }
   }
 
-  const dateText = dateLabel(released);
+  const dateText = editionDateLabel(released);
   let sent = 0;
   let failed = 0;
   const errors: string[] = [];
@@ -176,7 +173,7 @@ export async function POST(request: NextRequest) {
       }
       const link = `${BRIEFING_PUBLIC_ORIGIN}${BRIEFING_PATH}/?${BRIEFING_LINK_PARAM}=${linkToken}`;
       const unsubscribeLink = `${BRIEFING_PUBLIC_ORIGIN}${BRIEFING_UNSUBSCRIBE_PATH}?u=${unsubscribeToken}`;
-      const email = renderEditionEmail({ edition, dateLabel: dateText, firstName: recipient.firstName, link, unsubscribeLink });
+      const email = renderEditionEmail({ edition, dateLabel: dateText, link, unsubscribeLink, content });
       emails.push({
         from,
         to: recipient.email,

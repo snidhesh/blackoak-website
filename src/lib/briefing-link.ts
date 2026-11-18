@@ -2,6 +2,7 @@
 //
 //   access link   /briefing/?s=<exp36>.<subscriberId>.<signature>
 //   unsubscribe   /api/briefing/unsubscribe/?u=<base64url(email)>.<signature>
+//   email preview /api/briefing/email-preview/?e=<edition>&k=<signature>   (reviewers only)
 //
 // The access link is what lets a subscriber open the Briefing straight from the
 // email, in any browser, without the subscribe form. Opening it mints the normal
@@ -17,6 +18,7 @@
 const MIN_SECRET_LENGTH = 32;
 const LINK_PREFIX = 'briefing-link:v1:';
 const UNSUBSCRIBE_PREFIX = 'briefing-unsubscribe:v1:';
+const EMAIL_PREVIEW_PREFIX = 'briefing-email-preview:v1:';
 const SIGNATURE_BYTES = 32;
 
 /** Shape only: what the middleware will pass on to the open route. */
@@ -123,4 +125,19 @@ export async function verifyUnsubscribeToken(token: string | null | undefined): 
   } catch {
     return null;
   }
+}
+
+/**
+ * Key for the reviewer's preview of an edition's email: one per edition, so the link
+ * posted on the edition's pull request stays the same while the content is updated.
+ */
+export async function createEmailPreviewKey(edition: string): Promise<string | null> {
+  const secret = getSecret();
+  return secret ? sign(secret, EMAIL_PREVIEW_PREFIX + edition) : null;
+}
+
+export async function verifyEmailPreviewKey(edition: string, key: string | null | undefined): Promise<boolean> {
+  const secret = getSecret();
+  if (!secret || !key || key.length > 100) return false;
+  return verify(secret, EMAIL_PREVIEW_PREFIX + edition, key);
 }
