@@ -116,7 +116,7 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
     '',
     personal,
     '',
-    'Journalists: the BPCI print and chart may be quoted with attribution to "The Market Briefing". Imran is available for comment today at imran@blackoakglobal.com.',
+    'Journalists: the BPCI print and chart may be quoted with attribution to "The Market Briefing".',
     '',
     `Sent every Monday at 07:00 GST. Forwarded this? Subscribe here: ${subscribeLink}`,
     '',
@@ -292,8 +292,7 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
     <!-- Footer -->
     <tr><td class="px" style="padding:28px 36px 0;font-family:${BODY};font-size:12px;line-height:19px;color:#6E7A8A;">
       <p style="margin:0 0 12px;">
-        Journalists: the BPCI print and chart may be quoted with attribution to “The Market Briefing”. Imran is available for comment today at
-        <a href="mailto:imran@blackoakglobal.com" style="color:#9AA4B2;">imran@blackoakglobal.com</a>.
+        Journalists: the BPCI print and chart may be quoted with attribution to “The Market Briefing”.
       </p>
       <p style="margin:0 0 12px;">
         Sent every Monday at 07:00 GST. ${escapeHtml(personal)} Forwarded this? <a href="${subscribe}" style="color:#9AA4B2;">Subscribe here</a>.
