@@ -20,7 +20,7 @@ const COPY: Record<EmailLocale, Copy> = {
   en: {
     subject: (code) => `${code} is your BlackOak verification code`,
     greeting: (name) => `Dear ${name},`,
-    thanks: 'Thank you for your interest in the BlackOak briefing.',
+    thanks: 'Thank you for your interest in the BlackOak market briefing.',
     intro:
       'To confirm your email address and unlock the full analysis, please enter the verification code below on the BlackOak website:',
     closing: (m) => `It expires in ${m} minutes. If you didn't request it, please ignore this email.`,
@@ -29,7 +29,7 @@ const COPY: Record<EmailLocale, Copy> = {
   fr: {
     subject: (code) => `${code} est votre code de vérification BlackOak`,
     greeting: (name) => `Bonjour ${name},`,
-    thanks: "Nous vous remercions de l'intérêt que vous portez au briefing BlackOak.",
+    thanks: "Nous vous remercions de l'intérêt que vous portez au briefing de marché BlackOak.",
     intro:
       "Pour confirmer votre adresse e-mail et débloquer l'analyse complète, veuillez saisir le code de vérification ci-dessous sur le site BlackOak :",
     closing: (m) =>
@@ -39,7 +39,7 @@ const COPY: Record<EmailLocale, Copy> = {
   ar: {
     subject: (code) => `${code} هو رمز التحقق الخاص بك من BlackOak`,
     greeting: (name) => `عزيزي/عزيزتي ${name}،`,
-    thanks: 'نشكرك على اهتمامك بموجز BlackOak.',
+    thanks: 'نشكرك على اهتمامك بموجز السوق من BlackOak.',
     intro:
       'لتأكيد عنوان بريدك الإلكتروني والاطّلاع على التحليل الكامل، يُرجى إدخال رمز التحقق أدناه في موقع BlackOak:',
     closing: (m) => `تنتهي صلاحية الرمز خلال ${m} دقيقة. إذا لم تطلبه، يُرجى تجاهل هذه الرسالة.`,

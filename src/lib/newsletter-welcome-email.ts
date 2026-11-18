@@ -21,10 +21,10 @@ interface Copy {
 
 const COPY: Record<EmailLocale, Copy> = {
   en: {
-    subject: 'Welcome to the BlackOak Briefing',
+    subject: 'Welcome to the BlackOak Market Briefing',
     greeting: (name) => `Hi ${name},`,
     paragraphs: [
-      'Thank you for subscribing to the BlackOak Briefing.',
+      'Thank you for subscribing to the BlackOak market briefing.',
       'You’ll receive our weekly email every Monday, featuring the latest research, market updates and perspectives on Dubai’s property market, including emerging trends, new developments and the factors shaping investment decisions.',
       'Our aim is simple: to help you cut through the noise and make more informed property decisions.',
       'Thank you for joining us. We look forward to keeping you informed.',
@@ -32,14 +32,14 @@ const COPY: Record<EmailLocale, Copy> = {
     regards: 'Kind regards,',
     team: 'The BlackOak Team',
     footer:
-      'You’re receiving this email because you subscribed to the BlackOak Briefing. You can unsubscribe at any time using the link below.',
+      'You’re receiving this email because you subscribed to the BlackOak market briefing. You can unsubscribe at any time using the link below.',
     unsubscribe: 'Unsubscribe',
   },
   fr: {
-    subject: 'Bienvenue au BlackOak Briefing',
+    subject: 'Bienvenue au briefing de marché BlackOak',
     greeting: (name) => `Bonjour ${name},`,
     paragraphs: [
-      'Merci de vous être abonné(e) au BlackOak Briefing.',
+      'Merci de vous être abonné(e) au briefing de marché BlackOak.',
       'Vous recevrez notre e-mail hebdomadaire chaque lundi, avec les dernières études, actualités et analyses du marché immobilier de Dubaï, notamment les tendances émergentes, les nouveaux projets et les facteurs qui orientent les décisions d’investissement.',
       'Notre objectif est simple : vous aider à faire le tri dans l’information et à prendre des décisions immobilières plus éclairées.',
       'Merci de nous avoir rejoints. Nous serons heureux de vous tenir informé(e).',
@@ -47,14 +47,14 @@ const COPY: Record<EmailLocale, Copy> = {
     regards: 'Cordialement,',
     team: 'L’équipe BlackOak',
     footer:
-      'Vous recevez cet e-mail parce que vous vous êtes abonné(e) au BlackOak Briefing. Vous pouvez vous désabonner à tout moment à l’aide du lien ci-dessous.',
+      'Vous recevez cet e-mail parce que vous vous êtes abonné(e) au briefing de marché BlackOak. Vous pouvez vous désabonner à tout moment à l’aide du lien ci-dessous.',
     unsubscribe: 'Se désabonner',
   },
   ar: {
-    subject: 'مرحباً بك في موجز BlackOak',
+    subject: 'مرحباً بك في موجز السوق من BlackOak',
     greeting: (name) => `مرحباً ${name}،`,
     paragraphs: [
-      'نشكرك على اشتراكك في موجز BlackOak.',
+      'نشكرك على اشتراكك في موجز السوق من BlackOak.',
       'ستصلك رسالتنا الأسبوعية كل يوم اثنين، وتتضمن أحدث الأبحاث ومستجدات السوق والرؤى حول سوق العقارات في دبي، بما في ذلك الاتجاهات الناشئة والمشاريع الجديدة والعوامل التي تؤثر في قرارات الاستثمار.',
       'هدفنا بسيط: أن نساعدك على تجاوز الضجيج واتخاذ قرارات عقارية أكثر استنارة.',
       'شكراً لانضمامك إلينا. نتطلع إلى إبقائك على اطّلاع.',
@@ -62,7 +62,7 @@ const COPY: Record<EmailLocale, Copy> = {
     regards: 'مع أطيب التحيات،',
     team: 'فريق BlackOak',
     footer:
-      'تصلك هذه الرسالة لأنك اشتركت في موجز BlackOak. يمكنك إلغاء الاشتراك في أي وقت باستخدام الرابط أدناه.',
+      'تصلك هذه الرسالة لأنك اشتركت في موجز السوق من BlackOak. يمكنك إلغاء الاشتراك في أي وقت باستخدام الرابط أدناه.',
     unsubscribe: 'إلغاء الاشتراك',
   },
 };
