@@ -23,6 +23,20 @@ export interface EditionEmailInput {
   content: EditionEmailContent;
 }
 
+// "Monday 16 November 2026", built from parts so the wording does not depend on
+// which ICU version the runtime ships.
+export function editionDateLabel(date: Date): string {
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).formatToParts(date);
+  const part = (type: string) => parts.find((p) => p.type === type)?.value ?? '';
+  return `${part('weekday')} ${part('day')} ${part('month')} ${part('year')}`;
+}
+
 // Palette of the design reference: navy field, lifted panels, one gold accent,
 // green for a rise and coral for a fall.
 const GOLD = '#E0B84E';

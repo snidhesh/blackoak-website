@@ -28,7 +28,7 @@ import {
 } from '@/lib/constants';
 import { BRIEFING_PATH } from '@/lib/briefing-proxy';
 import { createLinkToken, createUnsubscribeToken, normalizeEmail } from '@/lib/briefing-link';
-import { renderEditionEmail } from '@/lib/briefing-edition-email';
+import { editionDateLabel, renderEditionEmail } from '@/lib/briefing-edition-email';
 import { fetchEditionEmailContent } from '@/lib/briefing-email-data';
 import { claimEditionSend, releaseEditionSend } from '@/lib/rate-limit';
 
@@ -65,20 +65,6 @@ function authorized(request: NextRequest): boolean {
   if (!header.startsWith('Bearer ')) return false;
   const digest = (value: string) => createHash('sha256').update(value).digest();
   return timingSafeEqual(digest(header.slice(7)), digest(secret));
-}
-
-// "Monday 16 November 2026", built from parts so the wording does not depend on
-// which ICU version the runtime ships.
-function dateLabel(date: Date): string {
-  const parts = new Intl.DateTimeFormat('en-GB', {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'UTC',
-  }).formatToParts(date);
-  const part = (type: string) => parts.find((p) => p.type === type)?.value ?? '';
-  return `${part('weekday')} ${part('day')} ${part('month')} ${part('year')}`;
 }
 
 async function listSubscribers(resend: Resend): Promise<Recipient[]> {
@@ -165,7 +151,7 @@ export async function POST(request: NextRequest) {
     }
   }
 
-  const dateText = dateLabel(released);
+  const dateText = editionDateLabel(released);
   let sent = 0;
   let failed = 0;
   const errors: string[] = [];

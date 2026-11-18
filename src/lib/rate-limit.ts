@@ -154,3 +154,30 @@ export async function releaseEditionSend(edition: string): Promise<void> {
   if (!client) return;
   await client.del(`${PREFIX}:briefing-sent:${edition}`);
 }
+
+// Preview of the next Monday email, posted by the Briefing repository's workflow each
+// time the edition's pull request changes (src/app/api/briefing/email-preview). Kept
+// for a month, overwritten by every later post for the same edition. Without Upstash,
+// `save` returns false and `load` returns null in production; in development the
+// preview is held in memory instead, so the flow can be tried locally.
+const EMAIL_PREVIEW_TTL_SECONDS = 30 * 24 * 60 * 60;
+const devEmailPreviews = new Map<string, unknown>();
+const devFallback = () => process.env.NODE_ENV !== 'production' && !isRateLimitConfigured();
+
+export async function saveEmailPreview(edition: string, value: Record<string, unknown>): Promise<boolean> {
+  if (devFallback()) {
+    devEmailPreviews.set(edition, value);
+    return true;
+  }
+  const client = getRedis();
+  if (!client) return false;
+  await client.set(`${PREFIX}:briefing-email-preview:${edition}`, value, { ex: EMAIL_PREVIEW_TTL_SECONDS });
+  return true;
+}
+
+export async function loadEmailPreview(edition: string): Promise<unknown> {
+  if (devFallback()) return devEmailPreviews.get(edition) ?? null;
+  const client = getRedis();
+  if (!client) return null;
+  return client.get(`${PREFIX}:briefing-email-preview:${edition}`);
+}

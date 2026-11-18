@@ -14,7 +14,7 @@ const line = (max: number) => z.string().trim().min(1).max(max);
 const indexValue = z.number().min(0).max(1000);
 const change = z.number().min(-100).max(1000);
 
-const editionEmailSchema = z.object({
+export const editionEmailSchema = z.object({
   edition: z.string().regex(/^\d{3}$/),
   preheader: line(200),
   headline: line(160),
