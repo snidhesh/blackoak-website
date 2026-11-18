@@ -7,6 +7,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { newsletterVerifySchema } from '@/lib/schemas';
 import { addSubscriberContact } from '@/lib/resend-contacts';
 import { submitNewsletterCrmLead } from '@/lib/crm-lead';
+import { sendWelcomeEmail } from '@/lib/newsletter-welcome-email';
 import { verifyChallenge } from '@/lib/newsletter-token';
 import { accessCookieOptions, createAccessToken, hasAccessSecret } from '@/lib/access-cookie';
 import {
@@ -95,6 +96,8 @@ export async function POST(request: NextRequest) {
     if (!crmResult.success) {
       console.error('[api/newsletter/verify] Subscriber not filed as a CRM lead:', crmResult.status);
     }
+    // Welcome email, once: only for an address that was not already on the list.
+    if (contactResult.created) await sendWelcomeEmail({ email, firstName, locale });
 
     const token = await createAccessToken();
     if (!token) return fail('_form', FORM_ERROR_CODES.submitFailed, 500);

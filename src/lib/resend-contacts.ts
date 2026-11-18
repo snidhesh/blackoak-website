@@ -13,6 +13,8 @@ export interface SubscriberContact {
 
 export interface AddContactResult {
   success: boolean;
+  /** True only when the address was not on the list before (drives the welcome email). */
+  created?: boolean;
   error?: string;
 }
 
@@ -21,7 +23,7 @@ export async function addSubscriberContact(contact: SubscriberContact): Promise<
   if (!apiKey) {
     if (process.env.NODE_ENV !== 'production') {
       console.info(`[resend-contacts] DEV — Resend not configured, contact NOT saved: ${contact.email}`);
-      return { success: true };
+      return { success: true, created: true };
     }
     console.error('[resend-contacts] Missing RESEND_API_KEY');
     return { success: false, error: 'Resend not configured' };
@@ -41,11 +43,11 @@ export async function addSubscriberContact(contact: SubscriberContact): Promise<
     });
     if (error) {
       // An address that is already on the list is not a failure for our purposes.
-      if (/already exists/i.test(error.message)) return { success: true };
+      if (/already exists/i.test(error.message)) return { success: true, created: false };
       console.error('[resend-contacts] Resend error:', error);
       return { success: false, error: error.message };
     }
-    return { success: true };
+    return { success: true, created: true };
   } catch (error) {
     const msg = error instanceof Error ? error.message : 'unknown';
     console.error('[resend-contacts] Request failed:', msg);
