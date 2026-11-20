@@ -48,6 +48,8 @@ const nextConfig = {
       { source: '/baynopenhouse/:path*', destination: 'https://baynrsvp.vercel.app/baynopenhouse/:path*' },
       { source: '/yas_residences_rsvp', destination: 'https://mancityrsvp.vercel.app/yas_residences_rsvp' },
       { source: '/yas_residences_rsvp/:path*', destination: 'https://mancityrsvp.vercel.app/yas_residences_rsvp/:path*' },
+      { source: '/aldar-openhouse', destination: 'https://aldar-lemon.vercel.app/aldar-openhouse/' },
+      { source: '/aldar-openhouse/:path*', destination: 'https://aldar-lemon.vercel.app/aldar-openhouse/:path*' },
 
     ];
   },
@@ -56,7 +58,7 @@ const nextConfig = {
       {
         // Exclude /bayn/* so the proxied Bayn app isn't restricted by the main site's CSP
         //source: '/((?!bayn(?:/.*)?$|yasresidences(?:/.*)?$|omoria(?:/.*)?$).*)',
-        source: '/((?!bayn(?:/.*)?$|yasresidences(?:/.*)?$|omoria(?:/.*)?$|briefing(?:/.*)?$|baynopenhouse(?:/.*)?$|yas_residences_rsvp(?:/.*)?$).*)',
+        source: '/((?!bayn(?:/.*)?$|yasresidences(?:/.*)?$|omoria(?:/.*)?$|briefing(?:/.*)?$|baynopenhouse(?:/.*)?$|yas_residences_rsvp(?:/.*)?$|aldar-openhouse(?:/.*)?$).*)',
         headers: [
           { key: 'Content-Security-Policy', value: contentSecurityPolicy },
           { key: 'X-Frame-Options', value: 'DENY' },
