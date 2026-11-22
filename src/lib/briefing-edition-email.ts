@@ -9,7 +9,6 @@
 
 import { escapeHtml } from '@/lib/email';
 import { BRIEFING_PUBLIC_ORIGIN } from '@/lib/constants';
-import { BRIEFING_PATH } from '@/lib/briefing-proxy';
 import type { EditionEmailContent } from '@/lib/briefing-email-data';
 
 export interface EditionEmailInput {
@@ -43,8 +42,11 @@ const GOLD = '#E0B84E';
 const UP = '#2FD3A7';
 const DOWN = '#E8826B';
 const FLAT = '#C9CFD8';
-const HEAD = 'Montserrat,Arial,sans-serif';
-const BODY = "'Open Sans',Arial,sans-serif";
+// Type follows the Briefing page: Inter for words, the system monospace for figures.
+const BODY = "Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif";
+const HEAD = BODY;
+const NUM = "ui-monospace,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace";
+const LOGO_URL = `${BRIEFING_PUBLIC_ORIGIN}/images/logo-white.png`;
 
 const index = (value: number) => value.toFixed(1);
 const tone = (value: number) => (value > 0 ? UP : value < 0 ? DOWN : FLAT);
@@ -84,7 +86,7 @@ function barRow(bar: Bar, half: number): string {
               <td width="50%">${right}</td>
             </tr></table>
           </td>
-          <td width="62" align="right" style="padding:7px 0;font-weight:600;color:${color};">${percent(bar.change, '&minus;')}</td>
+          <td width="62" align="right" style="padding:7px 0;font-family:${NUM};font-weight:600;color:${color};">${percent(bar.change, '&minus;')}</td>
         </tr>`;
 }
 
@@ -92,10 +94,7 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
   const { content } = input;
   const n = content.numbers;
   const subject = `The Market Briefing, Edition ${input.edition} is out`;
-  const subscribeLink = `${BRIEFING_PUBLIC_ORIGIN}${BRIEFING_PATH}/`;
   const weekLine = `Week to ${n.weekTo}. 5 Jan 2026 = 100`;
-  const personal =
-    'The button is your personal link: it opens the Briefing with no sign-in until next week’s edition.';
 
   const bars: Bar[] = [
     { label: 'Villas', index: n.villas.index, change: n.villas.preConflict },
@@ -128,11 +127,7 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
     'Read this week’s Briefing (charts, district detail, rates, rentals and the full methodology):',
     input.link,
     '',
-    personal,
-    '',
     'Journalists: the BPCI print and chart may be quoted with attribution to "The Market Briefing".',
-    '',
-    `Sent every Monday at 07:00 GST. Forwarded this? Subscribe here: ${subscribeLink}`,
     '',
     'BlackOak Real Estate L.L.C., Office 1406, 14th Floor, Marina Plaza, Al Marsa Street, Dubai Marina, Dubai, UAE. For general information only; not investment advice.',
     '',
@@ -141,13 +136,12 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
 
   const link = escapeHtml(input.link);
   const unsubscribe = escapeHtml(input.unsubscribeLink);
-  const subscribe = escapeHtml(subscribeLink);
   const edition = escapeHtml(input.edition);
   const date = escapeHtml(input.dateLabel);
 
   const changeRow = (label: string, value: number, first = false) => {
     const rule = first ? '' : 'border-top:1px solid #243040;';
-    return `<tr><td style="padding:3px 0;color:#9AA4B2;${rule}">${label}</td><td align="right" style="padding:3px 0;font-weight:600;color:${tone(value)};${rule}">${percent(value, '&minus;')}</td></tr>`;
+    return `<tr><td style="padding:3px 0;color:#9AA4B2;${rule}">${label}</td><td align="right" style="padding:3px 0;font-family:${NUM};font-weight:600;color:${tone(value)};${rule}">${percent(value, '&minus;')}</td></tr>`;
   };
   const alsoRows = content.alsoThisWeek
     .map((item, i) => {
@@ -169,7 +163,7 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
 <meta name="color-scheme" content="light dark">
 <meta name="supported-color-schemes" content="light dark">
 <title>${escapeHtml(subject)}</title>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root { color-scheme: light dark; supported-color-schemes: light dark; }
   body, table, td, a { -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
@@ -181,7 +175,7 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
   @media screen and (max-width:620px) {
     .wrap { width:100% !important; }
     .px { padding-left:22px !important; padding-right:22px !important; }
-    .hero-num { font-size:64px !important; line-height:64px !important; }
+    .hero-num { font-size:58px !important; line-height:62px !important; }
     .stack { display:block !important; width:100% !important; }
     .stack-gap { padding-top:14px !important; }
     .bar-label { width:96px !important; }
@@ -211,8 +205,8 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td class="px" style="padding:26px 36px 22px;" valign="bottom">
-            <div style="font-family:${HEAD};font-weight:800;font-size:20px;line-height:24px;color:${GOLD};letter-spacing:0.5px;">BlackOak</div>
-            <div style="font-family:${HEAD};font-weight:600;font-size:14px;line-height:20px;color:#F2EEE6;padding-top:2px;">The Market Briefing</div>
+            <img src="${LOGO_URL}" width="150" height="35" alt="BlackOak Real Estate" style="display:block;border:0;width:150px;height:35px;font-family:${HEAD};font-weight:700;font-size:18px;line-height:35px;color:#F2EEE6;">
+            <div style="font-family:${HEAD};font-weight:600;font-size:14px;line-height:20px;color:${GOLD};padding-top:10px;">The Market Briefing</div>
           </td>
           <td class="px" style="padding:26px 36px 22px;font-family:${BODY};font-size:12px;line-height:18px;color:#9AA4B2;" align="right" valign="bottom">
             Edition ${edition}<br>${date}
@@ -223,14 +217,14 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
 
     <!-- Hero: the week in one sentence + the BPCI print -->
     <tr><td class="px" bgcolor="#121A24" style="background:#121A24;padding:8px 36px 30px;border-top:1px solid #243040;">
-      <h1 style="margin:22px 0 22px;font-family:${HEAD};font-weight:700;font-size:26px;line-height:33px;color:#F2EEE6;">
+      <h1 style="margin:22px 0 22px;font-family:${HEAD};font-weight:500;font-size:26px;line-height:33px;color:#F2EEE6;">
         ${escapeHtml(content.headline)}
       </h1>
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td class="stack" valign="bottom" width="58%">
             <div style="font-family:${BODY};font-size:13px;line-height:18px;color:#9AA4B2;padding-bottom:4px;">BlackOak Prime Capital Index</div>
-            <div class="hero-num" style="font-family:${HEAD};font-weight:800;font-size:76px;line-height:76px;color:${GOLD};letter-spacing:-2px;">${index(n.composite)}</div>
+            <div class="hero-num" style="font-family:${NUM};font-weight:600;font-size:72px;line-height:76px;color:${GOLD};letter-spacing:-2px;">${index(n.composite)}</div>
             <div style="font-family:${BODY};font-size:12px;line-height:18px;color:#6E7A8A;padding-top:6px;">${escapeHtml(weekLine)}</div>
           </td>
           <td class="stack stack-gap" valign="bottom" width="42%" style="font-family:${BODY};font-size:14px;line-height:22px;color:#C9CFD8;">
@@ -256,7 +250,7 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
     <tr><td class="px" bgcolor="#121A24" style="background:#121A24;padding:24px 36px;border-top:1px solid #243040;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td valign="top" width="96" style="font-family:${HEAD};font-weight:800;font-size:34px;line-height:38px;color:#F2EEE6;">${index(n.confidence)}</td>
+          <td valign="top" width="96" style="font-family:${NUM};font-weight:600;font-size:32px;line-height:38px;color:#F2EEE6;">${index(n.confidence)}</td>
           <td valign="top" style="font-family:${BODY};font-size:14px;line-height:21px;color:#C9CFD8;padding-left:6px;">
             <span style="font-family:${HEAD};font-weight:700;color:#F2EEE6;">BlackOak Confidence Index</span><br>
             ${escapeHtml(content.confidence)}
@@ -279,7 +273,7 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
           <td width="3" bgcolor="${GOLD}" style="background:${GOLD};width:3px;font-size:0;line-height:0;">&nbsp;</td>
           <td style="padding-left:18px;">
             <div style="font-family:${BODY};font-size:13px;line-height:18px;color:#9AA4B2;padding-bottom:6px;">The BlackOak View</div>
-            <div style="font-family:${HEAD};font-weight:600;font-size:17px;line-height:26px;color:#F2EEE6;">
+            <div style="font-family:${HEAD};font-weight:500;font-size:17px;line-height:26px;color:#F2EEE6;">
               ${escapeHtml(content.view)}
             </div>
           </td>
@@ -307,9 +301,6 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
     <tr><td class="px" style="padding:28px 36px 0;font-family:${BODY};font-size:12px;line-height:19px;color:#6E7A8A;">
       <p style="margin:0 0 12px;">
         Journalists: the BPCI print and chart may be quoted with attribution to “The Market Briefing”.
-      </p>
-      <p style="margin:0 0 12px;">
-        Sent every Monday at 07:00 GST. ${escapeHtml(personal)} Forwarded this? <a href="${subscribe}" style="color:#9AA4B2;">Subscribe here</a>.
       </p>
       <p style="margin:0 0 12px;">
         BlackOak Real Estate L.L.C., Office 1406, 14th Floor, Marina Plaza, Al Marsa Street, Dubai Marina, Dubai, UAE.
