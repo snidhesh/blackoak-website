@@ -195,11 +195,6 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
 
   <table role="presentation" class="wrap" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;">
 
-    <!-- Top utility line -->
-    <tr><td class="px" style="padding:0 36px 16px;font-family:${BODY};font-size:12px;line-height:18px;color:#6E7A8A;" align="right">
-      <a href="${link}" style="color:#6E7A8A;text-decoration:underline;">View in browser</a>
-    </td></tr>
-
     <!-- Masthead -->
     <tr><td bgcolor="#121A24" style="background:#121A24;border-top:3px solid ${GOLD};border-radius:6px 6px 0 0;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
