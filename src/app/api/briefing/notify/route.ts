@@ -39,6 +39,8 @@ const MIN_SECRET_LENGTH = 32;
 const PAGE_SIZE = 100; // Resend's maximum for both listing contacts and batch sending
 const MAX_PAGES = 200;
 const PAUSE_MS = 600; // Resend allows two requests a second
+// The name subscribers see as the sender. The address still comes from the environment.
+const SENDER_NAME = 'BlackOak | Market Briefing';
 
 const bodySchema = z.object({
   edition: z.string().regex(/^\d{3}$/),
@@ -52,6 +54,12 @@ interface Recipient {
 }
 
 const pause = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+// `noreply@example.com` or `Any Name <noreply@example.com>` in, the Briefing's sender out.
+function senderFrom(configured: string): string {
+  const address = (configured.match(/<([^>]+)>/)?.[1] ?? configured).trim();
+  return `${SENDER_NAME} <${address}>`;
+}
 
 function json(body: Record<string, unknown>, status = 200) {
   return NextResponse.json(body, { status, headers: { 'Cache-Control': 'no-store' } });
@@ -109,11 +117,12 @@ export async function POST(request: NextRequest) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.BRIEFING_EMAIL_FROM || process.env.EMAIL_FROM;
-  if (!apiKey || !from) {
+  const configuredFrom = process.env.BRIEFING_EMAIL_FROM || process.env.EMAIL_FROM;
+  if (!apiKey || !configuredFrom) {
     console.error('[api/briefing/notify] Missing RESEND_API_KEY or EMAIL_FROM');
     return json({ success: false, error: 'email not configured' }, 500);
   }
+  const from = senderFrom(configuredFrom);
   const resend = new Resend(apiKey);
 
   // Before anything is listed, locked or sent: no content, no email.
