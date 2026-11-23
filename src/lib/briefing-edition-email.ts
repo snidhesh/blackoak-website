@@ -93,7 +93,7 @@ function barRow(bar: Bar, half: number): string {
 export function renderEditionEmail(input: EditionEmailInput): { subject: string; html: string; text: string } {
   const { content } = input;
   const n = content.numbers;
-  const subject = `The Market Briefing, Edition ${input.edition} is out`;
+  const subject = `The Market Briefing #${input.edition}`;
   const weekLine = `Week to ${n.weekTo}. 5 Jan 2026 = 100`;
 
   const bars: Bar[] = [
