@@ -1,8 +1,8 @@
 // The Monday email telling subscribers a new edition of The Market Briefing is out.
 // It is a teaser, not a summary: the week's headline, the two index readings shown
-// only as blurred figures with the direction each points, a button to the Briefing,
-// and three things that moved. The readings themselves appear nowhere in it, HTML
-// or plain text, so the only way to see them is to open the edition.
+// only as blurred figures, a button to the Briefing, and three things that moved.
+// Neither the readings nor the direction they moved appear anywhere in it, HTML or
+// plain text, so the only way to learn them is to open the edition.
 // English only: the subscriber list in Resend does not record a language.
 //
 // What changes each week arrives as `content` (src/lib/briefing-email-data.ts);
@@ -38,11 +38,8 @@ export function editionDateLabel(date: Date): string {
   return `${part('weekday')} ${part('day')} ${part('month')} ${part('year')}`;
 }
 
-// Navy field, lifted panels, one gold accent, green for a rise and coral for a fall.
+// Navy field, lifted panels, one gold accent.
 const GOLD = '#E0B84E';
-const UP = '#2FD3A7';
-const DOWN = '#E8826B';
-const FLAT = '#C9CFD8';
 // Type follows the Briefing page: Inter for words, the system monospace for figures.
 const BODY = "Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif";
 const HEAD = BODY;
@@ -56,42 +53,17 @@ const LOGO_URL = `${BRIEFING_PUBLIC_ORIGIN}/images/logo-white.png`;
 const FIGURE_GOLD_URL = `${BRIEFING_PUBLIC_ORIGIN}/images/briefing-email/figure-gold.png`;
 const FIGURE_LIGHT_URL = `${BRIEFING_PUBLIC_ORIGIN}/images/briefing-email/figure-light.png`;
 
-interface Hint {
-  /** Plain words, e.g. "Up on the week". */
-  text: string;
-  /** Arrow in front of the words in the HTML email, or none. */
-  arrow: string;
-  color: string;
-}
-
-// All the email says about each index: which way it points, never the reading.
-function weekHint(wow: number): Hint {
-  if (wow > 0) return { text: 'Up on the week', arrow: '&#9650;&nbsp;', color: UP };
-  if (wow < 0) return { text: 'Down on the week', arrow: '&#9660;&nbsp;', color: DOWN };
-  return { text: 'Unchanged on the week', arrow: '', color: FLAT };
-}
-
-function confidenceHint(level: number): Hint {
-  if (level > 50) return { text: 'Above the 50 line', arrow: '', color: UP };
-  if (level < 50) return { text: 'Below the 50 line', arrow: '', color: DOWN };
-  return { text: 'On the 50 line', arrow: '', color: FLAT };
-}
-
 export function renderEditionEmail(input: EditionEmailInput): { subject: string; html: string; text: string } {
   const { content } = input;
-  const n = content.numbers;
   const subject = `The Market Briefing #${input.edition}`;
-  const prime = weekHint(n.wow);
-  const confidence = confidenceHint(n.confidence);
 
   const text = [
     `The Market Briefing, Edition ${input.edition}, ${input.dateLabel}`,
     '',
     content.headline,
     '',
-    `BlackOak Prime Capital Index: ${prime.text.toLowerCase()}.`,
-    `BlackOak Confidence Index: ${confidence.text.toLowerCase()}.`,
-    `Both readings for the week to ${n.weekTo} are in this week’s Briefing:`,
+    'This week’s prints are in: the BlackOak Prime Capital Index and the BlackOak Confidence Index.',
+    'See the figures:',
     input.link,
     '',
     'Also in this edition:',
@@ -109,8 +81,6 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
   const edition = escapeHtml(input.edition);
   const date = escapeHtml(input.dateLabel);
 
-  const hintLine = (hint: Hint) =>
-    `<div style="font-family:${BODY};font-weight:600;font-size:13px;line-height:18px;color:${hint.color};">${hint.arrow}${hint.text}</div>`;
   // The alt text is what shows where pictures are switched off, so it is styled too.
   const figure = (src: string, width: number, height: number, color: string) =>
     `<a href="${link}" style="text-decoration:none;"><img src="${src}" width="${width}" height="${height}" alt="In the Briefing" style="display:block;border:0;width:${width}px;max-width:100%;height:auto;font-family:${NUM};font-weight:600;font-size:15px;line-height:${height}px;color:${color};"></a>`;
@@ -189,22 +159,18 @@ export function renderEditionEmail(input: EditionEmailInput): { subject: string;
           <td class="figure-cell" valign="top" align="left" width="42%" style="padding:18px 16px 6px 22px;border-left:1px solid #243040;font-family:${BODY};font-size:13px;line-height:18px;color:#9AA4B2;">Confidence Index</td>
         </tr>
         <tr>
-          <td class="figure-cell" valign="middle" align="left" style="padding:0 16px 0 22px;">${figure(FIGURE_GOLD_URL, 232, 84, GOLD)}</td>
-          <td class="figure-cell" valign="middle" align="left" style="padding:0 16px 0 22px;border-left:1px solid #243040;">${figure(FIGURE_LIGHT_URL, 138, 60, '#F2EEE6')}</td>
-        </tr>
-        <tr>
-          <td class="figure-cell" valign="top" align="left" style="padding:6px 16px 18px 22px;">${hintLine(prime)}</td>
-          <td class="figure-cell" valign="top" align="left" style="padding:6px 16px 18px 22px;border-left:1px solid #243040;">${hintLine(confidence)}</td>
+          <td class="figure-cell" valign="middle" align="left" style="padding:0 16px 14px 22px;">${figure(FIGURE_GOLD_URL, 232, 84, GOLD)}</td>
+          <td class="figure-cell" valign="middle" align="left" style="padding:0 16px 14px 22px;border-left:1px solid #243040;">${figure(FIGURE_LIGHT_URL, 138, 60, '#F2EEE6')}</td>
         </tr>
       </table>
-      <div style="font-family:${BODY};font-size:14px;line-height:21px;color:#C9CFD8;padding:20px 0 18px;">
-        Both readings for the week to ${escapeHtml(n.weekTo)} are in this week’s Briefing.
+      <div style="font-family:${HEAD};font-weight:600;font-size:19px;line-height:26px;color:#F2EEE6;padding:24px 0 18px;">
+        This week’s prints are in.
       </div>
       <table role="presentation" class="btn" cellpadding="0" cellspacing="0" border="0">
         <tr><td bgcolor="${GOLD}" style="border-radius:4px;background:${GOLD};">
-          <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="${link}" style="height:50px;v-text-anchor:middle;width:280px;" arcsize="8%" stroke="f" fillcolor="${GOLD}"><center style="color:#0B1017;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">See this week’s figures</center></v:roundrect><![endif]-->
+          <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="${link}" style="height:50px;v-text-anchor:middle;width:280px;" arcsize="8%" stroke="f" fillcolor="${GOLD}"><center style="color:#0B1017;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">See the figures</center></v:roundrect><![endif]-->
           <!--[if !mso]><!-->
-          <a href="${link}" style="display:inline-block;padding:15px 34px;font-family:${HEAD};font-weight:700;font-size:16px;line-height:20px;color:#0B1017;text-decoration:none;border-radius:4px;background:${GOLD};">See this week’s figures</a>
+          <a href="${link}" style="display:inline-block;padding:15px 34px;font-family:${HEAD};font-weight:700;font-size:16px;line-height:20px;color:#0B1017;text-decoration:none;border-radius:4px;background:${GOLD};">See the figures</a>
           <!--<![endif]-->
         </td></tr>
       </table>
