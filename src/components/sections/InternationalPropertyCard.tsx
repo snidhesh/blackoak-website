@@ -11,15 +11,17 @@ interface InternationalPropertyCardProps {
   slug: string;
   name: string;
   mainImage: string;
-  localPrice: number;
+  /** Omit (or set priceOnRequest) when pricing has not been released */
+  localPrice?: number;
   localPriceTo?: number;
   localCurrency: string;
+  priceOnRequest?: boolean;
   city: string;
   country: string;
   propertyType?: string;
   bedrooms: number;
   bedroomsTo?: number;
-  area: number;
+  area?: number;
   areaTo?: number;
   areaUnit: string;
   offering?: string;
@@ -46,6 +48,7 @@ export default function InternationalPropertyCard({
   localPrice,
   localPriceTo,
   localCurrency,
+  priceOnRequest,
   city,
   country,
   propertyType,
@@ -63,8 +66,9 @@ export default function InternationalPropertyCard({
 
   const isComingSoon = status === 'coming-soon';
 
-  const priceLabel = formatLocalPrice(localPrice, localCurrency, locale);
-  const priceDisplay = localPriceTo && localPriceTo !== localPrice
+  const hasPrice = !priceOnRequest && typeof localPrice === 'number';
+  const priceLabel = hasPrice ? formatLocalPrice(localPrice!, localCurrency, locale) : t('priceOnRequest');
+  const priceDisplay = hasPrice && localPriceTo && localPriceTo !== localPrice
     ? t('priceFrom', { amount: priceLabel })
     : priceLabel;
 
@@ -72,9 +76,12 @@ export default function InternationalPropertyCard({
     ? `${bedrooms}–${bedroomsTo}`
     : `${bedrooms}`;
 
-  const areaDisplay = areaTo && areaTo !== area
-    ? `${formatArea(area, locale)}–${formatArea(areaTo, locale)}`
-    : `${formatArea(area, locale)}`;
+  const hasArea = typeof area === 'number';
+  const areaDisplay = !hasArea
+    ? ''
+    : areaTo && areaTo !== area
+      ? `${formatArea(area!, locale)}–${formatArea(areaTo, locale)}`
+      : `${formatArea(area!, locale)}`;
 
   const imageBlock = (
     <div className="relative aspect-[440/322] overflow-hidden rounded-md bg-gray-200">
@@ -129,9 +136,11 @@ export default function InternationalPropertyCard({
         <span className="flex items-center gap-1">
           <Bed className="w-3.5 h-3.5" /> {bedroomsDisplay} {t('bedrooms')}
         </span>
-        <span className="flex items-center gap-1">
-          <Maximize className="w-3.5 h-3.5" /> {areaDisplay} {areaUnit}
-        </span>
+        {hasArea && (
+          <span className="flex items-center gap-1">
+            <Maximize className="w-3.5 h-3.5" /> {areaDisplay} {areaUnit}
+          </span>
+        )}
       </div>
     </>
   );

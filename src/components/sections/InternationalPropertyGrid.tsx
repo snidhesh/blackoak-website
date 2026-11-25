@@ -31,6 +31,7 @@ export default function InternationalPropertyGrid({ properties, columns = 3 }: I
           localPrice={property.localPrice}
           localPriceTo={property.localPriceTo}
           localCurrency={property.localCurrency}
+          priceOnRequest={property.priceOnRequest}
           city={property.city}
           country={property.country}
           propertyType={property.propertyType}

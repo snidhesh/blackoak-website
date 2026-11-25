@@ -20,7 +20,8 @@ const contentSecurityPolicy = [
   "img-src 'self' data: blob: https://images.unsplash.com https://studio.blackoak-re.com https://static.shared.propertyfinder.ae https://*.public.blob.vercel-storage.com https://*.googletagmanager.com https://*.google-analytics.com",
   "font-src 'self' data: https://fonts.gstatic.com",
   "connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://studio.blackoak-re.com",
-  "frame-src 'self' https://www.googletagmanager.com",
+  // www.google.com is for the Google Maps embed on project and international detail pages.
+  "frame-src 'self' https://www.googletagmanager.com https://www.google.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",

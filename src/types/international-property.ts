@@ -1,4 +1,4 @@
-export type InternationalRegionSlug = 'europe' | 'asia' | 'americas';
+export type InternationalRegionSlug = 'europe' | 'asia' | 'americas' | 'africa';
 export type InternationalOffering = 'sale' | 'rent';
 
 export interface InternationalCountry {
@@ -64,20 +64,24 @@ export interface InternationalProperty {
   address: string;
   coordinates: { lat: number; lng: number };
 
-  // Pricing — single value for single-unit listings; "from" value for multi-unit developments
-  price: number;
+  // Pricing — single value for single-unit listings; "from" value for multi-unit developments.
+  // Omit price/localPrice and set priceOnRequest when the developer has not released pricing.
+  price?: number;
   priceTo?: number;
-  localPrice: number;
+  localPrice?: number;
   localPriceTo?: number;
   localCurrency: string;
+  priceOnRequest?: boolean;
 
   // Property details — single values are also "from / lowest" for multi-unit developments
   developer: string;
   propertyType: string;
   bedrooms: number;
   bedroomsTo?: number;
-  bathrooms: number;
-  area: number;
+  /** Omit when the developer has not published a bathroom count */
+  bathrooms?: number;
+  /** Omit when the developer has not published sizes */
+  area?: number;
   areaTo?: number;
   areaUnit: string;
   offering: InternationalOffering;

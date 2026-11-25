@@ -23,6 +23,14 @@
       "description": "Un art de vivre premium en bord de mer et des domaines emblématiques à travers les Amériques.",
       "image": "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=800&q=80",
       "propertyCount": 2
+    },
+    {
+      "id": "region-africa",
+      "slug": "africa",
+      "name": "Afrique",
+      "description": "Villas de marque et résidences hôtelières dans les destinations les plus emblématiques d'Afrique du Nord.",
+      "image": "https://images.unsplash.com/photo-1489493585363-d69421e0edd3?w=800&q=80",
+      "propertyCount": 1
     }
   ],
   "countries": [
@@ -321,9 +329,126 @@
         "ogDescription": "Explorez notre collection de biens immobiliers de prestige aux États-Unis : penthouses à Manhattan, villas à Miami Beach, manoirs à Beverly Hills et domaines en Californie."
       },
       "shortFocus": "Tours de Manhattan, domaines de Los Angeles et résidences au bord de l’eau à Miami."
+    },
+    {
+      "slug": "morocco",
+      "name": "Maroc",
+      "countryCode": "MA",
+      "region": "africa",
+      "heroImage": "/images/international/delano-marrakech/hero.jpg",
+      "thumbnail": "/images/international/delano-marrakech/hero.jpg",
+      "description": "Le Maroc s'est imposé comme l'un des marchés d'art de vivre les plus attractifs de la rive sud de la Méditerranée, et Marrakech en est le cœur. La Ville rouge associe une médina millénaire, des riads et des jardins à des golfs réputés, une scène gastronomique de premier plan et un nombre croissant d'enseignes hôtelières internationales, le tout à quelques heures de vol des capitales européennes. Marrakech a accueilli près de 4 millions de visiteurs en 2024, un record pour la ville, et l'aéroport de Marrakech-Ménara a traité 10,19 millions de passagers en 2025, soit une hausse d'environ 10 % sur un an. Cette demande gagne désormais l'immobilier résidentiel : les villas de marque et les résidences avec services offrent aux acquéreurs internationaux une propriété gérée, prête à vivre, avec des programmes de location hôtelière en leur absence. Le rôle du Maroc comme co-organisateur de la Coupe du Monde de la FIFA 2030, aux côtés de l'Espagne et du Portugal, devrait encore amplifier cette dynamique.",
+      "whyInvest": {
+        "title": "Pourquoi investir au Maroc",
+        "points": [
+          {
+            "title": "Une demande touristique record",
+            "description": "Marrakech a accueilli près de 4 millions de visiteurs en 2024, un record historique, et l'aéroport de Marrakech-Ménara a traité 10,19 millions de passagers en 2025. Ces arrivées soutenues nourrissent la demande d'hébergements haut de gamme avec services hôteliers."
+          },
+          {
+            "title": "L'arrivée des résidences de marque",
+            "description": "Les grandes enseignes hôtelières internationales associent désormais hôtels et villas privées à Marrakech, offrant aux propriétaires des services hôteliers, une gestion professionnelle et la possibilité d'un programme de location en leur absence."
+          },
+          {
+            "title": "L'élan de la Coupe du Monde 2030",
+            "description": "Le Maroc co-organise la Coupe du Monde de la FIFA 2030 avec l'Espagne et le Portugal, sur fond d'arrivées nationales record et d'une connectivité aérienne en expansion qui renforcent l'attrait de Marrakech."
+          },
+          {
+            "title": "Un art de vivre toute l'année",
+            "description": "Golfs, montagnes de l'Atlas, médina et tables réputées se trouvent à quelques minutes les uns des autres, et la ville n'est qu'à un court vol de la plupart des capitales européennes — une résidence secondaire facile à vivre."
+          }
+        ]
+      },
+      "seo": {
+        "title": "Propriétés de luxe au Maroc | BlackOak",
+        "description": "Découvrez la sélection BlackOak de propriétés de luxe au Maroc, des villas de marque avec piscine privée à Marrakech aux résidences avec vue sur l'Atlas.",
+        "ogTitle": "Propriétés de luxe au Maroc | BlackOak Real Estate",
+        "ogDescription": "Découvrez villas de marque et résidences d'exception à Marrakech avec BlackOak, dont Delano Hotel & Residences Marrakech."
+      },
+      "shortFocus": "Villas de marque à Marrakech, entre golfs et vues sur l'Atlas."
     }
   ],
   "properties": [
+    {
+      "id": "intl-prop-delano-marrakech",
+      "slug": "delano-hotel-residences-marrakech",
+      "country": "Maroc",
+      "countryCode": "MA",
+      "region": "africa",
+      "city": "Marrakech",
+      "coordinates": {
+        "lat": 31.602,
+        "lng": -7.941
+      },
+      "priceOnRequest": true,
+      "localCurrency": "MAD",
+      "developer": "YAMED (operated by Ennismore)",
+      "propertyType": "Branded Residence",
+      "bedrooms": 4,
+      "bedroomsTo": 6,
+      "areaUnit": "Sq.M.",
+      "offering": "sale",
+      "status": "available",
+      "featured": true,
+      "mainImage": "/images/international/delano-marrakech/hero.jpg",
+      "gallery": [
+        "/images/international/delano-marrakech/01-villa-pool-terrace.jpg",
+        "/images/international/delano-marrakech/02-villa-arrival.jpg"
+      ],
+      "floorPlans": [],
+      "unitTypes": [
+        {
+          "name": "Villa 4 chambres",
+          "bedrooms": 4,
+          "area": null,
+          "areaUnit": "Sq.M.",
+          "price": null,
+          "localPrice": null,
+          "priceOnRequest": true,
+          "image": "/images/international/delano-marrakech/02-villa-arrival.jpg"
+        },
+        {
+          "name": "Villa 5 chambres",
+          "bedrooms": 5,
+          "area": null,
+          "areaUnit": "Sq.M.",
+          "price": null,
+          "localPrice": null,
+          "priceOnRequest": true,
+          "image": "/images/international/delano-marrakech/hero.jpg"
+        },
+        {
+          "name": "Villa 6 chambres",
+          "bedrooms": 6,
+          "area": null,
+          "areaUnit": "Sq.M.",
+          "price": null,
+          "localPrice": null,
+          "priceOnRequest": true,
+          "image": "/images/international/delano-marrakech/01-villa-pool-terrace.jpg"
+        }
+      ],
+      "name": "Delano Hotel & Residences Marrakech",
+      "address": "Route de Ouarzazate, entre le Royal Golf de Marrakech et le Golf Amelkis, Marrakech, Maroc",
+      "description": "Une collection privée de 80 villas de quatre à six chambres à Marrakech, chacune dotée d'un jardin paysager et d'une piscine privée chauffée — la première adresse Delano sur le continent africain. Dessiné par les architectes ELASTIC, le domaine se situe au carrefour de trois golfs, le Royal Golf de Marrakech, le Golf Amelkis et Al Maaden, avec vue sur les montagnes de l'Atlas. La médina et la place Jemaa el-Fna se trouvent à environ 5 km, l'aéroport de Marrakech-Ménara à 9 km.\n\nChaque villa dispose d'un rooftop, d'un ascenseur et d'un escalier sculptural, d'un double séjour ouvert sur le jardin, d'une cuisine ouverte doublée d'une cuisine de préparation, d'une chambre de service et d'un parking privé pour deux voitures. Les propriétaires profitent d'un clubhouse réservé aux résidents et des services de l'hôtel Delano, opéré par Ennismore, avec la possibilité de confier leur villa au programme de location de l'hôtel. Le projet est certifié HQE, niveau Exceptionnel.",
+      "amenities": [
+        "Clubhouse réservé aux résidents",
+        "Jardin privé et piscine chauffée",
+        "Bien-être The Source by Delano",
+        "Courts de tennis et de padel",
+        "Fitness, piscine et pool bar résidents",
+        "Salle de projection et simulateur de golf",
+        "Salle de jeux et bibliothèque",
+        "Gigi Rigolatto et Mimi Kakushi",
+        "Café Delano et Rose Bar",
+        "Kids Club",
+        "Portiers, voiturier et sécurité",
+        "Programme de location de l'hôtel",
+        "Delano Members Club",
+        "Accor Ownership Benefits Program",
+        "Trois golfs à moins de 3 km"
+      ]
+    },
     {
       "id": "intl-prop-baccarat-maldives",
       "slug": "baccarat-hotel-residences-maldives",

@@ -39,16 +39,24 @@ export default async function InternationalPropertyDetailPage({ property, countr
   const hasCoordinates = property.coordinates.lat !== 0 && property.coordinates.lng !== 0;
   const hasAmenities = property.amenities.length > 0;
   const hasUnitTypes = (property.unitTypes?.length ?? 0) > 0;
-  const hasPriceRange = typeof property.priceTo === 'number' && property.priceTo !== property.price;
+  // Price, size and bathroom count are optional — some launches are published before the
+  // developer releases them (price on request, sizes on application).
+  const localPrice = property.priceOnRequest ? undefined : property.localPrice;
+  const hasPrice = typeof localPrice === 'number';
+  const hasArea = typeof property.area === 'number';
+  const hasBathrooms = typeof property.bathrooms === 'number';
+  const hasPriceRange = hasPrice && typeof property.priceTo === 'number' && property.priceTo !== property.price;
   const hasBedroomsRange = typeof property.bedroomsTo === 'number' && property.bedroomsTo !== property.bedrooms;
-  const hasAreaRange = typeof property.areaTo === 'number' && property.areaTo !== property.area;
+  const hasAreaRange = hasArea && typeof property.areaTo === 'number' && property.areaTo !== property.area;
 
   const bedroomsDisplay = hasBedroomsRange
     ? `${property.bedrooms}–${property.bedroomsTo}`
     : `${property.bedrooms}`;
-  const areaDisplay = hasAreaRange
-    ? `${formatArea(property.area, locale)}–${formatArea(property.areaTo!, locale)}`
-    : `${formatArea(property.area, locale)}`;
+  const areaDisplay = !hasArea
+    ? ''
+    : hasAreaRange
+      ? `${formatArea(property.area!, locale)}–${formatArea(property.areaTo!, locale)}`
+      : `${formatArea(property.area!, locale)}`;
 
   const stickyNavSections = [
     { id: 'details', label: t('stickyNav.details') },
@@ -63,11 +71,14 @@ export default async function InternationalPropertyDetailPage({ property, countr
   const localePath = (path: string, loc: string) =>
     loc === 'en' ? `https://www.blackoak-re.com${path}` : `https://www.blackoak-re.com/${loc}${path}`;
 
-  // Build offers — AggregateOffer when we have a price range, otherwise plain Offer
-  const offers = hasPriceRange
+  // Build offers — AggregateOffer when we have a price range, plain Offer for a single price,
+  // and no offer at all for price-on-request listings.
+  const offers = !hasPrice
+    ? undefined
+    : hasPriceRange
     ? {
         '@type': 'AggregateOffer',
-        lowPrice: property.localPrice,
+        lowPrice: localPrice,
         highPrice: property.localPriceTo ?? property.priceTo,
         priceCurrency: property.localCurrency,
         availability: 'https://schema.org/InStock',
@@ -77,7 +88,7 @@ export default async function InternationalPropertyDetailPage({ property, countr
       }
     : {
         '@type': 'Offer',
-        price: property.localPrice,
+        price: localPrice,
         priceCurrency: property.localCurrency,
         availability: 'https://schema.org/InStock',
       };
@@ -87,7 +98,7 @@ export default async function InternationalPropertyDetailPage({ property, countr
   if (hasAreaRange) rangeSuffixParts.push(`${areaDisplay} ${property.areaUnit}`);
   if (hasPriceRange) {
     rangeSuffixParts.push(
-      `from ${formatLocalPrice(property.localPrice, property.localCurrency, 'en')} to ${formatLocalPrice(
+      `from ${formatLocalPrice(localPrice!, property.localCurrency, 'en')} to ${formatLocalPrice(
         property.localPriceTo ?? property.priceTo!,
         property.localCurrency,
         'en'
@@ -121,14 +132,16 @@ export default async function InternationalPropertyDetailPage({ property, countr
     url: localePath(`/international-properties/${slug}/`, locale),
     inLanguage: locale,
     image: allImages,
-    offers,
+    ...(offers && { offers }),
     numberOfRooms: property.bedrooms,
-    numberOfBathroomsTotal: property.bathrooms,
-    floorSize: {
-      '@type': 'QuantitativeValue',
-      value: property.area,
-      unitText: property.areaUnit,
-    },
+    ...(hasBathrooms && { numberOfBathroomsTotal: property.bathrooms }),
+    ...(hasArea && {
+      floorSize: {
+        '@type': 'QuantitativeValue',
+        value: property.area,
+        unitText: property.areaUnit,
+      },
+    }),
     address: {
       '@type': 'PostalAddress',
       streetAddress: property.address,
@@ -202,26 +215,42 @@ export default async function InternationalPropertyDetailPage({ property, countr
                   <Bed className="w-4 h-4 md:w-5 md:h-5" />
                   {bedroomsDisplay} {tCommon('bed')}
                 </span>
-                <span className="w-1 h-1 rounded-full bg-white/70" />
-                <span className="flex items-center gap-1.5">
-                  <Bath className="w-4 h-4 md:w-5 md:h-5" />
-                  {property.bathrooms} {tCommon('bathrooms')}
-                </span>
-                <span className="w-1 h-1 rounded-full bg-white/70" />
-                <span className="flex items-center gap-1.5">
-                  <Maximize className="w-4 h-4 md:w-[18px] md:h-[18px]" />
-                  {areaDisplay} {property.areaUnit}
-                </span>
+                {hasBathrooms && (
+                  <>
+                    <span className="w-1 h-1 rounded-full bg-white/70" />
+                    <span className="flex items-center gap-1.5">
+                      <Bath className="w-4 h-4 md:w-5 md:h-5" />
+                      {property.bathrooms} {tCommon('bathrooms')}
+                    </span>
+                  </>
+                )}
+                {hasArea && (
+                  <>
+                    <span className="w-1 h-1 rounded-full bg-white/70" />
+                    <span className="flex items-center gap-1.5">
+                      <Maximize className="w-4 h-4 md:w-[18px] md:h-[18px]" />
+                      {areaDisplay} {property.areaUnit}
+                    </span>
+                  </>
+                )}
               </div>
             </div>
 
             <div className="md:text-end shrink-0 [text-shadow:0_2px_18px_rgba(0,0,0,0.55)]">
-              <p className="text-[11px] md:text-[13px] text-white/85 uppercase tracking-wider">
-                {tCommon('priceStartingFrom')}
-              </p>
-              <p className="text-[22px] md:text-[28px] font-semibold text-white mt-1">
-                {formatLocalPrice(property.localPrice, property.localCurrency, locale)}
-              </p>
+              {hasPrice ? (
+                <>
+                  <p className="text-[11px] md:text-[13px] text-white/85 uppercase tracking-wider">
+                    {tCommon('priceStartingFrom')}
+                  </p>
+                  <p className="text-[22px] md:text-[28px] font-semibold text-white mt-1">
+                    {formatLocalPrice(localPrice!, property.localCurrency, locale)}
+                  </p>
+                </>
+              ) : (
+                <p className="text-[22px] md:text-[28px] font-semibold text-white">
+                  {tCommon('priceOnRequest')}
+                </p>
+              )}
               <div className="flex items-center md:justify-end mt-4">
                 <a
                   href="#enquiry"
@@ -257,14 +286,18 @@ export default async function InternationalPropertyDetailPage({ property, countr
                 <p className="text-sm font-medium text-black">{tCommon('bedrooms')}</p>
                 <p className="text-sm text-[#5f6368] mt-1">{bedroomsDisplay}</p>
               </div>
-              <div>
-                <p className="text-sm font-medium text-black">{tCommon('bathrooms')}</p>
-                <p className="text-sm text-[#5f6368] mt-1">{property.bathrooms}</p>
-              </div>
-              <div>
-                <p className="text-sm font-medium text-black">{tCommon('totalArea')}</p>
-                <p className="text-sm text-[#5f6368] mt-1">{areaDisplay} {property.areaUnit}</p>
-              </div>
+              {hasBathrooms && (
+                <div>
+                  <p className="text-sm font-medium text-black">{tCommon('bathrooms')}</p>
+                  <p className="text-sm text-[#5f6368] mt-1">{property.bathrooms}</p>
+                </div>
+              )}
+              {hasArea && (
+                <div>
+                  <p className="text-sm font-medium text-black">{tCommon('totalArea')}</p>
+                  <p className="text-sm text-[#5f6368] mt-1">{areaDisplay} {property.areaUnit}</p>
+                </div>
+              )}
               <div>
                 <p className="text-sm font-medium text-black">{property.propertyType}</p>
                 <p className="text-sm text-[#5f6368] mt-1">{property.developer}</p>
