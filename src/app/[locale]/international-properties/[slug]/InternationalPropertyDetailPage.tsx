@@ -368,7 +368,7 @@ export default async function InternationalPropertyDetailPage({ property, countr
           {hasCoordinates ? (
             <div className="relative aspect-[1382/505] bg-gray-800 overflow-hidden rounded">
               <iframe
-                src={`https://www.google.com/maps?q=${property.coordinates.lat},${property.coordinates.lng}&z=15&output=embed`}
+                src={`https://www.google.com/maps?q=${property.coordinates.lat},${property.coordinates.lng}&z=${property.mapZoom ?? 15}&output=embed`}
                 className="absolute inset-0 w-full h-full border-0"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

@@ -453,9 +453,10 @@
       "region": "asia",
       "city": "South Male Atoll",
       "coordinates": {
-        "lat": 3.9,
-        "lng": 73.4
+        "lat": 3.893025,
+        "lng": 73.407683
       },
+      "mapZoom": 10,
       "price": 4940000,
       "priceTo": 12220000,
       "localPrice": 4940000,
