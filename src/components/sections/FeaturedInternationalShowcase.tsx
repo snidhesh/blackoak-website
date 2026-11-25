@@ -10,6 +10,10 @@ interface Props {
   property: InternationalProperty;
   locale: Locale;
   variant?: 'dark' | 'light';
+  /** Mirror the layout on desktop (image on the trailing side) — used to alternate stacked showcases */
+  reverse?: boolean;
+  /** Preload the image. Only the first showcase on a page should set this. Default true. */
+  priority?: boolean;
 }
 
 function formatLocalPrice(price: number, currency: string, locale: string): string {
@@ -25,22 +29,33 @@ function formatLocalPrice(price: number, currency: string, locale: string): stri
   }
 }
 
-export default async function FeaturedInternationalShowcase({ property, locale, variant = 'dark' }: Props) {
+export default async function FeaturedInternationalShowcase({
+  property,
+  locale,
+  variant = 'dark',
+  reverse = false,
+  priority = true,
+}: Props) {
   const t = await getTranslations({ locale, namespace: 'common' });
   const tDetail = await getTranslations({ locale, namespace: 'pages.internationalPropertyDetail' });
 
   const isDark = variant === 'dark';
-  const hasPriceRange = typeof property.priceTo === 'number' && property.priceTo !== property.price;
+  const localPrice = property.priceOnRequest ? undefined : property.localPrice;
+  const hasPrice = typeof localPrice === 'number';
+  const hasArea = typeof property.area === 'number';
+  const hasPriceRange = hasPrice && typeof property.priceTo === 'number' && property.priceTo !== property.price;
   const hasBedroomsRange = typeof property.bedroomsTo === 'number' && property.bedroomsTo !== property.bedrooms;
-  const hasAreaRange = typeof property.areaTo === 'number' && property.areaTo !== property.area;
+  const hasAreaRange = hasArea && typeof property.areaTo === 'number' && property.areaTo !== property.area;
 
   const bedroomsDisplay = hasBedroomsRange
     ? `${property.bedrooms}–${property.bedroomsTo}`
     : `${property.bedrooms}`;
-  const areaDisplay = hasAreaRange
-    ? `${formatArea(property.area, locale)}–${formatArea(property.areaTo!, locale)}`
-    : `${formatArea(property.area, locale)}`;
-  const priceLabel = formatLocalPrice(property.localPrice, property.localCurrency, locale);
+  const areaDisplay = !hasArea
+    ? ''
+    : hasAreaRange
+      ? `${formatArea(property.area!, locale)}–${formatArea(property.areaTo!, locale)}`
+      : `${formatArea(property.area!, locale)}`;
+  const priceLabel = hasPrice ? formatLocalPrice(localPrice!, property.localCurrency, locale) : t('priceOnRequest');
   const priceDisplay = hasPriceRange ? t('priceFrom', { amount: priceLabel }) : priceLabel;
 
   return (
@@ -48,7 +63,9 @@ export default async function FeaturedInternationalShowcase({ property, locale, 
       {/* Image side */}
       <Link
         href={`/international-properties/${property.slug}`}
-        className="relative lg:col-span-7 aspect-[4/5] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[640px] overflow-hidden group block"
+        className={`relative lg:col-span-7 aspect-[4/5] sm:aspect-[16/10] lg:aspect-auto lg:min-h-[640px] overflow-hidden group block ${
+          reverse ? 'lg:order-2' : ''
+        }`}
       >
         <Image
           src={property.mainImage}
@@ -56,7 +73,7 @@ export default async function FeaturedInternationalShowcase({ property, locale, 
           fill
           className="object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
           sizes="(max-width: 1024px) 100vw, 58vw"
-          priority
+          priority={priority}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-black/20" />
 
@@ -94,9 +111,11 @@ export default async function FeaturedInternationalShowcase({ property, locale, 
 
         {/* Price block */}
         <div className={`border-t pt-6 mb-6 ${isDark ? 'border-white/10' : 'border-black/10'}`}>
-          <p className={`text-[10px] tracking-[3px] uppercase mb-1.5 ${isDark ? 'text-white/50' : 'text-black/50'}`}>
-            {t('priceStartingFrom')}
-          </p>
+          {hasPrice && (
+            <p className={`text-[10px] tracking-[3px] uppercase mb-1.5 ${isDark ? 'text-white/50' : 'text-black/50'}`}>
+              {t('priceStartingFrom')}
+            </p>
+          )}
           <p className="text-[26px] sm:text-[30px] font-semibold leading-none">{priceDisplay}</p>
         </div>
 
@@ -106,10 +125,12 @@ export default async function FeaturedInternationalShowcase({ property, locale, 
             <Bed className="w-4 h-4 shrink-0" />
             {bedroomsDisplay} {t('bedrooms')}
           </span>
-          <span className="inline-flex items-center gap-2">
-            <Maximize className="w-4 h-4 shrink-0" />
-            {areaDisplay} {property.areaUnit}
-          </span>
+          {hasArea && (
+            <span className="inline-flex items-center gap-2">
+              <Maximize className="w-4 h-4 shrink-0" />
+              {areaDisplay} {property.areaUnit}
+            </span>
+          )}
         </div>
 
         {/* Amenities preview */}

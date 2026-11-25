@@ -15,6 +15,9 @@ interface Props {
   params: { locale: string };
 }
 
+/** Up to this many live listings are shown as full-width showcases; beyond it, as a card grid. */
+const MAX_SHOWCASES = 3;
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = params.locale as Locale;
   const t = await getTranslations({ locale, namespace: 'metadata.internationalProperties' });
@@ -109,20 +112,25 @@ export default async function InternationalPropertiesPage({ params }: { params: 
         </div>
       </section>
 
-      {/* Featured listing — premium showcase on cream surround */}
-      {availableProperties.length === 1 ? (
+      {/* Live listings — a few flagship developments get one premium showcase each, stacked on the
+          cream surround with the image side alternating; a longer list falls back to the card grid. */}
+      {availableProperties.length > 0 && availableProperties.length <= MAX_SHOWCASES ? (
         <section className="pb-20 md:pb-28 bg-[#f5f1ea]">
-          <div className="container-wide">
-            <div className="shadow-[0_30px_80px_-30px_rgba(0,0,0,0.35)]">
-              <FeaturedInternationalShowcase
-                property={availableProperties[0]}
-                locale={locale}
-                variant="dark"
-              />
-            </div>
+          <div className="container-wide space-y-10 md:space-y-16">
+            {availableProperties.map((property, i) => (
+              <div key={property.slug} className="shadow-[0_30px_80px_-30px_rgba(0,0,0,0.35)]">
+                <FeaturedInternationalShowcase
+                  property={property}
+                  locale={locale}
+                  variant="dark"
+                  reverse={i % 2 === 1}
+                  priority={i === 0}
+                />
+              </div>
+            ))}
           </div>
         </section>
-      ) : availableProperties.length > 1 ? (
+      ) : availableProperties.length > MAX_SHOWCASES ? (
         <section className="pb-16 bg-[#f5f1ea]">
           <div className="container-wide">
             <InternationalPropertyGrid properties={availableProperties} columns={3} />

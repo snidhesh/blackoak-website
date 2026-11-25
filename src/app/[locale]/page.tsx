@@ -5,7 +5,13 @@ import dynamic from 'next/dynamic';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Suspense } from 'react';
-import { getNeighbourhoods, getNews, getInternationalCountries } from '@/lib/content';
+import {
+  getNeighbourhoods,
+  getNews,
+  getInternationalCountries,
+  getInternationalProperties,
+  getInternationalRegions,
+} from '@/lib/content';
 import { formatDate } from '@/lib/formatters';
 import SectionLabel from '@/components/ui/SectionLabel';
 import SectionHeading from '@/components/ui/SectionHeading';
@@ -67,27 +73,34 @@ export default async function HomePage({ params }: { params: { locale: string } 
     .filter(Boolean) as typeof allNeighbourhoods;
   const news = getNews(locale).slice(0, 3);
   const internationalCountries = getInternationalCountries(locale);
-  // Maldives leads (our flagship listing); everything else follows the data order.
+  // Countries with a live listing lead (Maldives, then Morocco); everything else follows the data order.
   // Hidden from the homepage stack (still available on /international-properties).
   const HIDE_FROM_HOMEPAGE = new Set(['CH', 'TH', 'SG']);
   const visibleCountries = internationalCountries.filter(
     (c) => !HIDE_FROM_HOMEPAGE.has(c.countryCode)
   );
-  const maldives = visibleCountries.find((c) => c.countryCode === 'MV');
-  const otherCountries = visibleCountries.filter((c) => c.countryCode !== 'MV');
-  const orderedCountries = maldives ? [maldives, ...otherCountries] : visibleCountries;
+  const liveCountryCodes = new Set(
+    getInternationalProperties(locale)
+      .filter((p) => p.status === 'available')
+      .map((p) => p.countryCode)
+  );
+  const orderedCountries = [
+    ...visibleCountries.filter((c) => liveCountryCodes.has(c.countryCode)),
+    ...visibleCountries.filter((c) => !liveCountryCodes.has(c.countryCode)),
+  ];
+  const regionNames = new Map(getInternationalRegions(locale).map((r) => [r.slug, r.name]));
   const exploreMoreLabel = tCommon('exploreMore');
   const homepageMarketEntries: MarketEntry[] = [
     ...orderedCountries.map((c) => ({
       name: c.name,
-      country: c.region === 'europe' ? 'Europe' : c.region === 'asia' ? 'Asia & Indian Ocean' : 'Americas',
+      country: regionNames.get(c.region) ?? '',
       focus: c.shortFocus,
       image: c.heroImage,
       status: 'active' as const,
       href: '/international-properties',
       ctaLabel: exploreMoreLabel,
     })),
-    // Homepage-only additions sourced from homepage.json (Egypt, Morocco — no detail page yet).
+    // Homepage-only additions sourced from homepage.json (Egypt — no listing yet).
     ...((homepage.internationalProperties.additions ?? []) as Array<{
       name: string;
       country: string;
