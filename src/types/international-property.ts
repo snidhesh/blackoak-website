@@ -63,6 +63,8 @@ export interface InternationalProperty {
   city: string;
   address: string;
   coordinates: { lat: number; lng: number };
+  /** Zoom for the embedded location map (default 15). Zoom out for sites with no mapped surroundings, e.g. an island still to be built. */
+  mapZoom?: number;
 
   // Pricing — single value for single-unit listings; "from" value for multi-unit developments.
   // Omit price/localPrice and set priceOnRequest when the developer has not released pricing.
