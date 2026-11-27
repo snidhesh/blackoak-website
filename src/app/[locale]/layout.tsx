@@ -1,7 +1,9 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, getTranslations } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
 
 import Navbar from '@/components/layout/Navbar';
@@ -9,6 +11,10 @@ import Footer from '@/components/layout/Footer';
 import { CurrencyProvider } from '@/context/CurrencyContext';
 import { getSplash } from '@/lib/content';
 import type { Locale } from '@/i18n/config';
+import { fontVariables } from '../fonts';
+import '../globals.css';
+
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 const BASE_URL = 'https://www.blackoak-re.com';
 
@@ -20,7 +26,9 @@ export function generateMetadata({ params }: { params: { locale: string } }): Me
     metadataBase: new URL(BASE_URL),
     title: {
       default: 'BlackOak Real Estate | Luxury Properties & Investment in Dubai',
-      template: '%s | BlackOak Real Estate',
+      // Short brand suffix: search results show the site name separately, and
+      // the full company name pushed most titles past the visible length.
+      template: '%s | BlackOak',
     },
     description:
       'Dubai luxury real estate specialists. Buy villas, apartments & penthouses in Palm Jumeirah, Emirates Hills, Downtown Dubai & more. Expert investment advisory & concierge services.',
@@ -99,105 +107,150 @@ export default async function LocaleLayout({
     notFound();
   }
 
+  // Lets next-intl render the tree statically instead of reading the locale
+  // from the request on every visit. Every page under [locale] does the same.
+  setRequestLocale(locale);
+
   const messages = await getMessages();
   const tCommon = await getTranslations({ locale, namespace: 'common' });
   const splash = getSplash(locale as Locale);
 
   return (
-    <NextIntlClientProvider messages={messages}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'RealEstateAgent',
-            name: 'BlackOak Real Estate',
-            url: BASE_URL,
-            logo: `${BASE_URL}/images/logo-white.png`,
-            description:
-              'A global luxury real estate firm delivering expert guidance, exclusive opportunities, and tailored investment services in Dubai.',
-            inLanguage: locale,
-            telephone: '+971 4 398 9055',
-            email: 'info@blackoak-re.com',
-            address: [
-              {
-                '@type': 'PostalAddress',
-                streetAddress: 'Office 1406, Marina Plaza, Dubai Marina',
-                addressLocality: 'Dubai',
-                addressCountry: 'AE',
-              },
-              {
-                '@type': 'PostalAddress',
-                streetAddress: '71-75 Shelton Street',
-                addressLocality: 'London',
-                postalCode: 'WC2H 9JQ',
-                addressCountry: 'GB',
-              },
-            ],
-            areaServed: {
-              '@type': 'City',
-              name: 'Dubai',
-            },
-            priceRange: '$$$$',
-            knowsAbout: [
-              'Luxury real estate',
-              'Dubai property investment',
-              'Off-plan property',
-              'Golden Visa through real estate',
-              'High-net-worth property advisory',
-            ],
-            hasOfferCatalog: {
-              '@type': 'OfferCatalog',
-              name: 'Real Estate Services',
-              itemListElement: [
-                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Luxury Property Brokerage' } },
-                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Private Advisory & Concierge' } },
-                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Real Estate Investment & Syndication' } },
-                { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Property Management' } },
-              ],
-            },
-            sameAs: [
-              'https://www.instagram.com/blackoakdubai/',
-              'https://ae.linkedin.com/company/blackoak-real-estate',
-              'https://www.facebook.com/BlackOakRealEstate/',
-              'https://www.tiktok.com/@blackoak.realestate',
-              'https://www.youtube.com/@blackoakrealestate',
-            ],
-          }),
-        }}
-      />
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `
-          (function(){
-            var d=document.documentElement;
-            if(${splash.enabled ? 'true' : 'false'}
-              && /^\\/((?:fr|ar)\\/)?$/.test(location.pathname)
-              /* TEMP: cookie gate disabled for dev. Restore the next line before shipping. */
-              /* && !/blackoak-splash=/.test(document.cookie) */){
-              d.dataset.splash='pending';
-              /* document.cookie='blackoak-splash=seen;path=/'; */
-              window.__splashTimer=setTimeout(function(){ delete d.dataset.splash; }, ${splash.autoPlayDuration + 3000});
-            }
-          })();
-        `,
-        }}
-      />
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded"
-      >
-        {tCommon('skipToMainContent')}
-      </a>
-      <CurrencyProvider>
-        <div id="app-shell">
-          <Navbar />
-          <main id="main-content" className="min-h-screen">
-            {children}
-          </main>
-          <Footer />
-        </div>
-      </CurrencyProvider>
-    </NextIntlClientProvider>
+    <html
+      lang={locale}
+      dir={locale === 'ar' ? 'rtl' : 'ltr'}
+      className={fontVariables}
+      // Inline pre-paint scripts set data-* flags on <html> (splash, Market
+      // Intelligence unlock), which the server render cannot know about.
+      suppressHydrationWarning
+    >
+      <head>
+        <link rel="preconnect" href="https://studio.blackoak-re.com" />
+        <link rel="preconnect" href="https://static.shared.propertyfinder.ae" />
+        <link rel="dns-prefetch" href="https://studio.blackoak-re.com" />
+        <link rel="dns-prefetch" href="https://static.shared.propertyfinder.ae" />
+      </head>
+      {GTM_ID && (
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');`,
+          }}
+        />
+      )}
+      <body className="font-sans antialiased">
+        {GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+            />
+          </noscript>
+        )}
+        <NextIntlClientProvider messages={messages}>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                '@context': 'https://schema.org',
+                '@type': 'RealEstateAgent',
+                name: 'BlackOak Real Estate',
+                url: BASE_URL,
+                logo: `${BASE_URL}/images/logo-white.png`,
+                description:
+                  'A global luxury real estate firm delivering expert guidance, exclusive opportunities, and tailored investment services in Dubai.',
+                inLanguage: locale,
+                telephone: '+971 4 398 9055',
+                email: 'info@blackoak-re.com',
+                address: [
+                  {
+                    '@type': 'PostalAddress',
+                    streetAddress: 'Office 1406, Marina Plaza, Dubai Marina',
+                    addressLocality: 'Dubai',
+                    addressCountry: 'AE',
+                  },
+                  {
+                    '@type': 'PostalAddress',
+                    streetAddress: '71-75 Shelton Street',
+                    addressLocality: 'London',
+                    postalCode: 'WC2H 9JQ',
+                    addressCountry: 'GB',
+                  },
+                ],
+                areaServed: {
+                  '@type': 'City',
+                  name: 'Dubai',
+                },
+                priceRange: '$$$$',
+                knowsAbout: [
+                  'Luxury real estate',
+                  'Dubai property investment',
+                  'Off-plan property',
+                  'Golden Visa through real estate',
+                  'High-net-worth property advisory',
+                ],
+                hasOfferCatalog: {
+                  '@type': 'OfferCatalog',
+                  name: 'Real Estate Services',
+                  itemListElement: [
+                    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Luxury Property Brokerage' } },
+                    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Private Advisory & Concierge' } },
+                    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Real Estate Investment & Syndication' } },
+                    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Property Management' } },
+                  ],
+                },
+                sameAs: [
+                  'https://www.instagram.com/blackoakdubai/',
+                  'https://ae.linkedin.com/company/blackoak-real-estate',
+                  'https://www.facebook.com/BlackOakRealEstate/',
+                  'https://www.tiktok.com/@blackoak.realestate',
+                  'https://www.youtube.com/@blackoakrealestate',
+                ],
+              }),
+            }}
+          />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              (function(){
+                var d=document.documentElement;
+                if(${splash.enabled ? 'true' : 'false'}
+                  && /^\\/((?:fr|ar)\\/)?$/.test(location.pathname)
+                  /* TEMP: cookie gate disabled for dev. Restore the next line before shipping. */
+                  /* && !/blackoak-splash=/.test(document.cookie) */){
+                  d.dataset.splash='pending';
+                  /* document.cookie='blackoak-splash=seen;path=/'; */
+                  window.__splashTimer=setTimeout(function(){ delete d.dataset.splash; }, ${splash.autoPlayDuration + 3000});
+                }
+              })();
+            `,
+            }}
+          />
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:px-4 focus:py-2 focus:bg-black focus:text-white focus:rounded"
+          >
+            {tCommon('skipToMainContent')}
+          </a>
+          <CurrencyProvider>
+            <div id="app-shell">
+              <Navbar />
+              <main id="main-content" className="min-h-screen">
+                {children}
+              </main>
+              <Footer />
+            </div>
+          </CurrencyProvider>
+        </NextIntlClientProvider>
+        <SpeedInsights />
+      </body>
+    </html>
   );
 }

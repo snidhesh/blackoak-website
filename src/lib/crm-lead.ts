@@ -63,7 +63,8 @@ export async function submitCrmLead(input: CrmLeadInput): Promise<CrmLeadResult>
   const { data } = input;
   const payload: Record<string, unknown> = {
     name: `${data.firstName} ${data.lastName}`.trim(),
-    phone: toE164(data.phone),
+    // The CRM intake insists on a phone; CRM_DUMMY_PHONE means "none given".
+    phone: data.phone ? toE164(data.phone) : CRM_DUMMY_PHONE,
     note: buildNote(input),
   };
   if (data.email) payload.email = data.email.slice(0, EMAIL_MAX);

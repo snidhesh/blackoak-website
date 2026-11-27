@@ -2,9 +2,10 @@ import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/navigation';
 import type { Metadata } from 'next';
 import { ArrowLeft, MapPin, CheckCircle2 } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getCareers, getCareerBySlug } from '@/lib/content';
 import { formatDate } from '@/lib/formatters';
+import { truncateForMeta } from '@/lib/utils';
 import type { Locale } from '@/i18n/config';
 import SectionLabel from '@/components/ui/SectionLabel';
 import SectionHeading from '@/components/ui/SectionHeading';
@@ -62,12 +63,15 @@ function parseEmploymentType(type: string): string | string[] {
   return out.length === 1 ? out[0] : out;
 }
 
-export function generateMetadata({ params }: Props): Metadata {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = params.locale as Locale;
   const job = getCareerBySlug(params.slug, locale);
   if (!job) notFound();
-  const title = `${job.title} | Careers at BlackOak Real Estate`;
-  const description = `Join BlackOak as ${job.title} in ${job.location}. ${job.type}. ${job.description.slice(0, 120)}`;
+  const tMeta = await getTranslations({ locale, namespace: 'metadata.careerDetail' });
+  const title = `${job.title} | ${tMeta('titleSuffix')}`;
+  const description = truncateForMeta(
+    `${tMeta('descriptionPrefix', { jobTitle: job.title, location: job.location, type: job.type })} ${job.description}`
+  );
   return {
     title,
     description,
@@ -93,6 +97,9 @@ export function generateMetadata({ params }: Props): Metadata {
 }
 
 export default async function CareerDetailPage({ params }: Props) {
+  // Lets next-intl render this page statically instead of reading the locale
+  // from the request on every visit.
+  setRequestLocale(params.locale);
   const locale = params.locale as Locale;
   const t = await getTranslations('pages.career.detail');
   const job = getCareerBySlug(params.slug, locale);

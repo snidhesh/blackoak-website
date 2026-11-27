@@ -12,14 +12,16 @@
       "title": "Luxury Properties for Sale & Rent in Dubai",
       "description": "Explore luxury villas, apartments & penthouses for sale and rent across Palm Jumeirah, Emirates Hills, Downtown Dubai & more. Off-plan and ready properties curated by BlackOak.",
       "ogTitle": "Luxury Properties for Sale & Rent in Dubai",
-      "ogDescription": "Explore luxury villas, apartments & penthouses for sale and rent across Palm Jumeirah, Emirates Hills, Downtown Dubai & more."
+      "ogDescription": "Explore luxury villas, apartments & penthouses for sale and rent across Palm Jumeirah, Emirates Hills, Downtown Dubai & more.",
+      "pageLabel": "Page {page}"
     },
     "projectDetail": {
       "notFoundTitle": "Project Not Found",
       "forSale": "for Sale",
       "forRent": "for Rent",
       "titlePattern": "{bedrooms} Bedroom {type} {offering} in {location}",
-      "titlePatternNoBedrooms": "{type} {offering} in {location}"
+      "titlePatternNoBedrooms": "{type} {offering} in {location}",
+      "titlePatternStudio": "Studio Apartment {offering} in {location}"
     },
     "whyBlackoak": {
       "title": "Why BlackOak - About Our Luxury Real Estate Firm",
@@ -53,7 +55,7 @@
     },
     "marketIntelligence": {
       "title": "Dubai Market Intelligence — Prices, Cycles & Forecast",
-      "description": "24 years of Dubai residential prices per sq ft (2002—2026) — interactive chart, time-travel investment calculator, and 2026—2030 scenario simulator from BlackOak Real Estate.",
+      "description": "24 years of Dubai residential prices per sq ft (2002–2026): interactive chart, time-travel investment calculator and 2026–2030 scenario simulator.",
       "ogTitle": "Dubai Market Intelligence | BlackOak Real Estate",
       "ogDescription": "Interactive Dubai market report: 24 years of prices, cycles, and a 2026—2030 scenario simulator."
     },
@@ -70,7 +72,7 @@
       "ogDescription": "Join BlackOak Real Estate. Open positions for real estate consultants, investment advisors & property specialists in Dubai."
     },
     "careerDetail": {
-      "titleSuffix": "Careers at BlackOak Real Estate",
+      "titleSuffix": "Careers",
       "descriptionPrefix": "Join BlackOak as {jobTitle} in {location}. {type}."
     },
     "contact": {
@@ -133,6 +135,10 @@
     }
   },
   "common": {
+    "studio": "Studio",
+    "pagination": "Pagination",
+    "previousPage": "Previous page",
+    "nextPage": "Next page",
     "blackoakRealEstate": "BlackOak Real Estate",
     "logoAlt": "BlackOak Real Estate",
     "bedrooms": "Bedrooms",
@@ -366,6 +372,8 @@
       "villa": "Villa",
       "townhouse": "Townhouse",
       "penthouse": "Penthouse",
+      "office": "Office",
+      "duplex": "Duplex",
       "land": "Land",
       "commercial": "Commercial"
     },
@@ -513,6 +521,8 @@
       "details": {
         "label": "Details",
         "heading": "Where Luxury Meets the Horizon",
+        "showMore": "Show more",
+        "showLess": "Show less",
         "reference": "Reference",
         "furnishing": "Furnishing",
         "parking": "Parking",
@@ -544,6 +554,29 @@
         "label": "Enquiry",
         "heading": "Your Dream Residence Awaits — Let's Connect",
         "submitLabel": "Submit Enquiry"
+      },
+      "contactCard": {
+        "label": "Request information",
+        "heading": "Contact",
+        "description": "Ask for full details, current availability and a private viewing of this property.",
+        "button": "Contact us",
+        "buttonAgent": "Contact {name}",
+        "phoneOptional": "Phone (optional)",
+        "submit": "Send enquiry",
+        "cancel": "Cancel",
+        "whatsapp": "Chat on WhatsApp"
+      },
+      "similar": {
+        "label": "Similar properties",
+        "heading": "You may also like",
+        "description": "More from BlackOak's current listings, chosen to match this property.",
+        "viewAll": "See all properties"
+      },
+      "briefing": {
+        "label": "The Market Briefing",
+        "heading": "UAE real estate intelligence, every Monday",
+        "description": "The BlackOak Prime Capital Index, rates, rentals and developer activity in one weekly edition. Free to subscribers of the Intelligence Hub.",
+        "button": "Subscribe in the Intelligence Hub"
       },
       "breadcrumbs": {
         "home": "Home",

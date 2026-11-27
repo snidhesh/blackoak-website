@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getNeighbourhoods, getNeighbourhoodBySlug, getProjectsByNeighbourhood } from '@/lib/content';
+import { truncateForMeta } from '@/lib/utils';
 import type { Locale } from '@/i18n/config';
 import SectionLabel from '@/components/ui/SectionLabel';
 import PropertyGrid from '@/components/sections/PropertyGrid';
@@ -57,7 +58,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const minPrice = priced.length ? Math.min(...priced.map((p) => p.price)) : null;
   const currency = priced[0]?.currency ?? 'AED';
   const statsSuffix = buildStatsSuffix(projects.length, minPrice, currency, locale);
-  const description = `${neighbourhood.seo.description}${statsSuffix}`;
+  const description = truncateForMeta(`${neighbourhood.seo.description}${statsSuffix}`);
 
   return {
     title: neighbourhood.seo.title,
@@ -86,6 +87,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export const revalidate = 300;
 
 export default async function NeighbourhoodPage({ params }: Props) {
+  // Lets next-intl render this page statically instead of reading the locale
+  // from the request on every visit.
+  setRequestLocale(params.locale);
   const locale = params.locale as Locale;
   const t = await getTranslations('pages.neighbourhoods');
   const neighbourhood = getNeighbourhoodBySlug(params.slug, locale);

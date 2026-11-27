@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { CheckCircle } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Locale } from '@/i18n/config';
 import SectionLabel from '@/components/ui/SectionLabel';
 import Button from '@/components/ui/Button';
@@ -31,7 +31,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function ThankYouPage() {
+export default async function ThankYouPage({ params }: { params: { locale: string } }) {
+  // Lets next-intl render this page statically instead of reading the locale
+  // from the request on every visit.
+  setRequestLocale(params.locale);
   const t = await getTranslations('pages.thankYou');
 
   return (

@@ -67,6 +67,31 @@ html[data-splash="pending"] #app-shell {
   visibility: hidden;
 }
 
+/* The splash is in the server-rendered HTML so it paints straight away. It is
+   shown only while the gate is pending, and stays visible although it sits
+   inside the hidden app shell. */
+.splash-screen {
+  display: none;
+}
+html[data-splash="pending"] .splash-screen {
+  display: flex;
+  visibility: visible;
+}
+
+/* Splash entrance animations (timings are set on each element in SplashScreen.tsx) */
+@keyframes splash-logo {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes splash-rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes splash-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* RTL overrides */
 [dir="rtl"] .animate-marquee {
   animation-direction: reverse;

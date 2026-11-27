@@ -54,6 +54,19 @@ const nextConfig = {
 
     ];
   },
+  async redirects() {
+    return [
+      // Section roots that have no page of their own, so they do not 404.
+      { source: '/insights', destination: '/insights/intelligence/', permanent: true },
+      { source: '/:locale(fr|ar)/insights', destination: '/:locale/insights/intelligence/', permanent: true },
+      { source: '/about', destination: '/about/why-blackoak/', permanent: true },
+      { source: '/:locale(fr|ar)/about', destination: '/:locale/about/why-blackoak/', permanent: true },
+      // English is served without a locale prefix. Without these, the locale
+      // middleware answers /en/... with a temporary redirect.
+      { source: '/en', destination: '/', permanent: true },
+      { source: '/en/:path*', destination: '/:path*/', permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

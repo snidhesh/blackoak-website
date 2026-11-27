@@ -12,14 +12,16 @@
       "title": "عقارات فاخرة للبيع والإيجار في دبي",
       "description": "استكشف الفلل والشقق والبنتهاوس الفاخرة للبيع والإيجار في نخلة جميرا وتلال الإمارات ووسط مدينة دبي والمزيد. عقارات على الخارطة وجاهزة مختارة من BlackOak.",
       "ogTitle": "عقارات فاخرة للبيع والإيجار في دبي",
-      "ogDescription": "استكشف الفلل والشقق والبنتهاوس الفاخرة للبيع والإيجار في نخلة جميرا وتلال الإمارات ووسط مدينة دبي والمزيد."
+      "ogDescription": "استكشف الفلل والشقق والبنتهاوس الفاخرة للبيع والإيجار في نخلة جميرا وتلال الإمارات ووسط مدينة دبي والمزيد.",
+      "pageLabel": "الصفحة {page}"
     },
     "projectDetail": {
       "notFoundTitle": "لم يتم العثور على المشروع",
       "forSale": "للبيع",
       "forRent": "للإيجار",
-      "titlePattern": "{type} {bedrooms} غرف نوم {offering} في {location}",
-      "titlePatternNoBedrooms": "{type} {offering} في {location}"
+      "titlePattern": "{type} {bedrooms, plural, one {بغرفة نوم واحدة} two {بغرفتي نوم} few {# غرف نوم} many {# غرفة نوم} other {# غرف نوم}} {offering} في {location}",
+      "titlePatternNoBedrooms": "{type} {offering} في {location}",
+      "titlePatternStudio": "استوديو {offering} في {location}"
     },
     "whyBlackoak": {
       "title": "لماذا BlackOak - عن شركتنا العقارية الفاخرة",
@@ -52,10 +54,10 @@
       "ogDescription": "آخر أخبار العقارات وتقارير السوق ورؤى الاستثمار في دبي من BlackOak. ابقَ على اطلاع بأحدث اتجاهات العقارات والفرص."
     },
     "marketIntelligence": {
-      "title": "Dubai Market Intelligence — Prices, Cycles & Forecast",
-      "description": "24 years of Dubai residential prices per sq ft (2002—2026) — interactive chart, time-travel investment calculator, and 2026—2030 scenario simulator from BlackOak Real Estate.",
-      "ogTitle": "Dubai Market Intelligence | BlackOak Real Estate",
-      "ogDescription": "Interactive Dubai market report: 24 years of prices, cycles, and a 2026—2030 scenario simulator."
+      "title": "سوق عقارات دبي: الأسعار والدورات والتوقعات",
+      "description": "24 عاماً من أسعار العقارات السكنية في دبي للقدم المربع (2002–2026): رسم بياني تفاعلي، وحاسبة استثمار بأثر رجعي، ومحاكي سيناريوهات 2026–2030 من BlackOak.",
+      "ogTitle": "سوق عقارات دبي | BlackOak للعقارات",
+      "ogDescription": "تقرير تفاعلي عن سوق دبي: 24 عاماً من الأسعار والدورات ومحاكي سيناريوهات 2026–2030."
     },
     "intelligence": {
       "title": "مركز الذكاء — ذكاء سوق دبي ونشرة السوق الأسبوعية",
@@ -70,7 +72,7 @@
       "ogDescription": "انضم إلى BlackOak للعقارات. وظائف شاغرة لمستشاري العقارات ومستشاري الاستثمار والمتخصصين في العقارات في دبي."
     },
     "careerDetail": {
-      "titleSuffix": "وظائف في BlackOak للعقارات",
+      "titleSuffix": "الوظائف",
       "descriptionPrefix": "انضم إلى BlackOak بصفتك {jobTitle} في {location}. {type}."
     },
     "contact": {
@@ -133,6 +135,10 @@
     }
   },
   "common": {
+    "studio": "استوديو",
+    "pagination": "ترقيم الصفحات",
+    "previousPage": "الصفحة السابقة",
+    "nextPage": "الصفحة التالية",
     "blackoakRealEstate": "BlackOak للعقارات",
     "logoAlt": "BlackOak للعقارات",
     "bedrooms": "غرف نوم",
@@ -366,6 +372,8 @@
       "villa": "فيلا",
       "townhouse": "تاون هاوس",
       "penthouse": "بنتهاوس",
+      "office": "مكتب",
+      "duplex": "دوبلكس",
       "land": "أرض",
       "commercial": "تجاري"
     },
@@ -513,6 +521,8 @@
       "details": {
         "label": "التفاصيل",
         "heading": "حيث يلتقي الفخامة بالأفق",
+        "showMore": "عرض المزيد",
+        "showLess": "عرض أقل",
         "reference": "المرجع",
         "furnishing": "التأثيث",
         "parking": "مواقف السيارات",
@@ -544,6 +554,29 @@
         "label": "استفسار",
         "heading": "مسكن أحلامك ينتظرك — لنتواصل",
         "submitLabel": "إرسال الاستفسار"
+      },
+      "contactCard": {
+        "label": "طلب معلومات",
+        "heading": "تواصل معنا",
+        "description": "اطلب التفاصيل الكاملة والتوافر الحالي ومعاينة خاصة لهذا العقار.",
+        "button": "تواصل معنا",
+        "buttonAgent": "تواصل مع {name}",
+        "phoneOptional": "الهاتف (اختياري)",
+        "submit": "إرسال الاستفسار",
+        "cancel": "إلغاء",
+        "whatsapp": "تواصل عبر واتساب"
+      },
+      "similar": {
+        "label": "عقارات مشابهة",
+        "heading": "قد يعجبك أيضاً",
+        "description": "عقارات أخرى من قائمة BlackOak الحالية، مختارة لتشابهها مع هذا العقار.",
+        "viewAll": "عرض جميع العقارات"
+      },
+      "briefing": {
+        "label": "نشرة السوق الأسبوعية",
+        "heading": "معلومات سوق العقارات في الإمارات، كل يوم اثنين",
+        "description": "مؤشر BlackOak Prime Capital Index وأسعار الفائدة والإيجارات ونشاط المطوّرين في إصدار أسبوعي واحد. مجاناً لمشتركي مركز الذكاء.",
+        "button": "اشترك عبر مركز الذكاء"
       },
       "breadcrumbs": {
         "home": "الرئيسية",

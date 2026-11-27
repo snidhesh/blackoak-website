@@ -3,8 +3,9 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { ArrowLeft, Copy, Facebook, Linkedin, Instagram, Youtube } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getNews, getNewsBySlug } from '@/lib/content';
+import { truncateForMeta } from '@/lib/utils';
 import { formatDate } from '@/lib/formatters';
 import type { Locale } from '@/i18n/config';
 import SectionLabel from '@/components/ui/SectionLabel';
@@ -45,7 +46,7 @@ export function generateMetadata({ params }: Props): Metadata {
   if (!article) notFound();
   return {
     title: article.title,
-    description: article.excerpt,
+    description: truncateForMeta(article.excerpt),
     keywords: [
       'Dubai real estate news',
       ...(article.tags || []),
@@ -55,7 +56,7 @@ export function generateMetadata({ params }: Props): Metadata {
     ].filter(Boolean),
     openGraph: {
       title: article.title,
-      description: article.excerpt,
+      description: truncateForMeta(article.excerpt),
       type: 'article',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
       url: locale === 'en' ? `https://www.blackoak-re.com/insights/news/${params.slug}/` : `https://www.blackoak-re.com/${locale}/insights/news/${params.slug}/`,
@@ -76,6 +77,9 @@ export function generateMetadata({ params }: Props): Metadata {
 }
 
 export default async function NewsDetailPage({ params }: Props) {
+  // Lets next-intl render this page statically instead of reading the locale
+  // from the request on every visit.
+  setRequestLocale(params.locale);
   const locale = params.locale as Locale;
   const t = await getTranslations('pages.insights.news');
   const tCommon = await getTranslations('common');

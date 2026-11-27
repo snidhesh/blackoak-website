@@ -7,6 +7,7 @@ import {
 } from '@/lib/content';
 import type { Locale } from '@/i18n/config';
 import InternationalPropertyDetailPage from './InternationalPropertyDetailPage';
+import { setRequestLocale } from 'next-intl/server';
 
 export const revalidate = 300;
 
@@ -60,6 +61,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function Page({ params }: Props) {
+  // Lets next-intl render this page statically instead of reading the locale
+  // from the request on every visit.
+  setRequestLocale(params.locale);
   const locale = params.locale as Locale;
   const property = getInternationalPropertyBySlug(params.slug, locale);
   if (!property || property.status !== 'available') notFound();

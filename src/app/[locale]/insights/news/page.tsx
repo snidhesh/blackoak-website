@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { ArrowUpRight } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getNews } from '@/lib/content';
 import { formatDate } from '@/lib/formatters';
 import type { Locale } from '@/i18n/config';
@@ -37,6 +37,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function NewsPage({ params }: Props) {
+  // Lets next-intl render this page statically instead of reading the locale
+  // from the request on every visit.
+  setRequestLocale(params.locale);
   const locale = params.locale as Locale;
   const t = await getTranslations('pages.insights.news');
   const news = getNews(locale);

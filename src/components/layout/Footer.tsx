@@ -18,7 +18,8 @@ const socialLinks = [
 export default function Footer() {
   const t = useTranslations('footer');
 
-  const footerColumns = [
+  // `href` makes the column heading a link to that section's index page.
+  const footerColumns: { title: string; href?: string; links: { label: string; href: string }[] }[] = [
     {
       title: t('columns.theCompany'),
       links: [
@@ -32,6 +33,8 @@ export default function Footer() {
     },
     {
       title: t('columns.neighbourhoods'),
+      // The neighbourhoods index was otherwise not linked from any page.
+      href: '/neighbourhoods',
       links: [
         { label: t('neighbourhoodLinks.emiratesHills'), href: '/neighbourhoods/emirates-hills' },
         { label: t('neighbourhoodLinks.palmJumeirah'), href: '/neighbourhoods/palm-jumeirah' },
@@ -98,7 +101,15 @@ export default function Footer() {
           {/* Footer Columns */}
           {footerColumns.map((column) => (
             <div key={column.title}>
-              <h3 className="text-sm font-semibold tracking-wider mb-4">{column.title}</h3>
+              <h3 className="text-sm font-semibold tracking-wider mb-4">
+                {column.href ? (
+                  <Link href={column.href} className="hover:text-gray-300 transition-colors">
+                    {column.title}
+                  </Link>
+                ) : (
+                  column.title
+                )}
+              </h3>
               <ul className="space-y-2">
                 {column.links.map((link) => (
                   <li key={link.href}>

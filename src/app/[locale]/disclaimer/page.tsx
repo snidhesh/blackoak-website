@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getDisclaimer } from '@/lib/content';
 import type { Locale } from '@/i18n/config';
 
@@ -31,6 +31,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function DisclaimerPage({ params }: { params: { locale: string } }) {
+  // Lets next-intl render this page statically instead of reading the locale
+  // from the request on every visit.
+  setRequestLocale(params.locale);
   const locale = params.locale as Locale;
   const disclaimerData = getDisclaimer(locale);
 

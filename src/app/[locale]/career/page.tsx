@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { MapPin } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getCareers } from '@/lib/content';
 import type { Locale } from '@/i18n/config';
 import SectionLabel from '@/components/ui/SectionLabel';
@@ -65,6 +65,9 @@ function formatPostedDate(dateStr: string) {
 }
 
 export default async function CareerPage({ params }: Props) {
+  // Lets next-intl render this page statically instead of reading the locale
+  // from the request on every visit.
+  setRequestLocale(params.locale);
   const locale = params.locale as Locale;
   const t = await getTranslations('pages.career');
   const tCommon = await getTranslations('common');

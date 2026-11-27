@@ -31,6 +31,8 @@ export interface ProjectListItem {
 export interface Project {
   id: string;
   slug: string;
+  /** Title-only slug used before listing ids were added to URLs; old links redirect from it. */
+  legacySlug?: string;
   name: string;
   nameFr?: string;
   nameAr?: string;

@@ -12,14 +12,16 @@
       "title": "Propriétés de luxe à vendre et à louer à Dubai",
       "description": "Explorez villas, appartements et penthouses de luxe à vendre et à louer à Palm Jumeirah, Emirates Hills, Downtown Dubai et plus encore. Propriétés sur plan et prêtes à habiter sélectionnées par BlackOak.",
       "ogTitle": "Propriétés de luxe à vendre et à louer à Dubai",
-      "ogDescription": "Explorez villas, appartements et penthouses de luxe à vendre et à louer à Palm Jumeirah, Emirates Hills, Downtown Dubai et plus encore."
+      "ogDescription": "Explorez villas, appartements et penthouses de luxe à vendre et à louer à Palm Jumeirah, Emirates Hills, Downtown Dubai et plus encore.",
+      "pageLabel": "Page {page}"
     },
     "projectDetail": {
       "notFoundTitle": "Projet non trouvé",
       "forSale": "à vendre",
       "forRent": "à louer",
-      "titlePattern": "{type} {bedrooms} chambres {offering} à {location}",
-      "titlePatternNoBedrooms": "{type} {offering} à {location}"
+      "titlePattern": "{type} {bedrooms, plural, one {# chambre} other {# chambres}} {offering} à {location}",
+      "titlePatternNoBedrooms": "{type} {offering} à {location}",
+      "titlePatternStudio": "Studio {offering} à {location}"
     },
     "whyBlackoak": {
       "title": "Pourquoi BlackOak - Notre cabinet immobilier de luxe",
@@ -52,10 +54,10 @@
       "ogDescription": "Dernières actualités immobilières de Dubai, rapports de marché et analyses d'investissement par BlackOak. Restez informé des tendances et opportunités immobilières."
     },
     "marketIntelligence": {
-      "title": "Dubai Market Intelligence — Prices, Cycles & Forecast",
-      "description": "24 years of Dubai residential prices per sq ft (2002—2026) — interactive chart, time-travel investment calculator, and 2026—2030 scenario simulator from BlackOak Real Estate.",
-      "ogTitle": "Dubai Market Intelligence | BlackOak Real Estate",
-      "ogDescription": "Interactive Dubai market report: 24 years of prices, cycles, and a 2026—2030 scenario simulator."
+      "title": "Marché immobilier de Dubaï : prix, cycles et prévisions",
+      "description": "24 ans de prix résidentiels à Dubaï au pied carré (2002–2026) : graphique interactif, calculateur d'investissement rétrospectif et simulateur de scénarios 2026–2030.",
+      "ogTitle": "Marché immobilier de Dubaï | BlackOak Real Estate",
+      "ogDescription": "Rapport interactif sur le marché de Dubaï : 24 ans de prix, les cycles et un simulateur de scénarios 2026–2030."
     },
     "intelligence": {
       "title": "Intelligence Hub — Market Intelligence Dubai et The Market Briefing",
@@ -70,7 +72,7 @@
       "ogDescription": "Rejoignez BlackOak Real Estate. Postes ouverts pour consultants immobiliers, conseillers en investissement et spécialistes immobiliers à Dubai."
     },
     "careerDetail": {
-      "titleSuffix": "Carrières chez BlackOak Real Estate",
+      "titleSuffix": "Carrières",
       "descriptionPrefix": "Rejoignez BlackOak en tant que {jobTitle} à {location}. {type}."
     },
     "contact": {
@@ -133,13 +135,17 @@
     }
   },
   "common": {
+    "studio": "Studio",
+    "pagination": "Pagination",
+    "previousPage": "Page précédente",
+    "nextPage": "Page suivante",
     "blackoakRealEstate": "BlackOak Real Estate",
     "logoAlt": "BlackOak Real Estate",
     "bedrooms": "Chambres",
     "bed": "Ch.",
     "bedroom": "Chambre",
     "bathrooms": "Salles de bain",
-    "sqFt": "Sq.Ft.",
+    "sqFt": "pi²",
     "totalArea": "Surface totale",
     "priceFrom": "À partir de {amount}",
     "priceOnRequest": "Prix sur demande",
@@ -366,6 +372,8 @@
       "villa": "Villa",
       "townhouse": "Maison de ville",
       "penthouse": "Penthouse",
+      "office": "Bureau",
+      "duplex": "Duplex",
       "land": "Terrain",
       "commercial": "Commercial"
     },
@@ -513,6 +521,8 @@
       "details": {
         "label": "Détails",
         "heading": "Là où le luxe rencontre l'horizon",
+        "showMore": "Afficher plus",
+        "showLess": "Afficher moins",
         "reference": "Référence",
         "furnishing": "Ameublement",
         "parking": "Stationnement",
@@ -544,6 +554,29 @@
         "label": "Demande",
         "heading": "Votre résidence de rêve vous attend — Connectons-nous",
         "submitLabel": "Envoyer la demande"
+      },
+      "contactCard": {
+        "label": "Demande d’informations",
+        "heading": "Contact",
+        "description": "Demandez tous les détails, la disponibilité actuelle et une visite privée de ce bien.",
+        "button": "Nous contacter",
+        "buttonAgent": "Contacter {name}",
+        "phoneOptional": "Téléphone (facultatif)",
+        "submit": "Envoyer la demande",
+        "cancel": "Annuler",
+        "whatsapp": "Discuter sur WhatsApp"
+      },
+      "similar": {
+        "label": "Biens similaires",
+        "heading": "Vous aimerez aussi",
+        "description": "D’autres biens actuellement proposés par BlackOak, choisis pour leur ressemblance avec celui-ci.",
+        "viewAll": "Voir tous les biens"
+      },
+      "briefing": {
+        "label": "Le Market Briefing",
+        "heading": "Le marché immobilier des Émirats, chaque lundi",
+        "description": "Le BlackOak Prime Capital Index, les taux, les loyers et l’activité des promoteurs dans une édition hebdomadaire. Gratuit pour les abonnés de l’Intelligence Hub.",
+        "button": "S’abonner dans l’Intelligence Hub"
       },
       "breadcrumbs": {
         "home": "Accueil",
