@@ -60,7 +60,7 @@ import marketIntelligenceAr from '@/content/ar/market-intelligence.json';
 
 import type { CrmListing } from '@/types/crm';
 import listingsSnapshot from '@/data/listings-snapshot.json';
-import { transformListing, deduplicateSlugs } from '@/lib/crm-transform';
+import { transformListing, deduplicateSlugs, listingShortId } from '@/lib/crm-transform';
 
 // Locale content maps
 const contentMap = {
@@ -136,24 +136,58 @@ const SNAPSHOT_BLOB_URL =
   process.env.PROJECTS_SNAPSHOT_URL ??
   'https://w3lbfhke8nf2vtpc.public.blob.vercel-storage.com/listings-snapshot.json';
 
-// Reads the snapshot from Blob with a cacheable fetch (revalidated every 60s),
-// so it works in static/ISR rendering. Returns null on failure so callers fall
-// back to the committed snapshot — the CRM is never hit on the request path.
+// How long one copy of the snapshot is reused before it is fetched again.
+const SNAPSHOT_TTL_MS = 60_000;
+
+// Last snapshot this server instance read successfully. Reused for
+// SNAPSHOT_TTL_MS, and served if a later read fails, so a brief Blob outage
+// does not drop the site back to the much older committed fallback.
+let lastGoodSnapshot: { readAt: number; listings: CrmListing[] } | null = null;
+
+// Reads the snapshot from Blob. Returns null only when there is no usable
+// copy at all, in which case callers fall back to the committed snapshot —
+// the CRM is never hit on the request path.
+//
+// The URL carries a one-minute bucket. Next's fetch cache serves a stale entry
+// while it revalidates in the background, and silently refuses to store a
+// response over 2 MB — so once the snapshot outgrew that limit, an old entry
+// could never be replaced and kept being served as "the listings". With a new
+// cache key every minute, a cached copy can never be more than a minute old,
+// whatever the file's size.
 async function readSnapshotFromBlob(): Promise<CrmListing[] | null> {
+  const now = Date.now();
+  if (lastGoodSnapshot && now - lastGoodSnapshot.readAt < SNAPSHOT_TTL_MS) {
+    return lastGoodSnapshot.listings;
+  }
+
   try {
-    const res = await fetch(SNAPSHOT_BLOB_URL, { next: { revalidate: 60 } });
-    if (!res.ok) return null;
-    return (await res.json()) as CrmListing[];
+    const url = new URL(SNAPSHOT_BLOB_URL);
+    url.searchParams.set('v', String(Math.floor(now / SNAPSHOT_TTL_MS)));
+    const res = await fetch(url, { next: { revalidate: SNAPSHOT_TTL_MS / 1000 } });
+    if (!res.ok) {
+      console.error(`[content] Blob snapshot read failed: HTTP ${res.status} ${res.statusText}`);
+      return lastGoodSnapshot?.listings ?? null;
+    }
+    const listings = (await res.json()) as CrmListing[];
+    if (!Array.isArray(listings) || listings.length === 0) {
+      console.error('[content] Blob snapshot is empty or malformed, ignoring it');
+      return lastGoodSnapshot?.listings ?? null;
+    }
+    lastGoodSnapshot = { readAt: now, listings };
+    return listings;
   } catch (error) {
-    console.error('[content] Blob snapshot read failed, using committed fallback:', error);
-    return null;
+    console.error('[content] Blob snapshot read failed:', error);
+    return lastGoodSnapshot?.listings ?? null;
   }
 }
 
 async function _getProjects(): Promise<Project[]> {
   try {
-    const listings =
-      (await readSnapshotFromBlob()) ?? (listingsSnapshot as unknown as CrmListing[]);
+    let listings = await readSnapshotFromBlob();
+    if (!listings) {
+      console.error('[content] No Blob snapshot available, serving the committed fallback');
+      listings = listingsSnapshot as unknown as CrmListing[];
+    }
     const projects = deduplicateSlugs(listings.map(transformListing));
 
     // Post-transform neighbourhood validation
@@ -181,6 +215,77 @@ export const getProjects = cache(_getProjects);
 export async function getProjectBySlug(slug: string): Promise<Project | undefined> {
   const projects = await getProjects();
   return projects.find((p) => p.slug === slug);
+}
+
+/**
+ * Finds the listing a URL slug refers to, including URLs that are no longer
+ * the listing's current one. `isCanonical` is false when the caller should
+ * redirect to `project.slug`.
+ */
+export async function resolveProjectSlug(
+  slug: string
+): Promise<{ project: Project; isCanonical: boolean } | undefined> {
+  const projects = await getProjects();
+
+  const exact = projects.find((p) => p.slug === slug);
+  if (exact) return { project: exact, isCanonical: true };
+
+  // The title was edited after this URL was shared: the id at the end still
+  // identifies the listing.
+  const shortId = slug.match(/-([a-z0-9]{8})$/)?.[1];
+  if (shortId) {
+    const byId = projects.find((p) => listingShortId(p.crmId ?? p.id) === shortId);
+    if (byId) return { project: byId, isCanonical: false };
+  }
+
+  // A URL from before ids were part of every listing slug.
+  const legacy = projects.find((p) => p.legacySlug === slug);
+  if (legacy) return { project: legacy, isCanonical: false };
+
+  return undefined;
+}
+
+/**
+ * Listings to suggest under a listing ("You may also like"). Candidates share
+ * the listing's offering (sale or rent); they are then ranked by how alike
+ * they are: same community first, then property type, bedroom count and price.
+ * Listings with a title already shown (the same unit type is often listed
+ * several times) are skipped so the suggestions are not copies of each other.
+ */
+export async function getSimilarProjects(project: Project, limit = 3): Promise<Project[]> {
+  const projects = await getProjects();
+  const isRental = (p: Project) => p.offering === 'rent' || p.offering === 'yearly';
+
+  const score = (p: Project): number => {
+    let points = 0;
+    if (p.locationCommunity && p.locationCommunity === project.locationCommunity) points += 4;
+    else if (p.neighbourhood && p.neighbourhood === project.neighbourhood) points += 3;
+    if (p.propertyType === project.propertyType) points += 2;
+    const bedroomGap = Math.abs(p.bedrooms - project.bedrooms);
+    if (bedroomGap === 0) points += 2;
+    else if (bedroomGap === 1) points += 1;
+    if (project.price > 0 && p.price > 0) {
+      const priceGap = Math.abs(p.price - project.price) / project.price;
+      if (priceGap <= 0.25) points += 2;
+      else if (priceGap <= 0.5) points += 1;
+    }
+    return points;
+  };
+
+  const ranked = projects
+    .filter((p) => p.slug !== project.slug && isRental(p) === isRental(project))
+    .map((p) => ({ p, points: score(p), priceGap: Math.abs(p.price - project.price) }))
+    .sort((a, b) => b.points - a.points || a.priceGap - b.priceGap || a.p.slug.localeCompare(b.p.slug));
+
+  const picked: Project[] = [];
+  const seenNames = new Set([project.name]);
+  for (const { p } of ranked) {
+    if (seenNames.has(p.name)) continue;
+    seenNames.add(p.name);
+    picked.push(p);
+    if (picked.length === limit) break;
+  }
+  return picked;
 }
 
 export async function getFeaturedProjects(): Promise<Project[]> {

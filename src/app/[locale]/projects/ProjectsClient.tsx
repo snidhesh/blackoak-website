@@ -5,21 +5,28 @@ import type { ProjectListItem } from '@/types/project';
 import FilterBar, { type FilterState } from '@/components/sections/FilterBar';
 import PropertyGrid from '@/components/sections/PropertyGrid';
 import Pagination from '@/components/ui/Pagination';
+import { PROJECTS_PER_PAGE } from '@/lib/constants';
 
 interface ProjectsClientProps {
   projects: ProjectListItem[];
   neighbourhoodSlugs: string[];
   propertyTypes: string[];
   offerings: string[];
+  /** Page of the unfiltered list this URL represents (1 for /projects/). */
+  initialPage?: number;
 }
 
-const ITEMS_PER_PAGE = 24;
+const ITEMS_PER_PAGE = PROJECTS_PER_PAGE;
+
+/** Path of a page of the unfiltered list; the locale prefix is added by Link. */
+const pageHref = (page: number) => (page <= 1 ? '/projects/' : `/projects/page/${page}/`);
 
 export default function ProjectsClient({
   projects,
   neighbourhoodSlugs,
   propertyTypes,
   offerings,
+  initialPage = 1,
 }: ProjectsClientProps) {
   const appliedRef = useRef(false);
 
@@ -30,7 +37,7 @@ export default function ProjectsClient({
     priceRange: '',
     offering: '',
   });
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(initialPage);
   const [sort, setSort] = useState('most-recent');
 
   // Read ?location= from URL after hydration (useSearchParams unreliable on SSG)
@@ -73,6 +80,11 @@ export default function ProjectsClient({
     return result;
   }, [projects, filters, sort]);
 
+  const isFiltered =
+    sort !== 'most-recent' ||
+    filters.neighbourhoods.length > 0 ||
+    Boolean(filters.propertyType || filters.bedrooms || filters.priceRange || filters.offering);
+
   const totalPages = Math.ceil(filteredProjects.length / ITEMS_PER_PAGE);
   const paginatedProjects = filteredProjects.slice(
     (currentPage - 1) * ITEMS_PER_PAGE,
@@ -105,10 +117,16 @@ export default function ProjectsClient({
         <PropertyGrid projects={paginatedProjects} />
       </div>
 
+      {/* With no filter or sort applied, page numbers are real links to
+          /projects/page/N/ (crawlable, shareable, back button works). Once the
+          visitor filters or sorts, the list no longer matches those URLs, so
+          paging stays in the browser. */}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
         onPageChange={setCurrentPage}
+        getHref={pageHref}
+        navigate={!isFiltered}
       />
     </div>
   );

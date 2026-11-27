@@ -43,12 +43,16 @@ export const contactSchema = z.object({
   _honeypot: z.string().max(0, 'Bot detected'),
 });
 
+// Phone and message are optional here because the short enquiry form on a
+// listing page (ListingContactCard) asks for neither a message nor, necessarily,
+// a phone. The full enquiry form still requires both in the browser. When
+// given, they are validated as before.
 export const projectEnquirySchema = z.object({
   firstName: z.string().min(2, 'First name must be at least 2 characters'),
   lastName: z.string().min(2, 'Last name must be at least 2 characters'),
-  phone: z.string().regex(phoneRegex, 'Please enter a valid phone number'),
+  phone: z.union([z.literal(''), z.string().regex(phoneRegex, 'Please enter a valid phone number')]).optional(),
   email: z.string().email('Please enter a valid email address'),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
+  message: z.union([z.literal(''), z.string().min(10, 'Message must be at least 10 characters')]).optional(),
   projectSlug: z.string().min(1),
   projectName: z.string().min(1),
   reference: z.string().max(200).optional(),

@@ -1,45 +1,61 @@
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { getTranslations } from 'next-intl/server';
-import { MapPin, Bed, Maximize, Check, ExternalLink } from 'lucide-react';
-import { getProjectBySlug } from '@/lib/content';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { MapPin, Bed, Maximize, Check, ArrowRight } from 'lucide-react';
+import { resolveProjectSlug, getSimilarProjects, toProjectListItem } from '@/lib/content';
 import { formatArea } from '@/lib/formatters';
+import { truncateForMeta } from '@/lib/utils';
 import { getProjectName, getProjectDescription } from '@/lib/crm-transform';
+import { propertyTypeLabel, isStudio, areaUnitLabel } from '@/lib/listing-labels';
 import type { Locale } from '@/i18n/config';
 import FormattedPrice from '@/components/ui/FormattedPrice';
 import SectionLabel from '@/components/ui/SectionLabel';
-import ContactForm from '@/components/sections/ContactForm';
-import AgentCard from '@/components/sections/AgentCard';
+import ListingContactCard from '@/components/sections/ListingContactCard';
+import { toE164 } from '@/lib/crm-lead';
+import { COMPANY } from '@/lib/constants';
+import PropertyGrid from '@/components/sections/PropertyGrid';
+import { Link } from '@/i18n/navigation';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 import StickyNav from '@/components/ui/StickyNav';
+import ExpandableText from '@/components/ui/ExpandableText';
 
-// Render detail pages dynamically (data comes from the cached Blob snapshot, so
-// this stays fast). Avoids a static-generation DYNAMIC_SERVER_USAGE error from
-// next-intl reading request headers during on-demand ISR.
-export const dynamic = 'force-dynamic';
+// Listing pages are rendered on first request and cached for five minutes
+// (the same window as the listings index), so a visit or a crawler hit is
+// served from the cache instead of rebuilding the page from the snapshot.
+export const revalidate = 300;
 
 interface Props {
   params: { slug: string; locale: string };
-}
-
-// Cut at a word boundary so meta descriptions stay within what Google shows.
-function truncate(text: string, max: number): string {
-  const clean = text.replace(/\s+/g, ' ').trim();
-  if (clean.length <= max) return clean;
-  const cut = clean.slice(0, max - 1);
-  return `${cut.slice(0, Math.max(cut.lastIndexOf(' '), max - 30))}…`;
 }
 
 export async function generateStaticParams() {
   return [];
 }
 
+/** Site path of a listing in a locale (English has no prefix). */
+function listingPath(slug: string, locale: string): string {
+  return locale === 'en' ? `/projects/${slug}/` : `/${locale}/projects/${slug}/`;
+}
+
+/**
+ * Loads the listing for the requested slug. An old URL for a listing that
+ * still exists (edited title, or a pre-id slug) is redirected permanently to
+ * its current URL; an unknown slug is a 404.
+ */
+async function loadListing(params: Props['params']) {
+  const resolved = await resolveProjectSlug(params.slug);
+  if (!resolved) notFound();
+  if (!resolved.isCanonical) permanentRedirect(listingPath(resolved.project.slug, params.locale));
+  return resolved.project;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = await getProjectBySlug(params.slug);
+  const project = await loadListing(params);
   const locale = params.locale as Locale;
   const tMeta = await getTranslations({ locale, namespace: 'metadata.projectDetail' });
-  if (!project) notFound();
+  const tTypes = await getTranslations({ locale, namespace: 'forms.propertyTypes' });
+  const tCommonMeta = await getTranslations({ locale, namespace: 'common' });
 
   const name = getProjectName(project, locale);
   const desc = getProjectDescription(project, locale);
@@ -50,12 +66,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locationLabel = [project.locationBuilding, project.locationCommunity || project.neighbourhood || 'Dubai']
     .filter(Boolean)
     .join(', ');
-  const titleVars = { bedrooms: project.bedrooms, type: project.propertyType, offering: offeringLabel, location: locationLabel };
-  const title = (project.bedrooms > 0 ? tMeta('titlePattern', titleVars) : tMeta('titlePatternNoBedrooms', titleVars))
+  const titleVars = { bedrooms: project.bedrooms, type: propertyTypeLabel(project.propertyType, tTypes), offering: offeringLabel, location: locationLabel };
+  const title = (
+    project.bedrooms > 0
+      ? tMeta('titlePattern', titleVars)
+      : isStudio(project)
+        ? tMeta('titlePatternStudio', titleVars)
+        : tMeta('titlePatternNoBedrooms', titleVars)
+  )
     .replace(/\s{2,}/g, ' ')
     .trim();
-  const area = `${formatArea(project.area, locale)} ${project.areaUnit}`.replace(/\.$/, '');
-  const description = truncate(`${title}, Dubai. ${area}. ${desc}`, 155);
+  const area = `${formatArea(project.area, locale)} ${areaUnitLabel(project.areaUnit, tCommonMeta)}`.replace(/\.$/, '');
+  const description = truncateForMeta(`${title}, Dubai. ${area}. ${desc}`, 155);
 
   return {
     title,
@@ -74,24 +96,26 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       type: 'website',
       locale: locale === 'fr' ? 'fr_FR' : locale === 'ar' ? 'ar_AE' : 'en_AE',
-      url: locale === 'en' ? `https://www.blackoak-re.com/projects/${params.slug}/` : `https://www.blackoak-re.com/${locale}/projects/${params.slug}/`,
+      url: locale === 'en' ? `https://www.blackoak-re.com/projects/${project.slug}/` : `https://www.blackoak-re.com/${locale}/projects/${project.slug}/`,
       images: [{ url: project.mainImage, width: 1200, height: 630, alt: name }],
     },
     alternates: {
-      canonical: locale === 'en' ? `https://www.blackoak-re.com/projects/${params.slug}/` : `https://www.blackoak-re.com/${locale}/projects/${params.slug}/`,
+      canonical: locale === 'en' ? `https://www.blackoak-re.com/projects/${project.slug}/` : `https://www.blackoak-re.com/${locale}/projects/${project.slug}/`,
       languages: {
-        'x-default': `https://www.blackoak-re.com/projects/${params.slug}/`,
-        en: `https://www.blackoak-re.com/projects/${params.slug}/`,
-        fr: `https://www.blackoak-re.com/fr/projects/${params.slug}/`,
-        ar: `https://www.blackoak-re.com/ar/projects/${params.slug}/`,
+        'x-default': `https://www.blackoak-re.com/projects/${project.slug}/`,
+        en: `https://www.blackoak-re.com/projects/${project.slug}/`,
+        fr: `https://www.blackoak-re.com/fr/projects/${project.slug}/`,
+        ar: `https://www.blackoak-re.com/ar/projects/${project.slug}/`,
       },
     },
   };
 }
 
 export default async function ProjectDetailPage({ params }: Props) {
-  const project = await getProjectBySlug(params.slug);
-  if (!project) notFound();
+  // Lets next-intl render this page statically instead of reading the locale
+  // from the request on every visit.
+  setRequestLocale(params.locale);
+  const project = await loadListing(params);
 
   const locale = params.locale as Locale;
   const t = await getTranslations({ locale, namespace: 'pages.projectDetail' });
@@ -100,6 +124,22 @@ export default async function ProjectDetailPage({ params }: Props) {
   const projectDescription = getProjectDescription(project, locale);
 
   const hasCoordinates = project.location.lat !== 0 && project.location.lng !== 0;
+  const similarProjects = (await getSimilarProjects(project, 3)).map(toProjectListItem);
+
+  // WhatsApp goes to the listing agent's own WhatsApp number when the CRM has
+  // one, otherwise to the company line. The message names the listing so the
+  // person answering knows what the enquiry is about.
+  const agentWhatsapp = project.agent?.whatsapp?.trim();
+  const whatsappBase = agentWhatsapp
+    ? `https://wa.me/${toE164(agentWhatsapp).replace(/\D/g, '')}`
+    : COMPANY.whatsapp;
+  const whatsappMessage = [
+    tCommon('whatsappInterestMessage', { propertyName: projectName }),
+    project.reference ? `(${t('details.reference')}: ${project.reference})` : '',
+  ]
+    .filter(Boolean)
+    .join(' ');
+  const whatsappUrl = `${whatsappBase}?text=${encodeURIComponent(whatsappMessage)}`;
   const hasFloorPlans = project.floorPlans.length > 0;
 
   const stickyNavSections = [
@@ -107,8 +147,6 @@ export default async function ProjectDetailPage({ params }: Props) {
     { id: 'gallery', label: t('stickyNav.gallery') },
     ...(hasFloorPlans ? [{ id: 'floor-plans', label: t('stickyNav.floorPlans') }] : []),
     { id: 'amenities', label: t('stickyNav.amenities') },
-    { id: 'location', label: t('stickyNav.location') },
-    { id: 'enquiry', label: t('stickyNav.enquiry') },
   ];
 
   const allImages = [project.mainImage, ...project.gallery];
@@ -123,7 +161,7 @@ export default async function ProjectDetailPage({ params }: Props) {
     '@type': ['RealEstateListing', 'Product'],
     name: projectName,
     description: projectDescription,
-    url: locale === 'en' ? `https://www.blackoak-re.com/projects/${params.slug}/` : `https://www.blackoak-re.com/${locale}/projects/${params.slug}/`,
+    url: locale === 'en' ? `https://www.blackoak-re.com/projects/${project.slug}/` : `https://www.blackoak-re.com/${locale}/projects/${project.slug}/`,
     inLanguage: locale,
     image: allImages,
     datePosted: project.availableFrom || new Date().toISOString().split('T')[0],
@@ -138,7 +176,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       price: String(project.price),
       priceCurrency: 'AED',
       availability,
-      url: locale === 'en' ? `https://www.blackoak-re.com/projects/${params.slug}/` : `https://www.blackoak-re.com/${locale}/projects/${params.slug}/`,
+      url: locale === 'en' ? `https://www.blackoak-re.com/projects/${project.slug}/` : `https://www.blackoak-re.com/${locale}/projects/${project.slug}/`,
       seller: {
         '@type': 'RealEstateAgent',
         name: 'BlackOak Real Estate',
@@ -184,7 +222,7 @@ export default async function ProjectDetailPage({ params }: Props) {
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: t('breadcrumbs.home'), item: locale === 'en' ? 'https://www.blackoak-re.com' : `https://www.blackoak-re.com/${locale}` },
       { '@type': 'ListItem', position: 2, name: t('breadcrumbs.projects'), item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/projects/` },
-      { '@type': 'ListItem', position: 3, name: projectName, item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/projects/${params.slug}/` },
+      { '@type': 'ListItem', position: 3, name: projectName, item: `https://www.blackoak-re.com${locale === 'en' ? '' : `/${locale}`}/projects/${project.slug}/` },
     ],
   };
 
@@ -226,12 +264,12 @@ export default async function ProjectDetailPage({ params }: Props) {
       <div className="flex items-center gap-2.5 mt-2 md:mt-3 text-white/90 text-[13px] md:text-base font-medium">
                 <span className="flex items-center gap-1.5">
                   <Bed className="w-4 h-4 md:w-5 md:h-5" />
-                  {project.bedrooms} {tCommon('bed')}
+                  {isStudio(project) ? tCommon('studio') : `${project.bedrooms} ${tCommon('bed')}`}
                 </span>
                 <span className="w-1 h-1 rounded-full bg-white/60" />
                 <span className="flex items-center gap-1.5">
                   <Maximize className="w-4 h-4 md:w-[18px] md:h-[18px]" />
-                  {formatArea(project.area, locale)} {project.areaUnit}
+                  {formatArea(project.area, locale)} {areaUnitLabel(project.areaUnit, tCommon)}
                 </span>
               </div>
             </div>
@@ -246,14 +284,6 @@ export default async function ProjectDetailPage({ params }: Props) {
                   <FormattedPrice price={project.price} size="lg" light />
                 </span>
               </div>
-              <div className="flex items-center gap-3 mt-4">
-                <a
-                  href="#enquiry"
-                  className="flex items-center justify-center flex-1 md:flex-none md:w-[180px] h-[44px] md:h-[48px] bg-black border-2 border-black text-white text-[11px] md:text-xs font-medium uppercase tracking-wider hover:bg-gray-900 transition-colors"
-                >
-                  {tCommon('registerInterest')}
-                </a>
-              </div>
             </div>
           </div>
         </div>
@@ -262,7 +292,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       {/* Sticky Section Nav */}
       <StickyNav sections={stickyNavSections} />
 
-      {/* Details */}
+      {/* Details, with the contact card pinned beside the description on desktop */}
       <section id="details" className="py-16">
         <div className="container-wide">
           <AnimateOnScroll>
@@ -272,34 +302,57 @@ export default async function ProjectDetailPage({ params }: Props) {
                 {t('details.heading')}
               </h2>
             </div>
-            <p className="text-[#5f6368] text-base leading-[28px] tracking-[0.16px] whitespace-pre-line">
-              {projectDescription}
-            </p>
-
-            {/* Additional details from CRM */}
-            {(project.reference || project.furnishingType || (project.parkingSlots && project.parkingSlots > 0)) && (
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8 pt-8 border-t border-gray-200">
-                {project.reference && (
-                  <div>
-                    <p className="text-sm font-medium text-black">{t('details.reference')}</p>
-                    <p className="text-sm text-[#5f6368] mt-1">{project.reference}</p>
-                  </div>
-                )}
-                {project.furnishingType && (
-                  <div>
-                    <p className="text-sm font-medium text-black">{t('details.furnishing')}</p>
-                    <p className="text-sm text-[#5f6368] mt-1">{project.furnishingType}</p>
-                  </div>
-                )}
-                {project.parkingSlots !== undefined && project.parkingSlots > 0 && (
-                  <div>
-                    <p className="text-sm font-medium text-black">{t('details.parking')}</p>
-                    <p className="text-sm text-[#5f6368] mt-1">{t('details.parkingSlots', { count: project.parkingSlots })}</p>
-                  </div>
-                )}
-              </div>
-            )}
           </AnimateOnScroll>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+            <div className="lg:col-span-8">
+              <AnimateOnScroll>
+                <ExpandableText
+                  text={projectDescription}
+                  showMoreLabel={t('details.showMore')}
+                  showLessLabel={t('details.showLess')}
+                  className="text-[#5f6368] text-base leading-[28px] tracking-[0.16px] whitespace-pre-line"
+                />
+
+                {/* Additional details from CRM */}
+                {(project.reference || project.furnishingType || (project.parkingSlots && project.parkingSlots > 0)) && (
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-8 pt-8 border-t border-gray-200">
+                    {project.reference && (
+                      <div>
+                        <p className="text-sm font-medium text-black">{t('details.reference')}</p>
+                        <p className="text-sm text-[#5f6368] mt-1">{project.reference}</p>
+                      </div>
+                    )}
+                    {project.furnishingType && (
+                      <div>
+                        <p className="text-sm font-medium text-black">{t('details.furnishing')}</p>
+                        <p className="text-sm text-[#5f6368] mt-1">{project.furnishingType}</p>
+                      </div>
+                    )}
+                    {project.parkingSlots !== undefined && project.parkingSlots > 0 && (
+                      <div>
+                        <p className="text-sm font-medium text-black">{t('details.parking')}</p>
+                        <p className="text-sm text-[#5f6368] mt-1">{t('details.parkingSlots', { count: project.parkingSlots })}</p>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </AnimateOnScroll>
+            </div>
+
+            {/* Contact card. The top offset clears the navbar and the section nav, both sticky. */}
+            <aside className="lg:col-span-4">
+              <div className="lg:sticky lg:top-[184px] lg:max-h-[calc(100vh-208px)] lg:overflow-y-auto">
+                <ListingContactCard
+                  projectSlug={project.slug}
+                  projectName={projectName}
+                  reference={project.reference}
+                  agent={project.agent}
+                  whatsappUrl={whatsappUrl}
+                />
+              </div>
+            </aside>
+          </div>
         </div>
       </section>
 
@@ -386,7 +439,7 @@ export default async function ProjectDetailPage({ params }: Props) {
                     {t('floorPlans.totalArea')}
                   </p>
                   <p className="text-[#5f6368] text-base tracking-[0.16px] leading-[28px]">
-                    {formatArea(project.area, locale)} {project.areaUnit}
+                    {formatArea(project.area, locale)} {areaUnitLabel(project.areaUnit, tCommon)}
                   </p>
                 </div>
                 <div>
@@ -439,70 +492,48 @@ export default async function ProjectDetailPage({ params }: Props) {
         </section>
       )}
 
-      {/* Location */}
-      <section id="location" className="py-20 bg-black">
+      {/* Similar properties */}
+      {similarProjects.length > 0 && (
+        <section id="similar" className="py-20">
+          <div className="container-wide">
+            <AnimateOnScroll>
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
+                <div>
+                  <SectionLabel className="justify-start">{t('similar.label')}</SectionLabel>
+                  <h2 className="text-[32px] font-light mt-5">{t('similar.heading')}</h2>
+                  <p className="text-sm text-[#5f6368] mt-3 max-w-xl">{t('similar.description')}</p>
+                </div>
+                <Link
+                  href="/projects"
+                  className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[2px] text-black border-b border-black/30 hover:border-black pb-1 w-fit transition-colors"
+                >
+                  {t('similar.viewAll')}
+                  <ArrowRight className="w-3.5 h-3.5 icon-directional" />
+                </Link>
+              </div>
+            </AnimateOnScroll>
+            <PropertyGrid projects={similarProjects} />
+          </div>
+        </section>
+      )}
+
+      {/* The Market Briefing: a short invitation; the sign-up itself lives in the Intelligence Hub */}
+      <section className="py-16 md:py-20 bg-[#f0f3f8]">
         <div className="container-wide">
-          <AnimateOnScroll>
-            <div className="text-center mb-10">
-              <SectionLabel light>{t('location.label')}</SectionLabel>
-              <h2 className="text-[32px] font-light text-white mt-5">
-                {t('location.heading')}
-              </h2>
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+            <div className="max-w-2xl">
+              <SectionLabel className="justify-start">{t('briefing.label')}</SectionLabel>
+              <h2 className="text-[28px] md:text-[32px] font-light leading-tight mt-5">{t('briefing.heading')}</h2>
+              <p className="text-base text-[#5f6368] leading-[28px] mt-3">{t('briefing.description')}</p>
             </div>
-          </AnimateOnScroll>
-          {hasCoordinates ? (
-            <div className="relative aspect-[1382/505] bg-gray-800 overflow-hidden rounded">
-              <iframe
-                src={`https://www.google.com/maps?q=${project.location.lat},${project.location.lng}&z=15&output=embed`}
-                className="absolute inset-0 w-full h-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title={`${projectName} location`}
-              />
-            </div>
-          ) : (
-            <div className="bg-gray-900 rounded p-8 text-center">
-              <MapPin className="w-8 h-8 text-white/60 mx-auto mb-4" />
-              <p className="text-white text-lg mb-2">{project.location.address}</p>
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(project.location.address)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-white/70 hover:text-white text-sm transition-colors mt-2"
-              >
-                {tCommon('viewOnGoogleMaps')} <ExternalLink className="w-3.5 h-3.5 icon-directional" />
-              </a>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Enquiry */}
-      <section id="enquiry" className="py-20 bg-[#f0f3f8]">
-        <div className="container-narrow">
-          <AnimateOnScroll>
-            <div className="text-center mb-10">
-              <SectionLabel>{t('enquiry.label')}</SectionLabel>
-              <h2 className="text-[32px] font-light mt-5">
-                {t('enquiry.heading')}
-              </h2>
-            </div>
-          </AnimateOnScroll>
-
-          {/* Agent Card */}
-          {project.agent && (
-            <div className="mb-8">
-              <AgentCard agent={project.agent} />
-            </div>
-          )}
-
-          <ContactForm
-            endpoint="/api/project-enquiry"
-            projectSlug={project.slug}
-            projectName={projectName}
-            reference={project.reference}
-            submitLabel={t('enquiry.submitLabel')}
-          />
+            <Link
+              href="/insights/intelligence"
+              className="inline-flex items-center justify-center gap-2 shrink-0 min-h-[50px] px-8 py-3 bg-black border-2 border-black text-white text-center text-xs font-medium uppercase tracking-[2px] hover:bg-transparent hover:text-black transition-colors"
+            >
+              {t('briefing.button')}
+              <ArrowRight className="w-3.5 h-3.5 icon-directional" />
+            </Link>
+          </div>
         </div>
       </section>
     </>

@@ -100,7 +100,29 @@ function capitalize(str: string): string {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
+/**
+ * The stable part of a listing URL: the first block of the CRM id. It does
+ * not change when an agent edits the title, so the URL keeps resolving.
+ */
+export function listingShortId(id: string): string {
+  return id.toLowerCase().replace(/[^a-z0-9]/g, '').slice(0, 8);
+}
+
+/**
+ * Listing URL slug: "<title>-<short id>". The title part is for readers and
+ * search engines; the id part is what identifies the listing (see
+ * resolveProjectSlug in content.ts, which redirects a stale title part).
+ */
 export function generateListingSlug(listing: CrmListing): string {
+  const title = slugify(listing.titleEn || listing.reference || '') || 'listing';
+  return `${title}-${listingShortId(listing.id)}`;
+}
+
+/**
+ * The slug this listing had before ids became part of every URL (title only,
+ * or the reference/id when there was no title). Kept so old links redirect.
+ */
+export function legacyListingSlug(listing: CrmListing): string {
   if (listing.titleEn) return slugify(listing.titleEn);
   return slugify(listing.reference || listing.id);
 }
@@ -123,6 +145,7 @@ export function transformListing(listing: CrmListing): Project {
     id: listing.id,
     crmId: listing.id,
     slug: generateListingSlug(listing),
+    legacySlug: legacyListingSlug(listing),
     name: listing.titleEn || listing.reference || 'Untitled',
     nameFr: listing.titleFr || undefined,
     nameAr: listing.titleAr || undefined,
@@ -184,26 +207,20 @@ export function getProjectDescription(project: Project, locale: Locale): string 
   return project.description;
 }
 
+/**
+ * Slugs end in the first 8 characters of the listing id, so two listings only
+ * collide if they share both a title and that id prefix. If that ever happens,
+ * the later ones get their full id instead so every URL stays unique.
+ */
 export function deduplicateSlugs(projects: Project[]): Project[] {
-  const slugCount = new Map<string, number>();
-
-  for (const p of projects) {
-    slugCount.set(p.slug, (slugCount.get(p.slug) ?? 0) + 1);
-  }
-
-  const seen = new Map<string, number>();
+  const seen = new Set<string>();
   return projects.map((p) => {
-    const count = slugCount.get(p.slug) ?? 1;
-    if (count <= 1) return p;
-
-    const idx = seen.get(p.slug) ?? 0;
-    seen.set(p.slug, idx + 1);
-
-    if (idx === 0) return p;
-
-    return {
-      ...p,
-      slug: `${p.slug}-${p.crmId?.slice(0, 8) ?? idx}`,
-    };
+    if (!seen.has(p.slug)) {
+      seen.add(p.slug);
+      return p;
+    }
+    const slug = `${p.slug}-${slugify(p.crmId ?? p.id)}`;
+    seen.add(slug);
+    return { ...p, slug };
   });
 }

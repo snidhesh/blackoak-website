@@ -4,8 +4,10 @@ import { locales, defaultLocale } from '@/i18n/config';
 
 const BASE_URL = 'https://www.blackoak-re.com';
 
-// Fixed date for static content — update when static pages are meaningfully changed
-const STATIC_LAST_MODIFIED = new Date('2026-05-01');
+// lastModified is only set where a real date exists (news and careers). A
+// placeholder or wrong date teaches search engines to ignore the field, and
+// listings carry no "last updated" time — their `availableFrom` is a handover
+// or move-in date, often years in the future.
 
 function localePath(path: string, locale: string): string {
   return locale === defaultLocale ? `${BASE_URL}${path}` : `${BASE_URL}/${locale}${path}`;
@@ -52,7 +54,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Bayn landing page (reverse-proxied from orabayn.vercel.app, single-locale)
   entries.push({
     url: `${BASE_URL}/bayn/`,
-    lastModified: STATIC_LAST_MODIFIED,
     changeFrequency: 'weekly',
     priority: 0.9,
   });
@@ -62,7 +63,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     for (const path of staticPages) {
       entries.push({
         url: localePath(path, locale),
-        lastModified: STATIC_LAST_MODIFIED,
         changeFrequency: path === '/' ? 'daily' : 'weekly',
         priority: path === '/' ? 1 : 0.8,
         alternates: { languages: alternates(path) },
@@ -76,7 +76,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const path = `/projects/${p.slug}/`;
       entries.push({
         url: localePath(path, locale),
-        lastModified: p.availableFrom ? new Date(p.availableFrom) : STATIC_LAST_MODIFIED,
         changeFrequency: 'weekly',
         priority: 0.9,
         alternates: { languages: alternates(path) },
@@ -90,7 +89,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const path = `/neighbourhoods/${n.slug}/`;
       entries.push({
         url: localePath(path, locale),
-        lastModified: STATIC_LAST_MODIFIED,
         changeFrequency: 'monthly',
         priority: 0.8,
         alternates: { languages: alternates(path) },
@@ -133,7 +131,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       const path = `/international-properties/${p.slug}/`;
       entries.push({
         url: localePath(path, locale),
-        lastModified: STATIC_LAST_MODIFIED,
         changeFrequency: 'weekly',
         priority: 0.85,
         alternates: { languages: alternates(path) },

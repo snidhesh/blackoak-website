@@ -28,3 +28,14 @@ export function slugify(text: string): string {
     .replace(/-+/g, '-')
     .trim();
 }
+
+/**
+ * Shortens text for a meta description, cutting at a word boundary and adding
+ * an ellipsis, so it fits what search results show (about 155–160 characters).
+ */
+export function truncateForMeta(text: string, max = 158): string {
+  const clean = text.replace(/\s+/g, ' ').trim();
+  if (clean.length <= max) return clean;
+  const cut = clean.slice(0, max - 1);
+  return `${cut.slice(0, Math.max(cut.lastIndexOf(' '), max - 30))}…`;
+}

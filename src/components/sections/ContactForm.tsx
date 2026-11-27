@@ -19,7 +19,7 @@ interface ContactFormProps {
   submitLabel?: string;
 }
 
-function readUtmFromLocation(): Record<string, string> | undefined {
+export function readUtmFromLocation(): Record<string, string> | undefined {
   if (typeof window === 'undefined') return undefined;
   const params = new URLSearchParams(window.location.search);
   const out: Record<string, string> = {};
@@ -30,7 +30,7 @@ function readUtmFromLocation(): Record<string, string> | undefined {
   return Object.keys(out).length > 0 ? out : undefined;
 }
 
-function readUnitFromLocation(): string | undefined {
+export function readUnitFromLocation(): string | undefined {
   if (typeof window === 'undefined') return undefined;
   const v = new URLSearchParams(window.location.search).get('unit');
   return v ? v.slice(0, 200) : undefined;

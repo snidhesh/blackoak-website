@@ -94,3 +94,6 @@ export const BRIEFING_LINK_TTL_MS = 8 * 24 * 60 * 60 * 1000;
 export const BRIEFING_LINK_MAX_BROWSERS = 3;
 export const BRIEFING_OPEN_PATH = '/api/briefing/open/';
 export const BRIEFING_UNSUBSCRIBE_PATH = '/api/briefing/unsubscribe/';
+
+/** Listings shown per page on /projects/ and its /projects/page/N/ pages. */
+export const PROJECTS_PER_PAGE = 24;

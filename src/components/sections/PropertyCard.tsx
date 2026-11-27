@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { useLocale, useTranslations } from 'next-intl';
 import { MapPin, Bed, Maximize } from 'lucide-react';
+import { propertyTypeLabel, isStudio, areaUnitLabel } from '@/lib/listing-labels';
 import { formatArea } from '@/lib/formatters';
 import type { Locale } from '@/i18n/config';
 import FormattedPrice from '@/components/ui/FormattedPrice';
@@ -37,6 +38,7 @@ export default function PropertyCard({
   offering,
 }: PropertyCardProps) {
   const t = useTranslations('common');
+  const tTypes = useTranslations('forms.propertyTypes');
   const locale = useLocale() as Locale;
 
   const locationLabel = neighbourhood
@@ -64,7 +66,7 @@ export default function PropertyCard({
           <div className="absolute top-3 start-3 flex items-center gap-1.5">
             {propertyType && (
               <span className="bg-white text-gray-500 text-[11px] font-medium tracking-wide uppercase px-2.5 py-1 rounded-sm">
-                {propertyType}
+                {propertyTypeLabel(propertyType, tTypes)}
               </span>
             )}
             {offering && (
@@ -89,10 +91,11 @@ export default function PropertyCard({
 
         <div className="flex items-center gap-4 mt-1 text-xs text-gray-500">
           <span className="flex items-center gap-1">
-            <Bed className="w-3.5 h-3.5" /> {bedrooms} {t('bedrooms')}
+            <Bed className="w-3.5 h-3.5" />{' '}
+            {isStudio({ bedrooms, propertyType: propertyType ?? '' }) ? t('studio') : `${bedrooms} ${t('bedrooms')}`}
           </span>
           <span className="flex items-center gap-1">
-            <Maximize className="w-3.5 h-3.5" /> {formatArea(area, locale)} {areaUnit}
+            <Maximize className="w-3.5 h-3.5" /> {formatArea(area, locale)} {areaUnitLabel(areaUnit, t)}
           </span>
         </div>
       </Link>

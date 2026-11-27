@@ -2,6 +2,7 @@
 
 import { useCallback, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
+import { propertyTypeLabel } from '@/lib/listing-labels';
 import { useLocale } from 'next-intl';
 import { ChevronDown, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -44,6 +45,7 @@ export default function FilterBar({
   resultCount,
 }: FilterBarProps) {
   const t = useTranslations('common');
+  const tTypes = useTranslations('forms.propertyTypes');
   const locale = useLocale() as Locale;
   const { currency } = useCurrency();
 
@@ -147,7 +149,7 @@ export default function FilterBar({
             placeholder={t('filter.propertyType')}
             value={filters.propertyType}
             onChange={(v) => updateFilter('propertyType', v)}
-            options={propertyTypes.map(pt => ({ value: pt, label: pt }))}
+            options={propertyTypes.map(pt => ({ value: pt, label: propertyTypeLabel(pt, tTypes) }))}
           />
 
           {/* Bedrooms */}

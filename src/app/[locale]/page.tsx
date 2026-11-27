@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
-import dynamic from 'next/dynamic';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Suspense } from 'react';
 import {
   getNeighbourhoods,
@@ -21,13 +20,10 @@ import ServiceLines from '@/components/sections/ServiceLines';
 import Button from '@/components/ui/Button';
 import AnimateOnScroll from '@/components/shared/AnimateOnScroll';
 import InternationalMarketsStack, { type MarketEntry } from '@/components/sections/InternationalMarketsStack';
+import SplashScreen from '@/components/shared/SplashScreen';
 import { getHomepage, getSplash } from '@/lib/content';
 import type { Locale } from '@/i18n/config';
 
-const SplashScreen = dynamic(
-  () => import('@/components/shared/SplashScreen'),
-  { ssr: false }
-);
 
 export const revalidate = 300;
 
@@ -59,6 +55,9 @@ export async function generateMetadata({ params }: { params: { locale: string } 
 }
 
 export default async function HomePage({ params }: { params: { locale: string } }) {
+  // Lets next-intl render this page statically instead of reading the locale
+  // from the request on every visit.
+  setRequestLocale(params.locale);
   const locale = params.locale as Locale;
   const tCommon = await getTranslations({ locale, namespace: 'common' });
   const homepage = getHomepage(locale);

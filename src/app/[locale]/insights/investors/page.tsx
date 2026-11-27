@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import type { Locale } from '@/i18n/config';
 import SectionLabel from '@/components/ui/SectionLabel';
 import SectionHeading from '@/components/ui/SectionHeading';
@@ -52,6 +52,9 @@ const sectionImagePositions: Record<string, 'left' | 'right'> = {
 const faqKeys = ['q1', 'q2', 'q3', 'q4'] as const;
 
 export default async function InvestorsPage({ params }: Props) {
+  // Lets next-intl render this page statically instead of reading the locale
+  // from the request on every visit.
+  setRequestLocale(params.locale);
   const locale = params.locale as Locale;
   const t = await getTranslations({ locale, namespace: 'pages.insights.investors' });
 

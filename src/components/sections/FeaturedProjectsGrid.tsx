@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
+import { propertyTypeLabel, isStudio, areaUnitLabel } from '@/lib/listing-labels';
 import { getTranslations } from 'next-intl/server';
 import { ArrowUpRight, MapPin, BedDouble, Maximize2 } from 'lucide-react';
 import { getFeaturedProjects } from '@/lib/content';
@@ -35,6 +36,7 @@ export function FeaturedProjectsSkeleton() {
 
 export default async function FeaturedProjectsGrid({ locale }: { locale: Locale }) {
   const tCommon = await getTranslations({ locale, namespace: 'common' });
+  const tTypes = await getTranslations({ locale, namespace: 'forms.propertyTypes' });
   const featuredProjects = (await getFeaturedProjects()).slice(0, 5);
 
   return (
@@ -68,7 +70,7 @@ export default async function FeaturedProjectsGrid({ locale }: { locale: Locale 
 
                 <div className="absolute bottom-0 left-0 right-0 p-5">
                   <span className="inline-block bg-black/60 text-white text-[10px] font-medium tracking-[0.2px] uppercase leading-[15px] px-3 py-1 rounded-sm mb-3">
-                    {project.propertyType}
+                    {propertyTypeLabel(project.propertyType, tTypes)}
                   </span>
                   <p className="text-white font-semibold text-[28px] leading-[20px] flex items-center gap-2">
                     <FormattedPrice price={project.price} size="lg" light />
@@ -117,7 +119,7 @@ export default async function FeaturedProjectsGrid({ locale }: { locale: Locale 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-5">
                   <span className="inline-block bg-black/60 text-white text-[10px] font-medium tracking-[0.2px] uppercase leading-[15px] px-3 py-1 rounded-sm mb-3">
-                    {project.propertyType}
+                    {propertyTypeLabel(project.propertyType, tTypes)}
                   </span>
                   <p className="text-white font-semibold text-[24px] leading-[28px] flex items-center gap-2">
                     <FormattedPrice price={project.price} size="md" light />
@@ -139,12 +141,12 @@ export default async function FeaturedProjectsGrid({ locale }: { locale: Locale 
                   <div className="flex items-center gap-3">
                     <span className="flex items-center gap-1">
                       <BedDouble className="w-3.5 h-3.5" />
-                      {project.bedrooms} {tCommon('bedrooms')}
+                      {isStudio(project) ? tCommon('studio') : `${project.bedrooms} ${tCommon('bedrooms')}`}
                     </span>
                     <span className="text-[#5F6368]">•</span>
                     <span className="flex items-center gap-1">
                       <Maximize2 className="w-3.5 h-3.5" />
-                      {project.area.toLocaleString('en-US')} {project.areaUnit}
+                      {project.area.toLocaleString('en-US')} {areaUnitLabel(project.areaUnit, tCommon)}
                     </span>
                   </div>
                 </div>
