@@ -70,6 +70,13 @@
     "category": "real-estate"
   },
   {
+    "id": "59",
+    "name": "Mohamed Essawy",
+    "title": "شريك مساعد",
+    "image": "/images/team/mohamed-essawy.jpg",
+    "category": "real-estate"
+  },
+  {
     "id": "53",
     "name": "Mirabela Antonache",
     "title": "مدير مساعد",
@@ -77,17 +84,17 @@
     "category": "_hidden"
   },
   {
-    "id": "15",
-    "name": "Mustafa Khatib",
-    "title": "مدير مساعد",
-    "image": "/images/team/mustafa-khatib.jpg",
-    "category": "real-estate"
-  },
-  {
     "id": "12",
     "name": "Fenella Rose",
     "title": "مدير مساعد",
     "image": "/images/team/fenella-rose.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "15",
+    "name": "Mustafa Khatib",
+    "title": "مدير مساعد",
+    "image": "/images/team/mustafa-khatib.jpg",
     "category": "real-estate"
   },
   {
@@ -126,17 +133,10 @@
     "category": "real-estate"
   },
   {
-    "id": "57",
-    "name": "Raluca Crupenschi",
+    "id": "51",
+    "name": "Salma Elkilawi",
     "title": "مدير مساعد",
-    "image": "/images/team/raluca-crupenschi.jpg",
-    "category": "real-estate"
-  },
-  {
-    "id": "18",
-    "name": "Julian Cleave",
-    "title": "مدير مساعد",
-    "image": "/images/team/julian-cleave.jpg",
+    "image": "/images/team/salma-elkilawi.jpg",
     "category": "real-estate"
   },
   {
@@ -147,17 +147,31 @@
     "category": "real-estate"
   },
   {
-    "id": "51",
-    "name": "Salma Elkilawi",
+    "id": "57",
+    "name": "Raluca Crupenschi",
     "title": "مدير مساعد",
-    "image": "/images/team/salma-elkilawi.jpg",
-    "category": "_hidden"
+    "image": "/images/team/raluca-crupenschi.jpg",
+    "category": "real-estate"
   },
   {
-    "id": "14",
-    "name": "Kareem Hafez",
+    "id": "60",
+    "name": "Conor Connelan",
     "title": "مدير مساعد",
-    "image": "/images/team/kareem-hafez.jpg",
+    "image": "/images/team/conor-connelan.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "61",
+    "name": "Suhail Qadir",
+    "title": "مدير مساعد",
+    "image": "/images/team/suhail-qadir.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "46",
+    "name": "Merihan Magdy",
+    "title": "مدير مساعد",
+    "image": "/images/team/merihan-magdy.jpg",
     "category": "real-estate"
   },
   {
@@ -168,10 +182,24 @@
     "category": "real-estate"
   },
   {
-    "id": "46",
-    "name": "Merihan Magdy",
+    "id": "18",
+    "name": "Julian Cleave",
     "title": "مدير مساعد",
-    "image": "/images/team/merihan-magdy.jpg",
+    "image": "/images/team/julian-cleave.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "14",
+    "name": "Kareem Hafez",
+    "title": "مدير مساعد",
+    "image": "/images/team/kareem-hafez.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "62",
+    "name": "Gulbahor Akhedova",
+    "title": "مدير مساعد",
+    "image": "/images/team/gulbahor-akhedova.jpg",
     "category": "real-estate"
   },
   {
@@ -196,31 +224,10 @@
     "category": "real-estate"
   },
   {
-    "id": "28",
-    "name": "Habib Yazbeck",
-    "title": "مستشار عقاري أول",
-    "image": "/images/team/habib-yazbeck.jpg",
-    "category": "real-estate"
-  },
-  {
-    "id": "29",
-    "name": "Liliane Hikmat Maher",
-    "title": "مستشار عقاري أول",
-    "image": "/images/team/liliane-hikmat-maher.jpg",
-    "category": "real-estate"
-  },
-  {
     "id": "50",
     "name": "Mathieu Poissonnet",
     "title": "مستشار عقاري أول",
     "image": "/images/team/mathieu-poissonnet.jpg",
-    "category": "real-estate"
-  },
-  {
-    "id": "26",
-    "name": "Anastasiia Samkova",
-    "title": "مستشار عقاري أول",
-    "image": "/images/team/anastasiia-samkova.jpg",
     "category": "real-estate"
   },
   {
@@ -231,10 +238,31 @@
     "category": "real-estate"
   },
   {
+    "id": "28",
+    "name": "Habib Yazbeck",
+    "title": "مستشار عقاري أول",
+    "image": "/images/team/habib-yazbeck.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "26",
+    "name": "Anastasiia Samkova",
+    "title": "مستشار عقاري أول",
+    "image": "/images/team/anastasiia-samkova.jpg",
+    "category": "real-estate"
+  },
+  {
     "id": "21",
     "name": "Philippa Blunden",
     "title": "مستشار عقاري أول",
     "image": "/images/team/philippa-blunden.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "63",
+    "name": "Pooja Shah",
+    "title": "مستشار عقاري أول",
+    "image": "/images/team/pooja-shah.jpg",
     "category": "real-estate"
   },
   {
@@ -280,16 +308,30 @@
     "category": "real-estate"
   },
   {
+    "id": "64",
+    "name": "Ekaterina Kireeva",
+    "title": "مستشار عقاري",
+    "image": "/images/team/ekaterina-kireeva.jpg",
+    "category": "real-estate"
+  },
+  {
+    "id": "65",
+    "name": "Luis Coutinho",
+    "title": "مستشار عقاري",
+    "image": "/images/team/luis-coutinho.jpg",
+    "category": "real-estate"
+  },
+  {
     "id": "37",
     "name": "Mark Andrew",
     "title": "مدير التسويق",
     "image": "/images/team/mark-andrew.jpg",
-    "category": "creative-ops"
+    "category": "_hidden"
   },
   {
     "id": "38",
     "name": "Terraine Tuico",
-    "title": "رئيس القسم الإبداعي",
+    "title": "مدير التسويق",
     "image": "/images/team/terraine-tuico.jpg",
     "category": "creative-ops"
   },
@@ -298,6 +340,13 @@
     "name": "Bianca Rae Santos",
     "title": "العمليات | مسؤول مكافحة غسيل الأموال",
     "image": "/images/team/bianca-rae-santos.jpg",
+    "category": "creative-ops"
+  },
+  {
+    "id": "40",
+    "name": "Nidhesh Pillai",
+    "title": "مدير تقنية المعلومات",
+    "image": "/images/team/nidhesh-pillai.jpg",
     "category": "creative-ops"
   },
   {
@@ -318,14 +367,21 @@
     "id": "43",
     "name": "Davlat Olimjonov",
     "title": "محرر فيديو",
-    "image": "/images/team/davlat-olimjonov.jpg",
+    "image": "/images/team/davlat-olimjonov-v2.jpg",
     "category": "creative-ops"
   },
   {
     "id": "44",
     "name": "John Paulo Ebreo",
     "title": "مصور فيديو",
-    "image": "/images/team/john-paulo-ebreo.jpg",
+    "image": "/images/team/john-paulo-ebreo-v2.jpg",
+    "category": "creative-ops"
+  },
+  {
+    "id": "66",
+    "name": "Mike Araneta",
+    "title": "باريستا",
+    "image": "/images/team/mike-araneta.jpg",
     "category": "creative-ops"
   }
 ]
